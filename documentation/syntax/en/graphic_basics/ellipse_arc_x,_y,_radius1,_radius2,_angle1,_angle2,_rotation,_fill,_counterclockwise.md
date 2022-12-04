@@ -1,0 +1,15 @@
+# Ellipse Arc x, y, radius1, radius2, angle1, angle2, rotation, fill, counterclockwise
+<table><tr><td colspan="2"><b>Compatibility</b></td></tr><tr><td><img src="https://drive.google.com/uc?export=view&id=1NbXQFq8_hw18wZSmQiAaH8PEkx0iN0ue" valign="center" all="AOZ" title="AOZ" /></td></tr></table>
+
+Draw an arc of an ellipse between 2 angles using the current Ink in the current screen
+- **x**: The horizontal coordinate of the centre of the arc
+- **y**: The vertical coordinate of the centre of the arc
+- **radius1**: The horizontal radius of the arc
+- **radius2**: The vertical radius of the arc
+- **angle1**: The angle from which the arc is drawn from
+- **angle2**: The angle to which the arc will be drawn to
+- **rotation**: Angle of rotation of the arc
+- **fill**: Set to true to fill the arc. The arc will be closed in a straight line from on end to the other.
+- **counterclockwise**: Set to true to draw the arc in a counterclockwise direction.
+---
+<p align="center"><img valign="middle" width="76px" src="https://drive.google.com/uc?export=view&id=1c2KO0LJpvMS9X9CAGV6dOfciR7OWhdKA" /></p>

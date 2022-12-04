@@ -1,0 +1,37 @@
+# DISPLAY ACTOR'S IMAGES
+Can't wait to get images moving on the screen?
+
+We understand you, and that's why we created the Actor instruction, so you can be the director in your Actor Studio, and direct your Actors.
+
+There are several AOZ instructions for manipulating images, but the **Actor** instruction is the most powerful. It simplifies display, manages animations, it controls collisions and it will allow you to do magical things.
+
+An actor is a graphic element that can be animated. For example, in a game it's the character that the player controls, an element of the scenery, or an enemies within the game. In other words it's a visual element, essential for a game as it is for a professional application.  
+
+**Notes for more experienced programmers:**
+<table>
+	<tr>
+		<td width="25%">
+			<img src="https://doc.aoz.studio/assets/images/image015.png" />
+		</td>
+		<td>
+			<ul>
+				<li>
+					As soon as you want to view or move an image, animated or not, you can use either the BOB instruction, which is AMOS-compatible, or the Actor statement we're talking about in this chapter.
+				</li>
+				<li>
+					If you want to program in Object mode (OOP) the BOB statement is also OOP-compatible with settings similar to Actor.
+					</li>
+			</ul>
+		</td>
+	</tr>
+</table>
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/image001.png" />
+</p>
+
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTM4NTM3ODczLC00MjQyMTk3NTksLTUwMj
+c3MTQ2N119
+-->

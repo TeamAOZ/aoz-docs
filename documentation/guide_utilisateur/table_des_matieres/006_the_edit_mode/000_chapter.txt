@@ -1,0 +1,16 @@
+# THE EDIT MODE
+Finding your way around AOZ Studio has been made as simple as possible with everything on one Edit Screen.
+![enter image description here](https://doc.aoz.studio/assets/images/image040.png)
+- The project folders are on the left
+- The main big working screen area is on the right, and
+- The Menu icons are at the top
+
+Since the beginning of this User Guide we have been using this EDIT MODE and you are probably wondering what you can do with all these buttons.
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEwNjQ4NTUwMDVdfQ==
+-->

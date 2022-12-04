@@ -1,0 +1,44 @@
+# AUTOMATIC
+Ground control to Major Tom: your actor can be on autopilot. By setting the **Auto&dollar;** parameter, all properties defined (placed immediately after the **Auto$=**) will be automatically used without the need to press a button, waggle the joystick or move the mouse.
+
+Look at this code:
+```basic
+1  Actor "magician", X=0, Y=150, Auto$="offsetX=4, offsetY=4", Image$="magic.png"
+```
+Run the program to see that your actor is moving alone to the right of the screen.
+
+Here is a **_Shoot-em-up_** game Kit, a more complete example that you will find in the tutorial folder which uses Actor's animations:
+```basic
+1  // We load the graphics for the sprite animations
+2  Load Asset "sprites/graphics.sprite", "graphics"
+3  // We set up the player's ship parameters
+3  Actor "player", X = 160, Y = 260, SpriteSheet$="graphics", Anim$="idle", LoopAnim = True, LeftLimit = 0, RightLimit = 256
+5  // More parameters are added depending on the device: Smartphone or PC
+6  If Touch Screen = True
+7  // For touch screens we use the mouse/finger, only horizontally (honly)
+8  Actor "player", Control$ = "mouse:honly=true"
+9  Else   // For PC you can use the joystick and the keyboard. We create a variable C$ for the control of the Actor:
+10 C$ = "joystick0:offsetx=2,offsety=2;"
+11 // The 1st Joystick (0) moves the Actor by 2 pixels (offsetx and y) in both X and Y, so in all directions
+12 C$ = C$ + "joyleft0:anim=left1,offsetx=-2;"  // Specifically the Joystick to the left takes the animation "left1" define in resources/Assets/sprites/graphics.sprite
+13 C$ = C$ + "joyright0:anim=right1,offsetx=+2;"  // Ditto to the right
+14 C$ = C$ + "keyboard:offsetx=2,offsety=2;"  // The keyboard moves the Actor by 2 pixels, by default this only affects the arrow keys and the a-s / w-d keys
+15 C$ = C$ + "ArrowLeft:anim=left1,offsetx=-2;"  // Specifically the left key takes the animation "left1" define in resources/Assets/sprites/graphics.sprite
+16 C$ = C$ + "ArrowRight:anim=right1,offsetx=2;"  // Ditto to the right
+17 C$ = C$ + "none:anim=idle" // If there is no keyboard or joystick action, we take the "idle" animation (of the ship with the sparkling reactor)
+18 Actor "player", Control$ = C$  // We Assign all these controls parameters to the Actor 
+19 // Note: Instead of concatenating C$ it is also possible to write all this in 1 line directly after the = of Control$
+20 End If
+```
+This **Control$** thing is not super-easy, but once you understand, it's pure magic! Take a break and practice a bit.
+
+It's your move 😊:  
+- Understand the syntax, the use of the "" with Control$, try changing properties and values.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjQxODcxMDQ4LDEyNjgxMzU0NTAsMTIwNj
+AwNTMyMCw3MzA5OTgxMTZdfQ==
+-->

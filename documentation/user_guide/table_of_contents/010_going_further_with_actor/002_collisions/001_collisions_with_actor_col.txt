@@ -1,0 +1,40 @@
+# COLLISION WITH Actor Col
+Returns TRUE (or 1)  if the actors are colliding. If no collision is detected, the function returns FALSE (or 0).
+
+Let's type this new code to test if our magician encounters Lucie, AOZ's most famous actor(ress) and by setting up the collision detection
+```basic
+1  Actor "lucie", 600,150, Image$="lucie.png",Control$="keyboard: offsetX=12, offsetY=12"
+2  Actor "magic", 960,540, image$="magic.png"
+3  Do
+4      A = Actor Col ("lucie", "magic" )
+5      If A = True Then Boom
+6      Wait Vbl
+7  Loop
+```
+<table>
+    <tr>
+        <td width="50%"><img src="https:\\doc.aoz.studio\assets\images\image073.png" width="" valign="" /></td>
+        <td width="50%"><img src="https:\\doc.aoz.studio\assets\images\image019.png" width="" valign="" /></td>        
+    </tr>
+</table>
+Run the program. Move your actor with the keyboard and collide… Boom, love at first sight!
+
+Note: I am sure you noticed that it works without specifying X=600, Y=150 as per above: Actor "lucie",600,150,  
+I told you: at AOZ Studio we try to make your life easier. 
+
+This program is quite clear I believe:
+- _**Line 4**_: Here, as we use Actor with its name and not with a number we have "". But it also works with numbers, for example, to test the collision between magic and actor 101:
+```basic
+4  If Actor Col ("magic", 101 ) = True Then ...
+```
+And we can test an Actor with an image:
+```basic
+4  if Actor Col("magic", image$="ice") = True Then Goto DEAD
+```
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNzI5MDkxOTE2LDg3MDIzMjAyNiw3MzA5OT
+gxMTZdfQ==
+-->

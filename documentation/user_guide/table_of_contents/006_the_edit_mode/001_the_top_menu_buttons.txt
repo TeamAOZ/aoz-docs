@@ -1,0 +1,34 @@
+# THE TOP MENU BUTTONS
+Each of these provides a one-click action:
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image041.png" width="40px" />&nbsp;&nbsp;&nbsp;Create a new AOZ Application.
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image042.png" width="40px" />&nbsp;&nbsp;&nbsp;Load an AOZ Application that already exists.
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image043.png" width="40px" />&nbsp;&nbsp;&nbsp;Save an AOZ Application and export to share with others.
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image044.png" width="40px" />&nbsp;&nbsp;&nbsp;Go into AOZ Direct Mode to test pieces of code.
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image045.png" width="40px" />&nbsp;&nbsp;&nbsp;Run this Application in a Web Browser.
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image046.png" width="40px" />&nbsp;&nbsp;&nbsp;Run this Application in the AOZ Viewer.
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image047.png" width="40px" />&nbsp;&nbsp;&nbsp;Publish the Application for the world to enjoy.
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image048.png" width="40px" />&nbsp;&nbsp;&nbsp;Create your interface with the DESIGNER.
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image049.png" width="40px" />&nbsp;&nbsp;&nbsp; The AOZ Store shared program library.
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image050.png" width="40px" />&nbsp;&nbsp;&nbsp;Read your AOZ Messages.
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image051.png" width="40px" />&nbsp;&nbsp;&nbsp;Edit your Account and User Settings.
+
+<img valign="middle" src="https://doc.aoz.studio/assets/images/image052.png" width="40px" />&nbsp;&nbsp;&nbsp;See your Documentation.
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTQzMDgwNjI0M119
+-->

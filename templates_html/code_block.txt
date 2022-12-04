@@ -1,0 +1,9 @@
+```basic
+1  Rem For any AOZ Code
+2  Print "Bonjour"
+```
+
+```javascript
+1  // For any Javascript code
+2  console.log( "Bonjour" );
+```
