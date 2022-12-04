@@ -4,17 +4,17 @@
 | ----------------------------------------------------------------------------------- |
 | ![](https://drive.google.com/uc?export=view\&id=1NbXQFq8\_hw18wZSmQiAaH8PEkx0iN0ue) |
 
-Actor est l'une des puissantes commandes graphiques que propose le langage AOZ. Actor permet :
+Actor is one of the powerful graphical commands offered by the AOZ language. Actor allows:
 
-* d'afficher des sprites et décors à l'écran
-* de manipuler les éléments graphiques de l'écran avec la souris, le clavier ou la manette de jeu
-* d'animer très facilement vos personnages
-* d'appliquer un comportement à un personnage joué ou non-joué, comme sauter ou voler.
-* d'associer des évènements, comme le "clic" de la souris, à des images
-* de déplacer vos images à l'écran.
-* d'appliquer des effets, comme la rotation, le redimensionnement...
+* display sprites and scenery on the screen     But not only. Soon, you will also be able to manipulate your 3D objects, your robots, with the same ease.
+* to manipulate the graphic elements of the screen with the mouse, the keyboard or the gamepad
+* animate your characters very easily&#x20;
+* apply a behavior to a played or unplayed character, like jumping or flying.
+* associate events, such as the "click" of the mouse, with images
+* move your images on the screen.&#x20;
+* apply effects, like rotation, resizing...
 
-Mais pas seulement. Bientôt, vous pourrez aussi manipuler vos objets 3D, vos robots, avec la même facilité.
+But not only. Soon, you will also be able to manipulate your 3D objects, your robots, with the same ease.
 
 ### Parameters
 
