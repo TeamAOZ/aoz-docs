@@ -1,0 +1,13 @@
+# Input
+<!--
+@name: Input
+@description: 
+@tags: 
+@categories: 
+\-->
+The INPUT command is used to enter information into one or more variables, separated by commas
+## Parameters
+
+- **variable**: The variable to store the return in, any type
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

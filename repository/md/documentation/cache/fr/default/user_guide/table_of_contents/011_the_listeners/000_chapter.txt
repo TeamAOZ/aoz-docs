@@ -1,0 +1,23 @@
+## THE LISTENER AND EVENT SYSTEM
+
+Once the **Actor** Instruction is called, our actor can be "monitored" constantly by several **Listeners**. They check and scrutinize the activity of our actor and alert the program that a possible event has occurred.
+
+An event can be:
+- A collision
+- A change of position  
+- A change of image
+- A key press
+
+The name of a Listener always starts with **On...** and the parameter is a string containing the name of the AOZ procedure to call if the event occurs. For example in our previous program, when we defined the **OnCollision$** we asked the collision Listener to notify our program when a collision occurs and to call the procedure while giving it some information (or properties). In this case it was the name of the actor that was hit.
+
+Note that your AOZ procedure can exploit a few of these properties, you don't have to set them all.
+
+We have several Listeners each with a set of properties (to be written in capital) for the Actor instruction, we will see this in the next chapter.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTMyNjQ0MjcxNCwxNjk0MjU4MTQ5LC00MT
+E3ODAzNCwxODEyNTYzMTExLDczMDk5ODExNl19
+-->

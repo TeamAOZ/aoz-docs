@@ -1,0 +1,17 @@
+# Dom Position
+<!--
+@name: Dom Position
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Set the Position of a HTML element
+## Parameters
+
+- **elementId&dollar;**: ID of this element.
+- **x**: Horizontal position in pixel of the HTML element.
+- **y**: Horizontal position in pixel of the HTML element.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

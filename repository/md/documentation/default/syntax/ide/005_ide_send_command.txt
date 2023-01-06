@@ -1,0 +1,16 @@
+# IDE Send Command
+<!--
+@name: IDE Send Command
+@description: 
+@tags: 
+@categories: 
+\-->
+Send a command to the IDE
+## Parameters
+
+- **command&dollar;**: The command
+- **param1&dollar;**: Optional first parameter (will be stored in the "parameters" array)
+- **param2&dollar;**: Optional second parameter (will be stored in the "parameters" array)
+- **param3&dollar;**: Optional third parameter (will be stored in the "parameters" array)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

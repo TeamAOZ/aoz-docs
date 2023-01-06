@@ -1,0 +1,14 @@
+# Rainbow To Image
+<!--
+@name: Rainbow To Image
+@description: 
+@tags: 
+@categories: 
+\-->
+Direct the display of a rainbow to an image of the image bank, allowing the rainbow to be displayed as a Bob
+## Parameters
+
+- **index**: The index of the rainbow
+- **image**: The index of the destination image
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

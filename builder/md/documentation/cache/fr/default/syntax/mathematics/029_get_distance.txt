@@ -1,0 +1,18 @@
+# Get Distance
+<!--
+@name: Get Distance
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Measures the distance between two points in pixels
+## Parameters
+
+- **x1**: The horizontal coordinate of the first point
+- **y1**: The vertical coordinate of the first point
+- **x2**: The horizontal coordinate of the second point
+- **y2**: The vertical coordinate of the second point
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

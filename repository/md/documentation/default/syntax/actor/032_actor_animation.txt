@@ -1,0 +1,66 @@
+# Actor Animation
+<!--
+@name: Actor Animation
+@description: 
+@tags: 
+@categories: 
+\-->
+Create an animation sequence to be played by an Actor
+## Parameters
+
+
+- **Index**: Number or name of the Actor
+- **Anim&dollar;**: Name of the animation
+- **Sequence&dollar;**: Images organisation in a string  "image1:tempo2, image2:tempo2,....",L (or R)
+--- L for Loop, R for reverse at the end
+-- A pause is possible between each image, the value is in milliseconds (with 100 as default value)
+ 
+ Examples:
+-- Actor Animation "run","1,2,3,4,5,6,L"
+Means "run" will animates image 1.png, then 2,..., up to 6 then Loop back to 1
+-- Actor Animation "walk", "1:1000,2,3,4:200..."
+Means animates image 1.png, then wait 1sec (or 1000 millisecs), then images 2,3,4 then wait 0.2 sec....
+
+
+Note: You need to have your Actor Animation instruction before using it with the corresponding Actor, otherwise it will not find the animation to run. See below example.
+
+*Example of a small game using animations:*
+You will find all the images needed below in the AOZ Studio Drive, located here: \aoz-editor\AOZ_Studio\app\Drives\AOZ Drive\resources\images\Platformer_MagicBird\...
+
+```basic
+// Backgrounds
+Actor "forest", Image$="forest", StartX=0, EndX=-1920, Duration=20000, LoopMove=True
+Actor "ground", Image$="ground",Y=880, StartX=0, EndX=-1920, Duration=5000, LoopMove=True
+
+
+// All Actors Animations defined first
+Actor Animation "run", "lucie_run_right-0, lucie_run_right-1, lucie_run_right-2, lucie_run_right-3, lucie_run_right-4, lucie_run_right-5, L"
+Actor Animation "mechawalk", "magictoy_walk-0, magictoy_walk-1, magictoy_walk-2, magictoy_walk-3, magictoy_walk-4, magictoy_walk-5, L"
+Actor Animation "roll","tagada_walk-0,tagada_walk-1,tagada_walk-2, L"
+Actor Animation "star", "collectible-0, collectible-1, collectible-2, collectible-3, L"
+
+
+// Play Lucie the hero
+Actor "lucie", X=320, Y=636, Anim$="run", Behavior$="jump"
+
+// Play the Mecha Monster 1
+Actor "monster1", StartX=1920, EndX=-1920, Y=784, Duration=8000, Group$="badguy",Anim$="mechawalk",LoopMove=True
+// Play the Mecha Monster 2
+Actor "monster2", StartX=2880, EndX=-1920, Y=784, Duration=10000, Group$="badguy",Anim$="mechawalk",LoopMove=True
+// Play the Rolling Monster
+Actor "monster3", StartX=3360, EndX=-480, Y=740, Duration=9000, Group$="badguy", Anim$="roll",LoopMove=True
+// Play the Star
+Actor "star", StartX=4440, EndX=-2840, Y=500, Duration=9000, Anim$="star",LoopMove=True
+
+Do
+  If Actor Col( "lucie", Group$="badguy" ) = True Then Boom : End // was a collision between lucie and one of the backguy (the 3 monsters)
+  Refresh
+Loop
+```
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTMyMDMxMTUwMSwtOTE2MDYwMDI4LDExNj
+EwNTQ3MiwtNzA5MDUxNzE1LC05MTUzMDcyMiw1MTk1NjYyNzRd
+fQ==
+-->

@@ -1,0 +1,46 @@
+# MOVING THE ACTOR
+Now that we know how to display an actor, let’s change our code to move it across the screen.
+
+We're going to change our program and add a new parameter, called **EndX** like this:
+```basic
+Actor "magician", X=0, Y=0, Image$="magic.png", EndX=1980
+```
+<table>
+	<tr>
+		<td width="50%">
+		Run the program by clicking on RUN (or hit the F2 function key), and your actor will move from left to right of the screen. 
+		</td>
+		<td>
+			<img src="https://doc.aoz.studio/assets/images/en/image018.png" />
+		</td>
+	</tr>
+</table>
+
+Note: to achieve the same thing in most other languages,  it can take a lot more lines of code, 20 to  100 lines. Each language has its characteristics, strengths and weaknesses, AOZ  has been designed  to offer powerful programming simplicity.
+
+Let's break down our program. We've set the new **EndX**  parameter to 1980. **EndX** tells our actor that it must move from its current position to an end position defined by **EndX**. When this position is reached, the actor's movement stops.
+
+Remember: you can put your parameters in any order you want, so you can also write:
+
+```basic
+Actor "magician", Image$="magic.png", X=0, EndX=1980, Y=0
+```
+To sum up: the starting point and end point of the movement is automatically taken care of by the **Actor** instruction, and it starts immediately. In this case moving from X=0, Y=0 until the X position is equal to the value defined by the **EndX** parameter, which is 1980.
+
+We'll look at the **Duration** parameter that changes the speed of movement very soon.
+
+**It's your move** 😊
+
+- Stop the actor in the middle of the screen.
+- Move the actor vertically using the same principle as the code above.
+- Move the actor from the right of the screen to the left.  
+- Move the actor diagonally.
+- Use the image name **lucie.png**.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTIwODc4NjE5NzQsLTExMDYyODAzMTIsLT
+c3OTA1NjcxMCw3MzA5OTgxMTZdfQ==
+-->

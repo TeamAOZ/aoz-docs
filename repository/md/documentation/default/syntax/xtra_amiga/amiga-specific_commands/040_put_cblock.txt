@@ -1,0 +1,15 @@
+# Put CBlock
+<!--
+@name: Put CBlock
+@description: 
+@tags: 
+@categories: 
+\-->
+Draw a previously capture block in the current screen. (deprecated, use Put Block)
+## Parameters
+
+- **index**: Index of the block to draw
+- **x**: Horizontal coordinate of the top-left corner of the block drawn
+- **y**: Vertical coordinate of the top-left corner of of the block drawn
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

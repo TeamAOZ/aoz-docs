@@ -1,0 +1,25 @@
+# WHAT IS A SPRITESHEET?
+
+A sprite sheet is a large image containing a sequence of images that deceive the eye when they are displayed one after the other, to give the illusion of animated movement.
+
+Here|;s an example:
+![Sprite Sheet](https://doc.aoz.studio/assets/images/en/image079.png)
+
+
+The Actor instruction offers several parameters for using a sprite sheet:
+
+- **Spritesheet$:** Is the name of the sprite sheet to use.
+
+- **Anim$:** Is the name of the animation to play.
+
+Check the Game example in this manuel: "Shoot-em-up game Kit" or in the folder Tutorials/2nd Game/shoot_em_up
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE0NjgxNjQ4MzcsMTUyODI0Mjk3NSwtOD
+c2Mjc1NjE2LC0xMzA0MDU0OTI1LC01OTgzMTkxMSwxNTIxNzA3
+NzkzLDg3MDIzMjAyNiw3MzA5OTgxMTZdfQ==
+-->

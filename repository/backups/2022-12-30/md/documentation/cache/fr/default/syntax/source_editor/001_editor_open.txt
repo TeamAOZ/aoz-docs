@@ -1,0 +1,17 @@
+# Editor Open
+<!--
+@name: Editor Open
+@description: 
+@tags: 
+@categories: 
+\-->
+Open a new source editor in the current Text Window in the current screen
+## Parameters
+
+- **index**: The index of the new source editor
+- **string**: The text to edit (empty string by default)
+- **integer**: The index of the color of the background
+- **integer**: The index of the color of the font
+- **integer**: The writing to use (as defined for Text Windows)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

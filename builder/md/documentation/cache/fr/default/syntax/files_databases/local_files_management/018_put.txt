@@ -1,0 +1,14 @@
+# Put
+<!--
+@name: Put
+@description: 
+@tags: 
+@categories: 
+\-->
+Output a record to a random access file
+## Parameters
+
+- **channel**: The index of the channel with the open file
+- **recordNumber**: The number of the record to output
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

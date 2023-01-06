@@ -1,0 +1,20 @@
+# Ellipse
+<!--
+@name: Ellipse
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Draw an ellipse with the current Ink in the current screen
+## Parameters
+
+- **x**: The horizontal coordinate of the centre of the ellipse
+- **y**: The vertical coordinate of the centre of the ellipse
+- **xRadius**: The horizontal radius in pixels
+- **yradius**: The vertical radius in pixels
+- **rotation**: The angle of rotation
+- **fill**: True to fill the ellipse with the current ink colour or pattern
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

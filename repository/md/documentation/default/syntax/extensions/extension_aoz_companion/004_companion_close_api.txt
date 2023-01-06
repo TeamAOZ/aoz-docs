@@ -1,0 +1,15 @@
+# Companion Close API
+<!--
+@name: Companion Close API
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Close an API that was previously open
+## Parameters
+
+- **index**: The index of the channel with the API to close
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

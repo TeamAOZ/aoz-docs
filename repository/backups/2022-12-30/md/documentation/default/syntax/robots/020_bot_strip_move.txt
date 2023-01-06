@@ -1,0 +1,17 @@
+#  BOT Strip Move
+<!--
+@name:  BOT Strip Move
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Makes the colors of the LEDs on the LED strip connected to the specified port roll from left to right by the specified number of positions.
+## Parameters
+
+- **step**: Number of positions by which the colors of the LEDs roll; setting range
+- **step**: Range of the LED color rolling; setting range
+- **port**: The number of the port where the strip is connected, 1, 2, or 0 for all ports
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

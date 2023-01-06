@@ -1,0 +1,64 @@
+# WHERE ARE MY IMAGES SAVED?
+At this stage you may have wondered, or asked on the AOZ Studio Discord channel: 
+
+<p align="middle" width="100%">
+	<a href="https://discord.com/invite/JmFyFRAcenter">
+		<img src=" https://doc.aoz.studio/assets/images/common/discord.png" width="56px" valign="middle" /></a>&nbsp;&nbsp;
+</p>
+Where are all these images saved that I am playing with in these examples? How do I add one?
+<table>
+	<tr>
+		<td width="50%">
+		Here are the answers, right away. <br>
+Each program you create will have its own resources folder in which you will also find the resources sub-folders. That's where the 1.images folder lives, and that's where you can upload your new images. See here:
+ 	</td>
+		<td width="50%">
+<img src="https://doc.aoz.studio/assets/images/en/image032.png" />
+	</td>
+	</tr>
+</table>
+
+Once an image or a sound is copied there, the program have a direct access to it, just by its name. (And you do not even have to give the extension, like lucie and not lucie.png)
+
+- You can copy/paste sounds, music, images in the corresponding resources folder of your application by dragging the file in it.
+
+- You also can copy a file by dragging it from another AOZ Studio folder while the Ctrl key is pressed.
+
+- You may find those folders on your hard drive by default:
+Documents/My AOZ Applications/**your program**/resources/
+
+OK, but I need to tell you a secret: the images, sounds that we are using in this User guide are coming from a secret folder… What? Yes I know, we did create a secret global shared assets folder: the “AOZ Drive”, it already includes the shared generic images that we are using in this User Guide (btw thanks Romain for our great magicians, Lucie, Magic, and all AOZ characters).
+
+<table>
+	<tr>
+		<td width="50%">
+		Thanks to globally shared assets when you create new apps you do not even have to copy images on your Application/resources folders. AOZ Studio is doing it for you so you can directly use all the ones that are in the AOZ Drive global shared folder.<br><br>
+		 You got it? If you save an image or sound in that global folder you can use it in every application just by its name. This is really for the ones you use regularly, like your logo, photo… stuff that you need to re-use.
+ 	</td>
+		<td width="50%">
+<img src="https://doc.aoz.studio/assets/images/en/image034.png" />
+	</td>
+	</tr>
+</table>
+I can now reveal where this secret folder is for the images:<br>
+"C:/AOZ Studio/AOZ Drive/resources/images"
+
+**How does it work?**
+When you RUN your application, AOZ Studio copies the resources you need (the one used in your program) from that secret AOZ Drive folder to your application resource folder. And when they are there, your program may use them directly.
+
+AOZ uses several image file formats: .PNG, .GIF or .SVG are the ones we recommend, because they allow for transparent backgrounds, which are required for the best results with Bobs and Actors. You can also use other graphic formats, such as .JPG, .BMP, .IFF, or .ILBM graphics, but you'll have to manually mask the color(s) used for transparency.
+
+Note: Another method for loading images is via the Load Asset instruction. This command loads a file from the path you select THAT MUST be in the **resources** folders of AOZ (not elsewhere on the hard drive). This is so we can package them with the save, aozip save and publish. You can also use Load Asset to load sound and video files either directly from the Resources/Assets folder of your application or using a path (see Chapter **Default Folder**).
+We'll talk more about Load Asset later.
+
+<p align="center"><img src="https://doc.aoz.studio/assets/images/en/image035.png" /></p>
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+</p>
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE2Mjc3NzM0MjEsLTg5NDc0MDkyNSwtMT
+Q5NDE1MTY4MiwtMTYzNzY5NTQ1NSwtMjAxNzY0Nzc3OV19
+-->

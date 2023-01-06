@@ -1,0 +1,16 @@
+# Td Scale
+<!--
+@name: Td Scale
+@description: 
+@tags: 
+@categories: 
+\-->
+Redimensionne un objet 3D sur les 3 axes X,Y et Z.
+## Parameters
+
+- **ObjectName&dollar;**: Nom de l'objet à créer
+- _X#_ (optional): Nouvelle échelle X de l'objet
+- _Y#_ (optional): Nouvelle échelle Y de l'objet
+- _Z#_ (optional): Nouvelle échelle Z de l'objet
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

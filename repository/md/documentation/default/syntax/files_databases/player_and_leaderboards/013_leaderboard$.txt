@@ -1,0 +1,14 @@
+# Leaderboard&dollar;
+<!--
+@name: Leaderboard&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Provides access to the data items in a cached leaderboard.
+## Parameters
+
+- **itemIndex**: The index of the leaderboard item. 0 is position one.
+- **itemName&dollar;**: The name of the data item to return. ("playername", "value" or "id")
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

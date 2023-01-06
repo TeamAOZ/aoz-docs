@@ -1,0 +1,16 @@
+# Say
+<!--
+@name: Say
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Speak a string using the build in voice synthetizer
+## Parameters
+
+- **sentence&dollar;**: Text to say
+- **mode**: 0 or undefined and the instruction will wait for the end of the voice to continue. A value different from zero, or true will return immediately.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,16 @@
+# Save Variables
+<!--
+@name: Save Variables
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+save the content of variables or arrays into a file
+## Parameters
+
+- **path&dollar;**: Path of the file to save
+- **any**: A list of variables to be saved, saparated by commas
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

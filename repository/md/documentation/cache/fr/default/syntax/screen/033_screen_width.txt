@@ -1,0 +1,15 @@
+# Screen Width
+<!--
+@name: Screen Width
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /></div>
+
+Return the width in pixels of a given screen
+## Parameters
+
+- _screenIndex_ (optional): The index of the screen to query. If ommited, AOZ will return the width of the current screen
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

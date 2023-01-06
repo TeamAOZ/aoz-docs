@@ -1,0 +1,29 @@
+# The Listener and Event System
+
+Here is an example of how to use the Listener for scrolling an actor attached to the keyboard right-left keys:
+```basic
+Actor 1, Image$="bg.png", Y=0, Control$="ArrowLeft: offsetX=5; ArrowRight: offsetX=-5", OnChange$="ON_CHANGE"**
+Do
+  Refresh
+Loop
+
+Procedure ON_CHANGE [INDEX$,X]
+If X > 0 Then Actor INDEX$, X = -1980
+If X < -1980 Then Actor INDEX$, X = 0
+End Proc
+```
+You see in the above example that the listener is calling the procedure "ON_CHANGE" each time the actor undergoes a change in position (due to a Key press) passing along the properties automatically, here **INDEX$** and **X**
+
+So when actor 1 moves on the screen the procedure is called with the actor name in INDEX$ and its X position, as properties. The code in the procedure may use these properties to check if we reached the limit of 1980 pixels (remember it is half the size of the graphics) and to restart if we did.
+<BR>
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNDM2MzMzMTMyLDU0NjQyNTI5OCwtODEzMj
+AyMzIzLDE1MjgyNDI5NzUsLTg3NjI3NTYxNiwtMTMwNDA1NDky
+NSwtNTk4MzE5MTEsMTUyMTcwNzc5Myw4NzAyMzIwMjYsNzMwOT
+k4MTE2XX0=
+-->

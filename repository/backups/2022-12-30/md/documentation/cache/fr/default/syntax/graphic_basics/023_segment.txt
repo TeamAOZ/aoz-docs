@@ -1,0 +1,36 @@
+# Segment 
+<!--
+@name: 
+
+Segment x, y, radius1, radius2, radius3, angle1, angle2, rotation, fill, counterclockwise
+@description: 
+@tags: 
+@categories: 
+\-->
+
+
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+
+
+Draw a segment of a cricle or ellipse between 2 angles using the current Ink in the current screen
+## Parameters
+
+
+
+- **x**: The horizontal coordinate of the centre of the arc
+- **y**: The vertical coordinate of the centre of the arc
+- **radius1**: The horizontal radius of the circle or ellipse
+- **radius2**: The vertical radius of the circle or ellipse
+- **radius3**: The start radius of the segment from the centre point. eg. 0 will draw a full 'pie slice'
+- **angle1**: The angle from which the segment is drawn from
+- **angle2**: The angle to which the segment will be drawn to
+- **rotation**: Angle of rotation of the segment
+- **fill**: Set to true to fill the segment
+- **counterclockwise**: direction the segment will be drawn from angle1 - Optional
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTY0MzQ0NDA5OCwxNTkwNDgyNTMzLC0xMT
+Y3NzU1NjczXX0=
+-->

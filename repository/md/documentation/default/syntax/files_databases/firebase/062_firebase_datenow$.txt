@@ -1,0 +1,13 @@
+# Firebase DateNow&dollar;
+<!--
+@name: Firebase DateNow&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Get the current date and time of the local device
+## Parameters
+
+- **format&dollar;**: Optional date format string, example "DD-MM-YYYY"
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

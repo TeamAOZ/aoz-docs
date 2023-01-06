@@ -1,0 +1,16 @@
+# Frequency
+<!--
+@name: Frequency
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Analyse the sound and return the current level of a given frequency
+## Parameters
+
+- **voice**: The number of voice to analyse, if undefined the whole sound output is analysed
+- **number**: The number of the frequency to analyse (0-1023)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

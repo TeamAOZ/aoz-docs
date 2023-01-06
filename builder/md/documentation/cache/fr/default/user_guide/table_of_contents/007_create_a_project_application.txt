@@ -1,0 +1,68 @@
+# CREATE A PROJECT APPLICATION
+### Getting ready
+This is where we get everything set up for you to create a new project. Click on the first icon in the row at the top of your screen, "New AOZ Project". <img valign="middle" src="https://doc.aoz.studio/assets/images/en/image041.png" width="40px" />
+
+<table>
+	<tr>
+		<td width="65%">
+		<img valign="middle" src="https://doc.aoz.studio/assets/images/en/image061.png" /></td>
+		<td>
+			A selection box appears with a choice of ready made templates for your new project.		
+		</td>
+	</tr>
+</table>
+There are ready-to-use models
+
+- "Cross-platform": for computer screens, smartphones, websites,
+- "Amiga" to be compatible with the historical format of this computer.
+- "Customizable" to configure the project yourself.
+
+Note: at the bottom left the checkbox to open this panel every time.
+
+Suppose you want your new AOZ app to run as a project for smartphones: Select the Cross-platform template.
+
+You can now complete the Information form:
+![enter image description here](https://doc.aoz.studio/assets/images/en/image062.png)
+
+Do not forget the title of the project and to select the destination folder in which you want to keep your project (if the default one does not suit you).
+
+Then click on Display:
+![enter image description here](https://doc.aoz.studio/assets/images/en/image063.png)
+
+AOZ Studio will help you as much as possible to make your application suitable for the device you want to use. For a smartphone application, you can choose the page orientation: portrait (vertical), landscape, or both (auto detection).
+
+- the FPS (for Frame per Second) will give you at the top left of your program window an indication of the display speed
+
+- Preserve proportions: keeps the aspect of your images intact, without stretching or distortion, whatever the size of the window used.
+
+- Smooth Graphics: Apply smoothing around your images to reduce the pixelated appearance.
+
+Then click on "Icon and Resources" to choose the graphical icon of your application if you wish.
+
+Regarding "Use the default Assets folder" it is better to leave this box checked to start with. If it is not checked, your program will be able to load assets (images, sounds, ...), from any folder on your computer by providing the full path with the Load Asset command which we will see later.
+
+Then click on the Create button to open the project, you are ready to program. 😊
+
+### Your applications folders
+When you create a new application it is given its own folder where everything gets stored for safekeeping and quick access.
+<table>
+	<tr>
+		<td width="45%">
+		<img valign="middle" src="https://doc.aoz.studio/assets/images/image064.png" /></td>
+		<td>
+			By default, this folder is put in the "My AOZ Applications" folder on your computer, along with related sub-folders for all the graphic images, icons, audio, video, and data files. 
+As always, the application is fired up by clicking on main.aoz (“main” can be changed by the name you gave to your program).
+		</td>
+	</tr>
+</table>
+At this point in your User Guide, we're going to start letting go of the steering wheel and get ready to hand over the guidance to you. 
+
+Before we do that, we'll need to say a word or two about programming errors and bugs, and how we've done everything we can to help you deal with them. So let's move on to the next chapter.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE5MzU0OTg3MSwtMTEzOTg5MjM4OSwtMT
+EzOTg5MjM4OSw2ODg5ODQ4MjMsNzMwOTk4MTE2XX0=
+-->

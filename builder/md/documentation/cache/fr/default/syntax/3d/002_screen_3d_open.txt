@@ -1,0 +1,34 @@
+# Screen 3D Open
+<!--
+@name: Screen 3D Open
+@description: Opens a screen to display and manipulate 3D objects.
+@tags: 3d,scene,unity,game,design,modeling,threejs,engine
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Opens a screen to display and manipulate 3D objects. It is possible to open several screens and display them simultaneously. For example, to make a multi-player game, each player having his own screen (for example Mario Kart)
+
+#### Syntax
+```basic
+Load Asset "my_scene.aoz3d", "my_scene"
+Td Init : Td Start
+Screen 3D Open "my_screen", SceneId$="my_scene"
+```
+
+## Parameters
+- **Index**: Name or number of the 3D screen
+- **SceneID**: Name or number of the 3D scene to use
+- _X_ (optional): X position on the display. 0 by default.
+- _Y_ (optional): Y position Y on the display. 0 by défaut.
+- _Width_ (optional): Width of the screen opens. All the width of the display by default.
+- _Height_ (optional): height of the screen opens. All the height of the display by default.
+- _Effect&dollar;_ (optional): Name of the effect that will be applied to the rendering of the 3D scene. Can be :
+  - "ascii": the scene rendering will be a set of text characters 
+  - "stereo" : the rendering of the scene will allow to see it through a VR mask (virtual reality)
+  - "anaglyph" : the rendering of the scene will use the old process of relief, visible with glasses using a red and a blue glass.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE0OTEzMjI1MjYsNDA4MTE3MjNdfQ==
+-->

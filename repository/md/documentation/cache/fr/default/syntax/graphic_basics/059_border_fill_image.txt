@@ -1,0 +1,16 @@
+# Border Fill Image
+<!--
+@name: Border Fill Image
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Select an image from the Image Bank to use as a border fill image in graphical drawings.
+## Parameters
+
+- **image**: The image index number or name.
+- **scale**: The scale factor to be applied to the fill image.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

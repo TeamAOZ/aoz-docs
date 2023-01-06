@@ -1,0 +1,17 @@
+# Screen Center
+<!--
+@name: Screen Center
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Enforces the centering of a screen
+## Parameters
+
+- **index**: The index of the screen to center
+- **centerX**: True to center the screen horizontally, False to leave the horizontal position unchanged
+- **centerY**: True to center the screen vertically, False to leave the vertical position unchanged
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

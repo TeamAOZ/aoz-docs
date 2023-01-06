@@ -1,0 +1,29 @@
+# Td Screen Update
+<!--
+@name: Td Screen Update
+@description: Updates the rendering of a 3D Screen.
+@tags: 3d,scene,unity,game,design,modeling,threejs,engine
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Updates the rendering of a 3D Screen.
+
+#### Syntax
+```basic
+Load Asset "my_scene.aoz3d", "my_scene"
+Td Init : Td Start
+Screen 3D Open "my_screen", SceneId$="my_scene"
+Do
+	Td Screen Update "my_screen"
+	Refresh
+Loop
+```
+
+## Parameters
+- **Index**: Number or name of the 3D screen.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1MTkwNzA3ODZdfQ==
+-->

@@ -1,0 +1,16 @@
+# Writing
+<!--
+@name: Writing
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Define the logical operation done during the display of characters by the "Print" statement
+## Parameters
+
+- **mode1**: An Integer whose value indicates the writing mode.   0=REPLACE, 1=OR, 2=XOR, 3=AND, 4=IGNORE.
+- **mode2**: An Integer whose value indicates the optional second writing mode.  0=Normal = Print Text and Background, 1=Paper = Only change the background (paper) color.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

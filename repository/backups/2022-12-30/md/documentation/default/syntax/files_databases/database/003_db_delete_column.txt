@@ -1,0 +1,46 @@
+# DB Delete Column
+<!--
+@name: DB Delete Column
+@description: 
+@tags: 
+@categories: 
+\-->
+
+Deletes a column and all the associated data from the current table.
+
+## Description
+
+`DB Delete Column Column$`
+
+This instruction should be used for maintenance purpose only, to clean-up some tests you've done and purge columns you will not use anymore. \
+The column will be definitively deleted, and all matching data will be loss, so you should be very careful when you use this! \
+Please make sure you have selected the right database and table before calling this!
+
+## Parameters
+
+- `Columns$`: The name of the column to be deleted. Multiple columns can be deleted by separating their names with a comma.
+
+## Examples
+
+```basic
+DB Database "my_test_database", "author"
+DB Table "my_test_table"
+DB Delete Column "My_Test_Column$"
+DB Delete Column "Another_Column$,A_Float_Column#,A_Number_Column"
+```
+
+## See Also
+
+- `DB Database`
+- `DB Table`
+- `DB Delete Database`
+- `DB Delete Record`
+- `DB Delete Table`
+- `DB Rename Column`
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNjEwMjYwNzA5XX0=
+-->

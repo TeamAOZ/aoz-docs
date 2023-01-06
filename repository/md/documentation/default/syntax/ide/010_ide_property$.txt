@@ -1,0 +1,14 @@
+# IDE Property&dollar;
+<!--
+@name: IDE Property&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns one of the string properties of the last message
+## Parameters
+
+- **path&dollar;**: A string with the path to the property
+- **default&dollar;**: An optional string to use if the property is not found. In this case, AOZ will not generate any error
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

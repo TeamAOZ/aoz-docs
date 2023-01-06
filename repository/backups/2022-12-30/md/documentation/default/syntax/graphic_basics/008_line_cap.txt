@@ -1,0 +1,15 @@
+# Line Cap
+<!--
+@name: Line Cap
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Sets the |;capping|; style of lines drawn using Draw, Draw To, Arc, Ellipse Arc and Polyline
+## Parameters
+
+- **cap&dollar;**: The capping style. Can be "round", "square" or "butt". Optional. Omitting this parameter will restore the setting to the default "square".
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

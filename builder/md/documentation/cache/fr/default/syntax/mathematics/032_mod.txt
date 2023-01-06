@@ -1,0 +1,11 @@
+# Mod
+<!--
+@name: Mod
+@description: 
+@tags: 
+@categories: 
+\-->
+Operator. Calculates the modulo of two numbers
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

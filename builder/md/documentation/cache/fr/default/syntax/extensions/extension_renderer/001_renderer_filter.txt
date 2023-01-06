@@ -1,0 +1,21 @@
+# Renderer Filter
+<!--
+@name: Renderer Filter
+@description: 
+@tags: 
+@categories: 
+\-->
+Set or add a graphical filter to the whole application
+## Parameters
+
+
+- **filterName&dollar;**: Name of the filter to use (see list)
+- **value1#**: First value to use, a percentage or a number of pixels, depending on the filter
+- **value2#**: Second value to use, a percentage or a number of pixels, , depending on the filter
+- **value3#**: Third value to use, a percentage or a number of pixels, , depending on the filter
+- **value4#**: Fourth value to use, a percentage or a number of pixels (or a color), depending on the filter
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTA3NTYzMTU4MV19
+-->

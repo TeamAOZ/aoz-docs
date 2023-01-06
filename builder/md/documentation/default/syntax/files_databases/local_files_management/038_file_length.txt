@@ -1,0 +1,15 @@
+# File Length
+<!--
+@name: File Length
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Return the length in bytes of a file
+## Parameters
+
+- **path&dollar;**: Path to the file to check
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

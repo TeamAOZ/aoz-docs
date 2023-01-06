@@ -1,0 +1,15 @@
+# Voice Off
+<!--
+@name: Voice Off
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Mute one or all voices
+## Parameters
+
+- **voice**: The number of the voice to mute, if ommited the master volume will be muted
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

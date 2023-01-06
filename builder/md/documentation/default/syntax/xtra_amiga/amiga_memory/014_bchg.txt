@@ -1,0 +1,14 @@
+# BChg
+<!--
+@name: BChg
+@description: 
+@tags: 
+@categories: 
+\-->
+Toggle a bit of a variable
+## Parameters
+
+- **variable**: The integer variable to change
+- **postion**: The number of the bit to toggle
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

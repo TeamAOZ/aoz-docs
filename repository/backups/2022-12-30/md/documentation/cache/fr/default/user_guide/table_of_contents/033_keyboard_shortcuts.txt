@@ -1,0 +1,17 @@
+# KEYBOARD EDITOR SHORTCUTS
+
+AOZ Studio is using the ATOM editor. Here is a list of the shortcuts you may find useful:
+
+
+![enter image description here](https://doc.aoz.studio/assets/images/en/image206.png)
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTE2NjY3OTM1MSwtNzIzMTQyNjQzLDEwOT
+IzNDIzOTEsLTExNzg5MTc4NjksMTUyODI0Mjk3NSwtODc2Mjc1
+NjE2LC0xMzA0MDU0OTI1LC01OTgzMTkxMSwxNTIxNzA3NzkzLD
+g3MDIzMjAyNiw3MzA5OTgxMTZdfQ==
+-->

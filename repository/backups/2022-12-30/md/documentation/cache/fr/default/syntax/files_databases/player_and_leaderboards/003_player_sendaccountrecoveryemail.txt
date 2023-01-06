@@ -1,0 +1,13 @@
+# Player SendAccountRecoveryEmail
+<!--
+@name: Player SendAccountRecoveryEmail
+@description: 
+@tags: 
+@categories: 
+\-->
+Sends an email with instructions for recovering a player account. (If supported by the player engine)
+## Parameters
+
+- **email&dollar;**: The email address for the account to be recovered.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

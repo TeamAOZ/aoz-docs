@@ -1,0 +1,14 @@
+# BClr
+<!--
+@name: BClr
+@description: 
+@tags: 
+@categories: 
+\-->
+Set a bit of a variable to 0
+## Parameters
+
+- **variable**: The integer variable to change
+- **position**: The number of the bit to clear
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,13 @@
+# Console Log
+<!--
+@name: Console Log
+@description: 
+@tags: 
+@categories: 
+\-->
+ Write a text in the JS Console
+## Parameters
+
+- **text&dollar;**: Text to write
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

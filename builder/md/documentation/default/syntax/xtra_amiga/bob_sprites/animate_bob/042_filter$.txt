@@ -1,0 +1,13 @@
+# Filter&dollar;
+<!--
+@name: Filter&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the CSS string used by Javascript in the context.filter property.
+## Parameters
+
+- **index**: Index of the bob
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

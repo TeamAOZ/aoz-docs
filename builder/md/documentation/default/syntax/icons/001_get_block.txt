@@ -1,0 +1,20 @@
+# Get Block
+<!--
+@name: Get Block
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Captures a portion of the graphics from a screen into a buffer.
+## Parameters
+
+- **index**: Index of the block to create
+- **x1**: Horizontal coordinate of the top-left corner of the rectangle to capture
+- **y1**: Vertical coordinate of the top-left corner of the rectangle to capture
+- **x2**: Horizontal coordinate of the bottom-right corner of the rectangle to capture
+- **y2**: Vertical coordinate of the bottom-right corner of the rectangle to capture
+- **transparent**: If True, Ink 0 of the block will be transparent when pasting the block.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

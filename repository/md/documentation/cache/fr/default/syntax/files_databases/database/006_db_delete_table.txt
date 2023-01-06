@@ -1,0 +1,52 @@
+# DB Delete Table
+<!--
+@name: DB Delete Table
+@description: 
+@tags: 
+@categories: 
+\-->
+
+Deletes a table from the current database.
+
+## Description
+
+`DB Delete Table Table$`
+
+This instruction should be used for maintenance purpose only, to clean-up some tests you've done and purge tables you will not use anymore. \
+The table will be definitively deleted, and all data will be loss, so you should be very careful when you use this! \
+Please make sure you have selected the right database before calling this!
+
+## Parameters
+
+- `Table$`: The name of the table to be deleted. If empty or absent, the currently selected table will be deleted.
+
+## Examples
+
+```basic
+// Without calling DB Database or DB Table, deletes the default table from the default database:
+DB Delete Table
+
+// If DB Database and/or DB Table is called before, deletes the currently selected table:
+DB Database "my_database"
+DB Table "my_table"
+DB Delete Table
+
+// You can delete another table than the currently selected table, but only if into the same currently selected database:
+DB Delete Table "another_table"
+```
+
+## See Also
+
+- `DB Database`
+- `DB Table`
+- `DB Delete Column`
+- `DB Delete Database`
+- `DB Delete Record`
+- `DB Rename Table`
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjA4NDY0NTQzNywyNTEyMTYxOF19
+-->

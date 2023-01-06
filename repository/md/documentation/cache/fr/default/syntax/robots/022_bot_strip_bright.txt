@@ -1,0 +1,15 @@
+#  BOT Strip Bright
+<!--
+@name:  BOT Strip Bright
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Obtains the brightness of the LED strip or ring connected to the specified port.
+## Parameters
+
+- **port**: The number of the port where the strip is connected, 1, 2, or 0 for all ports
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

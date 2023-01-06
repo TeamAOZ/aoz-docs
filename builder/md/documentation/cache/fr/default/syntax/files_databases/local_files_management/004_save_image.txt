@@ -1,0 +1,17 @@
+# Save Image
+<!--
+@name: Save Image
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Save an image out of a screen
+## Parameters
+
+- **path&dollar;**: Path to the image to save
+- **index**: Index of the screen to save. If ommited the image will be saved from the current screen
+- _compression#_ (optional): Compression of the image if the type of image authorises it (jpg)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

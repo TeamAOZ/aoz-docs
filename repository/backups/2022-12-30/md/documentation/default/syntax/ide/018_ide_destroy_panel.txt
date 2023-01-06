@@ -1,0 +1,13 @@
+# IDE Destroy Panel
+<!--
+@name: IDE Destroy Panel
+@description: 
+@tags: 
+@categories: 
+\-->
+Close an IDE panel
+## Parameters
+
+- **panel&dollar;**:  Name of the IDE panel
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,13 @@
+# Col
+<!--
+@name: Col
+@description: 
+@tags: 
+@categories: 
+\-->
+Test the status of an object after collision detection
+## Parameters
+
+- **index**: Index of the object (sprite or bob) to test.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

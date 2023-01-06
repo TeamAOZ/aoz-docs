@@ -1,0 +1,21 @@
+# Def Scroll
+<!--
+@name: Def Scroll
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /></div>
+
+Define a new scrolling zone in the current screen. This instruction has no visible effect until a "Scroll" instruction is used
+## Parameters
+
+- **index**: The index of the scrolling zone to define
+- **x1**: The horizontal coordinate of the top-left pixel of the rectangle to scroll
+- **y1**: The vertical coordinate of the top-left pixel of the rectangle to scroll
+- **x2**: The horizontal coordinate of the bottom-right pixel of the rectangle to scroll
+- **y2**: The vertical coordinate of the bottom-right pixel of the rectangle to scroll
+- **dx**: Signed horizontal shift to apply. 0= no scroll, -1= one pixel to the left, 1= one pixel to the right, etc
+- **dy**: Signed vertical shift to apply. 0= no scroll, -1= one pixel to the top, 1= one pixel to the bottom, etc
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

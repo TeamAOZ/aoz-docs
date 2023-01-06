@@ -1,0 +1,46 @@
+# Plot
+<!--
+@name: Plot
+@description: 
+@tags: 
+@categories: 
+\-->
+## Syntax Options 
+**Plot**
+**Plot** *x, y*
+**Plot** *x, y, ink*
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+## Parameters
+
+
+- **x**: The horizontal coordinate of the point to draw
+- **y**: The vertical coordinate of the point to draw
+- **ink**: The index of the color in the screen palette (optional, will use the latest Ink value if ommited)
+---
+## Description
+
+**Plot** with no parameters draws a single pixel at the current graphics coordinates (default 0,0) using the current ink colour.
+
+**Plot** *x, y* draws a single pixel at the coordinates x, y using the current ink colour.
+
+
+**Plot** *x, y, ink* draws a single pixel at the coordinates x, y using ink colour *ink*.
+
+Although it's not used that often in programs, Plot can be useful for experimentation with algorithms, and is a simple way to provide a graphical representation of the output.
+
+This example uses Plot to draw the outline of a circle and a simple sine wave.
+```basic
+ink 1
+for a=0 to 359
+	Plot 960+300*cos(a),320+300*sin(a)
+	Plot 420+a*3,800+cos(a*4)*150
+next a
+```
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTI4MjA0OTE3LDE0ODQ3NzcwNzcsMTIwOD
+IzMTcyMiwtNjg1NDg2Mzc5LC0zNzI3OTk2OTYsMTY1Nzc2NjI2
+NywxMjMzMDQyOTM5LDIwNTE2MzYzN119
+-->

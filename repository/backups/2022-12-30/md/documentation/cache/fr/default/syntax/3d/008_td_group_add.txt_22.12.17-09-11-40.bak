@@ -1,0 +1,14 @@
+# Td Group Add
+<!--
+@name: Td Group Add
+@description: 
+@tags: 
+@categories: 
+\-->
+Création d|;un objet de type "Groupe" et l|;ajoute à l|;objet Parent.
+## Parameters
+
+- **ObjectName&dollar;**: Nom de l'objet à créer
+- **ParentName&dollar;**: Nom de l'objet parent dans lequel sera ajouter l'objet créé
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

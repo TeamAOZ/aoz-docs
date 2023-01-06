@@ -1,0 +1,49 @@
+# FORMATTING TEXT
+
+Let's open an Application that parades text. Go to the “Utilities and Others” folder, open the folder called Font Viewer and click the main.aoz as usual.
+When you run this Font Viewer, you'll discover all the built-in fonts you are ever likely to need.
+![](https://doc.aoz.studio/assets/images/en/image09.png)
+![font viewer](https://doc.aoz.studio/assets/images/en/image091.png)
+
+If you need more, then AOZ also welcomes any Google font with a simple tag. You can also create your own fonts using graphics and finally you can write text in a graphical way with the Actor instruction.
+
+Here's how:  
+1° Tell AOZ to embed a font in your application, using the  **#googleFont** tag for a Google font or **#amigaFont tag** for an Amiga font. And if you don't know what a tag is, there is a dedicated chapter at the end of this guide. 
+2° The font must be installed in AOZ. Here is an example: 
+```basic
+#googleFont: "Francois One"
+Set Font "Francois One", 80, "bold"
+Text Screen Width/2, Screen Height/2, "AOZ", "# Center #"
+```
+3° In your application, choose the font with the "Set Font" instruction:
+**Set Font "font name", height, weight$ , italic$ , stretch$**
+_With weight $ : "normal" "bold" "light_
+_italic$ : "normal"_
+
+4° Display the Text with
+**Text x, y, "Mon texte", tags$**
+
+With the tags:
+- horizontal alignment: #left #center #right
+- vertical alignment: #top #middle #alphabetic #hanging #ideographic
+- direction (untested): #ltr / #rtl #inherit
+
+or display with
+
+**Format Text MyBigText$ , x, y, width, height, tag$**
+
+With the tags:
+- '#left', '#center', '#right', '#start', '#end': horizontal align
+- '#html': indicates a text formatted in HTML
+- '#md': indicates a markdown text
+- '#nozones': will ignore the = Zone $ () AOZ commands
+- '#animate': will render the links and images displayed on screen to be active, by starting a mouse-detection background process
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE0MjA5MTk5NzgsMTAzNTg2NzczLDQxMj
+U0NDMyMSwxNjk0MjU4MTQ5LC00MTE3ODAzNCwxODEyNTYzMTEx
+LDczMDk5ODExNl19
+-->

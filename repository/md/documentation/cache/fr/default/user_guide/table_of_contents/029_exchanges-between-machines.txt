@@ -1,0 +1,129 @@
+# EXCHANGES BETWEEN MACHINES
+
+NOTE : This chapter is for advanced users.
+
+Programs often need to exchange information across the network by connecting to servers that can be located anywhere in the world. AOZ Studio makes it easy to establish this type of communication and to exchange data between several machines.
+
+## Call service
+Imagine that our program is a customer, seated on the terrace of a café, and who places his order with the waiter. The latter responds to the request (request) of his client and serves him what he requested (his coffee-croissant).
+For your application, it is the same principle. Your AOZ program acts as the customer, placing their order with a remote server.
+The request of our AOZ program is then processed by the server and the latter returns a response.
+
+Here is an example:
+```basic
+// Address of the server on which the request will be made
+URL $ = "http://aoz-studio.online/tutos/get_post/get.php"
+
+START:
+Input "What can I serve you?** **(Coffee, chocolate or croissant):"; REQ$
+// Pass the command to the server
+// pSuccess is the procedure called in the event of a response from the URL
+// pError is the procedure called in case of failure of the request
+
+Call Service "get", URL $, "request =" + REQ $, "pSuccess", "pError"
+
+Print "Anything else?"
+Wait Key
+Goto START
+
+Procedure pSuccess [status$, response$]
+	Print "pSuccess"
+	Print status$
+	Print response$
+End Proc
+
+Procedure pError [status $, response$]
+	Print "Error!"
+	Print status$
+	Print response$
+End Proc
+```
+Place your order by entering what you want to order among a coffee, a chocolate or a croissant.
+Your order is stored in the REQ$ variable, and transmitted to the server using the AOZ Call Service instruction.
+
+Call Service calls the address of the service (contained in the URL$ variable) and passes the contents of the REQ$ variable by passing it in the "request" parameter.
+
+When the server receives the command, it processes it and calls the AOZ “pSuccess” procedure and gives it its response.
+
+**Call Service "get"**,… to read
+**Call Service "post"**,… to write
+
+If a processing error occurs, the AOZ "pError" procedure is called.
+
+Call Service offers several parameters:
+Call Service \<method>, \<address>, \<values ​​to transmit>, \<response AOZ procedure>, \<error AOZ procedure>
+
+- \<method>: AOZ manages two methods of data transmission to the server:
+-- "get": the values ​​are transmitted in clear and can be easily read by a third party. This is the method to use for making requests that do not transmit sensitive data.
+-- "post": the values ​​are encoded and invisible by a third party. This is the method to use to transmit sensitive data (identification, email, bank account, etc.)
+- \<address>: Address of the server that will be able to process your request
+- \<values ​​to transmit>: List of values ​​to transmit to the server for processing your request. This list is made up of "variable name = variable value" separated by the "&" character.
+
+For example:
+"userid = magician & password = 1234567"
+- \<AOZ response procedure> and \<AOZ error procedure>: Name of the AOZ procedures to be called in the event of a response or an error from the server.
+
+They can retrieve two values:
+- status$: Contains the status code of the request:
+-- "200": answer
+-- "403": permission refused
+-- "404": server not found
+-- "500": error during the request
+- response$: Contains the response from the server.
+
+<BR>
+
+## **SOCKETS!**
+
+The second possible means of communication with AOZ Studio is called "socket". This is a service that allows several people to communicate with each other, for example, a Chat service or a multiplayer game.
+
+The server receives messages from one or more users, and forwards them to other logged in users. It’s an almost instantaneous exchange. Unlike the query system we talked about before, which calls the server only when necessary, here the server is constantly listening for new messages.
+
+AOZ Studio offers several commands to open a communication to a "socket" server and transmit / receive information.
+
+Open the following site from your browser: [https://www.piesocket.com/websocket-tester](https://www.piesocket.com/websocket-tester)
+and click on the Connect button.
+```basic
+Rem Opens the connection to the Socket server on channel 1
+WebSocket Open 1, "wss: //demo.websocket.me/v3/channel_1? Api_key = oCdCMcMPQpbvNjUIzqtvF1d2X2okWpDQj4AwARJuAgtjhzKxVEjQU6IdCjwm&notify_self"
+Rem Wait for connection to the server
+Repeat
+	Refresh
+Until WebSocket Is Connected(1)
+
+Print "Communication has been established."
+Print "Press any key to send HELLO to the server."
+
+Do
+	If WebSocket Is Message (1)
+		Rem Displays the received message
+		Pen 5: Print “Received:“ + WebSocket Message$ (1)
+	End If
+	A$ = Inkey$
+	If A$ = " " : REM have a space in there
+		Rem Send “HELLO” to the server
+		Pen 4: Print “Shipment: HELLO”
+		WebSocket Send Message 1, "HELLO"
+	End If
+	If A$ = ”e” Then Exit
+	Refresh
+Loop
+
+Rem Disconnecting the Socket server
+WebSocket Close 1
+```
+
+Run this program. When the connection is established with the server, and you press the SPACEBAR, a HELLO message is sent. If you look at the site in your browser, you will notice that the message HELLO has appeared in the messages field.
+
+From this site, send a message to the same server. Watch your program: the message appears on your screen. The connection works perfectly and the data is transmitted.
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE3MjM2NjY5NzEsLTUyNzQzMjQ1MCwtNz
+IzMTQyNjQzLDEwOTIzNDIzOTEsLTExNzg5MTc4NjksMTUyODI0
+Mjk3NSwtODc2Mjc1NjE2LC0xMzA0MDU0OTI1LC01OTgzMTkxMS
+wxNTIxNzA3NzkzLDg3MDIzMjAyNiw3MzA5OTgxMTZdfQ==
+-->

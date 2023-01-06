@@ -1,0 +1,16 @@
+# Save Iff
+<!--
+@name: Save Iff
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/notimp.png" valign="center" alt="Not implemented" title="Not implemented" /></div>
+
+Save an IFF image out of a screen (deprecated, use "Save Image")
+## Parameters
+
+- **path&dollar;**: Path to the image to save
+- **index**: Index of the screen to save. If ommited the image will be saved from the current screen
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

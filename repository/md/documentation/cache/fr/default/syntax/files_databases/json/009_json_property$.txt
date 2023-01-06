@@ -1,0 +1,17 @@
+# JSON Property&dollar;
+<!--
+@name: JSON Property&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Get a string value from the JSON file
+## Parameters
+
+- **index**: Index of the channel
+- **path&dollar;**: Formatted string indicating the path to the property
+- **defaultValue&dollar;**: Value to return if the property is not defined. In this case, AOZ will not generate an error.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

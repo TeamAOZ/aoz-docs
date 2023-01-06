@@ -1,0 +1,20 @@
+# Polyline
+<!--
+@name: Polyline
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Draw a closed empty shape using the current Ink and line parameters for the outline adn the current fill parameters for the inside. The last point is joined to the first point of the list
+## Parameters
+
+- **x1**: Horizontal coordinate of the first point
+- **y1**: Vertical coordinate of the first point
+- **x2**: Horizontal coordinate of the second point
+- **y2**: Vertical coordinate of the second point
+- **x3**: Horizontal coordinate of the third point, etc.
+- **y3**: Vertical coordinate of the third point, etc.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

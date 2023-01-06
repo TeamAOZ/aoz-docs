@@ -1,0 +1,20 @@
+# Remap
+<!--
+@name: Remap
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Transforms the values of all the pixels in a rectangle matching a specific RGB value to another RGBA value.
+## Parameters
+
+- **color1**: The RGB value of the color to look for
+- **color2**: The RGBA value of the color to replace with
+- _x_ (optional): The horizontal coordinate of the top-left corner of the origin area to scan
+- _y_ (optional): The vertical coordinate of the top-left corner of the origin area to scan
+- _width_ (optional): The horizontal coordinate of the bottom-right corner of the origin area to scan
+- _height_ (optional): The vertical coordinate of the bottom-right corner of the origin area to scan
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

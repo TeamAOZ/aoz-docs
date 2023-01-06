@@ -1,0 +1,15 @@
+#  BOT Accelerometer
+<!--
+@name:  BOT Accelerometer
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Obtains the output (in m/s²) of the accelerometer on the specified axis.
+## Parameters
+
+- **axis&dollar;**: The axis to return
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

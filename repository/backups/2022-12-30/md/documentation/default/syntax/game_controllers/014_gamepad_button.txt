@@ -1,0 +1,16 @@
+# Gamepad Button
+<!--
+@name: Gamepad Button
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Test for a button depressed on a complex gamepad
+## Parameters
+
+- **GAMEPAD**: The number of the gamepad
+- **BUTTON**: The number of the button
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

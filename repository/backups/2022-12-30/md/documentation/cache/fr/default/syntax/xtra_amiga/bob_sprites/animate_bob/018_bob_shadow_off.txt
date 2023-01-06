@@ -1,0 +1,13 @@
+# Bob Shadow Off
+<!--
+@name: Bob Shadow Off
+@description: 
+@tags: 
+@categories: 
+\-->
+Turns off one or all bob shadows by setting the offsets to zero.
+## Parameters
+
+- **index**: Index of the bob in the list of active bobs (optional)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,13 @@
+# Set Text
+<!--
+@name: Set Text
+@description: 
+@tags: 
+@categories: 
+\-->
+Change the style used by Print, by selecting 0 or more of eight different styles (deprecated - use Set Print)
+## Parameters
+
+- **style**: A bit-map indicating the style used by Print.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

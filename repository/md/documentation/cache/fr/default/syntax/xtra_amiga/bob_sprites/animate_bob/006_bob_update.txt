@@ -1,0 +1,11 @@
+# Bob Update
+<!--
+@name: Bob Update
+@description: 
+@tags: 
+@categories: 
+\-->
+Performs one step of animation of all the bobs in all the screen and displays the result
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

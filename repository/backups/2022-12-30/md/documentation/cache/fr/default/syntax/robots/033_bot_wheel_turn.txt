@@ -1,0 +1,17 @@
+#  BOT Wheel Turn
+<!--
+@name:  BOT Wheel Turn
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Sets the angle the wheel connected to the specified port
+## Parameters
+
+- **angle**: Number of degrees the specified wheel turns counterclockwise
+- **speed**: Rotating speed of the specified wheel when it turns counterclockwise, ranging from –200 to +200 RPM
+- **motor**: The number of the motor, 1 for left wheel, 2 for right wheel, 0 for both
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

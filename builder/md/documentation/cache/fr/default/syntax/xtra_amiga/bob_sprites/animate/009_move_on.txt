@@ -1,0 +1,13 @@
+# Move On
+<!--
+@name: Move On
+@description: 
+@tags: 
+@categories: 
+\-->
+Starts the movement of an animation channel
+## Parameters
+
+- _channelIndex_ (optional): Index of the animation channel
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

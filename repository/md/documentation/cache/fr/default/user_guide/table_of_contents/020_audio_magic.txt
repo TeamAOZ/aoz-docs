@@ -1,0 +1,205 @@
+# AUDIO MAGIC
+
+## Sound effects  
+
+Every AOZ audio command acts independently from your gameplay and other routines, so they won't interfere with your programming. On the contrary, audio can enhance your work any way you like, to act as a marker, add realism, to soothe, shock or inject comedy and silliness. Let's start by ringing some musical bells, with 96 bells to play with and where Bell number 1 plays the lowest note up to Bell 96 for the highest note. Type in and click RUN, then press keys as much as you like to ring those bells:
+```basic
+For RING=1 to 96
+Bell RING : Wait Key
+Next RING
+```
+Here are some more built-in effects to type in and RUN:
+```basic
+Boom : Print "Is was a dark and stormy night."
+Wait 2
+Bell 1 : Print "Count Dracula met a bat."
+Wait 2
+Shoot : Print "Ouch!"
+```
+There are AOZ commands to control volume, audio channels, wave patterns, white noise, sound samples, music modules and a whole lot more. So you are not just limited to bell-ringing. In fact you can liven up your creations with any sound effect or audio you like. Check the **Sam Play** instruction to produce sound as easily as possible.
+  
+
+## We need to talk
+
+### Speech synthesis
+
+You'll be asking AOZ to talk next, and you'd better believe that it can. Type in and RUN this:
+```basic
+Say " It was a dark, and stormy night."
+```
+We think that's a very attractive voice, and it will say anything you type in English. So have some fun with this, and please mind your language! Here's some more detailed info about the instruction:
+
+**Say "text"**,  wait
+
+Ask the system to speak your text with the simple Say instruction, followed by the string of characters representing the text to be heard. The wait parameter is a numerical value that is set to 0 by default and indicates the pause time after listening to the text.
+
+**Say "Hello world!"** will talk in English by default
+
+Or in French:
+
+**Speech Language "fr" : Say "Bonjour le monde!"**
+
+Note that you have two syntaxes:
+
+**Say** "Hello world!"  or  **Say sentence$="**Hello world!"
+
+Before you make your machine say something, you can change the parameters:
+
+**Set Talk** sex, fashion, pitch, rate
+Set the parameters for instruction **Say:**
+- sex: 0 for female or 1 for male. By default, this setting is set to 0.
+- mode: not used
+- pitch#: Defines the pitch of the voice to speak the written text. The pitch setting is between 0.0 and 2.0 in AOZ mode, or 65 to 320 in AMOS Amiga mode.
+- rate: Defines the speed of the voice, to dictate the written text. The value is between 0.0 and 10.0 in AOZ mode, or 40 to 400 in Amiga mode.
+```basic
+Set Talk sex=1, rate=0.5
+Say "AOZ Studio is amazing!"
+```
+
+<BR>
+
+**Talk Misc volume#,  frequency**
+Equivalent of **Voice Volume** instruction.
+(The  frequency parameter is not used, for AMOS compatibility.)
+<BR>
+
+**Talk Stop**
+Stop the dictation of the written text.
+<BR>
+
+**Set Voice** voice
+Define the voice, among those available, to speak with.
+<BR>
+
+**Voice** pitch#
+Define the pitch of the voice from deep bass to high soprano, for speaking your written text. The pitch setting is between 0.0 and 10.0 in AOZ mode  (65 to 320 in Amiga AMOS mode).
+<BR>
+
+**Voice Rate** rate
+Define the speed of the voice, for speaking the written text. The value is between 0.0 and 10.0 in AOZ  (40 to 400 in AMOS).
+<BR>
+
+**Voice Volume** Volume#
+Define the volume of the voice. The volume setting is between 0.0 and 1.0 (40 to 400 in Amiga AMOS)..
+
+You can try that:
+```basic
+Do
+	Voice Volume Volume#
+	Say "quick"
+	Volume#=Volume#+0.2
+Loop
+```
+<BR>
+
+
+### Speech Recognition
+
+IMPORTANT NOTES:
+- the audio recording works only in a web browser, not in the AOZ Viewer. So make sure the microphone option of your web browser is active and RUN it with the F1 key (Run in a browser).
+- In general to have **sounds in the browser you first need to click** in the program window, it is a protection included in most web browsers (to check if it is a human and not from, say, an automatic advertising popup).
+
+**Speech Recognition Start**
+Launches voice recognition
+Here is an example using this instruction:
+```basic
+Speech Recognition Start
+Print ">Start to say something"
+Do
+TXT$ = Speech Recognition Value$
+If TXT$ <> "" Then Print TXT$
+Loop
+```
+Press the F1 key to RUN, then speak English 😊
+
+**Speech Language**
+
+Defines the language spoken by the user. The value is a country code. By default, it is defined in English "en". “fr” is for French, like this:
+```basic
+Speech Language "fr"
+Speech Recognition Start
+Print "dis moi bonjour"
+Do
+	TXT$ = Speech Recognition Value$  
+	If TXT$ <>"" Then Print TXT$
+Loop
+```
+Press the F1 key to RUN, then speak French 😊
+
+**Speech Recognition Stop**
+Stops voice recognition.
+
+**Speech Recognition Reset**
+Resets all voice recognition settings.
+
+### Speech extra features
+**Speech** **Synthesis Allowed**
+Returns True if audio text is allowed by the system.
+
+**Speech** **Recognition Allowed**
+Returns True if voice recognition is allowed.
+To test you can do something like that:
+```basic
+If Speech Synthesis Allowed
+	Print "Speech Synthesis allowed"
+Else
+	Print "Speech Synthesis NOT allowed"
+End If
+
+If Speech Recognition Allowed
+	Print "Speech Recognition allowed"
+Else
+	Print "Speech Recognition NOT allowed"
+End If
+```
+**_Speech Recognition Add Word_**_, word$  (not used yet)_
+
+There's more speech fun in the Demos folder. Click on the main.aoz file in the Speech Demo. Enjoy.
+![speak AOZ](https://doc.aoz.studio/assets/images/en/image097.png)
+  
+
+## Samples
+
+Most magicians will want to exploit audio samples in their game  routines. Samples are used for dialogue, atmospheric music and sound effects, just like in a movie. With AOZ you can play them in any order, separately or simultaneously, at any volume, with fades, crossovers and special effects.
+
+The former AMOS instruction to Play an audio sample is **Sam Play.** Now we also have **Play Audio.** We considered calling the command AlCrl\x£1 but after long discussions with the team we choose Play Audio.
+
+As always, when you create an application, your audio files will be kept in a ready-made sounds folder. There's a separate folder for your application, so let's move on to an overview of that subject.
+
+You can copy/paste sounds, music, likewise images in the corresponding resources folder of your application by moving the file in it. You can copy a file by dragging it in the folder while the Ctrl key is pressed.
+**Sam Play 1** or **Play Audio 1** will play the sound named 1 in the 5.samples folder ->![speak AOZ](https://doc.aoz.studio/assets/images/en/image098.png)
+
+
+
+For sounds and music, it is possible to manage the volume, play in a loop, know the current playback position  (See: Load Asset, Audio Loop On/Off, Play Audio, Stop Audio, Volume Audio).
+
+Another method is to use the Load Asset instruction. Here is an example, knowing that your sound file is in the sounds folder that you will have first created:
+```basic
+Load Asset "resources/sounds/my_audio.wav", "sfx"
+Wait Key
+Play Audio "sfx"
+Pause Audio "sfx"
+TM = Time Audio("sfx")
+```
+
+
+## Music
+
+You've got a complete range of facilities and commands for playing music composed with the AOZ system, as well as for music created with systems like Med Soundstudio and other trackers. If you can't write your own musical masterpieces, don't worry. AOZ allows you to take another composer's musical soundtracks and add them to your own games and utilities. There are tens of thousands of public domain soundtracks written with systems like SoundTracker, NoiseTracker, and all the commands to load them and use them are built into AOZ.
+
+And there are the big samples library from Miko that we supply free for (only) your AOZ Studio programs (no royalties to pay).
+
+AOZ supports the following formats: wav, ogg, mp3, mod, xm.
+
+CAUTION: To play a sound, the internet browser requires prior user action (browser protection). So you have to keep the AOZ Studio SplashScreen display or replace it with something that similarly requires you to click beforehand.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNjYxODg2NjQ3LC03NzQ5MzcyMDksMTIyMT
+E5NTY2OCw0NDgzNjU4MzEsLTM1NjY3NTYyMCwxMDkyMzQyMzkx
+LC0xMTc4OTE3ODY5LDE1MjgyNDI5NzUsLTg3NjI3NTYxNiwtMT
+MwNDA1NDkyNSwtNTk4MzE5MTEsMTUyMTcwNzc5Myw4NzAyMzIw
+MjYsNzMwOTk4MTE2XX0=
+-->

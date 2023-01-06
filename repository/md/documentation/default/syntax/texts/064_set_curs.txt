@@ -1,0 +1,22 @@
+# Set Curs
+<!--
+@name: Set Curs
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Define the shape of the text cursor
+## Parameters
+
+- **l1**: Byte mask representing the first line
+- **l2**: Byte mask representing the second line
+- **l3**: Byte mask representing the third line
+- **l4**: Byte mask representing the fourth line
+- **l5**: Byte mask representing the fifth line
+- **l6**: Byte mask representing the sixth line
+- **l7**: Byte mask representing the seventh line
+- **l8**: Byte mask representing the nineth line
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

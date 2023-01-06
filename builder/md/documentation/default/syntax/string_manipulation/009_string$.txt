@@ -1,0 +1,14 @@
+# String&dollar;
+<!--
+@name: String&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Create a new string from the first character of an existing string
+## Parameters
+
+- **string&dollar;**: The string to repeat
+- **number**: The number of time to repeat the first character
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

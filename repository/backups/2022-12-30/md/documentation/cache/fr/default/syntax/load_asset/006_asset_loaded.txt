@@ -1,0 +1,14 @@
+# Asset Loaded
+<!--
+@name: Asset Loaded
+@description: 
+@tags: 
+@categories: 
+\-->
+Return True if an asset has been loaded with the "Load Asset" command, else False
+## Parameters
+
+- **index**: Index of the asset
+- **type&dollar;**: Type of asset (may be "image", "module", "audio", "video", "spritesheet", "3d", "map")
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

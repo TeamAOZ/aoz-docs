@@ -1,0 +1,14 @@
+# FirebaseAuth UpdatePhotoUrl
+<!--
+@name: FirebaseAuth UpdatePhotoUrl
+@description: 
+@tags: 
+@categories: 
+\-->
+Update the photo Url for the user currently signed into your Firebase web application
+## Parameters
+
+- **photoUrl&dollar;**: The users photo Url
+- **onCompleted&dollar;**: The procedure to be called once the photo url has been updated
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

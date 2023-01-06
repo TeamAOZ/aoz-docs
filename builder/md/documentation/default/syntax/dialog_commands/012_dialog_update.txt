@@ -1,0 +1,18 @@
+# Dialog Update
+<!--
+@name: Dialog Update
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/notimp.png" valign="center" alt="Not implemented" title="Not implemented" /></div>
+
+Update a zone of a dialog box
+## Parameters
+
+- **channel**: 
+- **zone1**: 
+- **zone2**: 
+- **zoneXXX**: 
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

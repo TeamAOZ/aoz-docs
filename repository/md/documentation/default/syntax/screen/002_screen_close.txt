@@ -1,0 +1,16 @@
+# Screen Close
+<!--
+@name: Screen Close
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /></div>
+
+Destroys the current screen or a given screen
+## Parameters
+
+- **index**: The index of the screen to destroy, if ommited will destroy the current screen
+- _tags&dollar;_ (optional): List of eventual tags
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

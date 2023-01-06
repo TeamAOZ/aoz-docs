@@ -1,0 +1,26 @@
+# Td Cube Add
+<!--
+@name: Td Cube Add
+@description: Create a 3D cube and add it to the Parent object.
+@tags: 
+@categories: 
+\-->
+
+Create a 3D cube and add it to the Parent object.
+
+<b>Syntax</b>
+```basic
+Td Cube Add ObjectName$ = "wall1", ParentName$ = "scene", Image$ = "brick", Size# = 2.0
+```
+
+## Parameters
+
+- **ObjectName&dollar;**: Name of the new Cube object
+- **ParentName&dollar;**: Name of the parent object to which the new cube will be added.
+- _Image&dollar;_ (optional): Name of the image that will be used as texture
+- _Size#_ (optional): TSize of the object. If not specified, 1.0 is used by default.
+- _Color&dollar;_ (optional): HTML color used for the object. If not specified, "#FFFFFF" is used by default.
+- _RepX_ (optional): Repetition of the texture in the X axis. 1 by default.
+- _RepY_ (optional): Repetition of the texture in the Y axis. 1 by default
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

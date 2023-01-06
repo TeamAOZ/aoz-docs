@@ -1,0 +1,22 @@
+# Hot Spot
+<!--
+@name: Hot Spot
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+
+Set the hot-spot of an image in the Images bank
+## Parameters
+
+
+- **imageIndex**: Index of the image in the Images bank
+- **x**: Horizontal coordinate of the hot-spot
+- **y**: Vertical coordinate of the hot-spot
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE0NzI0MzI4NTNdfQ==
+-->

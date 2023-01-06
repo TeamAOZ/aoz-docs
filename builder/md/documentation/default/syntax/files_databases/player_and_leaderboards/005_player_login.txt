@@ -1,0 +1,14 @@
+# Player Login
+<!--
+@name: Player Login
+@description: 
+@tags: 
+@categories: 
+\-->
+Login to the player engine with an account that was registered using the "Player Register" command.
+## Parameters
+
+- **email&dollar;**: The player account email address
+- **password&dollar;**: The player account password
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

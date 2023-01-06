@@ -1,0 +1,15 @@
+# IFF Anim
+<!--
+@name: IFF Anim
+@description: 
+@tags: 
+@categories: 
+\-->
+Play IFF frameson screen
+## Parameters
+
+- **path&dollar;**: The path to the file to play
+- **screen**: The index of the screen to create to play the file
+- _nFrames_ (optional): The number of times to play, once if ommited
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

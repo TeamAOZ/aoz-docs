@@ -1,0 +1,16 @@
+# JDownRight
+<!--
+@name: JDownRight
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Test for joystick movement down and right
+## Parameters
+
+- **joystick**: The number of the joystick
+- **lock**: If true, the function will wait for the button to be released before being true again
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

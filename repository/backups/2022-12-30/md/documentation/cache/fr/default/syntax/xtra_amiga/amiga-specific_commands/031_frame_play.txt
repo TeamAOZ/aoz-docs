@@ -1,0 +1,15 @@
+# Frame Play
+<!--
+@name: Frame Play
+@description: 
+@tags: 
+@categories: 
+\-->
+Play IFF frameson screen
+## Parameters
+
+- **bank**: The number of a memory bank or it's addres
+- **number**: The number of frames to play
+- _screen_ (optional): The index of the screen to play to, or the current screen if not specified
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

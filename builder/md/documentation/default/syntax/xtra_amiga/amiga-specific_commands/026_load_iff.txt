@@ -1,0 +1,17 @@
+# Load Iff
+<!--
+@name: Load Iff
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /></div>
+
+Load an IFF image into a screen (deprecated, use "Load Image")
+## Parameters
+
+- **path&dollar;**: Path to the image to load
+- **index**: Index of the screen to create. If ommited the image will be loaded in the current screen
+- _tags&dollar;_ (optional): List of tags indicating how to load the image. "#left", "#center", "#right" aligns the image horizontally, "#top", "#middle", "#bottom" aligns the image vertically, "fit" resizes the image to fit the screen, "paste" does not resize the image
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

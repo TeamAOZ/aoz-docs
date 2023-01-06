@@ -1,0 +1,16 @@
+# Talk Misc
+<!--
+@name: Talk Misc
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /></div>
+
+Set volume of speech
+## Parameters
+
+- **volume#**: From 0 (silent) to 1 (default). In Amiga mode, from 0 to 64.
+- **frequency**: Not used, here for compatibility with AMOS applications.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

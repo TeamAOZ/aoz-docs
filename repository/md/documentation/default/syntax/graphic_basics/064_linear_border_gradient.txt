@@ -1,0 +1,19 @@
+# Linear Border Gradient
+<!--
+@name: Linear Border Gradient
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Define a linear gradient that will be used as a fill pattern in any borders drawn around shapes or text.
+## Parameters
+
+- **x1**: The horizontal coordinate of the start of the gradient line.
+- **y1**: The vertical coordinate of the start of the gradient line.
+- **x2**: The horizontal coordinate of the end of the gradient line.
+- **y2**: The vertical coordinate of the end of the gradient line.
+- **color&dollar;**: The colour stop definition string. Each colour stops consists of a number which represents a point along the gradient
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

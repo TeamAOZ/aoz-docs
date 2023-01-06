@@ -1,7 +1,2 @@
-<!-- Depuis une URL externe -->
 <img src="https:\\doc.aoz.studio\assets\images\image001.png" width="" valign="" />
-
-<!-- Depuis Google Drive -->
-<img src="https://drive.google.com/uc?export=view&id=<id de l'image>" width="" valign="" />
-
 

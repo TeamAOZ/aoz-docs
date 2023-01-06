@@ -1,0 +1,39 @@
+# DB New
+<!--
+@name: DB New
+@description: 
+@tags: 
+@categories: 
+\-->
+
+Selects a new record.
+
+## Description
+
+`DB New`
+
+You have to use this to store multiple records into your table: this selects a new record, without pointer, ready to write new data.
+
+## Example
+
+Two records will be written into your database, one for "Francois", the other one for "Laurant":
+```basic
+DB New
+Name$ = "Francois"
+DB Write "Name$"
+DB New
+Name$ = "Laurant"
+DB Write "Name$"
+```
+
+## See Also
+
+- `DB Write`
+- `DB Write New`
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTA2ODYzMzY5MF19
+-->

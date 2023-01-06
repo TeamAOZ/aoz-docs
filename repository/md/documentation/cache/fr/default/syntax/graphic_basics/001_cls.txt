@@ -1,0 +1,32 @@
+# Cls
+<!--
+@name: Cls
+@description: 
+@tags: 
+@categories: 
+\-->
+## Syntax Options 
+**Cls**
+**Cls** *ink*
+**Cls** *ink, x1, y1* **to** *x2, y2*
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+
+Clear an area of the current screen
+## Parameters
+
+
+ - **ink**: The index of the color in the palette to clear with
+ - **x1**: The horizontal coordinate of the top-left pixel of the rectangle to clear
+ - **y2**: The vertical coordinate of the top-left pixel of the rectangle to clear
+ - **x2**: The horizontal coordinate of the bottom-right pixel of the rectangle to clear
+ - **y2**: The vertical coordinate of the bottom-right pixel of the rectangle to clear
+---
+## Description
+Clears an area of the screen or the screen entire screen. Cls can be on it's own to clear the the entire screen with colour 0, with a single *ink* parameter to clear the entire screen with the specified ink colour, or with an *ink* parameter and two pairs of coordinates to clear a specific area of the screen with the specified ink colour.
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTg4MDU4NDM2MCwtMjAwNjAwMjg5MiwtMT
+A3OTM0Mzk1MV19
+-->

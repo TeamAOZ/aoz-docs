@@ -1,0 +1,17 @@
+# Sprite Scale
+<!--
+@name: Sprite Scale
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Changes the scale (zoom) of a sprite
+## Parameters
+
+- **index**: Index of the sprite in the list of active sprites
+- **scaleX#**: Horizontal scale, 1 displays the Bob at original size, 0.5 reduces it by half, 2 multiplies by two etc. Negative values will mirror the sprite horizontally
+- **scaleY#**: Vertical scale, 1 displays the Bob at original size, 0.5 reduces it by half, 2 multiplies by two etc. Negative values will mirror the sprite vertically
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

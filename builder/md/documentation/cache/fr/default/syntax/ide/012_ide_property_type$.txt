@@ -1,0 +1,13 @@
+# IDE Property Type&dollar;
+<!--
+@name: IDE Property Type&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the type one of the property of the last message as a string
+## Parameters
+
+- **path&dollar;**: A string with the path to the property
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

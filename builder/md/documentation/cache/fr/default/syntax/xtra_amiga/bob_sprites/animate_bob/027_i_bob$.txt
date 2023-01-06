@@ -1,0 +1,11 @@
+# I Bob&dollar;
+<!--
+@name: I Bob&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+ Returns the name of the current image displayed by the bob as a string
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

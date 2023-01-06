@@ -1,0 +1,28 @@
+# AOZ DEMOS
+
+Now let's cut to the chase and have some instant fun!
+Look near the top-left of your screen and click on the Demos or Games folder.
+
+Open up a folder (locally or in the online AOZ Store) and click on the **main.aoz** (**main** or any other name).  Then see all the computer code that was written for that program. Many of them were written in just one morning between walking the dog and eating pizza. Please note: you do not necessarily have to eat pizza to program in AOZ.
+![choosing a demo](https://doc.aoz.studio/assets/images/en/image088.png)
+
+![launching an app](https://doc.aoz.studio/assets/images/en/image089.png)
+
+
+Next click one of the two RUN buttons, like this one to RUN this program in your AOZ Viewer:
+![RUN button](https://doc.aoz.studio/assets/images/en/image090.png)
+
+
+We hope that AOZ Studio weaves it's magic for you and becomes the future of your computing whatever your goal.
+
+We're off to see the Wizards, the wonderful Wizards of AOZ, and leave you to discover the demos, games and magic provided with AOZ Studio.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNzYxMTUxMzIsMTA5MjM0MjM5MSwtMTE3OD
+kxNzg2OSwxNTI4MjQyOTc1LC04NzYyNzU2MTYsLTEzMDQwNTQ5
+MjUsLTU5ODMxOTExLDE1MjE3MDc3OTMsODcwMjMyMDI2LDczMD
+k5ODExNl19
+-->

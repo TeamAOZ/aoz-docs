@@ -1,0 +1,17 @@
+# Set Tile String
+<!--
+@name: Set Tile String
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Change the internal string of a specifc tile in a view
+## Parameters
+
+- **viewName&dollar;**: Index of the view
+- **tileIndex**: Index of the tile
+- **string&dollar;**: String to store in the tile
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

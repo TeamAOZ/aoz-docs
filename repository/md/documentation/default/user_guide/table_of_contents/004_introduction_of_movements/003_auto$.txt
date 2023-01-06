@@ -1,0 +1,19 @@
+# AUTO$
+Let's go further and change your code like this:
+```javascript showLineNumbers
+Actor "ship", X=Screen Width/2, Y=Screen Height/2, Image$="ship.png", LookAt$="Mouse", Hotspot$="middle", Auto$="forward=4"
+```
+
+Run the program. Your actor continues to look at the tip of your mouse, but this time it's chasing it, so watch out!
+
+**Auto$**: is another great parameter of Actor, it gives the instructions to do automatically what is indicated by it’s property, here **forward=4** will move automatically (towards the mouse pointer).
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTI2NjI3MDg2MCwtMTAxMjIwMjI4Myw5Nj
+QwOTYwOCwtMjcxMTYyMjMzXX0=
+-->

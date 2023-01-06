@@ -1,0 +1,396 @@
+# MOUSE INPUTS
+
+AOZ provides full support for the mouse, trackball, and similar devices. We already discussed it in the Actor instruction chapter. In addition to returning and setting the position of the pointer, and reading the status of the mouse buttons, we can also change the mouse pointer's shape, limit the area of the display in which it is active, and more.
+
+### Change Mouse Shape
+
+**Description:** Sets the shape of the mouse pointer to shape number N.
+**Parameter:** The Integer Parameter (N) sets the shape of the pointer as follows:
+
+**Nb** & **Pointer Shape**
+ 1. Pointer
+ 2. Crosshair
+ 3. Busy
+ 4. Finger
+ 
+_Example:_
+```basic
+For M=1 To 4  
+	Print M : Change Mouse M  
+	Wait Key ' new mouse shape when a key is pressed.  
+Next M
+```
+**NOTE:** On the Amiga, a mouse shape > 3 would pull the shape from the Sprite bank.
+
+<BR>
+
+### Hide
+**Description:** Makes the mouse pointer invisible. Each time Hide is called, an internal hide counter is incremented. The mouse pointer will remain hidden until the hide counter is 0 again.
+**NOTE:** Although Hide makes the pointer invisible, it is still active, and it's position may be tracked and read.
+
+The purpose of the internal hide counter is to simplify keeping track of who hid the mouse and when. If you have multiple routines hiding or showing the mouse pointer, it can be cumbersome to keep track of whether it should be on or off. The internal counter automatically keeps track.
+
+_Example:_
+```basic
+hides=0  'simulate the internal counter.  Type H or S keys.
+Curs Off 'Hide the cursor
+Do
+	I$=Upper$ (Inkey$)
+	If Mouse Key=1 Or I$="H" Then Hide : Inc hides : Repeat Until Mouse Key=0
+	If Mouse Key=2 Or I$="S" Then Show : Dec hides : Repeat Until Mouse Key=0
+	Locate 0,0 : Print Using "-##";hides
+	Refresh
+Loop
+```
+ <BR>
+
+### Show
+
+**_Description:_** Makes the mouse pointer visible. Each time show is called it decrements the _hide counter_. The mouse pointer become visible when the number of shows equals the number of hides (when the _hide counter_ becomes 0).
+ <BR>
+ 
+### Hide On
+
+**_Description:_** Makes the mouse pointer invisible **_all the time_**. It _ignores_ the internal _hide counter_ used by the regular **Hide** and **Show** instructions. It is like a _show "override"_.
+**NOTE:** Although **Hide On** makes the pointer invisible all the time, it is still active, and it's position may be tracked and read.
+ <BR>
+ 
+### Show On
+
+**_Description:_** This instruction will make the mouse pointer visible **_all the time_**. It _ignores_ the internal _hide counter_ used by the regular **Show** and **Hide** commands. It is like a _"hide override"_.
+
+_Example:_
+```basic
+hides=0 ' simulate the internal counter. Type H or space bar.****  
+Curs Off  'hide cursor**
+Do
+	I$=Upper$ (Inkey$)
+	If Mouse Key=1 Or I$="H" Then Hide : Inc hides : Repeat Until Mouse Key=0
+	If Mouse Key=2 Or I$=" " Then Show On : Repeat Until Mouse Key=0 ' Force visible ALWAYS
+	Locate 0,0 : Print Using "-##";hides
+	Refresh
+Loop
+```
+
+ <BR>
+ 
+### Limit Mouse X1,Y2 To X2,Y2
+
+**_Description:_** Limits the movement of the mouse pointer to a specified rectangular area of the current screen.
+**_Parameters:_** The **Integer** parameters represent the upper left and lower right corners of the rectangular area being defined.
+X1 and Y1 are the X and Y coordinates of the upper left corner.  
+X2 and Y2 are the X adn Y coordinates of the lower right corner.
+
+The mouse pointer will not be displayed outside of this defined area.
+
+_Example:_
+```basic
+Screen Open 0,800,600,32,Lowres
+Limit Mouse 0,0 To 400,300  
+Do  
+	Refresh  
+Loop
+```
+The above example will limit mouse movement to the specified area.
+**NOTES:** 
+When **Limit Mouse** is called with NO parameters, it restores the normal area of the mouse, allowing it to move around the entire screen.
+Instead of this instruction you also may use actor parameters to limit the mouse pointer movements.
+
+ <BR>
+### = Mouse Click
+
+**_Description:_** Returns whether mouse buttons have been clicked (a single click). The result is a bitmap which is returned as follows:
+
+**Value** **Description**
+ 1. Left Button
+ 2. Right Button
+ 3. Left + Right Buttons
+ 4. Middle Button (if it exists)
+
+**_Return Value:_** The **Integer** result is the mouse button or combination of buttons as described above.
+
+_Example:_
+```basic
+Do
+	Btns$=""
+	CLK = Mouse Click
+	Locate 0,I 
+	If (CLK & 1) = 1 Then Btns$ = Btns$+"Left": I=I+1
+	If (CLK & 2) = 2 Then Btns$ = Btns$+"Right": I=I+1
+	If (CLK & 4) = 4 Then Btns$ = Btns$+"Middle": I=I+1
+	Print Bin$(CLK,8);" ";Btns$
+	Refresh
+Loop
+```
+**NOTE:** Once a button has been pressed, the "clicked" state will not activate again until the mouse button is released and then clicked again.
+
+<BR>
+
+### = Mouse Key (Button)
+**_Description:_** Returns the current state of the mouse buttons. This result is a bitmap which is returned as follows:
+**_Return Value:_** As defined in Mouse Click as described above.
+<BR>
+
+### = Mouse Wheel
+**_Description:_** Returns the current state of the mouse wheel. The state is returned as follows:
+**Result  Mouse Wheel State**
+**0** Neutral
+**-1** Wheel moved up
+**1** Wheel moved down
+
+**_Return Value:_** The **Integer** result indicates whether the mouse wheel has been moved up or down, or remains neutral.
+
+_Example:_
+```basic
+PrevMW=0
+Do
+	MW = Mouse Wheel
+	If MW <> PrevMW Then Print Using "-#";MW
+	PrevMW = MW
+Loop
+```
+The example above allows you to see changes in the mouse wheel status.
+
+<BR>
+
+### = Mouse Zone
+
+**_Description:_** Returns the number of the Zone currently under the mouse pointer.
+**NOTE:** A zone is simply a defined rectangular area of the screen reserved for collisions or mouse position detection. (See also _HZone_)
+**_Returns:_** The **Integer** return value is the Zone number under the specified coordinates. If there is no Zone under those coordinates, 0 will be returned.
+
+_Example:_
+```basic
+Palette 0,$FFFFFF,$FF0000,$00FF00,$0000FF,$FFFF00,$00FFFF,$FF00FF
+Cls 0
+Reserve Zone 5
+MakeZone[1,20,0,100,100]
+MakeZone[2,101,0,200,100]
+MakeZone[3,20,101,200,200]
+MakeZone[4,201,0,799,599]
+MakeZone[5,20,201,200,599]
+
+Do
+	Locate 20,5 : Print Using "-###";Mouse Zone
+	Refresh
+Loop
+
+Procedure MakeZone[zn,x1,y1,x2,y2]
+Ink zn+1 : Box x1,y1 To x2,y2
+Set Zone zn,x1,y1 TO x2,y2
+End Procedure
+```
+This example introduces new concepts, if it sounds very complicated don't panic.
+
+<BR>
+
+
+### = Mouse Screen
+**_Description:_** Returns the screen number under the mouse pointer. _(See also ScIn(X,Y)_
+**_Returns:_** The **Integer** return value is the screen number under the mouse pointer. If there is no screen under those coordinates, a negative number will be returned.
+
+_Example:_
+```basic
+Global scrWidth,scrHeight
+scrWidth=360 : scrHeight=220
+#displayWidth: 1080
+#displayHeight: 660
+
+ScreenSample[1,0,0]
+ScreenSample[2,scrWidth,scrHeight]
+ScreenSample[3,scrWidth*2,scrHeight*2]
+ScreenSample[4,0,scrHeight*2]
+ScreenSample[5,scrWidth*2,0]
+
+Do
+	Locate 1,1 : Print Using "##"; Mouse Screen
+	Locate 1,2 : Print Using "-####"; X Mouse;" , "; : Print Using "-####";Y Mouse;" "
+	Refresh
+Loop
+
+Procedure ScreenSample[n,xPos,yPos]
+	Screen Open n,scrWidth,scrHeight,32,Lowres
+	Screen Display n,xPos,yPos
+	Palette 0,$FFFFFF,$FF0000,$00FF00,$0000FF,$FFFF00,$00FFFF,$FF00FF
+	Curs off : Ink n+1 : Bar 0,0 To scrWidth-1,scrHeight-1
+End Procedure
+```
+This example also introduces new concepts, if it sounds very complicated don't panic, go on.
+<BR>
+
+### = Scln(X,Y)
+
+**_Description:_** **SCIN** returns the screen number at the specified coordinates. Typically used with **X Mouse** and **Y Mouse** to determine when the mouse pointer has entered a particular screen.
+**_Parameters:_** The **Integer** parameters **X** and **Y** indicate the hardware coordinates we're checking.
+**_Returns:_** The **Integer** return value is the screen number under the specified coordinates. If there is no screen under those coordinates, a negative number will be returned.
+
+_Example:_
+```basic
+Screen Open 0,800,600,32,Lowres
+#displayWidth: 800
+#displayHeight: 600
+
+SetPalette : Screen Display 0,0,0 : ClearIt
+Ink 4 : BigX
+
+S=1
+Screen Open S,800,600,32,Lowres
+SetPalette : Screen Display S,0,0 : ClearIt
+Ink 2 : BigX
+
+S=2
+Screen Open S,800,600,32,Lowres
+SetPalette : Screen Display S,1920-800,0 : ClearIt
+Ink 3 : BigX
+
+S=3
+Screen Open S,1920-1600,1080-600-1,32,Lowres
+SetPalette : Screen Display S,800,601 : ClearIt
+Ink 5 : BigX
+
+Screen 1 : Pen 1 ' Screen number display to screen 1
+
+Do
+Locate 1,1 : Print Using "-#";ScIn(X Mouse,Y Mouse)
+Refresh
+Loop
+
+Procedure SetPalette
+	' Set palette for current scren.
+	Palette 0,$FFFFFF,$FF0000,$00FF00,$0000FF,$FFFF00,$00FFFF,$FF00FF
+End Procedure
+
+Procedure ClearIt
+	Pen 1 : Paper 0 : Cls 0
+End Procedure
+
+Procedure BigX
+	' Draw box & big X in current color on full area of current screen.
+	Box 0,0 To Screen Width-1,Screen Height-1
+	Draw 0,0 To Screen Width-1,Screen Height-1
+	Draw Screen Width-1,0 To 0,Screen Height-1
+End Procedure
+```
+Try moving the mouse around over the various screen areas, and in the overscan area. You'll see the proper screen number appear for each screen, and a negative number when no screen exists under the mouse pointer.
+
+<BR>
+
+### = X Hard(X_SCREEN)
+**_Description:_** Converts a horizontal screen coordinate into a hardware coordinate. **NOTE:** Hardware coordinates are relative to the upper left corner of the current **display area** with respect to the current screen. This is like the overscan areas of a video monitor.
+**_Parameters:_** The **Integer** parameter, **X_SCREEN** is the screen coordinate to convert in the current screen.
+**_Return Value:_** The **Integer** result is the horizontal hardware coordinate relative to the current **display area**.
+
+_Example:_
+```basic
+// Set display size of the default screen.
+#displayWidth: 1920
+#displayHeight: 1080
+Palette 0,$FF0000
+Ink 1 : Pen 1 : Paper 0 : Cls 0
+Box 0,0 To 1919,1079 ' Show the outer bounds of the display (in red)
+Locate 1,0 : Print "Display Area"
+// Open a smaller screen.
+Screen Open 1,800,600
+Screen Display 1, 100,70,, ' Move screen 0 down and right a bit...
+Palette 0,$FFFFFF
+Ink 1 : Pen 1 : Paper 0 : Cls 0
+Box 0,0 To 799,599 ' Show bounds of Screen 1 (in white)'
+Locate 1,0 : Print "Screen 1"
+Locate 1,2 : Print X Hard(0),Y Hard(0)
+' Above should display the hardware coordinates of the upper left corner of the current screen.
+```
+<BR>
+
+### = Y Hard(Y_SCREEN)
+
+**_Description:_** Converts a vertical screen coordinate into a hardware coordinate. Cf X Hard(X_SCREEN)
+
+<BR>
+
+### X Mouse =
+
+**_Description:_** This **System Variable** can be used to set the position of the mouse pointer using _hardware_ coordinates.
+**NOTE:** Your web browser may or may not be able to control the mouse position.
+
+_Example:_
+```basic
+#displayWidth: 320
+#displayHeight: 200
+Screen Open 0,320,200,32,Lowres
+X Mouse = X Hard(160) ' Middle of screen horizontally
+Y Mouse = Y Hard(100) ' Middle of screen vertically
+Refresh ' Allow the user to see the mouse position until a key is pressed.
+```
+The above code will open a 320 x 200 screen, and position the mouse pointer in the middle of the screen.
+
+<BR>
+
+### = X Mouse
+
+**_Description:_** Returns the horizontal position of the mouse for the current screen.
+**_Return Value:_** The **Integer** result is the horizontal position of the mouse on the screen. The result is expressed using hardware coordinates.  
+**NOTE:** _Hardware_ coordinates take into account the entire display area including the overscan portion around the screen.
+
+_Example:_
+```basic
+
+Screen Open 1,1280,800,32,Lowres
+Screen Display 1,200,50
+
+Locate 1,0 : Print "Coordonnées écran  "
+Locate 1,2 : Print "Coordonnées matérielles "
+
+Do
+	Locate 25,0 : Print Using "X: -####";X Screen(X Mouse);
+	Print Using "  Y: -####";Y Screen(Y Mouse)
+	Locate 25,2 : Print Using "X: -####";X Mouse;
+	Print Using "  Y: -####";Y Mouse
+	Refresh
+Loop
+```
+
+<BR>
+
+### = Y Mouse
+
+**_Description:_** Returns the vertical position of the mouse for the current screen. See X Mouse.
+
+<BR>
+
+### = X Screen(X_HARD)
+
+**_Description:_** Converts a horizontal hardware coordinate into a screen coordinate.
+**NOTE:** Screen coordinates are relative to the upper left corner of the current screen.
+
+**_Parameters:_** The **Integer** parameter, **X_HARD** is the hardware coordinate to convert (Hardware coordinates are relative to the entire display area include the overscan portion).
+**_Return Value:_** The **Integer** result is the horizontal screen coordinate equivalent of the hardware coordinate parameter.
+
+_Example:_
+```basic
+Ink 1 : Pen 1
+Box 1,1 To Screen Width-2,Screen Height-2
+
+Do
+	Locate 2,2 : Print Using "X: -####";X Screen(X Mouse);" "
+	Locate 2,4 : Print Using "Y: -####";Y Screen(Y Mouse);" "
+	Refresh
+Loop
+```
+<BR>
+
+
+### = Y Screen(Y_HARD)
+
+**_Description:_** Converts a vertical hardware coordinate into a screen coordinate. See X Screen(X_HARD)
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTY4MDI2Njc4NywtMTQ3MzQ1NTM1NywtMT
+YwOTAzMjI2Miw2MzQyNjkyLDgzNDc5NTcwNCw3MTY1MDQ2Mzgs
+NTE3MDA3MDMxLC0xMTAxMTY4MjQ3LDEwOTIzNDIzOTEsLTExNz
+g5MTc4NjksMTUyODI0Mjk3NSwtODc2Mjc1NjE2LC0xMzA0MDU0
+OTI1LC01OTgzMTkxMSwxNTIxNzA3NzkzLDg3MDIzMjAyNiw3Mz
+A5OTgxMTZdfQ==
+-->

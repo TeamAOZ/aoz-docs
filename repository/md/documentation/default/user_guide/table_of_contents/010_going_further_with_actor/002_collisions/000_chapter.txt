@@ -1,0 +1,11 @@
+# COLLISIONS
+According to the movies, when a spaceship hits another ship it goes boom, even though space is silent. To know when things should go boom you have to detect the collision between the two actors. Fortunately it's dead easy to detect collisions with AOZ. 
+There's even two ways of doing this: **Actor Col** and **On Collision$**.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTIyOTIxMTk2NiwxNTg1ODQ3NTc4LDg3MD
+IzMjAyNiw3MzA5OTgxMTZdfQ==
+-->

@@ -1,0 +1,15 @@
+# Line Join
+<!--
+@name: Line Join
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Sets the |;join|; style of lines drawn using Draw, Draw To, Arc, Ellipse Arc, Polyline and all the lines that make up polygonal shapes.
+## Parameters
+
+- **join&dollar;**: The line Joining style. Can be "round", "miter" or "bevel". Optional. Omitting this parameter will restore the setting to the default "miter".
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

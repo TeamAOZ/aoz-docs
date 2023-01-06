@@ -1,0 +1,15 @@
+#  BOT Motor Speed
+<!--
+@name:  BOT Motor Speed
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Obtains the speed of the motor connected to the specified port
+## Parameters
+
+- **port**: The number of the port to which the motor is connected, 1 or 2
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

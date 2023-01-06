@@ -1,0 +1,15 @@
+# HTML Code&dollar;
+<!--
+@name: HTML Code&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+ returns the HTML code of an element
+## Parameters
+
+- **Index**: Id of the element
+- _InsertImages_ (optional): It True all references "images
+- _Args&dollar;_ (optional): Values separated by commat that will be inserted into the HTML Code.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

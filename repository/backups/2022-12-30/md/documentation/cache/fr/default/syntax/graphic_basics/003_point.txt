@@ -1,0 +1,31 @@
+# Point
+<!--
+@name: Point
+@description: 
+@tags: 
+@categories: 
+\-->
+## Syntax Options
+**Point**
+**Point (** *x, y* **)**
+
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+## Parameters
+- **x**: The horizontal coordinate of the point to test
+- **y**: The vertical coordinate of the point to test
+---
+## Description
+**Point** returns the palette index value of the colour at the point of the current graphics coordinates.
+
+**Point (** *x, y* **)** returns the palette index value of the colour at the point of the coordinates *x, y.*
+
+If the coordinates are outside of the screen boundary, or the colour at the coordinates doesn't match a palette colour, the function will return -1.
+
+**Warning:**  Because AOZ uses true colour screens, if you have a palette with multiple instances of the same colour, only the index value of the first matching colour will be returned. Once a colour is on the screen, AOZ does not know which Ink colour was used to draw it.
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbOTgzMzkyMDg5LDc0NDI1MTg4OSwxOTgyMz
+YxMDQyLC03MjQ1OTg2MV19
+-->

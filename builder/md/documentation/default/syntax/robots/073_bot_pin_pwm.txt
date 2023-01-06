@@ -1,0 +1,17 @@
+#  BOT Pin Pwm
+<!--
+@name:  BOT Pin Pwm
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Sets the specified pin(s) to output PWM signals with the specified frequency and duty cycle.
+## Parameters
+
+- **duty**: Duty cycle of the PWM signals to be output; setting range
+- **frequency**: Frequency of the PWM signals to be output; setting range
+- **port**: The number of the port where the pins are located, 1, 2 or 0 for all
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

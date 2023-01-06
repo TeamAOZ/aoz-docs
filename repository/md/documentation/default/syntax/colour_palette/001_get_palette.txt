@@ -1,0 +1,21 @@
+# Get Palette
+<!--
+@name: Get Palette
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+
+Grab the palette of another screen in the current screen
+## Parameters
+
+
+- **index**: The index of the source screen
+- **mask**: A mask of bits in which bits set to one will enforce the copy of the colour and 0 will ignore the color. Only for the first 32 colours (optional)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE5MDM2MjUwMzldfQ==
+-->

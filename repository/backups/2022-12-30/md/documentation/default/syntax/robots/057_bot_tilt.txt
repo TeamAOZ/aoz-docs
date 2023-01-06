@@ -1,0 +1,15 @@
+#  BOT Tilt
+<!--
+@name:  BOT Tilt
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Determines whether Bot is tilted forward
+## Parameters
+
+- **direction&dollar;**: The direction to test
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

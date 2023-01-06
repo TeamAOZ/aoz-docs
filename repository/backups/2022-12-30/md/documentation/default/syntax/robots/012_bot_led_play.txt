@@ -1,0 +1,15 @@
+#  BOT Led Play
+<!--
+@name:  BOT Led Play
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Displays the specified LED animation on the Bot LED strip
+## Parameters
+
+- **content&dollar;**: The name of the animation to play
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

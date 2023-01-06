@@ -1,0 +1,11 @@
+# Player Name&dollar;
+<!--
+@name: Player Name&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the player name for the currently logged in player account.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

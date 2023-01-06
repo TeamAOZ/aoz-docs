@@ -1,0 +1,11 @@
+#  Browser Platform&dollar;
+<!--
+@name:  Browser Platform&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+ Function that returns the OS platform where the browser is running.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

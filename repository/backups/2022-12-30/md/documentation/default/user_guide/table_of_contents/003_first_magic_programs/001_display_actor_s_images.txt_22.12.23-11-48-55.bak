@@ -1,0 +1,34 @@
+# DISPLAY ACTOR|;S IMAGES
+
+See an actor created by the Actor instruction as a graphic element that can be animated, controlled and give feedbacks. For example, in a game you may use Actor  for the character that the player controls, or for an element of the scenery, or enemies within the game. You can animate your actor by defining the sequence of images and much more.
+In other words it|;s a visual element, essential for a game. 
+
+For a professional application you can use Actor for the UI, to manage the graphic elements of the pages, check if the mouse went over or clicked on it. (see also the UI Designer)  
+
+<BR>
+
+*Notes for AMIGA programmers:*
+<table>
+	<tr>
+		<td width="25%">
+			<img src="https://doc.aoz.studio/assets/images/en/image015.png" />
+		</td>
+		<td>
+			<ul>
+				<li>
+					You also can use the BOB instruction, both are Object mode (OOP) compatible with similar settings.
+					</li>
+			</ul>
+		</td>
+	</tr>
+</table>
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTI1NTkzNDI1MiwtODc4NzY2NjE3LDEzOD
+UzNzg3MywtNDI0MjE5NzU5LC01MDI3NzE0NjddfQ==
+-->

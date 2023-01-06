@@ -1,0 +1,15 @@
+# Bob Scale
+<!--
+@name: Bob Scale
+@description: 
+@tags: 
+@categories: 
+\-->
+Changes the scale (zoom) of a bob
+## Parameters
+
+- **idnex**: Index of the bob in the list of active bobs
+- **scaleX#**: Horizontal scale, 1 displays the bob at original size, 0.5 reduces it by half, 2 multiplies by two etc. Negative values will mirror the bob horizontally
+- **scaleY#**: Vertical scale, 1 displays the bob at original size, 0.5 reduces it by half, 2 multiplies by two etc. Negative values will mirror the bob vertically
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,15 @@
+# Logic
+<!--
+@name: Logic
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/notimp.png" valign="center" alt="Not implemented" title="Not implemented" /></div>
+
+Return a magical number representing the logical buffer of the current screen, to be used in "Screen Copy" and all Screen instructions that necessitate a Screen Index. (deprecated, no such thing as physical or logic al screen in AOZ)
+## Parameters
+
+- **index**: The index of the screen
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,25 @@
+# Actor Behavior
+<!--
+@name: Actor Behavior
+@description: Create a new behavior for the actors.
+@tags: 
+@categories: 
+\-->
+Create a new behavior for the actors. Un comportement est un ensemble d'actions et d'interactions imposé à un Actor. Par exemple, le comportement "jump" donnera à l'Actor la possibilité de sauter par dessus des obstacles, à l'aide du bouton de la souris, de la barre espace ou du bouton FEU de la manette de jeu.
+
+
+The <b>Actor Behavior</b> command allows you to create your owns behaviors
+
+
+## Parameters
+
+
+- **Name&dollar;**: Name of the Behavior
+- _InitProc&dollar;_ (optional): Name of the AOZ procedure to initialize the behavior before its using.
+- _RenderProc&dollar;_ (optional): Name of the AOZ procedure to render the behavior.
+- _Control&dollar;_ (optional): Inputs list that the user can use to interact with the behavior.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTgyNDc3MjE4Nl19
+-->

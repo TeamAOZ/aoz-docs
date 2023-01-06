@@ -1,0 +1,13 @@
+# Unity Set Camera
+<!--
+@name: Unity Set Camera
+@description: 
+@tags: 
+@categories: 
+\-->
+Défini la caméra à utiliser pourt le point de vue
+## Parameters
+
+- **Name&dollar;**: Nom de la caméra à utiliser.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

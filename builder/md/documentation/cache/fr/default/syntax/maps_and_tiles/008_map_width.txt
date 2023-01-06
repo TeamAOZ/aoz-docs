@@ -1,0 +1,15 @@
+# Map Width
+<!--
+@name: Map Width
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Return the number of tiles of the map referred to by a map view
+## Parameters
+
+- **viewName&dollar;**: Name of the map view
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

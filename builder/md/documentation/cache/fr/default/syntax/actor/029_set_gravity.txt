@@ -1,0 +1,18 @@
+# Set Gravity
+<!--
+@name: Set Gravity
+@description: 
+@tags: 
+@categories: 
+\-->
+Set the Gravity to apply on all Actors
+## Parameters
+
+
+- _X_ (optional): Global gravity value in X. 0.0 by default.
+- _Y_ (optional): Global gravity value in Y. 1.0 by default.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTQ1MDM1MDg2XX0=
+-->

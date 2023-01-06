@@ -1,0 +1,21 @@
+# Ins Image
+<!--
+@name: Ins Image
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+
+Inserts a number of empty images in the Images bank
+## Parameters
+
+
+- **start**: Position of insersion
+- **end**: End position of insertion
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE2Nzg4NDMwMzNdfQ==
+-->

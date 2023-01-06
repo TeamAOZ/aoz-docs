@@ -1,0 +1,16 @@
+# Sample
+<!--
+@name: Sample
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/notimp.png" valign="center" alt="Not implemented" title="Not implemented" /></div>
+
+Assign noise wave to sound channel
+## Parameters
+
+- **index**: The index of the wave to define
+- **bitmask**: A mask of bit, where bit 0 indicates voice 0, bit 1 voice 1 etc.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

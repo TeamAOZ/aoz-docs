@@ -1,0 +1,15 @@
+#  BOT Wheel Power
+<!--
+@name:  BOT Wheel Power
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Obtains, in real time, the power of the encoder motor connected to the specified port
+## Parameters
+
+- **motor**: The number of the motor, 1 for left motor, 2 for right motor
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

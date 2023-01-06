@@ -1,0 +1,17 @@
+# CSV Open
+<!--
+@name: CSV Open
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Open a CSV channel, enabling you to load, create and later save CSV files
+## Parameters
+
+- **index**: Index of the channel
+- **width**: Number of columns in the CSV file, will be overwritten when loading a file
+- **height**: Number of lines in the CSV file, will be overwritten when loading a file
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

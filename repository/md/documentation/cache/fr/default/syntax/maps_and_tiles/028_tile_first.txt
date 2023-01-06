@@ -1,0 +1,17 @@
+# Tile First
+<!--
+@name: Tile First
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Return the index of the first tile on the map view with this value
+## Parameters
+
+- **viewName&dollar;**: Name of the map view
+- **tileValue**: Value of the searched tile
+- _wholeMap_ (optional): If set to True, the search will occur on the whole map. If not (default), the search will be conducted only on the visible part of the map.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

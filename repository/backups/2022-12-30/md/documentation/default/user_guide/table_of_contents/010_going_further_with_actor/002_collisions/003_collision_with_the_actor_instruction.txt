@@ -1,0 +1,58 @@
+# COLLISION WITH THE ACTOR INSTRUCTION
+We have just seen how easy it is to test a collision between two actor(s) with the function **Actor  Col**. 
+
+The Actor instruction also allows you to test a collision using the **OnCollision$** parameter. It is a special parameter, used as a "Listener", that is intended to monitor an event (in this case a collision) and alert the program. We'll come back to this in the chapter: THE LISTENER AND EVENT SYSTEM.
+
+Let's change our program as follows:
+```basic
+Actor "magician", Image$="magic.png", OnCollision$="COLLISION"
+Actor "magician", Control$ = "ArrowRight: offsetX=4; ArrowLeft: offsetX=-4; ArrowUp: offsetY=-4; ArrowDown: offsetY=4"
+Actor "lucie", 350, 350, Image$="lucie.png"
+
+Do
+ Refresh
+Loop
+ 
+Procedure COLLISION [INDEX2$]
+ If INDEX2$ = "lucie" Then Boom : End
+End Proc
+```
+Run the program. Move the actor using the arrow keys, collide with lucie and… Boom!
+
+Let's break down the program.
+
+- _**Line 1**_: **OnCollision&dollar;** has been added to the Actor instruction. Its property is a string of characters, containing the name of the procedure: **OnCollision$**="COLLISION"
+
+Note: A procedure is an independent program block, that here will be called when a collision occurs.
+
+- _**Line 3**_: We add our second «lucie.png» actor at position 350,350.
+- _**Lines 4 to 6**_: A simple loop to keep the program active.
+The **Refresh** instruction as mentioned before makes the display more fluid (you can try without it).
+- _**Line 7**_: A procedure, here called **COLLISION**  is created. 
+To do this you have to type the **Procedure** statement followed by brackets around the parameter(s) to communicate to the procedure (here **INDEX$2** (in capital letters), whose name is not chosen at random, as we will see a little later). And then finish with **End Proc**.
+
+So the syntax is as follows:
+```basic
+Procedure COLLISION[INDEX2$]
+....
+… the instructions of your procedure
+....
+End Proc
+```
+When you put the name of your procedure anywhere in your program, it jumps into the quantum hyperspace and executes all the code of the procedure, and when it arrives at **End Proc** the execution of the program returns just after the call of the procedure.
+
+In the last program the procedure tests the variable named **INDEX2$** which will contain the name of the colliding actor. 
+Remember the name of the procedure is set in the **OnCollision&dollar;** parameter (line 1).
+
+When the "magician" actor collides with another actor the procedure **COLLISION** will be called and the name of the colliding actor will be passed to the variable **INDEX$2**.
+
+- _**Line 8**_: We test whether **INDEX$2** is the other actor: «lucie.png», if this is the case, a terrible bomb sound effect is emitted and the program stops
+- _**Line 9**_: End of the procedure, which means we return right after the call of the procedure.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMzQwMjYyOTE0LDEzNTExNDYzNTIsLTc3Nj
+AzNDgwNCw4NzAyMzIwMjYsNzMwOTk4MTE2XX0=
+-->

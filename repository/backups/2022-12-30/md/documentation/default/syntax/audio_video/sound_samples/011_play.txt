@@ -1,0 +1,16 @@
+# Play
+<!--
+@name: Play
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Play a voice
+## Parameters
+
+- **voice**: The note to play, from 1 to 96 if a number, of the name of the note in international notation
+- **delay**: The length of any pause between this PLAY command and then next, in 1/1000th of second in PC mode, and 1/50th of second in Amiga mode
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

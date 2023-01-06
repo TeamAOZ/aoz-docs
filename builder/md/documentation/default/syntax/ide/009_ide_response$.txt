@@ -1,0 +1,11 @@
+# IDE Response&dollar;
+<!--
+@name: IDE Response&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the current reponse
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

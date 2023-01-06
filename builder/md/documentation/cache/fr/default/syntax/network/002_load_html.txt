@@ -1,0 +1,16 @@
+# Load HTML
+<!--
+@name: Load HTML
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Load a HTML file and add it to application
+## Parameters
+
+- **url&dollar;**: The URL of the file to load
+- _parameters&dollar;_ (optional): Parameters to send to the web service. ( ex. 
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

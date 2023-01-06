@@ -1,0 +1,15 @@
+#  BOT Controller
+<!--
+@name:  BOT Controller
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Obtains the number of times the specified Bot button is pressed or the joystick is moved to the specified direction
+## Parameters
+
+- **name&dollar;**: The name of the button or joytick direction to test
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

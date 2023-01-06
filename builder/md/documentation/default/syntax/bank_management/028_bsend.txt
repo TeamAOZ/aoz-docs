@@ -1,0 +1,13 @@
+# BSend
+<!--
+@name: BSend
+@description: 
+@tags: 
+@categories: 
+\-->
+Transfer a memory bank from the current program to the previous program
+## Parameters
+
+- **imageIndex**: Index of the bank to grab
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

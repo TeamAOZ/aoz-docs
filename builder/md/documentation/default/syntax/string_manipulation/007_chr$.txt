@@ -1,0 +1,13 @@
+# Chr&dollar;
+<!--
+@name: Chr&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Return the character with a given ASCII code
+## Parameters
+
+- **code**: The ascii code to convert into a string
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

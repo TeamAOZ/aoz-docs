@@ -1,0 +1,76 @@
+# SPEED AND REFRESH
+
+Note: As we optimize every day AOZ Studio, this chapter is becoming little less relevant, and will be updated. See how this tags affect your program, as it depends of your code (fast game, slow app...).
+
+<BR>
+When developing AOZ Studio, we were faced with a problem: Basic is a language that authorizes loops whereas JavaScript does not.
+
+This means that in JavaScript, it is impossible for an application to “turn” for longer than a reasonable amount of time, which depends on the machine hardware, load, the browser. If a JavaScript application takes too much time, the browser seems to “crash” whereas it is just busy, being mono-task.
+
+In order to implement loops in AOZ, we used a trick: the AOZ application is executed up to every branch: like Goto, Gosub, a procedure call, or a simple If / Else / End If… everything that leads to a modification of the program pointer.
+
+At every such point in your application, AOZ takes the decision whether or not to refresh the display and give back the hand to the system so that the browser has enough machine time.
+
+Before giving back the "hand", AOZ stores the position of the program pointer in your AOZ application and sets a “rendez-vous” with the system to the next time the screen is refreshed, usually the next 1/60th of second.
+
+1/60th of a second later, AOZ re-enters the application at the position it left and carries on, ensuring a consistent display and a regular speed.
+
+The instruction Refresh (or Wait VBL is the same thing) force the refresh, it is important to use it within a loop of graphic movements.
+
+## Display speed
+
+In AOZ Studio's internal main loop control system there is a total disconnection between the application itself and the renderer. The renderer is called "as best as possible", eventually not at every frame to preserve the speed of the core code of your application. To optimize and help you control this (for advanced users), you have:
+
+**Set Frame Rate** TIMESTEP#, MAXFPS
+Controls the speed of the application.
+**TIMESTEP#** is the number of milliseconds between each call of the application code. A value of 16.66667 (1000/60) is the default and ensures an animation at 60hz. A value of 8.333 will for example accelerate the application by 2, a value of 50 will slow it down etc. Please note that the display will ALWAYS be done at the detriment of the main loop. If TIMESTEP# is too small, most of the time will be spent in the application and not on the display which will seem jerky.
+**MAXFPS** : for the maximum possible number of frame per seconds of the renderer. If this value is negative (default), the main loop of AOZ will adapt with the goal of reaching the FPS that can be calculated out of the TIMESTEP parameter, and never more.
+
+<BR>
+
+**= FPS()** returns the current FPS rate of the application. Warning, if you use a variable called FPS in your application, this new function will make it do an error on transpilation.
+
+**= MaxFPS()** returns the maximum number of frame per second for the renderer, as set in Set Frame Rate. Negative values indicate a possible maximum fps calculated from the timestep# parameter. Default is -1.
+
+**= Timestep()** returns the delay between each call of the application's code.
+
+  
+
+## Execution speed
+
+The “compilation.speed” parameter value in the manifest file of your application affects the decision as to whether or not refresh the screen and hand back to the system.
+
+**It can take three values:**
+**“fast”**: this is the default setting.  
+In fast mode, AOZ relies on you, the programmer, to hand back to the system. This can be achieved by using a “Wait Vbl” (or “Wait”) at the end of the main loop of your application. If you inspect all the tutorials and examples that come with AOZ, you will see that they all have a Wait Vbl somewhere.  
+In “fast” mode the display is _not_ updated until Wait Vbl is encountered. This means that the effect of all the Bob and Sprite or graphical instructions, even if performed inside of your AOZ application, will not be visible on the screen before the system is handed back. This has no effect on the application itself, and the fast refresh rate of 60hz ensures it cannot be seen on the monitor.  
+Note: you only need Wait Vbl for the main loop, the lowest loop of your application. Each Wait Vbl instruction takes 1/60th of a second to execute, inserting it in loops that generate data or do not display anything has no interest and would slow them down immensely.  
+Beware that some graphic instructions may take time to execute. A small loop with thousands of ellipses will take a lot of time: during that loop the browser may look as if it has crashed and you may need to use the “fair” setting instead.  
+
+**“fair”**: for a more graphic-intensive yet fast application.
+If your application has a main loop that draws or prints a lot of data on the screen, and at the same time carries out animations, the graphical operations may take more than 1/60th of a second, the browser will slow-down and the display may become jerky.  
+The “fair” setting ensures the hand is given back to the system more often by multiplying the number of tests at branches, and checking that the application has not taken more than 16 milliseconds to execute.
+If this setting does not work for your application, you may want to choose the next one, “safe”.
+
+**“safe”**: should work for all  
+The “safe” setting ensures that the application does not take more than 12 milliseconds and checks for return every 1000 branches. Basically, every 1000 end of loops, AOZ asks for the time to the system and checks that the application has not gone over that time. This procedure will slow down the number of instructions per second in your code, yet will make sure the browser stays responsive whatever the code.
+
+**“graphic**”: for fast line drawing etc.. It gives the user control over when the display updates.
+
+
+## How to find the good settings?
+
+When you create a new application, the default mode is “fast”. It should be the mode of choice as it is the fastest and most consistent one. You just have to make sure that your main loop is regulated by a Wait Vbl instruction at the end.  
+If this is not enough, replace “fast” by “fair” and re-launch your application.  
+  
+If this is still not enough, replace “fair” by “safe” and try again.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNDc4OTE2ODE0LC03MjMxNDI2NDMsMTA5Mj
+M0MjM5MSwtMTE3ODkxNzg2OSwxNTI4MjQyOTc1LC04NzYyNzU2
+MTYsLTEzMDQwNTQ5MjUsLTU5ODMxOTExLDE1MjE3MDc3OTMsOD
+cwMjMyMDI2LDczMDk5ODExNl19
+-->

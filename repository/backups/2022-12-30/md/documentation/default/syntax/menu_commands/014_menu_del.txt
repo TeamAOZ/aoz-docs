@@ -1,0 +1,15 @@
+# Menu Del
+<!--
+@name: Menu Del
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/notimp.png" valign="center" alt="Not implemented" title="Not implemented" /></div>
+
+Delete one or more menu items.
+## Parameters
+
+- **level**: The level of the sub-menu or the index of a menu item
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

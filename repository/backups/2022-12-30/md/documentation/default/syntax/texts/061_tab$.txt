@@ -1,0 +1,11 @@
+# Tab&dollar;
+<!--
+@name: Tab&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Return a string containing the Tab character (ASCII
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,13 @@
+# Gamepad Axes
+<!--
+@name: Gamepad Axes
+@description: 
+@tags: 
+@categories: 
+\-->
+Return number of axes for selected gamepad
+## Parameters
+
+- **GAMEPAD**: The number of the gamepad
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

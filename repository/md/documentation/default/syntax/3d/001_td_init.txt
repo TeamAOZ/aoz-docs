@@ -1,0 +1,21 @@
+# Td Init
+<!--
+@name: Td Init
+@description: Initializes the 3D engine and prepares your program to use the 3D instructions.
+@tags: 3d,scene,unity,game,design,modeling,threejs,engine
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Initializes the 3D engine and prepares your program to use the 3D instructions.
+
+#### Syntax:
+```basic
+Td Init
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEyMjc0NzQyNTldfQ==
+-->

@@ -1,0 +1,14 @@
+# Amal
+<!--
+@name: Amal
+@description: 
+@tags: 
+@categories: 
+\-->
+
+## Parameters
+
+- **index**: Index of the animation channel
+- **string&dollar;**: A string containing the AMAL program to be ran
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

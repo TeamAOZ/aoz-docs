@@ -1,0 +1,45 @@
+# DB Rename Table
+<!--
+@name: DB Rename Table
+@description: 
+@tags: 
+@categories: 
+\-->
+Gives a new name to the current table.
+
+## Description
+
+`DB Rename Table NewName$`
+
+You may need to rename your table. All the stored data is kept.\
+Be cautionous, as the renaming process can take quite a long time if your table contains a lot of data.\
+The target name should not match an already existing table, or the renaming process may crash.
+
+## Parameters
+
+- `NewName$`: The new name for the table.
+
+## Example
+
+First delete this testing database if it exists, to reset data before testing. \
+Let store data into the default table, then rename it and read data from the renamed table:
+```basic
+DB Delete Database "test-base"
+DB Database "test-base"
+Name$ = "Josua" : DB Write "Name$"
+DB Rename Table "names-table"
+DB Read "Name$" : Print "His name is", Name$
+```
+
+## See Also
+
+- `DB Delete Table`
+- `DB Rename Column`
+- `DB Rename Database`
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTc5MjM2NjM2NiwxNjM0OTE3MzI3XX0=
+-->

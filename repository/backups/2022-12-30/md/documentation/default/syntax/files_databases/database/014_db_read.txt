@@ -1,0 +1,56 @@
+# DB Read
+<!--
+@name: DB Read
+@description: 
+@tags: 
+@categories: 
+\-->
+
+Reads some column values from the currently selected record and store them into matching variables.
+
+## Description
+
+`DB Read Columns$`
+
+This is how you extract data from your database to use it into your program: copy column values to your variables and work with them!
+
+## Parameters
+
+- `Columns$`: The list of the `column=variable` names which values to read, separated by commas.
+
+## Examples
+
+This first piece of code writes the best score and player name into your database, if reached:
+```basic
+My_Player_Name$ = "Baptiste"
+Score = 1000
+DB Database "hall_of_fame", "application"
+DB Read "Best_Score"
+If Score > Best_Score
+	Best_Player$ = My_Player_Name$
+	Best_Score = Score
+	DB Write "Best_Score,Best_Player$"
+End If
+```
+
+This other piece of code (must be into the same application!) can get the best score and player name back, and show it:
+```basic
+DB Database "hall_of_fame", "application"
+DB Read "Best_Score, Best_Player$"
+Print "Best score, owned by", Best_Player$, ":", Best_Score
+```
+
+## See Also
+
+- `DB Database`
+- `DB Delete Record`
+- `DB Table`
+- `DB Write`
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE3NTQ4MzA0NzAsMjA1NzM1MjI3NiwtMT
+k1NTIyMjQ3N119
+-->

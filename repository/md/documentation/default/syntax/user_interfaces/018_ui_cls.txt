@@ -1,0 +1,13 @@
+# UI Cls
+<!--
+@name: UI Cls
+@description: 
+@tags: 
+@categories: 
+\-->
+Delete UI Components from the display.
+## Parameters
+
+- **group&dollar;**: Optional group name. Only components that have the specified group defined will be deleted.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

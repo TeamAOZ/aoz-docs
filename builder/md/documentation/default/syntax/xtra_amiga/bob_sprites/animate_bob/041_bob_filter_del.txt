@@ -1,0 +1,14 @@
+# Bob Filter Del
+<!--
+@name: Bob Filter Del
+@description: 
+@tags: 
+@categories: 
+\-->
+Remove a specific or all filters applied to a bob.
+## Parameters
+
+- **index**: Index of the bob
+- **filterName&dollar;**: Name of the filter to use (see list in the Bob Filter instruction)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

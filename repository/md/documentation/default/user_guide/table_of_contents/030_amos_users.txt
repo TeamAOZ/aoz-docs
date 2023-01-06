@@ -1,0 +1,94 @@
+# AMOS USERS
+
+For those who remember, AMOS is the grandfather of AOZ created in the 1980s. This chapter is for our old friends -so happy to have you here- who are familiar with AMOS, Easy AMOS and AMOS Professional, which are the ancestors of AOZ. (If you want to know more see history on the AOZ.Studio web site.)
+
+## Compatibility with AMOS
+
+First of all, we are delighted to tell you that most of the code and banks from your old programs can be directly loaded into AOZ. If all is well, then everything will import automatically as soon as you load an .AMOS program.
+
+The whole AMOS Professional manual is available, along with every instruction, command and module from A to Z. And you'll find a great range of brand new instructions, such as how to develop your work for use on mobile phones and how to manipulate HTML code for your websites.
+
+We've even included the classic Amiga Game called CyBall and imported it into AOZ for you, as well as a full tutorial on how this was done. This is available on Youtube by Phill Bell [How I Ported My AMOS Game To AOZ Studio Start to Finish](https://youtu.be/E0Rm4PNil9o)
+
+Remember, there is a dedicated AMOS folder for you to explore at your leisure, with masses more tutorials, oodles of examples and more accessories than you can wave a magic wand at.
+
+There are more similarities than there are differences between your old AMOS and your new AOZ language, with the main difference being that AOZ runs a lot faster, and is no longer restricted to one sort of computer platform. AOZ also supports object-orientation, for example, and a huge range of controls and effects in use of animations.
+
+**AUDIO FILES**
+
+The tracker engine used supports not only the Amiga SoundTracker files, but newer formats supporting up to 32 channels, XM audio and more.
+
+**VOLUME**
+
+The thing to remember on setting the volume is that it's different between the Amiga and AOZ manifests. On the Amiga manifest, it works as it did in AMOS. The volume is an integer from 0 to 63.
+0 = off, 63 is max. In the AOZ manifest, the volume is a floating point number between 0 and 1. Think of it as a percentage 0 = 0%, 1 = 100%. Also, time is counted differently between manifests.
+
+For example, in the Amiga manifest, time is counted in Vbl cycles (1/50th or 1/60th of a second). So with the PAL Amiga mode, Wait 1 = Wait 1/50th of a second. In the AOZ manifest, time is counted in seconds, or fractions thereof, so Wait 1 = Wait 1 second.
+  
+Note, that if you want to make code the will run in either manifest, you can. It doesn't hurt to use a float variable for your volume level, so you can do something like this:
+
+```basic
+#manifest: "amiga"
+D = 10  '10 Vbl cycles = 1/5 second.
+
+For V=0 To 63 Step 4
+	If Manifest$="amiga"
+		V#=V : D#=D
+		Else
+		V#=V/63 : D#=D/50
+	End If
+
+	Volume V#
+	Locate 0,0
+	Print Using "Volume: ###.####";V
+	Print Using "Pitch:  ##";35
+	Print Using "Delay: ####.####";D#
+	Play 35,D#
+	Wait D#
+Next V
+```
+For this to work in both manifests, you will need to go into the resources folder of your application and delete manifest.hjson. Then you can set the manifest with the manifest tag.
+
+The parameters for the Play instruction can be:
+- Play pitch,delay
+- Play voice,pitch,delay
+- Play Off
+
+## Bobs and Sprites
+
+The world famous Bob and Sprite instructions, created with AMOS. You do not necessarily have to use these instructions in these modern times now that we can use Actors, but you will find a load of demos and games that use them, and so many programmers still love them.
+
+There are two types of movable objects: "Bobs" and "Sprites". Let's deal with Bobs first.
+
+A Bob can be moved around the screen, and there is no limit to the number of Bobs you can harness (apart from the amount of available memory of course). In other words you can have thousands of them performing on screen at the same time. You can control a Bob, track it and even give it special characteristics if it collides with something else or enters a special screen zone. Best of all, you can animate a Bob to make moving cartoon characters, steampunk machinery, in fact anything that your imagination can dream up.
+
+In the old Amiga days a Bob was stored as part of the current screen, so it can eat up quite a lot of memory. So in AMOS there was an alternative type of object called a Sprite.
+
+A Sprite is also a graphic object that you can manipulate, and it's completely independent from the screen. In the 80s world of computers Sprites were manipulated directly by hardware. Bobs on the other hand were being drawn into a screen, saving, drawing and restoring the background as required, so they could be much slower indeed and not having dedicated graphic hardware to display them as we have today, made it extremely difficult to move around many very large bobs at the same time unlike their Sprite counterparts. Today this difference does not exist, and the size/speed or type limits are not really an issue anymore. The name Sprite is widely used to define any moving graphic object. As you would expect, AOZ offers built-in routines to teach both of them magic tricks for intelligent movements.
+<BR>
+
+**TO INFINITY AND BEYOND**
+
+With all these wonders for creating the movement and animation for your Actor, Sprite and Bob objects, you'll probably want to place them in a suitable electronic universe. Good news, your universes can be two-dimensional, three-dimensional and with effects like parallax scrolling where one layer of background graphics moves at a different speed from another layer to create a sort of 3D effect.
+
+  
+
+### AMAL
+
+**AMAL** is a little language within AMOS that was supporting the Amiga mouse as well. Now it is better to use the **Actor** instruction. But... you can use AMAL in AOZ!
+Discussing AMAL is beyond the scope of this chapter. Please consult the **AMAL** chapters in the former AMOS Amiga manual for more information.
+
+
+
+![enter image description here](https://doc.aoz.studio/assets/images/en/image084.png)
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTU1MTg0NzE3LC03MjMxNDI2NDMsMTA5Mj
+M0MjM5MSwtMTE3ODkxNzg2OSwxNTI4MjQyOTc1LC04NzYyNzU2
+MTYsLTEzMDQwNTQ5MjUsLTU5ODMxOTExLDE1MjE3MDc3OTMsOD
+cwMjMyMDI2LDczMDk5ODExNl19
+-->
