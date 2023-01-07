@@ -7,7 +7,7 @@
 
     if( !$_GET )
     {
-        $_GET = [ 'search' => 'DB one Read', 'lang' => 'en' ];
+        $_GET = [ 'search' => 'Fill box', 'lang' => 'en' ];
     }
 
     $lang   = $_GET[ 'lang' ] ?? 'en';
@@ -39,7 +39,7 @@
                 {
                     foreach( $articles as $article )
                     {
-                        $responses[] = articleToResponse( $article );
+                        $responses[] = articleToResponse( $article, $words );
                     }
                 }
             }
@@ -66,19 +66,19 @@
         }
     }
 
-    function articleToResponse( Article $article ) : string
+    function articleToResponse( Article $article, array $words ) : string
     {
         $link = "javascript:application.aoz.runProcedure( 'PAGE_LOAD', { ID$: '', URL$: '"
             . $article->url() . "', IS_NEW: true } );";
-        $name        = $article->title;
-        $description = $article->description;
+        $name        = highlightWords( $article->title, $words );
+        $description = highlightWords( $article->description, $words );
         return "<p class=\"bloc-search\" onclick=\"$link\" style=\"cursor: pointer;\">"
             . "<b>$name</b><br />"
             . $description
             . "</p>";
     }
 
-    function cleanSearchString( string &$search ) : void
+    function cleanAccents( string $text ) : string
     {
         $accents = [
             'Š'=>'S', 'š'=>'s', 'Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
@@ -87,9 +87,13 @@
             'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
             'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y'
         ];
+        return strtr( $text, $accents );
+    }
 
+    function cleanSearchString( string &$search ) : void
+    {
         $search = trim( $search );
-        $search = strtr( $search, $accents );
+        $search = cleanAccents( $search );
         $search = str_replace( [ "'", '"', "\t" ], [ '', '', ' ' ], $search );
         removeDoubleSpaces( $search );
         $search = strtolower( $search );
@@ -139,6 +143,26 @@
         }
     }
 
+    function highlightWords( string $text, array $words ) : string
+    {
+        $before = '<span class="highlight">';
+        $after  = '</span>';
+        $search_in = cleanAccents( strtolower( $text ) );
+        foreach( $words as $word )
+        {
+            $i = 0;
+            while( ( $i = strpos( $search_in, $word, $i ) ) !== false )
+            {
+                $text = substr($text, 0, $i)
+                    . $before . substr( $text, $i, strlen( $word ) ) . $after
+                    . substr( $text, $i + strlen( $word ));
+                $i   += strlen( $before ) + strlen( $word ) + strlen( $after );
+                $search_in = cleanAccents( strtolower( $text ) );
+            }
+        }
+        return $text;
+    }
+
     function removeDoubleSpaces( string &$text ) : void
     {
         while( str_contains( $text, '  ' ) )
@@ -169,7 +193,8 @@
             $this->title = $this->lineAfter( "\n# " )
                 ?: $this->specialValue( 'name' );
             $this->description = $this->specialValue( 'description' )
-                ?: $this->firstPhraseOf( reset( $this->sections ) );
+                ?: $this->firstPhraseOf( reset( $this->sections ) )
+                ?: $this->firstPhraseOf( $this->sections['description'] ?? '' );
             $this->specialList( 'categories' );
             $this->specialList( 'tags' );
         }
@@ -189,9 +214,9 @@
             {
                 $text = trim( substr( $text, strpos( $text, '>' ) + 1 ) );
             }
-            $text = str_replace( [ "\n" , '!', '?', '<' ], '.', $text ) . '.';
+            $text = str_replace( [ "\n" , '!', '?', '<', '---' ], '.', $text ) . '.';
             removeDoubleSpaces( $text );
-            return "\n" . substr( $text, 0, strpos( $text, '.' ) ) . "\n";
+            return trim( substr( $text, 0, strpos( $text, '.' ) ) );
         }
 
         protected function lineAfter( string $after_what ) : string
@@ -314,9 +339,10 @@
             $this->words_count = count( $this->words );
         }
 
-        protected function searchExactIn( int $priority, string $text) : bool
+        protected function searchExactIn( int $priority, string $text, $exact = true ) : bool
         {
-            if( str_contains( ' ' . strtolower( $text ) . ' ', $this->sentence ) )
+            $sentence = $exact ? $this->sentence : trim( $this->sentence );
+            if( str_contains( ' ' . strtolower( $text ) . ' ', $sentence ) )
             {
                 $this->results[ $priority ][ 100 ][ $this->article->title ][ $this->article->identifier ]
                     = $this->article;
@@ -360,20 +386,24 @@
             }
             $article = $this->article;
             // This is the core of search algorithm : here we decide where to search for :
-            $this->searchExactIn( 1, $article->title )
-                || $this->searchExactIn( 2, $article->description )
-                || $this->searchWordsIn( 3, $article->title )
-                || $this->searchWordsIn( 4, $article->description )
-                || $this->searchWordsIn( 5, ' ' . join( ' ', $article->tags ) . ' ' )
-                || $this->searchExactIn( 6, $buffer = str_replace( "\n" , ' ', $article->buffer ) )
-                || $this->searchWordsIn( 7, $buffer )
-                || $this->searchWordsIn( 8, ' ' . join( ' ', $article->categories ) . ' ' );
+            $this->searchExactIn( 10, $article->title )
+                || $this->searchExactIn( 20, $article->description )
+                || $this->searchWordsIn( 30, $article->title, false )
+                || $this->searchWordsIn( 40, $article->description, false )
+                || $this->searchWordsIn( 50, ' ' . join( ' ', $article->tags ) . ' ' )
+                || $this->searchExactIn( 60, $buffer = str_replace( "\n" , ' ', $article->buffer ) )
+                || $this->searchWordsIn( 70, $buffer )
+                || $this->searchWordsIn( 80, ' ' . join( ' ', $article->categories ) . ' ' )
+                || $this->searchWordsIn( 91, ' ' . join( ' ', $article->tags ) . ' ', false )
+                || $this->searchWordsIn( 92, $buffer, false )
+                || $this->searchWordsIn( 93, ' ' . join( ' ', $article->categories ) . ' ', false );
             return $this->results;
         }
 
-        protected function searchWordsIn( int $priority, string $text ) : bool
+        protected function searchWordsIn( int $priority, string $text, $exact = true ) : bool
         {
-            if( $found_count = $this->wordsIn( strtolower( $text ), $this->s_words ) )
+            $words = $exact ? $this->s_words : $this->words;
+            if( $found_count = $this->wordsIn( strtolower( $text ), $words ) )
             {
                 $weight = ( $found_count === $this->words_count ) ? 99 : $found_count;
                 $this->results[ $priority ][ $weight ][ $this->article->title ][ $this->article->identifier ]
