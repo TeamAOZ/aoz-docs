@@ -18,6 +18,7 @@ Include "includes/language/md-reader.aozinc"
 Include "includes/language/toast.aozinc"
 Include "includes/app.aozinc"
 
-LOCAL = False : URL_SEARCH$ = ""
-Global LOCAL, URL_SEARCH$
+LOCAL = False : PREP = False : LOCAL_WHO$ = "BB" : URL_SEARCH$ = ""
+
+Global LOCAL, PREP, LOCAL_WHO$, URL_SEARCH$
 Wait 2 : MAIN : Wait

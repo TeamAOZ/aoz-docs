@@ -1665,7 +1665,10 @@ Screen.prototype.lineDashOffset = function( number )
 		 if ( typeof points.px2 == 'undefined' || typeof points.py2 == 'undefined' )
 			 throw 'syntax_error';
 		 if ( radius )
+		 {
 			 this.context.arcTo( points.px1,  points.py1,  points.px2,  points.py2, radius );
+			 this.context.lineTo( points.px2,  points.py2 );
+		 }
 		 else
 			 this.context.bezierCurveTo( points.px1,  points.py1,  points.px2,  points.py2, fixedCoords.x2, fixedCoords.y2 );
 	 }
@@ -1889,7 +1892,7 @@ Screen.prototype.lineDashOffset = function( number )
 		 else if ( rectangle.height > 0 )
 			 rectangle.height --;
 	 }
-	 if ( rectangle.width == 0 && rectangle.height == 0 )
+	 if ( rectangle.width == 0 && rectangle.height == 0 && this.lineWidth == 1 )
 	 {
 		 this.plot( { x:rectangle.x, y:rectangle.y } );
 		 return;

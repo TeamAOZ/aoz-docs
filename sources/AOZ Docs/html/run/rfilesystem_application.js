@@ -730,7 +730,7 @@ Filesystem.files=
 		size:1073741824,
 		isDirectory:true,
 		isRoot:true,
-		"application_0":{length:242,name:"info.txt",number:0,context:"application"},
+		"application_0":{length:234,name:"info.txt",number:0,context:"application"},
 	},
 
 };

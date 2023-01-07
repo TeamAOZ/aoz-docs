@@ -33,7 +33,7 @@ function v1_0_sprites( aoz, args )
 this.blocks=[];
 	this.blocks[0]=function(aoz,vars)
 	{
-		// From source: C:/AOZ Studio/AOZ_Studio/app/aoz/languages/v1_0/sprites/sprites.aoz
+		// From source: /home/baptiste/AOZ_Studio/AOZ_Studio/app/aoz/languages/v1_0/sprites/sprites.aoz
 		aoz.sourcePos="0:46:0";
 		// Javascript
 		this.aoz.sprites = this;

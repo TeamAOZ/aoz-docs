@@ -1,12 +1,21 @@
 LANG$ = "en" : CURRENT_PAGE$ = "user_guide/table_of_contents/000_chapter.txt" : CURRENT_CODE$ = ""
-ROOT_URL$ = "https://doc.aoz.studio" : CUR_ID$ = "" : CUR_TYPE$ = ""
+ROOT_URL$ = "https://doc.aoz.studio/" : CUR_ID$ = "" : CUR_TYPE$ = ""
 
 Dim HISTO_PAGE$( 1000 ) : CUR_HISTO = 1 : CHEAT_ACCESS = False
 Global CUR_ID$, CUR_TYPE$, ROOT_URL$, LANG$, CURRENT_PAGE$, HISTO_PAGE$(), CUR_HISTO, CURRENT_CODE$, CHEAT_ACCESS
 
 // Point de départ du programme
 Procedure MAIN
-	If LOCAL = True Then ROOT_URL$ = "http://localhost/aozdoc/"
+	If PREP = True
+		ROOT_URL$ = "https://doc.aoz.studio/next/"
+	End If
+	If LOCAL = True
+		If LOCAL_WHO$ = "BP"
+			ROOT_URL$ = "http://localhost/aoz/aoz-docs/"
+		Else
+			ROOT_URL$ = "http://localhost/aozdoc/"
+		End If
+	End If
 	Show HTML "index"
 	JS Execute "initPanels();"
 	RELOAD_LANG

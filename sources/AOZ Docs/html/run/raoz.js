@@ -24,12 +24,18 @@
  * @author FL (Francois Lionet)
  * @date first pushed on 03/12/2018
  */
+
 AOZ_Files = {};
 function AOZ( canvasId, options, rendererAlgo )
 {
 	//this.dos = new DOS( this );
 	//this.utilities = new Utilities( this );
 	var self = this;
+	this.waitInputControl = 
+	{
+		click: false,
+		key: false
+	};
 	this.aoz = this;
 	this.atom = undefined;
 	this.currentContextName = 'application';
@@ -212,6 +218,7 @@ function AOZ( canvasId, options, rendererAlgo )
 	this.playRate = -1;
 
 	this.libsRenderers = undefined;
+	this.alreadyWaitAdded = false;
 
 	// Running on mobile device?
 	this.isMobileDevice = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent ) );
@@ -291,6 +298,7 @@ function AOZ( canvasId, options, rendererAlgo )
 	// Load welcome images
 	var self = this;
 	this.welcomeClick = false;
+
 	if( navigator.userAgent == 'AOZViewer' )
 	{
 		rendererAlgo = 'iAjOkZ';
@@ -415,8 +423,8 @@ function AOZ( canvasId, options, rendererAlgo )
 					self.loadingCount = 0;
 					self.loadingMax = 0;
 					self.default( 'application' );
-								self.setLoopState( 'run' );
-							}
+						self.setLoopState( 'run' );
+					}
 			}
 		}
 	};
@@ -426,7 +434,21 @@ function AOZ( canvasId, options, rendererAlgo )
 	}
 	this.loopRun = function( deltaTime )
 	{
-/*		
+		if( application && application.aoz.manifest.compilation.platform == 'aoz' && !this.alreadyWaitAdded )
+		{
+			setTimeout( function()
+			{
+				application.blocks[ application.blocks.length-1] = function( aoz,vars )
+				{
+					// Wait
+					aoz.sourcePos="0:0:0";
+					return{type:12,waitThis:aoz,callFunction:"wait",waitFunction:"wait_wait",args:[undefined]};
+				};
+			}, 2000 );
+			
+			this.alreadyWaitAdded = true;			
+		}
+		/*		
 		self.runTimeArray[ self.runTimeArrayPos++ ] = deltaTime;
 		if ( self.runTimeArrayPos > 100 )
 		{
@@ -436,7 +458,7 @@ function AOZ( canvasId, options, rendererAlgo )
 				average += self.runTimeArray[ x ];
 			console.log( 'Average run loop deltatime: ' + average / self.runTimeArray.length );
 		}
-*/		
+*/
 		self.updateOnce( deltaTime );
 	}
 	this.loopEnd = function( fps, panic )
@@ -457,6 +479,7 @@ function AOZ( canvasId, options, rendererAlgo )
 			console.log( 'Average draw loop deltatime: ' + average / self.drawTimeArray.length );
 		}
 */
+
 		if ( self.manifest.compilation.speed == 'graphics' )
 		{
 			if ( self.waitVblExit )
@@ -717,8 +740,7 @@ AOZ.prototype.updateOnce = function( deltaTime )
 			toClose.func.call( toClose.self );
 		}
 		window.focus();
-
-		this.break = true;
+		
 		if ( this.section )
 			this.section.waiting = null;
 
@@ -792,15 +814,18 @@ AOZ.prototype.updateOnce = function( deltaTime )
 			var self = this;
 			setTimeout( function()
 			{
-				// Stop all mouse and keyboard events
-				self.killEvents();
-				if( errorMessage == '' )
+				if( application.aoz.manifest.compilation.platform != 'aoz' )
 				{
-					self.dialog.show( 'info', displayText, path, line, column );
-				}
-				else
-				{
-					self.dialog.show( 'error', displayText, path, line, column );
+					// Stop all mouse and keyboard events
+					self.killEvents();
+					if( errorMessage == '' )
+					{
+						self.dialog.show( 'info', displayText, path, line, column );
+					}
+					else
+					{
+						self.dialog.show( 'error', displayText, path, line, column );
+					}
 				}
 			}, 500 );
 		}
@@ -2423,15 +2448,6 @@ AOZ.prototype.lprint = function()
 };
 
 
-
-
-
-
-
-
-
-
-
 AOZ.prototype.doError = function( number )
 {
 	throw this.errors.getErrorFromNumber( number ).index;
@@ -2901,6 +2917,7 @@ AOZ.prototype.setKeyboard = function()
 
 	function onKeyDown( event )
 	{
+		application.aoz.waitInputControl.key = true;
 		if ( !( event = self.callExternalEvents( 'keydown', event ) ) )
 			return;
 
@@ -3021,6 +3038,8 @@ AOZ.prototype.setKeyboard = function()
 
 	function onKeyUp( event )
 	{
+		application.aoz.waitInputControl.key = false;
+
 		if ( !( event = self.callExternalEvents( 'keyup', event ) ) )
 			return;
 
@@ -3791,6 +3810,7 @@ AOZ.buttonToMouse =
 };
 AOZ.prototype.killEvents = function()
 {
+	return;
 	this.renderer.end();
 	document.onclick = undefined;
 	document.onkeydown = undefined;
@@ -3904,6 +3924,25 @@ AOZ.prototype.startEvents = function()
 			}
 		}, false);
 	}
+
+	// For the Wait Input
+	document.addEventListener( 'click', function( event )
+	{
+		event.preventDefault();
+		application.aoz.waitInputControl.click = true ;
+	}, false );
+
+	document.addEventListener( 'keypress', function( event )
+	{
+		if( event.target.localName == 'input' )
+		{
+			event.stopPropagation();
+			return;
+		}
+		event.preventDefault();
+		application.aoz.waitInputControl.key = true ;
+	}, false );	
+
 };
 
 AOZ.prototype.onMouseMove = function( event )
@@ -4515,20 +4554,18 @@ AOZ.prototype.waitClick_wait = function()
 
 AOZ.prototype.waitInput = function()
 {
-	this.clickMouse = 0;
-	this.key = 0;
+	this.waitInputControl.click = false;
+	this.waitInputControl.key = false;
+
 };
 
 AOZ.prototype.waitInput_wait = function()
 {
-	if ( this.clickMouse || this.key )
+	if ( this.waitInputControl.click || this.waitInputControl.key )
 	{
-		if ( this.clickMouse != 0 || this.key != '' || this.fire( 0 ) )
-		{
-			this.clickMouse = 0;
-			this.key = 0;
-			return true;
-		}
+		this.waitInputControl.click = false;
+		this.waitInputControl.key = false;
+		return true;
 	}
 	return false;
 };
@@ -5646,15 +5683,17 @@ AOZ.prototype.lockJoystick = function( state, lock, direction )
 // Digital gamepad Up function, but usually read as analog and converted to digital.
 AOZ.prototype.jUp = function( number, lock )
 {
-	var pressed = this.getKeyMapping( 'up' ); 
+	//var pressed = this.getKeyMapping( 'up' ); 
+	var pressed = 0;
 	if ( this.gamepads )
 	{
 		if ( number >= 0 && number < this.gamepads.length )
-	{
-		var gamepad = this.gamepads[ number ];
-		if ( gamepad && gamepad.connected )
 		{
-				pressed |= this.gamepadAxis( number, this.gamepad_vertical_axis ) < -this.gamepad_Threshold; 
+			var gamepad = this.gamepads[ number ];
+			if ( gamepad && gamepad.connected && gamepad.axes[ this.gamepad_vertical_axis ] < 0 )
+			{
+				pressed = Math.round( gamepad.axes[ this.gamepad_vertical_axis ] );
+				//pressed |= this.gamepadAxis( number, this.gamepad_vertical_axis ) < -this.gamepad_Threshold; 
 			}
 		}
 	}
@@ -5664,15 +5703,17 @@ AOZ.prototype.jUp = function( number, lock )
 // Digital gamepad Down function, but usually read as analog and converted to digital.
 AOZ.prototype.jDown = function( number, lock )
 {
-	var pressed = this.getKeyMapping( 'down' ); 
+	//var pressed = this.getKeyMapping( 'down' ); 
+	var pressed = 0;
 	if ( this.gamepads )
 	{
 		if ( number >= 0 && number < this.gamepads.length )
 		{
-		var gamepad = this.gamepads[ number ];
-		if ( gamepad && gamepad.connected )
-		{
-				pressed |= this.gamepadAxis( number, this.gamepad_vertical_axis ) > this.gamepad_Threshold;
+			var gamepad = this.gamepads[ number ];
+			if ( gamepad && gamepad.connected && gamepad.axes[ this.gamepad_vertical_axis ] > 0 )
+			{
+				pressed = Math.round( gamepad.axes[ this.gamepad_vertical_axis ] );
+				//pressed |= this.gamepadAxis( number, this.gamepad_vertical_axis ) > this.gamepad_Threshold;
 			}
 		}
 	}
@@ -5682,15 +5723,17 @@ AOZ.prototype.jDown = function( number, lock )
 // Digital gamepad Left function, but usually read as analog and converted to digital.
 AOZ.prototype.jLeft = function( number, lock )
 {
-	var pressed = this.getKeyMapping( 'left' ); 
+	//var pressed = this.getKeyMapping( 'left' ); 
+	var pressed = 0;
 	if ( this.gamepads )
 	{
 		if ( number >= 0 && number < this.gamepads.length )
 		{
-		var gamepad = this.gamepads[ number ];
-		if ( gamepad && gamepad.connected )
-		{
-				pressed |= this.gamepadAxis( number, this.gamepad_horizontal_axis ) < this.gamepad_Threshold;
+			var gamepad = this.gamepads[ number ];
+			if ( gamepad && gamepad.connected && gamepad.axes[ this.gamepad_horizontal_axis ] < 0 )
+			{
+				pressed = Math.round( gamepad.axes[ this.gamepad_horizontal_axis ] );
+				// pressed |= this.gamepadAxis( number, this.gamepad_horizontal_axis ) < this.gamepad_Threshold;
 			}
 		}
 	}
@@ -5700,15 +5743,17 @@ AOZ.prototype.jLeft = function( number, lock )
 // Digital gamepad Right function, but usually read as analog and converted to digital.
 AOZ.prototype.jRight = function( number, lock )
 {
-	var pressed = this.getKeyMapping( 'right' ); 
+	//var pressed = this.getKeyMapping( 'right' ); 
+	var pressed = 0;
 	if ( this.gamepads )
 	{
 		if ( number >= 0 && number < this.gamepads.length )
 		{
-		var gamepad = this.gamepads[ number ];
-		if ( gamepad && gamepad.connected )
-		{
-				pressed |= this.gamepadAxis( number, this.gamepad_horizontal_axis ) > this.gamepad_Threshold;
+			var gamepad = this.gamepads[ number ];
+			if ( gamepad && gamepad.connected && gamepad.axes[ this.gamepad_horizontal_axis ] > 0 )
+			{
+				pressed = Math.round( gamepad.axes[ this.gamepad_horizontal_axis ] );
+				//pressed |= this.gamepadAxis( number, this.gamepad_horizontal_axis ) > this.gamepad_Threshold;
 			}
 		}
 	}
@@ -5718,6 +5763,11 @@ AOZ.prototype.jRight = function( number, lock )
 // Digital gamepad Up & Left function, but usually read as analog and converted to digital.
 AOZ.prototype.jUpLeft = function( number, lock )
 {
+	var pressedUp = this.jUp(number,lock);
+	var pressedLeft = this.jLeft(number,lock);
+	var pressed = (pressedUp && pressedLeft) ? 1 : 0;
+
+/**
 	var pressed = this.getKeyMapping( 'up' ) & this.getKeyMapping( 'left' );
 	if ( this.gamepads )
 	{
@@ -5725,17 +5775,23 @@ AOZ.prototype.jUpLeft = function( number, lock )
 		{
 		var gamepad = this.gamepads[ number ];
 		if ( gamepad && gamepad.connected )
-		{
+			{
 				pressed |= ( this.gamepadAxis( number, this.gamepad_vertical_axis ) < -this.gamepad_Threshold )	&& ( this.gamepadAxis( number, this.gamepad_horizontal_axis ) < -this.gamepad_Threshold );
 			}
 		}
 	}
+*/
 	return this.lockJoystick( pressed, lock, 'upleft' );
 };
 
 // Digital gamepad Up & Right function, but usually read as analog and converted to digital.
 AOZ.prototype.jUpRight = function( number, lock ) // BJF
 {
+	var pressedUp = this.jUp(number,lock);
+	var pressedRight = this.jRight(number,lock);
+	var pressed = (pressedUp && pressedRight) ? 1 : 0;
+	
+	/**
 	var pressed = this.getKeyMapping( 'up' ) & this.getKeyMapping( 'right' );
 	if ( this.gamepads )
 	{
@@ -5748,12 +5804,17 @@ AOZ.prototype.jUpRight = function( number, lock ) // BJF
 			}
 		}
 	}
+	*/
 	return this.lockJoystick( pressed, lock, 'upright' );
 };
 
 // Digital gamepad Down & Left function, but usually read as analog and converted to digital.
 AOZ.prototype.jDownLeft = function( number, lock ) // BJF
 {
+	var pressedDown = this.jDown(number,lock);
+	var pressedLeft = this.jLeft(number,lock);
+	var pressed = (pressedDown && pressedLeft) ? 1 : 0;
+	/**
 	var pressed = this.getKeyMapping( 'down' ) & this.getKeyMapping( 'left' );
 	if ( this.gamepads )
 	{
@@ -5766,12 +5827,18 @@ AOZ.prototype.jDownLeft = function( number, lock ) // BJF
 			}
 		}
 	}
+	*/
 	return this.lockJoystick( pressed, lock, 'downleft' );
 };
 
 // Digital gamepad Down & Right function, but usually read as analog and converted to digital.
 AOZ.prototype.jDownRight = function( number, lock ) // BJF
 {
+	var pressedDown = this.jDown(number,lock);
+	var pressedRight = this.jRight(number,lock);
+	var pressed = (pressedDown && pressedRight) ? 1 : 0;
+
+	/**
 	var pressed = this.getKeyMapping( 'down' ) & this.getKeyMapping( 'right' );
 	if ( this.gamepads )
 	{
@@ -5784,6 +5851,7 @@ AOZ.prototype.jDownRight = function( number, lock ) // BJF
 			}
 		}
 	}
+	*/
 	return this.lockJoystick( pressed, lock, 'downright' );
 }; 
 
