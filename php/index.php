@@ -1,5 +1,6 @@
 <?php
     require_once('../vendor/autoload.php');
+    header( "Access-Control-Allow-Origin: *" );
     header( "Content-Type: text/plain" );
     $authKey = '507c354c-b1da-2741-d19c-bd9b9053f55b:fx';
 
@@ -58,4 +59,3 @@
 
     die( $content );
 ?>
-
