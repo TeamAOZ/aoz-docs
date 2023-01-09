@@ -1,2 +1,0 @@
-# amiga-specific\_commands
-

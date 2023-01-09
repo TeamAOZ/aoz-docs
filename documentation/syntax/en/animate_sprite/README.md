@@ -1,2 +1,0 @@
-# animate\_sprite
-

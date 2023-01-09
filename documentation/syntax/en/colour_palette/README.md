@@ -1,2 +1,0 @@
-# colour\_palette
-

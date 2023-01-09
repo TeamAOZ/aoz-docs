@@ -1,2 +1,0 @@
-# rainbow\_commands
-
