@@ -1,0 +1,13 @@
+# UI Max
+<!--
+@name: UI Max
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the current |;max|; value of a UI component
+## Parameters
+
+- **id&dollar;**: The unique identifier of an existing UI component
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

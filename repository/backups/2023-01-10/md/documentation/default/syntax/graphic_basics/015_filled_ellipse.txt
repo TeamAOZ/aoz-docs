@@ -1,0 +1,25 @@
+# Filled Ellipse
+<!--
+@name: Filled Ellipse
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+
+Draw an filled ellipse with the current Ink and pattern definitions in the current screen
+## Parameters
+
+
+- **x**: The horizontal coordinate of the centre of the ellipse
+- **y**: The vertical coordinate of the centre of the ellipse
+- **xRadius**: The horizontal radius in pixels
+- **yradius**: The vertical radius in pixels
+- **rotation**: The angle of rotation of the ellipse
+- **fill**: Set to true to fill the ellipse.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEyNTc3MDU0NDEsMTIzMzA4NDkxM119
+-->

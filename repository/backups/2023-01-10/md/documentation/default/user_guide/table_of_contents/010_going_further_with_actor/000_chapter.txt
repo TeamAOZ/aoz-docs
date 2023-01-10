@@ -1,0 +1,10 @@
+# GOING FURTHER WITH ACTOR
+Please don|;t read this chapter before you have read the "First magic programs" and "More magic" chapters. We appreciate your eagerness, but first things first. We have given this chapter a clear title for a reason!
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjA3NjUxNzc1MywtMjU3NTU5MzE3LDczMD
+k5ODExNl19
+-->

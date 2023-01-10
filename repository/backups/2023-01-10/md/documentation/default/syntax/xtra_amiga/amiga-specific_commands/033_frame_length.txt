@@ -1,0 +1,16 @@
+# Frame Length
+<!--
+@name: Frame Length
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/notimp.png" valign="center" alt="Not implemented" title="Not implemented" /></div>
+
+Indicates if a file or directory exists on the disc
+## Parameters
+
+- **channel**: The index of the IFF channel
+- _nFrames_ (optional): An eventual number of frames to calculate
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

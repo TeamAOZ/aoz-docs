@@ -1,0 +1,17 @@
+# Console Open
+<!--
+@name: Console Open
+@description: 
+@tags: 
+@categories: 
+\-->
+Open a new console window in the current Text Window in the current screen
+## Parameters
+
+- **index**: The index of the new console
+- **string**: The text to be displayed at the beginning of each new line (default
+- **integer**: The index of the color of the background
+- **integer**: The index of the color of the font
+- **integer**: The writing to use (as defined for Text Windows)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

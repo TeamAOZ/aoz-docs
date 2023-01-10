@@ -1,0 +1,44 @@
+# Filled Ellipse
+<!--
+@name: Filled Ellipse
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Syntax
+
+**Filled Ellipse** *x*, *y*, *xRadius*, *yRadius*, *angle*
+
+## Parameters
+
+- **x**: The horizontal coordinate of the centre of the ellipse.
+- **y**: The vertical coordinate of the centre of the ellipse.
+- **xRadius**: The horizontal radius in pixels. If omitted default of 100 will be used.
+- **yRadius**: Optional. The vertical radius in pixels. If omitted, yRadius will be 2/3 of xRadius.
+- **angle**: Optional. The angle of rotation of the ellipse.
+
+## Description
+This instruction draws a filled ellipse using the current ink, fill and border settings in the current screen.
+
+## Example Code
+
+The following code draws a series of random filled ellipses.
+```basic
+for f=1 to 100
+	r=rnd(100 to 200)
+	m#=rnd(6 to 12)/4
+	ink rnd(2 to 62)
+	filled ellipse rnd(400 to 1520),rnd(400 to 680),r,r*m#,rnd(360)
+	wait 0.5
+next f
+```
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNTkzNjAwNDQxLDU2NDA3MTE0MywtNDA3OD
+Y2MDUxLC02NDEyNzE0NCwyMDU3NjU5ODkwLC0yNjg5MTU5Mzgs
+MTcwNzI0MTM3MiwtNDQ0OTk1MzAxLC0xMjU3NzA1NDQxLDEyMz
+MwODQ5MTNdfQ==
+-->

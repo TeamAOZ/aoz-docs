@@ -1,0 +1,15 @@
+# Gr Writing
+<!--
+@name: Gr Writing
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /></div>
+
+Set all graphical operations drawing mode. Warning work in progress incomplete support TODO!
+## Parameters
+
+- **style**: A set of bits indicating the process. Bit 0 = 0 only draw graphics using the current ink colour, Bit 0 = 1 replace any existing graphics with new graphics (default condition), Bit 1 = 1 change old graphics that overlap with new graphics, using XOR, Bit 2 = 1 reverse ink and paper colours, creating inverse video effect
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

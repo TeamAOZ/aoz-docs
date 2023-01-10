@@ -1,0 +1,33 @@
+# Database query commands
+
+AOZ Studio allows you to store information in the form of structured databases, hosted on the AOZ Cloud or elsewhere.
+
+- Without you having to install SQL on a server and manage your data structures: AOZ will do the work for you.
+- Without you having to be an expert in databases or SQL language, 
+
+As always you will find more info in the AOZ USER GUIDE with examples of code using databases DB instructions.
+
+---
+
+### Small glossary
+
+To use these instructions wisely, understand the basic principles of database organization:
+
+- A **field** works like a variable in AOZ: it is used to store data and is identified by its **name**. As with AOZ variables, a field name ending with $ is used to store characters, with # float numbers. Without these special characters, it will be an integer.
+- A **record** is used to group several **fields**.
+  The fields are stored in a record. For example a record made of the fields name, address, date of birth, telephone number.
+  A record is identified by a single pointer, often called **id**.
+- A **table** is used to store several **records** of  identical structure, i.e. grouping the same list of **fields**. A table is identified by its **name**. We can see a table as a… table with one column per field, and one row per record, in which we will store values.
+- A **database** allows you to organize several **tables** together. Related tables will be grouped together in the same database. Most often an application will need a single database where all the data concerning it will be stored.
+
+![Two tables, with data, displayed into two two-dimensional arrays, with the indication of what is a field (the head of the column) and a record (a row)](https://doc.aoz.studio/assets/images/en/image200.png)
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNzcwNTU1NjA5XX0=
+-->
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE3MjA5ODQyMjEsMTA4ODQ1OTU1OF19
+-->

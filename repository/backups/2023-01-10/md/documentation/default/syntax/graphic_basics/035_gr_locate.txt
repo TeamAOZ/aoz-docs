@@ -1,0 +1,14 @@
+# Gr Locate
+<!--
+@name: Gr Locate
+@description: 
+@tags: 
+@categories: 
+\-->
+Position the graphical cursor in the current screen. Next instructions like "Draw To" (or any graphical instruction wheree the X and Y coordinates are ommited) will starrt from this position
+## Parameters
+
+- **x**: The horizontal coordinate in pixels
+- **y**: The horizontal coordinate in pixels
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

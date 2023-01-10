@@ -1,0 +1,14 @@
+# Firebase QueryGet
+<!--
+@name: Firebase QueryGet
+@description: 
+@tags: 
+@categories: 
+\-->
+Retrieve the documents from a Firestore collection query
+## Parameters
+
+- **queryRef&dollar;**: The reference to a query created with the Firebase NewQuery&dollar;() function
+- **limit**: Optional paramter to limit the number of documents to retrieve, all documents are returned by default
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

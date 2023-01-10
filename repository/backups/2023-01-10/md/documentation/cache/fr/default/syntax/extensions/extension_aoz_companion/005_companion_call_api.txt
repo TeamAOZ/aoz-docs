@@ -1,0 +1,18 @@
+# Companion Call API
+<!--
+@name: Companion Call API
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Send a command to the channel of the Companion server|;s API. This function does not wait for the end of the execution of the command.
+## Parameters
+
+- **index**: The index of the channel with the API to close
+- **command&dollar;**: The name of the command to execute.
+- **param**: An parameter to be send with the command
+- **extra**: An eventual extra parameter that will be return UNCHANGED in the server's response.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

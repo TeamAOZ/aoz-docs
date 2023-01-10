@@ -1,0 +1,60 @@
+# THE BIG PICTURE
+
+This chapter gives you an overview of AOZ Studio and the AOZ language. If you are impatient and want to move on to the next hands-on chapter to create your own program, that's fine.
+
+**KEYWORDS AND SYNTAX**
+Every big picture needs the perfect frame. The framework for AOZ the language, consists of a load of simple instructions (or keywords), and like any other language it uses them and a set of rules called syntax to compose everything together. Instructions and syntax - that's all you need to create your wonders. Like any other language there is a huge vocabulary of instructions, more than 1.400 in AOZ, and a wide range of simple syntax. But don't worry about them, you may start with a dozen. As you create your magic, AOZ Studio will not only recommend instructions, it will also help you with the syntax.
+
+**BASIC**
+We use a type of language known as BASIC, which stands for Beginner's All-purpose Symbolic Instruction Code. Or it could stand for Build A Super Incredible Creation.
+All instructions are defined within the AOZ language itself, and everything is what we call modular, which is just another way of saying that all the building blocks you need for your creations are built in and you can combine them and arrange them as you wish.
+AOZ uses the BASIC standard as a base, but has extended it very widely in these capabilities (including the ability to do what is called the object language).  
+
+**SIMPLE AND POWERFUL**
+AOZ is easy to learn, it's also very powerful, which makes it ideal for hardened professionals too. It is very simple and it is also very deep, with a superfast development cycle for you to create your dream game, mobile application or website, all in a fraction of the time needed with other tools. But just because it's easy, that doesn't mean to say AOZ isn't very powerful. You have the power to control as many objects on your screen as you want. Best of all, because AOZ lets your computer handle huge amounts of data and screen pixels all at the same time, your applications will run very fast indeed.
+
+**GETTING SERIOUS**
+If your interest is not so much in computer gaming and more in serious matters, then you won't be disappointed. You will be able to create some very serious applications with AOZ, including databases, utilities, user interfaces.
+
+**MODERN, UNIVERSAL AND FAST**
+Your AOZ applications may run on computers, smartphones, and any devices using a Web browser, with modern doodahs like node.js and JavaScript libraries.
+AOZ Studio also allows a simple way to define your own new instructions and functions. In other words, if you need something then you can invent it yourself. Your new instructions and functions can be then be used in your own applications, published on the Internet and reused by others.
+Best of all, you can program your new instructions in AOZ itself using nothing but simple AOZ instructions, but you also can use JavaScript if you like. Make new tools with the existing tools, program your language using our language.
+
+**TRANSPILER**
+AOZ Studio includes what professionals call a transpiler.
+A transpiler is a smart utility that takes code from one language and converts it into another language, like a translator. In this case the AOZ transpiler takes code from the AOZ language, the one that you are already using, and translates it into something called JavaScript and something called HTML5 code. This is the code that fancy websites run on. Your AOZ code becomes superfast and very portable, it does all the hard work for you, and it gives you amazing control over graphics, animations and audio. Very importantly, your code will be compatible to run on all Web browsers on any machine like a PC, MAC and smartphones, and you will see later that it will also run as standalone apps (.exe for PC, .apk for Android,…).
+So to summarize, your program made with the AOZ language is converted by AOZ Studio into JavaScript, the most commonly used language. It was important for us to help you move from one language to another. You can mix AOZ and Javascript, but we bet you'll mostly use AOZ, like many professional developers because programming is twice as fast, and fun with it.
+
+**FREE OR FEE**  
+We are so nice that we have made a free version of AOZ Studio and it is open source. That means you are welcome to use AOZ for free. We hope you like it so much you'll want to pay us an extremely modest license fee because we have to eat and make the magic potions!
+- The free version is complete and you can create an unlimited number of programs with it, but publish a max of 3 and have a limited amount of storage in the AOZ Cloud. It includes some advertising and you, only you, are allowed to use your own wonders.
+- The license fee (Paid version) has no adverts, and it allows you to share your creations, publish them or sell them to anyone and everyone without paying us any royalties. After all, you should keep all the rewards.
+-see: [AOZ Studio Prices](https://www.aoz.studio/price)
+
+And we are so nice that it is our policy that non-profit and humanitarian organizations will always get the full product for free.
+
+If you are an advanced coder, remember the AOZ code is Open Source (Public Domain). You can create your own branches, optimize the code, and insert your own coding ideas and improvements. You will be more than welcome to help in the development of AOZ Studio.
+
+-----------------
+
+No matter if you are advanced coder, a lazy programmer or a rookie, you are very welcome to join us on DISCORD (it’s a Chat app), you will meet a great community of Magicians who will help you, and will talk with the AOZ Studio team. Also see the tutorials on Youtube to start with:
+<p align="middle" width="100%">
+	<a href="https://discord.com/invite/JmFyFRAcenter">
+		<img src=" https://doc.aoz.studio/assets/images/common/discord.png" width="56px" valign="middle" target="_new" /></a>&nbsp;&nbsp;
+		<a href="https://www.youtube.com/@aozstudio9841/videos"><img src="https://doc.aoz.studio/assets/images/common/youtube.png" width="56px" valign="middle" targer="_new" />
+			</a>
+</p>
+<p align="center"> 
+<b>Discover the magic, break the codes!</b></p>
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTA0Mjc2NjU1NSwxNzA0NjQ4ODA3LC0xMD
+gxNDExMTAwLDE3MDQ2NDg4MDcsMTg1MzM4Mjc3NiwtMTM0NzUy
+MTQ0LDExNTY1NjI0MDEsLTExMjgwNjA4NjcsLTQ0NDg1MDQ2LC
+0xNjMxMDgyMjI0LDU4MTIwODk4Miw0MDMzODAzNDcsMzc2NTky
+MzQ5LC0xMDk1ODgyOTAyXX0=
+-->

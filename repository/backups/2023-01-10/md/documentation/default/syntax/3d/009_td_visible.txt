@@ -1,0 +1,14 @@
+# Td Visible
+<!--
+@name: Td Visible
+@description: 
+@tags: 
+@categories: 
+\-->
+Rend un objet 3D Visible ou Invisible
+## Parameters
+
+- **ObjectName&dollar;**: Nom de l'objet 3D concerné
+- **Visible**: Si True, l'objet sera visible, sinon il sera invisible.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

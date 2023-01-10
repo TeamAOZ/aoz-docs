@@ -1,0 +1,19 @@
+# Draw Image
+<!--
+@name: Draw Image
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Draw an image loaded with "Load Asset" command, in the current screen, with a specific size
+## Parameters
+
+- **image**: Index of Image.
+- **x**: Position X on the current Screen in pixel.
+- **y**: Position Y on the current Screen in pixel.
+- **width**: Width on the current Screen in pixel.
+- **height**: Height on the current Screen in pixel.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

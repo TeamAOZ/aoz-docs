@@ -1,0 +1,21 @@
+# JSON Open
+<!--
+@name: JSON Open
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+
+Open a JSON channel, enabling you to load or create JSON files
+## Parameters
+
+
+- **index**: Index of the channel
+- **tags**: Unused, for future expansion
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTg2ODE1MzExXX0=
+-->

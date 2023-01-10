@@ -1,0 +1,15 @@
+# Instr
+<!--
+@name: Instr
+@description: 
+@tags: 
+@categories: 
+\-->
+Search for occurrences of one sub-string within another string
+## Parameters
+
+- **host&dollar;**: The string to search into
+- **guest&dollar;**: The sub-string to search
+- _start_ (optional): Option first character position to start the search
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

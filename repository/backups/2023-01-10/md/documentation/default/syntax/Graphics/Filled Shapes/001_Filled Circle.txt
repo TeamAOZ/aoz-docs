@@ -1,0 +1,46 @@
+# Filled Circle
+
+<!--
+@name: Disc
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+
+## Syntax
+
+**Filled Circle** *x*, *y*, *radius*
+
+## Parameters
+
+
+- **x**: The horizontal coordinate of the centre of the circle
+- **y**: The vertical coordinate of the centre of the circle
+- **radius**: Optional. The radius of the circle in pixels. If omitted, defaults to 100.
+
+## Description
+
+Draw a filled circle with the current ink, fill and border settings in the current screen.
+
+## Example Code
+
+The following code draws randomly sized and coloured filled circles.
+```basic
+for f=1 to 100
+	r=rnd(100 to 200)
+	ink rnd(2 to 62)
+	filled circle rnd(200 to 1720),rnd(200 to 880),r
+	wait 0.5
+next f
+```
+
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTYyOTg0OTQxMCwtOTc5MjI3NDg1LDg5ND
+UxODQxMiwtMTE1MjkwMDk0MywtMTYwOTQ0MzkxMywtNTU4NDU1
+NDY0LC03NTYwNzM0MzcsLTI3MzAzMjgzNywtMTU3MjgxMTI5MF
+19
+-->

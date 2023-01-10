@@ -1,0 +1,15 @@
+# Bob Skew
+<!--
+@name: Bob Skew
+@description: 
+@tags: 
+@categories: 
+\-->
+Distorts a bob horizontally or vertically
+## Parameters
+
+- **index**: Index of the bob in the list of active bobs
+- **skewX#**: Horizontal skew, values should be experimented. 0 displays the bob in original proportions
+- **skewY#**: Vertical skew, values should be experimented. 0 displays the bob in original proportions
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

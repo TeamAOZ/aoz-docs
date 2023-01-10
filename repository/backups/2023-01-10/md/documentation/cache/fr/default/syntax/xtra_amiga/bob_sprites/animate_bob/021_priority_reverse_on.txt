@@ -1,0 +1,11 @@
+# Priority Reverse On
+<!--
+@name: Priority Reverse On
+@description: 
+@tags: 
+@categories: 
+\-->
+Inverts the Z-Order of the bobs in the current screen if Priority is activated. After this instruction, bobs with the highest Y coordinate will be displayed in the back of others
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

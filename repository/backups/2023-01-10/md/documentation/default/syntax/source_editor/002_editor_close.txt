@@ -1,0 +1,13 @@
+# Editor Close
+<!--
+@name: Editor Close
+@description: 
+@tags: 
+@categories: 
+\-->
+Close an open editor and removes it from memory
+## Parameters
+
+- **index**: The index of the source editor to close
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,17 @@
+# Editor Findline
+<!--
+@name: Editor Findline
+@description: 
+@tags: 
+@categories: 
+\-->
+Search the text for a given string and return the number of the line containing the text
+## Parameters
+
+- **index**: The index of the source editor
+- **string**: The text to look for
+- **integer**: Optional number of line to start the search
+- **boolean**: Do the search backward if True, default = False
+- **boolean**: Perform the search taking case into account. Default = False
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

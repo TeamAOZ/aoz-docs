@@ -1,0 +1,13 @@
+# Renderer Filter
+<!--
+@name: Renderer Filter
+@description: 
+@tags: 
+@categories: 
+\-->
+Return the current value of the given filter
+## Parameters
+
+- **paramNumber**: Optional parameter indicating the number of the parameter to return. 1 as a default (used by most filters), 1 to 4 for the drop-shadow filter.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

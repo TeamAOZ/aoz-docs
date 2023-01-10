@@ -1,0 +1,13 @@
+# Upper&dollar;
+<!--
+@name: Upper&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Convert a string of text to upper-case
+## Parameters
+
+- **string&dollar;**: The string to convert
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,14 @@
+# UI Property
+<!--
+@name: UI Property
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the value of a UI component property.
+## Parameters
+
+- **id&dollar;**: The unique identifier of an existing UI component
+- **propertyName&dollar;**: The name of a UI Component property
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

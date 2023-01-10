@@ -1,0 +1,81 @@
+# Border Filter
+<!--
+@name: Border Filter
+@description: 
+@tags: 
+@categories: 
+\-->
+
+## Syntax
+
+**Border Filter** *filterName$, value1, value2, value3, value4*
+
+## Parameters
+
+- **filterName$**: Name of the filter to use (see list)
+- **value1**: First value to use, a percentage or a number of pixels, depending on the filter
+- **value2**: Second value to use, a number of pixels, only used on drop-shadow filter
+- **value3**: Third value to use, the blur value, only used on drop-shadow filter
+- **value4**: Fourth value to use, $RRGGBBAA or $RRGGBB color value, only used on drop-shadow filter
+
+## Description
+
+This instruction applies one of the filters listed below to any borders that are subsequently drawn around shapes or texts.
+
+The name, so the effect of the filter is specified in the first parameter,  filterName$, and can be one of the following list, along with the first, second third and fourth parameter, which and type depend on the filter itself.
+
+### Parameter Requirements
+
+- **Border Filter** *"blur", value1#*  : Applies a Gaussian blur to the border. The parameter defines the value of the standard deviation to the Gaussian function, i.e., how many pixels on the screen blend into each other, thus, a larger value will create more blur. A value of 0 leaves the input unchanged.
+
+- **Border Filter** *"brightness", value1* :  Applies a linear multiplier to the border, making it appear brighter or darker.   A value under 100% darkens the image, while a value over 100% brightens it.  A value of 0% will create an image that is completely black, while a value of 100% leaves the input unchanged.
+
+- **Border Filter** *"contrast", value1* :  Adjusts the contrast of the border. A value of 0% will create a drawing that is completely black. A value of 100% leaves the drawing unchanged.
+
+- **Border Filter** *"grayscale", value1* : Converts the border to grayscale. A value of 100% is completely grayscale.
+  A value of 0% leaves the drawing unchanged.
+
+- **Border Filter** *"hue-rotate", value1* : Applies a hue rotation to the border. The value is expressed in degrees. 0 leaves the input unchanged.
+
+- **Border Filter** *"invert", value1* : Inverts the border. A value of 100% means complete inversion.
+  A value of 0% leaves the drawing unchanged.
+
+- **Border Filter** *"opacity", value1*  : Applies transparency to the screen. A value of 0% means completely transparent.
+  A value of 100% leaves the drawing unchanged.
+
+- **Border Filter** *"saturate", value*  : Saturates the screen. A value of 0% means completely un-saturated.
+  A value of 100% leaves the drawing unchanged.
+
+- **Border Filter** *"sepia", value1*  : Converts the border to sepia. A value of 100% means completely sepia.
+  A value of 0% leaves the drawing unchanged.
+  
+ - **Border Filter** *"drop-shadow", value1, value2, value3, value4*  : Applies a drop shadow effect to the drawing. A drop shadow is effectively a blurred, offset version of the drawing's alpha mask drawn in a particular color, composited below the drawing.
+ 
+Multiple filters can be used at the same time. For example, it is possible to display a blurred sepia version of a circle, with two Border Filter instructions before the actual drawing. Use Border Filter Del to remove one or all filters. 
+
+Please note that like every complex graphical operation, Filters will slow down the display or the drawing,
+specially complex filters like blur or drop-shadows. It is suggested to only use filters at key points, or
+key graphics of your application and not everywhere.
+
+## Example Code
+
+This example draws three red circles with white borders, the first without any filters, the second with a blur filter applied, and the third with the blur filter and Border First turned on. Note the the blurring of the border doesn't cover the third circle.
+
+```basic
+ink 6
+border on
+border ink 1 : colour 1,$5050a0
+line width 40
+Circle 600,540,300,1
+Border Filter "drop-shadow",20,20,10,$ffffff60
+border filter "invert",100
+Circle 1320,540,300,1
+```
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTY0MzkyOTM5NCw5MTYyMDc1MDMsMzUxNT
+QyNzUyLC00NDM1NjI4NzksLTExNjU4NDQzMjIsLTExNTAxMjU0
+MjIsMTE0MTc5MzkwNiwtMjA5NDQ3MTY4NSwxNzc4OTg4ODIyLC
+03MTM5Njc0MDNdfQ==
+-->

@@ -1,0 +1,14 @@
+# Open URL
+<!--
+@name: Open URL
+@description: 
+@tags: 
+@categories: 
+\-->
+Open a URL in window
+## Parameters
+
+- **URL&dollar;**: Address will be opened into a window ( "www.aoz.studio" by example )
+- _WIN&dollar;_ (optional): Name of the window to display this URL ('_self' by default )
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,45 @@
+# Linear Border Gradient
+<!--
+@name: Linear Border Gradient
+@description: 
+@tags: 
+@categories: 
+\-->
+## Syntax
+**Linear Border Gradient** *x1*, *y1*, *x2*, *y2*, *color$*
+
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Parameters
+
+- **x1**: The horizontal coordinate of the start of the gradient line.
+- **y1**: The vertical coordinate of the start of the gradient line.
+- **x2**: The horizontal coordinate of the end of the gradient line.
+- **y2**: The vertical coordinate of the end of the gradient line.
+- **color&dollar;**: The colour stop definition string. Each colour stops consists of a number which represents a point along the gradient given as a percentage and a colour, which can be either a standard Javascript colour name, or an RGB or RGBA number in the in AOZ format or  Javascript format (see example below)
+
+## Description
+Define a linear gradient that will be used as a fill pattern in any borders drawn around shapes or text.
+
+Use this instruction to create a colour gradient that can be used as a fill pattern for borders around drawn shapes and text. The gradient shading will begin at the start point of the gradient line, and shade from one colour to the next in the direction of the end point of the line.
+
+It is important to note that the complete gradient fill pattern is like a hidden screen, and will be the same size as the current screen, the fill on the screen will take place using the colour pattern from the corresponding position on the fill 'screen'.
+
+Also, if a border gradient is defined, it will over-ride any other border fill settings, such as border fill image.
+
+## Example Code
+This example has a linear border gradient that runs horizontally from left to right across the border aound the square.
+```basic
+ Ink 6,,1
+ Border On
+ Line Width 50
+ Linear Border Gradient 660,0,1260,0,"0,white,25,green,50,aqua,75,yellow,100,grey"
+ Bar 660,240,600,600
+ ```
+ 
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTExMTYzODI1MjUsLTU0NzAyNDkwLC04MD
+MyMDAzNDcsMTI3Mzc0Nzk3LDEzMTI0NzQxMDAsLTEwMTA2MDE4
+NDJdfQ==
+-->

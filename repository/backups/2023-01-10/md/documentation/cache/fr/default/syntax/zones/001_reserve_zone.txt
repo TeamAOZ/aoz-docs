@@ -1,0 +1,13 @@
+# Reserve Zone
+<!--
+@name: Reserve Zone
+@description: 
+@tags: 
+@categories: 
+\-->
+Reserve memory to store graphical detection zones in the current screen
+## Parameters
+
+- _number_ (optional): The number of zones to allocate. If ommited all zones will be erased (not deprecated without parameter)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,16 @@
+# Rainbow
+<!--
+@name: Rainbow
+@description: 
+@tags: 
+@categories: 
+\-->
+Define the display of a rainbow already create with "Set Rainbow"
+## Parameters
+
+- **index**: The index of the rainbow to display
+- **offset**: The position within the internal color buffer to display ont he first line of display
+- **position**: The horizontal position on
+- **height**: The height of the rainbow on display in pixels
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

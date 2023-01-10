@@ -1,0 +1,15 @@
+# On Menu Gosub
+<!--
+@name: On Menu Gosub
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/notimp.png" valign="center" alt="Not implemented" title="Not implemented" /></div>
+
+Automatic menu
+## Parameters
+
+- **label**: The name of a label in the curretn application, or a string containging the name that will be resolved at runtime.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

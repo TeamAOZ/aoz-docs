@@ -1,0 +1,41 @@
+# Publish in One Click
+
+AOZ Studio makes it easy to create, but also to publish and share your programs.
+
+Rather than finding a server to host your program, installing the services you need, creating a URL, DNS,… notions that we will see later, AOZ Studio does all this for you automatically with the **Share your Project button** also called PUBLISH that you will find on the top with all the other main icons. It offers two features to share your program:
+- Create an AOZ link: that is to generate a web link (URL) and its QR code
+- Publish your project: in the AOZ Store (will be open later in 2023)
+
+## Some explanations
+
+**How to use the link and the QR code of my program?**
+When you are going to use PUBLISH, it creates a unique URL (an internet link) and its QR code for your program, usable on any device with an Internet browser, such as Computers and Smartphones (if you take a picture of the QR code, this will activate the URL link in the default browser).
+
+**Where are my apps stored when I use PUBLISH?**
+Your programs are converted into HTML and Javascript (the language of internet browsers) and are stored on AOZ Studio's servers. 
+Note, as stated in your contract with AOZ Studio, that we are not responsible for any use, loss whatsoever, in connection with your applications or the use of AOZ Studio (it is always good to recall) , **always keep a copy of your source programs**. 
+
+**Is it associated with an account, a unique identifier?**
+Yes, the one you can see on your User Account (see your profile on the top right icon).
+We are building the AOZ Store. A kind of digital store in which you can find the programs that you have published, those that you want to share, or even sell. Please note that for the moment the security management is very basic
+
+**Limits of the Free license of AOZ Studio** **☹?**
+With the Free version you can use AOZ Studio without limit, without paying for any option and for all devices,… but:
+-- You can publish up to 3 apps, and remember: only **for your own personal use**. Otherwise you need a licence. 
+-- We cannot guarantee the permanent presence of your published programs with the Free version.
+-- There is a limit to free storage, well enough to start.
+
+## Now we publish our work!
+Select "Create an AOZ link", wait a bit and you will have a screen like below with an internet link (URL) and the corresponding QR code for computers and smartphones!
+
+![Publish](https://doc.aoz.studio/assets/images/en/image087.png)
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTExNTM0NzY3MjUsLTIwNDMyMzQ1MywxMD
+kyMzQyMzkxLC0xMTc4OTE3ODY5LDE1MjgyNDI5NzUsLTg3NjI3
+NTYxNiwtMTMwNDA1NDkyNSwtNTk4MzE5MTEsMTUyMTcwNzc5My
+w4NzAyMzIwMjYsNzMwOTk4MTE2XX0=
+-->

@@ -1,0 +1,16 @@
+# Robot Connect
+<!--
+@name: Robot Connect
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Establishes the connection with a local server, if it is running.
+## Parameters
+
+- **onMessage&dollar;**: The name of a procedure to call when a message is received from the companion server
+- **onError&dollar;**: The name of a procedure to call when an error occurs.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

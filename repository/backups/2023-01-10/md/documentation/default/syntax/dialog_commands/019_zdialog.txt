@@ -1,0 +1,17 @@
+# ZDialog
+<!--
+@name: ZDialog
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/notimp.png" valign="center" alt="Not implemented" title="Not implemented" /></div>
+
+Return the Z position of a dialog (?)
+## Parameters
+
+- **channel**: 
+- **param1**: 
+- **param2**: 
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

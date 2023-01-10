@@ -1,0 +1,11 @@
+# Bob Update On
+<!--
+@name: Bob Update On
+@description: 
+@tags: 
+@categories: 
+\-->
+Turns on the automatic bob coordinate update system. After it, the effect of all "Bob" instructions will be visible on display without intervention on yoru part.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

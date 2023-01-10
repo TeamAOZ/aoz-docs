@@ -1,0 +1,18 @@
+# Sprite
+<!--
+@name: Sprite
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Create or change a sprite, and return it|;s object
+## Parameters
+
+- **index**: Index of the sprite in the list of sprites
+- _x_ (optional): Horizontal position of the sprite in the screen
+- _y_ (optional): Vertical position of the sprite in the screen
+- **image**: Index of the image in the "Images" bank
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

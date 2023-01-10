@@ -1,0 +1,18 @@
+# Open View
+<!--
+@name: Open View
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Open a view to display a map on the current screen
+## Parameters
+
+- **viewName&dollar;**: Name of the view
+- **mapIndex&dollar;**: Name of the map
+- **tileSetIndex&dollar;**: Name of the tileset
+- _layerIndex_ (optional): Index of the layer in the current map, will use the first one if ommited
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

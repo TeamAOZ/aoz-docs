@@ -1,0 +1,16 @@
+# Dom Value
+<!--
+@name: Dom Value
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+If the HTML Element is a element of form (input, list, radio, option...), you can to set the value of this element (text, selected...)
+## Parameters
+
+- **elementId&dollar;**: ID of this element.
+- **value&dollar;**: Value to assign at this element.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,19 @@
+# Display View
+<!--
+@name: Display View
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Set the position and the size of the view on the current screen
+## Parameters
+
+- **viewName&dollar;**: Name of the view
+- **X**: Position X in pixel of the view on the current Screen
+- **Y**: Position Y in pixel of the view on the current Screen
+- **width**: Width of the view in pixel
+- **height**: Height of the view in pixel
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

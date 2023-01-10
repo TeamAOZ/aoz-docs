@@ -1,0 +1,28 @@
+# Set Paint
+<!--
+@name: Set Paint
+@description: 
+@tags: 
+@categories: 
+\-->
+ **Deprecated -** Use **Border On** / **Border Off** instead
+## Syntax 
+**Set Paint** *onOff*
+<div class="compatibility"><span>Compatibility  </span>
+<img src="https://doc.aoz.studio/assets/images/common/compatibility/deprecated.png" valign="center" alt="AOZ" title="AOZ" />
+<img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+
+## Parameters
+
+- **onOff**: Set to true or 1 for on, false or 0 for off.
+---
+## Description
+When Set Paint is activated, all subsequent shapes drawn will have a outline border, drawn using the current line settings and the current Border Ink colour, Border Pattern or Border Fill Image.
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEyOTExNzU0NzAsMjAxMzQwNjc1NywtMT
+A1ODU5MDc3MCw5NDgwMjY0MDUsMzgyNzc4MjQ1LC0xNjUyOTA1
+NTQ5LDE3Mzc4MzA2ODBdfQ==
+-->

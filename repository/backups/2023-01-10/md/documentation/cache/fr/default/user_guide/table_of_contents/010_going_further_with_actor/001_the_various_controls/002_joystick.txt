@@ -1,0 +1,22 @@
+# JOYSTICK
+As we saw in one of the early examples in _Moving the actor with the Joystick_, we can associate a joystick with our actor to control it. Many joysticks can be connected to the computer, and they are numbered by their logical order. The first joystick will be the 0 (zero), the second will be the 1. Yes we know it doesn't make sense, but it comes from the origin of Personal Computers, in an age when people were weird.
+
+Try this sample code (with a Joystick):
+```basic
+Actor "magician", Image$="magic.png", Control$="Joystick"
+```
+And this sample one:
+```basic
+Actor "magician", Control$ = "JoyLeft0: angle=-4; JoyRight0: angle=4; JoyUp0: forward=4; JoyDown0: backward=4", Image$="magic.png"  
+```
+
+Note: if your joystick is well connected to your PC but is not recognized, close and relaunch AOZ Studio. If this is still not working check if it is recognized by your computer (for example, playing a game).
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE5MDQ4MjY4OTQsNjI5NTE3NDU0LC0zNT
+g5NjI1NDIsMTIwNjAwNTMyMCw3MzA5OTgxMTZdfQ==
+-->

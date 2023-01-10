@@ -1,0 +1,18 @@
+# QRCode Create
+<!--
+@name: QRCode Create
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Create an QRCode image from a text and assign it to an image number.
+## Parameters
+
+- **text&dollar;**: Text associated to the QRCode.
+- **imageIndex**: Index of the image to use with the BOB instructions
+- **width**: Width of the QRCode Image
+- **height**: Height of the QRCode Image
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

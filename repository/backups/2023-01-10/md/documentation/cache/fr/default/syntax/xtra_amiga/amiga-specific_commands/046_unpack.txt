@@ -1,0 +1,18 @@
+# Unpack
+<!--
+@name: Unpack
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/notimp.png" valign="center" alt="Not implemented" title="Not implemented" /></div>
+
+Unpack a compacted screen
+## Parameters
+
+- **bank**: Index of the screen
+- _x_ (optional): Coordinate of top-left corner of rectangle to unpack to
+- _y_ (optional): Coordinate of top-left corner of rectangle to unpack to
+- _screen_ (optional): Index of the screen to unpack the image to
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

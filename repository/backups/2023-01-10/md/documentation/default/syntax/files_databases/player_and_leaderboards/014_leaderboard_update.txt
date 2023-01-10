@@ -1,0 +1,14 @@
+# Leaderboard Update
+<!--
+@name: Leaderboard Update
+@description: 
+@tags: 
+@categories: 
+\-->
+Updates or adds a players leaderboard entry with the given value.
+## Parameters
+
+- **leaderboardName&dollar;**: The leaderboard name
+- **value**: The value of the players leaderboard entry
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

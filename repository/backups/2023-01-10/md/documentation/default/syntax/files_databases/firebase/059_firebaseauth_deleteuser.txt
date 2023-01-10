@@ -1,0 +1,13 @@
+# FirebaseAuth DeleteUser
+<!--
+@name: FirebaseAuth DeleteUser
+@description: 
+@tags: 
+@categories: 
+\-->
+Delete the account for the user currently signed into your Firebase web application
+## Parameters
+
+- **onCompleted&dollar;**: The name of a procedure to be called once the account has been deleted
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

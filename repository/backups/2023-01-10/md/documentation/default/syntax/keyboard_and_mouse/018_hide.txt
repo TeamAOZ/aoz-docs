@@ -1,0 +1,11 @@
+# Hide
+<!--
+@name: Hide
+@description: 
+@tags: 
+@categories: 
+\-->
+Hide the mouse pointer
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

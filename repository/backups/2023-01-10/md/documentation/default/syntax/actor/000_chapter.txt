@@ -1,0 +1,11 @@
+# actor
+
+Display, animate and control 
+- Images in 2D, 3D, 
+- videos, as well as, 
+- graphical texts.
+
+Actor is the most powerful graphic instruction in the AOZ language.
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNjcxMzM2MTk0XX0=
+-->

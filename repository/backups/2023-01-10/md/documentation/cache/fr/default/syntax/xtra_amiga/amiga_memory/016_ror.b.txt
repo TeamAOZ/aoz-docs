@@ -1,0 +1,14 @@
+# Ror.b
+<!--
+@name: Ror.b
+@description: 
+@tags: 
+@categories: 
+\-->
+Rotate the content of an integer variable to the right on the first 8 bits
+## Parameters
+
+- **number**: The number or shifts
+- **variable**: The integer variable to rotate
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,14 @@
+# UI Value
+<!--
+@name: UI Value
+@description: 
+@tags: 
+@categories: 
+\-->
+Updates ths value of a UI Component.
+## Parameters
+
+- **id&dollar;**: The unique identifier for the component you want to set its value.
+- **value&dollar;**: The value used to update the component.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

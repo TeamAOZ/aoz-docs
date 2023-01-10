@@ -1,0 +1,15 @@
+# WebSocket Open
+<!--
+@name: WebSocket Open
+@description: 
+@tags: 
+@categories: 
+\-->
+Open a Web Socket channel, enabling you to send and receive messages and files
+## Parameters
+
+- **index**: Index of the channel
+- **url&dollar;**: URL of the server
+- **protocol&dollar;**: List of sub-protocols, as described in the Javascript WebSocket object documentation.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

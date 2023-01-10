@@ -1,0 +1,17 @@
+#  BOT Turn
+<!--
+@name:  BOT Turn
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Turn the connected Bot to the left or the right.
+## Parameters
+
+- **direction&dollar;**: "left" or "right"
+- **speed**: The speed at which to move Bot. A positive value indicate a move forward, and a negative a move backward, ranging from -200 to 200.
+- **duration**: The duration of the movement, in seconds, ranging from 0 to ﹢∞, in seconds. When "null", it indicates that Bot keeps moving at the specified speed until it receives a command instructing it to stop moving.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,19 @@
+# Group$ Actors
+Even better, we can associate several Actors in a group (for example the “monster” group) and test an Actor and a group:
+```basic
+Actor "monster1", Image$ = "monster1.png", Group$ = "monster"
+Actor "monster2", Image$ = "monster2.png", Group$ = "monster"
+If Actor Col ("magic", Group$= "monster" ) = True Then ... 
+```
+See the MagicBird tutorial (mini game) as an example. There is also a video tutorial of it on the AOZ Studio YouTube channel.
+
+With AOZ, the collisions work to the nearest pixel ("pixel perfect") and not when the boxes surrounding the actors touch each other, so it's much more precise. 
+<p align="center"><img src="https:\\doc.aoz.studio\assets\images\en/image074.png" align="center" /></p>
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTc4NTMzNTEyOCwzMTcyNDk5MTYsODcwMj
+MyMDI2LDczMDk5ODExNl19
+-->

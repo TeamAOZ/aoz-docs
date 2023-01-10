@@ -1,0 +1,13 @@
+# String Base Index
+<!--
+@name: String Base Index
+@description: 
+@tags: 
+@categories: 
+\-->
+Set the base index of string functions like Mid&dollar;, Left&dollar; or Right&dollar;
+## Parameters
+
+- **index**: the value of the new index, 0 or 1.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

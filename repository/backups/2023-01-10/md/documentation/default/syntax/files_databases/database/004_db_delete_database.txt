@@ -1,0 +1,51 @@
+# DB Delete Database
+<!--
+@name: DB Delete Database
+@description: 
+@tags: 
+@categories: 
+\-->
+
+Delete a database.
+
+## Description
+
+`DB Delete Database DB$, Share$`
+
+This instruction should be used for maintenance purpose only, to clean-up some tests you've done and purge databases you will not use anymore.
+The database is identified by its name and the sharing mode.
+It will be definitively deleted, and all data will be loss, so you should be very careful when you use this!
+
+## Parameters
+
+- `DB$`: The name of the database to delete (will be unique into each sharing mode). If empty or absent, the currently selected database will be deleted.
+- `Share$`: The database sharing mode.
+
+## Examples
+
+```basic
+// Definitively deletes the current database, and all its associated data:
+DB Delete Database
+
+// Definitively deletes another database, which sharing mode is private for the user and application, and all its associated data:
+DB Delete Database "my-database"
+
+// Definitively deletes another database, shared with all users of the current application, and all its associated data:
+DB Delete Database "application-database", "application"
+```
+
+## See Also
+
+- `DB Database`
+- `DB Delete Column`
+- `DB Delete Record`
+- `DB Delete Table`
+- `DB Rename Database`
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1NTA2OTMyMTEsMTA0MDkyNTE1NywtMT
+Q2NjM1MDAzXX0=
+-->

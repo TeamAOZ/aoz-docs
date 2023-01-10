@@ -1,0 +1,80 @@
+# DB Sql
+<!--
+@name: DB Sql
+@description: Executes a SQL query 
+@tags:
+@categories: 
+\-->
+
+Executes any SQL query accepted by the AOZ SQL engine.
+
+## Description
+
+`DB Sql Query$`
+
+If the query returns results (e.g. `SELECT`, `SHOW`), you will be allowed to navigate through them using `DB First`, `DB Next`, `DB Last`, `DB Previous`, and `DB Pointer()`. 
+
+## Parameters
+
+- `Query$`: The query you want to execute, in pure SQL syntax.
+
+## Examples
+
+```basic
+// Reset test data:
+DB Delete Table
+
+// Save two records of data:
+Name$ = "Baptiste" : Score = 1000 : Data# = 5.28
+DB Write New "Name$, Score, Data#'
+Name$ = "George" : Score = 500 : Data# = 7.31
+DB Write New "Name$, Score, Data#
+
+// Search all data using pure-SQL (eq. DB Search All):
+DB Query "SELECT Name$, Score, `Data#` FROM `default`"
+While DB Pointer()
+	DB Read "Name$, Score, Data#"
+	Print Name$; " - "; Score; " - "; Data#
+	DB Next
+Wend
+```
+
+You may call any valuable SQL query:
+```basic
+DB Query "SHOW DATABASES"
+While DB Pointer()
+    DB Read "Database$"
+    Print "-"; Database$
+    DB Next
+Wend
+```
+
+## Notes
+
+Notice that writing pure-SQL queries may be complicated when you need to access `Variable#` float numbers or use double-quotes into your query. \
+You should consider using `DB Search` calls and other function DB, simpler to write and read, when it is possible.
+
+Default SQL engine and accepted syntax is MySQL 8.
+
+There are several instructions for doing research that you can choose from depending on how difficult the design of the code is and how readable it is:
+
+- `DB Search` and `DB Search All` are the easiest to write a search, and the most readable.
+- `DB Search Sql` allows you to enter only the search criteria in SQL, it remains simpler than doing the SQL query entirely by hand. This statement introduces a little more SQL, and lowers the readability of the code.
+- `DB Sql` is pure SQL, it allows you to do more than the other 2, we are full-SQL here, so it’s even less easy to write and possibly to read.
+
+## See Also
+
+- `DB First`
+- `DB Last`
+- `DB Next`
+- `DB Pointer()`
+- `DB Previous`
+- `DB Read`
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNDYxNzg1OTk3LC02Mjg2NTgyNDcsLTE2MT
+A1MTc4MzksMTk0MjU5MDIzOCw3Mjg1NjY5ODFdfQ==
+-->

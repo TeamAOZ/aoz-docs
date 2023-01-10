@@ -1,0 +1,14 @@
+# Hex&dollar;
+<!--
+@name: Hex&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Convert a decimal value into a string of hexadecimal digits
+## Parameters
+
+- **number**: The number to convert
+- _digits_ (optional): The number of digits, optional
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

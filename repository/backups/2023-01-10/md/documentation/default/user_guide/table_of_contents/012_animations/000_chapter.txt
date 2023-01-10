@@ -1,0 +1,17 @@
+# Animations
+It|;s very nice to display images but it|;s almost certain that you|;ll want to animate them.
+
+In a game, heroes and enemies are rarely immobile, same for say icons in an App. In AOZ you can easily create graphic animations.
+
+Let|;s see how to animate using two techniques: 
+- with the **Actor Animation** instruction and 
+- with a **sprite sheet**.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE0NjgxNjQ4MzcsMTUyODI0Mjk3NSwtOD
+c2Mjc1NjE2LC0xMzA0MDU0OTI1LC01OTgzMTkxMSwxNTIxNzA3
+NzkzLDg3MDIzMjAyNiw3MzA5OTgxMTZdfQ==
+-->

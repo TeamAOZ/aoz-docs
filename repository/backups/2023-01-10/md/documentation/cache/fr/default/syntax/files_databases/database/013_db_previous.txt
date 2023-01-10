@@ -1,0 +1,44 @@
+# DB Previous
+<!--
+@name: DB Previous
+@description: 
+@tags: 
+@categories: 
+\-->
+
+Selects the previous record among those found thanks to the last call to `DB Search`.
+
+## Description
+
+`DB Previous`
+
+To be used with:
+`DB Search` that may return multiple results. You can navigate through these results using `DB First`, `DB Next`, `DB Last`, `DB Previous`, and `DB Pointer()`.
+
+## Example
+
+```basic
+// Write some data:
+DB New
+Name$ = "Francois"
+DB Write "Name$"
+DB New
+Name$ = "Laurant"
+DB Write "Name$"
+// Read all data, and display records starting from the last result:
+DB Search All
+DB Last
+While DB Pointer()
+	DB Read "Name$"
+	Print Name$
+	DB Previous
+Wend
+```
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTExODIyOTgyNTksLTE4NTM4NjI5OTQsMT
+c1MDU2MzkyOF19
+-->

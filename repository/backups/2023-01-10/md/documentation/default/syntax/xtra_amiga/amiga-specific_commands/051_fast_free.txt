@@ -1,0 +1,11 @@
+# Fast Free
+<!--
+@name: Fast Free
+@description: 
+@tags: 
+@categories: 
+\-->
+Return the amount of free memory on the machine. Warnign, not tested and maybe deprecated in the future./ The original AMOS instruction reported the amount of free fast memory of the machine, which has no meaning tocay
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

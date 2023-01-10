@@ -1,0 +1,17 @@
+# Actor Image&dollar;
+<!--
+@name: Actor Image&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the name of the image used by the actor
+## Parameters
+
+
+- **index**: Index of the actor
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTE3MDQ5OTA5M119
+-->

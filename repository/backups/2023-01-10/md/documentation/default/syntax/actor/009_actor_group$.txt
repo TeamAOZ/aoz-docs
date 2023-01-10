@@ -1,0 +1,17 @@
+# Actor Group&dollar;
+<!--
+@name: Actor Group&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the Group value of the Actor
+## Parameters
+
+
+- **index**: Index of the sprite
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE4MDg4ODE1MDBdfQ==
+-->
