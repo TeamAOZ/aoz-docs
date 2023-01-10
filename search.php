@@ -92,9 +92,9 @@
 
     function cleanSearchString( string &$search ) : void
     {
-        $search = trim( $search );
         $search = cleanAccents( $search );
         $search = str_replace( [ "'", '"', "\t" ], [ '', '', ' ' ], $search );
+        $search = trim( $search );
         removeDoubleSpaces( $search );
         $search = strtolower( $search );
     }
@@ -108,7 +108,9 @@
                 // prépositions
                 'in', 'on', 'at', 'of', 'from', 'to', 'into', 'by', 'across', 'around', 'near', 'with', 'about', 'along',
                 // Conjonctions
-                'for', 'and', 'nor', 'but', 'or', 'yet', 'so'
+                'for', 'and', 'nor', 'but', 'or', 'yet', 'so',
+                // etc.
+                'who', 'what', 'where', 'like', 'through', 'after', 'over', 'between', 'out', 'against', 'during', 'without', 'before', 'under', 'among'
             ],
             'fr' => [
                 // articles
@@ -117,7 +119,9 @@
                 // prépositions
                 'dans', 'a', 'de', 'depuis', 'vers', 'dedans', 'par', 'a travers', 'autour', 'pres de', 'avec', 'a propos', 'au long',
                 // Conjonctions
-                'mais', 'ou', 'et', 'donc', 'or', 'ni', 'car'
+                'mais', 'ou', 'et', 'donc', 'or', 'ni', 'car',
+                // etc.
+                'pour', 'sur', 'qui', 'que', 'quoi', 'sous', 'au', 'aux', 'entre', 'sans', 'selon', 'malgre', 'contre', "jusqu'a"
             ]
         ];
         $multiple = [
@@ -405,8 +409,7 @@
             $words = $exact ? $this->s_words : $this->words;
             if( $found_count = $this->wordsIn( strtolower( $text ), $words ) )
             {
-                $weight = ( $found_count === $this->words_count ) ? 99 : $found_count;
-                $this->results[ $priority ][ $weight ][ $this->article->title ][ $this->article->identifier ]
+                $this->results[ $priority ][ $found_count ][ $this->article->title ][ $this->article->identifier ]
                     = $this->article;
                 return true;
             }

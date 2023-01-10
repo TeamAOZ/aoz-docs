@@ -1,0 +1,123 @@
+# Filled Shape
+<!--
+@name: Filled Shape
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Syntax
+
+**Filled Shape**  *x,  y, radius1, radius2, sides*
+**Filled Shape**  *x,  y, radius1, radius2, sides, angle*
+
+## Parameters
+
+
+- **x**: The horizontal coordinate of the centre of the shape
+- **y**: The vertical coordinate of the centre of the shape
+- **radius1**: The x radius of the shape in pixels. If omitted, will default to 100
+- **radius2**: Optional. The y radius of the shape in pixels. If omitted, will default to **radius1**
+- **sides**: Optional. The number of sides. If omitted, it will default to 3 sides.
+- **angle**: Optional. Angle of rotation of the shape.
+
+## Description
+
+Draws a filled regular polygon with a specified number of sides using the current ink, fill and border settings in the current screen. All the points of the shape will be on the circle (both radii are the same) or ellipse (radii are different) path defined by the provided radii.
+
+Note that the number of sides doesn't have to be a whole number, so it's possible to draws shapes with one fractional side. This is demonstrated in the 'Learn Your Polygons' program below, when the shapes transform.
+
+## Example Code
+
+The following code draw randomly sized and coloured shapes, from 3 sided triangle up to 9 sided nonagons.
+```basic
+for f=1 to 100
+	r=rnd(100 to 200)
+	m#=rnd(6 to 12)/4
+	ink rnd(2 to 62)
+	filled shape rnd(200 to 1720),rnd(200 to 880),r,r,rnd(3 to 9),rnd(360)
+	wait 0.5
+next f
+```
+---
+
+The following program displays animated, morphing shapes and displays the name of each one.
+```basic
+// Learn Your Polygons
+// By Dave Baldwin - September 2020
+
+#googleFont:"underdog"
+#speed:"graphics"
+screen open 0,1920,1080,32,0
+screen open 1,1920,1080,32,0
+screen 0
+
+draw shadow 10,50,30,$000000aa
+screen to front 0
+Set Font 1,180
+Set Transparent 0
+Colour 3,$00ffff
+colour 4,$ff00ff
+
+Dim name$(10)
+name$(1)="Triangle"
+name$(2)="Square"
+name$(3)="Pentagon"
+name$(4)="Hexagon"
+name$(5)="Septagon"
+name$(6)="Octagon"
+name$(7)="Nonagon"
+name$(8)="Decagon"
+name$(9)="Hendecagon"
+name$(10)="Dodecagon"
+line width 10
+x=960 : y=540
+r#=0
+vary=30
+size=300
+size_phase#=0
+sides#=3
+sides=3
+timer=0
+sides_step#=0.01
+sides_step=1
+border on
+do
+	line width 10
+	if timer>5
+		If sides=12 and sides_step=1 then sides_step=-1 : sides_step#=-0.01
+		If sides=3 and sides_step=-1 then sides_step=1 : sides_step#=0.01
+		add sides#,sides_step#
+		if int(sides#)=sides+1 or int(sides#+1)=sides-1
+			timer=0
+			add sides,sides_step,3 to 12
+			sides#=sides
+		end if
+	end if
+	add r#,0.4,0 to 359
+	add size_phase#,2,0 to 359
+	ink 6,4,1
+	colour 5,$00ff00
+	Filled Shape x,y,size+vary*cos(size_phase#),size+vary*cos(size_phase#),sides#,r#
+	ink 5
+	Text Mode "border"
+	Ink 5,0,2
+	line width 3
+	Text 960,150, name$(sides-2), "#center"
+	ink 3
+	side$=str$(sides)-" "
+	Text 960,620,side$,"#center"
+	refresh
+	cls 7
+loop
+
+```
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMzc1MjE1NjA5LDg2MzE5NDY1MCw3OTcyOD
+U5MDksMTQ1ODU4MDY4LDkyNDM1MzI1NCw2MDk5ODgxNTEsLTEx
+MTUxNjM4OCwtMTczODAwMTI0NSwtNjg4ODM0NDEsMjAzMzQ5OD
+M2MCwxMjc5MzU2OTcsLTIwMDUwNDUyNTksLTc5MTQ0MTc3OV19
+
+-->

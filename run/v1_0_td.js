@@ -33,7 +33,7 @@ function v1_0_td( aoz, args )
 this.blocks=[];
 	this.blocks[0]=function(aoz,vars)
 	{
-		// From source: D:/Programs/AOZ_Studio_SE/AOZ_Studio/app/aoz/languages/v1_0/td/td.aoz
+		// From source: C:/AOZ Studio/AOZ_Studio/app/aoz/languages/v1_0/td/td.aoz
 		aoz.sourcePos="0:74:0";
 		// Javascript
 		this.aoz.TD = this;

@@ -10,7 +10,7 @@ If the actor collides with another actor, then this Listener calls the defined A
  - **INDEX2$:** The name of the actor we collided with.
  - **GROUP1$** : Name of the group of actors supervised.
  - **GROUP2$** : Name of the group that was collided with.
- - **IMAGE:** Value of the image's index of the collided actor.
+ - **IMAGE:** Value of the image|;s index of the collided actor.
  - **IMAGE$:** The name of image of the collided actor.
 <BR>
 
@@ -51,7 +51,7 @@ When this area is delineated, the procedure defined is called when the actor hit
 ## OnAnimChange$
 
 When the actor is animated (when the **Spritesheet$** setting has been entered), **OnAnimChange$** calls the defined AOZ procedure by passing it the following properties:
- - **EVENT$:** Event name, "change" or  "complete." If the name is  "complete," it's because the animation is over.
+ - **EVENT$:** Event name, "change" or  "complete." If the name is  "complete," it|;s because the animation is over.
  - **INDEX:** Value of the monitored actor index.
  - **INDEX$:** Name corresponding to the monitored actor.
  - **ANIM$:** The name of the current animation.
@@ -63,12 +63,12 @@ When the actor is animated (when the **Spritesheet$** setting has been entered),
 
 This listener calls the AOZ procedure defined each time the actor undergoes a change in position, transparency, size or rotation, passing the following properties:
 
- - **EVENT$:** Event name: "change" or  "complete".  If the name is  "complete",  it's because the actor's move is complete.
+ - **EVENT$:** Event name: "change" or  "complete".  If the name is  "complete",  it|;s because the actor|;s move is complete.
  - **INDEX:** Value of the monitored actor index.
  - **INDEX$:** Name corresponding to the monitored actor.
  - **X:** Position X of the actor.
  - **Y:** Position Y of the actor.
- - **ALPHA:** Actor's opacity.
+ - **ALPHA:** Actor|;s opacity.
  - **SCALEX:** Horizontal expansion/reduction rate.
  - **SCALEY:** Vertical expansion/reduction rate.
  - **ANGLE:** Actor rotation angle.
@@ -77,7 +77,7 @@ This listener calls the AOZ procedure defined each time the actor undergoes a ch
  - **SKEWX:** Horizontal distortion of the actor.
  - **SKEWY:** Vertical distortion of the actor.
 
-Of course you don't have to listen out for every actor. You are free to monitor only those you reckon are important to watch.
+Of course you don|;t have to listen out for every actor. You are free to monitor only those you reckon are important to watch.
 
 ## OnMouse$
 This listener calls the AOZ procedure defined each time the mouse is used with an actor click, mouse over..., passing the following values to: 
@@ -95,7 +95,7 @@ This listener calls the AOZ procedure defined each time the mouse is used with a
  - **Y:** Position Y of the actor.
 
 <BR>
-Let's see a simple example with **OnMouse&dollar;**:
+Let|;s see a simple example with **OnMouse&dollar;**:
 
 ```basic
 Actor "magic", X=100, Y=100, Image$="magic.png", OnMouse$="CLICK"
@@ -118,7 +118,7 @@ This procedure, as we will see, can retrieve a certain amount of information. In
 	- 2: The right button
 	- 4: The central button or wheel (if there is one)
 - **INDEX$**: returns the name of the Actor concerned by the mouse action. If you also want to capture Actors identified by a number, you can use **INDEX**.
-- **X** and **Y**: return the position of the mouse relative to the interior of our Actor.
+- **X** and **Y**: return the position of the mouse relative to the screen.
 <BR>
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />

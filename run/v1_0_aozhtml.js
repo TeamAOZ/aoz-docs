@@ -33,7 +33,7 @@ function v1_0_aozhtml( aoz, args )
 this.blocks=[];
 	this.blocks[0]=function(aoz,vars)
 	{
-		// From source: D:/Programs/AOZ_Studio_SE/AOZ_Studio/app/aoz/languages/v1_0/aozhtml/aozhtml.aoz
+		// From source: C:/AOZ Studio/AOZ_Studio/app/aoz/languages/v1_0/aozhtml/aozhtml.aoz
 		aoz.sourcePos="0:29:0";
 		// Javascript
 		aozhtml_initialize( this );

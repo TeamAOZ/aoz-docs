@@ -1,14 +1,20 @@
 # Td Group Add
 <!--
 @name: Td Group Add
-@description: 
+@description: Create an object of type "Group" and add it to the Parent object.
 @tags: 
 @categories: 
 \-->
-Création d|;un objet de type "Groupe" et l|;ajoute à l|;objet Parent.
+
+<b>Syntax</b>
+```basic
+Td Group Add ObjectName$="my_group", ParentName$="scene"
+```
+
+Create an object of type "Group" and add it to the Parent object.
 ## Parameters
 
-- **ObjectName&dollar;**: Nom de l'objet à créer
-- **ParentName&dollar;**: Nom de l'objet parent dans lequel sera ajouter l'objet créé
+- **ObjectName&dollar;**: Name of the "Group" object that will be created
+- **ParentName&dollar;**: Name of the object to which this "Group" object will be added.
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

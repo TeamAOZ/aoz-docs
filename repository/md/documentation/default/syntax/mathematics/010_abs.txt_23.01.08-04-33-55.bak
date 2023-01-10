@@ -1,0 +1,34 @@
+# Abs
+<!--
+@name: Abs
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Return the absolute value of a number
+## Syntax
+
+- Return the absolute value of the parameter: **number**.
+- **Abs(** number **)**
+## Parameter
+
+- **number**: The number to get the absolute value from.
+
+## Example Code
+```basic
+X1=-12 : X2=7
+Y1#=123.45 : Y2#=-12.7E-15
+Print Abs(X1),Abs(X2)
+Print Abs(Y1#),Abs(Y2#)
+```
+
+
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+
+## Description
+
+**Abs(** number **)** returns the numerical value of the parameter number, not including the sign.
+

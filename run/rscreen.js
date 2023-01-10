@@ -2099,7 +2099,7 @@ Screen.prototype.lineDashOffset = function( number )
 	 var x, y;
 	 this.beginDrawing();
 	 this.context.beginPath();
-	 for ( var c = 0; c < 2 * Math.PI + 0.0001; c += a * 2 )
+	 for ( var c = 0; c < 2 * Math.PI-0.0001; c += a * 2 )
 	 {
 		 x = zone.x + zone.height * Math.cos( c + rotation );
 		 y = zone.y + zone.height * Math.sin( c + rotation );
@@ -2153,7 +2153,7 @@ Screen.prototype.lineDashOffset = function( number )
 			}
 			else
 			{
-				self.context.strokeStyle = self.getColorString(self.getBorderInk());			
+				self.context.strokeStyle = self.getColorString(self.getBorderInk());
 				self.context.globalAlpha = self.getColorAlpha(self.getBorderInk());
 			}
 			self.context.stroke();
@@ -3248,13 +3248,15 @@ Screen.prototype.getBobFilterString = function()
 		 }
 		 if ( this.textMode == 'fill' || this.textMode == 'border' )
 			 this.context.fillText( text, x * this.scale.x, y * this.scale.y, drawWidth );
-		 if ( this.borderFirst == false )
+		 if ( this.borderFirst == false && this.textMode == 'border')
+		 {
 			drawBorder();
+		 }
 		 else if ( this.textMode == 'outline' )
 		 {
 			 this.context.setLineDash(this.linePattern);
 			 this.context.strokeStyle = color;
-			 this.context.strokeText( text, x * this.scale.x, y * this.scale.y, drawWwidth );
+			 this.context.strokeText( text, x * this.scale.x, y * this.scale.y, drawWidth );
 		 }
 		 this.noShadow();
 	 }
@@ -3263,7 +3265,7 @@ Screen.prototype.getBobFilterString = function()
 	 this.grPosition.y = position.y;
 	 function drawBorder()
 	 {
-		 if ( self.textMode == 'border')
+		 if ( self.textMode == 'border' )
 		 {
 			self.context.filter = self.borderFilters.getFilterString();
 			self.noShadow();

@@ -7,11 +7,13 @@ Actor "magician", X=0, Y=150, Auto$="offsetX=4, offsetY=4", Image$="magic.png"
 ```
 Run the program to see that your actor is moving alone to the right of the screen.
 
-Here is a **_Shoot-em-up_** game Kit, a more complete example that you will find in the tutorial folder which uses Actor's animations:
+<BR>
+
+Here is a code example to see how you can use the Control$,  and Actor|;s animations with a spritesheet (not supplied here so that program will not run without it):
 ```basic
 // We load the graphics for the sprite animations
 Load Asset "sprites/graphics.sprite", "graphics"
-// We set up the player's ship parameters
+// We set up the player|;s ship parameters
 Actor "player", X = 160, Y = 260, SpriteSheet$="graphics", Anim$="idle", LoopAnim = True, LeftLimit = 0, RightLimit = 256
 // More parameters are added depending on the device: Smartphone or PC
 If Touch Screen = True
@@ -30,9 +32,9 @@ Actor "player", Control$ = C$  // We Assign all these controls parameters to the
 // Note: Instead of concatenating C$ it is also possible to write all this in 1 line directly after the = of Control$
 End If
 ```
-This **Control$** thing is not super-easy, but once you understand, it's pure magic! Take a break and practice a bit.
+This **Control$** thing is not super-easy, but once you understand, it|;s pure magic! Take a break and practice a bit.
 
-It's your move 😊:  
+It|;s your move 😊:  
 -Understand the syntax, the use of the "" with Control$, try changing properties and values.
 
 ---

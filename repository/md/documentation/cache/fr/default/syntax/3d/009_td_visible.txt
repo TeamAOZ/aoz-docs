@@ -1,14 +1,20 @@
-# Td Visible
+# Td Group Add
 <!--
-@name: Td Visible
-@description: 
+@name: Td Group Add
+@description: Create an object of type "Group" and add it to the Parent object.
 @tags: 
 @categories: 
 \-->
-Rend un objet 3D Visible ou Invisible
+
+<b>Syntax</b>
+```basic
+Td Group Add "my_group", ParentName$="scene"
+```
+
+Create an object of type "Group" and add it to the Parent object.
 ## Parameters
 
-- **ObjectName&dollar;**: Nom de l'objet 3D concerné
-- **Visible**: Si True, l'objet sera visible, sinon il sera invisible.
+- **ObjectName&dollar;**: Name of the "Group" object that will be created
+- **ParentName&dollar;**: Name of the object to which this "Group" object will be added.
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

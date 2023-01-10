@@ -1,21 +1,21 @@
 # AOZ DEMOS
 
-Now let's cut to the chase and have some instant fun!
-Look near the top-left of your screen and click on the Demos or Games folder.
+Now let|;s cut to the chase and have some instant fun!
 
-Open up a folder (locally or in the online AOZ Store) and click on the **main.aoz** (**main** or any other name).  Then see all the computer code that was written for that program. Many of them were written in just one morning between walking the dog and eating pizza. Please note: you do not necessarily have to eat pizza to program in AOZ.
-![choosing a demo](https://doc.aoz.studio/assets/images/en/image088.png)
+Look near the top-left of your screen and click on the **AOZ Store** and either Demos, Games, Tutorials or Utilities folder.
 
-![launching an app](https://doc.aoz.studio/assets/images/en/image089.png)
+Open up a folder and click on the **.aoz** file, usually it is **main.aoz** but it can be any name finishing with .aoz.  AOZ Studio will then copy automatically that program (the code and all the assets) in the My AOZ Applications folder, so the original will stay there uncorrupted.
 
+Then you can RUN, or read, or modify, the code that was written for that program. 
 
-Next click one of the two RUN buttons, like this one to RUN this program in your AOZ Viewer:
+To RUN that program just click one of the two PLAY buttons, like this one to RUN this program in your AOZ Viewer:
 ![RUN button](https://doc.aoz.studio/assets/images/en/image090.png)
 
+Many of those demos were written in just one morning between walking the dog and eating pizza. Please note: you do not necessarily have to eat pizza to program in AOZ.
 
-We hope that AOZ Studio weaves it's magic for you and becomes the future of your computing whatever your goal.
+We hope that AOZ Studio weaves it|;s magic for you and becomes the future of your computing whatever your goal.
 
-We're off to see the Wizards, the wonderful Wizards of AOZ, and leave you to discover the demos, games and magic provided with AOZ Studio.
+We|;re off to see the Wizards, the wonderful Wizards of AOZ, and leave you to discover the demos, games and magic provided with AOZ Studio.
 
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />

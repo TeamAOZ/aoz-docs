@@ -1,0 +1,78 @@
+# Paint
+<!--
+@name: Paint
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Syntax Options
+
+- **Paint** *x, y, color, mode*
+- **Paint** *x, y, color to border*
+
+## Parameters
+
+
+- **x**: The horizontal coordinate where to start the paint process
+- **y**: The horizontal coordinate where to start the paint process
+- **color**: The screen palette index of the paint color (optional, will use the current Ink index if ommited)
+- **border**: The screen palette index of the border colour that outlines the shape you are painting.
+- **mode**: The optional mode setting, can be 0 or 1. Mode is zero by default if omitted.
+---
+
+## Description
+
+The **Paint** instruction allows you to fill any section of your screen with a solid block of colour, fill image or gradient, depending on the screens current fill settings.
+
+**Paint** works by tracing the outline of the area selected and creating a path which is then filled. If this path completely surrounds any areas of the screen which are a different colour, they will also be filled.
+
+The optional mode setting can be set to either zero or one. A value of 0 ends your Paint operation at the first pixel encountered of the current border colour.  A mode of 1 stops the painting operation at any colour which is different from the existing ink colour. If there are any gaps in the boundaries of the sections you wish to fill, colour will leak out and paint the adjoining area.
+
+## Example Code
+
+This program uses the Paint instruction to create you own unique pieces of digital art.  A random pattern of Curves is drawn, with a 4 pixel wide black line, in colour 0, black.  The paint instruction then searches for 'black' edges of a shape before filling. Press any key to change the pattern, use the mouse to point and click to fill with a random colour.
+
+```basic
+// Curve Art by Dave Baldwin
+// September 2022
+
+line width 5
+sw=screen width
+sh=screen height
+line cap "square"
+do
+	ink 0
+	cls 1
+	plot rnd(sw),-rnd(200)
+	for f=0 to 4
+		curve to rnd(-200 to sw+200),rnd(-200 to sh+200),rnd(-200 to sw+200),rnd(-200 to sh+200)
+		curve to rnd(-200 to sw+200),rnd(-200 to sh+200),rnd(-200 to sw+200),rnd(-200 to sh+200),rnd(-200 to sw+200),rnd(-200 to sh+200)
+	next f
+	curve to rnd(-200 to sw+200),rnd(sh to sh+200),rnd(-200 to sw+200),rnd(-200 to sh+200),rnd(-200 to sw+200),rnd(-200 to sh+200)
+
+	do
+		if mouse click
+			ink 4,0,1
+			r=rnd(35 to 255)
+			g=rnd(35 to 255)
+			b=rnd(35 to 255)
+			colour 4,rgb(r,g,b)
+			x=x mouse : y=y mouse
+			Paint x,y,4 to 0
+		end if
+		refresh
+		i$=inkey$
+		if i$<>"" then exit
+	loop
+loop
+```
+<p align="center"><img valign="middle" width="960px" src="https://doc.aoz.studio/repository/assets/images/curveart.png" /></p>
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEwMzQwMTM5MzYsMTAzMzExNzI5OCwyOD
+g1Nzk2MDUsLTE5MDkwMjc3NzYsLTEzMjA5NjEzMjgsLTE5Mjcw
+NTM3MV19
+-->

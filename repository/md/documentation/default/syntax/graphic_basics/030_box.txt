@@ -7,17 +7,64 @@
 \-->
 <div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
 
+## Syntax Options
 
-Draw an empty rectangle with the current Ink, Line width and Line Pattern in the current screen
+**Box**
+**Box** *x1, y1*
+**Box** *x1, y1, width*
+**Box** *x1, y1, width, height*
+**Box** *x1, y1, width, height , fill*
+**Box** *x1, y1* **to** *x2, y2* 
+**Box** *x1, y1* **to** *x2, y2 , fill* 
+
 ## Parameters
-
 
 - **x1**: The horizontal coordinate of the top-left corner of the rectangle
 - **y1**: The vertical coordinate of the top-left corner of the rectangle
 - **x2**: The horizontal coordinate of the bottom-right corner of the rectangle
 - **y2**: The vertical coordinate of the bottom-right corner of the rectangle
----
+- **width**: The width of the box in pixels
+- **height**: The height of the box in pixels
+- **fill**: Optional. Set to true or 1 to fill the box
+
+## Description
+
+Draw a empty rectangular box using the current line, ink, fill and border settings in the current screen with the added option of fill if required.
+
+- **Box**
+Draw a square box 100 x 100 pixels at the current graphics coordinates
+
+- **Box** *x1, y1*
+Draw a square box 100 x 100 pixels at the coordinates ***x1, y1***
+
+- **Box** *x1, y1, width*
+Draw a square box with sides ***width*** pixels at the coordinates ***x1, y1***
+
+- **Box** *x1, y1, width, height, fill*
+Draw a box ***width*** pixels wide and ***height*** pixels high at coordinates *x1, y1* 
+
+- **Box** *x1, y1* **to** *x2, y2*
+Draw a box between diagonally opposite corners *x1,y1 and x2, y2*
+
+- **Box** *x1, y1* **to** *x2, y2 , fill*
+Draw a filled box between diagonally opposite corners *x1,y1 and x2, y2*
+
+## Example Code
+
+The following code draws randomly sized and coloured boxes.
+```basic
+for f=1 to 100
+	r=rnd(100 to 200)
+	ink rnd(2 to 62)
+	line width rnd(2 to 10)
+	Box rnd(10 to 1510),rnd(10 to 670),rnd(100 to 400),rnd(100 to 400),rnd(2)
+	wait 0.5
+next f
+```
+
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwNDk3MzQzNF19
+eyJoaXN0b3J5IjpbLTQ0MzA4NDc0OSw2NzA5OTA2NjMsNzExMD
+I3MzQ2LC0xNDc4ODE1NTkzLC0xMzc3NjMzNzYwLDc1OTM5NTAz
+OSwxNzY3MDExNTMzLDE3MDQ5NzM0MzRdfQ==
 -->

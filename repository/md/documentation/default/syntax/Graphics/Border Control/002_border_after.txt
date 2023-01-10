@@ -1,0 +1,39 @@
+# Border After
+<!--
+@name: Border After
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Syntax
+**Border After**
+
+## Description
+
+Draw the border after on outlined shapes or text. **Border First**  and **Border After** (on by default) can a lot of difference when drawing shapes and text, and because the border is a line drawing, you have many options available to change how it looks, such as **Border Filter**, **Border Gradients**, **Line Width**, **Line Dash** etc.
+
+## Example Code
+
+In this example, three discs are drawn. The first disc has a plain border drawn first, so the disc covers the inner half of the border. The second one has a blur filter applied to the border, and you will see the blurring stops at the edge of the disc. The third circle has **Border After** applied, so the border is drawn after, and you will see that the blurring now extends over the disc.
+```basic
+Ink 6
+Border Ink 1
+Border First
+Line Width 30
+Border On
+Disc 300,540,250
+Border filter "blur",20
+Disc 960,540,250
+Border After
+Disc 1620,540,250
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1Nzc0MDk0MDIsOTU1NzQxMDIyLDk4Mz
+MxNTgyLC00MzU5MDcwOTIsLTE2Mzg3Mjc2OSw2OTg1OTEwNjgs
+NTAwODE0ODc4XX0=
+-->

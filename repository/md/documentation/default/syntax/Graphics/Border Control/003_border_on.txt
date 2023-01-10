@@ -1,0 +1,34 @@
+# Border On
+<!--
+@name: Border On
+@description: 
+@tags: 
+@categories: 
+\-->
+## Syntax
+**Border On**
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Description
+Activate the drawing of borders around shapes. The border will be compliant with all line drawing and border settings, such as Line Width, Line Dash, Border Fill Image etc. see Border Controls and Setting Up sections for more information.
+
+
+## Example Code
+The following example draws a star shape, then adds an animated border when you press a key.
+```basic
+Ink 27
+Filled Star 960,540,400,130,5,18
+Centre "Press Any Key For Border On"
+Wait key
+Border On
+Border Ink 16
+Line Width 10
+Line Join "round"
+Filled Star 960,540,400,130,5,18
+```
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEyNzk1NzYzNjAsMTgzNTg0MTMzMywyMD
+E0ODg0OTYsMTg2OTA2NzYzMSwtMTM2NTc5MjcwN119
+-->

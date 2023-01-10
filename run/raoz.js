@@ -293,11 +293,10 @@ function AOZ( canvasId, options, rendererAlgo )
 	this.welcomeClick = false;
 	if( navigator.userAgent == 'AOZViewer' )
 	{
-		rendererAlgo = 'h8ipl01f35ujdrlzx7h1';
-		this.manifest.bootScreen.active = false;		
+		rendererAlgo = 'iAjOkZ';
 	}
 	
-	if ( rendererAlgo != 'h8ipl01f35ujdrlzx7h1' || this.manifest.bootScreen.active )
+	if ( rendererAlgo != 'iAjOkZ' )
 	{
 		document.getElementById( 'AOZCanvas' ).style.display = 'none';
 
@@ -377,13 +376,13 @@ function AOZ( canvasId, options, rendererAlgo )
 		}
 		else
 		{
-		setTimeout( function()
-		{
-			iw.style.display = 'none';
-			document.getElementById( 'AOZCanvas' ).style.display = 'block';
-			self.splashEnd = true;
-		}, 4000 );
-	}
+			setTimeout( function()
+			{
+				iw.style.display = 'none';
+				document.getElementById( 'AOZCanvas' ).style.display = 'block';
+				self.splashEnd = true;
+			}, 4000 );
+		}	
 	}
 	else
 	{

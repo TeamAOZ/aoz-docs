@@ -30,15 +30,15 @@ Maybe you are wondering, what are the differences between:
 - **Key State(n)** is a function that checks if the key with the ID of n is currently pressed, and returns true if it is.
 
 <br>
-Not bad for a start! Let's continue in this chapter with:
+Not bad for a start! Let|;s continue in this chapter with:
 
-• **Input** to enter text on the user's keyboard.
+• **Input** to enter text on the user|;s keyboard.
 
 • **Goto** to go to part of your program.
 
 • **If… Then… Else** to master testing conditions… and to initiate actions accordingly.
 
-Let's go!
+Let|;s go!
 
 Please erase all your previous code and type:
 ```basic
@@ -46,8 +46,8 @@ Input "Tell me your name";NAME$
 Print "Hello ";NAME$
 Input "How old are you?";age
 days=age*365
-Print "Wow! In days that's ";days
-BePrint "I think you are old enough to be a Magician!"
+Print "Wow! In days that|;s ";days
+Print "I think you are old enough to be a Magician!"
 Print "Goodbye ";NAME$
 Bell 2
 ```
@@ -67,29 +67,29 @@ Another question, and we Input the age. Say you typed in your age as 20, in the 
 
 This line will calculate the number of days in our example 20*365, so now in the memory of the variable days we have 7300.
 
-You may have noticed that some variable names finish with a $ , like NAME$, but some variable names don’t, like age. There's a reason for this, and our tutorials will teach us how to create different types of variables and why. For now just note that when you set a variable with text you should add a $ at the end of its name, but if it is a value then there is no $. It's that simple.
+You may have noticed that some variable names finish with a $ , like NAME$, but some variable names don’t, like age. There|;s a reason for this, and our tutorials will teach us how to create different types of variables and why. For now just note that when you set a variable with text you should add a $ at the end of its name, but if it is a value then there is no $. It|;s that simple.
 
 We already know that a computer program is nothing more than a bunch of instructions that tell your machine what to do. If a computer only obeyed your list of instructions one after the other, your programs would be very limited and very boring. So we already know that the magic only begins when you teach your machine to start making decisions. These decisions are all based on simple conditions.
 
 **DECISIONS**
-The quick way to get a computer to make a decision is to teach it something and offer it a choice of what to do, depending on what it knows. If computers understood plain English we would say something like, "Hey computer, look out the window. If it's daytime then let's go to the gym. But if it's not daytime then let's go to bed." When you ask AOZ to give this sort of choice to your computer, it will look at the choices on offer and decide if the condition is true or false. If it's true then your computer decides to take one course of action, but if it's false then another course of action will be taken.
+The quick way to get a computer to make a decision is to teach it something and offer it a choice of what to do, depending on what it knows. If computers understood plain English we would say something like, "Hey computer, look out the window. If it|;s daytime then let|;s go to the gym. But if it|;s not daytime then let|;s go to bed." When you ask AOZ to give this sort of choice to your computer, it will look at the choices on offer and decide if the condition is true or false. If it|;s true then your computer decides to take one course of action, but if it|;s false then another course of action will be taken.
 
 One course of action could be to jump to a new place somewhere in your list of instructions using, for example, what is called a PROCEDURE. But there are other solutions on offer.
 
-One is to mark the place you want to jump to in the code before telling your computer's brain to jump to it and carry out whatever instruction is waiting there. With AOZ this is dead easy. You simply mark the place in your list of commands by giving it a name or a label, and tack on a colon character so your computer can recognize it and not confuse it with anything else. You can use any letter or number characters you like for this label, including the "underscore" _ character. So an example of your label could be **THE_GYM:** or **thegym:** or **THEGYM:**
+One is to mark the place you want to jump to in the code before telling your computer|;s brain to jump to it and carry out whatever instruction is waiting there. With AOZ this is dead easy. You simply mark the place in your list of commands by giving it a name or a label, and tack on a colon character so your computer can recognize it and not confuse it with anything else. You can use any letter or number characters you like for this label, including the "underscore" _ character. So an example of your label could be **THE_GYM:** or **thegym:** or **THEGYM:**
 
 By using labels like this, you can now go to anywhere you like in your program using a special Goto command.  The following example includes THEGYM label,  the new command Goto, and the Wait command with every second you want the computer to wait. Normally you would have to wait 10 seconds to find out what time it is, but you can tell the computer to jump over that wait and go straight to the gym.
 ```basic
 Print "I wonder what the time is"
 Goto THEGYM
 Wait 10
-Print “bed time?”
+Print "bed time?"
 THEGYM:
 Print "It must be daytime!"
 End
 ```
 **LOGIC**
-It's time to let your computer begin to think for itself using simple logic, and make a decision without any help from you. To do this you can use two commands that have the same meaning in the AOZ language as they do in the English language. These commands are If and Then. We told you we were going to see them again 😊.
+It|;s time to let your computer begin to think for itself using simple logic, and make a decision without any help from you. To do this you can use two commands that have the same meaning in the AOZ language as they do in the English language. These commands are If and Then. We told you we were going to see them again 😊.
 
 So **If**  something is true **Then**  the computer will decide to take one action, otherwise it will do something **Else**.
 
@@ -105,7 +105,7 @@ BED:
 Print "I think it is bed time"
 End
 SOCCER:
-1rint "Where is the ball?"
+Print "Where is the ball?"
 ```
 Now change the value of NIGHT to another number, like NIGHT=0, and RUN that routine again.
 
@@ -122,18 +122,18 @@ BED:
 Print "I think it is bed time"
 End
 SOCCER:
-1rint "Where is the ball?"
+Print "Where is the ball?"
 ```
 --------------------------------------------------------
 
 <br> 
-How about you create some more magic by writing a simple computer game to test out what you've learned so far? It's a genuine game of logic and the computer responds to anything that you throw at it. To do this you will have to use these mathematical symbols.
+How about you create some more magic by writing a simple computer game to test out what you|;ve learned so far? It|;s a genuine game of logic and the computer responds to anything that you throw at it. To do this you will have to use these mathematical symbols.
 "=" means "is equal to"
 "<>" means “is different than”
 ">" means "is greater than"
 "<" means "is less than"
 
-This is a game of Guess The Secret Number. We are going to use a new command to clear the screen, otherwise the number won't be secret at all. The instruction to clear your screen is **Cls**.
+This is a game of Guess The Secret Number. We are going to use a new command to clear the screen, otherwise the number won|;t be secret at all. The instruction to clear your screen is **Cls**.
 
 One more thing, you already know **If...Then...Else**, but there is a different way of using the **If** without the **Then**.
 
@@ -141,7 +141,7 @@ Here we use **If** several times, and you have to type **End If** the appropriat
 
 OK, when you are ready, type in this game and go and find a victim to inflict it upon.
 ```basic
-Print "Let's play Guess The Secret Number"
+Print "Let|;s play Guess The Secret Number"
 Print " Ask your victim to shut their eyes"
 Wait 2
 Input "Now type a secret number between 1 and 10 ";A
@@ -174,7 +174,7 @@ Else
  		End If
 End If
 ```
-Optimization is important in programming. Let's change the SECRET: procedure part of the code, and try to understand why it still works. Once you understand then you’re the Master of the Ifs!
+Optimization is important in programming. Let|;s change the SECRET: procedure part of the code, and try to understand why it still works. Once you understand then you’re the Master of the Ifs!
 ```basic
 SECRET:
 Input "Victim, find the secret number ";B

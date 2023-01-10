@@ -5,7 +5,8 @@
 @tags: 
 @categories: 
 \-->
-Returns the value of the Actor|;'s Angle
+Returns the value of the Actor|;|;s Angle.
+
 ## Parameters
 
 

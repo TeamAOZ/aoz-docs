@@ -139,7 +139,7 @@ function TextWindow( aoz, screen, contextName, definition, defaultWindow, tags )
 	this.memoryY = 0;
 	this.activated = true;
 	this.flashOn = true;
-
+	
 	// Cursor
 	this.cursorCanvas = document.createElement( 'canvas' );
 	this.cursorCanvas.width = Math.max( Math.floor( this.fontWidth * this.screen.scale.x ), 1 );
@@ -164,7 +164,9 @@ function TextWindow( aoz, screen, contextName, definition, defaultWindow, tags )
 			self.cursorImageContext = self.cursorImageCanvas.getContext( '2d' );
 		}
 	} );
-
+	if ( aoz.platform != 'amiga' )
+		this.setCursor(false);
+		
 	// Cursor animation
 	var self = this;
 	this.cursorHandle = setInterval( function()

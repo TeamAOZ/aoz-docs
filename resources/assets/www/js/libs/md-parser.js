@@ -12,6 +12,7 @@ var MDParser =
 		}
 
 		document.getElementById( 'md_sync').style.display = 'none';
+		document.getElementById( 'md_edit').style.display = 'none';
         var xhr = new XMLHttpRequest();
         xhr.responseType = "text";
         xhr.open( 'GET', url + "&lang=" + application.root.vars.LANG$ );
@@ -61,6 +62,10 @@ var MDParser =
 				} );
 				var toggler = document.getElementsByClassName("caret");
 				var i;
+				if( document.getElementById( 'md_gator').style.display == 'block' )
+				{
+					document.getElementById( 'md_edit').style.display = 'block';
+				}
 
 				for (i = 0; i < toggler.length; i++) {
 				  toggler[i].addEventListener("click", function() {
@@ -69,6 +74,34 @@ var MDParser =
 				  });
 				}
 				fontResize( current_zoom, false );
+
+				setTimeout( function()
+				{
+					var elms = document.querySelectorAll( '.prism' );
+					if( elms )
+					{
+						for( var e = 0; e < elms.length; e++ )
+						{
+							var copyBtn = document.createElement( 'button' );
+							copyBtn.setAttribute( 'class', 'copy-btn' );
+							copyBtn.setAttribute( 'alt', 'Copy code' );
+							copyBtn.setAttribute( 'title', 'Copy code' );
+							copyBtn.innerHTML = 'Copy';
+							copyBtn.codeNode = elms[ e ];
+
+							copyBtn.addEventListener( 'click', function( event )
+							{
+								event.preventDefault();
+								if( navigator.clipboard )
+								{
+									var txt = this.codeNode.textContent;
+									navigator.clipboard.writeText( txt );
+								}
+							}, false );
+							elms[ e ].parentNode.appendChild( copyBtn );
+						}
+					}
+				}, 2000 )
 			}, 1000 );
 		} );
 	},
@@ -123,7 +156,9 @@ var MDParser =
 			var xhr = new XMLHttpRequest();
 	        xhr.responseType = "text";
 			code = code.strReplace( "'", "|;" );
-	        xhr.open( 'GET', application.root.vars.ROOT_URL$ + '/php/save.php?page=' + page + '&lang=' + application.root.vars.LANG$ + '&code=' + code );
+	        xhr.open( 'POST', application.root.vars.ROOT_URL$ + '/php/save.php' );
+			xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
 	        var self = this;
 	        xhr.onload = function()
 	        {
@@ -144,7 +179,7 @@ var MDParser =
 					application.aoz.runProcedure( onError, { MESSAGE$: xhr.responseText } );
 				}
 	        }
-	        xhr.send( 'code=' + code );
+	        xhr.send('page=' + page + '&lang=' + application.root.vars.LANG$ + '&code=' + encodeURIComponent( code ) );
 		}
 		else
 		{

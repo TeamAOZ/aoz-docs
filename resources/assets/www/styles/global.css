@@ -286,7 +286,7 @@ a:not([class]):hover {
 	font-size: 16px;
 	font-family: "Avenir Next LT pro";
 	color: #444444;
-	display: inline-block;
+	display: none;
 	border-radius: 16px;
 	width: 64px;
 	height: 24px;
@@ -521,6 +521,36 @@ a:not([class]):hover {
 	width: 70%;
 	height: 70%;
 	border: none;
+}
+
+blockquote
+{
+		color: inherit !important;
+}
+
+code
+{
+		line-height: 1.5em !important;
+		padding: 4px !important;
+		vertical-align: top !important;
+}
+
+button.copy-btn
+{
+	position: relative;
+	cursor: pointer;
+	background-color: var(--second-dark-bg-grey);
+	border-radius: 4px;
+	border: none;
+	height: 24px;
+	width: 60px;
+	font-size: 12px;
+	font-family: 'Roboto Mono';
+}
+
+button.copy-btn:hover
+{
+	background-color: var(--primary-dark-bg-cyan);
 }
 
 // Smartphone

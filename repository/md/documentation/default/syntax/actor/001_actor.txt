@@ -111,7 +111,7 @@ Actor "enemy1", Image$="monster", StartX = 0, EndX = 320, StartY=0, EndY=50, Dur
 - _oncontrollerbutton&dollar;_ (optional): Name of the AOZ procedure that will be called at each mouse button up on the actor.
 - _oncontrolleraxis&dollar;_ (optional): Name of the AOZ procedure that will be called at each mouse doubleclick on the actor.
 - _oncontrollerdirection&dollar;_ (optional): Name of the AOZ procedure that will be called at each mouse button up on the actor.
-- _enable_ (optional): Enables or disables an actor. If False, the Actor will still be displayed on the screen, but the controls, animations and mouse actions will be disabled.
+- _enable_ (optional): If False, the Actor will still be displayed on the screen, but the controls, animations and mouse actions will be disabled.
 - _Group&dollar;_ (optional): Assigns the actor to a custom group. A custom group can be assigned to several Actor. By example
 - _collision_ (optional): Enables or disables all collisions with this actor. If False, no collision effects will be applied.
 - _animplay_ (optional): Enabled or disables the current animation

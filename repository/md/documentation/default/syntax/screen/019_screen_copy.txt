@@ -5,19 +5,32 @@
 @tags: 
 @categories: 
 \-->
-Copy an area from one screen to another or itself, resizing the area
+
+## Syntax
+**Screen Copy** *source* **to** *destination*
+**Screen Copy** *source, x1, y1, x2, y2* **to** *destination, x3, y3*
+**Screen Copy** *source, x1, y1, x2, y2* **to** *destination, x3, y3, x4, y4*
+
 ## Parameters
 
-- **sourceIndex**: The index of the source screen
+
+- **source**: The index of the source screen
 - **x1**: The horizontal coordinate of the top-left corner of the origin area to copy
 - **y1**: The vertical coordinate of the top-left corner of the origin area to copy
 - **x2**: The horizontal coordinate of the bottom-right corner of the origin area to copy
 - **y2**: The vertical coordinate of the bottom-right corner of the origin area to copy
-- **destinationIndex**: The index of the destination screen
+- **destination**: The index of the destination screen
 - **x3**: The horizontal coordinate of the top-left corner of the destination area
 - **y3**: The vertical coordinate of the top-left corner of the destination area
 - **x4**: The horizontal coordinate of the bottom-right corner of the destination area
 - **y4**: The vertical coordinate of the bottom-right corner of the destination area
-- _mode_ (optional): The drawing mode to use while drawing (not implemented TODO)
+
+## Description
+
+Copy an area from one screen to another or itself, resizing the area if required.
+
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMzA4NDkxMzkyLC00ODM3NTQ3NTVdfQ==
+-->

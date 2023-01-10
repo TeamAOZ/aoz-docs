@@ -1,0 +1,369 @@
+# DATABASES
+
+## Save, our Souls
+
+Preamble: We believe that AOZ Studio should simplify all aspects of programming. The creation and management of databases is an area which we also offer you brand new solutions.
+
+If you need to save and load data, there are different solutions ; in this chapter we will see how to save data in local memory and in a local or remote real database.
+
+## Save in the local memory.
+
+The local memory of browsers (e.g. Chrome) can store data in the form of Cookies, but be careful only as long as the browser cache memory is not deleted.
+
+For security reasons, browsers prohibit writing directly to the hard drive of your computer (to prevent any website or web application from installing some codes).
+
+In AOZ we have sophisticated databases instruction sets to save data, that we will see in the next chapter, but if you want to save a file or data simply it is possible to do it in this cache memory with the Open In / Open Out / Close  statements.
+
+Note: Three code examples can be found in the program of the AOZ Store / utilities / save_load
+
+Example:
+```basic
+Filename$="MyFile.txt"
+Input SA$  // text to be kept
+
+Open Out 1, Filename$
+	Print #1,SA$
+Close 1
+
+Open In 1, Filename$
+	Input #1, RD$
+Print "READ"; RD$
+Close 1
+```
+
+A little explanation:
+Open to save with:  Open Out Channel N°, File Name
+Save with: Print channel#N°, data to save
+Always close an open channel with a Close Channel N°
+
+<BR>
+
+## Databases
+
+AOZ Studio allows you to store information in the form of structured databases, hosted on the AOZ Cloud or elsewhere, and especially:
+
+1°) Without you having to be an expert in databases or SQL language,
+
+2°) Without you having to manage your data structures: AOZ will do the work for you.
+
+### Small glossary
+
+To use these instructions wisely, understand the basic principles of database organization:
+
+- A **field** works like a variable in AOZ: it is used to store data and is identified by its **name**. As with AOZ variables, a field name ending with $ is used to store characters, with # float numbers. Without these special characters, it will be an integer.
+- A **record** is used to group several **fields**.
+. The fields are stored in a record. For example a record made of the fields name, address, date of birth, telephone number.
+. A record is identified by a single pointer, often called **id**.
+- A **table** is used to store several **records** of  identical structure, i.e. grouping the same list of **fields**. A table is identified by its **name**. We can see a table as a… table with one column per field, and one row per record, in which we will store values.
+- A **database** allows you to organize several **tables** together. Related tables will be grouped together in the same database. Most often an application will need a single database where all the data concerning it will be stored.
+
+<p align="center"><img valign="middle" width="700px" src="https://doc.aoz.studio/assets/images/en/image200.png" />
+</p>
+<BR>
+We speak **of relational database** when we link the tables together. For example, instead of saving several copies the same city name in several databases, we will save the unique **identifier** corresponding to the name of this city in another table  (above the "villes" table), to save storage space and avoid risking errors when typing the same word several times.
+
+The databases are hosted on AOZ|;s cloud. To access it, the programmer and its user must both have an AOZ account that will allow them to identify themselves and find their data from anywhere. Your program will automatically propose the connection to this account, or its creation the first time, as soon as it is necessary to identify the user.
+
+### Summary of AOZ DB instructions
+
+**DB Database**: Select a database
+**DB Table**: Select a table
+
+**DB Search**: Search for records according to a simple search criterion and select the first one
+**DB Search All**: Search all records and select the first one
+**DB Search Sql**: Search for records based on search criteria written in SQL and select the first
+**DB Sql**: Search for records based on any criteria written in SQL and select the first (Full SQL)
+
+**DB First**: Select the first record from search result
+**DB Last**: Select the last record from search result
+**DB Next**: Select the next record from search result
+**DB Previous**: Select the previous record from search result
+
+**DB Pointer**: Retrieve the ID of the selected record
+**DB Point On**: Select a record for which the identifier is known
+**DB New**: Select  a new empty record
+
+As long as your program has not specified anything with the instructions above, you will be by default in a database called "default  ", a table called "default", in a record identified by a pointer 1. If you only need one database, with a single table or even a single record, you don|;t need to use unnecessary instructions.
+
+### 1°) Creation and selection
+
+**DB Database**: Select a database
+**DB Table**: Select a table
+<BR>
+
+### 2°) Reading and Writing
+
+We have instructions to act on the selection made with the instructions above:
+**DB Read**: copy the values of the record into your AOZ variable(s)
+**DB Write**: copy the contents of your AOZ variables to the selected record
+<BR>
+
+### 3°) Search in your base
+There are three instructions for doing research that you can choose from depending on how difficult the design of the code is and how readable it is:
+-  ***DB Search*** is the easiest to write a search, and the most readable.
+- ***DB Search Sql*** allows you to enter only the search criteria in SQL, it remains simpler than doing the SQL query entirely by hand. This statement introduces a little more SQL, and lowers the readability of the code.
+- ***DB Sql*** is pure SQL, it allows you to do more than the other 2, we are full-Sql here, so it|;s even less easy to write and possibly to read.
+
+Example:
+```basic
+DB Sql "SHOW DATABASES"
+   While DB Pointer()
+   DB Read "Database$"
+   Print "-", Database$
+   DBNext
+Wend
+```
+
+<BR>
+
+### 4°) Manage your base
+
+Se also have instructions to "clean up" your databases:
+**DB Rename Database**: Change the name of a database
+**DB Rename Table**: Change the name of a table
+**DB Rename Column**:  Change the name of a field
+**DB Delete Database**:  Delete a database, and all its data
+**DB Delete Table**:  Delete a table, and all its data
+**DB Delete Record**:  Delete the selected record
+**DB Delete Column**:  Delete a field
+
+You will find many examples using the DB instructions in the built-in help of AOZ Studio (search bar). Search for the instruction you want to use to discover it.
+
+To start here are three small programs to jump in:
+
+### Example to save and read
+```basic
+name$="laura" : score=987654
+DB Database "hall-of-fame"
+DB Write "name$, score"
+
+name$="" : score=0  //erase to be sure that it comes back from DB Read 
+
+DB Read "name$, score"
+Print name$, score
+```
+<BR>
+
+### Example of an address book program
+
+written in AOZ which allows you to store your friends|; details in a private database and find them by searching on their name and ID.
+```basic
+Print "ADDRESS BOOK"
+While item$ <> "q"
+	Print "s > Search - n > New - q > Quit"
+	Input item$
+	If item$ = "s"
+		Print "Search name :": Input name$
+		If Len(name$)
+			DB Search "name$=" + name$
+			Else
+			DB Search All
+		End If
+		While DB Pointer()
+			DB Read "name$, phone$, address$"
+			Print DB Pointer(), ">", name$, phone$, address$
+			DB Next
+		Wend
+		Print "Enter a record number to edit it, or :"
+	End If
+	
+	If item$ = "n" Or Val(item$) > 0
+		DB New
+		If Val(item$) > 0
+			DB Point On Val(item$)
+			DB Read "name$, phone$, address$"
+			Print "name:", name$ : Print "phone:", phone$ : Print "address:", address$
+		End If
+		Print "new name:" : Input name$ : If Len(name$) Then DB Write "name$"
+		Print "new phone:" : Input phone$ : If Len(phone$) Then DB Write "phone$"
+		Print "new address:" : Input address$ : If Len(address$) Then DB Write "address$"
+	End If
+Wend
+```
+This small program has some small subtleties when it is used:
+- If you don|;t type anything for the search, all addresses are displayed.
+- If you leave blank a "new" entry the original data will be preserved.
+
+<BR>
+
+### Example of a high-score leaderboard
+
+This small program written in AOZ is a game of searching for a random number.
+
+It stores in a database a table of the 10 best scores, all players combined. You are invited to enter your name when you enter this "hall of fame".
+```basic
+// The game
+myScore = 0 : target = Rnd(100) : proposal = 101
+Print "Guess my secret number, between 0 and 100 :"
+
+While proposal <> target
+	myScore = myScore + 1
+	Input proposal
+	If proposal > target Then Print "My number is lower than this ! Try again :"
+	If proposal < target Then Print "My number is higher than that ! Try again :"
+Wend
+Print "You have found my secret number ! Your score is", myScore
+
+// Enter the hall of fame ?
+DB Database "hall-of-fame", "application"
+DB Search All
+badestScore = 0 : scores = 0
+While DB Pointer()
+	scores = scores + 1
+	DB Read "score"
+	If score > badestScore
+		badestScore = score
+		badestPointer = DB Pointer()
+	End If
+	If myScore < score Then enterHallOfFame = TRUE
+	DB Next
+Wend
+
+If enterHallOfFame And scores >= 5
+	DB Point On badestPointer
+	DB Delete Record
+End If
+
+If scores < 5 Then enterHallOfFame = TRUE
+If enterHallOfFame
+	Print "You entered the hall of fame ! What is your name ?"
+	Input name$ : score = myScore
+	DB New : DB Write "name$, score"
+End If
+
+// Display the hall of fame
+Print "Here are the best players ever :"
+DB Search All
+While DB Pointer()
+	DB Read "name$, score"
+	Print name$, score
+	DB Next
+Wend
+```
+<BR>
+
+### Database access
+
+Each database is identified by it|;s name and a sharing mode. They are stored in the cloud, accessible to author|;s apps, and will be shared with your users and other apps under strict restrictions that you set by choosing the sharing mode.
+
+**DB** **Database** selects the database that will be used with the following parameters:
+DB$  (string)  The database name will be unique in each sharing mode
+Share$ (string)  The database sharing mode, there are four: |;author|;, |;application|;, |;user-author|; and |;user-application|; (default).
+The available sharing modes in privacy increasing order:
+
+-**author**: for a database common to all  applications developed by the author of the software, and common to all users. Here you can store general information that you want to update once and for all your apps, such as author information, global table of players of all your games, etc.
+
+-**application**: for a database common to all users who will use the application. You can use this sharing mode to store, for example, a table of  high scores for a game, or a table of country codes common to all your management software; data that you will manage only in one place.
+
+-**user-author**:  for a private database,  common to all applications developed by the author of the software, but will be different for each user of your software.
+
+-**user-application**: for a database private to the user and limited to the current application. This is the most private storage and the **default sharing mode** when you don|;t specify another one.
+
+Examples:
+```basic
+// Read the player|;s personal recording for this game (private by default and will never be visible to any other player)
+DB Database "scores"
+DB Read "Best_Score"
+Print "Your best score:", Best_Score
+//Read the highest score and player name for this game in the common laderboard
+DB Database "scores", "application"
+DB Read "Best_Score, Best_Player_Name$"
+Print "The best score ever :", Best_Score, "owned by", Best_Player_Name$
+```
+<BR>
+
+### Storage of databases, accounts, and certificates
+
+The databases associated with your applications are stored in the AOZ Studio Cloud: they are redundant, an archive  is made every day. It is a free service, offered with the basic license, you do not have to worry about  anything. 
+Please **note**, as indicated in our terms and conditions, that we do not guarantee the integrity, quality of service or possible loss of data.  We will offer a more expensive license with this type of service. You can also back up your database on other servers with this type of service if it is critical for your application. We also invite you to make backup copies.
+
+Depending on the data sharing mode you chose with the **DB Database** instruction, your application will identify different elements to establish this sharing mode and privatize your data at the level you wanted.
+
+As soon as you use DB statements, a certificate identifying the author of the application (you) will be embedded when it is published. This certificate is linked to your AOZ developer account, which you will need to create and log in to from your AOZ development environment.
+
+<p align="center"><img valign="middle" width="700px" src="https://doc.aoz.studio/assets/images/en/image201.png" />
+</p>
+<BR>
+
+To summarize the 3 modes:
+-**user-application** and **user-author** :
+If the sharing mode concerns one (or more) user, he will have to connect to his AOZ account the first time he launches the application from each PC or internet browser. The login dialog box will appear as soon as it is necessary to access the personal and private database for your user-application,  or common to all your applications, if **user-author**.
+
+-**user-application** and **application** :
+If the sharing mode concerns the application, it will be saved on the cloud associated with your AOZ author account, and a certificate identifying  the application will be embedded when it is published. This certificate linked to your application is downloaded to the **settings\cert.hjson** file.
+
+-**Author and User-Author :**
+If the sharing mode concerns the author,  the data associated with an author is common to all applications of the same author (in the first case, equally common to all users, and in the second case common to the author but private to the user).
+
+  
+**CAUTION:** You must not use the same certificate for several applications:  if you copy your project to take it as a template for  another application, or if you publish the sources or share it with a third party, it is imperative to **delete this file which must remain strictly private** to your application on your development environment,  The security of this data depends on it.
+
+
+
+## Account Authenticate
+
+By default when your program uses a DB instruction, say DB Read, in one of sharing mode that is not public, a LOGIN/REGISTER popup is displayed as the user needs to Authenticate by giving an email and Password, or by creating an account.
+The look and feel and behavior of that popup can be created and managed by you. This chapter tells you how, with below instructions:
+<BR>
+
+**Account Authenticate** Mandatory, Synchronous, Left, Top, UseToken, OnDone\$, OnSuccess\$, OnError\$, OnClose\$, VisualAspect\$
+
+Opens the AOZ account authentication window, which allows you to log in to an account, but also to create a new account and reset its password.
+If the user has successfully logged in by checking "Remember me", the window does not appear, by default, and the account logs in automatically, without the user needing to enter their password again email and password. For this, a user connection identifier, called "TOKEN", is stored on the user|;s computer.
+By default, the application pauses until the user successfully logs in or closes the authentication window. We say that the execution of the authentication window is "synchronous".
+
+- Mandatory = true: indicates that the user|;s connection is mandatory, and that the user will not be able to close the connection window before having successfully connected to his AOZ account. If you do not place this option, the user can always close his window without logging in, you will then have to check in your AOZ program if he has logged in with the Account Authenticated function to act accordingly.
+- Synchronous = false: (or "asynchronous" mode if false) allows the AOZ program to continue its execution after displaying the connection window. You will then need to check the login progress of your AOZ program user with the Account Authenticating and Account Authenticated functions.
+- Left: allows you to define a horizontal coordinate where to display the connection popup window. If not specified, it will be displayed furthest to the left.
+- Top: allows you to define a vertical coordinate where to display the connection popup window. If not specified, it will be displayed at the top.
+- UseToken = false: forces the display of the authentication window, even if the user had checked "Remember me", ignoring the identification token that would have been saved.
+- OnDone$: the name of a procedure that will be executed when the authentication process ends (when the user is logged in or the window has been closed)
+- OnSuccess$: the name of a procedure that will be executed in the event of a successful connection
+- OnError$: the name of a procedure that will be executed in the event of an error. All error messages displayed to the user, or connection errors, are thus sent.
+- OnClose$: the name of a procedure that will be executed if the user closes the identification popup window without logging in.
+- VisualAspect$: you can choose the visual aspect covered by the identification popup window. At the time of writing we have: "aoz", "flat", "modern", "pictos", "yellow".
+
+*Example of the simplest synchronous connection:*
+```basic
+Account Authenticate
+```
+
+
+*Example of asynchronous connection (with waiting loop):*
+```basic
+Account Authentication Asynchronous
+Account Authenticate
+While Account Authenticating()
+     Print "Waiting..."
+     Wait 1
+Wend
+Print "Authentication status: "; Account Authenticated()
+```
+<BR>
+
+**Account Authenticated()**
+This function returns true if the user is currently logged into their AOZ account.
+<BR>
+
+**Account Authenticating()**
+This function returns true if the user authentication is in progress, ie if an identification form is currently displayed in asynchronous mode waiting for the user.
+
+Here are few tricks that can be used to avoid filling in the corresponding parameter for each call to Account Authenticate (note that they are redundant and therefore not necessarily very useful):
+- **Account Authentication Asynchronous**: unless the Synchronous = true parameter is specified, the next calls to Account Authenticate will be made asynchronously.
+- **Account Authentication Synchronous False**: equivalent of Account Authentication Asynchronous
+- **Account Authentication Synchronous**: unless the parameter Synchronous = false is specified, the next calls to Account Authenticate will be made synchronously.
+- **UI Visual Aspect Design\$**: allows to choose among the predefined visual aspects "aoz", "flat", "modern", "pictos", "yellow", for all the next calls to UI instructions. If VisualAspect$ is not specified, future calls to Account Authenticate will rely on the visual aspect chosen here.
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTExMjQ2MTI2MiwtMTMyNzM3MTc4NiwtMT
+U3NDY1OTk3OCw5NTA1NjMzNDcsMTYyNTgzODYsODk3OTYxNTM3
+LC0yMDM5MDg3ODEzLC0xODYxMTUxMjc1LC0xNzYxNDA4MTg0LC
+01NzI5NDE3MTQsLTE3MzQ0ODU0MjYsLTcyMzE0MjY0MywxMDky
+MzQyMzkxLC0xMTc4OTE3ODY5LDE1MjgyNDI5NzUsLTg3NjI3NT
+YxNiwtMTMwNDA1NDkyNSwtNTk4MzE5MTEsMTUyMTcwNzc5Myw4
+NzAyMzIwMjZdfQ==
+-->
