@@ -34,7 +34,7 @@
 <li id="T19" class="page" onclick="javascript:application.aoz.runProcedure( 'PAGE_LOAD', {  ID$: 'T19', URL$: 'md/documentation/default/user_guide/table_of_contents/006_the_edit_mode/001_the_top_menu_buttons.txt', IS_NEW: true } );">The top menu buttons</li>
 <li id="T20" class="page" onclick="javascript:application.aoz.runProcedure( 'PAGE_LOAD', {  ID$: 'T20', URL$: 'md/documentation/default/user_guide/table_of_contents/006_the_edit_mode/002_the_project_folders.txt', IS_NEW: true } );">The project folders</li>
 </ul>
-<li id="T21" class="page" onclick="javascript:application.aoz.runProcedure( 'PAGE_LOAD', {  ID$: 'T21', URL$: 'md/documentation/default/user_guide/table_of_contents/007A_procedures_and_functions.txt', IS_NEW: true } );">007A procedures and functions</li>
+<li id="T21" class="page" onclick="javascript:application.aoz.runProcedure( 'PAGE_LOAD', {  ID$: 'T21', URL$: 'md/documentation/default/user_guide/table_of_contents/007A_procedures_and_functions.txt', IS_NEW: true } );">Procedures and functions</li>
 <li id="T22" class="page" onclick="javascript:application.aoz.runProcedure( 'PAGE_LOAD', {  ID$: 'T22', URL$: 'md/documentation/default/user_guide/table_of_contents/007_create_a_project_application.txt', IS_NEW: true } );">Create a project application</li>
 <li id="T23" class="page" onclick="javascript:application.aoz.runProcedure( 'PAGE_LOAD', {  ID$: 'T23', URL$: 'md/documentation/default/user_guide/table_of_contents/008_errors_bugs_and_help.txt', IS_NEW: true } );">Errors bugs and help</li>
 <li id="T24" class="page" onclick="javascript:application.aoz.runProcedure( 'PAGE_LOAD', {  ID$: 'T24', URL$: 'md/documentation/default/user_guide/table_of_contents/009_the_direct_mode.txt', IS_NEW: true } );">The direct mode</li>

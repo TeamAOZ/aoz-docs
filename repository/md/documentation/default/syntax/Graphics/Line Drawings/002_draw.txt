@@ -1,0 +1,68 @@
+# Draw
+<!--
+@name: Draw
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+## Syntax Options
+
+**Draw** *x1, y1*
+**Draw To** *x2, y2*
+**Draw** *x1, y1* **to** *x2, y2*
+**Draw** *x1, y1, width, height*
+
+## Parameters
+
+
+- **x1**: The horizontal coordinate of the point to draw the line from
+- **y1**: The vertical coordinate of the point to draw the line from
+- **x2**: The horizontal coordinate of the point to draw the line to
+- **y2**: The vertical coordinate of the point to draw the line to
+- **width**: The horizontal distance in pixels of the end of the line from the start point
+- **height**: The vertical distance in pixels of the end of the line from the start point
+
+## Description
+
+Draws a straight line using the current line, ink and fill settings in the current screen. After drawing, the graphics cursor position is updated to **x2, y2**, or *x1,y1* in the case of **Draw** *x1, y1*
+
+- **Draw** *x1, y1*
+Draw a single pixel at coordinates *x1, y1* sized to the current Line Width
+
+- **Draw To** * x2, y2*
+Draw a straight line from the current graphics cursor position to *x2, y2*
+
+- **Draw** *x1, y1* **to** *x2, y2*
+Draw a straight line from *x1, y1* to *x2, y2*
+
+- **Draw** *x1, y1, width, height*
+Draw a straight line from *x1, y1* to the point width horizontal and height vertical pixels away 
+
+## Example Code
+
+The following code draws 100 random lines on the screen, each one starting where the last one ended.
+
+```basic
+ink 2
+line width 10
+line cap "round"
+draw 100,100
+for n=1 to 100
+	r=rnd(100 to 200)
+	colour 2,rgb(rnd(50 to 220),rnd(50 to 220),rnd(50 to 220))
+	x=rnd(10 to 1910)
+	y=rnd(10 to 1070)
+	draw to x, y
+	wait 0.1
+next n
+```
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE5NTk3OTU1MTgsLTQxMzMxNDUwMCwxOT
+ExOTgzNTcxLDM3MTI3MzE4OSwxMTY1MzIwMzA3LDIwNzE4MDcw
+MDEsODE5Nzc5OTAyLDMxNzE5MzE5NSwxOTQ1MjQ4MTgxLDczMz
+MzNjgzMywtMjk4NDgwMDAxLC0xNjEzNzE5MDEwXX0=
+-->

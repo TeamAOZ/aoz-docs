@@ -1,0 +1,179 @@
+# Ellipse
+<!--
+@name: Ellipse
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+## Syntax Options
+
+- **Ellipse**
+- **Ellipse** *x, y*
+- **Ellipse** *x, y, xRadius*
+- **Ellipse** *x, y, xRadius, yRadius*
+- **Ellipse** *x, y, xRadius, yRadius, angle*
+- **Ellipse** *x, y, xRadius, yRadius, angle, fill*
+
+
+## Parameters
+
+
+- **x**: The horizontal coordinate of the centre of the ellipse
+- **y**: The vertical coordinate of the centre of the ellipse
+- **xRadius**: The horizontal radius in pixels. Defaults to 100 if omitted.
+- **yRadius**: The vertical radius in pixels. Defaults to 2/3 of xRadius if omitted
+- **angle**: The angle of rotation
+- **fill**: Set to true or 1 to fill the ellipse
+
+## Description
+
+Draw an ellipse using the current line, ink, fill and border settings in the current screen.
+
+- **Ellipse**
+Draw an ellipse with *xRadius* 100 at the current graphics coordinates
+
+- **Ellipse** *x, y*
+Draw an ellipse with *xRadius* 100 at the coordinates *x, y*
+
+- **Ellipse** *x, y, xRadius*
+Draw an ellipse with horizontal radius *xRadius* at *x, y*
+
+- **Ellipse** *x, y, xRadius, yRadius*
+Draw an ellipse with horizontal radius *xRadius* and vertical radius *yRadius* at *x, y*
+
+- **Ellipse** *x, y, xRadius, yRadius, angle*
+Draw an ellipse with horizontal radius *xRadius* and vertical radius *yRadius*, rotated by *angle* degrees at *x, y*
+ 
+- **Ellipse** *x, y, xRadius, yRadius, angle, fill*
+Draw a filled ellipse with horizontal radius *xRadius* and vertical radius *yRadius*, rotated by *angle* degrees at *x, y*
+
+## Example Code
+
+This example draw lots of randomly sized ellipses, in random colours, and fills some of them. 
+```basic
+ink 2
+for n=1 to 100
+	r=rnd(100 to 200)
+	colour 2,rgb(rnd(50 to 220),rnd(50 to 220),rnd(50 to 220))
+	line width rnd(2 to 10)
+	x=rnd(200 to 1720)
+	y=rnd(200 to 880)
+	xr=rnd(100 to 400)
+	yr=rnd(100 to 400)
+	a=rnd(360)
+	f=rnd(0 to 1)
+	Ellipse x, y, xr, yr, a, f
+	wait 0.5
+next n
+```
+---
+Boring, I know. Here's some more exciting ways to use ellipses.
+
+This program uses some clever maths to create the illusion of spinning rings.
+
+```basic
+// Spinning Rings
+// by Dave Baldwin 
+// August 2021
+
+dim rspeed#(20)
+dim r#(20)
+dim spinspeed#(20)
+dim spin#(20)
+dim clr(20)
+
+for f=0 to 20
+	r#(f)=rnd(3600)/10
+	rspeed#(f)=(rnd(1200)-600)/300*(f+1)/6
+	spinspeed#(f)=(rnd(600)-300)/300*(f+1)/6
+	clr(f)=rgb(rnd(70 to 250),rnd(70 to 250),rnd(70 to 250))
+next f
+ink 4
+
+do
+	for f=0 to 4
+		colour 4,clr(f)
+		line width 6
+		ellipse 360,360,300,300*abs(sin(spin#(f))),r#(f)
+		colour 4,clr(f+6)
+		line width 4
+		draw shadow 0,0,60,$0000ffff
+		ellipse 960,540,220,220*abs(sin(spin#(f+6))),r#(f+6)
+		draw shadow off
+		line width 2
+		colour 4,clr(f)+12
+		ellipse 1560,720,180,180*abs(sin(spin#(f+12))),r#(f+12)
+	next f
+	for f=0 to 20
+		add r#(f),rspeed#(f),0 to 360
+		add spin#(f),spinspeed#(f),0 to 360
+	next f
+	line width 6
+	draw shadow 0,0,30,s
+	colour 4,clr(18)
+	circle 360,360,300
+	line width 4
+	colour 4,clr(19)
+	draw shadow 0,0,50,$0000ffff
+	circle 960,540,220
+	line width 2
+	draw Shadow Off
+	colour 4,clr(20)
+	circle 1560,720,180
+	refresh
+	cls
+loop
+```
+<p align="center"><img valign="middle" width="960px" src="https://doc.aoz.studio/repository/assets/images/spinning_rings.png" /></p>
+
+---
+Here's another program that uses ellipses in a different way. It repeatedly draws the same 60 ellipses, each time in a slightly different place by adding a wave-form offset to the y coordinate, creating an animation. A screen filter is used to animate the colours.
+
+```basic
+// Ripple Rings by Dave Baldwin
+// November 2021
+//
+// Who said Ellipses were boring?
+
+Line width 2
+degree
+dim ripple#(3600)
+frequency#=50
+rings=60
+dim Cols(rings)
+for f=0 to 3600
+	ripple#(f)=sin(f)*frequency#
+next f
+ripstart=1
+red=0 : green=20 : blue=60
+ink 1
+for f=1 to rings
+	cols(f)=rgb(red+(rings-f)*2,green+(rings-f)*2,blue+(rings-f)*2)
+next f
+hue=0
+
+do
+	add hue,1,0 to 359
+	for f=1 to rings
+		colour 1,cols(f)
+		offset=ripple#(ripstart+f*20)*(rings-f)/30
+		ellipse 960,540+offset,f*20,f*8
+	next f
+	screen filter 0,"hue-rotate", hue
+	refresh
+	cls
+	add ripstart,-6,1 to 2160
+loop
+```
+<p align="center"><img valign="middle" width="960px" src="https://doc.aoz.studio/repository/assets/images/ripple.png" /></p>
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE5MTUzOTA1ODYsMTk0MjMxMTU5OSw4Mj
+IwNDA3MjQsLTEzOTExMjYxNzIsMzg3NTQ5NDQ4LC0xNDkwNTMy
+Mzc2LC00MTg0OTUxMzMsLTE4MzE5NzQ3MTQsMTI5NzMxNjkwMS
+wtOTMyNzgzMTkyLC0zNTc1MDExMjJdfQ==
+-->

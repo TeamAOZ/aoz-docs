@@ -1,0 +1,77 @@
+# Box
+<!--
+@name: Box
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+## Syntax Options
+
+**Box**
+**Box** *x1, y1*
+**Box** *x1, y1, width*
+**Box** *x1, y1, width, height*
+**Box** *x1, y1, width, height , fill*
+**Box** *x1, y1* **to** *x2, y2* 
+**Box** *x1, y1* **to** *x2, y2 , fill* 
+
+## Parameters
+
+- **x1**: The horizontal coordinate of the top-left corner of the rectangle
+- **y1**: The vertical coordinate of the top-left corner of the rectangle
+- **x2**: The horizontal coordinate of the bottom-right corner of the rectangle
+- **y2**: The vertical coordinate of the bottom-right corner of the rectangle
+- **width**: The width of the box in pixels
+- **height**: The height of the box in pixels
+- **fill**: Optional. Set to true or 1 to fill the box
+
+## Description
+
+Draw a empty rectangular box using the current line, ink, fill and border settings in the current screen with the added option of fill if required.
+
+- **Box**
+Draw a square box 100 x 100 pixels at the current graphics coordinates
+
+- **Box** *x1, y1*
+Draw a square box 100 x 100 pixels at the coordinates ***x1, y1***
+
+- **Box** *x1, y1, width*
+Draw a square box with sides ***width*** pixels at the coordinates ***x1, y1***
+
+- **Box** *x1, y1, width, height, fill*
+Draw a box ***width*** pixels wide and ***height*** pixels high at coordinates ***x1, y1*** 
+
+- **Box** *x1, y1* **to** *x2, y2*
+Draw a box between diagonally opposite corners ***x1,y1*** and ***x2, y2***
+
+- **Box** *x1, y1* **to** *x2, y2 , fill*
+Draw a filled box between diagonally opposite corners ***x1,y1*** and ***x2, y2***
+
+## Example Code
+
+The following code draws randomly sized and coloured boxes.
+```basic
+ink 2
+for n=1 to 100
+	r=rnd(100 to 200)
+	colour 2,rgb(rnd(50 to 220),rnd(50 to 220),rnd(50 to 220))
+	line width rnd(2 to 10)
+	x=rnd(10 to 1510)
+	y=rnd(10 to 670)
+	w=rnd(100 to 400)
+	h=rnd(100 to 400)
+	f=rnd(0 to 1)
+	Box x, y, w, h, f
+	wait 0.5
+next n
+```
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE2NjQ3MzUxNjUsLTEwMDc4NzI1MzQsLT
+Q0MzA4NDc0OSw2NzA5OTA2NjMsNzExMDI3MzQ2LC0xNDc4ODE1
+NTkzLC0xMzc3NjMzNzYwLDc1OTM5NTAzOSwxNzY3MDExNTMzLD
+E3MDQ5NzM0MzRdfQ==
+-->

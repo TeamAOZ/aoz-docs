@@ -1,0 +1,37 @@
+# Border Filter$
+<!--
+@name: Border Filter$;
+@description: 
+@tags: 
+@categories: 
+\-->
+
+## Syntax
+
+**= Border Filter$**
+
+
+## Description
+
+Returns the CSS string used by Javascript in the context.filter property. 
+
+This function is intended to be used by advanced developers, and returns the actual string
+to set in the Javascript context before drawing.
+
+## Example Code
+
+This example adds three different filters to the Border Filter, and prints the resulting string that is used by Javascript to apply the filters.
+
+```basic
+Border filter "blur",5
+Border Filter "drop-shadow",40,40,10,$ffffff10
+Border Filter "sepia",50
+print border filter$
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1MTgwNjMyNzcsMTIyMjE2NzMxMyw5NT
+AxMzA3NzJdfQ==
+-->
