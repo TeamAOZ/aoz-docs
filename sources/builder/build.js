@@ -2,7 +2,7 @@ const PATH = require( 'path' );
 const FS = require( 'fs' );
 const deepl = require('deepl-node');
 const authKey = '1e5c8a9b-29ed-6132-bec7-a0ee504b6b28';
-const rootDir = '../repository/'
+const rootDir = '../../repository/'
 var id = 1
 
 String.prototype.strReplace = function( strSearch, strReplace )
@@ -28,7 +28,7 @@ String.prototype.strReplace = function( strSearch, strReplace )
 var template = FS.readFileSync( rootDir + 'md/template_topics.txt' );
 template = template.toString();
 var dt = new Date();
-var ver = '1.0-' + ( dt.getMonth() + 1 ) + dt.getDate() + dt.getFullYear();
+var ver = '1.0.' + dt.toISOString().substring(2, 10).replaceAll('-', '');
 template = template.strReplace( '%VERSION$%', ver );
 
 var docPath = rootDir + 'md/documentation/default/user_guide/table_of_contents';
@@ -71,7 +71,7 @@ console.log( 'Topics generated!' );
  
 function readDirectory( path, depth )
 {
-    var dataUrl = path;
+    var dataUrl = path.substring(rootDir.length);
     var code = '<ul id="path" data-url="' + dataUrl + '" class="' + ( ( depth == 0 ) ? 'item_show' : 'item_hide' ) + '">\r\n';
     var filenames = FS.readdirSync( path, { withFileTypes: true } );
     filenames.forEach( file => {
@@ -85,7 +85,7 @@ function readDirectory( path, depth )
 
             if( name != '' )
             {
-                code += '<li id="T' + id + '" class="chapter" onclick="javascript:toggleChapter( \'' + dataUrl + '/' + file.name + '\' );application.aoz.runProcedure( \'PAGE_LOAD\', { ID$: \'T' + id + '\', URL$: \'' + path + '/' + file.name + '/000_chapter.txt\', IS_NEW: true } );">' + name + '</li>\r\n';
+                code += '<li id="T' + id + '" class="chapter" onclick="javascript:toggleChapter( \'' + dataUrl + '/' + file.name + '\' );application.aoz.runProcedure( \'PAGE_LOAD\', { ID$: \'T' + id + '\', URL$: \'' + dataUrl + '/' + file.name + '/000_chapter.txt\', IS_NEW: true } );">' + name + '</li>\r\n';
                 id++;
             }
         }
@@ -146,7 +146,7 @@ function readDirectory( path, depth )
                     }, 500 );
                     */
                     FS.writeFileSync( rootDir + 'md/documentation/cache/fr' + tPath + '/' + file.name, data.toString() );
-                    code += '<li id="T' + id + '" class="page" onclick="javascript:application.aoz.runProcedure( \'PAGE_LOAD\', {  ID$: \'T' + id + '\', URL$: \'' + path + '/' + file.name + '\', IS_NEW: true } );">' + name + '</li>\r\n';
+                    code += '<li id="T' + id + '" class="page" onclick="javascript:application.aoz.runProcedure( \'PAGE_LOAD\', {  ID$: \'T' + id + '\', URL$: \'' + dataUrl + '/' + file.name + '\', IS_NEW: true } );">' + name + '</li>\r\n';
                     id++;
                 }
 
