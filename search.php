@@ -8,7 +8,7 @@
     $tell_how_many = false;
     if( !$_GET )
     {
-        $_GET = [ 'search' => 'inc', 'lang' => 'en' ];
+        $_GET = [ 'search' => 'rnd', 'lang' => 'en' ];
         $tell_how_many = true;
     }
 
@@ -148,7 +148,7 @@
         $words = array_diff( $words, $cleaner );
         foreach( $words as $key => $word )
         {
-            if( strlen($word) < 4 )
+            if( strlen($word) < 2 )
             {
                 unset( $words[ $key ] );
             }
@@ -290,7 +290,7 @@
 
         protected function setBuffer( string $buffer ) : void
         {
-            $buffer = str_replace( [ "\r", "\t" ], [ '', ' ' ], $buffer );
+            $buffer = str_replace( [ "\r", "\t" ], [ '', ' ' ], html_entity_decode( $buffer, ENT_HTML5 ) );
             removeDoubleSpaces( $buffer );
             $this->buffer = "\n" . $buffer . "\n";
         }
@@ -458,7 +458,15 @@
             $text  = strtolower( $text );
             if( $found_count = $this->wordsIn( $text, $words ) )
             {
-                $more = str_starts_with( $text, reset( $words ) ) ? 1 : 0;
+                $more = 0;
+                foreach( $words as $word )
+                {
+                    if( str_starts_with( $text, $word ) )
+                    {
+                        $more = 1;
+                        break;
+                    }
+                }
                 $this->results[ $priority ][ $found_count + $more ][ $this->article->title ][ $this->article->identifier ]
                     = $this->article;
                 return true;
