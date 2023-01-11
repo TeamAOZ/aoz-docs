@@ -5,9 +5,11 @@
     header( 'Content-Type: text/plain' );
     header( 'Pragma: no-cache' );
 
+    $tell_how_many = false;
     if( !$_GET )
     {
-        $_GET = [ 'search' => 'go loop', 'lang' => 'en' ];
+        $_GET = [ 'search' => 'inc', 'lang' => 'en' ];
+        $tell_how_many = true;
     }
 
     $lang   = $_GET[ 'lang' ] ?? 'en';
@@ -17,6 +19,7 @@
 
     function main( string $search, string $lang) : void
     {
+        global $tell_how_many;
         $original_search = $search;
         cleanSearchString( $search );
         $words = explode( ' ', $search );
@@ -64,6 +67,10 @@
         foreach( $responses as $response )
         {
             echo $response . "\r\n";
+        }
+        if( $tell_how_many )
+        {
+            echo count( $responses ) . " responses\r\n";
         }
     }
 
@@ -347,6 +354,10 @@
 
         protected function searchExact( int $priority, string $text ) : bool
         {
+            if( !trim( $text ) )
+            {
+                return false;
+            }
             if( strtolower( $text ) === trim( $this->sentence ) )
             {
                 $this->results[ $priority ][ 100 ][ $this->article->title ][ $this->article->identifier ]
@@ -358,6 +369,10 @@
 
         protected function searchExactIn( int $priority, string $text, $exact = true ) : bool
         {
+            if( !trim( $text ) )
+            {
+                return false;
+            }
             $sentence = $exact ? $this->sentence : trim( $this->sentence );
             if( str_contains( ' ' . strtolower( $text ) . ' ', $sentence ) )
             {
@@ -370,6 +385,10 @@
 
         protected function searchExactStarts( int $priority, string $text ) : bool
         {
+            if( !trim( $text ) )
+            {
+                return false;
+            }
             if( str_starts_with( strtolower( $text ), trim( $this->sentence ) ) )
             {
                 $this->results[ $priority ][ 100 ][ $this->article->title ][ $this->article->identifier ]
@@ -432,6 +451,10 @@
         protected function searchWordsIn( int $priority, string $text, $exact = true ) : bool
         {
             $words = $exact ? $this->s_words : $this->words;
+            if( !trim( $text ) || !$words )
+            {
+                return false;
+            }
             $text  = strtolower( $text );
             if( $found_count = $this->wordsIn( $text, $words ) )
             {
@@ -445,6 +468,10 @@
 
         protected function wordsIn( string $text, array $words ) : int
         {
+            if( !trim( $text ) )
+            {
+                return false;
+            }
             $count = 0;
             $text  = ' ' . $text . ' ';
             if( str_starts_with( $text, reset( $words ) ) )
