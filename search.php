@@ -7,7 +7,7 @@
 
     if( !$_GET )
     {
-        $_GET = [ 'search' => 'Fill box', 'lang' => 'en' ];
+        $_GET = [ 'search' => 'go loop', 'lang' => 'en' ];
     }
 
     $lang   = $_GET[ 'lang' ] ?? 'en';
@@ -23,10 +23,11 @@
         cleanSearchWords( $words, $lang );
         $default_dir = 'repository/md/documentation/default';
         $dir     = ( $lang === 'en' ) ? $default_dir : 'repository/md/documentation/cache/' . $lang;
-        $results = $words
-            ? ( new Search( $words ) )->searchInDir( is_dir( $dir ) ? $dir : $default_dir )
+        $results = (($search !== '') || $words)
+            ? ( new Search( $search, $words ) )->searchInDir( is_dir( $dir ) ? $dir : $default_dir )
             : [];
 
+        array_unshift($words, $search);
         $responses = [];
         ksort( $results );
         foreach( $results as $by_weight )
@@ -140,7 +141,7 @@
         $words = array_diff( $words, $cleaner );
         foreach( $words as $key => $word )
         {
-            if( strlen($word) < 2 )
+            if( strlen($word) < 4 )
             {
                 unset( $words[ $key ] );
             }
@@ -337,16 +338,39 @@
         // search results : Article $article [ int $weight1 1-100 ][ int $weight2 100-1 ]
         public array $results = [];
 
-        public function __construct( array $words )
+        public function __construct( string $sentence, array $words )
         {
+            $this->sentence    = ' ' . trim( $sentence ) . ' ';
             $this->words       = $words;
             $this->words_count = count( $this->words );
+        }
+
+        protected function searchExact( int $priority, string $text ) : bool
+        {
+            if( strtolower( $text ) === trim( $this->sentence ) )
+            {
+                $this->results[ $priority ][ 100 ][ $this->article->title ][ $this->article->identifier ]
+                    = $this->article;
+                return true;
+            }
+            return false;
         }
 
         protected function searchExactIn( int $priority, string $text, $exact = true ) : bool
         {
             $sentence = $exact ? $this->sentence : trim( $this->sentence );
             if( str_contains( ' ' . strtolower( $text ) . ' ', $sentence ) )
+            {
+                $this->results[ $priority ][ 100 ][ $this->article->title ][ $this->article->identifier ]
+                    = $this->article;
+                return true;
+            }
+            return false;
+        }
+
+        protected function searchExactStarts( int $priority, string $text ) : bool
+        {
+            if( str_starts_with( strtolower( $text ), trim( $this->sentence ) ) )
             {
                 $this->results[ $priority ][ 100 ][ $this->article->title ][ $this->article->identifier ]
                     = $this->article;
@@ -382,7 +406,6 @@
             $this->article    = new Article( $identifier, file_get_contents( $filename ) );
             $this->article_id = substr( $filename, strrpos( $filename, '/' ) + 1 );
             $this->article_id = substr( $this->article_id, 0, strrpos( $filename, '.' ) );
-            $this->sentence   = ' ' . join( ' ', $this->words ) . ' ';
             $this->s_words    = [];
             foreach( $this->words as $word )
             {
@@ -390,7 +413,9 @@
             }
             $article = $this->article;
             // This is the core of search algorithm : here we decide where to search for :
-            $this->searchExactIn( 10, $article->title )
+            $this->searchExact( 5, $article->title )
+                || $this->searchExactStarts( 7, $article->title )
+                || $this->searchExactIn( 10, $article->title )
                 || $this->searchExactIn( 20, $article->description )
                 || $this->searchWordsIn( 30, $article->title, false )
                 || $this->searchWordsIn( 40, $article->description, false )
@@ -407,9 +432,11 @@
         protected function searchWordsIn( int $priority, string $text, $exact = true ) : bool
         {
             $words = $exact ? $this->s_words : $this->words;
-            if( $found_count = $this->wordsIn( strtolower( $text ), $words ) )
+            $text  = strtolower( $text );
+            if( $found_count = $this->wordsIn( $text, $words ) )
             {
-                $this->results[ $priority ][ $found_count ][ $this->article->title ][ $this->article->identifier ]
+                $more = str_starts_with( $text, reset( $words ) ) ? 1 : 0;
+                $this->results[ $priority ][ $found_count + $more ][ $this->article->title ][ $this->article->identifier ]
                     = $this->article;
                 return true;
             }
@@ -420,6 +447,10 @@
         {
             $count = 0;
             $text  = ' ' . $text . ' ';
+            if( str_starts_with( $text, reset( $words ) ) )
+            {
+                $count ++;
+            }
             foreach( $words as $word )
             {
                 if( str_contains( $text, $word ) )
