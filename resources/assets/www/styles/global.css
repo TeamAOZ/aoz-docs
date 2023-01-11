@@ -337,6 +337,12 @@ a:not([class]):hover {
   cursor: pointer;
 }
 
+.highlight
+{
+	background-color: var(--primary-dark-bg-blue);
+	color: white;
+}
+
 .search_results
 {
 	position: absolute;
