@@ -400,7 +400,7 @@ class Search
 
     public function searchInDir( string $dir ) : array
     {
-        foreach( scandir($dir) as $file ) if( !str_starts_with( $file, '.' ) )
+        foreach( scandir($dir) as $file ) if( !str_starts_with( $file, '.' ) && !str_ends_with( $file, '.bak' ) )
         {
             if( is_dir( "$dir/$file" ) )
             {
