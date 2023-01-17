@@ -14,7 +14,7 @@ $parsedown = new Parsedown();
 $tell_how_many = false;
 if( !$_GET )
 {
-    $_GET = [ 'search' => 'rnd', 'lang' => 'en' ];
+    $_GET = [ 'search' => '"Get Bob"', 'lang' => 'en' ];
     $tell_how_many = true;
 }
 
@@ -27,9 +27,26 @@ function main( string $search, string $lang) : void
 {
     global $tell_how_many;
     $original_search = $search;
+    for( $i = 0, $in_quote = 0; $i < strlen( $search ); $i ++ )
+    {
+        if( $search[ $i ] === '"' )
+        {
+            $in_quote = 1 - $in_quote;
+        }
+        if( $in_quote && ( $search[ $i ] === ' ' ) )
+        {
+            $search[ $i ] = '^';
+        }
+    }
     cleanSearchString( $search );
     $words = explode( ' ', $search );
     cleanSearchWords( $words, $lang );
+    $search = str_replace( '^', ' ', $search );
+    cleanSearchString( $search );
+    foreach( $words as &$word )
+    {
+        $word = str_replace( '^', ' ', $word );
+    }
     $default_dir = 'repository/md/documentation/default';
     $dir     = ( $lang === 'en' ) ? $default_dir : 'repository/md/documentation/cache/' . $lang;
     $results = (($search !== '') || $words)
