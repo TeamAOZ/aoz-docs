@@ -181,6 +181,47 @@ td
     color: var(--second-dark-bg-grey);
 }
 
+#topics #user-guide
+{
+	background-image: url(svg/user-guide.svg);
+}
+
+#topics #glossary
+{
+	background-image: url(svg/infos.svg);
+}
+
+#topics #more-tricks
+{
+	background-image: url(svg/magic-wand.svg);
+}
+
+p.bloc-search {
+	background-repeat: no-repeat;
+	background-position: left 14px;
+	background-size: 24px;
+	margin-left: calc(1.2em - 34px);
+	padding-left: calc(8px + 34px);
+}
+
+p.bloc-search.user-guide,
+#topics #user-guide
+{
+	background-image: url(svg/user-guide.svg);
+}
+
+p.bloc-search.glossary,
+#topics #glossary
+{
+	background-image: url(svg/infos.svg);
+}
+
+p.bloc-search.more-tricks,
+#topics #more-tricks
+{
+	background-image: url(svg/magic-wand.svg);
+}
+
 #topics ul
 {
 	list-style-type: caret;
