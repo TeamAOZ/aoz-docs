@@ -106,6 +106,7 @@ function articleToResponse( Article $article, array $words ) : string
     $description = highlightWords( $article->description, $words );
     try
     {
+        $description = str_replace( [ '```basic', '`' ], '', $description );
         $description = $parsedown->toHtml( $description );
     }
     catch( Exception )
