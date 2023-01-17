@@ -1,5 +1,7 @@
 {
+    "minimum-stability": "dev",
     "require": {
-        "deeplcom/deepl-php": "^1.2"
+        "deeplcom/deepl-php": "^1.2",
+        "erusev/parsedown": "^2.0"
     }
 }

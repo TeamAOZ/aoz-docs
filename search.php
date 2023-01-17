@@ -1,15 +1,21 @@
 <?php
+
+use Erusev\Parsedown\Parsedown;
+
 header( 'Access-Control-Allow-Origin: *' );
 header( 'Cache-Control: no-store, no-cache, must-revalidate, max-age=0' );
 header( 'Cache-Control: post-check=0, pre-check=0', false );
 header( 'Content-Type: text/plain' );
 header( 'Pragma: no-cache' );
 
-    $tell_how_many = false;
+include_once 'vendor/autoload.php';
+$parsedown = new Parsedown();
+
+$tell_how_many = false;
 if( !$_GET )
 {
-        $_GET = [ 'search' => 'rnd', 'lang' => 'en' ];
-        $tell_how_many = true;
+    $_GET = [ 'search' => 'rnd', 'lang' => 'en' ];
+    $tell_how_many = true;
 }
 
 $lang   = $_GET[ 'lang' ] ?? 'en';
@@ -19,7 +25,7 @@ main( $search, $lang );
 
 function main( string $search, string $lang) : void
 {
-        global $tell_how_many;
+    global $tell_how_many;
     $original_search = $search;
     cleanSearchString( $search );
     $words = explode( ' ', $search );
@@ -68,19 +74,27 @@ function main( string $search, string $lang) : void
     {
         echo $response . "\r\n";
     }
-        if( $tell_how_many )
-        {
-            echo count( $responses ) . " responses\r\n";
-        }
+    if( $tell_how_many )
+    {
+        echo count( $responses ) . " responses\r\n";
+    }
 }
 
 function articleToResponse( Article $article, array $words ) : string
 {
+    global $parsedown;
     $link = "javascript:application.aoz.runProcedure( 'PAGE_LOAD', { ID$: '', URL$: '"
         . $article->url() . "', IS_NEW: true } );";
     $name        = highlightWords( $article->title, $words );
     $description = highlightWords( $article->description, $words );
-    return "<p class=\"bloc-search\" onclick=\"$link\" style=\"cursor: pointer;\">"
+    try
+    {
+        $description = $parsedown->toHtml( $description );
+    }
+    catch( Exception )
+    {
+    }
+    return "<p class=\"bloc-search {$article->sectionId()}\" onclick=\"$link\" style=\"cursor: pointer;\">"
         . "<b>$name</b><br />"
         . $description
         . "</p>";
@@ -148,7 +162,7 @@ function cleanSearchWords( array &$words, string $lang ) : void
     $words = array_diff( $words, $cleaner );
     foreach( $words as $key => $word )
     {
-            if( strlen($word) < 2 )
+        if( strlen($word) < 2 )
         {
             unset( $words[ $key ] );
         }
@@ -206,7 +220,7 @@ class Article
             ?: $this->specialValue( 'name' );
         $this->description = $this->specialValue( 'description' )
             ?: $this->firstPhraseOf( reset( $this->sections ) )
-                ?: $this->firstPhraseOf( $this->sections['description'] ?? '' );
+            ?: $this->firstPhraseOf( $this->sections['description'] ?? '' );
         $this->specialList( 'categories' );
         $this->specialList( 'tags' );
     }
@@ -288,6 +302,19 @@ class Article
         }
     }
 
+		public function sectionId() : string
+		{
+			$i = strpos( $this->identifier, 'default/' ) + 8;
+			$j = strpos( $this->identifier, '/', $i );
+			return match( substr( $this->identifier, $i, $j - $i ) )
+			{
+				'user_guide'  => 'user-guide',
+				'syntax'      => 'glossary',
+				'more_tricks' => 'more-tricks',
+				default       => ''
+			};
+		}
+
     protected function setBuffer( string $buffer ) : void
     {
             $buffer = str_replace( [ "\r", "\t" ], [ '', ' ' ], html_entity_decode( $buffer, ENT_HTML5 ) );
@@ -354,10 +381,10 @@ class Search
 
     protected function searchExact( int $priority, string $text ) : bool
     {
-            if( !trim( $text ) )
-            {
-                return false;
-            }
+        if( !trim( $text ) )
+        {
+            return false;
+        }
         if( strtolower( $text ) === trim( $this->sentence ) )
         {
             $this->results[ $priority ][ 100 ][ $this->article->title ][ $this->article->identifier ]
@@ -369,10 +396,10 @@ class Search
 
     protected function searchExactIn( int $priority, string $text, $exact = true ) : bool
     {
-            if( !trim( $text ) )
-            {
-                return false;
-            }
+        if( !trim( $text ) )
+        {
+            return false;
+        }
         $sentence = $exact ? $this->sentence : trim( $this->sentence );
         if( str_contains( ' ' . strtolower( $text ) . ' ', $sentence ) )
         {
@@ -385,10 +412,10 @@ class Search
 
     protected function searchExactStarts( int $priority, string $text ) : bool
     {
-            if( !trim( $text ) )
-            {
-                return false;
-            }
+        if( !trim( $text ) )
+        {
+            return false;
+        }
         if( str_starts_with( strtolower( $text ), trim( $this->sentence ) ) )
         {
             $this->results[ $priority ][ 100 ][ $this->article->title ][ $this->article->identifier ]
@@ -451,22 +478,22 @@ class Search
     protected function searchWordsIn( int $priority, string $text, $exact = true ) : bool
     {
         $words = $exact ? $this->s_words : $this->words;
-            if( !trim( $text ) || !$words )
-            {
-                return false;
-            }
+        if( !trim( $text ) || !$words )
+        {
+            return false;
+        }
         $text  = strtolower( $text );
         if( $found_count = $this->wordsIn( $text, $words ) )
         {
-                $more = 0;
-                foreach( $words as $word )
+            $more = 0;
+            foreach( $words as $word )
+            {
+                if( str_starts_with( $text, $word ) )
                 {
-                    if( str_starts_with( $text, $word ) )
-                    {
-                        $more = 1;
-                        break;
-                    }
+                    $more = 1;
+                    break;
                 }
+            }
             $this->results[ $priority ][ $found_count + $more ][ $this->article->title ][ $this->article->identifier ]
                   = $this->article;
             return true;
@@ -476,10 +503,10 @@ class Search
 
     protected function wordsIn( string $text, array $words ) : int
     {
-            if( !trim( $text ) )
-            {
-                return false;
-            }
+        if( !trim( $text ) )
+        {
+            return false;
+        }
         $count = 0;
         $text  = ' ' . $text . ' ';
         if( str_starts_with( $text, reset( $words ) ) )

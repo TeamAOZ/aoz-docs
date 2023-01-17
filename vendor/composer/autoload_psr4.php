@@ -6,6 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
+    'Erusev\\Parsedown\\' => array($vendorDir . '/erusev/parsedown/src'),
     'DeepL\\' => array($vendorDir . '/deeplcom/deepl-php/src'),
 );

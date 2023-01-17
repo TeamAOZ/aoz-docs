@@ -11,6 +11,10 @@ class ComposerStaticInit185e162241f7847c450a0954bec7eac4
         array (
             'Psr\\Log\\' => 8,
         ),
+        'E' => 
+        array (
+            'Erusev\\Parsedown\\' => 17,
+        ),
         'D' => 
         array (
             'DeepL\\' => 6,
@@ -20,7 +24,11 @@ class ComposerStaticInit185e162241f7847c450a0954bec7eac4
     public static $prefixDirsPsr4 = array (
         'Psr\\Log\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+            0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
+        'Erusev\\Parsedown\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/erusev/parsedown/src',
         ),
         'DeepL\\' => 
         array (
