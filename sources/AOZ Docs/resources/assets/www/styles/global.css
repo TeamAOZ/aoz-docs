@@ -173,53 +173,53 @@ td
 
 #topics h1
 {
-	background-image: url(svg/magic-hat.svg);
+    background-image: url(svg/magic-hat.svg);
     background-repeat: no-repeat;
     background-position: left center;
-    background-size: 24px;
-    padding-left: 34px;
+    background-size: 48px;
+    padding-left: 64px;
     color: var(--second-dark-bg-grey);
 }
 
 #topics #user-guide
 {
-	background-image: url(svg/user-guide.svg);
+    background-image: url(svg/user-guide.svg);
 }
 
 #topics #glossary
 {
-	background-image: url(svg/infos.svg);
+    background-image: url(svg/infos.svg);
 }
 
 #topics #more-tricks
 {
-	background-image: url(svg/magic-wand.svg);
+    background-image: url(svg/magic-wand.svg);
 }
 
 p.bloc-search {
-	background-repeat: no-repeat;
-	background-position: left 14px;
-	background-size: 24px;
-	margin-left: calc(1.2em - 34px);
-	padding-left: calc(8px + 34px);
+    background-repeat: no-repeat;
+    background-position: left 8px;
+    background-size: 36px;
+    margin-left: calc(1.2em - 34px);
+    padding-left: calc(8px + 34px);
 }
 
 p.bloc-search.user-guide,
 #topics #user-guide
 {
-	background-image: url(svg/user-guide.svg);
+    background-image: url(svg/user-guide.svg);
 }
 
 p.bloc-search.glossary,
 #topics #glossary
 {
-	background-image: url(svg/infos.svg);
+    background-image: url(svg/infos.svg);
 }
 
 p.bloc-search.more-tricks,
 #topics #more-tricks
 {
-	background-image: url(svg/magic-wand.svg);
+    background-image: url(svg/magic-wand.svg);
 }
 
 #topics ul
