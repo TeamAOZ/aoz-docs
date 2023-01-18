@@ -9,7 +9,7 @@
 <h1 id="user-guide">User Guide</h1>
 %code%
 
-<h1 id="user-guide">Glossary</h1>
+<h1 id="glossary">Glossary</h1>
 %categories%
 
 <h1 id="more-tricks">More Tricks</h1>

@@ -6,7 +6,7 @@
 
 <span class="version">ver. 1.0-12302022</span>
 
-<h1>User Guide</h1>
+<h1 id="user-guide">User Guide</h1>
 <ul id="path" data-url="md/documentation/default/user_guide/table_of_contents" class="item_show">
 <li id="T1" class="page" onclick="javascript:application.aoz.runProcedure( 'PAGE_LOAD', {  ID$: 'T1', URL$: 'md/documentation/default/user_guide/table_of_contents/001_the_magic_begins.txt', IS_NEW: true } );">The magic begins</li>
 <li id="T2" class="page" onclick="javascript:application.aoz.runProcedure( 'PAGE_LOAD', {  ID$: 'T2', URL$: 'md/documentation/default/user_guide/table_of_contents/002_the_big_picture.txt', IS_NEW: true } );">The big picture</li>
@@ -95,7 +95,7 @@
 </ul>
 
 
-<h1>Glossary</h1>
+<h1 id="glossary">Glossary</h1>
 <ul id="path" data-url="md/documentation/default/syntax" class="item_show">
 <li id="T67" class="chapter" onclick="javascript:toggleChapter( 'md/documentation/default/syntax/3d' );application.aoz.runProcedure( 'PAGE_LOAD', { ID$: 'T67', URL$: 'md/documentation/default/syntax/3d/000_chapter.txt', IS_NEW: true } );">3d</li>
 <ul id="path" data-url="md/documentation/default/syntax/3d" class="item_hide">
@@ -1737,9 +1737,7 @@
 </ul>
 
 
-<h1>More Tricks</h1>
+<h1 id="more-tricks">More Tricks</h1>
 <ul id="path" data-url="md/documentation/default/more_tricks" class="item_show">
 <li id="T1560" class="page" onclick="javascript:application.aoz.runProcedure( 'PAGE_LOAD', {  ID$: 'T1560', URL$: 'md/documentation/default/more_tricks/The Magic Book.txt', IS_NEW: true } );">The Magic Book</li>
 </ul>
-
-
