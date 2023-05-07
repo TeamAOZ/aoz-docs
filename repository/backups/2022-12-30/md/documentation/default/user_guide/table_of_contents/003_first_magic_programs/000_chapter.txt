@@ -1,7 +1,0 @@
-# OUR FIRST MAGIC PROGRAMS
-
-Can|;t wait to get images moving on the screen?
-
-We understand you, and that|;s why we created the Actor instruction, so you can be the director in your Actor Studio, and direct your Actors.
-
-There are several AOZ instructions for manipulating images, but the **Actor** instruction is the most powerful. It simplifies display, manages animations, it controls collisions of all sorts of graphics (2D, 3D, video, text) ; it will allow you to do magical things.
