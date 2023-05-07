@@ -1,0 +1,86 @@
+# Shade
+<!--
+@name: Shade
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+**FUNCTION** - Returns the adjusted AOZ colour value of any palette colour with an intensity value applied .
+
+
+## Syntax
+
+**= Shade (** *index, intensity* **)**
+
+
+## Parameters
+
+- **index**: The index number of the palette colour to be adjusted
+- **intensity**: Colour intensity value to be applied to the palette colour as a percentage of it|;s current value.
+
+## Description
+
+The **Shade** function returns an adjusted AOZ colour value which is _**intensity**_ % of the colour value of palette colour number _**index**_.  It|;s much more simple than it sounds.
+
+For example, if you have a palette colour number 3 which is $87405b, and you wanted a darker version of it at 60% of it|;s current value, you could use something like:
+```basic
+Colour 3, $87405b		// define colour 3
+Colour 4, shade(3, 60)	// define colour 4 as a shade of colour 3
+Print hex$(colour(4)) 	// print the RGB result 
+```
+
+## Example Code
+
+This example program fills the screen with randomly sized and coloured semi-transparent triangles, and uses the **Shade** function to give them a lighter coloured border.
+ 
+```basic
+// >>Shards<<
+//
+// Demonstration of the New Triangle instruction and Shade function 
+// By Dave Baldwin
+// 22/01/2023
+
+#speed:"graphics"
+dim tc(200,3,2) 	// Define triangle coordinate array, 200 triangles, 3 vertices, 2 coords x,y
+line width 2		// Set the line width
+line join "round" 	// Soften the points
+border on			// Switch on borders
+border ink 1		// Set border colour to palette colour 1
+r#=0				// Rotation variable
+// Set up the triangle array
+
+for f=1 to 200 					// Loop to define 200 triangles
+	cx=rnd(10 to 1900)			// Define a random centre point cx,cy
+	cy=rnd(10 to 1060)
+	for n=1 to 3					// Define 3 vertices for the triangle
+		tc(f,n,1)=cx+(rnd(-400 to 400))	// Def a random x coordinate around cx - This stops the triangles getting too big!
+		tc(f,n,2)=cy+(rnd(-400 to 400)) // Def a random y coordinate around cy
+	next n							// Repeat until all 3 are done
+next f							// Repeat until all 200 are done
+
+// Main Loop to draw and animate the 200 triangles defined in the array
+
+do							// Start a loop
+	randomize 0					// Set the random number seed so all random number follow the same pattern on each execution of the loop
+	add r#,0.3,0 to 360			// Increase the rotation variable by 0.5 degrees
+	for f=1 to 200				// Loop to draw the 200 triangles
+		rm=rnd(-3 to 3)				// Define rotation multiplier for direction and speed
+		i= rnd(3 to 62)				// Choose a random Ink colour from the palette
+		set alpha i,rnd(5 to 9)/10	// Set a random transparency for that colour from 0.6 to 1.0
+		ink i						// Set the Ink colour
+		colour 1, Shade ( i,200 )	// change palette colour 1 to 200% of palette colour i
+		if rm=0 then rm=4			// Prevent static triangles
+		Triangle tc(f,1,1),tc(f,1,2),tc(f,2,1),tc(f,2,2),tc(f,3,1),tc(f,3,2),r#*rm,1  // Draw the triangle using the values from the array and the rotation variable
+	next f						// Repeat until all 200 are done
+	refresh						// Update the display
+	cls							// Clear the screen ready for next time
+loop						// repeat the loop
+
+```
+
+<p align="center"><img src="https://doc.aoz.studio/repository/assets/images/shards.png" /></p>
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

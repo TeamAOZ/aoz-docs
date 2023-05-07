@@ -1,0 +1,215 @@
+# DEBUGGING
+
+AOZ Studio includes few useful instructions and a fully-fledged debugger. **(NOTE this chapter is yet not updated for the brand new version of the debugger)**
+
+If you want to check a variable value, or say if your program is going in a special location you may just use the Console Log or Console  Warn or Console Error instructions, explained below. If you want more precise debugging then you may use the debugger.
+
+ ##  What is a debugger?
+
+ It is an interesting tool that enables the programmer to find and understand errors in the code. The AOZ Studio debugger is very versatile, allowing you to:
+
+- break and step through the code of your program
+- break into the code if a watched expression is true
+- inspect and modify variables and arrays
+- display information in a log window
+- inspect the sprites, bobs and actors contained in your application
+- locate graphical elements precisely with rulers and a grid
+- play your application step by step, in slow motion or at full speed
+- watch the content of an expression updated in real time
+
+Advanced note: The AOZ debugger is integrated in the Javascript code of your application by the transpiler. It does not depend on the AOZ IDE to be run and works happily in the browser.
+
+
+## The Console Log, Console  Warn, Console instructions
+
+The Console Log instruction allows you to debug your application. When ran under the Aoz Viewer, the first time the instruction is encountered, Aoz will open the Aoz Console. Then the data is printed, allowing you to monitor the internals of your application.
+When run in the browser (say Chrome) you will find your messages in its Javascript console.
+
+The data to print, can be a text, a number, or the result of a calculation.
+
+ - **Console Log** prints the data using the default colors of the console.
+ - **Console Warn** prints the data as a warning message, in green color. Use it at places of your application where you are unsure of the code.
+ - **Console Error** prints the data as an error message, in red color.
+
+
+**Example**
+```basic
+For X = 0 To 10
+	Console Log X
+	Console Warn "Warn X:" + Str$( X )
+ 	Console Error "Error X:" ; X 
+Next
+```
+
+
+## How to display the debugger?
+
+You can display the AOZ debugger in two ways:
+
+###                                  From the AOZ Viewer:
+
+Click on the “Debugger” side window button to open the debugger without interfering with your program.
+
+ ![AOZ Debugger](https://doc.aoz.studio/assets/images/en/image103.png)
+
+The debugger is displayed in a top-layer transparent screen that does not interact in any way with the application and only watches what is going on. All the keys, joystick and mouse movements, except the “Escape” key, are transmitted to the application.
+
+
+While the application is running, the “Variables” window shows, updated in real time, all values of all the variables. (Some of the values may change so rapidly that they may be impossible to read). When you move the mouse over the name of an array, the debugger displays the content of the array in real time.
+
+You can break into the code at any time by pressing F8 or clicking on the “Pause” button.
+
+ To hide the debugger while keeping it, press “Escape”. The debugger will stay in the back ready to pop-up when you press “Escape” another time. Please note that in future versions, when hidden, the debugger will be able to do interesting things like evaluate the speed of the various routines (what professionals call “profiling”) or record the values of all the variables and graphical objects so that you can replay and take over “just before the bug”.
+
+
+To hide the debugger and remove it completely from memory, click a second time on the “Debugger” button.
+
+ When run from the AOZ Viewer, the debugger allows you to type commands in the console window, as if you were in direct mode. Use this very interesting feature to tweak the position of objects, change variables or manipulate data, then relaunch the application to see the effect. 
+
+ It is not yet possible to modify the actual source of the application while in the middle of it.
+
+ 
+
+### From your browser:
+
+ Activate the debugger by inserting one of the following instructions in your program:
+-   **Debug**
+-   **Break**
+-   **Break If**
+
+
+ The reduced version of the debugger wilbe displayed with the Log or Watch window by using the following instructions in the code:
+-   **Log** 
+-   **Watch**
+
+
+Inside of the browser, the debugger’s console window is not interactive: it can only display the information it is given but does not allow you to enter commands.
+<![if !supportAnnotations]> <![endif]-->
+
+## The debugger window
+![AOZ Debugger](https://doc.aoz.studio/assets/images/en/image104.png)
+
+The debugger includes:
+
+**The Stack Window** shows the current application call stack. The stack increases when Gosub is used or a Procedure is called, and decreases when Return is executed or the procedure exits.
+
+**The Watch Window** shows all expressions that have been added for evaluation with the **Watch** or **Break If** command. When the debugger is running, the expression is evaluated after each instruction (may be impacting the speed of the application a little), and the result is displayed. **Break If** will set the debugger in source-trace mode if the associated expression evaluates as True.
+
+**The Variables Window** shows all the variables currently defined in the application. Global variables will be located on top of the list while local variables of procedures will be at the end. As for watch, the value of all the variables is updated after each instruction.
+
+You can change the value of the variables by clicking on them.
+
+Arrays are displayed in a specific popup window, allowing you to inspect all the values.
+![AOZ Debugger](https://doc.aoz.studio/assets/images/en/image105.png)
+
+ - Click on + and - to update the position of the view of each dimension in the popup.
+ - Click on the dimension itself to enter a value manually.
+ - Click on one of the values to change it.
+
+**The Source Code window** shows the source code of the application. The next instruction to be executed is highlighted in red. You can move the cursor and inspect the source code by clicking on the window. When the cursor is activated, and located after the current instruction, pressing the **ENTER** key will run the application up to the line where the cursor is located. This feature enables you to quickly scan through your code.
+
+**The Console Window** displays every line that was sent to it with the **Log** instruction. As a default, the number of lines memorized is 100, but this value can be set in the **Debug On** instruction with the **consoleLines** parameter.
+
+### The Debugger Settings button
+Opens the debugger settings window, where you can define some of the parameters of the debugger like colors and window positioning.
+
+### The Application Control buttons
+The Application Control buttons offer full control over your application. From left to right:  
+![AOZ Debugger](https://doc.aoz.studio/assets/images/en/image106.png)
+
+**Stop**: exits the application and returns to the editor when it has been run under the AOZ IDE.
+**Restart**: re-launches the application. All variables will be re-initialized and the display is reset.
+**Pause** (F8): will pause the program at the current location of the program pointer.  If you have a main loop regulated by a **Wait Vbl** instruction, chances are that the next instruction will be the one after the **Wait Vbl** instruction.
+**Step Into** (F9): executes the next instruction and stops. If the next instruction is a **Gosub** or a Procedure or method call, then the debugger enters that code.
+**Step Over** (F10): executes the next instruction as a whole, even if it is a **Gosub** or a procedure call. The debugger will stop at the next instruction after the call. If the next instruction is not a routine call, then F10 behaves as F9.
+**Play One Frame** (Space): run the application for a full refresh. One would say “One loop” of the application. The next time the debugger appears, all sprites and bobs will have moved and all values will have been updated.
+**Play in Slow Motion**: run the application in slow motion. During the run, you can press Pause (**F8**) to break into the code at the current location of the program pointer.
+**Play at Full Speed**: run the application at full speed. You can hide the debugger by pressing the **ESCAPE** key: it will hide the display of the debugger, but it will still be watching the application run and will break if it encounters a breakpoint.
+
+
+**The Preferences** **Window**
+![AOZ Debugger](https://doc.aoz.studio/assets/images/en/image107.png)
+The Preferences window allows you to choose the various colors of the interface. To change a color, just click on its button and choose the color in the color picker. The alpha value defines the transparency of the debugger. You can also press **NUMPAD +** and **NUMPAD -** to change these values.
+If “Window default position” is set to left, all the windows will be aligned to the left of the debugger screen. To the right if set to the right. You can also swap the position by pressing **NUMPAD ENTER**.
+
+
+## Debugger Keyboard shortcuts
+
+While the debugger is displayed, you can use the following keys:
+
+**NUMPAD +** / **NUMPAD -** : quickly change the alpha value of the debugger screen, making it more or less transparent.
+**NUMPAD ENTER**:
+- default behavior: switch the position of the debugger windows alternatively to the left or the right of the display.
+- when the focus is in the source window: run the application up to the line where the cursor is located (only if this location is after the next instruction).
+**F8**: out the application in Pause
+**F9**: step Into the next instruction
+**F10**: step Over the next instruction
+**R**: turns rulers on / off
+**G**: turns grid on / off
+**B**: turns bob information display on / off
+**S**: turns sprite information display on / off
+**W**: turns Watch window on / off
+**S**: turns Stack window on / off
+**C**: turns Console window on / off
+**V**: turns Variables window on / off
+**SPACE**: run one frame of the application
+**ESCAPE**: hide the debugger and play the application at full speed
+
+While the debugger is not displayed, you can use:
+**ESCAPE**: hide or show the debugger information without interfering with the application (allowing you to watch the variables change)
+
+
+## Debug Instructions
+
+  
+Debug, visible, console, variables, watch, source, bobs, sprites, grid, gridWidth, gridHeight, rulers, screens, collisions, alpha#
+
+The **Debug** instruction launches the debugger without affecting the running of your application. If the **visible** parameter is set to True, the debugger will appear and display the information at that moment. It will continue to display the updated information as the program is running. To break into the code, press **F8** or click the Pause button.
+
+Parameters:
+**visible** (boolean) True to display debugger, False to keep it hidden
+**console** (boolean) True to display the console window (default) or False to keep it hidden
+**watch** (boolean) True to display the watch window (default) or False to keep it hidden
+**source** (boolean) True to display the source-code window (default) or False to keep it hidden
+**bobs** (boolean) True to display information for all the bobs or False for only the bob under the mouse (default)
+**sprites** (boolean) True to display information for all the sprites or False for only the sprite under the mouse (default)
+**rulers** (boolean) True to display the rulers or False to keep them hidden
+**collisions** (boolean) True to display collision information or False to keep it hidden
+**grid** (boolean) True to display the grid or False to keep it hidden
+**gridWidth** (integer) Grid horizontal step (default = 32)
+**gridHeight** (integer) Grid vertical step (default = 32)
+**alpha#** (float) alpha transparency value of the debugger screen (default = 0.95)
+
+**Break**
+The **Break** instruction has no parameter and will launch the debugger with the program paused on the _next_ instruction after the **Break** statement. You are then free to step into the code with **F9** and **F10** or re-launch the application with **F8**.
+
+**Break If expression**
+The **Break If** instruction adds a new expression to the Watch window.  **expression** may be any expression that evaluates to a boolean (true or false).  When the expression becomes true, the debugger is launched, and paused on the _next_ instruction after the **Break If** statement.
+
+The **expression** is evaluated constantly after each instruction of your application. This has the great advantage of positioning the debugger immediately after the expression is true.
+
+For example: “something” changes the X variable to 1000, but you cannot locate exactly where in your code. To find out, simply insert the following statement at the start of your application and run it! It will stop at the exact location where the value is set to 1000.  
+**Break If** X = 1000
+Parameters: expression (boolean)
+
+**Watch expression**
+Add an expression to the watch window. This expression is evaluated after each instruction and the result is displayed in the window. A large number of expressions to watch may reduce the speed of your application.
+Parameters:
+**expression** (number): a numeric expression to evaluate
+**expression$**:: a string expression to evaluate
+
+
+## Important note
+
+To run, the AOZ debugger needs extra information about the source code of your application. This extra information is automatically added to the Javascript code when transpiling and increases the size of the code. Your application will also be a little slower.
+
+That is the reason why it is recommended to check for debugging instructions such as “Log”, “Break”, “Break If” or “Debug” **before publishing anything**.
+
+AOZ Studio will report an error if you try to publish an application with such code.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEyNTUzOTcwNzMsMzc0NzAwNTg2XX0=
+-->

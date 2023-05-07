@@ -1,0 +1,125 @@
+# Actor Settings
+
+Actor is a sophisticated instruction for:
+- 2D and 3D images
+- graphical texts
+- videos
+
+With it you can display graphics in general, you can check, change and control the behavior of your actors, manage collisions and so much more.
+In other words, with it you can do games, great user interfaces, portals, Apps,…
+
+In this chapter we will sum up everything we|;ve discussed about it and more, with the various settings available for the Actor instruction at the time of writing this manual. Please see the Actor page of the User Guide for more detailed explanations and examples.
+
+- **Name** **or** **Index:** Set the Actor by giving a name Ex Actor 1, Actor "magic"
+
+For ex using the Actor with Indexes (an integer value) and not a text like Actor "magic":
+```basic
+For I=0 to 4
+	Actor I, Image$="magic", X=10, Y=I*200, EndX=1800, Duration=1000*I
+Next I
+Wait Input	// wait for a key, a mouse,... press
+```
+- **Type$**: Type of the Actor. "2d" by default, or "3d"
+- **X:** Horizontal position of the actor on the screen. 0 by default.
+- **Y:** Vertical position of the actor on the screen. 0 by default.
+- **Z:**  The position on the Z axis. 0 by default.
+-**Z** in **2D** it is the plan of the actor. An actor with Z=2 will be displayed on top of all the actors with a Z=1 and Z=0. Higher the Z is more it will be in the foreground.
+-**Z** in **3D** it is the depth position of the actor on the screen.
+- **StartX:** The start horizontal position of the actor|;s movement.
+- **StartY:** The start vertical position of the actor|;s movement.
+- **StartZ:** (3D) The depth start position of the actor|;s movement.
+- **EndX:** The horizontal position at the end of the actor|;s movement.
+- **EndY:**  The vertical position at the end of the actor|;s movement.
+- **EndZ:** (3D) The depth position at the end of the actor|;s movement.
+<BR>
+- **Video$:** Name of the video loaded by Load Asset used like an image for this Actor
+- **Videoplay:** Play the video associated at this actor. True by default (Videoplay=true)
+- **Videoloop**: Play the video associated at this actor in loop. True by default
+Ex to display the webcam1 by default (not for the AOZ Viewer, request the browser authorization to use the camera)
+```basic
+Actor "mycam", Video$="@webcam"
+```
+
+- **Duration:** The duration of the actor|;s movement between two points StartX and EndX for ex, in milliseconds. Ex Duration=1000 is eq 1 sec.
+- **Transition$:** To assign the name of the effect to perform on the movement of the actor. By default it is the "linear" transition. AOZ is using the beautiful CREATE.JS API, it is a great product. Effects can be seen by visiting this page: [https://www.createjs.com/demos/tweenjs/tween_sparktable](https://www.createjs.com/demos/tweenjs/tween_sparktable)  [https](https://www.createjs.com/demos/tweenjs/tween_sparktable)
+![few transition mouvements](https://doc.aoz.studio/assets/images/en/image080.png)
+- **Scale:** The decimal value of the actor size scale. Default 1.0 (normal size). 1.2 will increase the size by 20%.
+- **StartScale:** The start size decimal value for moving the actor.
+- **EndScale:** The end size decimal value for actor removal.
+- **ScaleX:** The decimal value of the width scale of the actor. Default 1.0 (normal size).
+- **ScaleY:** The decimal value of the actor|;s height scale. Default 1.0 (normal size).
+- **StartScaleX:** The decimal value of starting width for moving the actor.
+- **EndScaleX:** The decimal value of end width for the movement of  the actor.
+- **StartScaleY:** The decimal value of the start height for moving the actor.
+- **EndScaleY:** The decimal value of the end height for the movement of the actor.
+- **Angle:** Actor angle value in degrees. By default 0.
+- **StartAngle:** Actor|;s movement initial angle, in degrees.
+- **EndAngle:** Actor|;s movement end angle, in degrees.
+- **AngleZ:** (3D) Modification of the 3D Actor Z angle of rotation. If not set, the last angle is used.
+- **StartangleZ:** (3D) Modification of the 3D Actor start Z angle of rotation for a Actor moving. If not set, the last angle value is used.
+- **EndangleZ:** (3D) Modification of the 3D Actor end Z angle of rotation for a Actor moving. If not set, the last angle value is used.
+- **Alpha:** The decimal value of the opacity of the actor. Default 1.0 (totally visible).
+- **StartAlpha:** The decimal value of the initial opacity for the movement of the actor.
+- **EndAlpha:** The decimal value of the final opacity for the movement of the actor.
+- **SkewX:** The decimal value of horizontal distortion of the actor.
+- **StartSkewX:** The decimal value of the start horizontal distortion of the actor|;s movement.
+- **EndSkewX:** The decimal value of the end horizontal distortion of the actor|;s movement.
+- **Skew Y:** The decimal value of vertical distortion of the actor.
+- **StartSkewY:** The decimal value of the start vertical distortion of the actor|;s movement.
+- **EndSkewY:** The decimal value of the end vertical distortion value of the actor|;s movement.
+- **Visible:** (bool: True/False) shows or hides the actor.
+- **Enable:** (bool: True/False) Enables or disables an actor. If False, the Actor will still be displayed on the screen, but the controls, animations and mouse actions will be disabled.
+- **Collision:** (bool: True/False).  Enables or disables all collisions with this actor. If False, no collision effects will be applied.
+- **Spritesheet$:** The name of the spritesheet to use for actor animation.
+- **Anim$:** The name of the animation to play (available with the spritesheet).
+- **LoopAnim:** (bool: True/False). Play a loop animation or not.
+- **Hotspot$:** Decimal value that determines the position of the actor|;s "hot spot" (for it|;s value see the Hotspot Chapter).
+- **HotspotX:** Decimal value that determines the horizontal position of the actor|;s "hot spot".
+- **HotspotY:** Decimal value that determines the vertical position of the actor|;s "hot spot."
+- **HRev:** (bool: True/False). Horizontal mirror of the actor.
+- **VRev:** (bool: True/False). Vertical mirror of the actor.
+- **LeftLimit** or **RightLimit:** Value in pixels of the left or right edge of the displacement limit of the actor.
+- **TopLimit** or **UpLimit:** Value in pixels of the top edge of the displacement limit of the actor.
+- **BottomLimit** or **DownLimit:** Value in pixels of the top down edge of the displacement limit of the actor.
+- **OnLimit$:** Name of the procedure called when the actor reaches one of the edges.
+- **LookAt$:** Object, actor or point (X,Y) on the screen that the actor must look towards.
+- **Auto$ :** Defined an automatic movement for the actor. It uses the same parameters as for the Control$ properties: offsetX, offsetY, angle, forward and backward.
+- **Group$:** Assigns the actors to a custom group. A custom group can be assigned to several Actor. By example: "Enemy", "Platform", "Item", "Player"... and therefore we can program them all together.
+- **LoopMove:** (bool: True/False). Specifies if the automatic movement should play infinitely (True), only once (False,) or a finite number of times. False by default.
+- **ActionMove$:** "play", "pause" or "reverse" the automatic movement.
+- **ReverseMove:** (bool: True/False). Indicates if the automatic movement should go back and forth. False by default.
+- **AutoReverse$:** when ReverseMove is set to True, specifies on which axes the actor|;s image should be reversed. Possible values are "horizontal", "vertical",  "both"  or "none". Defaults to "none".
+- **TimePosition:** allows to jump at a specific time during the automatic transformation.
+- **Control\$:** To direct the actor with either the "mouse", "keyboard", "joystick". See the Chapters: *Going further with Actor/ the various controls*
+- **Oncontrol$ :** To assign the name of the procedure to be called to control the movement when Control$ is activated.
+- **OnChange$:** To assign the name of the procedure to be called when the actor undergoes a change (movement, form, transparency...).
+- **OnAnimChange$:** Name of the procedure called for each change of the actor animation.
+- **OnCollision$:** Name of the procedure called when the actor collides with another.
+- **Onmouse$ :** To assign the name of the procedure that will be called at each mouse action on the actor. The action is shared in the EVENT$ parameter of the procedure.
+- **Onmouseclick$:** To assign the name of the procedure that will be called at each mouse click on the actor.
+- **Onmousedblclick$:** To assign the name of the AOZ procedure that will be called at each mouse double-click on the actor.
+- **Onmousedown$:** To assign the name of the AOZ procedure that will be called at each mouse button press on the actor.
+- **Onmouseup$:** To assign the name of the AOZ procedure that will be called at each mouse button release on the actor.
+- **Onmouseenter$:** To assign the name of the procedure that will be called when the mouse fly over the actor (_Mouse Over_).
+- **Onmouseexit$:** To assign the name of the procedure that will be called when the mouse pointer outs of the actor.
+- **Onkeypress$:** To assign the name of the procedure that will be called at each key pressed.
+- **Onkeyup$:** To assign the name of the procedure that will be called at each key up.
+- **Onkeydown$:** To assign the name of the procedure that will be called at each key down.
+- **Oncontrollerconnect$:**: To assign the name of the procedure that will be called each time a gamepad/joystick is connected.
+- **Oncontrollerdisconnect$:** To assign the name of the procedure that will be called each time a gamepad/joystick is disconnected.
+- **Oncontrollerbutton$:** To assign the name of the procedure that will be called each time a gamepad/joystick button is pressed.
+- **Oncontrolleraxis$:** To assign the name of the procedure that will be called each time an axis changed for the gamepad/joystick.
+- **Oncontrollerdirection$:** To assign the name of the procedure that will be called each time a direction changed for the gamepad/joystick.
+<BR>
+More to come...
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE4OTgxMTIyNDYsMTY2MjgwNzYyNSwtMj
+gzMzE3NTg5LC0xMzI1NjQxMDE5LC0zMzc5NTE1MjAsMzE0NDk3
+MjI1LDEzMzc3OTU5MzksLTExNzg5MTc4NjksMTUyODI0Mjk3NS
+wtODc2Mjc1NjE2LC0xMzA0MDU0OTI1LC01OTgzMTkxMSwxNTIx
+NzA3NzkzLDg3MDIzMjAyNiw3MzA5OTgxMTZdfQ==
+-->

@@ -1,0 +1,11 @@
+# Player Id&dollar;
+<!--
+@name: Player Id&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the unique identifier for the current player account.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

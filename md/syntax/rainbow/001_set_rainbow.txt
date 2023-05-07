@@ -1,0 +1,19 @@
+# Set Rainbow
+<!--
+@name: Set Rainbow
+@description: 
+@tags: 
+@categories: 
+\-->
+Define a new Rainbow effect
+## Parameters
+
+- **index**: The index of the rainbow
+- **ink**: The index of Ink in the current screen to affect
+- **height**: The height of the internal color buffer
+- **red&dollar;**: A string defining the variation of the RED component of the color
+- **green&dollar;**: A string defining the variation of the GREEN component of the color
+- **blue&dollar;**: A string defining the variation of the BLUE component of the color
+- **alpha&dollar;**: A string defining the variation of the ALPHA component of the color
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

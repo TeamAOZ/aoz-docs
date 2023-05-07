@@ -1,0 +1,43 @@
+# Get Image
+<!--
+@name: Get Image
+@description: 
+@tags: 
+@categories: 
+\-->
+Captures a portion of the current screen, create a transparency mask out of true black (RGB $000000) and add the image to the Images bank.
+## Syntax Options
+
+**Get Image** *index, x1, y1* **to** *x2, y2*
+**Get Image** *screen, index, x1, y1* **to** *x2, y2*
+**Get Image** *index x1, y1, width, height*
+**Get Image** *screen, index, x1, y1, width, height*
+
+## Parameters
+
+- _**screen**_: Optional. Index of the screen to grab the image from
+- _**index**_: Index of the image to insert in the Images bank
+- _**x1**_: Horizontal coordinate of the top-left corner of the capture area
+- _**y1**_: Vertical coordinate of the top-left corner of the capture area
+- _**x2**_: Horizontal coordinate of the bottom-right corner of the capture area
+- _**y2**_: Vertical coordinate of the bottom-right corner of the capture area
+- _**width**_: Width of the capture are in pixels
+- _**height**_: Height of the capture are in pixels
+
+***Example:***
+```javascript showLineNumbers
+// Draw a graphics on the current Screen
+Ink 4 : Bar 0,0 To 50,50
+Ink 0 : Draw 0,0 To 50,50
+
+// Get that as an image and store it in memory under the name "my_graph"
+Get Image 0, "my_graph", 0,0,50,50
+
+// Create a new Actor with my_graph image, controlled by the mouse and centered
+Actor "my_actor", Image$="my_graph", X=500, Y=500, Control$="mouse", hotspot$="middle"
+
+```
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

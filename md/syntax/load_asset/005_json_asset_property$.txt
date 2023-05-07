@@ -1,0 +1,14 @@
+# JSON Asset Property&dollar;
+<!--
+@name: JSON Asset Property&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Get a string value from the JSON file loaded with the "Load Asset" command
+## Parameters
+
+- **index**: Index of the asset
+- **path&dollar;**: Formatted string indicating the path to the property
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

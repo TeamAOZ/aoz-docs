@@ -1,0 +1,39 @@
+# Point RGBA
+<!--
+@name: Point RGBA
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Function** - Returns the RGBA colour value of a point on the screen
+
+<div class="compatibility"><span>Compatibility   </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img 
+
+## Syntax
+
+~~**= Point RGBA**~~
+~~**= Point RGBA ( x, y )**~~
+
+~~Return the true colour RGBA value of a point within the current screen~~
+## Parameters
+
+
+- **x**: The horizontal coordinate of the point to test
+- **y**: The vertical coordinate of the point to test
+---
+## Description
+~~**Point RGBA** returns the 32 bit true colour value of the colour at the point of the current graphics coordinates.~~
+
+~~**Point RGBA (** *x, y* **)** returns the 32 bit true colour value of the colour at the point of the coordinates *x, y.*~~
+ 
+ ~~The 32 bit true colour value includes the Alpha channel which gives the colour transparency.~~
+
+~~If the coordinates are outside of the screen boundary, the function will return -1.~~
+
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNTMxNDkwNTg5LC0yNjc0NDA2NzgsMTIyNT
+k4NzEyNiw5ODA4ODI4MjQsMTk1OTMyMTU1MF19
+-->

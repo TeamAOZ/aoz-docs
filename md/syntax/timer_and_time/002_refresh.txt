@@ -1,0 +1,14 @@
+# Refresh
+<!--
+@name: Refresh
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Resync the application until the next screen refresh. It is needed to have that instruction in a loop when you display several graphics.  
+Note: was previously the Wait Vbl instruction (doing the same thing).
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

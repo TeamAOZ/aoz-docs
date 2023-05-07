@@ -1,0 +1,14 @@
+# Load Asset
+<!--
+@name: Load Asset
+@description: 
+@tags: 
+@categories: 
+\-->
+Load an external file for Image, Audio, video or JSON. If the file is an image, it can be used with the "Bob" command.
+## Parameters
+
+- **path&dollar;**: Name of the file to load.
+- **index**: Index associated at
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,45 @@
+# Screen
+<!--
+@name: Screen
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /></div>
+
+Set the given screen index as the current screen, all graphical operation being directed to this screen after this instruction
+## Parameters
+
+- **index**: The index of the screen to set as active
+---
+
+## Example
+Here is an example of code:
+```basic
+|; Perhaps you want to design based on a 4K display size:
+#displayWidth: 3840
+#displayHeight: 2160
+
+Screen Open 1,3840,2160,32,Lowres,lines=54 |; Open a screen in 4K resolution.
+Palette 0,$FFFFFF,$FF0000
+Cls 2
+Pen 0 : Paper 2
+Print "Screen 1"
+
+Screen Open 2,800,600,32,Lowres,Lines=20 |; Open a screen #2 in 800 x 600 on top of the screen 1.
+Screen Display 2,500,500
+Palette 0,$FFFFFF,$00FF00
+Cls 2
+Pen 0 : Paper 2
+Print "Screen 2"
+
+Screen Open 3,800,800,32,Lowres,Lines=25 |; Open a screen #3 in 800 x 800 over screen 1 and 2.
+Screen Display 3,1000,850
+Palette 0,$FFFFFF,$0000FF
+Cls 2
+Pen 0 : Paper 2
+Print "Screen 3"
+```
+So you can create several screens with each a palette and a screen size.
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

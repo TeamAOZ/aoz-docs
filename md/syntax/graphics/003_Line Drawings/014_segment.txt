@@ -1,0 +1,72 @@
+# Segment 
+<!--
+@name: 
+counterclockwise
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Instruction** - Draw a segment of a circle 
+
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Syntax
+
+**Segment** *x, y, radius1, radius2, radius3, angle1, angle2*
+**Segment** *x, y, radius1, radius2, radius3, angle1, angle2, rotation*
+**Segment** *x, y, radius1, radius2, radius3, angle1, angle2, rotation, fill*
+**Segment** *x, y, radius1, radius2, radius3, angle1, angle2, rotation, fill, counterclockwise*
+
+## Parameters
+
+- **x**: The horizontal coordinate of the centre of the arc
+- **y**: The vertical coordinate of the centre of the arc
+- **radius1**: The horizontal radius of the circle or ellipse
+- **radius2**: Optional. The vertical radius of the circle or ellipse. If omitted, ***radius1*** will be used (see example below)
+- **radius3**: The start radius of the segment from the centre point. eg. 0 will draw a full |;pie slice|;
+- **angle1**: The angle from which the segment is drawn from
+- **angle2**: The angle to which the segment will be drawn to
+- **rotation**: Angle of rotation of the segment
+- **fill**: Set to true to fill the segment
+- **counterclockwise**: direction the segment will be drawn from angle1 - Optional
+- 
+## Description
+
+Draw an outline of a segment of a circle or ellipse between 2 angles using the current ink, fill and border settings in the current screen. This instruction can be useful for displaying pie charts in various styles.
+
+- **Segment** *x, y, radius1, radius2, radius3, angle1, angle2*
+Draw a filled segment between *angle1* and *angle2*, starting at *radius3* from the centre point *x, y*
+
+- **Segment** *x, y, radius1, radius2, radius3, angle1, angle2, rotation* 
+Draw a segment between *angle1* and *angle2*, starting at *radius3* from the centre point *x, y*, rotated by *rotation* degrees
+
+- **Segment** *x, y, radius1, radius2, radius3, angle1, angle2, rotation, fill* 
+Draw a filled segment between *angle1* and *angle2*, starting at *radius3* from the centre point *x, y*, rotated by *rotation* degrees
+
+- **Segment** *x, y, radius1, radius2, radius3, angle1, angle2, rotation, fill, counterclockwise*
+Draw a filled segment between *angle1* and *angle2* in a counter-clockwise direction, starting at *radius3* from the centre point *x, y*, rotated by *rotation* degrees
+
+
+
+## Example Code
+
+The following code draws a simple pie chart with various sizes and styles of segment.
+
+```basic
+border on
+border ink 1
+line width 2
+
+ink  7 : segment 960,540,300,300,200,0,60
+ink 11 : segment 960,540,300,300,150,60,115,,1 // filled
+ink 15 : segment 960,540,300,,100,115,150	// yRadius omitted
+ink 20 : segment 960,540,300,,50,150,272
+ink 25 : segment 960,540,300,,0,272,360,,1 // filled
+```
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTM4NDg5ODI1MiwxMzE1MjM0MjQxLC02ND
+M0NDQwOTgsMTU5MDQ4MjUzMywtMTE2Nzc1NTY3M119
+-->

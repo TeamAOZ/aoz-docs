@@ -1,0 +1,55 @@
+# Radial Border Gradient
+<!--
+@name: Radial Border Gradient
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Instruction** - Define a radial gradient that will be used as a fill pattern in any borders drawn around shapes or text.
+
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Parameters
+
+- **x1**: The horizontal coordinate of the centre of the start circle.
+- **y1**: The vertical coordinate of the centre of the start circle.
+- **r1**: The radius of the start circle. Must be non-negative and finite.
+- **x2**: The horizontal coordinate of the centre of the end circle.
+- **y2**: The vertical coordinate of the centre of the end circle.
+- **r2**: The radius of the end circle. Must be non-negative and finite.
+- **color$**: The colour stop definition string. Each of the colour stops consists of a number which represents a point along the gradient
+ given as a percentage and a colour, which can be either a standard Javascript colour name, or an RGB or RGBA number in the in AOZ format or Javascript format (see example below)
+
+## Description
+
+Define a radial gradient between a start circle and an end circle that will be used as a fill pattern in any borders drawn around shapes or text.
+
+Use this instruction to create a colour gradient that can be used as a fill pattern for borders around drawn shapes and text. The gradient shading will begin at the radius of the start circle, and shade from one colour to the next radially towards the radius of the end circle. The area of the pattern between the centre point of the start circle and it|;s radius will be coloured with the first colour in the colour string, and the area outside of the end circle radius will be coloured with the last colour in the colour string.
+
+It is important to note that the complete gradient fill pattern is like a hidden screen, and will be the same size as the current screen, the fill on the screen will take place using the colour pattern from the corresponding position on the fill |;screen|;.
+
+Also, if a border gradient is defined, it will over-ride any other border fill settings, such as border fill image.
+
+## Example Code
+
+Here|;s some examples. This one has a radial gradient that starts at the top left of the square and finishes at the bottom right corner.
+```basic
+Ink 6
+Border On
+Line Width 50
+Radial Border Gradient 660,240,0,660,240,850,"0,white,50,aqua,100,blue"
+Bar 660,240,600,600
+```
+And this one has a radial gradient that starts in the centre of the circle, radiating outwards to create a shaded border.
+```basic
+Ink 6
+Border On
+Line Width 60
+Radial Border Gradient 960,540,0,960,540,300,"80,white,100,blue"
+Disc 960,540,270
+```
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTAxODc0Mzk4MCwtMTEyMjkyNzkyMl19
+-->

@@ -1,0 +1,21 @@
+# Actor Anim&dollar;
+<!--
+@name: Actor Anim&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the name of the Actor|;|;s Animation
+
+## Syntax
+> A$ = **Actor Anim&dollar;**( actor_index )
+
+## Parameters
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index|Index of the Actor|
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjQ4OTg0Mzk4XX0=
+-->

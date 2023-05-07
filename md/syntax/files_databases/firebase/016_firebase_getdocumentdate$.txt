@@ -1,0 +1,15 @@
+# Firebase GetDocumentDate&dollar;
+<!--
+@name: Firebase GetDocumentDate&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the value of a document field
+## Parameters
+
+- **docRef&dollar;**: The document reference
+- **field&dollar;**: The name of a document field (field names are case sensitive)
+- **format&dollar;**: Optional date format string. Default is "YYYY-MM-DDTHH
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

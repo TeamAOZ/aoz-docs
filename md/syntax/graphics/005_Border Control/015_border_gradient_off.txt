@@ -1,0 +1,22 @@
+# Border Gradient Off
+<!--
+@name: Border Gradient Off
+@description: 
+@tags: 
+@categories: 
+\-->
+Turn off border gradients
+
+## Syntax
+**Border Gradient Off**
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Description
+Turns off border gradient fill and return any subsequent borders to the previous fill setting.
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1OTA5MTI3MSwxMTU4MzkzNDg4XX0=
+-->

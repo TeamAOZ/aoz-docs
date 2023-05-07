@@ -1,0 +1,13 @@
+# Sprite Update Off
+<!--
+@name: Sprite Update Off
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Turns off the automatic sprite coordinate update system. After it, all "Sprite" instruction will no longer have a visible effect until an "Sprite Update" instruction is used
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

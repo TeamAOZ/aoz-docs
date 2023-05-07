@@ -1,0 +1,16 @@
+#  BOT Motor Power
+<!--
+@name:  BOT Motor Power
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Sets the power output of the motors connected to ports M1 and M2
+## Parameters
+
+- **power1**: The power output of the motor connected to port M1; setting range
+- **power2**: The power output of the motor connected to port M2; setting range
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

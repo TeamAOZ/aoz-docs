@@ -1,0 +1,63 @@
+# Point RGB
+<!--
+@name: Point RGB
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Function** - Returns the RGB colour value of a point on the screen
+
+## Syntax Options
+**= Point RGB**
+**= Point RGB (** *x, y* **)**
+
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img 
+
+---
+## Parameters
+
+
+- ***x***: The horizontal coordinate of the point to test
+- ***y***: The vertical coordinate of the point to test
+---
+## Description
+- **Point RGB** returns the 24 bit true colour value of the colour at the point of the current graphics coordinates.
+
+- **Point RGB (** *x, y* **)** returns the 24 bit true colour value of the colour at the point of the coordinates *x, y.*
+
+If the coordinates are outside of the screen boundary, the function will return -1.
+
+---
+
+## Example Code
+
+Here|;s a small program to show how Point RGB works. It basically creates a colourful background, then reads the colour at the position of the mouse pointer, and draws a filled circle in that colour.
+```python
+// Create a colourful background!
+Linear Gradient 0, 0, 1920, 1080,"0,$FF0000,14,$FF8800,28,$FFFF00,42,$00FF00,56,$00FFFF,70,$0000FF,84,$880088,100,$FF00FF" // create a gradient
+Bar 0,0 to 1919,1079			// fill the screen with the gradient
+Gradient Off 					// turn the gradient fill off
+
+// Set up the graphics parameters
+Ink 3							// set the ink colour to palette colour 3
+Border On						// turn on drawing borders
+Border Ink 1					// set the border colour to palette colour 1 (white)
+Line Width 3					// set the line width to 3 to make the border a bit thicker
+
+// Main Program Loop
+do								// create a loop
+	x = x mouse : y = y mouse	// grab the x and y coordinates of the mouse pointer
+	p=Point RGB(x,y)			// get the colour of the pixel at the grabbed coordinates
+	Colour 3,p					// change palette colour 3 to the pixel colour
+	Disc 960,540,100			// draw a filled circle in the middle of the screen
+loop							// repeat the loop
+```
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEzMjEwNTI3MDcsLTc4NDcwMDcxNSw0OT
+g3NjUzMzIsLTEzMjg3MzMyNjQsLTE2MjM2MDUwODUsNzUxOTc2
+MTU2LDExMjIzNjUxMTYsLTE2OTExMTY1NSwtMTE0MzQzMDM3MS
+wtNjU0NDcwMzkwXX0=
+-->

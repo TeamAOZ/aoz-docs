@@ -1,0 +1,16 @@
+# Set Display
+<!--
+@name: Set Display
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Set the resolution of the display in pixels.
+## Parameters
+
+- **width**: Width of the display in pixel.
+- **height**: Height of the display in pixel.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

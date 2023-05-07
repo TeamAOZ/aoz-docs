@@ -1,0 +1,22 @@
+# Actor Group&dollar;
+<!--
+@name: Actor Group&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the Group name of the Actor defined by the `Group$`property of the `Actor` command. 
+
+## Syntax
+> A$ = **Actor Group&dollar;**( actor_index )
+
+## Parameters
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index|Index of the Actor.|
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE4MDg4ODE1MDBdfQ==
+-->

@@ -1,0 +1,21 @@
+# Set Line
+<!--
+@name: Set Line
+@description: 
+@tags: 
+@categories: 
+\-->
+
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+
+Set the patterm of the future lines drawn by the "Draw", "Draw To", "Box" etc. and any Borders around Shapes or Text instructions
+## Parameters
+
+
+- **pattern**: A binary mask of bits where each bit set to one will be visible and invisible if zero, repeated along the line
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjA4NDU1Njc2MSwtNDEwODc1NzNdfQ==
+-->

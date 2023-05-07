@@ -1,0 +1,41 @@
+# Account Authenticating
+<!--
+@name: Account Authenticating
+@description:
+@tags:
+@categories:
+\-->
+
+Tells if the asynchronous authentication process is still running or not.
+
+## Description
+
+`Authenticating = Account Authenticating()`
+
+When in asynchronous account authentication mode using `Account Authenticate Asynchronous` or `Account Authenticatie Synchronous FALSE` or using `Account Authenticate Synchronous=FALSE`, you can monitor the authentication process until it is complete.
+
+Returns `TRUE` if the authentication process is still running, else `FALSE`.
+
+## Example
+
+An asynchronous authentication process :
+```basic
+Account Authenticate Synchronous = FALSE
+While Account Authenticating()
+	Print "Waiting..."
+	Wait 1
+Wend
+Print "Done."
+```
+
+## See Also
+
+- `Account Authenticate`
+- `Account Authenticated()`
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTYyODY1ODI0NywtMTYxMDUxNzgzOSwxOT
+QyNTkwMjM4LDcyODU2Njk4MV19
+-->

@@ -1,0 +1,21 @@
+# Actor Y
+<!--
+@name: Actor Y
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the Y position of an actor defined by the `Y` property of the `Actor` command.
+
+## Syntax
+>A =  **Actor Y**( actor_index )
+
+## Parameters
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index|Index of the Actor.|
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE5NTQ3Nzk3MjhdfQ==
+-->

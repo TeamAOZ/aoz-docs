@@ -1,0 +1,36 @@
+# Print Using
+<!--
+@name: Print Using
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+The **Print Using** instruction prints formatted text and numbers in the current text window associated with the current screen.
+
+## Syntax
+
+**Print Using** format$;variable1,variable2\$,variable3#
+
+## Description
+
+**Print Using** is a special version of the **Print** instruction used to change the way that variables are printed, using a formatting string.  The formatting string uses special symbols to define this format.
+
+<table>
+<tr><th>Symbol</th><th>Purpose</th></tr>
+<tr><th>~</th><td>The ~ (tilde) is a placeholder for a character in a string variable.</td></tr>
+<tr><th>#</th><td>The # (hash) is a placeholder for a digit in a numeric variable.</td></tr>
+<tr><th>+</th><td>The + (plus) is a placeholder for the sign of a numeric variable: + for positive, and - for negative.</td></tr>
+<tr><th>-</th><td>The - (minus) is a placeholder for the sign of a numeric variable: space for positive, and - for negative.</td></tr>
+<tr><th>.</th><td>The . (decimal point) indicates where the decimal point will be printed for a numeric variable.</td></tr>
+<tr><th>;</th><td>The ; (semi-colon) will center a numeric variable, but will not output a decimal point.
+<tr><th>^</th><td>The ^ (circumflex) will print a numeric variable in scientific notation.</td></tr>
+
+*NOTE: As in the regular **Print** instruction, a semi-column at the end of the line will prevent leave the print cursor at the end of the line, so the next item printer will immediately follow the previous character printed.*
+
+## Parameters
+
+- **item**: The item to print
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,156 @@
+# Curve
+<!--
+@name: Curve
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Instruction** - Draw a curved line 
+
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Syntax Options
+
+- **Curve** *x1, y1, cx, cy, x2, y2*
+- **Curve** *x1, y1, cx1, cy1, cx2, cy2, radius*
+- **Curve** *x1, y1, cx1, cy1, cx2, cy2, x2, y2*
+- **Curve To** *x2, y2, cx, cy*
+- **Curve To** *cx1, cy1, cx2, cy2, radius*
+- **Curve To** *x2, y2, cx1, cy1, cx2, cy2*
+
+## Parameters
+
+- **x1**: The x coordinate of the start position of the curve.
+- **y1**: The y coordinate of the start position of the curve.
+- **cx1**: The x coordinate of the first control point of the curve.
+- **cy1**: The y coordinate of the first control point of the curve.
+- **cx2**: The x coordinate of the second control point of the curve.
+- **cy2**: The y coordinate of the second control point of the curve.
+- **x2**: The x coordinate of the end position of the curve.
+- **y2**: The y coordinate of the end position of the curve.
+- **radius**: The radius of the curve.
+
+
+## Description
+
+Curve is a versatile instruction that can draw several different types of curves. The three basic types are Arc To Line, Quadratic Bezier Curve (with one control point) and Bezier Curve (with two control points).
+
+ Each type can use a basic |;**Curve**|;, where start coordinates are specified, or |;**Curve To**|; syntax, where the curve will be draw from the current graphic cursor position. This gives you six different possible uses of the Curve instruction, which are:
+ 
+- Quadratic Curve from x1,y1 to x2,y2 via control point cx,cy
+ **Curve** *x1, y1, cx, cy, x2, y2*
+
+- Arc from x1, y1 to line cx1,cy1, cx2, cy2
+ **Curve** *x, y, cx1, cy1, cx2, cy2, radius*
+
+- Bezier Curve from x1,y1 to x2,y2 via control points cx1,cy1 and cx2,cy2
+ **Curve** *x1, y1, cx1, cy1, cx2, cy2, x2, y2*
+
+-  Quadratic Bezier Curve To x2, y2 via control point cx1, cy1
+ **Curve To** *x2, y2, cx1, cy1*
+
+- Arc To Line cx1,cy1,cx2,cy2 at the desired radius  (the arc will join the line in the direction it is drawn)
+ **Curve To**  *cx1, cy1, cx2, cy2, radius*
+
+- Bezier Curve To x2, y2 via control points cx1, cy1 and cx2, cy2 
+ **Curve To** *x2, y2, cx1, cy1, cx2, cy2*
+
+If you want to understand the way curves work better, have a look at the **Curve Toy** app in the AOZ Store/Utilites folder. It allows you to draw each of the three types of curve, with various controls and moveable points and even allows you to copy the code for your curve to the clipboard.
+
+<p align="center"><img src="https://doc.aoz.studio/repository/assets/images/curvetoy.png" /></p>
+
+---
+
+## Example Code
+
+This small program fills the screen with random, coloured curves. When it stops, press any key to draw some more.
+
+<p align="center"><img valign="middle" width="960px" src="https://doc.aoz.studio/repository/assets/images/curvernd.png" /></p>
+
+```basic
+// Random Curves by Dave Baldwin
+// January 2021
+
+lw=30
+line width lw
+draw shadow 10,30,30,$00000080
+line cap "round"
+Colour_Gen:
+
+// Colour Generator
+Dim cc(100)
+For f=0 to 100
+	R=rnd(80 to 255)
+	G=rnd(80 to 255)
+	B=rnd(80 to 255)
+	CC(f)=rgb(R,G,B)
+Next f
+ink 4
+
+// Main
+repeat
+	for f=0 to 100	// draw 100 curves
+		colour 4, cc(rnd(100))
+		curve to rnd(-200 to 2120),rnd(-200 to 1280),rnd(-200 to 2120),rnd(-200 to 1280)
+		colour 4, cc(rnd(100))
+		curve to rnd(-200 to 2120),rnd(-200 to 1280),rnd(-200 to 2120),rnd(-200 to 1280),rnd(-200 to 2120),rnd(-200 to 1280)
+		Refresh
+	next f
+	add lw,3		// increase line width
+	line width lw
+	wait key		// wait for response
+	draw shadow lw/3,lw,30,$000000aa  // adjust shadow for thicker line width
+until
+```
+---
+This program is a bit more interactive, allowing you to create you own unique pieces of digital art. Press any key to change the pattern, use the mouse to point and click to fill with a random colour.
+
+<p align="center"><img valign="middle" width="960px" src="https://doc.aoz.studio/repository/assets/images/curveart.png" /></p>
+
+```basic
+// Curve Art by Dave Baldwin
+// September 2022
+
+line width 5
+sw=screen width
+sh=screen height
+line cap "square"
+do
+	ink 0
+	cls 1
+	plot rnd(sw),-rnd(200)
+	for f=0 to 4
+		curve to rnd(-200 to sw+200),rnd(-200 to sh+200),rnd(-200 to sw+200),rnd(-200 to sh+200)
+		curve to rnd(-200 to sw+200),rnd(-200 to sh+200),rnd(-200 to sw+200),rnd(-200 to sh+200),rnd(-200 to sw+200),rnd(-200 to sh+200)
+	next f
+	curve to rnd(-200 to sw+200),rnd(sh to sh+200),rnd(-200 to sw+200),rnd(-200 to sh+200),rnd(-200 to sw+200),rnd(-200 to sh+200)
+
+	do
+		if mouse click
+			ink 4,0,1
+			r=rnd(35 to 255)
+			g=rnd(35 to 255)
+			b=rnd(35 to 255)
+			colour 4,rgb(r,g,b)
+			x=x mouse : y=y mouse
+			Paint x,y,4 to 0
+		end if
+		refresh
+		i$=inkey$
+		if i$<>"" then exit
+	loop
+loop
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTIwNzE0NjAyOSwxNjIyNzY3Nzg5LDI2OD
+MzODE2NiwxMDY3MDk2ODc4LDY0NzY5ODg5NiwtMTI4MTE3ODI2
+NCwtMTMxNjIzOTk3MiwxNzc5NDcxNjEzLC0xODE4MTQwNDU2LC
+0yMzIyNDczOTYsLTEyNjM2NTAxMDUsMTI1NzQxNTMwOCwxNDc0
+OTM0MTM3LC0xNDMyNDQ3NzU2LDE3MTM5NjQwMzksLTQyMzUyNT
+E1MywtODk5MjEzNzEsMTQxNTk3Mzg4MywxNDY0Njk4NTAzLC0x
+MjE3OTI2MjQ4XX0=
+-->

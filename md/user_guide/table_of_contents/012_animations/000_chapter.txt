@@ -1,0 +1,38 @@
+# Rem
+<!--
+@name: Rem
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+Insert a remark, a text for the programmers only, not interpreted by AOZ Studio.
+<BR>
+
+   like: REM This is a comment
+   
+You also may use // , 
+   like: // This is a comment
+
+You may comment a whole block using  /* and  */ like 
+```basic
+/*
+print
+print
+print
+*/
+```
+
+
+As a side note the character \ allows you to split the line of code, like this:
+```basic
+Ink 1
+Bar 100, \        // you can split lines of code
+    100 To \      // using the "\" character where you want breaks
+    500, \        // you can even comment after the "\"
+    500           // this is cool for very long lines of code like with "Actor"
+
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

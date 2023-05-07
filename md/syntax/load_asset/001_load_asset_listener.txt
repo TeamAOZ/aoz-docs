@@ -1,0 +1,40 @@
+# Load Asset Listener
+<!--
+@name: Load Asset Listener
+@description: 
+@tags: 
+@categories: 
+\-->
+Define the AOZ procedures to call when there is a change in the assets loading (image, sound,...). It allows to know if the file was loaded or not.
+## Parameters
+
+- **onLoad&dollar;**: Name of the AOZ procedure called when an asset has been successfully loaded.
+- **onError&dollar;**: Name of the AOZ procedure called when an error happened during the loading of an asset.
+
+**Example:**
+
+```basic
+Global N
+Print "Press a Key to load"
+Wait key
+Load Asset Listener OnLoad$="loadingproc", OnError$="rateproc"
+ Print "Dune1"
+Load Asset "dune1.png", "a"
+ Print "Dune2"
+Load Asset "dune2.png", "b"
+ Print "Dune3"
+Load Asset "dune3.png", "c"
+
+Procedure loadingproc[FILENAME$]
+  N = N+1
+  Print "Loaded OK: "; FILENAME$; " (" ; N ; "/3)"
+End Procedure
+
+Procedure rateproc [FILENAME$]
+  Print "Loaded KO! "; FILENAME$
+End Procedure
+// replace the files dune1, 2, 3 by your files
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

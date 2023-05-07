@@ -1,0 +1,17 @@
+# Else If
+<!--
+@name: Else If
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+**Else If** *condition*
+This is actually a combination of two instructions:  **Else** and **If**  When used in this manner, it is usually one of many conditions, each of which may have different outcomes.
+
+## Parameters
+
+- **condition**: The expression to calculate that can be either TRUE or FALSE
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

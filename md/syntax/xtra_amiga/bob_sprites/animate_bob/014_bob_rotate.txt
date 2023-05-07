@@ -1,0 +1,56 @@
+# Bob Rotate
+<!--
+@name: Bob Rotate
+@description: 
+@tags: 
+@categories: 
+\-->
+Rotates a bob around it|;s hot-spot
+
+## Syntax
+**Bob Rotate** *index, angle* 
+
+## Parameters
+
+- _**index**_: Index of the bob in the list of active bobs
+- _**angle**_: Angle to rotate with, either in degrees or radian depending on the use of the "Degree" or "Radian" instruction. AOZ uses degrees by default
+
+## Description
+
+**Bob Rotate** sets the angle of rotation of the **Bob** numbered or named _**index**_. When the Bob is displayed, it will be rotated by _**angle**_ around it|;s **Hot Spot**. See the example below.
+
+
+## Example Code
+
+The following example creates 3 images in the image bank, gives each one a different **Hot Spot** and then displays them on the screen as Bobs, increasing the rotation by 1 degree each frame.
+
+```basic
+palette $0,$ffffff,$ffff00,$009090	// Define some colours
+Border On							// Turn on Border drawing
+Line Width 5						// Set Line Width
+Ink 3								// Set Ink colour to colour 3
+Border Ink 2						// Set Border ink colour to 2
+Star 100,100,94,35,5,18,true		// Draw a filled star to use as a Bob image
+For f=1 to 3						// Start a loop that repeats 3 times
+	get image f,0,0 to 200,200			// Grab the star image to the image bank
+next f								// Repeat loop
+hot spot 1,$00						// Set hot spot of image 1 to top left
+hot spot 2,$11						// Set hot spot of image 2 to centre
+hot spot 3,$22						// Set hot spot of image 3 to bottom right
+cls									// Clear the screen
+bob 1,400,540,1						// Define bob 1
+bob 2,960,540,2						// Define bob 2
+bob 3,1520,540,3					// Define bob 3
+r=0									// Define rotation variable
+do									// Start a loop
+	for f=1 to 3						// Start a loop that repeats 3 times
+		bob rotate f,r						// Rotate each bob to angle r
+	next f								// repeat loop
+	add r,1,0 to 360					// increase r by 1 until it reach 360, then reset to 0
+	refresh								// refresh the display
+loop								// repeat loop
+```
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

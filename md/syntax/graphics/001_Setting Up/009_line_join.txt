@@ -1,0 +1,51 @@
+# Line Join
+<!--
+@name: Line Join
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Set the line join style
+
+## Syntax Options
+**Line Join**
+**Line Join** *join$*
+
+## Parameters
+
+- _**join$**_: The line Joining style. Can be **"round"**, **"miter"** or **"bevel"**.  Omitting this parameter will restore the setting to the default "miter".
+
+## Description
+This instruction sets the join style of lines drawn using **Draw, Draw To, Curve, Curve To, Arc, Ellipse Arc, Polyline** and all the lines that make up polygonal shapes.
+
+- **bevel** - joins lines at angles to each other with a bevelled corner
+
+- **miter** - joins lines at angles to each other with a pointed corner (default)
+
+- **round** - joins lines at angles to each other with a rounded corner
+
+## Example Code
+This example draws three triangles using each of the three join styles.
+```basic
+Palette 0,$ffffff,$0090ff
+Line Width 30
+Ink 2
+Line Join "miter"
+locate 12,2 : print "miter"
+Shape 200,200,150,150,3
+Line Join "bevel"
+locate 24,9 : print "bevel"
+Shape 500,500,150,150,3
+Line Join "round"
+locate 36,16 : print "round"
+Shape 800,800,150,150,3
+```
+
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTg3MzYxMTY0NCwtMTM0NjI0NjY1NCwyMT
+A0NDQ2NjksLTEwODY4ODEwMzhdfQ==
+-->

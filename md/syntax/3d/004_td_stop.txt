@@ -1,0 +1,26 @@
+
+# Td Stop
+<!--
+@name: Td Stop
+@description: Disables the 3D engine to render your 3D scenes on the screen.
+@tags: 3d,scene,unity,game,design,modeling,threejs,engine
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Disables the rendering of  your 3D scenes on the screen.
+
+#### Example
+```basic
+Load Asset "my_scene.aoz3d", "my_scene"
+Td Init : Td Start
+Screen 3D Open "my_screen", SceneId$="my_scene"
+Wait Key
+Td Stop 
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTg4MjUzOTAyMl19
+-->

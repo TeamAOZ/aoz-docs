@@ -1,0 +1,40 @@
+# Console Log
+<!--
+@name: Console Log
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Help debugging in writing a text or number in the Javascript Browser Console or a small window in the AOZ Viewer.
+If you want to check what is a value at some point of your program, if your code goes at a certain place, you may add this instruction anywhere in your code.
+
+
+
+## Parameters
+ **message**: Text or Value to display
+
+## Usage:
+If you want to check what is a value at some point of your program, if your code goes at a certain place, you may add this instruction anywhere in your code.
+
+Console Log write a text or number:
+-in the Javascript Browser Console (Press CTRL-SHIFT-I) when the program runs in a browser ( console.log equivalent )
+-as a small window on top of everything (including the Actors) when the program runs in the AOZ Viewer.
+
+
+```basic
+I=1
+Console Log (I)  		// display a variable
+Console Log (100)		// display a value
+Console Log ("flag1")	// display a text
+
+For I= 1 to 3
+	Console Log ("I="+ Str$(I))
+Next I
+```
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE3NTMxMDMxNjhdfQ==
+-->

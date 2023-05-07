@@ -1,0 +1,90 @@
+# Clip Bob
+<!--
+@name: Clip Bob
+@description: 
+@tags: 
+@categories: 
+\-->
+
+Clip away all bob imagery outside the defined clipping area
+
+## Syntax Options
+
+**Clip Bob** *x1, y1* **to** *x2, y2*
+**Clip Bob** *index, x1, y1* **to** *x2, y2*
+**Clip Bob** *x1, y1, width, height*
+**Clip Bob** *index, x1, y1, width, height*
+**Clip Bob**
+**Clip Bob Off**
+**Clip Bob Off** *index*
+**Clip Bob** *x1, y1, width, height, angle, style&dollar;, sides*
+**Clip Bob** *index, x1, y1, width, height, angle, style$, sides*
+
+### Notes
+The last two syntaxes (extended syntaxes) works in a slightly different way, where _**x1, y1**_ are the centre of the clipping area rather than the top left corner.
+
+## Parameters
+
+- _**x1**_: coordinate of the top-left corner or centre of the bounding box for extended syntax
+- _**y1**_: Vertical coordinate of the top-left corner or centre of the bounding box for extended syntax
+- _**x2**_: Horizontal coordinate of the bottom-right corner of the bounding box
+- _**y2**_: Vertical coordinate of the bottom-right corner of the bounding box
+- _**width**_: Width of the bounding box
+- _**height**_: Height of the bounding box. If omitted, _**width**_ value will be used
+- **angle**: Angle of rotation of the bounding box
+- **style$**: Defines the type of bounding box to use in extended syntax. "round" - creates a circle or ellipse, "shape" - creates a regular polygon with the stated number of sides.
+- **sides**: Optional. Number of sides when using "shape" style. If omitted, |;sides|; defaults to 4
+
+## Description
+
+**Clip Bob** defines an area on the current screen and restricts the visibility of bob _**index**_ or all bobs to that area.
+
+**Clip Bob** _x1, y1_ **to** _x2, y2_
+ - Define a rectangular clipping area from top-left corner _**x1, y1**_ to bottom-right corner _**x2, y2**_ for all of the current screen|;s bobs.
+ 
+**Clip Bob** *index, x1, y1* **to** *x2, y2*
+ - Define a rectangular clipping area from top-left corner _**x1, y1**_ to bottom-right corner _**x2, y2**_ for bob _**index**_ on the current screen.
+ 
+**Clip Bob** *x1, y1, width, height*
+ - Define a rectangular clipping area of width _**width**_ and height _**height**_ positioned at _**x1, y1**_ for all of the current screen|;s bobs.
+
+**Clip Bob** *index, x1, y1, width, height*
+ - Define a rectangular clipping area of width _**width**_ and height _**height**_ positioned at _**x1, y1**_ for bob _**index**_ on the current screen.
+  
+**Clip Bob**
+- Turn of bob clipping for all bobs on the current screen.
+
+**Clip Bob Off**
+- Turn of bob clipping for all bobs on the current screen.
+ 
+**Clip Bob Off** *index*
+- Turn of bob clipping for all bob _**index**_ on the current screen.
+
+**Clip Bob** *x1, y1, width, height, angle, style&dollar;, sides*
+ - Define a clipping area (with number of sides _**sides**_ if applicable) of width _**width**_ and height _**height**_ centred at coordinates _**x1, y1**_ in style _**style**_, rotated by _**angle**_ degrees, for all of the current screen|;s bobs.
+  
+**Clip Bob** *index, x1, y1, width, height, angle, style$, sides*
+- Define a clipping area (with number of sides _**sides**_ if applicable) of width _**width**_ and height _**height**_ centred at coordinates _**x1, y1**_ in style _**style**_, rotated by _**angle**_ degrees, for bob _**index**_ on the current screen.
+
+## Example Code
+
+This program fills the screen with 100 randomly sized bobs. Use the mouse buttons, left, right or both, to change the clipping style and use the mouse to move the clipping area.
+
+```basic
+For n=1 to 100
+	bob n,rnd(100 to 1820),rnd(100 to 980),image$="ship"
+	s#=rnd(50 to 150)/100
+	bob scale n, s#, s#
+	bob rotate n,rnd(360)
+next n
+Do
+	xm= x mouse
+	ym= y mouse
+	if mouse key = 1 then  Clip Bob x mouse-400, y mouse-250,800,500 : c = 1
+	if mouse key = 2 then  Clip Bob x mouse, y mouse,600,,36,"shape", 5 : c = 1
+	if mouse key = 3 then  Clip Bob x mouse, y mouse,900,,36,"round" :  c = 1
+	if not mouse key and c = 1 then Clip Bob Off: c = 0
+Loop
+```
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

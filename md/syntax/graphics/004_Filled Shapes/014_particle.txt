@@ -1,0 +1,83 @@
+# Particle
+
+<!--
+@name: Paste Image
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Instruction** - A special instruction for drawing multiple square particles at high speed
+
+## Syntax
+
+**Particle** *x, y, size, ink, alpha*
+
+
+## Parameters
+
+
+**x**: Horizontal coordinate of the particle
+**y**: Vertical coordinate of the particle
+**size**: Size of the particle in pixels
+**ink**: Optional. Ink colour of particle. Will use the current Ink colour if omitted
+**alpha**: Optional. Alpha value applied to ink colour. Will use alpha value of Ink colour if omitted.
+
+## Notes 
+IMPORTANT - FOR MAXIMUM PERFORMANCE, ALL 5 PARAMETERS SHOULD BE PROVIDED
+
+
+## Description
+**Particle** is a special instruction for drawing particles in special effects, such as rain & snow, fireworks, explosions etc. The instruction is super-fast compared to the next fastest instruction, Bar, and tests have showed up a 95% speed increase. This is achieved by restricting and simplifying the code, so the particles have coordinates, are only square, 1x1 pixels and upwards, have an ink color and an alpha value for transparency. That|;s it, nothing else, so they are unaffected by all other graphics settings. 
+
+Particle can also be used as a faster alternative to the plot instruction, and unlike plot, you are not restricted to a single pixel.
+
+## Example Code
+
+This example program creates 2000 moving particles and displays them using the particle instruction, taking advantage of a Cls using a colour with reduced alpha value (increased transparency) to make the particles leave trails. The length of the trails can be cycled using the - / = keys.
+
+```basic
+#speed:"graphics"
+maxp=2000
+set transparent 0
+Dim X#(maxp),Y#(maxp),XM#(maxp),YM#(maxp)
+For f=1 to maxp
+	X#(f)=rnd(1920)
+	Y#(f)=rnd(1080)
+	XM#(f)=rnd(100)/10-5
+	YM#(f)=rnd(100)/10-5
+Next f
+Ink 1
+colour 2,$0
+alph#=0.1
+pen 1 : paper 2
+set alpha 1,0.2
+Do
+	For f=1 to maxp
+		Add X#(f),XM#(f)
+		If X#(f) < 0 then XM#(f)=-XM#(f)
+		If X#(f)>1920 then XM#(f)=-XM#(f)
+		Add Y#(f),YM#(f)
+		If Y#(f) < 0 then YM#(f)=-YM#(f)
+		If Y#(f)>1080 then YM#(f)=-YM#(f)
+		particle x#(f),y#(f),6,1,1
+	Next f
+	refresh
+	i$=inkey$
+	if i$="-" then add alph#,-0.1,0.1 to 1
+	if i$="=" then add alph#,0.1,0.1 to 1
+	set alpha 2,alph#
+	cls 2
+Loop
+
+```
+---
+
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1NTM5MTQyMzUsMTkyMzY0OTE5MywxMD
+EwMzU5NzIzLC04NTk3MDIxODksMTY2NTI3MTE1OSw3OTk1MDg2
+MDksMTgxOTc2OTI4MSwyMjg0MTQ3MjksLTE3NTA5MDgxMzVdfQ
+==
+-->

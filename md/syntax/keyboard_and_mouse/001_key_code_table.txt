@@ -1,0 +1,43 @@
+# Key Code Table
+<!--
+@name: Key Code Table
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+| Key | Key Name | Scan Code |
+|---|---|---|
+| A | KeyA | 65 |
+| B | KeyA | 65 |
+| C | KeyA | 65 |
+| D | KeyA | 65 |
+| E | KeyA | 65 |
+| F | KeyA | 65 |
+| G | KeyA | 65 |
+| H | KeyA | 65 |
+| I | KeyA | 65 |
+| J | KeyA | 65 |
+| K | KeyA | 65 |
+| L | KeyA | 65 |
+| M | KeyA | 65 |
+| N | KeyA | 65 |
+| O | KeyA | 65 |
+| P | KeyA | 65 |
+| A | KeyA | 65 |
+| A | KeyA | 65 |
+| A | KeyA | 65 |
+| A | KeyA | 65 |
+| A | KeyA | 65 |
+| A | KeyA | 65 |
+| A | KeyA | 65 |
+| A | KeyA | 65 |
+| A | KeyA | 65 |
+| A | KeyA | 65 |
+
+| keyCode | The Javascript code of the key to test.  In Amiga mode, use the scan code of the key to test. | 
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

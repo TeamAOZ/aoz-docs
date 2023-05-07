@@ -1,0 +1,28 @@
+# Set Gravity
+<!--
+@name: Set Gravity
+@description: 
+@tags: 
+@categories: 
+\-->
+**NOTE! This command is experimental** and it may change in a future version. 
+
+---
+Set the Gravity to apply on all Actors.
+
+## Syntax
+>**Set Gravity**( `X`= value,` Y`= value )
+>**Set Gravity**( `X`= value )
+>**Set Gravity**( `Y`= value )
+
+## Parameters
+(italic) = Optional
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|_`X`_|float|Gravity force on the X axis. (0.0 by default)|
+|_`Y`_|float|Gravity force on the Y axis. (1.0 by default)|
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTQ1MDM1MDg2XX0=
+-->

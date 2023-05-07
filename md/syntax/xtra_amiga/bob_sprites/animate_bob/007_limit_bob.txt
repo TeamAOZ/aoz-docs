@@ -1,0 +1,128 @@
+# Limit Bob
+<!--
+@name: Limit Bob
+@description: 
+@tags: 
+@categories: 
+\-->
+
+Confine one or all bobs to a defined area of the current screen
+
+## Syntax Options
+
+**Limit Bob**
+**Limit Bob Off**
+**Limit Bob Off** *index*
+**Limit Bob** *x1, y1,* **To** *x2, y2*
+**Limit Bob** *index, x1, y1,* **To** *x2, y2*
+**Limit Bob** *x1, y1, width, height*
+**Limit Bob** *index, x1, y1, width, height*
+
+## Parameters
+- _**index**_: Index number or name of the **Bob** to be limited
+- _**x1**_: Horizontal coordinate of the top-left corner of the bounding box
+- _**y1**_: Vertical coordinate of the top-left corner of the bounding box
+- _**x2**_: Horizontal coordinate of the bottom-right corner of the bounding box
+- _**y2**_: Vertical coordinate of the bottom-right corner of the bounding box
+- _**width**_: Horizontal coordinate of the bottom-right corner of the bounding box
+- _**height**_: Vertical coordinate of the bottom-right corner of the bounding box
+
+## Description
+
+**Limit Bob** restricts the positioning of one or all of the current screen|;s bobs to a defined rectangular area of the screen so that no part of the **Bob** will be beyond that boundary. The effect is instant, so any bobs that are outside the boundary will immediately jump to the closest part of the bounding box.
+
+When a bob is limited to an area, it|;s coordinates are changed permanently, so if limits are removed, the bob will remain in the same limited position until it is given new coordinates.
+
+The different syntax options are used as follows:
+
+**Limit Bob**
+- Turn off **Limit Bob** for all Bobs on the current screen 
+ 
+**Limit Bob Off**
+- Turn off **Limit Bob** for all Bobs on the current screen 
+ 
+**Limit Bob Off** *index*
+- Turn off **Limit Bob** for Bob _**index**_ on the current screen 
+
+**Limit Bob**  _x1, y1,_  **To**  _x2, y2_
+- Limit all bobs to rectangular bounding box defined by _**x1, y1**_ and _**x2, y2**_
+
+**Limit Bob**  _index, x1, y1,_  **To**  _x2, y2_  
+- Limit bob _**index**_ to rectangular bounding box defined by _**x1, y1**_ and _**x2, y2**_
+
+**Limit Bob**  _x1, y1, width, height_  
+- Limit all bobs to rectangular bounding box defined by _**x1, y1 width, height**_
+
+**Limit Bob**  _index, x1, y1, width, height_
+- Limit bob _**index**_ to rectangular bounding box defined by _**x1, y1 width, height**_
+
+
+## Example Code
+
+The following program creates 50 randomly coloured circle images, and turns each one into a randomly positioned bob with it|;s own random x and y movement. The bobs then move around the screen and bounce of the edges.
+
+Press the left mouse button, and half of the bobs will have **Limit Bob** applied, limiting them to a 400 x 400 pixel area around the mouse pointer. Press the right mouse button and all the bobs will have the same limit applied.
+
+```basic
+#speed:"graphics"				// Use Graphics mode for display updates
+set transparent 0				// Set colour 0 to transparent 
+MaxB=50							// Set number of Bobs
+Dim X#(MaxB),Y#(MaxB)			// Set up coordinate arrays
+Dim XM#(MaxB),YM#(MaxB)			// Set up movement arrays
+sw=Screen Width					// Define a variable for the Screen Width
+sh=Screen Height				// Define a variable for the Screen Height
+lim=0							// Define a variable for Limit on/off
+Ink 5							// Set the ink colour
+
+// Create some coloured images for the Bobs
+
+for f=1 to MaxB					// Start a loop for the total number of Bobs
+	colour 5,rgb(rnd(80 to 240),rnd(80 to 240),rnd(80 to 240)) // Give colour 5 a new random RGB value
+	Filled Circle 100,100,30		// Draw a filled circle in the new colour
+	Get Image f,70,70,64,64			// Grab the image of the filled circle to the image bank
+	Hot Spot f,$11					// Set the Hot Spot of the image to the centre
+	cls								// Clear the screen ready for drawing the next image
+Next f							// Repeat the loop
+
+
+// Set up coordinates and movement variables for Bobs and set up the Bobs
+
+For f=1 to MaxB				// Start a loop for the total number of Bobs
+	X#(f)=rnd(sw-100)+50		// Define a random x coordinate
+	Y#(f)=rnd(sh-100)+50		// Define a random y coordinate
+	XM#(f)=rnd(100)/25-2		// Define a random x movement
+	YM#(f)=rnd(100)/25-2		// Define a random y movement
+	bob f,X#(f),Y#(f),f			// Define Bob with the new variables and image we created earlier
+Next f						// Repeat loop
+
+// Main Program Loop
+
+Do						// Start an infinite loop
+	xm= x mouse				// Get the x position of the mouse pointer
+	ym= y mouse				// Get the y position of the mouse pointer
+	if mouse key=1			// Check if the Left mouse button is pressed
+	    for f=1 to maxb			// Start a loop for all bobs
+			lim = 1					// Set limit variable to 1
+		 	if odd(f) then limit Bob f,xm-200, ym-200,400,400 // Check if f is an odd number, and if it is, limit the Bob to a 400 x 400 pixel box around the mouse pointer
+		next f					// Repeat loop
+	else if mouse key=2		// Check if the Right mouse button is pressed
+		lim = 1					// Set limit variable to 1
+		limit Bob xm-200, ym-200,400,400 // Limit all bobs to a 400 x 400 pixel box around the mouse pointer
+	end if
+	For f=1 to MaxB										// Start a loop for all bobs
+		Add X#(f),XM#(f)									// add the x movement variable to the x coordinate
+		If X#(f) < 32 then XM#(f)=-XM#(f) : X#(f)=32		// Check if the left edge of the screen has been reached and reverse direction of movement if it has
+		If X#(f)>sw-32 then XM#(f)=-XM#(f) : X#(f)=sw-32	// Check if the right edge of the screen has been reached and reverse direction of movement if it has
+		Add Y#(f),YM#(f)									// add the y movement variable to the y coordinate
+		If Y#(f) < 32 then YM#(f)=-YM#(f) : Y#(f)=32		// Check if the top edge of the screen has been reached and reverse direction of movement if it has
+		If Y#(f)>sh-32 then YM#(f)=-YM#(f) : Y#(f)=sh-32	// Check if the bottom edge of the screen has been reached and reverse direction of movement if it has
+		bob f,X#(f),Y#(f),f									// Re-position the Bob
+	Next f												// Reapeat the loop
+	refresh												// Refresh the screen
+	if not mouse key and lim=1 then limit bob : lim=0	// Check if the mouse keys are no longer pressed and remove bob limits if true
+Loop					// Repeat infinite loop
+```
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,16 @@
+# Gamepad Map Triggers
+<!--
+@name: Gamepad Map Triggers
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Define a new mapping for the axes of non-standard compliant gamepads. Doc to come.
+## Parameters
+
+- **GAMEPAD**: The number of the gamepad
+- **MAPS**: A list of numbers separated by commas defining the mapping
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

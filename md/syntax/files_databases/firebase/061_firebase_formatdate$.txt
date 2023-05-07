@@ -1,0 +1,14 @@
+# Firebase FormatDate&dollar;
+<!--
+@name: Firebase FormatDate&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Format a date to a desired format
+## Parameters
+
+- **dateTime&dollar;**: The date to be formatted
+- **format&dollar;**: A date format string, example "DD-MM-YYYY"
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

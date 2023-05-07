@@ -1,0 +1,21 @@
+# Del All Actors
+<!--
+@name: Del All Actors
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**NOTE! This command is deprecated** and it will be removed in a future version. It is recommended to use the `Actor Del` command.
+ 
+---
+Delete All the actor
+
+## Syntax
+>**Del All Actors**
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTU1NTkyNjQ2MV19
+-->

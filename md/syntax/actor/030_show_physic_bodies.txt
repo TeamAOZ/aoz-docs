@@ -1,0 +1,20 @@
+# Show Physic Bodies
+<!--
+@name: Show Physic Bodies
+@description: 
+@tags: 
+@categories: 
+\-->
+**NOTE! This command is experimental** and it may change in a future version. 
+
+---
+Show each physic body on the screen.
+
+## Syntax
+> Show Physic Body
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEwMDAzMjY0NTNdfQ==
+-->

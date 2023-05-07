@@ -1,0 +1,25 @@
+# Reset Actor
+<!--
+@name: Reset Actor
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**NOTE! This command is deprecated** and it will be removed in a future version. It is recommended to use the `Actor Reset` command. 
+
+---
+Reset all the properties of an actor.
+
+## Syntax
+>**Reset Actor**( actor_index )
+
+## Parameters
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|`Index`|index|Index of the Actor|
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE5NjY5NTY0MDFdfQ==
+-->

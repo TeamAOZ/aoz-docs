@@ -1,0 +1,16 @@
+# Bob Move Y
+<!--
+@name: Bob Move Y
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Defines the horizontal movement of a bob. The bob starts to move immediately. For finer control please use the "Channel" and "Move Y" instructions.
+## Parameters
+
+- **index**: Index of the bob
+- **movement&dollar;**: Vertical movement definition string
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

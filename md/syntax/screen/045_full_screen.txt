@@ -1,0 +1,15 @@
+# Full screen
+<!--
+@name: Full screen
+@description: 
+@tags: 
+@categories: 
+\-->
+Switch the browser in full screen or not. Can also be achieve by using the Tag #Fullscreen
+Fullscreen On
+Fullscreen Off
+## Parameters
+
+- **index**: On or Off
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

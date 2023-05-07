@@ -1,0 +1,70 @@
+# Rnd
+<!--
+@name: Rnd
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Returns a random number in the chosen range.
+## Syntax Options
+
+**Rnd**
+**Rnd (** *ceiling* **)** 
+**Rnd (** *floor, ceiling* **)**
+**Rnd (** *floor* **To** *ceiling* **)** 
+**Rnd (0)**
+
+## Parameters
+
+- **floor** : The floor or the lower limit of the range of possible random numbers
+-  **ceiling** : The ceiling or the upper limit of the range of random numbers
+
+## Description
+
+**Rnd** is one of the most commonly used functions in computer programs, and can be used in a number of ways to generate random numbers to make your programs more interesting, Rnd can also be used in conjunction with **Randomize** to guarantee the same sequence of random numbers each time the program is run.
+
+**Rnd** has five possible syntax options, which are as follows:
+
+**Rnd** 
+Returns a random float  to 16 decimal places between 0.0 and 1.0, but never actually 1.0. That|;s 10 quadrillion possibilities!
+
+**Rnd (** *ceiling* **)** 
+Returns a random integer between 0 and *ceiling*, but does not include the *ceiling*. ( In Amiga mode, the ceiling is included )
+
+**Rnd (** *floor, ceiling* **)**
+Returns a random integer between *floor* and *ceiling*, includes *floor* but does not include *ceiling* ( In Amiga mode, the ceiling is included )
+
+**Rnd (** *floor* **To** *ceiling* **)** 
+Returns a random integer from *floor* to *ceiling* that includes both *floor* and *ceiling*
+
+**Rnd (0)** 
+Returns the last random number generated.
+ 
+## Example Code
+
+The following program uses **Randomize** to set the random number seed to a number of your choice, then generates 10 random shapes in 10 random colours and draws them on the screen. It then resets the random number seed, and does it again and again, showing that setting the seed gives you the same results, time after time. This feature can be very useful for generating random features in games.
+
+```basic
+repeat							// Start loop
+	Input "Enter a number:";n		// Ask the user to enter a number
+	cls								// Clear the screen
+	ink 2							// Set ink colour
+	For y=1 to 5					// Start |;rows|; loop
+		Randomize n						// Set the random number |;seed|;
+		for x=0 to 9					// Start main loop
+			sides=rnd(3 to 8)				// Define sides with random number from 3 to 8
+			c=rgb(rnd(60 to 240),rnd(60 to 240),rnd(60 to 240)) // Define RGB colour using random RGB elements
+			r=rnd(360)						// Define a random angle of rotation
+			radius=rnd(50 to 80)			// Define a random radius size for the shape
+			colour 2,c						// Set colour 2 to therandom RGB value defined in |;c|;
+			shape 100+x*180, y*180, radius, radius, sides, r, true // Draw a random shape
+			wait 0.3						// Wait for 0.2 seconds
+		next x							// Repeat main loop
+		wait 1							// Wait for 1 second before repeating and resetting random number seed
+	next y							// Repeat |;rows|; loop
+until forever					// Repeat loop
+```
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

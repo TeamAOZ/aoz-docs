@@ -1,0 +1,38 @@
+# Inkey&dollar;
+<!--
+@name: Inkey&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+This function returns the next character from the input buffer as a single character string, or an empty string if no key was pressed (the buffer is empty).
+
+## Usage
+
+X\$=Inkey\$
+
+## Example:
+```basic
+Print "(Type Q to quit.)" : Print
+Print "SC","Key Shfit","Inkey$","Key Name$"
+Break Off
+While Not Done
+	IK$=Inkey$ : SC=ScanCode : SS=ScanShift : KN$=Key Name$
+	IF IK$<>"" Or SC>0
+		Cls
+		Print "(Type Q to quit.)" : Print
+		Print "SC","Key Shfit","Inkey$","Key Name$"
+		Print Right$(Hex$(SC,2),2),
+		Print Right$(Bin$(SS,8),8),
+		Print IK$;Space$(7-Len(IK$)),
+		Print KN$
+	End If
+	If Upper$(IK$)="Q" Then Done=True
+Wend
+Print "Done!"
+End
+```
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

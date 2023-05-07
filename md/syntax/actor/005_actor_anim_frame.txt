@@ -1,0 +1,33 @@
+# Actor Anim Frame
+<!--
+@name: Actor Anim Frame
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the number of the frame of the Actor|;|;s Animation
+
+## Syntaxes
+> A = **Actor Anim Frame**( actor_index )
+
+## Parameters
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index|Index of the Actor|
+---
+Example:
+```basic
+actor animation "test", sequence$= "lucie-0, lucie-1, lucie-2, lucie-3, lucie-4, L"
+actor "lucie", anim$ = "test", Y=100
+
+do
+ locate 0,0
+ print actor anim frame ("lucie")
+ Refresh
+loop
+```
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTgwNzg2NTgyN119
+-->

@@ -1,0 +1,16 @@
+# Dom Content
+<!--
+@name: Dom Content
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Set the content of a HTML Element
+## Parameters
+
+- **elementId&dollar;**: ID of this element.
+- **html&dollar;**: HTML code to insert into the HTML element.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

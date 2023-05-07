@@ -1,0 +1,38 @@
+# ScanCode
+<!--
+@name: ScanCode
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+This function returns a unique numeric code* for the physical key pressed when captured with **Inkey\$**. 
+
+**Note 1:** The ScanCode will return the same value regardless of the state of the **Shift** key or other modifier keys.
+
+**Note 2:** Modifier keys (Shift, Ctrl, Alt, etc.) do not return a value from **Inkey\$**, however the **Shift** key will modify the result returned from **Inkey\$**.
+
+**Note 3:** Often the ScanCode will be the ASCII value for the key pressed.
+
+\* For Amiga, **ScanCode** returns the emulated hardware scan code for that key.
+
+## Example
+```basic
+Function "IsPrintable",x$
+	a=asc(x$)
+End Function (a>31 And a<128)
+
+Do
+	X$=Inkey$
+	If X$<>""
+		SC=ScanCode
+		If IsPrintable(X$) Then P$=X$ Else P$=" "
+		Print P$,SC;" (";Hex$(SC,2);")",Key Name$
+	End If
+	Wait Vbl
+Loop
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,33 @@
+# Line Width
+<!--
+@name: Line Width
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Function** - Returns the current Line Width value
+
+## Syntax
+**= Line Width**
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+---
+
+## Description
+
+Returns the Line Width setting for the current screen. 
+
+---
+## Example Code
+```basic
+Line Width 20
+L = Line Width
+Print L
+```
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNTkxODAwNzQ5LC0xNTk2NzEyODczLDc4Mj
+A0NDYzMSwxMzYyMjQ4NDM3XX0=
+-->

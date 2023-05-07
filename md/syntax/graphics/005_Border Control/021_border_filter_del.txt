@@ -1,0 +1,49 @@
+# Border Filter Del
+<!--
+@name: Border Filter Del
+@description: 
+@tags: 
+@categories: 
+\-->
+
+## Syntax
+
+**Border Filter Del**
+~~**Border Filter Del** *filterName$*~~
+
+## Parameters
+
+- ~~**filterName&dollar;**: Name of the filter to be removed (see list in the Draw Filter instruction)~~
+
+## Description
+
+- **Border Filter Del**
+Remove all border
+
+- ~~**Border Filter Del** *filterName$*
+Remove the filter named in *filterName&dollar;* from the Bing that is used by Javascript to apply the filters.~~
+
+
+## Example Code
+
+This example adds three different filters to the Border Filter string, prints the string, then deletes it.
+
+```basic
+Border filter "blur",5
+Border Filter "drop-shadow",40,40,10,$ffffff10
+Border Filter "sepia",50
+print "Filter$ = ";border filter$
+print
+print "Removing border filters....."
+print
+wait 1
+border filter del
+print "Filter$ = ";border filter$
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTYzMDIxMjM2MywxNzcxMzg2Njk3LC01Mj
+g4MzA3MSwtMTkyMzczMjQ0NF19
+-->

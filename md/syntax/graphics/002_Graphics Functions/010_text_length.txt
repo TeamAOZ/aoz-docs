@@ -1,0 +1,35 @@
+# Text Length
+<!--
+@name: Text Length
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Function** - Returns the length of a text string using current font settings
+
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+## Syntax
+**= Text Length (** text$ **)**
+
+## Parameters
+
+- **text&dollar;**: The text string to evaluate the width from
+
+
+## Description 
+Calculate the width in pixels of a string of text when drawn in the current screen with the current selected font and font size.
+
+## Example Code
+The following code will tell how long the sentence "A line of Text!" will be in pixels when displayed in Acme font at 80pt size.
+```basic
+#googleFont:"acme"
+Set Font "acme",80
+Print Text Length("A line of Text!")
+```
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNTQ5OTE0MjgwLC0xMTk0ODc4MTQ1XX0=
+-->

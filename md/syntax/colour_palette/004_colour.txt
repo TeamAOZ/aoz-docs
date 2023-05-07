@@ -1,0 +1,38 @@
+# Colour
+<!--
+@name: Colour
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+**INSTRUCTION** - Set the RGB value of a colour in the palette the current screen
+
+## Syntax
+**Colour** *index, RGB*
+
+## Parameters
+
+
+- **index**: The index number of the colour in the palette of the current screen.
+- **RGB**: The RGB colour value of the new colour.
+
+## Description
+
+**Colour** allows you to change any of the current screen|;s palette colour to any other 24 bit RGB colour. Once changed, all subsequent drawing operations using that **Ink** colour will have the new colour applied.
+
+Whilst **Colour** can accept any number format, it|;s easiest to use the common hexadecimal format like this: $RRGGBB, for example $A055FF.
+
+See also **Set Alpha** and **Shade**.
+
+
+
+
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTAxNzkzMjA3N119
+-->

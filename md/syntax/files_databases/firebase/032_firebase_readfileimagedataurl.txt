@@ -1,0 +1,15 @@
+# Firebase ReadFileImageDataUrl
+<!--
+@name: Firebase ReadFileImageDataUrl
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns an image file as a Data URL string
+## Parameters
+
+- **fileRef&dollar;**: The file reference, use the Firebase SelectFile instruction to get a reference to a user selected file
+- **onRead&dollar;**: The name of a Procedure to be called once the file has been read
+- **maxSize**: Optional value in pixels to resize the image
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

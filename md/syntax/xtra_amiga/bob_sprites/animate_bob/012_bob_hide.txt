@@ -1,0 +1,13 @@
+# Bob Hide
+<!--
+@name: Bob Hide
+@description: 
+@tags: 
+@categories: 
+\-->
+Make a bob invisible
+## Parameters
+
+- **index**: Index of the bob in the list of active bobs
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

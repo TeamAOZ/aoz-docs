@@ -1,0 +1,60 @@
+# DB Table
+<!--
+@name: DB Table
+@description: 
+@tags: 
+@categories: 
+\-->
+
+Selects the table from current database that will the current one for the next DB calls.
+
+## Description
+
+`DB Table Table$`
+
+This instruction allows you to work with multiple tables into a given database. \
+Each table is identified by its name.
+
+If you do not use DB Table calls, a default table named "default" will be used when you call DB instructions.
+
+## Parameters
+
+- `Table$`: The name of the table to be selected.
+
+## Examples
+
+```basic
+// A table stores a list of players:
+Table "players"
+Name$ = "Player one" : DB Write New "Name$"
+Name$ = "Player two" : DB Write New "Name$"
+DB Search All
+While DB Pointer()
+	DB Read "Name$"
+	Print "Player", Name$
+	DB Next
+Wend
+
+// Another table stores a list of cities:
+Table "cities"
+City$ = "Paris"  : Zipcode$ = "75000" : DB Write New "City$, Zipcode$"
+City$ = "Rennes" : Zipcode$ = "35000" : DB Write New "City$, Zipcode$"
+DB Search All
+While DB Pointer()
+	DB Read "City$, Zipcode$"
+	Print "City", City$, Zipcode$
+	DB Next
+Wend
+```
+
+## See Also
+
+- `DB`
+- `DB Database`
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTIwMTc0Njg0MzddfQ==
+-->

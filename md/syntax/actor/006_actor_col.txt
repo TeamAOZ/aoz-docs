@@ -1,0 +1,28 @@
+# Actor Col
+<!--
+@name: Actor Col
+@description: 
+@tags: 
+@categories: 
+\-->
+Tests the collision between 2 actors. True is returned if a collision exists, else False.
+
+## Syntaxes
+> A = **Actor Col**( actor1_index, actor2_index )
+> A = **Actor Col**( actor1_index, `Group$` = "group_name" )
+> A = **Actor Col**( actor1_index, `Image$` = "image_index" )
+> A = **Actor Col**( actor1_index, Image = image_index )
+
+## Parameters
+( italic ) = Optional
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index|Index of the primary Actor |
+|_`Index2`_|index|Index of the second Actor|
+|_`Group$`_|string|Name of an actors group. All the Actors with the `Group$` property sets with this name will are tested.|
+|_`Image/Image$`_|index|Name of an image. All the Actors with the `Image` property sets with this name will are tested.|
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE1NzU5ODk2MTRdfQ==
+-->

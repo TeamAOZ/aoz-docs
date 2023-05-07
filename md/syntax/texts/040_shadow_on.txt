@@ -1,0 +1,46 @@
+# Shadow On
+<!--
+@name: Shadow On
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Turn ON the shadow effect for printing in the current text window.
+
+## Syntax
+
+ **Shadow On**
+
+## Example
+
+```basic
+Palette 0,$FFFFFF,$666666
+Text Shadow 6,6,1,$00000077
+Pen 1 : Paper 2 : Cls 2
+Print "Press any key"
+toggleShadow=false
+Locate 0,2 : Print "Normal Text."
+Do
+	IK$=Inkey$
+	If IK$<>""
+		toggleShadow=Not toggleShadow
+		Locate 0,2
+		If toggleShadow
+			Shadow On
+			Print "Shadowed.    "
+		Else
+			Shadow Off
+			Print "NOT shadowed."
+		End If
+	End If
+	If Upper$(IK$)="Q" Then Exit
+	Wait Vbl
+Loop
+```
+
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

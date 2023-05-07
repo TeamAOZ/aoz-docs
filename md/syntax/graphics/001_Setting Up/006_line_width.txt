@@ -1,0 +1,53 @@
+# Line Width
+<!--
+@name: Line Width
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Set the line width to be used in all line drawings
+
+## Syntax
+**Line Width** *width*
+
+
+## Parameters
+
+_**width**_: The width or thickness of the line in pixels
+
+## Description
+
+This instruction sets the width of all lines that are subsequently drawn, including borders. The **Line Width** can be set to any value above 0. The following example draws circles using a line widths from 1 to 10 pixels wide.
+
+If the **Border First** instruction is used, it is important to note that the visible line width will be half of the **Line Width** value.
+
+## Example Code
+
+```basic
+Ink 1
+For f=1 to 10
+	Line Width f
+	Circle f*150,540,60
+Next f
+```
+
+The line width can also be set to less than 1. The next example shows what the circles will look like with line widths from 0.1 to 1.0.
+ You will see that for very thin lines, they appear much fainter.
+
+```basic
+Ink 1
+For f=1 to 10
+	Line Width f/10
+	Circle f*150,540,60
+Next f
+```
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTIxNTY4Njk1NCw5MDM4Njg5NzAsMTQ0OD
+I3MTczM119
+-->

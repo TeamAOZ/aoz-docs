@@ -1,0 +1,13 @@
+# Bob Show
+<!--
+@name: Bob Show
+@description: 
+@tags: 
+@categories: 
+\-->
+Make a bob visible on screen
+## Parameters
+
+- **index**: Index of the bob in the list of active bobs
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

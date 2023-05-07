@@ -1,0 +1,22 @@
+# AOZ STUDIO FILES
+
+If you are wondering the organisation of the AOZ Studio files on the offline version, here it is:
+
+## Windows
+![aozinstalledfiles](https://doc.aoz.studio/assets/images/en/image203.png)
+
+## Mac
+![aozinstalledfiles](https://doc.aoz.studio/assets/images/en/image204.png)
+
+## Linux
+![aozinstalledfiles](https://doc.aoz.studio/assets/images/en/image205.png)
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEwMDczMjUyMjQsLTcyMzE0MjY0MywxMD
+kyMzQyMzkxLC0xMTc4OTE3ODY5LDE1MjgyNDI5NzUsLTg3NjI3
+NTYxNiwtMTMwNDA1NDkyNSwtNTk4MzE5MTEsMTUyMTcwNzc5My
+w4NzAyMzIwMjYsNzMwOTk4MTE2XX0=
+-->

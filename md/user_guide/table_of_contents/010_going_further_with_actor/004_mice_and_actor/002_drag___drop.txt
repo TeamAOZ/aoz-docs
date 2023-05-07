@@ -1,0 +1,23 @@
+# DRAG & DROP
+Let's modify our procedure again:
+```basic
+Procedure CLICK [EVENT$, INDEX$, DRAGX, DRAGY]
+  If EVENT$="dragdrop" Then Actor INDEX$, X=DRAGX, Y=DRAGY
+End Proc
+```
+Here we test the type of action returned by EVENT$. If the action is "dragdrop", the user has placed their mouse over the Actor, held down a mouse button, and moved.
+
+The coordinates of the displacement are contained in two other pieces of information: **DRAGX** and **DRAGY**.
+
+Our procedure, for each call, then places our Actor at these new coordinates.
+
+You can, for example, make a window and move it in a single instruction.
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTIwMTI0MDc1NjIsNDczMTE1NzAsMzk0NT
+I0MDY2LDg3MDIzMjAyNiw3MzA5OTgxMTZdfQ==
+-->

@@ -1,0 +1,16 @@
+#  BOT Wheel Speed
+<!--
+@name:  BOT Wheel Speed
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Sets the speed of wheel
+## Parameters
+
+- **speed**: The new speed of the wheel, from -200 to 200 RPM
+- **motor**: The number of the wheel, 1 for left wheel, 2 for right wheel, 0 for both
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

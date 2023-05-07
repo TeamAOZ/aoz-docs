@@ -1,0 +1,78 @@
+# Key Shift
+<!--
+@name: Key Shift
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Returns the current state of the modifier keys on the keyboard.
+
+NOTE:  Unlike **ScanShift**, **Key Shift** does not require calling **Inkey\$** or any other function to return a value.  It can return the modifier key states at any time.
+
+## Example
+```basic
+Function "IsPrintable",x$
+	a=asc(x$)
+End Function (a>31 And a<128)
+
+Procedure ShowNames[state]
+	For bit=0 To 9
+		value=state And (2^bit)
+		Print Using "### ";value;
+		If Value=1
+			Print "LeftShift"
+		Else If Value=2
+			Print "RightShift"
+		Else If Value=4
+			Print "LeftCtrl"
+		Else If Value=8
+			Print "RightCtrl"
+		Else If Value=16
+			Print "LeftAlt"
+		Else If Value=32
+			Print "RightAlt"
+		Else If Value=64
+			Print "LeftMeta"
+		Else If Value=128
+			Print "RightMeta"
+		Else If Value=256
+			Print "CapsLock"
+		Else
+			Print Space$(10)
+		End If
+	Next bit
+End Procedure
+
+Do
+	KS=Key Shift
+	Locate 0,0 : Print "Current modifier key states: ";Bin$(KS,10)
+	Print
+	ShowNames[KS]
+	Wait Vbl
+Loop
+```
+
+## Description
+The result is returned as an integer bit map, with each bit representing a specific modifier key.  If the bit is turned on (=1), that means that key is currently held down:
+
+| Bit | Value (binary) | Modifier Key | Amiga Key |
+|---|---|---|---|
+| 0 | 000000001 | Left Shift | Left Shift |
+| 1 | 000000010 | Right Shift |Right Shift |
+| 2 | 000000100 | Left Ctrl | Caps Lock |
+| 3 | 000001000 | Right Ctrl | Ctrl (either) |
+| 4 | 000010000 | Left Alt | Left Alt |
+| 5 | 000100000 | Right Alt | Right Alt |
+| 6 | 001000000 | Left Meta | Left Meta (Amiga) |
+| 7 | 010000000 | Right Meta | Right Meta (Amiga) |
+| 8 | 100000000 | Caps Lock | n/a |
+
+**NOTE:** The "Meta" keys are known by different names on different platforms.  
+For example:  Apple keys, Windows Start & Menu keys, Amiga keys, etc.   
+
+**NOTE2:** On the Amiga, there is no distinction between the left and right **Ctrl** key.  The **Caps Lock** takes the place of the **Left Ctrl** key.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

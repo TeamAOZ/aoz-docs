@@ -1,0 +1,19 @@
+# Actor
+<!--
+@name: Actor
+@description: The user guide chapter heading for Actor.
+@tags: behavior,animation,design,graphic,sprite,character,movement,game,picture,image,show,display,moving,control,bob
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+
+In this chapter you will learn more about the Actor instruction to display, animate and control:
+- Images in 2D, 3D, 
+- videos, as well as, 
+- graphical texts.
+
+Actor is the most powerful graphic instruction in the AOZ language.
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbNjcxMzM2MTk0XX0=
+-->

@@ -1,0 +1,32 @@
+# Color
+<!--
+@name: Color
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+
+**INSTRUCTION** - Set the RGB value of a color in the palette the current screen
+
+## Syntax
+
+**Color** *index, RGB*
+
+## Parameters
+
+
+- **index**: The index number of the color in the palette of the current screen.
+- **RGB**: The RGB color value of the new colour.
+
+## Description
+
+**Color** allows you to change any of the current screen|;s palette color to any other 24 bit RGB color. Once changed, all subsequent drawing operations using that **Ink** color will have the new color applied.
+
+Whilst **Color** can accept any number format, it|;s easiest to use the common hexadecimal format like this: $RRGGBB, for example $A055FF.
+
+See also **Set Alpha** and **Shade**.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

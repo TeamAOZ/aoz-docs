@@ -1,0 +1,25 @@
+# Text Base
+<!--
+@name: Text Base
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Function** - Returns the value of the current font|;s baseline
+
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+
+## Syntax
+**= Text Base**
+
+## Description
+This function is used to get the reference position of the current font|;s baseline, given as the number of pixels between the top of the character, and the point that it will be printed on the screen. It is similar to the hot-spot of an Object.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE2OTUwMDIzMjUsMjA2ODQyMDIyNSwzMz
+gwNDEyOTcsLTcyOTgzMTkyM119
+-->

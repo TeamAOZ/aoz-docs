@@ -1,0 +1,42 @@
+# Bob	
+<!--
+@name: Bob
+@description: 
+@tags: 
+@categories: 
+\-->
+
+Defines, re-positions and/or changes the image of a bob
+
+## Syntax Options
+
+**Bob** *index*
+**Bob** *index, x, y*
+**Bob** *index, x, y, image*
+## Parameters
+
+- _**index**_: Integer or string. Index or name of the bob in the list of bobs
+- _**x**_: Horizontal position of the bob in the screen
+- _**y**_: Vertical position of the bob in the screen
+- _**image**_: Index of the image in the "Images" bank
+
+## Description
+
+**Bobs** are a special type of graphic objects that belong to a specific screen. They can be manipulated in many ways: moved, scaled, skewed, rotated, clipped, hidden and more. When a **Bob** is defined, it will be created on the current active screen, and remain a part of that screen until it is closed using **Screen Close** or the **Bob** is destroyed using **Bob Off**.
+
+Each screen has it|;s own bobs, so the same bob numbers or names can be used on different screens.
+
+**Bob** *index*
+- Defines **Bob** with number or name _**index**_ and default settings. Nothing will be displayed on the screen until and image is assigned to it.
+
+**Bob** *index, x, y*
+- Defines **Bob** with number or name _**index**_ with coordinates _**x, y**_ and other default settings. Nothing will be displayed on the screen until an image is assigned to it.
+
+**Bob** *index, x, y, image*
+- Defines **Bob** with number or name _**index**_ with coordinates _**x, y**_, image _**image**_ and other default settings. The **Bob** will be displayed on the screen at the next update in a non-destructive way.
+
+
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

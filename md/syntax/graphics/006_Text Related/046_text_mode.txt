@@ -1,0 +1,66 @@
+# Text Mode
+<!--
+@name: Text Mode
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Syntax
+
+**Text Mode** *mode$*
+
+## Parameters
+
+
+- **mode$**: The Text drawing mode, can be either "fill", "outline" or "border". If this parameter is omitted, the mode will defalt to 'fill'.
+
+## Description
+
+Sets the Text drawing mode to draw either solid filled text, outline text or bordered filled text. Text Mode is "fill" by default.
+
+The text border is actually a line drawing, so when borders are used in either **outline** or **border** mode, you have full control over how the border appears. That means it can be any width, and filled with any colour or pattern, any fill image or any border gradient. This opens up a vast world of possibilities for your text imagery.
+
+Note that '**fill**' or '**outline**' uses the current **Ink** colour, and '**border**' uses the **Ink** colour for the text the **Border Ink** colour for the border.
+
+## Example Code
+
+This example draws a text phrase several times with the font outlined in different colours.
+
+```js
+#googleFont:"mystery quest"						// Choose a Google Font
+Curs Off : Cls 1								// Set up screen, white background
+Set Transparent 0								// Set background colour to transparent
+Set font 0,180									// Set then font size
+Line Width 4									// Set the line width
+Text Mode "outline"								// Set the 'Text Mode'to 'outline'
+For f=1 to 5									// Define loop
+	Ink f*5+1									// Choose colour from palette
+	If f>2 then Text Shadow 10,20,f*3,$333333ff // Apply a shadow to the last 3
+	Text 100+f*70,f*200,"Outline Text"			// Draw Text
+	wait 0.4									// Wait for 0.4 seconds
+Next f											// Repeat loop
+```
+This example draws a text phrase several times in different colours with the font outlined in black
+```js
+#googleFont:"mystery quest"						// Choose a Google Font
+Curs Off : Cls 1								// Set up screen, white background
+Set Transparent 0								// Set background colour to transparent
+Set font "mystery quest",180					// Set the font size
+Text Mode "border"								// Set the Text Mode
+colour 2,$000000								// Define colour number 2 as black
+For f=1 to 5									// Define loop
+	Line Width f								// Set the line width
+	Ink f*5+1									// Set the ink colour.
+	Border Ink 2								// Set the border ink colour.
+	if f>2 then Text Shadow 10,20,f*3,$333333ff // Draw a shadow beneath last 3
+	Text 100+f*70,f*200,"Border Text!"			// Draw Text
+	wait 0.4									// Wait for 0.4 seconds
+Next f											// Repeat loop
+```
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /> </p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTE2MzQ0MzE2LC00NjYyOTgwMDQsMTgwMT
+U0Njg2NywyMTQ1Mzg0MzM4XX0=
+-->

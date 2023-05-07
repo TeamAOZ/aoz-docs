@@ -1,0 +1,20 @@
+# Paste Icon
+<!--
+@name: Paste Icon
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Draw an icon from the Icons bank into a screen
+## Parameters
+
+- **x**: Horizontal coordinate of drawing
+- **y**: Vertical coordinate of drawing
+- **iconIndex**: Index of the icon in the Icons bank
+- **scaleX#**: Horizontal scaling of the icon, 1 = original size, 0.5 = half, 2 = twice, etc (optional)
+- **scaleY#**: Vertical scaling of the icon, 1 = original size, 0.5 = half, 2 = twice, etc (optional)
+- **angle#**: Angle of rotation, in radian (default) or degree after the "Degree" instruction has been used (optional)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

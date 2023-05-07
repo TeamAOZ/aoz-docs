@@ -1,0 +1,36 @@
+# Fonts
+
+You may directly use the fonts already installed in AOZ adding it with the Load Asset instruction setting the font name and the name you assign to it for AOZ:
+```basic
+Load Asset "blair-im.woff2", "fontblair" // Load the font and further use it under the name fontblair
+Set font "fontblair", textsize
+Ink textcolor, backgroundcolor  // choose the colors
+Text X,Y, MESSAGE$  // use Print or Text instructions
+```
+It is possible to load a font from Google Fonts and use it with the Set Font and Text instructions. 
+
+Step 1: Choose a font from the Google Font Site (Make sure you have the rights).
+Step 2: Copy the url of css and run it into a new tab.
+Step 3: In that page copy the link after the **src url**, starting with https: It is the url of the font (woff, woff2 or TTF)
+Step 4: In your AOZ program, add that url with the Load Asset:
+```basic
+Load Asset "https://fonts.gstatic.com/s/delicioushandrawn/v3/wlpsgx_NAUNkpmKQifcxkQchDFo3fJ1F25BC.woff2", "delicious" 
+Set Font "delicious", 104
+Ink 1
+Text 100,100,"Hello World!
+```
+<BR>
+An other method is:
+
+-Create a new folder in AOZ_Studio/AOZ_Studio/app/aoz/fonts/google with the name of the new font 
+-Copy the WOFF and WOFF2 files into it
+-Get and copy one of the existing font.definition files (from another font) 
+-Modify it by inserting code specific to the new font, font-family, font-style, font-weight and where to find the files.
+<BR>
+
+Note: the Actor instruction may be used to display and manipulate text using a bitmap font (see related chapter). Some fonts are supplied with AOZ Studio, you can redesign yours as long as you follow the same grid size of that font image. Here is an example:
+
+```basic
+Actor "getready", Text$="GET READY!", HotSpot$="middle", FontName$="fnt_Stencil_gold_silver_bronze", FontSize=90,X=200, Y=200
+```
+<BR>

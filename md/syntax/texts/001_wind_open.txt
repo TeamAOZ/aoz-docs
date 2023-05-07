@@ -1,0 +1,23 @@
+# Wind Open
+<!--
+@name: Wind Open
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+This instruction opens a new Print window associated with the current screen.
+## Parameters
+
+|Parameter|Description|
+|---|---|
+| **index** | The index (ID) of Print window to open |
+| **x** | The horizontal Print coordinate of the left border of the window in the screen |
+| **y** | The vertical Print coordinate of the left border of the window in the screen |
+| **width** | The width in characters of the new Print window |
+| **height** | The width in characters of the new Print window |
+| *border* | The number of the border character to use (optional) |
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

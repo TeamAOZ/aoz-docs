@@ -1,0 +1,17 @@
+# Fill
+<!--
+@name: Fill
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+fill memory block with the contents of a variable.
+## Parameters
+
+- **start**: The address to change. It should contain the "maginal number" returned by the Start function.
+- **finish**: The address of the end of the area to fill. It should contain the "maginal number" returned by the Start function.
+- **pattern**: The four-byte pattern that will be repeated when filling
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
