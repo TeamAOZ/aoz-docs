@@ -1,3 +1,3 @@
 ## AOZ Documentation
 
-<a href="./English/README.MD">Documentation in English</a>
+[Documentation in English](https://github.com/TeamAOZ/aoz-docs/tree/main/English)
