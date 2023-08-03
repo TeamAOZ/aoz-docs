@@ -1,0 +1,47 @@
+# Centre Text
+<!--
+@name: Centre Text
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+ Centres graphical text on the current screen using the current font settings.
+## Syntax
+**Centre Text** theText$, how
+
+## Parameters
+
+| Parameter | Description |
+|---|---|
+| **theText$** | The text you want centred. |
+| *how* | How you want it centred. |
+
+ **how** is an integer indicating how you want it centred relative to the current screen.  It is easiest to visualize how this works by showing how in binary form.  Bit 0 (right) indicates horizontal centering.  Bit 1 (left) indicates vertical centering.
+<table>
+<tr><th>decimal</th><th>binary</th><th>Description</th></tr>
+<tr><th>0</th><th>%00</th><td>Not centred horizontally or vertically.  Works like Text at the current graphical cursor</td></tr>
+<tr><th>1</th><th>%01</th><td>Centred horizontally only at the current position of the vertical graphical cursor</td></tr>
+<tr><th>2</th><th>%10</th><td>Centred vertically only, starting at the current position of the horizontal graphical cursor</td></tr>
+<tr><th>3</th><th>%11</th><td>Centred horizontally and vertically on the Screen</td></tr>|
+</table>
+
+## Example
+
+```basic
+#googleFont: "righteous"
+Set Font "righteous",64
+Line Width 2
+Box 0,0 To Screen Width-1,Screen Height-1
+
+Gr Locate ,128
+
+Centre Text "With Descenders PpQqJj"
+Text : Centre Text "This is a test."
+Text : Gr Locate 50, : Centre Text "Vertical Only",2
+Centre Text "Middle of screen (both)",3
+Text : Text : Centre Text "Horizontal only (default)",1
+```
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -59,10 +59,3 @@ Instruction StackEdit Edit, CODE$, OnChange$ = "", OnClose$ = ""
 	MDParser.edit( %CODE$, %OnChange$, %OnClose$ );
 }
 End Instruction
-
-Instruction StackEdit Save, Page$, Code$, OnSuccess$="", OnError$=""
-{
-	#errors
-	MDParser.save( %Page$, %Code$, %OnSuccess$, %OnError$ );
-}
-End Instruction

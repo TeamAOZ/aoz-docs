@@ -9,7 +9,7 @@
 
 Opens a screen to display and manipulate 3D objects. It is possible to open several screens and display them simultaneously. For example, to make a multi-player game, each player having his own screen (for example Mario Kart)
 
-#### Syntax
+#### Example
 ```basic
 Load Asset "my_scene.aoz3d", "my_scene"
 Td Init : Td Start

@@ -23,7 +23,7 @@ function v1_0_sprites( aoz, args )
 	this.aoz=aoz;
 	this.parent=this;
 	this.root=this;
-	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25Nb2R1bGUiOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIFNwcml0ZXMgSW5zdHJ1Y3Rpb25zIiwiYXV0aG9yIjoiQnkgRnJhbmNvaXMgTGlvbmV0IiwidmVyc2lvbiI6IlZlcnNpb24gMC45OSIsImRhdGUiOiIzMC8wMS8yMDIwIiwiY29weXJpZ2h0IjoiKGMpIEFPWiBTdHVkaW8gMjAxOS0yMDIwIiwic3RhcnQiOiJzcHJpdGVzLmFveiIsIm9iamVjdCI6IlNwcml0ZSIsIm5hbWUiOiJzcHJpdGVzIn0sImNvbXBpbGF0aW9uIjp7ImZvcmNlSW5jbHVkZSI6dHJ1ZSwibm9XYXJuaW5nIjpbXSwiZXJyb3JzIjp7ImVuIjpbXSwiZnIiOltdfSwiaW5jbHVkZVBhdGhzIjpbXX0sImJvb3RTY3JlZW4iOnsiYWN0aXZlIjpmYWxzZSwid2FpdFNvdW5kcyI6ZmFsc2UsImNsaWNrU291bmRzIjpmYWxzZX0sImVycm9ycyI6e319'));
+	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25Nb2R1bGUiOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIFNwcml0ZXMgSW5zdHJ1Y3Rpb25zIiwiYXV0aG9yIjoiQnkgRnJhbmNvaXMgTGlvbmV0IiwidmVyc2lvbiI6IlZlcnNpb24gMC45OSIsImRhdGUiOiIzMC8wMS8yMDIwIiwiY29weXJpZ2h0IjoiKGMpIEFPWiBTdHVkaW8gMjAxOS0yMDIwIiwic3RhcnQiOiJzcHJpdGVzLmFveiIsIm9iamVjdCI6IlNwcml0ZSIsIm5hbWUiOiJzcHJpdGVzIn0sImNvbXBpbGF0aW9uIjp7ImZvcmNlSW5jbHVkZSI6dHJ1ZSwibm9XYXJuaW5nIjpbImluc3RydWN0aW9uX25vdF9pbXBsZW1lbnRlZCJdLCJlcnJvcnMiOnsiZW4iOltdLCJmciI6W119LCJpbmNsdWRlUGF0aHMiOltdLCJzeW50YXgiOiJhb3oifSwiYm9vdFNjcmVlbiI6eyJhY3RpdmUiOmZhbHNlLCJ3YWl0U291bmRzIjpmYWxzZSwiY2xpY2tTb3VuZHMiOmZhbHNlfSwiZXJyb3JzIjp7fX0='));
 	this.vars=typeof args=='undefined'?{}:args;
 	this.contextName='v1_0_sprites';
 	this.aoz[ "module" + "Sprites" ]=this;
@@ -33,7 +33,7 @@ function v1_0_sprites( aoz, args )
 this.blocks=[];
 	this.blocks[0]=function(aoz,vars)
 	{
-		// From source: D:/Programs/AOZ_Studio_SE/AOZ_Studio/app/aoz/languages/v1_0/sprites/sprites.aoz
+		// From source: C:/AOZ Studio/AOZ_Studio/app/aoz/languages/v1_0/sprites/sprites.aoz
 		aoz.sourcePos="0:46:0";
 		// Javascript
 		this.aoz.sprites = this;
@@ -115,12 +115,12 @@ this.blocks=[];
 			{
 				this.context.parseAll( this.contextName, function( sprite )
 				{
-					sprite.setShadow({x:0,y:0});
+					sprite.setShadow({color:null});
 				} );
 			}
 			else
 			{
-				aoz.sprites.context.getElement( aoz.sprites.contextName,aoz.checkIndex(index),'sprite_not_defined' ).setShadow({x:0,y:0});
+				aoz.sprites.context.getElement( aoz.sprites.contextName,aoz.checkIndex(index),'sprite_not_defined' ).setShadow({color:null});
 			}
 			this.setModified();
 		};
@@ -223,6 +223,10 @@ this.blocks=[];
 		};
 		// End Javascript
 		return{type:0}
+	};
+	this.blocks[1]=function(aoz,vars)
+	{
+		return{type:0};
 	};
 	this.aoz.run(this,0,null);
 };

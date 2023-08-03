@@ -1,9 +1,1 @@
-Filesdata["application_0"]="EN: Place all the files you want to use in this folder with the following instructions:
-
-FR: Placez dans ce dossier tous les fichiers que vous souhaitez utiliser avec les instructions suivantes :
-
-- Open Out
-- Load Iff
-- Load
-- BLoad
-";
+Filesdata["application_0"]="RU46IFBsYWNlIGFsbCB0aGUgZmlsZXMgeW91IHdhbnQgdG8gdXNlIGluIHRoaXMgZm9sZGVyIHdpdGggdGhlIGZvbGxvd2luZyBpbnN0cnVjdGlvbnM6DQoNCkZSOiBQbGFjZXogZGFucyBjZSBkb3NzaWVyIHRvdXMgbGVzIGZpY2hpZXJzIHF1ZSB2b3VzIHNvdWhhaXRleiB1dGlsaXNlciBhdmVjIGxlcyBpbnN0cnVjdGlvbnMgc3VpdmFudGVzIDoNCg0KLSBPcGVuIE91dA0KLSBMb2FkIElmZg0KLSBMb2FkDQotIEJMb2FkDQo=";

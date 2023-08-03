@@ -1,0 +1,77 @@
+# ACTOR ANIMATION INSTRUCTION
+
+**Actor Animation "name", Sequence$** : Is an instruction to easely define an animation (without a Spritesheet) and to play it with Actor.
+- name is the name you give to that animation
+- Sequence$ is a string with each image name or number separated by a comma, like this: "1,2,3,4"
+ -- The last value can be "L" to loop, "E" to end, "R" to reverse and loop,  like this: "1,2,3,4,L"
+ -- You can to set a delay between 2 images like this: "1:10, 2,..." to pause 1 sec. between image 1 and 2. Pauses are in tenth of a second :10=1 sec, like this "1:10,2,3,4,L"
+ -- The images can be located in the resources/image folder or loaded from elsewhere with the Load Asset instruction.
+
+ *Examples (will run if you have the images 1,2...6 in the image folder):*
+-- Actor Animation "run", "1,2,3,4,5,6,L"
+The animation named "run" will animates image 1.png, then 2,..., up to 6 then Loop back to 1
+-- Actor Animation "walk", "1:10,2,3,4:5..."
+The animation named "walk" will animates image 1.png, then wait 1sec, then images 2,3,4 then wait 0.5 sec.... 
+
+*An other example:*
+```basic
+Actor Animation "gorun", Sequence$="1,2,3,4,L"
+Actor "magic", Anim$="gorun"
+Actor "Magic", AnimPlay=False //or True by default
+```
+The parameter AnimPlay=False will Stop (or True to Play Again) the animation.
+
+Note: You need to have your Actor Animation instruction before using it with the corresponding Actor, otherwise it will not find the animation to run. See below example.
+<BR>
+
+*Example of a small game using animations:*
+All the images needed in the example below will be automatically copied from the AOZ Drive to your Game ressources/images folder.
+
+```basic
+START:
+// The decor with a background and a floor  /  Le décor avec un fond et un sol
+Actor "forest", Image$="forest", StartX=0, EndX=-1920, Duration=20000, LoopMove=True
+Actor "ground", Image$="ground", StartX=0, EndX=-1920, Y=880, Duration=5000, LoopMove=True
+
+// Animations of the Actors  /  Animations des Actors
+Actor Animation "run", Sequence$="lucie-0, lucie-1, lucie-2, lucie-3, lucie-4, lucie-5", LoopMove=true
+Actor Animation "magic", Sequence$="magic-0, magic-1, magic-2, magic-3, magic-4, magic-5", LoopMove=true
+Actor Animation "tagada",Sequence$="tagada-0,tagada-1,tagada-2", LoopMove=true
+Actor Animation "fly", Sequence$="fly-0, fly-1, fly-2, fly-3", LoopMove=true
+Actor Animation "star", Sequence$="star-0, star-1, star-2, star-3", LoopMove=true
+
+// Lucie the Hero
+Actor "lucie", X=320, Y=645, Anim$="run", Behavior$="jump"
+
+// Three enemies  /  Trois ennemis
+Actor "monster1", Anim$="magic",  StartX=2000, EndX=-500, Y=784, Duration=2600, Group$="badguy", LoopMove=True
+Actor "monster2", Anim$="tagada", StartX=2000, EndX=-500, Y=740, Duration=4300, Group$="badguy", LoopMove=True
+Actor "monster3", Anim$="fly",    StartX=2000, EndX=-500, Y=420, Duration=8000, Group$="badguy", LoopMove=True
+
+// Displays the star  /  Affiche l|;étoile
+Actor "star", StartX=4440, EndX=-2840, Y=500, Duration=9200, Anim$="star", LoopMove=True
+
+// Loop for scoring and collisions  /  Boucle pour le score et les collisions
+Do
+	score=score+1
+	If Actor Col("lucie", "star") = True Then score=score+50 : bell   // collision between lucie and the star  /  Collision entre Lucie et l|;étoile
+  	If Actor Col("lucie", Group$="badguy") = True Then Goto GAMEOVER // collision between lucie and 1 of the 3 monsters  /  Collison entre Lucie et les monstres
+  	Refresh
+Loop
+
+GAMEOVER:
+	Actor del "*"  // delete all actors   /   efface tous les actors
+	Print "Bravo, your score is now:" ; score
+	Wait Input
+	Actor del "gameover" : score=0
+Goto START
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE0NjgxNjQ4MzcsMTUyODI0Mjk3NSwtOD
+c2Mjc1NjE2LC0xMzA0MDU0OTI1LC01OTgzMTkxMSwxNTIxNzA3
+NzkzLDg3MDIzMjAyNiw3MzA5OTgxMTZdfQ==
+-->

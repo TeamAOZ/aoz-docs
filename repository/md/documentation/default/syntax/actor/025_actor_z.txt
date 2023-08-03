@@ -5,9 +5,14 @@
 @tags: 
 @categories: 
 \-->
-Returns the Z position of an actor
-## Parameters
+Returns the Z position of an actor defined by the `Z` property of the `Actor` command.
 
-- **index**: Index of the sprite
+## Syntax
+>A =  **Actor Z**( actor_index )
+
+## Parameters
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index|Index of the Actor.|
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,66 @@
+# SCROLLING AND MOVEMENTS
+## AUTOMATIC SCROLLINGS
+```basic
+Actor 1, Image$="bg.png", X=0, EndX= -1920, Y=0, Duration=10000, LoopMove=True
+Actor 2, Image$="ground.png", X=0, EndX= -1920, Y=880, Duration=7000, LoopMove=True
+Actor "magic", X=Screen Width/2, Y=Screen Height/2, Image$="magic.png", LookAt$="Mouse", Hotspot$="middle", Auto$="forward=8"
+```
+Run this program and you see the following:
+<img src="https://doc.aoz.studio/assets/images/en/image028.png" />
+
+Yes with only three lines of AOZ code!
+You are a magician! I told you, did you believe me?
+
+We have added a new parameter: **LoopMove**, when it|;s value  (or property) is **True**, the Actor|;s image will scroll in a loop, repeating the movement from the coordinates X, Y  to  EndX, EndY.
+Here as we are changing only the X coordinates it is scrolling horizontally the two actors, named **1** and **2**, each with an image.
+
+Note: the forest (Actor 2) starts at the top left corner (X=0, Y=0), while the ground image (Actor 1) is placed at position X=0, Y=880 at the start, and moved to EndX = -1920. The movement lasts 700ms, so is quicker than the forest (the scrolling is faster).
+
+**WHY -1920?**
+First you have to know:
+
+- The screen horizontal resolution is 1920 pixels (1920 x 1080 is AOZ Studio|;s default screen size but you can change it). In this example the two images are 3840 pixels or 2 x 1920 long.
+
+- When **LoopMove** is True, it means when the requested animation of the image is ended it is started over again.
+
+Remember the hotspot? Hope so, it was just the previous chapter… The “anchor” or hotspot of the ground image is at the top left of the image, so from there to move the image to the left the EndX has to be less than 0 (here: 1920).
+
+<img src="https://doc.aoz.studio/assets/images/en/image029.png" />
+
+When half of the image (1920) disappears to the left of the screen the **Actor** instruction will start to loop:
+<img src="https://doc.aoz.studio/assets/images/en/image030.png" />
+<table>
+	<tr>
+		<td width="50%">
+		And the loop continues, it’s like a spinning wheel.	
+		</td>
+		<td width="50%">
+<img src="https://doc.aoz.studio/assets/images/en/image031.png" />
+	</td>
+	</tr>
+</table>
+
+
+## AUTOMATIC MOVEMENTS
+We juste seen **LoopMove**, you also have the **ReverseMove** parameter for your Actors. It allows to run an animation (if LoopMove is true) running backwards (ping-pong) once completed.
+See this example:
+```basic
+Actor Animation "magic", Sequence$="magic-0, magic-1, magic-2, magic-3, magic-4, magic-5", LoopMove=true
+
+Actor "monster1", Anim$="magic", StartX=1100, EndX=500, Y=200, Duration=2000
+Actor "monster2", Anim$="magic", StartX=1100, EndX=500, Y=400, Duration=2000, LoopMove=True
+Actor "monster3", Anim$="magic", StartX=1100, EndX=500, Y=600, Duration=2000, ReverseMove=true
+Actor "monster4", Anim$="magic", StartX=1100, EndX=500, Y=800, Duration=2000, LoopMove=True, ReverseMove=true
+```
+
+<br>
+That|;s enough for now, we will see much more later with animations and ow to do crazy movements such as the **Behavior$** Actor parameter. Let’s continue to explore AOZ Studio and become the master of the universe.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMzUwNzM0Nzc2LDExNzEyMDAzMjAsNTE0MT
+I5OTJdfQ==
+-->

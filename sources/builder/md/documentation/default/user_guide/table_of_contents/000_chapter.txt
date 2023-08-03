@@ -1,0 +1,33 @@
+# USER GUIDE
+
+<p align="center">
+<img valign="middle" width="15%" src="https://doc.aoz.studio/assets/images/common/AOZ Logo.png" />&nbsp;
+<img valign="middle" width="55%" src="https://doc.aoz.studio/assets/images/common/aoz_mark.png" />
+</p>
+<hr>
+
+**Welcome to the AOZ Studio User Guide!**
+
+AOZ is a magical programming language. It will allow you to program your applications, even if you have never programmed a single line of code in your life. With AOZ you'll never have imagined computer programming to be so easy and fun.
+
+"I've heard that one before...". No no, this is for real. You will become a real programmer in a few hours, and your only limit will be your imagination.
+
+Follow this video, you will see how in a few lines you can create a video game, functional on all machines, even smartphones and tablets:
+
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a09pfT31W3k?mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
+
+
+And if you want to know more, **discover this Guide**,  [watch other tutorials](https://www.youtube.com/channel/UCqqP2tA_D4fPVWQBi6DrXkg) or start (french only for now) with the [AOZ ACADEMY free lessons](https://aozacademy.com/).
+
+Any other question? Join the community on the AOZ Studio Discord channel: 
+
+<p align="middle" width="100%">
+	<a href="https://discord.com/invite/JmFyFRAcenter">
+		<img src=" https://doc.aoz.studio/assets/images/common/discord.png" width="56px" valign="middle" /></a>&nbsp;&nbsp;
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTY5NDI1ODE0OSwtNDExNzgwMzQsMTgxMj
+U2MzExMSw3MzA5OTgxMTZdfQ==
+-->

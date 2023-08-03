@@ -1,1 +1,12 @@
+#Options +FollowSymlinks
 RewriteEngine On
+RewriteBase /
+
+# not rewrite css, js and images
+RewriteCond %{REQUEST_URI} !\.(?:css|js|webp|jpe?g|gif|png|svg|json|ttf|woff?2|php|txt|html|pdf)$ [NC]
+
+#RewriteRule ^(.+)$ index.html [QSA,L]
+#RewriteRule ^/resources/$ index.html?page=$1 [R=301,L]
+RewriteRule ^(.+)$ index.html?page=$1 [R=301,L]
+RewriteRule ^$ index.html [QSA,L]
+

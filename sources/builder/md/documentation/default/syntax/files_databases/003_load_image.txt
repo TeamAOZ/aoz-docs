@@ -1,0 +1,17 @@
+# Load Image
+<!--
+@name: Load Image
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Load an image into a screen
+## Parameters
+
+- **path&dollar;**: Path to the image to load
+- **index**: Index of the screen to create. If ommited the image will be loaded in the current screen
+- **tags&dollar;**: List of tags indicating how to load the image.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,58 @@
+# Set Pattern
+<!--
+@name: Set Pattern
+@description: 
+@tags: 
+@categories: 
+\-->
+
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Set the filled area painting pattern
+
+## Syntax Options
+
+**Set Pattern** *pattern*
+**Set Pattern** _pattern, scale_
+**Set Pattern** _-index_
+**Set Pattern** _-index, scale_
+**Set Pattern** _0_
+
+## Parameters
+
+- _**pattern**_: A number from 1 to 34
+- _**-index**_: A negative number that corresponds to the positive image index of an image in the images folder/image bank. 
+- _**scale**_: The scale of the pattern or image. If omitted, the default scale for patterns is 1x in Amiga mode and 4x in AOZ mode. For images, the default scale is 1x in both modes.
+- _**0**_: Zero.
+ 
+## Description
+
+**Set Pattern** creates a two colour fill pattern, either from on the the pre-defined bit-mapped patterns that were ported over from AMOS, or from a numbered image in the image bank.
+
+**Set Pattern** *pattern*
+- Set the fill image to pattern number _**pattern**_
+
+**Set Pattern** _pattern, scale_
+- Set the fill image to pattern number _**pattern**_, scaled to _**scale**_ times the original size of 8 x 8 pixels
+
+**Set Pattern** _-index_
+- Set the fill image to image number _**index**_ from the image bank.
+
+**Set Pattern** _-index, scale_
+- Set the fill image to image number _**index**_ from the image bank, scaled to _**scale**_ times the original size.
+
+**Set Pattern** _0_
+- Turns off the pattern fill or image fill and reverts to normal **Ink** colour fill. This syntax is the same as **Fill Image Off**.
+---
+
+Here are the 34 available pre-defined patterns, shown here at 8x scale in various colours. The patterns can be created in any 2 colours you wish, by using the extended syntax of **Ink**, like this:
+
+**Ink** _ink_colour, fill_colour_
+
+In the image below, all the black areas are the ink colour and the coloured areas are the fill colour.
+
+<p align="center"><img valign="middle" width="898px" src="https://doc.aoz.studio/repository/assets/images/patterns.png" /></p>
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

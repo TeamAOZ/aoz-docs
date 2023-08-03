@@ -1,6 +1,8 @@
-# THE AOZ DEBUGGER
+# DEBUGGING
 
-AOZ Studio includes a fully-fledged debugger. **(NOTE this chapter is yet not updated for the brand new version of the debugger)**
+AOZ Studio includes few useful instructions and a fully-fledged debugger. **(NOTE this chapter is yet not updated for the brand new version of the debugger)**
+
+If you want to check a variable value, or say if your program is going in a special location you may just use the Console Log or Console  Warn or Console Error instructions, explained below. If you want more precise debugging then you may use the debugger.
 
  ##  What is a debugger?
 
@@ -17,6 +19,27 @@ AOZ Studio includes a fully-fledged debugger. **(NOTE this chapter is yet not up
 
 Advanced note: The AOZ debugger is integrated in the Javascript code of your application by the transpiler. It does not depend on the AOZ IDE to be run and works happily in the browser.
 
+
+## The Console Log, Console  Warn, Console instructions
+
+The Console Log instruction allows you to debug your application. When ran under the Aoz Viewer, the first time the instruction is encountered, Aoz will open the Aoz Console. Then the data is printed, allowing you to monitor the internals of your application.
+When run in the browser (say Chrome) you will find your messages in its Javascript console.
+
+The data to print, can be a text, a number, or the result of a calculation.
+
+ - **Console Log** prints the data using the default colors of the console.
+ - **Console Warn** prints the data as a warning message, in green color. Use it at places of your application where you are unsure of the code.
+ - **Console Error** prints the data as an error message, in red color.
+
+
+**Example**
+```basic
+For X = 0 To 10
+	Console Log X
+	Console Warn "Warn X:" + Str$( X )
+ 	Console Error "Error X:" ; X 
+Next
+```
 
 
 ## How to display the debugger?
@@ -175,10 +198,6 @@ Parameters:
 **expression** (number): a numeric expression to evaluate
 **expression$**:: a string expression to evaluate
 
-**Log text$**
-The **Log** instruction outputs text to the console window. If the debugger is not shown when **Log** is encountered, a reduced version of the debugger is shown with only the console window. The full debugger will appear if you use **Break** or press **F8**.
-
-Parameters:  **text$**:: the text to display in the log window.
 
 ## Important note
 

@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/include%20images,%20sounds%20in%20the%20app'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/include%20images,%20sounds%20in%20the%20app'>
+        <meta name='pagename' content='AOZ Docs - INCLUDE IMAGES, SOUNDS IN THE APP'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - INCLUDE IMAGES, SOUNDS IN THE APP</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="include-images-sounds-in-the-app">INCLUDE IMAGES, SOUNDS IN THE APP</h1>&#10;<h2 id="the-resources-folder-of-the-app">The Resources folder of the App</h2>&#10;<p>A memory bank is an area of &#8203;&#8203;your program memory reserved for storing images, sounds, texts files that your AOZ program will need. Note that to store and load outside of your program (like in a server) there are several ways like Database or Browser local memory (cache) to be seen in the related chapters.</p>&#10;<p>AOZ Studio uses banks. For each application, we find them in those specific subfolders of the <strong>&#8220;resources&#8221; folder</strong>:<br/>&#10;&#8226; 1.images:  The images used for Actor, Sprite or Bob instructions<br/>&#10;&#8226; 2.icons: The icon images<br/>&#10;&#8226; 3.musics:  The sounds used for music instructions<br/>&#10;&#8226; 5.samples: The sounds used for the sound effects<br/>&#10;&#8226; Assets: To store your images, sounds,&#8230; to be used by the Load Asset instruction (see later).</p>&#10;<p>For example, if I put the &#8220;my_image.png&#8221; file in the &#8220;1.images&#8221; folder, and type this code:</p>&#10;<p><strong>// Display the image &#8220;my_image&#8221; on the screen</strong><br/>&#10;<strong>Actor &#8220;image&#8221;, X = 100, Y = 100, Image$ = &#34;my_image&#34;</strong><br/>&#10;My_image will be displayed on the screen at coordinates 100,100. The name of my file is then used as a reference for my image.</p>&#10;<p>If I now place the &#8220;1.png&#8221; file in the &#8220;1.images&#8221; folder, I could use this code:<br/>&#10;<strong>// Display image number 1 on the screen</strong><br/>&#10;<strong>Actor 1, X = 100, Y = 100, Image = 1</strong></p>&#10;<p>I can use text names or numbers as a reference for my image.</p>&#10;<br/>&#10;It also works for sounds. If I put the &#34;my_sound.wav&#34; and &#34;25.wav&#34; files in the &#34;5.samples&#34; folder and type this code:&#10;```basic&#10;Curs Off : Cls 0 : Paper 0&#10;Locate 0,10 : Center &#34;Press 1 or 2&#34;&#10;Do&#10;&#9;A$ = Inkey$&#10;&#9;If A$ = &#34;1&#34; Then Sam Play &#34;my_sound&#34;&#10;&#9;If A$ = &#34;2&#34; Then Sam Play 25&#10;&#9;Refresh&#10;Loop&#10;```&#10;<p>By pressing 1 or 2 on the keyboard the sound is played. As you can see, the Sam Play instruction plays the sound given as a reference. Here, as with the images, the sound is referenced by its file name (&#8220;my_sound&#8221;) or its number (25).</p>&#10;<p>Any file placed in one of the bank folders will be automatically loaded when your program runs, and available immediately. Note that it increases the size of your program because it is loaded with it.</p>&#10;<p>AOZ Studio banks support the most common file formats:</p>&#10;<ul>&#10;<li>&#10;<p>Images: PNG, GIF, JPG</p>&#10;</li>&#10;<li>&#10;<p>Sounds / Music: WAV, MP3, OGG</p>&#10;</li>&#10;</ul>&#10; <br/>&#10;<h2 id="loading-on-demand">Loading On Demand</h2>&#10;<p>You get the idea, memory banks are very handy because you don't have to worry about taking care of uploading files.</p>&#10;<p>AOZ Studio offers another method which load the files on demand &#8220;on the fly&#8221;, at a certain point in your program. In this case the image, the sound are not preloaded with your program <strong>(therefore its size is reduced accordingly)</strong>.</p>&#10;<p>For that, we are going to discuss &#8220;Assets&#8221;.</p>&#10;<h3 id="assets">Assets</h3>&#10;<p>An &#8220;asset&#8221; is a file that you can load for your program.</p>&#10;<p>Files used as assets should be placed in the &#8220;resources/assets&#8221; folder <strong>or in a folder designated by you</strong>.</p>&#10;<p>You can organize this folder as you wish, by arranging the files by categories (images, audio,&#8230;).</p>&#10;<p>&#8220;It's the same as a database then?&#8221;</p>&#10;<p>Sort of (see database in AOZ), like databases, assets are not loaded automatically (included in your app such as above with Memory Banks) when your program runs, but only when you choose to do so in your program. The example below loads the image &#8220;image1.png&#8221; from the resources / assets folder and displays it on the screen:</p>&#10;<pre><code class="prism language-basic">Cls 0&#10;Load Asset &#34;image1.png&#34;, &#34;img1&#34;&#10;Actor 1, Image$=&#34;img1&#34;&#10;</code></pre>&#10;<p>So in this example <strong>Load Asset</strong> loads the image &#8220;image1.png&#8221; previously placed in the &#8220;assets&#8221; folder, and gives it the reference &#8220;img1&#8221;. The image is then available for the program.</p>&#10;<p>When you call the Load Asset instruction, your program is &#8220;paused&#8221; while the file is loading and resumes when the file is loaded. This ensures that the file will be fully available for the future.</p>&#10;<p>For animation spritesheets, sounds or music, you can also use <strong>Load Asset</strong> to load your files &#8220;on demand&#8221;:</p>&#10;<pre><code class="prism language-basic">Load Asset &#34;music.mp3&#34;, 1&#10;Load Asset &#34;sfx.wav&#34;, 2&#10;Load Asset &#34;sprites/graphics.sprite&#34;, &#34;graphics&#34;&#10;Curs Off : Cls 0 : Paper 0&#10;Locate 0.10 : Center &#34;Press d or f&#34;&#10;Do&#10;&#9;A $ = Inkey $&#10;&#9;If A $ = &#34;d&#34; Then Play Audio 1&#10;&#9;If A $ = &#34;f&#34; Then Play Audio 2&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<p>In this example <strong>Load Asset</strong> loads the &#8220;music.mp3&#8221; and &#8220;sfx.wav&#8221; files with the names 1 and 2. When you press the &#8220;d&#8221; key on the keyboard, sound 1 is played. If you press the &#8220;f&#8221; key, it is sound 2.</p>&#10;<p>NOTE: Sounds loaded with <strong>Load Asset</strong> restrict the use of Sam Play instructions as the sounds will be systematically played on all the channels, and at the frequency provided by the file.</p>&#10;<p><strong>Load Asset</strong> therefore allows, like Actor, to define a name for the files used, but also a number. Also, two assets can have the same name or the same number, provided that they are not of the same type (eg PNG and JPG). But if you name two images (for example) with the same name or number, the last loaded image will replace the previous one. Logic.</p>&#10;<p>So, this code will work perfectly:</p>&#10;<pre><code class="prism language-basic">Load Asset &#34;sfx.wav&#34;, 1&#10;Load Asset &#34;img1.png&#34;, 1&#10;Curs Off : Cls 0 : Paper 0&#10;Locate 0.10 : Center &#34;Press Space bar&#34;&#10;Actor 1, Image$=&#34;img1&#34;  // Our image 1 is displayed&#10;Do&#10;&#9;A $ = Inkey $&#10;&#9;If A $ = &#34;&#34; Then Sam Play 1 : // Our sound 1 is played&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<p>This example loads two assets: a sound and an image. Both are number 1. But AOZ differentiates between the two and does not point out errors.</p>&#10;<p>NOTE: If the tag #useAssetsResources is set to True, then Load Asset is automatically plugged to the resources/assets folder, you don't need to add &#8220;resources/assets/&#8221; in the file path of the Load Asset. By default it is already set at TRUE, we recommend working with the resources /assets folder and the tag by default.</p>&#10;<h2 id="compatible-file-formats">Compatible file formats</h2>&#10;<p><strong>Load Asset</strong> can load several file formats (some of which are not supported by the memory banks system seen previously).</p>&#10;<div class="table-wrapper"><table>&#10;<thead>&#10;<tr>&#10;<th><strong>Image formats</strong></th>&#10;</tr>&#10;</thead>&#10;<tbody>&#10;<tr>&#10;<td><ul><li><a href="https://en.wikipedia.org/wiki/PNG" target="_new">.png</a></li><li><a href="https://en.wikipedia.org/wiki/JPEG" target="_new">.jpg/.jpeg</a></li><li><a href="https://en.wikipedia.org/wiki/GIF" target="_new">.gif (animation not supported)</a></li><li><a href="https://en.wikipedia.org/wiki/SVG" target="_new">.svg (Scalable Vector Graphic)</a></li><li><a href="v" target="_new">.bmp</a></li><li><a href="https://en.wikipedia.org/wiki/ILBM" target="_new">.iff/.ilbm (Amiga Image File Format)</a></li></ul></td>&#10;</tr>&#10;<tr>&#10;<td><strong>Spritesheet format</strong></td>&#10;</tr>&#10;<tr>&#10;<td><ul><li>.sprite</li></ul></td>&#10;</tr>&#10;<tr>&#10;<td><strong>Audio formats</strong></td>&#10;</tr>&#10;<tr>&#10;<td><ul><li><a href="https://en.wikipedia.org/wiki/Waveform_Audio_File_Format" target="_new">.wav</a></li><li><a href="https://en.wikipedia.org/wiki/MP3" target="_new">.mp3</a></li><li><a href="https://en.wikipedia.org/wiki/Ogg" target="_new">.ogg</a></li><li><a href="https://en.wikipedia.org/wiki/Windows_Media_Audio" target="_new">.wma</a></li><li><a href="https://en.wikipedia.org/wiki/Apple_Lossless_Audio_Codec" target="_new">.m4a</a></li></ul></td>&#10;</tr>&#10;<tr>&#10;<td><strong>Video formats</strong></td>&#10;</tr>&#10;<tr>&#10;<td><ul><li><a href="https://en.wikipedia.org/wiki/MPEG-4" target="_new">.mp4/.mpeg4</a></li><li><a href="https://en.wikipedia.org/wiki/Audio_Video_Interleave" target="_new">.avi</a></li><li><a href="https://en.wikipedia.org/wiki/Theora" target="_new">.ogv</a></li><li><a href="https://en.wikipedia.org/wiki/Windows_Media_Video" target="_new">.wmv</a></li><li><a href="https://en.wikipedia.org/wiki/QuickTime_File_Format" target="_new">.mov (Apple Quicktime)</a></li><li><a href="https://en.wikipedia.org/wiki/M4V" target="_new">.m4v</a></li></ul></td>&#10;</tr>&#10;<tr>&#10;<td><strong>Music module formats</strong></td>&#10;</tr>&#10;<tr>&#10;<td><ul><li><a href="https://en.wikipedia.org/wiki/MOD_(file_format)" target="_new">.mod (Pro-Tracker)</a></li><li><a href="https://en.wikipedia.org/wiki/XM_(file_format)" target="_new">.xm (FastTracker 2)</a></li></ul></td>&#10;</tr>&#10;<tr>&#10;<td><strong>Web formats</strong></td>&#10;</tr>&#10;<tr>&#10;<td><ul><li><a href="https://en.wikipedia.org/wiki/HTML" target="_new">.htm/.html</a></li><li><a href="https://en.wikipedia.org/wiki/XHTML" target="_new">.xhtml</a></li><li><a href="https://en.wikipedia.org/wiki/Dynamic_HTML" target="_new">.dhtml</a></li><li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_new">.js (Javascript)</a></li><li><a href="https://en.wikipedia.org/wiki/CSS" target="_new">.css (Stylesheet)</a></li></ul></td>&#10;</tr>&#10;<tr>&#10;<td><strong>Data models</strong></td>&#10;</tr>&#10;<tr>&#10;<td><ul><li><a href="https://en.wikipedia.org/wiki/JSON" target="_new">.json</a></li></ul></td>&#10;</tr>&#10;<tr>&#10;<td><strong>3D formats</strong></td>&#10;</tr>&#10;<tr>&#10;<td><ul><li><a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file" target="_new">.obj (Wavefront)</a></li><li><a href="https://en.wikipedia.org/wiki/FBX" target="_new">.fbx (Autodesk)</a></li><li><a href="https://en.wikipedia.org/wiki/COLLADA" target="_new">&#8230;dae (Collada)</a></li><li><a href="https://en.wikipedia.org/wiki/GlTF" target="_new">.gltf (1.0 &amp; 2.0)</a></li><li>.aoz3d (AOZ 3D Scene Editor)</li></ul></td>&#10;</tr>&#10;</tbody>&#10;</table>&#10;</div><p>Each format can be manipulated using dedicated AOZ commands.</p>&#10;<p>&#34;But how does AOZ know that I am loading a sound, an image or a video&#8230;? &#34;</p>&#10;<p>The Load Asset instruction automatically detects the type of the file thanks to its extension. So it's important to make sure your file extension is in the list above.</p>&#10;<p>When you no longer need an asset, you can delete it with the Del Asset statement.</p>&#10;<p>In the example below, <strong>Del Asset</strong> permanently deletes the &#8220;audio&#8221; type asset with the number 1 (not the file).</p>&#10;<pre><code class="prism language-basic">Load Asset &#34;sfx.wav&#34;, 1&#10;Wait key&#10;Play Audio 1 // Our sound 1 is playedWait 2&#10;Del Asset &#34;audio&#34;, 1 // Deletes an asset&#10;</code></pre>&#10;<p>The Load Asset command detects if a file already uses the reference given as an argument not to load it again, so make sure to delete it if needed.</p>&#10;<p>Example:</p>&#10;<pre><code class="prism language-basic">Load Asset &#34;asset1.png&#34;, 50 // Loading the asset1.png file and stores it under the reference 50.&#10;Load Asset &#34;asset2.png&#34;, 50 // Warning : that load will not occur because the reference 50 is already used by another image.&#10;</code></pre>&#10;<p>If you want to update an asset already loaded, you should first delete the previous asset:</p>&#10;<pre><code class="prism language-basic">Load Asset &#34;asset1.png&#34;, 50 // Loading the asset1.png file and stores it under the reference 50&#10;Del Asset &#34;image&#34;, 50 // Delete the asset referenced 50 from the images bank&#10;Load Asset &#34;asset2.png&#34;, 50 // Loading the asset2.png file and stores it under the reference 50**``.`&#10;&#10;</code></pre>&#10;<br/>&#10;<h3 id="default-folder">Default folder</h3>&#10;<p>The default folder in which your asset files should be placed is the &#8220;resources / assets&#8221; folder. It is from this folder that the AOZ Transpiler will load the assets. At this location you are sure that when you save your program in .AOZIP or publish it with PUBLISH, the assets will be well integrated and therefore will not be missing.</p>&#10;<p>If you want to use assets, for example an image1.png that sits in another directory, you can do this as follows:</p>&#10;<ol>&#10;<li>&#10;<p>use the <strong>#useAssetsResources</strong> tag by setting it to False. Thus, you will be able to load an asset file from a different folder than the default one.</p>&#10;</li>&#10;<li>&#10;<p>Specify the path in the <strong>LoadAsset</strong> eg if the image1.png is in the C: / image directory<br/>&#10;<strong>#useAssetsResources: False</strong><br/>&#10;<strong>Load Asset c: /image/&#8220;image1.png&#8221;, &#34;img1&#34;</strong></p>&#10;</li>&#10;</ol>&#10;<p>Well, we did a good job, didn't we? If in doubt, try it out some more. Once this part is mastered, you are the boss.</p>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbMTM4MjExODUxMiwxMDkyMzQyMzkxLC0xMT&#10;c4OTE3ODY5LDE1MjgyNDI5NzUsLTg3NjI3NTYxNiwtMTMwNDA1&#10;NDkyNSwtNTk4MzE5MTEsMTUyMTcwNzc5Myw4NzAyMzIwMjYsNz&#10;MwOTk4MTE2XX0=&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/019_include_images_sounds.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/019_include_images_sounds.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

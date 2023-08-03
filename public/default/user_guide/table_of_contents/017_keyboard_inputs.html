@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/keyboard%20inputs'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/keyboard%20inputs'>
+        <meta name='pagename' content='AOZ Docs - KEYBOARD INPUTS'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - KEYBOARD INPUTS</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="keyboard-inputs">KEYBOARD INPUTS</h1>&#10;<p>AOZ provides you with a full range of keyboard input commands for different purposes.<br/>&#10;Here's a summary of these different categories of keyboard commands (detailed descriptions and examples follows).</p>&#10;<h2 id="general-input">General Input</h2>&#10;<p>These instructions are used to read a string (ex John, 100, 10.2) typed on the keyboard and saved directly into a variable, can be a text, a number (String, Integer, or Floating Point numbers).</p>&#10;<div class="table-wrapper"><table>&#10;<thead>&#10;<tr>&#10;<th>Instruction/Function</th>&#10;<th>Description</th>&#10;</tr>&#10;</thead>&#10;<tbody>&#10;<tr>&#10;<td><strong>Input</strong> X</td>&#10;<td>Inputs a numerical value into the specified variable (here X)</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Input</strong> X$</td>&#10;<td>Inputs a text into the specified variable (here X$)</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Input</strong> &#8220;string&#8221; ; X$</td>&#10;<td>Print &#8220;string&#8221; and inputs a text into the specified variable</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Input</strong> X$,Y,Z#</td>&#10;<td>Inputs several values (separated by the Enter key) into the specified variables.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Line Input</strong> X$</td>&#10;<td>This allows the comma to be part of the input.</td>&#10;</tr>&#10;<tr>&#10;<td>X$=<strong>Input$(</strong> N <strong>)</strong></td>&#10;<td>Returns <strong>N</strong> characters into the specified string variable.</td>&#10;</tr>&#10;</tbody>&#10;</table>&#10;</div><h2 id="character-input">Character Input</h2>&#10;<p>There are several functions to read the current state (pressed or not pressed) of <em>any</em> physical key on the keyboard. These instructions are used to read a character from the keyboard, one at a time.  It could be letters, digits, or special symbols (A, 1, !, etc.), non-printable (arrows, function keys, etc.), or modifier keys (Ctrl, Alt, Shift, etc.)  These instructions include:</p>&#10;<h3 id="inkey">Inkey$</h3>&#10;<div class="table-wrapper"><table>&#10;<thead>&#10;<tr>&#10;<th>Function</th>&#10;<th>Description</th>&#10;</tr>&#10;</thead>&#10;<tbody>&#10;<tr>&#10;<td>X$=<strong>Inkey$</strong></td>&#10;<td>Reads a single character into the specified string variable. Note <strong>Scan Key</strong> can be associated to read the special keys.</td>&#10;</tr>&#10;</tbody>&#10;</table>&#10;</div><h3 id="key-state">Key State</h3>&#10;<p><strong>Key State</strong> is the easier to use to cover all keys.<br/>&#10;Here are the functions:</p>&#10;<div class="table-wrapper"><table>&#10;<thead>&#10;<tr>&#10;<th>Function</th>&#10;<th>Description</th>&#10;</tr>&#10;</thead>&#10;<tbody>&#10;<tr>&#10;<td>KS=<strong>Key State(<strong>N</strong>)</strong></td>&#10;<td>Returns true if the keyboard key with the Scan code N is pressed.</td>&#10;</tr>&#10;<tr>&#10;<td>KS=<strong>Key State(<strong>X$</strong>)</strong></td>&#10;<td>Returns true if the keyboard key named X$ is pressed. Can be a letter like a or Q, or a special key like the arrows keys, space bar, Ctrl, Esc&#8230; see the table at the end of this page for the key names)</td>&#10;</tr>&#10;<tr>&#10;<td>KS=<strong>Key Shift</strong></td>&#10;<td>Returns a bit pattern indicating which modifier keys are currently pressed.  Each bit represents a different modifier key.</td>&#10;</tr>&#10;<tr>&#10;<td>SC=<strong>ScanCode</strong></td>&#10;<td>Returns an Integer key ID for the physical key entered with the last input from <strong>Inkey$</strong></td>&#10;</tr>&#10;<tr>&#10;<td>SS=<strong>ScanShift</strong></td>&#10;<td>Returns a bit pattern indicating which modifier keys were pressed with the last input from <strong>Inkey$</strong>.  Each bit represents a different modifier key.</td>&#10;</tr>&#10;</tbody>&#10;</table>&#10;</div><p><strong>NOTE:</strong> The physical key ID is not altered by the <strong>Shift</strong> key when using the <strong>Key State</strong> function.  For example, there is no distinction between &#8220;A&#8221; and &#8220;a&#8221;, since they are the same physical key on the keyboard.</p>&#10;<p><strong>NOTE:</strong> It is possible to read multiple key states at the same time, however, not all key combinations are possible.</p>&#10;<h2 id="wait">Wait</h2>&#10;<p>These instructions will wait for a keypress. So the program is halted.</p>&#10;<div class="table-wrapper"><table>&#10;<thead>&#10;<tr>&#10;<th>Instruction</th>&#10;<th>Description</th>&#10;</tr>&#10;</thead>&#10;<tbody>&#10;<tr>&#10;<td><strong>Wait Key</strong></td>&#10;<td>Pauses the program until any key on the keyboard is pressed.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Wait Input</strong></td>&#10;<td>Pauses the program until any key on the keyboard is pressed, <em><strong>or</strong></em> a mouse click occurs, <em><strong>or</strong></em> a joystick button is pressed.</td>&#10;</tr>&#10;</tbody>&#10;</table>&#10;</div><h2 id="the-keyboard-buffer">The Keyboard Buffer</h2>&#10;<p>The <strong>Keyboard Buffer</strong> is a place where keystrokes are stored temporarily before they are processed by the program.  This buffer allows the user to enter commands faster than the input statements would normally read them, and also allows pre-filling the buffer programmatically, which could then be processed by normal <strong>Variable</strong> or <strong>Character</strong> input commands.  This can be useful for automated testing, or implementing keyboard macros.</p>&#10;<p><strong>Keyboard Macros</strong> These are pre-defined, or user-defined inputs that can be entered with a simple key combination, button press, etc.<br/>&#10;These are special commands that allow you to interact directly with the keyboard buffer, including:</p>&#10;<div class="table-wrapper"><table>&#10;<thead>&#10;<tr>&#10;<th>Instruction</th>&#10;<th>Description</th>&#10;</tr>&#10;</thead>&#10;<tbody>&#10;<tr>&#10;<td><strong>Put Key</strong> X$</td>&#10;<td>Inserts the specified keystrokes directly into the keyboard buffer.</td>&#10;</tr>&#10;</tbody>&#10;</table>&#10;</div><hr/>&#10;<h2 id="all-inputs-more-detailed"><strong>ALL INPUTS MORE DETAILED</strong></h2>&#10;<p>AOZ has a full range of keyboard input commands.</p>&#10;<p>In AOZ you have many options to enter a text or value. To go quick if you want to enter a text made of several characters you may use the Input instruction. If you want to read only one key you may use KeyState or Inkey$.</p>&#10;<p>You can read keys one at a time, including modifier keys (Ctrl, Shift, Alt, Meta), and locking keys like Caps lock. Some keycodes are stored in the input buffer (an area of memory reserved for keypresses, but not yet processed). You can even detect multiple keypresses at the same time.</p>&#10;<p>There are four types of keyboard input instructions:<br/>&#10;<strong>Variable</strong> This input gets data from any simple type like a string, integer, or number, from the keyboard, and feeds it directly into each input variable. Multiple variables can be input using commas (or the <strong>Enter</strong> key) to separate the inputs.<br/>&#10;<strong>Character</strong> This type of input gets string-only data from the keyboard. Character refers to any single letter, digit, special symbol, etc.<br/>&#10;<strong>Buffer</strong> This type allows you to interact with the keyboard buffer directly.<br/>&#10;<strong>State</strong> This type of input checks the current state of a key to see if it is pressed or not, but does not have to fill a variable with the result.</p>&#10;<h2 id="keyboard-general-inputs">Keyboard General inputs</h2>&#10;<h3 id="input">Input</h3>&#10;<p>We have four forms of the Input instruction.</p>&#10;<p><strong>Input VARNAME { , VARNAME$, VARNAME#, &#8230; }</strong></p>&#10;<p><strong><em>Description:</em></strong> This Instruction accepts keyboard input for simple variables. Input from the keyboard is inserted into the variable(s) specified by VARNAME, VARNAME$, etc. The input will be displayed on screen as it is typed, with simple editing allowed using the backspace. Each input should be separated by a comma, or the <strong>Enter</strong> key. When the <strong>Enter</strong> key is pressed <em>after</em> the last variable terminates the input command inserts the data into the specified variable(s).</p>&#10;<p><strong><em>Parameter(s):</em></strong> Any number of parameters may be requested, of any simple variable type: (<strong>Integer</strong>, <strong>Number</strong>, or <strong>String</strong>). Each variable must be separated by a comma or the <strong>Enter</strong> key.</p>&#10;<p>Example:</p>&#10;<pre><code class="prism language-basic">Do  &#10;&#9;Input A  // requesting a number only, entering a letter will make a mismatch error &#10;&#9;  Print A  &#10;&#9;Input A$ // requesting 1 or more characters as a text (or number as a text) &#10;&#9;  Print A$  &#10;Loop&#10;</code></pre>&#10;<p>Or you can type:</p>&#10;<pre><code class="prism language-basic">Do  &#10;&#9;Input A,B$,C#  &#10;&#9;Print A,B$,C#  &#10;Loop&#10;</code></pre>&#10;<br/>&#10;<h4 id="input-text--varname---varname-varname-...-"><strong>Input TEXT$ ; VARNAME { , VARNAME$, VARNAME#, &#8230; }</strong></h4>&#10;<p><strong><em>Description:</em></strong> An alternate form of the previously described Input Instruction, which also displays a text TEXT$ just before the input. Otherwise, the command works identically.</p>&#10;<p>Example:</p>&#10;<pre><code class="prism language-basic">Do &#10;&#9;Input &#34;Enter A,B$,and C#: &#34;;A,B$,C#  &#10;&#9;Print &#34;Inputs: &#34;;A,B$,C#  &#10;&#9;Refresh  &#10;Loop&#10;</code></pre>&#10;<p>With the exception of showing &#8220;Enter A, B$, and C#:&#8221;  just before accepting the inputs, this works identically to the simple Input command.<br/>&#10;<br/></p>&#10;<h4 id="line-input-varname---varname-varname-...-"><strong>Line Input VARNAME { , VARNAME$, VARNAME#, &#8230; }</strong></h4>&#10;<p><strong><em>Description:</em></strong>  Functions identically to the Input command, except that it accepts all printable characters including the comma as part of the input. The <strong>Enter</strong> key is used to separate each input. See the description of the <strong>Input</strong> command for more details.</p>&#10;<p>NOTE: If the &#8220;Please redo from start&#8221; error occurs, input starts again with the first variable.</p>&#10;<h4 id="line-input-text--varname--varname-varname-..."><strong>Line Input TEXT$ ; VARNAME {, VARNAME$ VARNAME#, &#8230;}</strong></h4>&#10;<p><strong><em>Description:</em></strong> As with the standard <strong>Input</strong> command, <strong>Line Input</strong> also has the option of displaying a prompt string before accepting inputs. Otherwise, this works identically to the <strong>Line Input</strong> command. See the description of <strong>Line Input</strong> for more details.</p>&#10;<h2 id="keyboard-buffer">Keyboard Buffer</h2>&#10;<p>These commands allow you to interact with the keyboard buffer directly.</p>&#10;<h4 id="put-key-k"><strong>Put Key K$</strong></h4>&#10;<p>Put Key is NOT CURRENTLY IMPLEMENTED, but will be soon, so:</p>&#10;<p><strong><em>Description:</em></strong> Inserts the specified string (<strong>K$</strong>) into the input buffer directly, as if it was typed from the keyboard. This is often used to pre-fill values for the <strong>Input</strong> instructions.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Do  &#10;&#9;Put Key &#34;YES&#34;  &#10;&#9;Input &#34;Do you like AOZ? &#34;;A$  &#10;&#9;A$=Upper$(A$)  &#10;Loop&#10;</code></pre>&#10;<br/>&#10;<p><strong>Clear Key</strong></p>&#10;<p><strong><em>Description:</em></strong> Clears the contents of the input buffer. This can be called immediately before <strong>Wait Key</strong> or other keyboard commands to ensure that we're waiting for new input.<br/>&#10;<br/></p>&#10;<p><strong>Key Speed</strong><br/>&#10;Key Speed TIMELAG,DELAYSPEED</p>&#10;<p><strong><em>Description:</em></strong> Sets the speed at which input is accepted. <strong>TIMELAG</strong> is the time before the repeat starts. <strong>DELAYSPEED</strong> indicates the speed at which each keypress is accepted.<br/>&#10;<br/></p>&#10;<h2 id="keyboard-character-input">Keyboard character input</h2>&#10;<p>Character inputs accept only strings from the keyboard, usually one character at a time.</p>&#10;<h3 id="inkey-1">Inkey$</h3>&#10;<p><em>Description:</em> This Function checks the input buffer to see if a key has been pressed. If yes, it puts that character into the function result, and removes it from the input buffer.</p>&#10;<p><strong><em>Return Value:</em></strong> The result (X$ below) is a single character string containing the value of the next character from the input buffer. If the input buffer was empty at the time <strong>Inkey$</strong> was called, then the result is an empty string: &#8220;&#8221;.</p>&#10;<p><em>Example#1 of Inkey$:</em></p>&#10;<pre><code class="prism language-basic">Centre &#34;Press d or f &#34; : Print&#10;Do&#10;&#9;A$ = Inkey$&#10;&#9;If A$ = &#34;d&#34; Then print &#34;d&#34;;&#10;&#9;If A$ = &#34;f&#34; Then print &#34;f&#34;;&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<br/>&#10;<p><em>Example#2 of Inkey$:</em></p>&#10;<pre><code class="prism language-basic">Result$=&#34;&#34;&#10;Do&#10;&#9;X$=Inkey$ : If X$ &gt;= &#34;@&#34; And X$ &lt;= &#34;~&#34; Then Print X$; : Result$=Result$ X$&#10;&#9;If X$=Chr$(8) Then Result$=Left$(Result$,Len(Result$)-1)&#10;&#9;If X$=Chr$(13) Then Exit&#10;&#9;Refresh ' give the program time to run&#10;&#9;Cls : Print Result$&#10;Loop&#10;Cls : Print Result$&#10;</code></pre>&#10;<p>The above code will get printable characters one at a time, and append them to <strong>Result$</strong>. The backspace and enter special characters are also handled.<br/>&#10;<br/></p>&#10;<h4 id="inputn">Input$(N)</h4>&#10;<p><strong><em>Description:</em></strong> Returns a string of <strong>N</strong> printable characters long. Once the specified number of characters (<strong>N</strong>) has been reached, the result is returned, and processing continues with the next statement. No editing is possible.</p>&#10;<p><strong><em>Return Value:</em></strong> The <strong><em>String</em></strong> result (<strong>X$</strong>) returned is exactly <strong>N</strong> characters long.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Do  &#10;&#9;X\$=Input\$(3)  &#10;&#9;Print X$  &#10;&#9;Wait Vbl  &#10;Loop&#10;</code></pre>&#10;<p>The above code accepts a 3 character string from the keyboard, and puts it into <strong>X$</strong>.</p>&#10;<h2 id="reading-the-keyboard-state">Reading the keyboard state</h2>&#10;<p>There are several instructions to check what the user is typing on the keyboard, to either resume the program paused by a Wait, or to return the key pressed.</p>&#10;<h3 id="wait-key">Wait Key</h3>&#10;<p><strong><em>Description:</em></strong> Waits for a key on the keyboard to resume the program.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Print &#34;Please press a key&#34; : Wait key&#10;Print &#34;Thank you!&#34;&#10;</code></pre>&#10;<p>In the example above, &#8220;Thank you!&#8221; will not be printed until a key is pressed.</p>&#10;<h3 id="wait-input">Wait Input</h3>&#10;<p><strong><em>Description:</em></strong> This very useful instruction waits for any input, it can be: keyboard key , press or click on the joystick, mouse (not gamepad),  to resume the program.</p>&#10;<p><em>Example :</em></p>&#10;<pre><code class="prism language-basic">Wait Input : Print &#34;Moving forward&#34;**&#10;</code></pre>&#10;<h3 id="wait-click">Wait Click</h3>&#10;<p><strong><em>Description:</em></strong> Same but waits for a mouse click to  to resume the program.</p>&#10;<h3 id="key-state-1">Key State</h3>&#10;<p><strong><em>Description:</em></strong> Returns true when a specific key is pressed. Can be a letter like &#8220;a&#8221;, &#8220;Q&#8221;, or a special Key like &#8220;ArrowUp&#8221;, &#8220;Control&#8221;, &#8220;Delete&#8221;, &#8220;Minus&#8221;, &#8220;F1&#8221;, &#8220;Numpad0&#8221;&#8230;<br/>&#10;<strong><em>Parameter:</em></strong> The special Key code of the special Keys are described in the Key State page.<br/>&#10;<strong><em>Return Value:</em></strong> The <strong><em>boolean</em></strong> result is <em>true</em> if the key specified by the scan code (here $42 in Hexadecimal or 66 in decimal) is pressed.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Result$=&#34;&#34;&#10;CODE=42 : REM &#34;it is the scan code of the letter B&#34;****  &#10;Do  &#10;&#9;If Key State(CODE) Then Print &#34;Key: &#34;;CODE;&#34; (&#34;;Chr$(CODE);&#34;) was pressed.&#34;  &#10;&#9;Refresh  &#10;Loop&#10;</code></pre>&#10;<p>In the example above, the <strong>Print</strong> will not occur until the specified key: &#8220;B&#8221; is pressed.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Do &#10;&#9;If Key State( &#34;0&#34; ) Then Print &#34;0&#34; &#10;&#9;If Key State( &#34;Numpad0&#34; ) Then Print &#34;Numpad0&#34; &#10;&#9;If Key State( &#34;F1&#34; ) Then Print &#34;F1&#34; &#10;&#9;If Key State( &#34;ArrowUp&#34; ) Then Print &#34;ArrowUp&#34; &#10;&#9;If Key State( &#34;ArrowRight&#34; )Then Print &#34;ArrowRight&#34; &#10;&#9;//Key State doesn't make the difference between lowercase and uppercase, so test only the uppercase &#10;&#9;If Key State( &#34;C&#34; ) Then Print &#34;C&#34; // capital letters only &#10;&#9;// Note: Key State returns the key from a QWERTY keyboard&#10;Loop&#10;</code></pre>&#10;<h3 id="key-name">Key Name$</h3>&#10;<p><strong><em>Description:</em></strong> Returns a <strong><em>string</em></strong> containing a textual name for the key pressed.<br/>&#10;<strong><em>Return Value:</em></strong> The <strong><em>string</em></strong> result contains a textual description of the key pressed. Consult the appendix <strong>Keyboard Codes</strong> for a list of the key names and scan codes.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Do&#10;&#9;Locate 1,1 : Print &#34;hit gently your keyboard: &#34;;&#10;&#9;ik$ = Inkey$&#10;&#9;If ik$ &lt;&gt; &#34;&#34;&#10;&#9;&#9;Print ik$;&#34;  &#34;;&#10;&#9;&#9;k$=Key Name$ : Print k$;&#10;&#9;End If&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<p>The above code will display the key names of the QWERTY keyboard as the keys are pressed.<br/>&#10;<br/></p>&#10;<h3 id="scancode">ScanCode</h3>&#10;<p><strong><em>Description:</em></strong> Returns the scan code of the <em>last key</em> in the input buffer as read by <strong>Inkey$</strong>.<br/>&#10;<strong><em>Return Value:</em></strong> The <strong><em>integer</em></strong> result contains the scan code of the <em>last key</em> pressed, or 0 if the input buffer is empty.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Locate 0,0 : Print Manifest$&#10;Do&#10;&#9;I$=Inkey$&#10;&#9;If I$ &lt;&gt; &#34;&#34; ' Do we have a key?&#10;&#9;&#9;SC=ScanCode&#10;&#9;&#9;Locate 1,1 : Print I$, Hex$(SC,2) : SC=0&#10;&#9;End If&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<p>The example above will display the printable key pressed and it's scan code in Hexadecimal.</p>&#10;<h3 id="key-shift">Key Shift</h3>&#10;<p><strong><em>Description:</em></strong> Determines which (if any) modifier keys are currently held down. Modifier keys are those that are usually intended to modify the value and/or function of another key being pressed at the same time.<br/>&#10;<strong><em>Return Value:</em></strong> The integer result contains a bitmap indicating which modifier keys are currently pressed. The bitmap is filled as follows:</p>&#10;<div class="table-wrapper"><table>&#10;<thead>&#10;<tr>&#10;<th>Bit</th>&#10;<th>Value (hex)</th>&#10;<th>Key Tested</th>&#10;</tr>&#10;</thead>&#10;<tbody>&#10;<tr>&#10;<td>0</td>&#10;<td>$0001</td>&#10;<td>Left Shift</td>&#10;</tr>&#10;<tr>&#10;<td>1</td>&#10;<td>$0002</td>&#10;<td>Right Shift</td>&#10;</tr>&#10;<tr>&#10;<td>2</td>&#10;<td>$0004</td>&#10;<td>Left Ctrl  (Caps Lock on Amiga)</td>&#10;</tr>&#10;<tr>&#10;<td>3</td>&#10;<td>$0008</td>&#10;<td>Right Ctrl (either Ctrl on Amiga)</td>&#10;</tr>&#10;<tr>&#10;<td>4</td>&#10;<td>$0010</td>&#10;<td>Left Alt</td>&#10;</tr>&#10;<tr>&#10;<td>5</td>&#10;<td>$0020</td>&#10;<td>Right Alt</td>&#10;</tr>&#10;<tr>&#10;<td>6</td>&#10;<td>$0040</td>&#10;<td>Left Meta  (Amiga/Cmd/Windows)</td>&#10;</tr>&#10;<tr>&#10;<td>7</td>&#10;<td>$0080</td>&#10;<td>Right Meta (Amiga/Cmd/Windows)</td>&#10;</tr>&#10;<tr>&#10;<td>8</td>&#10;<td>$0100</td>&#10;<td>Caps Lock (AOZ mode only)</td>&#10;</tr>&#10;<tr>&#10;<td>15</td>&#10;<td>$8008</td>&#10;<td>Left Ctrl (Amiga mode only - bit 3 also set for compatibility)</td>&#10;</tr>&#10;</tbody>&#10;</table>&#10;</div><p><strong>Amiga manifest NOTE:</strong>  More combinations of modifiers are allowed in AOZ than on an actual Amiga computer. For example, you can read both the <em>left</em> and <em>right</em> shift keys at the same time. Also, a new bit position ($8000) has been added to represent the <em>Left Ctrl</em> key. For backward compatibility reasons, in Amiga mode, EITHER Ctrl key will set bit 3. In the future, a tag may be added to only return <em>Left Ctrl</em> when it is pressed, instead of also activating the <em>Right Ctrl</em> bit.</p>&#10;<p>Example:</p>&#10;<pre><code class="prism language-basic">KS$=&#34;&#34;&#10;Do&#10;&#9;KS=Key Shift&#10;&#9;If KS &lt;&gt; 0&#10;&#9;&#9;If (KS &amp; 1)=1 Then KS$=KS$   &#34;Left Shift| &#34;&#10;&#9;&#9;If (KS &amp; 2)=2 Then KS$=KS$   &#34;Right Shift| &#34;&#10;&#9;&#9;If (KS &amp; 4)=4 Then If Manifest$=&#34;amiga&#34; Then KS$=KS$ &#34;Caps Lock| &#34; Else KS$=KS$ &#34;Left Ctrl| &#34;&#10;&#9;&#9;If (KS &amp; 8)=8 Then KS$=KS$ &#34;Right Ctrl| &#34;&#10;&#9;&#9;If (KS &amp; 16)=16 Then KS$=KS$ &#34;Left Alt| &#34;&#10;&#9;&#9;If (KS &amp; 32)=32 Then KS$=KS$ &#34;Right Alt| &#34;&#10;&#9;&#9;If (KS &amp; 64)=64 Then KS$=KS$ &#34;Left Meta| &#34;&#10;&#9;&#9;If (KS &amp; 128)=128 Then KS$=KS$ &#34;Right Meta| &#34;&#10;&#9;&#9;If (KS &amp; 256)=256 Then KS$=KS$ &#34;Caps Lock| &#34;  ' Only for AOZ&#10;&#9;&#9;If (KS &amp; $8000)=$8000 Then KS$=KS$ &#34;Left Ctrl| &#34;  ' Only for Amiga&#10;&#9;End If&#10;&#9;Locate 1,0 : Print Manifest$&#10;&#9;Locate 1,1 : Print &#34;KS: &#34;;Right$(Bin$(KS,16),16)&#10;&#9;Locate 1,2 : Print KS$&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<p><strong>Hardware NOTE:</strong> Due to hardware differences in keyboards, certain combinations of modifier keys with or without other keys pressed may or may not be possible, so try to keep your keyboard interface simple, and test it thoroughly, in order to avoid compatibility issues.</p>&#10;<h3 id="scanshift">ScanShift</h3>&#10;<p><strong><em>Description:</em></strong> Determines which (if any) modifier keys were held down while the last key in the input buffer (read by <strong>Inkey$</strong>) was pressed. The modifier keys are those that are intended to modify the value and/or function of the <em>last key</em> in the input buffer. This function operates exactly as the <strong><em>Key Shift</em></strong> function except that it relates to the <em>last key</em> in the input buffer vs. the current modifiers state.</p>&#10;<p><strong><em>Return Value:</em></strong> The <strong><em>integer</em></strong> result contains a bitmap indicating which modifier keys were pressed while the last key in the input buffer was pressed. The bitmap table is above with <strong>Key Shift</strong>.</p>&#10;<p>Example:</p>&#10;<pre><code class="prism language-basic">SS$=&#34;&#34;&#10;Do  &#10;&#9;I$=Inkey$ ' Get a key from the input buffer.  &#10;&#9;SS=ScanShift ' Get that key's shift states  &#10;&#9;Locate 0,0 : Print Manifest$&#10;&#9;&#10;&#9;If I$&lt;&gt;&#34;&#34;  &#10;&#9;&#9;Locate 0,1 : Print I$;&#34; &#34;  &#10;&#9;&#9;Locate 0,2: Print &#34;SS: &#34;;Right$(Bin$(SS,16),16)  &#10;&#9;&#9;If SS &lt;&gt; 0  &#10;&#9;&#9;&#9;If (SS &amp; 1)=1 Then SS$=SS$   &#34;Left Shift|&#34;  &#10;&#9;&#9;&#9;If (SS &amp; 2)=2 Then SS$=SS$   &#34;Right Shift|&#34;  &#10;&#9;&#9;&#9;If (SS &amp; 4)=4 Then If Manifest$=&#34;amiga&#34; Then SS$=SS$ &#34;Caps Lock|&#34; Else SS$=SS$ &#34;Left Ctrl|&#34;  &#10;&#9;&#9;&#9;If (SS &amp; 8)=8 Then SS$=SS$ &#34;Right Ctrl|&#34;  &#10;&#9;&#9;&#9;If (SS &amp; 16)=16 Then SS$=SS$ &#34;Left Alt|&#34;  &#10;&#9;&#9;&#9;If (SS &amp; 32)=32 Then SS$=SS$ &#34;Right Alt|&#34;  &#10;&#9;&#9;&#9;If (SS &amp; 64)=64 Then SS$=SS$ &#34;Left Meta|&#34;  &#10;&#9;&#9;&#9;If (SS &amp; 128)=128 Then SS$=SS$ &#34;Right Meta|&#34;  &#10;&#9;&#9;&#9;If (SS &amp; 256)=256 Then SS$=SS$ &#34;Caps Lock|&#34; ' Only for AOZ  &#10;&#9;&#9;&#9;If (SS &amp; $8000)=$8000 Then SS$=SS$ &#34;Left Ctrl|&#34; ' Only for Amiga  &#10;&#9;&#9;End If  &#10;&#9;SS$=SS$ Space$(160) ' more than enough spaces to erase previous states from display.  &#10;&#9;Locate 0,3 : Print SS$  &#10;&#9;SS$=&#34;&#34;  &#10;&#9;End If&#10;&#9;&#10;Refresh &#10;Loop&#10;</code></pre>&#10;<p>The example above will display the <em>last key</em> pressed along with the modifier keys which were pressed at the same time.</p>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbLTE4OTQxMTI4MjYsMTIzMTE4NjA5NiwtOT&#10;U2NzIwMzg0LC0yMDc4MDA5ODk0LC0xNzQ4NjQzMzg4LC04NDcx&#10;OTQwMzMsLTE2MDI1OTg4MzQsMTA5MjM0MjM5MSwtMTE3ODkxNz&#10;g2OSwxNTI4MjQyOTc1LC04NzYyNzU2MTYsLTEzMDQwNTQ5MjUs&#10;LTU5ODMxOTExLDE1MjE3MDc3OTMsODcwMjMyMDI2LDczMDk5OD&#10;ExNl19&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/017_keyboard_inputs.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/017_keyboard_inputs.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

@@ -1,0 +1,13 @@
+# Actor X
+<!--
+@name: Actor X
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the X position of an actor
+## Parameters
+
+- **index**: Index of the Actor
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

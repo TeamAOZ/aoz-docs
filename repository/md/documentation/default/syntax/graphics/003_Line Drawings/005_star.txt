@@ -1,0 +1,65 @@
+# Star
+<!--
+@name: Star
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Instruction** - Draw a star shape
+
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Syntax Options
+
+**Star** *x, y, radius1*
+**Star** *x, y, radius1, radius2*
+**Star** *x, y, radius1, radius2, points*
+**Star** *x, y, radius1, radius2, points, angle*
+**Star** *x, y, radius1, radius2, points, angle, fill*
+
+## Parameters
+
+
+- **x**: The horizontal coordinate of the centre of the star
+- **y**: The vertical coordinate of the centre of the star
+- **radius1**: The radius of the outer points of the star
+- **radius2**: Optional. The radius of the inner points of the star. Defaults to 1/3 of radius1
+- **points**: Optional. The number of points of the star. Default is 5 points if omitted
+- **angle**: Optional. Angle of rotation of the star
+- **fill**: Optional. Set to true or 1 to fill the star
+
+## Description
+
+Draw a star shape with a specified number of points using the current ink, fill and border settings in the current screen.
+
+- **Star** *x, y, radius1*
+Draws a filled, 5 pointed star centred at coordinates *x, y* with the outer points at *radius1* pixels from the centre.
+- **Star** *x, y, radius1, radius2*
+Draws a filled, 5 pointed star centred at coordinates *x, y* with the outer points at *radius1* pixels from the centre and the inner points at *radius2* pixels from the centre.
+- **Star** *x, y, radius1, radius2, points*
+Draws a filled star with *points* number of points, centred at coordinates *x, y* with the outer points at *radius1* pixels from the centre and the inner points at *radius2* pixels from the centre.
+- **Star** *x, y, radius1, radius2, points, angle*
+Draws a filled star with *points* number of points, centred at coordinates *x, y* with the outer points at *radius1* pixels from the centre and the inner points at *radius2* pixels from the centre, rotated around the centre by *angle* degrees
+- **Star** *x, y, radius1, radius2, points, angle, fill*
+Draws a filled star with *points* number of points, centred at coordinates *x, y* with the outer points at *radius1* pixels from the centre and the inner points at *radius2* pixels from the centre, rotated around the centre by *angle* degrees. Alternatively, use **Filled Star** instruction.
+
+## Example Code
+
+The following code draw randomly sized and coloured stars, with up to 12 points.
+```basic
+for f=1 to 100
+	r=rnd(100 to 200)
+	line width=rnd(2 to 10)
+	ink rnd(2 to 62)
+	Star rnd(200 to 1720),rnd(200 to 880),r,r/3,rnd(2 to 12),rnd(360)
+	wait 0.5
+next f
+```
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMzUzMDk5OTg1XX0=
+-->

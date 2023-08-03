@@ -132,7 +132,7 @@ RenderingContext2D.prototype.end = function()
 	{
 		for ( var e in this.eventList )
 			this.canvas.removeEventListener( e, this.eventList[ e ] );
-		//window.removeEventListener( 'resize', this.doResize )
+		window.removeEventListener( 'resize', this.doResize )
 	}
 };
 RenderingContext2D.prototype.resize = function( force, width, height )

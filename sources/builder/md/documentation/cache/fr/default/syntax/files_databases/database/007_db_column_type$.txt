@@ -1,0 +1,14 @@
+# DB Column Type&dollar;
+<!--
+@name: DB Column Type&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Returns the type of the column <numCol>.
+## Parameters
+
+- _Id&dollar;_ (optional): ID of the results of the query.
+- **numCol**: Index of the column
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

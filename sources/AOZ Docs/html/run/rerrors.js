@@ -289,7 +289,12 @@ function Errors( aoz )
 			"object_name_conflict:Name conflicts with %1 named %2",
 			"bank_element_not_defined:Object not found (%1)",
 			"filesystem_initializing:Filesystem under initialization",
-			"object_variable_not_defined:Object variable must be initialised (%1)"
+			"object_variable_not_defined:Object variable must be initialised (%1)",
+			"module_missing:Module file missing",
+			"invalid_bank:Invalid Bank number: %1",
+			"bank_reserved:Bank number (%1) reserved for an other datatype",
+			"format_wrong:Unsupported module format (%1)",
+			"no_data_bank:No data in bank"
 		],
 		fr:
 		[
@@ -546,7 +551,12 @@ function Errors( aoz )
 			"object_name_conflict:Conflit de nom avec %1 nomme %2",
 			"bank_element_not_defined:Objet non trouve (%1)",
 			"filesystem_initializing:Systeme de fichier en cours d'initialisation",
-			"object_variable_not_defined:Les variables objet doivent etre initialisees (%1)"
+			"object_variable_not_defined:Les variables objet doivent etre initialisees (%1)",
+			"module_missing:Fichier de module manquant",
+			"invalid_bank:Numéro de banque incorrect: %1",
+			"bank_reserved:Ce numéro de banque (%1) est réservé pour un autre type de données",
+			"format_wrong:Format de module non supporté (%1)",
+			"no_data_bank:Aucune donnée dans la banque"
 		],
 	};
 };

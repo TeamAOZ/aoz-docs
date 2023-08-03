@@ -23,7 +23,7 @@ function ext_slider( aoz, args )
 	this.aoz=aoz;
 	this.parent=this;
 	this.root=this;
-	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25FeHRlbnNpb24iOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIFNsaWRlciBFeHRlbnNpb24iLCJhdXRob3IiOiJCeSBGcmFuY29pcyBMaW9uZXQiLCJ2ZXJzaW9uIjoiVmVyc2lvbiAxIiwiZGF0ZSI6IjI2LzA3LzIwMjEiLCJjb3B5cmlnaHQiOiIoYykgQU9aIFN0dWRpbyAyMDIwIC0gT3BlbiBTb3VyY2UiLCJzdGFydCI6InNsaWRlci5hb3oiLCJuYW1lIjoic2xpZGVyIn0sImNvbXBpbGF0aW9uIjp7Im5vV2FybmluZyI6W10sImVycm9ycyI6eyJlbiI6W10sImZyIjpbXX0sImluY2x1ZGVQYXRocyI6W119LCJib290U2NyZWVuIjp7ImFjdGl2ZSI6ZmFsc2UsIndhaXRTb3VuZHMiOmZhbHNlLCJjbGlja1NvdW5kcyI6ZmFsc2V9LCJlcnJvcnMiOnt9fQ=='));
+	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25FeHRlbnNpb24iOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIFNsaWRlciBFeHRlbnNpb24iLCJhdXRob3IiOiJCeSBGcmFuY29pcyBMaW9uZXQiLCJ2ZXJzaW9uIjoiVmVyc2lvbiAxIiwiZGF0ZSI6IjI2LzA3LzIwMjEiLCJjb3B5cmlnaHQiOiIoYykgQU9aIFN0dWRpbyAyMDIwIC0gT3BlbiBTb3VyY2UiLCJzdGFydCI6InNsaWRlci5hb3oiLCJuYW1lIjoic2xpZGVyIn0sImNvbXBpbGF0aW9uIjp7Im5vV2FybmluZyI6W10sImVycm9ycyI6eyJlbiI6W10sImZyIjpbXX0sImluY2x1ZGVQYXRocyI6W10sInN5bnRheCI6ImFveiJ9LCJib290U2NyZWVuIjp7ImFjdGl2ZSI6ZmFsc2UsIndhaXRTb3VuZHMiOmZhbHNlLCJjbGlja1NvdW5kcyI6ZmFsc2V9LCJlcnJvcnMiOnt9fQ=='));
 	this.vars=typeof args=='undefined'?{}:args;
 	this.contextName='ext_slider';
 	this.aoz[ "extension" + "Slider"]=this;
@@ -287,12 +287,12 @@ this.blocks=[];
 			if ( this.vars.visible )
 			{
 				this.screen.setPaint( true );
-				this.screen.setPattern( this.vars.pattern1 );
+				this.screen.setPattern( this.vars.pattern1, {}, {} );
 				this.screen.setInk( this.vars.paper1, this.vars.ink1, this.vars.outline1 );
 				this.screen.bar( { x: this.vars.x, y: this.vars.y, width: this.vars.width, height: this.vars.height } );
 				var sliderStart = this.vars.position / this.vars.maximum;
 				var sliderEnd  = ( this.vars.position + this.vars.size ) / this.vars.maximum;
-				this.screen.setPattern( this.vars.pattern2 );
+				this.screen.setPattern( this.vars.pattern2, {}, {} );
 				this.screen.setInk( this.vars.ink2, this.vars.ink2, this.vars.outline2 );
 				if ( this.vars.type == 'vertical' )
 					this.boxRect = { x: this.vars.x, y: this.vars.y + sliderStart * this.vars.height, width: this.vars.width, height: ( sliderEnd - sliderStart ) * this.vars.height };
@@ -305,6 +305,10 @@ this.blocks=[];
 		};
 		// End Javascript
 		return{type:0}
+	};
+	this.blocks[1]=function(aoz,vars)
+	{
+		return{type:0};
 	};
 	this.aoz.run(this,0,null);
 };

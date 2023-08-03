@@ -41,6 +41,7 @@ function Fonts( aoz )
 
 	this.setWindowFont( "IBM Plex Mono","google",24,"normal","normal","normal","","application");
 	this.getFonts([],[],"application");
+	this.getFonts([],[],"ext_tracker")
 
 
 	// Load first font on the list

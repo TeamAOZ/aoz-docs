@@ -23,7 +23,7 @@ function v1_0_asset( aoz, args )
 	this.aoz=aoz;
 	this.parent=this;
 	this.root=this;
-	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25Nb2R1bGUiOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIEFzc2V0IGxvYWRlciBJbnN0cnVjdGlvbiIsImF1dGhvciI6IkJ5IEJhcHRpc3RlIEJpZGVhdXgiLCJ2ZXJzaW9uIjoiVmVyc2lvbiAwLjk5IiwiZGF0ZSI6IjAxLzAyLzIwMjAiLCJjb3B5cmlnaHQiOiIoYykgQU9aIFN0dWRpbyAyMDE5Iiwic3RhcnQiOiJhc3NldC5hb3oiLCJuYW1lIjoiYXNzZXQifSwiY29tcGlsYXRpb24iOnsibm9XYXJuaW5nIjpbXSwiZXJyb3JzIjp7ImVuIjpbXSwiZnIiOltdfSwiaW5jbHVkZVBhdGhzIjpbXX0sImJvb3RTY3JlZW4iOnsiYWN0aXZlIjpmYWxzZSwid2FpdFNvdW5kcyI6ZmFsc2UsImNsaWNrU291bmRzIjpmYWxzZX0sImVycm9ycyI6e319'));
+	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25Nb2R1bGUiOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIEFzc2V0IGxvYWRlciBJbnN0cnVjdGlvbiIsImF1dGhvciI6IkJ5IEJhcHRpc3RlIEJpZGVhdXgiLCJ2ZXJzaW9uIjoiVmVyc2lvbiAwLjk5IiwiZGF0ZSI6IjAxLzAyLzIwMjAiLCJjb3B5cmlnaHQiOiIoYykgQU9aIFN0dWRpbyAyMDE5Iiwic3RhcnQiOiJhc3NldC5hb3oiLCJuYW1lIjoiYXNzZXQifSwiY29tcGlsYXRpb24iOnsibm9XYXJuaW5nIjpbImluc3RydWN0aW9uX25vdF9pbXBsZW1lbnRlZCJdLCJlcnJvcnMiOnsiZW4iOltdLCJmciI6W119LCJpbmNsdWRlUGF0aHMiOltdLCJzeW50YXgiOiJhb3oifSwiYm9vdFNjcmVlbiI6eyJhY3RpdmUiOmZhbHNlLCJ3YWl0U291bmRzIjpmYWxzZSwiY2xpY2tTb3VuZHMiOmZhbHNlfSwiZXJyb3JzIjp7fX0='));
 	this.vars=typeof args=='undefined'?{}:args;
 	this.contextName='v1_0_asset';
 	this.aoz[ "module" + "Asset" ]=this;
@@ -33,7 +33,7 @@ function v1_0_asset( aoz, args )
 this.blocks=[];
 	this.blocks[0]=function(aoz,vars)
 	{
-		// From source: D:/Programs/AOZ_Studio_SE/AOZ_Studio/app/aoz/languages/v1_0/asset/asset.aoz
+		// From source: C:/AOZ Studio/AOZ_Studio/app/aoz/languages/v1_0/asset/asset.aoz
 		aoz.sourcePos="0:39:0";
 		// Javascript
 		this.aoz.ASSET = this;
@@ -69,9 +69,9 @@ this.blocks=[];
 			{
 				if ( !directPath )
 				{
-				var descriptor = this.aoz.filesystem.getFile( filename, { mustExist: true, asset: true } );
-				filename = descriptor.path;
-			}
+					var descriptor = this.aoz.filesystem.getFile( filename, { mustExist: true, asset: true } );
+					filename = descriptor.path;
+				}
 			}
 			else
 			{
@@ -429,6 +429,9 @@ this.blocks=[];
 				case 'wav':
 				case 'ogg':
 				case 'wma':
+				case 'aac':
+				case 'flac':
+				case 'm4a':
 					var self = this;
 					if( self.aoz.ASSET.arrAudios && self.aoz.ASSET.arrAudios[ 'audio_' + number ] )
 					{
@@ -460,6 +463,8 @@ this.blocks=[];
 				case 'wmv':
 				case 'ogv':
 				case 'webm':
+				case 'mov':
+				case 'm4v':
 					var self = this;
 					if( self.aoz.ASSET.arrVideos && self.aoz.ASSET.arrVideos[ 'video_' + number ] )
 					{
@@ -662,6 +667,10 @@ this.blocks=[];
 		};
 		// End Javascript
 		return{type:0}
+	};
+	this.blocks[1]=function(aoz,vars)
+	{
+		return{type:0};
 	};
 	this.aoz.run(this,0,null);
 };

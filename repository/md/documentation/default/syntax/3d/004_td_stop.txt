@@ -10,7 +10,7 @@
 
 Disables the rendering of  your 3D scenes on the screen.
 
-#### Syntax
+#### Example
 ```basic
 Load Asset "my_scene.aoz3d", "my_scene"
 Td Init : Td Start

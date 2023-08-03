@@ -23,7 +23,7 @@ function v1_0_ui( aoz, args )
 	this.aoz=aoz;
 	this.parent=this;
 	this.root=this;
-	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25Nb2R1bGUiOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIFVJIEluc3RydWN0aW9uIiwiYXV0aG9yIjoiQnkgUGhpbCBCZWxsIiwidmVyc2lvbiI6IlZlcnNpb24gMC45OSIsImRhdGUiOiIwMi8wNy8yMDIxIiwiY29weXJpZ2h0IjoiKGMpIEFPWiBTdHVkaW8gMjAyMSIsInN0YXJ0IjoidWkuYW96IiwibmFtZSI6InVpIn0sImNvbXBpbGF0aW9uIjp7Im5vV2FybmluZyI6W10sImVycm9ycyI6eyJlbiI6W10sImZyIjpbXX0sImluY2x1ZGVQYXRocyI6W119LCJib290U2NyZWVuIjp7ImFjdGl2ZSI6ZmFsc2UsIndhaXRTb3VuZHMiOmZhbHNlLCJjbGlja1NvdW5kcyI6ZmFsc2V9LCJlcnJvcnMiOnt9fQ=='));
+	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25Nb2R1bGUiOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIFVJIEluc3RydWN0aW9uIiwiYXV0aG9yIjoiQnkgUGhpbCBCZWxsIiwidmVyc2lvbiI6IlZlcnNpb24gMC45OSIsImRhdGUiOiIwMi8wNy8yMDIxIiwiY29weXJpZ2h0IjoiKGMpIEFPWiBTdHVkaW8gMjAyMSIsInN0YXJ0IjoidWkuYW96IiwibmFtZSI6InVpIn0sImNvbXBpbGF0aW9uIjp7Im5vV2FybmluZyI6WyJpbnN0cnVjdGlvbl9ub3RfaW1wbGVtZW50ZWQiXSwiZXJyb3JzIjp7ImVuIjpbXSwiZnIiOltdfSwiaW5jbHVkZVBhdGhzIjpbXSwic3ludGF4IjoiYW96In0sImJvb3RTY3JlZW4iOnsiYWN0aXZlIjpmYWxzZSwid2FpdFNvdW5kcyI6ZmFsc2UsImNsaWNrU291bmRzIjpmYWxzZX0sImVycm9ycyI6e319'));
 	this.vars=typeof args=='undefined'?{}:args;
 	this.contextName='v1_0_ui';
 	this.aoz[ "module" + "Ui" ]=this;
@@ -33,7 +33,7 @@ function v1_0_ui( aoz, args )
 this.blocks=[];
 	this.blocks[0]=function(aoz,vars)
 	{
-		// From source: D:/Programs/AOZ_Studio_SE/AOZ_Studio/app/aoz/languages/v1_0/ui/ui.aoz
+		// From source: C:/AOZ Studio/AOZ_Studio/app/aoz/languages/v1_0/ui/ui.aoz
 		aoz.sourcePos="0:32:0";
 		// Javascript
 		this.aoz.ui = this;
@@ -2030,6 +2030,10 @@ this.blocks=[];
 		}
 		// End Javascript
 		return{type:0}
+	};
+	this.blocks[1]=function(aoz,vars)
+	{
+		return{type:0};
 	};
 	this.aoz.run(this,0,null);
 };

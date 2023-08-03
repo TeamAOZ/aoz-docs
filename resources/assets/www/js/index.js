@@ -1,12 +1,47 @@
 var current_zoom = 1.0;
 var accessibility = false;
 var mot = '';
+var searchAll = false;
 document.title="AOZ Studio Documentation";
+
+String.prototype.strReplace = function( strSearch, strReplace )
+{
+	var newStr = '';
+	for( n = 0; n < this.length; n++ )
+	{
+		var part = this.substr( n, strSearch.length );
+		if( part == strSearch )
+		{
+			newStr = newStr + strReplace;
+			n = n + ( strSearch.length - 1 );
+		}
+		else
+		{
+			newStr = newStr + part.substr( 0, 1 );
+		}
+	}
+
+	return newStr;
+};
 
 function initPanels()
 {
+	var page = document.location.href;
+	var parts = page.split( '/' );
+	if( parts )
+	{
+		page = parts[ parts.length - 1 ];
+		page = page.strReplace( '.html', '' );
+	}
+
+	if( page.indexOf( '/public/' ) > -1 )
+	{
+		page = '';
+	}
+
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams( queryString );
+
 	if( urlParams.has( 'lang' ) )
 	{
 		application.root.vars.LANG$ = urlParams.get( 'lang' );
@@ -20,11 +55,28 @@ function initPanels()
 		application.root.vars.LANG$	= 'en';
 	}
 
-	if( urlParams.has( 'search' ) )
+	if( urlParams.has( 'page' ) || urlParams.has( 'search' ) )
 	{
-		application.root.vars.URL_SEARCH$ = urlParams.get( 'search' );
+		if( urlParams.has( 'page' ) )
+		{
+			application.root.vars.URL_SEARCH$ = urlParams.get( 'page' );
+			searchAll = false;
+		}
+		else
+		{
+			application.root.vars.URL_SEARCH$ = urlParams.get( 'search' );
+			searchAll = true;
+		}
 	}
-
+/**
+	else
+	{
+		if( page != 'aozdoc')
+		{
+			application.root.vars.URL_SEARCH$ = page;
+		}
+	}
+*/
 	Metro.init();
 
 	window.addEventListener( 'resize', function( event )
@@ -80,13 +132,31 @@ function panelsResize()
 		elm.setAttribute( 'style', 'width:' + window.innerWidth + 'px; height: ' + window.innerHeight + 'px;' );
 	}
 
-	var elm = document.querySelectorAll( '.scrollpane' );
+	var elm = document.querySelectorAll( 'iframe' );
 	if( elm )
 	{
 		for( var e = 0; e < elm.length; e++ )
 		{
 			elm[ e ].style.height = ( window.innerHeight - 48 ) + 'px';
 		}
+	}
+}
+
+function updateTopics()
+{
+	var frm = document.getElementById( 'page_topics' );
+	if( frm )
+	{
+		frm.src = application.root.vars.ROOT_URL$ + '/topics.php';
+	}
+}
+
+function loadWelcome()
+{
+	var frm = document.getElementById( 'page_frame' );
+	if( frm )
+	{
+		frm.src = application.root.vars.ROOT_URL$ + '/public/default/user_guide/table_of_contents/000_chapter.html';
 	}
 }
 
@@ -128,38 +198,53 @@ function toggleAccessible()
 	}
 }
 
-function toggleChapter( url )
+function toggleChapter( elmChapter, itemsElm )
 {
-	var path = url;
-	var parentElm = document.querySelector( 'ul[data-url="' + path + '"]' );
-	if( parentElm.hasAttribute( 'class' ) )
+	var url = '';
+	var id = '';
+	if( elmChapter && elmChapter.hasAttribute( 'data-url' ) )
 	{
-		if( parentElm.getAttribute( 'class' ) == 'item_hide' )
+		application.root.vars.CHAP_NAME$ = elmChapter.innerHTML;
+		url = elmChapter.getAttribute( 'data-url' );
+		id = elmChapter.getAttribute( 'id' );
+	}
+
+	if( url == undefined || url.trim() == '' )
+	{
+		return;
+	}
+
+	if( itemsElm && itemsElm.hasAttribute( 'class' ) )
+	{
+		if( itemsElm.getAttribute( 'class' ) == 'item_hide' )
 		{
-			parentElm.setAttribute( 'class', 'item_show' );
+			itemsElm.setAttribute( 'class', 'item_show' );
 		}
 		else
 		{
-			parentElm.setAttribute( 'class', 'item_hide' );
+			itemsElm.setAttribute( 'class', 'item_hide' );
 		}
 	}
+	application.root.vars.CURRENT_PAGE$ = url;
+	application.root.vars.CUR_TYPE$ = "chapter";
+	var frm = document.getElementById( 'page_frame' );
+	if( frm )
+	{
+		frm.src = url;
+	}
+	//window.open( url, 'page_frame' );
 }
 
-function search( search )
+function search( search, searchAll )
 {
-	var xhr = new XMLHttpRequest();
-	xhr.responseType = "text";
-	xhr.open( 'GET', application.root.vars.ROOT_URL$ + "/search.php?search=" + search + "&lang=" + application.root.vars.LANG$ );
-	var self = this;
-	xhr.onload = function()
+	if( searchAll == undefined )
 	{
-		if( xhr.status == 200 )
-		{
-			var code = xhr.responseText.strReplace( 'default/default/', '' );
-			code = code.strReplace( 'procedure:PAGE_LOAD(', 'javascript:application.aoz.runProcedure( \'PAGE_LOAD\',' );
-			document.getElementById( 'page' ).innerHTML = code;
-			document.querySelector( '#center_panel .scrollpane' ).scrollTop = 0;
-		}
+		searchAll = false;
 	}
-	xhr.send();
+	var frm = document.getElementById( 'page_frame' );
+	if( frm )
+	{
+		frm.src = application.root.vars.ROOT_URL$ + "/search.php?search=" + search + ( ( searchAll ) ? "&all=true" : "" ) + "&lang=" + application.root.vars.LANG$;
+	}
+//	window.open( application.root.vars.ROOT_URL$ + "/search.php?search=" + search + ( ( searchAll ) ? "&all=true" : "" ) + "&lang=" + application.root.vars.LANG$, 'page_frame' );
 }

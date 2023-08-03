@@ -7,7 +7,8 @@
 \-->
 <div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
 
-Pauses the application until the next screen refresh, alias of Sync Display
+Resync the application until the next screen refresh. It is needed to have that instruction in a loop when you display several graphics. 
+Note: Better use the **Refresh** instruction (doing the same thing).
 
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

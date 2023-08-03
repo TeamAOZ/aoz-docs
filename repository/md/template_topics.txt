@@ -6,11 +6,12 @@
 
 <span class="version">ver. %VERSION$%</span>
 
-<h1 id="user-guide">User Guide</h1>
+<h1>User Guide</h1>
 %code%
 
-<h1 id="glossary">Glossary</h1>
+<h1>Glossary</h1>
 %categories%
 
-<h1 id="more-tricks">More Tricks</h1>
+<h1>More Tricks</h1>
 %more_tricks%
+

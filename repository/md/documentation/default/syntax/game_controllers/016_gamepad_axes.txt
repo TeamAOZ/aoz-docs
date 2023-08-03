@@ -5,9 +5,25 @@
 @tags: 
 @categories: 
 \-->
-Return number of axes for selected gamepad
+This Function returns the number of axes for selected gamepad.
+
+## Syntax
+
+howMany = **Gamepad Axes(** controllerID **)**
 ## Parameters
 
-- **GAMEPAD**: The number of the gamepad
+| Parameter | Description
+|---|---|
+| **controllerID** | The ID number of the gamepad. |
+
+## Example
+
+```basic
+controllerID = 0
+Do
+	
+Loop
+```
+
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,38 @@
+# Draw Shadow
+<!--
+@name: Draw Shadow
+@description: 
+@tags: 
+@categories: 
+\-->
+Display a fully configurable shadow beneath any line or solid graphics drawn with any of the various line or filled drawing instructions
+
+## Syntax Options
+
+**Draw Shadow** _offsetX, offsetY, blur, rgba_
+**Draw Shadow Off**
+
+## Parameters
+
+
+- _**offsetX**_: The distance in pixels that shadows will be offset horizontally. Positive values are to the right, and negative to the left.
+- _**offsetY**_: The distance in pixels that shadows will be offset vertically. Positive values are down, and negative up from the image.
+- _**blur**_: A non-negative number specifying the level of shadow blur, where 0 represents no blur and larger numbers represent increasingly more blur. This value doesn|;t correspond to a number of pixels,
+- _**rgba**_:  A 32 bit RGBA value in hex format, like this $RRGGBBAA. All 8 digits of the hex value must be given, even if they are zero, for example $000455FF, otherwise the shadow will not be drawn. The |;AA|; part of the value represents the alpha, or transparency, level of the colour. Lower values produce a feint shadow whilst higher values produce a darker, strong shadow.
+
+## Description
+**Draw Shadow** allows you to add a shadow to any graphics drawn with AOZ|;s line or filled shape drawing instructions. With a bit of imagination, **Draw Shadow** can be used to create other effects, such as adding a glowing aura to an image.
+
+Once the shadow is set, it will be used for all subsequent drawing operations until it is turned off, by using **Draw Shadow Off**.
+
+Also, once set, individual elements of the shadow definition can be changed, such as the blur.
+
+## Example Code
+
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE2ODYwMzQxODJdfQ==
+-->

@@ -1,0 +1,69 @@
+# Text Shadow
+<!--
+@name: Text Shadow
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Syntax
+**Text Shadow** *offsetX*, *offsetY*, *blur*, *rgba*
+
+
+
+## Parameters
+
+
+- **offsetX**: The distance that shadows will be offset horizontally in pixels. Positive values are to the right, and negative to the left.
+- **offsetY**: The distance that shadows will be offset vertically in pixels. Positive values are down, and negative up from the image.
+- **blur**: A non-negative number specifying the level of shadow blur, where 0 represents no blur and larger numbers represent increasingly more blur. This value doesn't correspond to a number of pixels,
+- **rgba**:  A 32 bit hex format colour definition, such as &dollar;30303077.
+
+## Description
+This instruction allows you to add a shadow to any graphical text using the current font. With a bit of imagination, shadow can be used to create other effects, such as add a glow to an image, or an outline. See second example below.
+Once the shadow is set, it will be used for all subsequent text operations until it is turned off, using 'Text Shadow Off'.
+Also, once set, individual elements of the shadow definition can be changed, such as the blur in the examples below, where the other parameter are left out.
+
+## Example Code
+
+This example shows you how to add a basic shadow to your text.
+
+```js
+//	BASIC SHADOWS
+#googleFont:"henny penny"				// Select a font.
+Curs Off : Cls 1						// Set up screen, white background
+Set Transparent 0						// Set background colour to transparent
+Set font "henny penny",180				// Set then font size
+Text Shadow 10,20,0,$303030ff			// Set the 'Text Shadow'to offsetX=10, offsetY=20, blur=8, and $rgba to a dark grey with full alpha level
+For f=1 to 5							// Define loop
+	Ink f*5+1							// Choose colour from palette
+	Text 100+f*70,f*200,"Text Shadow"	// Draw Text
+	Text Shadow ,,f*3					// Gradually increase the blur
+	wait 0.4							// Wait for 0.4 seconds
+Next f									// Repeat loop
+```
+
+This example shows you how to make your text GLOW!
+```js
+//	GLOWING TEXT
+#googleFont:"henny penny"
+Curs Off : Cls 0						// Set up screen, white background
+Set Transparent 0						// Set background colour to transparent
+Set font "henny penny",180				// Set then font size
+Text Shadow 0,0,4,$00ff00ff				// Set the 'Text Shadow'to offsetX=0, offsetY=0, blur=4, and $rgba to green with full alpha level
+										// The 0 offsetX and offsetY puts the shadow directly below the image
+Ink 5 : colour 5,$000000				// Set ink to 5 and change it to Black
+For f=1 to 5							// Define loop
+	Text 100+f*70,f*200,"Glowing Text"	// Draw Text
+	Text Shadow ,,(f+1)*4				// Gradually increase the blur to make it 'Glow' more
+	wait 0.4							// Wait for 0.4 seconds
+Next f									// Repeat loop
+```
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMzQyMzE1MjI4LC0xODE2NTM3OTA2LC0xND
+g2MDQ0ODQ1LDE1MjEzNjQ2NTgsNjI1NzMyNTA5LC0xMzQ3Nzg5
+NTQ5LDE3Mjc0ODI4MTRdfQ==
+-->

@@ -23,7 +23,7 @@ function v1_0_collisions( aoz, args )
 	this.aoz=aoz;
 	this.parent=this;
 	this.root=this;
-	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25Nb2R1bGUiOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIExvb2sgYXQgdGhhdCEgQ29sbGlzaW9uIEluc3RydWN0aW9ucyIsImF1dGhvciI6IkJ5IEZyYW5jb2lzIExpb25ldCIsInZlcnNpb24iOiJWZXJzaW9uIDAuOTkiLCJkYXRlIjoiMzAvMDEvMjAyMCIsImNvcHlyaWdodCI6IihjKSBBT1ogU3R1ZGlvIDIwMTktMjAyMCIsInN0YXJ0IjoiY29sbGlzaW9ucy5hb3oiLCJuYW1lIjoiY29sbGlzaW9ucyJ9LCJjb21waWxhdGlvbiI6eyJub1dhcm5pbmciOltdLCJlcnJvcnMiOnsiZW4iOltdLCJmciI6W119LCJpbmNsdWRlUGF0aHMiOltdfSwiYm9vdFNjcmVlbiI6eyJhY3RpdmUiOmZhbHNlLCJ3YWl0U291bmRzIjpmYWxzZSwiY2xpY2tTb3VuZHMiOmZhbHNlfSwiZXJyb3JzIjp7fX0='));
+	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25Nb2R1bGUiOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIExvb2sgYXQgdGhhdCEgQ29sbGlzaW9uIEluc3RydWN0aW9ucyIsImF1dGhvciI6IkJ5IEZyYW5jb2lzIExpb25ldCIsInZlcnNpb24iOiJWZXJzaW9uIDAuOTkiLCJkYXRlIjoiMzAvMDEvMjAyMCIsImNvcHlyaWdodCI6IihjKSBBT1ogU3R1ZGlvIDIwMTktMjAyMCIsInN0YXJ0IjoiY29sbGlzaW9ucy5hb3oiLCJuYW1lIjoiY29sbGlzaW9ucyJ9LCJjb21waWxhdGlvbiI6eyJub1dhcm5pbmciOlsiaW5zdHJ1Y3Rpb25fbm90X2ltcGxlbWVudGVkIl0sImVycm9ycyI6eyJlbiI6W10sImZyIjpbXX0sImluY2x1ZGVQYXRocyI6W10sInN5bnRheCI6ImFveiJ9LCJib290U2NyZWVuIjp7ImFjdGl2ZSI6ZmFsc2UsIndhaXRTb3VuZHMiOmZhbHNlLCJjbGlja1NvdW5kcyI6ZmFsc2V9LCJlcnJvcnMiOnt9fQ=='));
 	this.vars=typeof args=='undefined'?{}:args;
 	this.contextName='v1_0_collisions';
 	this.aoz[ "module" + "Collisions" ]=this;
@@ -33,7 +33,7 @@ function v1_0_collisions( aoz, args )
 this.blocks=[];
 	this.blocks[0]=function(aoz,vars)
 	{
-		// From source: D:/Programs/AOZ_Studio_SE/AOZ_Studio/app/aoz/languages/v1_0/collisions/collisions.aoz
+		// From source: C:/AOZ Studio/AOZ_Studio/app/aoz/languages/v1_0/collisions/collisions.aoz
 		aoz.sourcePos="0:42:0";
 		// Javascript
 		this.aoz.collisions = this;					// TODO: remove
@@ -101,6 +101,19 @@ this.blocks=[];
 			}
 			return false;
 		};
+		this.spriteColStos = function( index, from, to )
+		{
+			var ret = 0;
+			if ( this.spriteCol( index, from, to ) )
+			{
+				for ( var s in this.collisionList )
+				{
+					if ( s >= 0 && s <= 16 )
+						ret |= ( 1 << s );
+				}
+			}
+			return ret;
+		}
 		this.spriteBobCol = function( spriteIndex, screen, from, to )
 		{
 			var sprite = this.aoz.sprites.get( spriteIndex, this.aoz.currentContextName );
@@ -535,6 +548,10 @@ this.blocks=[];
 		}
 		// End Javascript
 		return{type:0}
+	};
+	this.blocks[1]=function(aoz,vars)
+	{
+		return{type:0};
 	};
 	this.aoz.run(this,0,null);
 };

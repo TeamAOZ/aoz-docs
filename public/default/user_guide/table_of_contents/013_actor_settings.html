@@ -1,0 +1,703 @@
+<?DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/%20actor%20settings'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/%20actor%20settings'>
+        <meta name='pagename' content='AOZ Docs -  Actor Settings'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='2023-05-22 19:37:59'>
+
+        <title>AOZ Docs -  Actor Settings</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="actor-settings">Actor Settings</h1>&#10;<p>Actor is a sophisticated instruction for:</p>&#10;<ul>&#10;<li>2D and 3D images</li>&#10;<li>graphical texts</li>&#10;<li>videos</li>&#10;</ul>&#10;<p>With it you can display graphics in general, you can check, change and control the behavior of your actors, manage collisions and so much more.<br/>&#10;In other words, with it you can do games, great user interfaces, portals, Apps,&#8230;</p>&#10;<p>In this chapter we will sum up everything we&#8217;ve discussed about it and more, with the various settings available for the Actor instruction at the time of writing this manual. Please see the Actor page of the User Guide for more detailed explanations and examples.</p>&#10;<ul>&#10;<li><strong>Name</strong> <strong>or</strong> <strong>Index:</strong> Set the Actor by giving a name Ex Actor 1, Actor &#8220;magic&#8221;</li>&#10;</ul>&#10;<p>For ex using the Actor with Indexes (an integer value) and not a text like Actor &#8220;magic&#8221;:</p>&#10;<pre><code class="prism language-basic">For I=0 to 4&#10;&#9;Actor I, Image$=&#34;magic&#34;, X=10, Y=I*200, EndX=1800, Duration=1000*I&#10;Next I&#10;Wait Input&#9;// wait for a key, a mouse,... press&#10;</code></pre>&#10;<ul>&#10;<li><strong>Type$</strong>: Type of the Actor. &#8220;2d&#8221; by default, or &#8220;3d&#8221;</li>&#10;<li><strong>X:</strong> Horizontal position of the actor on the screen. 0 by default.</li>&#10;<li><strong>Y:</strong> Vertical position of the actor on the screen. 0 by default.</li>&#10;<li><strong>Z:</strong>  The position on the Z axis. 0 by default.<br/>&#10;-<strong>Z</strong> in <strong>2D</strong> it is the plan of the actor. An actor with Z=2 will be displayed on top of all the actors with a Z=1 and Z=0. Higher the Z is more it will be in the foreground.<br/>&#10;-<strong>Z</strong> in <strong>3D</strong> it is the depth position of the actor on the screen.</li>&#10;<li><strong>StartX:</strong> The start horizontal position of the actor&#8217;s movement.</li>&#10;<li><strong>StartY:</strong> The start vertical position of the actor&#8217;s movement.</li>&#10;<li><strong>StartZ:</strong> (3D) The depth start position of the actor&#8217;s movement.</li>&#10;<li><strong>EndX:</strong> The horizontal position at the end of the actor&#8217;s movement.</li>&#10;<li><strong>EndY:</strong>  The vertical position at the end of the actor&#8217;s movement.</li>&#10;<li><strong>EndZ:</strong> (3D) The depth position at the end of the actor&#8217;s movement.<br/>&#10;<br/></li>&#10;<li><strong>Video$:</strong> Name of the video loaded by Load Asset used like an image for this Actor</li>&#10;<li><strong>Videoplay:</strong> Play the video associated at this actor. True by default (Videoplay=true)</li>&#10;<li><strong>Videoloop</strong>: Play the video associated at this actor in loop. True by default<br/>&#10;Ex to display the webcam1 by default (not for the AOZ Viewer, request the browser authorization to use the camera)</li>&#10;</ul>&#10;<pre><code class="prism language-basic">Actor &#34;mycam&#34;, Video$=&#34;@webcam&#34;&#10;</code></pre>&#10;<ul>&#10;<li><strong>Duration:</strong> The duration of the actor&#8217;s movement between two points StartX and EndX for ex, in milliseconds. Ex Duration=1000 is eq 1 sec.</li>&#10;<li><strong>Transition$:</strong> To assign the name of the effect to perform on the movement of the actor. By default it is the &#8220;linear&#8221; transition. AOZ is using the beautiful CREATE.JS API, it is a great product. Effects can be seen by visiting this page: <a href="https://www.createjs.com/demos/tweenjs/tween_sparktable">https://www.createjs.com/demos/tweenjs/tween_sparktable</a>  <a href="https://www.createjs.com/demos/tweenjs/tween_sparktable">https</a><br/>&#10;<img src="https://doc.aoz.studio/assets/images/en/image080.png" alt="few transition mouvements"/></li>&#10;<li><strong>Scale:</strong> The decimal value of the actor size scale. Default 1.0 (normal size). 1.2 will increase the size by 20%.</li>&#10;<li><strong>StartScale:</strong> The start size decimal value for moving the actor.</li>&#10;<li><strong>EndScale:</strong> The end size decimal value for actor removal.</li>&#10;<li><strong>ScaleX:</strong> The decimal value of the width scale of the actor. Default 1.0 (normal size).</li>&#10;<li><strong>ScaleY:</strong> The decimal value of the actor&#8217;s height scale. Default 1.0 (normal size).</li>&#10;<li><strong>StartScaleX:</strong> The decimal value of starting width for moving the actor.</li>&#10;<li><strong>EndScaleX:</strong> The decimal value of end width for the movement of  the actor.</li>&#10;<li><strong>StartScaleY:</strong> The decimal value of the start height for moving the actor.</li>&#10;<li><strong>EndScaleY:</strong> The decimal value of the end height for the movement of the actor.</li>&#10;<li><strong>Angle:</strong> Actor angle value in degrees. By default 0.</li>&#10;<li><strong>StartAngle:</strong> Actor&#8217;s movement initial angle, in degrees.</li>&#10;<li><strong>EndAngle:</strong> Actor&#8217;s movement end angle, in degrees.</li>&#10;<li><strong>AngleZ:</strong> (3D) Modification of the 3D Actor Z angle of rotation. If not set, the last angle is used.</li>&#10;<li><strong>StartangleZ:</strong> (3D) Modification of the 3D Actor start Z angle of rotation for a Actor moving. If not set, the last angle value is used.</li>&#10;<li><strong>EndangleZ:</strong> (3D) Modification of the 3D Actor end Z angle of rotation for a Actor moving. If not set, the last angle value is used.</li>&#10;<li><strong>Alpha:</strong> The decimal value of the opacity of the actor. Default 1.0 (totally visible).</li>&#10;<li><strong>StartAlpha:</strong> The decimal value of the initial opacity for the movement of the actor.</li>&#10;<li><strong>EndAlpha:</strong> The decimal value of the final opacity for the movement of the actor.</li>&#10;<li><strong>SkewX:</strong> The decimal value of horizontal distortion of the actor.</li>&#10;<li><strong>StartSkewX:</strong> The decimal value of the start horizontal distortion of the actor&#8217;s movement.</li>&#10;<li><strong>EndSkewX:</strong> The decimal value of the end horizontal distortion of the actor&#8217;s movement.</li>&#10;<li><strong>Skew Y:</strong> The decimal value of vertical distortion of the actor.</li>&#10;<li><strong>StartSkewY:</strong> The decimal value of the start vertical distortion of the actor&#8217;s movement.</li>&#10;<li><strong>EndSkewY:</strong> The decimal value of the end vertical distortion value of the actor&#8217;s movement.</li>&#10;<li><strong>Visible:</strong> (bool: True/False) shows or hides the actor.</li>&#10;<li><strong>Enable:</strong> (bool: True/False) Enables or disables an actor. If False, the Actor will still be displayed on the screen, but the controls, animations and mouse actions will be disabled.</li>&#10;<li><strong>Collision:</strong> (bool: True/False).  Enables or disables all collisions with this actor. If False, no collision effects will be applied.</li>&#10;<li><strong>Spritesheet$:</strong> The name of the spritesheet to use for actor animation.</li>&#10;<li><strong>Anim$:</strong> The name of the animation to play (available with the spritesheet).</li>&#10;<li><strong>LoopAnim:</strong> (bool: True/False). Play a loop animation or not.</li>&#10;<li><strong>Hotspot$:</strong> Decimal value that determines the position of the actor&#8217;s &#8220;hot spot&#8221; (for it&#8217;s value see the Hotspot Chapter).</li>&#10;<li><strong>HotspotX:</strong> Decimal value that determines the horizontal position of the actor&#8217;s &#8220;hot spot&#8221;.</li>&#10;<li><strong>HotspotY:</strong> Decimal value that determines the vertical position of the actor&#8217;s &#8220;hot spot.&#8221;</li>&#10;<li><strong>HRev:</strong> (bool: True/False). Horizontal mirror of the actor.</li>&#10;<li><strong>VRev:</strong> (bool: True/False). Vertical mirror of the actor.</li>&#10;<li><strong>LeftLimit</strong> or <strong>RightLimit:</strong> Value in pixels of the left or right edge of the displacement limit of the actor.</li>&#10;<li><strong>TopLimit</strong> or <strong>UpLimit:</strong> Value in pixels of the top edge of the displacement limit of the actor.</li>&#10;<li><strong>BottomLimit</strong> or <strong>DownLimit:</strong> Value in pixels of the top down edge of the displacement limit of the actor.</li>&#10;<li><strong>OnLimit$:</strong> Name of the procedure called when the actor reaches one of the edges.</li>&#10;<li><strong>LookAt$:</strong> Object, actor or point (X,Y) on the screen that the actor must look towards.</li>&#10;<li><strong>Auto$ :</strong> Defined an automatic movement for the actor. It uses the same parameters as for the Control$ properties: offsetX, offsetY, angle, forward and backward.</li>&#10;<li><strong>Group$:</strong> Assigns the actors to a custom group. A custom group can be assigned to several Actor. By example: &#8220;Enemy&#8221;, &#8220;Platform&#8221;, &#8220;Item&#8221;, &#8220;Player&#8221;&#8230; and therefore we can program them all together.</li>&#10;<li><strong>LoopMove:</strong> (bool: True/False). Specifies if the automatic movement should play infinitely (True), only once (False,) or a finite number of times. False by default.</li>&#10;<li><strong>ActionMove$:</strong> &#8220;play&#8221;, &#8220;pause&#8221; or &#8220;reverse&#8221; the automatic movement.</li>&#10;<li><strong>ReverseMove:</strong> (bool: True/False). Indicates if the automatic movement should go back and forth. False by default.</li>&#10;<li><strong>AutoReverse$:</strong> when ReverseMove is set to True, specifies on which axes the actor&#8217;s image should be reversed. Possible values are &#8220;horizontal&#8221;, &#8220;vertical&#8221;,  &#8220;both&#8221;  or &#8220;none&#8221;. Defaults to &#8220;none&#8221;.</li>&#10;<li><strong>TimePosition:</strong> allows to jump at a specific time during the automatic transformation.</li>&#10;<li><strong>Control$:</strong> To direct the actor with either the &#8220;mouse&#8221;, &#8220;keyboard&#8221;, &#8220;joystick&#8221;. See the Chapters: <em>Going further with Actor/ the various controls</em></li>&#10;<li><strong>Oncontrol$ :</strong> To assign the name of the procedure to be called to control the movement when Control$ is activated.</li>&#10;<li><strong>OnChange$:</strong> To assign the name of the procedure to be called when the actor undergoes a change (movement, form, transparency&#8230;).</li>&#10;<li><strong>OnAnimChange$:</strong> Name of the procedure called for each change of the actor animation.</li>&#10;<li><strong>OnCollision$:</strong> Name of the procedure called when the actor collides with another.</li>&#10;<li><strong>Onmouse$ :</strong> To assign the name of the procedure that will be called at each mouse action on the actor. The action is shared in the EVENT$ parameter of the procedure.</li>&#10;<li><strong>Onmouseclick$:</strong> To assign the name of the procedure that will be called at each mouse click on the actor.</li>&#10;<li><strong>Onmousedblclick$:</strong> To assign the name of the AOZ procedure that will be called at each mouse double-click on the actor.</li>&#10;<li><strong>Onmousedown$:</strong> To assign the name of the AOZ procedure that will be called at each mouse button press on the actor.</li>&#10;<li><strong>Onmouseup$:</strong> To assign the name of the AOZ procedure that will be called at each mouse button release on the actor.</li>&#10;<li><strong>Onmouseenter$:</strong> To assign the name of the procedure that will be called when the mouse fly over the actor (<em>Mouse Over</em>).</li>&#10;<li><strong>Onmouseexit$:</strong> To assign the name of the procedure that will be called when the mouse pointer outs of the actor.</li>&#10;<li><strong>Onkeypress$:</strong> To assign the name of the procedure that will be called at each key pressed.</li>&#10;<li><strong>Onkeyup$:</strong> To assign the name of the procedure that will be called at each key up.</li>&#10;<li><strong>Onkeydown$:</strong> To assign the name of the procedure that will be called at each key down.</li>&#10;<li><strong>Oncontrollerconnect$:</strong>: To assign the name of the procedure that will be called each time a gamepad/joystick is connected.</li>&#10;<li><strong>Oncontrollerdisconnect$:</strong> To assign the name of the procedure that will be called each time a gamepad/joystick is disconnected.</li>&#10;<li><strong>Oncontrollerbutton$:</strong> To assign the name of the procedure that will be called each time a gamepad/joystick button is pressed.</li>&#10;<li><strong>Oncontrolleraxis$:</strong> To assign the name of the procedure that will be called each time an axis changed for the gamepad/joystick.</li>&#10;<li><strong>Oncontrollerdirection$:</strong> To assign the name of the procedure that will be called each time a direction changed for the gamepad/joystick.<br/>&#10;<br/><br/>&#10;More to come&#8230;</li>&#10;</ul>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbLTE4OTgxMTIyNDYsMTY2MjgwNzYyNSwtMj&#10;gzMzE3NTg5LC0xMzI1NjQxMDE5LC0zMzc5NTE1MjAsMzE0NDk3&#10;MjI1LDEzMzc3OTU5MzksLTExNzg5MTc4NjksMTUyODI0Mjk3NS&#10;wtODc2Mjc1NjE2LC0xMzA0MDU0OTI1LC01OTgzMTkxMSwxNTIx&#10;NzA3NzkzLDg3MDIzMjAyNiw3MzA5OTgxMTZdfQ==&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/013_actor_settings.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/013_actor_settings.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i++) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

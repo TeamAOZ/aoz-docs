@@ -157,11 +157,21 @@ Fonts.prototype.getFontInformation = function( reference, contextName )
 	{
 		if ( reference < 0 )
 			throw { error: 'illegal_function_call', parameter: reference };
-		if ( this.fontInformations[ reference ] )
+		var count = 0, found = -1;
+		for ( var f = 0; f < this.fontInformations.length; f++ )	
 		{
-			if ( this.fontInformations[ reference ].contextNames[ contextName ] )
-				fontInformation = this.fontInformations[ reference ];
+			if ( this.fontInformations[ f ].contextNames[ contextName ] )
+		{
+				if ( count == reference )
+				{
+					found = count;
+					break;
+				}
+				count++;
+			}
 		}
+		if ( found >= 0 )
+			return this.fontInformations[ found ];
 	}
 	if ( !fontInformation && reference && reference.toLowerCase )
 	{
@@ -345,24 +355,35 @@ Fonts.prototype.loadFont = function( fontInformation, weight, italic, stretch, c
 		}
 	}
 };
-Fonts.prototype.getNumberOfFonts = function( type )
+Fonts.prototype.getNumberOfFonts = function( type, contextName )
 {
+	contextName = typeof contextName != 'undefined' ? contextName : this.aoz.currentContextName;
 	var amiga = typeof type == 'undefined' ? true : ( type.toLowerCase() == 'amiga');
 	var google = typeof type == 'undefined' ? true : ( type.toLowerCase() == 'google');
 	var count = 0;
 	for ( var f = 0; f < this.fontInformations.length; f++ )
 	{
 		var fontInformation = this.fontInformations[ f ];
+		if ( fontInformation.contextNames[ contextName ] )
+		{
 		if ( amiga && fontInformation.type == 'amiga' )
 			count++;
 		if ( google && fontInformation.type == 'google' )
 			count++;
+	}
 	}
 	return count;
 };
 Fonts.prototype.getFont$ = function( reference )
 {
 	var result = '';
+	if ( this.aoz.platform == 'amiga' )
+	{
+		if ( reference == 0 )
+			return result;
+		reference--;
+	}
+
 	var fontInformation = this.getFontInformation( reference, this.aoz.currentContextName );
 	if ( fontInformation  && fontInformation.contextNames[ this.aoz.currentContextName ] )
 	{

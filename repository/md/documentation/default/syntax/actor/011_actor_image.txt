@@ -5,11 +5,15 @@
 @tags: 
 @categories: 
 \-->
-Returns the number of the image used by the actor
+Returns the number of the image defined by the `Image` property of the `Actor` command.
+
+## Syntax
+>A =  **Actor Image**( actor_index )
+
 ## Parameters
-
-
-- **index**: Index of the actor
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index|Index of the Actor.|
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
 <!--stackedit_data:

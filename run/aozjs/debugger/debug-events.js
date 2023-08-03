@@ -5,6 +5,7 @@ class DebugEvents
         //
         // Branchement du debugger sur le SDK de l'éditeur
         //
+        this.connected = false;
         this.callbacks = {};        
         this.socket = new WebSocket( "ws://localhost:1974" );
         var self = this;
@@ -16,7 +17,7 @@ class DebugEvents
 
         this.socket.onmessage = function( event )
         {
-            console.log( `[message] Data received from server: ${ event.data }` );
+//            console.log( `[message] Data received from server: ${ event.data }` );
             var message = JSON.parse( event.data );
             var callback = self.callbacks[ message.callbackId ];
             if ( callback && callback.callback )

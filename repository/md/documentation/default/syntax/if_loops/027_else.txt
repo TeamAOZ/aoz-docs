@@ -7,9 +7,28 @@
 \-->
 <div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
 
-Qualify a condition
-## Parameters
+**Else** On an **If** statement, when all previous conditions return a **false** result, the code following **Else** will be executed.
 
-- **condition**: The expression to calculate that can be either TRUE or FALSE
+## Example
+Single-line **If** with **Else If** and **Else**:
+```basic
+Do
+	Input x
+	If x=12 Then Print "dozen" Else : If x=144 Then Print "gross" Else Print "Not dozen or gross"
+Loop
+``` 
+Multi-line **If** with **Else If** and **Else**:
+```basic
+Do
+	Input x
+	If x=12
+		Print "dozen"
+	Else If x=144
+		Print "gross (12 dozen)"
+	Else
+		Print "not dozen or gross"
+	End If
+Loop
+```
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

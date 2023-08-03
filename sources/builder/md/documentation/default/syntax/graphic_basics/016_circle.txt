@@ -1,0 +1,17 @@
+# Circle
+<!--
+@name: Circle
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Draw a circle with the current Ink in the current screen
+## Parameters
+
+- **x**: The horizontal coordinate of the centre of the circle
+- **y**: The vertical coordinate of the centre of the circle
+- **radius**: The radius of the circle in pixels
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

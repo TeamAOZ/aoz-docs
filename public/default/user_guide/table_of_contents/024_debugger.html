@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/debugging'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/debugging'>
+        <meta name='pagename' content='AOZ Docs - DEBUGGING'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - DEBUGGING</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="debugging">DEBUGGING</h1>&#10;<p>AOZ Studio includes few useful instructions and a fully-fledged debugger. <strong>(NOTE this chapter is yet not updated for the brand new version of the debugger)</strong></p>&#10;<p>If you want to check a variable value, or say if your program is going in a special location you may just use the Console Log or Console  Warn or Console Error instructions, explained below. If you want more precise debugging then you may use the debugger.</p>&#10;<h2 id="what-is-a-debugger">What is a debugger?</h2>&#10;<p>It is an interesting tool that enables the programmer to find and understand errors in the code. The AOZ Studio debugger is very versatile, allowing you to:</p>&#10;<ul>&#10;<li>break and step through the code of your program</li>&#10;<li>break into the code if a watched expression is true</li>&#10;<li>inspect and modify variables and arrays</li>&#10;<li>display information in a log window</li>&#10;<li>inspect the sprites, bobs and actors contained in your application</li>&#10;<li>locate graphical elements precisely with rulers and a grid</li>&#10;<li>play your application step by step, in slow motion or at full speed</li>&#10;<li>watch the content of an expression updated in real time</li>&#10;</ul>&#10;<p>Advanced note: The AOZ debugger is integrated in the Javascript code of your application by the transpiler. It does not depend on the AOZ IDE to be run and works happily in the browser.</p>&#10;<h2 id="the-console-log-console--warn-console-instructions">The Console Log, Console  Warn, Console instructions</h2>&#10;<p>The Console Log instruction allows you to debug your application. When ran under the Aoz Viewer, the first time the instruction is encountered, Aoz will open the Aoz Console. Then the data is printed, allowing you to monitor the internals of your application.<br/>&#10;When run in the browser (say Chrome) you will find your messages in its Javascript console.</p>&#10;<p>The data to print, can be a text, a number, or the result of a calculation.</p>&#10;<ul>&#10;<li><strong>Console Log</strong> prints the data using the default colors of the console.</li>&#10;<li><strong>Console Warn</strong> prints the data as a warning message, in green color. Use it at places of your application where you are unsure of the code.</li>&#10;<li><strong>Console Error</strong> prints the data as an error message, in red color.</li>&#10;</ul>&#10;<p><strong>Example</strong></p>&#10;<pre><code class="prism language-basic">For X = 0 To 10&#10;&#9;Console Log X&#10;&#9;Console Warn &#34;Warn X:&#34;   Str$( X )&#10; &#9;Console Error &#34;Error X:&#34; ; X &#10;Next&#10;</code></pre>&#10;<h2 id="how-to-display-the-debugger">How to display the debugger?</h2>&#10;<p>You can display the AOZ debugger in two ways:</p>&#10;<h3 id="from-the-aoz-viewer">From the AOZ Viewer:</h3>&#10;<p>Click on the &#8220;Debugger&#8221; side window button to open the debugger without interfering with your program.</p>&#10;<p><img src="https://doc.aoz.studio/assets/images/en/image103.png" alt="AOZ Debugger"/></p>&#10;<p>The debugger is displayed in a top-layer transparent screen that does not interact in any way with the application and only watches what is going on. All the keys, joystick and mouse movements, except the &#8220;Escape&#8221; key, are transmitted to the application.</p>&#10;<p>While the application is running, the &#8220;Variables&#8221; window shows, updated in real time, all values of all the variables. (Some of the values may change so rapidly that they may be impossible to read). When you move the mouse over the name of an array, the debugger displays the content of the array in real time.</p>&#10;<p>You can break into the code at any time by pressing F8 or clicking on the &#8220;Pause&#8221; button.</p>&#10;<p>To hide the debugger while keeping it, press &#8220;Escape&#8221;. The debugger will stay in the back ready to pop-up when you press &#8220;Escape&#8221; another time. Please note that in future versions, when hidden, the debugger will be able to do interesting things like evaluate the speed of the various routines (what professionals call &#8220;profiling&#8221;) or record the values of all the variables and graphical objects so that you can replay and take over &#8220;just before the bug&#8221;.</p>&#10;<p>To hide the debugger and remove it completely from memory, click a second time on the &#8220;Debugger&#8221; button.</p>&#10;<p>When run from the AOZ Viewer, the debugger allows you to type commands in the console window, as if you were in direct mode. Use this very interesting feature to tweak the position of objects, change variables or manipulate data, then relaunch the application to see the effect.</p>&#10;<p>It is not yet possible to modify the actual source of the application while in the middle of it.</p>&#10;<h3 id="from-your-browser">From your browser:</h3>&#10;<p>Activate the debugger by inserting one of the following instructions in your program:</p>&#10;<ul>&#10;<li><strong>Debug</strong></li>&#10;<li><strong>Break</strong></li>&#10;<li><strong>Break If</strong></li>&#10;</ul>&#10;<p>The reduced version of the debugger wilbe displayed with the Log or Watch window by using the following instructions in the code:</p>&#10;<ul>&#10;<li><strong>Log</strong></li>&#10;<li><strong>Watch</strong></li>&#10;</ul>&#10;<p>Inside of the browser, the debugger&#8217;s console window is not interactive: it can only display the information it is given but does not allow you to enter commands.<br/>&#10;&lt;![if !supportAnnotations]&gt; &lt;![endif]&#8211;&gt;</p>&#10;<h2 id="the-debugger-window">The debugger window</h2>&#10;<p><img src="https://doc.aoz.studio/assets/images/en/image104.png" alt="AOZ Debugger"/></p>&#10;<p>The debugger includes:</p>&#10;<p><strong>The Stack Window</strong> shows the current application call stack. The stack increases when Gosub is used or a Procedure is called, and decreases when Return is executed or the procedure exits.</p>&#10;<p><strong>The Watch Window</strong> shows all expressions that have been added for evaluation with the <strong>Watch</strong> or <strong>Break If</strong> command. When the debugger is running, the expression is evaluated after each instruction (may be impacting the speed of the application a little), and the result is displayed. <strong>Break If</strong> will set the debugger in source-trace mode if the associated expression evaluates as True.</p>&#10;<p><strong>The Variables Window</strong> shows all the variables currently defined in the application. Global variables will be located on top of the list while local variables of procedures will be at the end. As for watch, the value of all the variables is updated after each instruction.</p>&#10;<p>You can change the value of the variables by clicking on them.</p>&#10;<p>Arrays are displayed in a specific popup window, allowing you to inspect all the values.<br/>&#10;<img src="https://doc.aoz.studio/assets/images/en/image105.png" alt="AOZ Debugger"/></p>&#10;<ul>&#10;<li>Click on   and - to update the position of the view of each dimension in the popup.</li>&#10;<li>Click on the dimension itself to enter a value manually.</li>&#10;<li>Click on one of the values to change it.</li>&#10;</ul>&#10;<p><strong>The Source Code window</strong> shows the source code of the application. The next instruction to be executed is highlighted in red. You can move the cursor and inspect the source code by clicking on the window. When the cursor is activated, and located after the current instruction, pressing the <strong>ENTER</strong> key will run the application up to the line where the cursor is located. This feature enables you to quickly scan through your code.</p>&#10;<p><strong>The Console Window</strong> displays every line that was sent to it with the <strong>Log</strong> instruction. As a default, the number of lines memorized is 100, but this value can be set in the <strong>Debug On</strong> instruction with the <strong>consoleLines</strong> parameter.</p>&#10;<h3 id="the-debugger-settings-button">The Debugger Settings button</h3>&#10;<p>Opens the debugger settings window, where you can define some of the parameters of the debugger like colors and window positioning.</p>&#10;<h3 id="the-application-control-buttons">The Application Control buttons</h3>&#10;<p>The Application Control buttons offer full control over your application. From left to right:<br/>&#10;<img src="https://doc.aoz.studio/assets/images/en/image106.png" alt="AOZ Debugger"/></p>&#10;<p><strong>Stop</strong>: exits the application and returns to the editor when it has been run under the AOZ IDE.<br/>&#10;<strong>Restart</strong>: re-launches the application. All variables will be re-initialized and the display is reset.<br/>&#10;<strong>Pause</strong> (F8): will pause the program at the current location of the program pointer.  If you have a main loop regulated by a <strong>Wait Vbl</strong> instruction, chances are that the next instruction will be the one after the <strong>Wait Vbl</strong> instruction.<br/>&#10;<strong>Step Into</strong> (F9): executes the next instruction and stops. If the next instruction is a <strong>Gosub</strong> or a Procedure or method call, then the debugger enters that code.<br/>&#10;<strong>Step Over</strong> (F10): executes the next instruction as a whole, even if it is a <strong>Gosub</strong> or a procedure call. The debugger will stop at the next instruction after the call. If the next instruction is not a routine call, then F10 behaves as F9.<br/>&#10;<strong>Play One Frame</strong> (Space): run the application for a full refresh. One would say &#8220;One loop&#8221; of the application. The next time the debugger appears, all sprites and bobs will have moved and all values will have been updated.<br/>&#10;<strong>Play in Slow Motion</strong>: run the application in slow motion. During the run, you can press Pause (<strong>F8</strong>) to break into the code at the current location of the program pointer.<br/>&#10;<strong>Play at Full Speed</strong>: run the application at full speed. You can hide the debugger by pressing the <strong>ESCAPE</strong> key: it will hide the display of the debugger, but it will still be watching the application run and will break if it encounters a breakpoint.</p>&#10;<p><strong>The Preferences</strong> <strong>Window</strong><br/>&#10;<img src="https://doc.aoz.studio/assets/images/en/image107.png" alt="AOZ Debugger"/><br/>&#10;The Preferences window allows you to choose the various colors of the interface. To change a color, just click on its button and choose the color in the color picker. The alpha value defines the transparency of the debugger. You can also press <strong>NUMPAD  </strong> and <strong>NUMPAD -</strong> to change these values.<br/>&#10;If &#8220;Window default position&#8221; is set to left, all the windows will be aligned to the left of the debugger screen. To the right if set to the right. You can also swap the position by pressing <strong>NUMPAD ENTER</strong>.</p>&#10;<h2 id="debugger-keyboard-shortcuts">Debugger Keyboard shortcuts</h2>&#10;<p>While the debugger is displayed, you can use the following keys:</p>&#10;<p><strong>NUMPAD  </strong> / <strong>NUMPAD -</strong> : quickly change the alpha value of the debugger screen, making it more or less transparent.<br/>&#10;<strong>NUMPAD ENTER</strong>:</p>&#10;<ul>&#10;<li>default behavior: switch the position of the debugger windows alternatively to the left or the right of the display.</li>&#10;<li>when the focus is in the source window: run the application up to the line where the cursor is located (only if this location is after the next instruction).<br/>&#10;<strong>F8</strong>: out the application in Pause<br/>&#10;<strong>F9</strong>: step Into the next instruction<br/>&#10;<strong>F10</strong>: step Over the next instruction<br/>&#10;<strong>R</strong>: turns rulers on / off<br/>&#10;<strong>G</strong>: turns grid on / off<br/>&#10;<strong>B</strong>: turns bob information display on / off<br/>&#10;<strong>S</strong>: turns sprite information display on / off<br/>&#10;<strong>W</strong>: turns Watch window on / off<br/>&#10;<strong>S</strong>: turns Stack window on / off<br/>&#10;<strong>C</strong>: turns Console window on / off<br/>&#10;<strong>V</strong>: turns Variables window on / off<br/>&#10;<strong>SPACE</strong>: run one frame of the application<br/>&#10;<strong>ESCAPE</strong>: hide the debugger and play the application at full speed</li>&#10;</ul>&#10;<p>While the debugger is not displayed, you can use:<br/>&#10;<strong>ESCAPE</strong>: hide or show the debugger information without interfering with the application (allowing you to watch the variables change)</p>&#10;<h2 id="debug-instructions">Debug Instructions</h2>&#10;<p>Debug, visible, console, variables, watch, source, bobs, sprites, grid, gridWidth, gridHeight, rulers, screens, collisions, alpha#</p>&#10;<p>The <strong>Debug</strong> instruction launches the debugger without affecting the running of your application. If the <strong>visible</strong> parameter is set to True, the debugger will appear and display the information at that moment. It will continue to display the updated information as the program is running. To break into the code, press <strong>F8</strong> or click the Pause button.</p>&#10;<p>Parameters:<br/>&#10;<strong>visible</strong> (boolean) True to display debugger, False to keep it hidden<br/>&#10;<strong>console</strong> (boolean) True to display the console window (default) or False to keep it hidden<br/>&#10;<strong>watch</strong> (boolean) True to display the watch window (default) or False to keep it hidden<br/>&#10;<strong>source</strong> (boolean) True to display the source-code window (default) or False to keep it hidden<br/>&#10;<strong>bobs</strong> (boolean) True to display information for all the bobs or False for only the bob under the mouse (default)<br/>&#10;<strong>sprites</strong> (boolean) True to display information for all the sprites or False for only the sprite under the mouse (default)<br/>&#10;<strong>rulers</strong> (boolean) True to display the rulers or False to keep them hidden<br/>&#10;<strong>collisions</strong> (boolean) True to display collision information or False to keep it hidden<br/>&#10;<strong>grid</strong> (boolean) True to display the grid or False to keep it hidden<br/>&#10;<strong>gridWidth</strong> (integer) Grid horizontal step (default = 32)<br/>&#10;<strong>gridHeight</strong> (integer) Grid vertical step (default = 32)<br/>&#10;<strong>alpha#</strong> (float) alpha transparency value of the debugger screen (default = 0.95)</p>&#10;<p><strong>Break</strong><br/>&#10;The <strong>Break</strong> instruction has no parameter and will launch the debugger with the program paused on the <em>next</em> instruction after the <strong>Break</strong> statement. You are then free to step into the code with <strong>F9</strong> and <strong>F10</strong> or re-launch the application with <strong>F8</strong>.</p>&#10;<p><strong>Break If expression</strong><br/>&#10;The <strong>Break If</strong> instruction adds a new expression to the Watch window.  <strong>expression</strong> may be any expression that evaluates to a boolean (true or false).  When the expression becomes true, the debugger is launched, and paused on the <em>next</em> instruction after the <strong>Break If</strong> statement.</p>&#10;<p>The <strong>expression</strong> is evaluated constantly after each instruction of your application. This has the great advantage of positioning the debugger immediately after the expression is true.</p>&#10;<p>For example: &#8220;something&#8221; changes the X variable to 1000, but you cannot locate exactly where in your code. To find out, simply insert the following statement at the start of your application and run it! It will stop at the exact location where the value is set to 1000.<br/>&#10;<strong>Break If</strong> X = 1000<br/>&#10;Parameters: expression (boolean)</p>&#10;<p><strong>Watch expression</strong><br/>&#10;Add an expression to the watch window. This expression is evaluated after each instruction and the result is displayed in the window. A large number of expressions to watch may reduce the speed of your application.<br/>&#10;Parameters:<br/>&#10;<strong>expression</strong> (number): a numeric expression to evaluate<br/>&#10;<strong>expression$</strong>:: a string expression to evaluate</p>&#10;<h2 id="important-note">Important note</h2>&#10;<p>To run, the AOZ debugger needs extra information about the source code of your application. This extra information is automatically added to the Javascript code when transpiling and increases the size of the code. Your application will also be a little slower.</p>&#10;<p>That is the reason why it is recommended to check for debugging instructions such as &#8220;Log&#8221;, &#8220;Break&#8221;, &#8220;Break If&#8221; or &#8220;Debug&#8221; <strong>before publishing anything</strong>.</p>&#10;<p>AOZ Studio will report an error if you try to publish an application with such code.</p>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbLTEyNTUzOTcwNzMsMzc0NzAwNTg2XX0=&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/024_debugger.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/024_debugger.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

@@ -1,0 +1,19 @@
+# Cls
+<!--
+@name: Cls
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Clear an area of the current screen
+## Parameters
+
+- **ink**: The index of the color in the palette to clear with
+- **x1**: The horizontal coordinate of the top-left pixel of the rectangle to clear
+- **y2**: The vertical coordinate of the top-left pixel of the rectangle to clear
+- **x2**: The horizontal coordinate of the bottom-right pixel of the rectangle to clear
+- **y2**: The vertical coordinate of the bottom-right pixel of the rectangle to clear
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

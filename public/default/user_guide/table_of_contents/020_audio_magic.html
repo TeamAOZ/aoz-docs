@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/audio%20magic'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/audio%20magic'>
+        <meta name='pagename' content='AOZ Docs - AUDIO MAGIC'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - AUDIO MAGIC</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="audio-magic">AUDIO MAGIC</h1>&#10;<h2 id="sound-effects">Sound effects</h2>&#10;<p>Every AOZ audio command acts independently from your gameplay and other routines, so they won&#8217;t interfere with your programming. On the contrary, audio can enhance your work any way you like, to act as a marker, add realism, to soothe, shock or inject comedy and silliness. Let&#8217;s start by ringing some musical bells, with 96 bells to play with and where Bell number 1 plays the lowest note up to Bell 96 for the highest note. Type in and click RUN, then press keys as much as you like to ring those bells:</p>&#10;<pre><code class="prism language-basic">For RING=1 to 96&#10;Bell RING : Wait Key&#10;Next RING&#10;</code></pre>&#10;<p>Here are some more built-in effects to type in and RUN:</p>&#10;<pre><code class="prism language-basic">Boom : Print &#34;Is was a dark and stormy night.&#34;&#10;Wait 2&#10;Bell 1 : Print &#34;Count Dracula met a bat.&#34;&#10;Wait 2&#10;Shoot : Print &#34;Ouch!&#34;&#10;</code></pre>&#10;<p>There are AOZ commands to control volume, audio channels, wave patterns, white noise, sound samples, music modules and a whole lot more. So you are not just limited to bell-ringing. In fact you can liven up your creations with any sound effect or audio you like. Check the <strong>Sam Play</strong> instruction to produce sound as easily as possible.</p>&#10;<h2 id="we-need-to-talk">We need to talk</h2>&#10;<h3 id="speech-synthesis">Speech synthesis</h3>&#10;<p>You&#8217;ll be asking AOZ to talk next, and you&#8217;d better believe that it can. Type in and RUN this:</p>&#10;<pre><code class="prism language-basic">Say &#34; It was a dark, and stormy night.&#34;&#10;</code></pre>&#10;<p>We think that&#8217;s a very attractive voice, and it will say anything you type in English. So have some fun with this, and please mind your language! Here&#8217;s some more detailed info about the instruction:</p>&#10;<p><strong>Say &#8220;text&#8221;</strong>,  wait</p>&#10;<p>Ask the system to speak your text with the simple Say instruction, followed by the string of characters representing the text to be heard. The wait parameter is a numerical value that is set to 0 by default and indicates the pause time after listening to the text.</p>&#10;<p><strong>Say &#8220;Hello world!&#8221;</strong> will talk in English by default</p>&#10;<p>Or in French:</p>&#10;<p><strong>Speech Language &#8220;fr&#8221; : Say &#34;Bonjour le monde!&#34;</strong></p>&#10;<p>Note that you have two syntaxes:</p>&#10;<p><strong>Say</strong> &#8220;Hello world!&#8221;  or  **Say sentence$=&#34;**Hello world!&#34;</p>&#10;<p>Before you make your machine say something, you can change the parameters:</p>&#10;<p><strong>Set Talk</strong> sex, fashion, pitch, rate<br/>&#10;Set the parameters for instruction <strong>Say:</strong></p>&#10;<ul>&#10;<li>sex: 0 for female or 1 for male. By default, this setting is set to 0.</li>&#10;<li>mode: not used</li>&#10;<li>pitch#: Defines the pitch of the voice to speak the written text. The pitch setting is between 0.0 and 2.0 in AOZ mode, or 65 to 320 in AMOS Amiga mode.</li>&#10;<li>rate: Defines the speed of the voice, to dictate the written text. The value is between 0.0 and 10.0 in AOZ mode, or 40 to 400 in Amiga mode.</li>&#10;</ul>&#10;<pre><code class="prism language-basic">Set Talk sex=1, rate=0.5&#10;Say &#34;AOZ Studio is amazing!&#34;&#10;</code></pre>&#10;<br/>&#10;<p><strong>Talk Misc volume#,  frequency</strong><br/>&#10;Equivalent of <strong>Voice Volume</strong> instruction.<br/>&#10;(The  frequency parameter is not used, for AMOS compatibility.)<br/>&#10;<br/></p>&#10;<p><strong>Talk Stop</strong><br/>&#10;Stop the dictation of the written text.<br/>&#10;<br/></p>&#10;<p><strong>Set Voice</strong> voice<br/>&#10;Define the voice, among those available, to speak with.<br/>&#10;<br/></p>&#10;<p><strong>Voice</strong> pitch#<br/>&#10;Define the pitch of the voice from deep bass to high soprano, for speaking your written text. The pitch setting is between 0.0 and 10.0 in AOZ mode  (65 to 320 in Amiga AMOS mode).<br/>&#10;<br/></p>&#10;<p><strong>Voice Rate</strong> rate<br/>&#10;Define the speed of the voice, for speaking the written text. The value is between 0.0 and 10.0 in AOZ  (40 to 400 in AMOS).<br/>&#10;<br/></p>&#10;<p><strong>Voice Volume</strong> Volume#<br/>&#10;Define the volume of the voice. The volume setting is between 0.0 and 1.0 (40 to 400 in Amiga AMOS)&#8230;</p>&#10;<p>You can try that:</p>&#10;<pre><code class="prism language-basic">Do&#10;&#9;Voice Volume Volume#&#10;&#9;Say &#34;quick&#34;&#10;&#9;Volume#=Volume# 0.2&#10;Loop&#10;</code></pre>&#10;<br/>&#10;<h3 id="speech-recognition">Speech Recognition</h3>&#10;<p>IMPORTANT NOTES:</p>&#10;<ul>&#10;<li>the audio recording works only in a web browser, not in the AOZ Viewer. So make sure the microphone option of your web browser is active and RUN it with the F1 key (Run in a browser).</li>&#10;<li>In general to have <strong>sounds in the browser you first need to click</strong> in the program window, it is a protection included in most web browsers (to check if it is a human and not from, say, an automatic advertising popup).</li>&#10;</ul>&#10;<p><strong>Speech Recognition Start</strong><br/>&#10;Launches voice recognition<br/>&#10;Here is an example using this instruction:</p>&#10;<pre><code class="prism language-basic">Speech Recognition Start&#10;Print &#34;&gt;Start to say something&#34;&#10;Do&#10;TXT$ = Speech Recognition Value$&#10;If TXT$ &lt;&gt; &#34;&#34; Then Print TXT$&#10;Loop&#10;</code></pre>&#10;<p>Press the F1 key to RUN, then speak English &#128522;</p>&#10;<p><strong>Speech Language</strong></p>&#10;<p>Defines the language spoken by the user. The value is a country code. By default, it is defined in English &#8220;en&#8221;. &#8220;fr&#8221; is for French, like this:</p>&#10;<pre><code class="prism language-basic">Speech Language &#34;fr&#34;&#10;Speech Recognition Start&#10;Print &#34;dis moi bonjour&#34;&#10;Do&#10;&#9;TXT$ = Speech Recognition Value$  &#10;&#9;If TXT$ &lt;&gt;&#34;&#34; Then Print TXT$&#10;Loop&#10;</code></pre>&#10;<p>Press the F1 key to RUN, then speak French &#128522;</p>&#10;<p><strong>Speech Recognition Stop</strong><br/>&#10;Stops voice recognition.</p>&#10;<p><strong>Speech Recognition Reset</strong><br/>&#10;Resets all voice recognition settings.</p>&#10;<h3 id="speech-extra-features">Speech extra features</h3>&#10;<p><strong>Speech</strong> <strong>Synthesis Allowed</strong><br/>&#10;Returns True if audio text is allowed by the system.</p>&#10;<p><strong>Speech</strong> <strong>Recognition Allowed</strong><br/>&#10;Returns True if voice recognition is allowed.<br/>&#10;To test you can do something like that:</p>&#10;<pre><code class="prism language-basic">If Speech Synthesis Allowed&#10;&#9;Print &#34;Speech Synthesis allowed&#34;&#10;Else&#10;&#9;Print &#34;Speech Synthesis NOT allowed&#34;&#10;End If&#10;&#10;If Speech Recognition Allowed&#10;&#9;Print &#34;Speech Recognition allowed&#34;&#10;Else&#10;&#9;Print &#34;Speech Recognition NOT allowed&#34;&#10;End If&#10;</code></pre>&#10;<p><strong><em>Speech Recognition Add Word</em></strong><em>, word$  (not used yet)</em></p>&#10;<p>There&#8217;s more speech fun in the Demos folder. Click on the main.aoz file in the Speech Demo. Enjoy.<br/>&#10;<img src="https://doc.aoz.studio/assets/images/en/image097.png" alt="speak AOZ"/></p>&#10;<h2 id="samples">Samples</h2>&#10;<p>Most magicians will want to exploit audio samples in their game  routines. Samples are used for dialogue, atmospheric music and sound effects, just like in a movie. With AOZ you can play them in any order, separately or simultaneously, at any volume, with fades, crossovers and special effects.</p>&#10;<p>The former AMOS instruction to Play an audio sample is <strong>Sam Play.</strong> Now we also have <strong>Play Audio.</strong> We considered calling the command AlCrl\x&#163;1 but after long discussions with the team we choose Play Audio.</p>&#10;<p>As always, when you create an application, your audio files will be kept in a ready-made sounds folder. There&#8217;s a separate folder for your application, so let&#8217;s move on to an overview of that subject.</p>&#10;<p>You can copy/paste sounds, music, likewise images in the corresponding resources folder of your application by moving the file in it. You can copy a file by dragging it in the folder while the Ctrl key is pressed.<br/>&#10;<strong>Sam Play 1</strong> or <strong>Play Audio 1</strong> will play the sound named 1 in the 5.samples folder -&gt;<img src="https://doc.aoz.studio/assets/images/en/image098.png" alt="speak AOZ"/></p>&#10;<p>For sounds and music, it is possible to manage the volume, play in a loop, know the current playback position  (See: Load Asset, Audio Loop On/Off, Play Audio, Stop Audio, Volume Audio).</p>&#10;<p>Another method is to use the Load Asset instruction. Here is an example, knowing that your sound file is in the sounds folder that you will have first created:</p>&#10;<pre><code class="prism language-basic">Load Asset &#34;resources/sounds/my_audio.wav&#34;, &#34;sfx&#34;&#10;Wait Key&#10;Play Audio &#34;sfx&#34;&#10;Pause Audio &#34;sfx&#34;&#10;TM = Time Audio(&#34;sfx&#34;)&#10;</code></pre>&#10;<h2 id="music">Music</h2>&#10;<p>You&#8217;ve got a complete range of facilities and commands for playing music composed with the AOZ system, as well as for music created with systems like Med Soundstudio and other trackers. If you can&#8217;t write your own musical masterpieces, don&#8217;t worry. AOZ allows you to take another composer&#8217;s musical soundtracks and add them to your own games and utilities. There are tens of thousands of public domain soundtracks written with systems like SoundTracker, NoiseTracker, and all the commands to load them and use them are built into AOZ.</p>&#10;<p>And there are the big samples library from Miko that we supply free for (only) your AOZ Studio programs (no royalties to pay).</p>&#10;<p>AOZ supports the following formats: wav, ogg, mp3, mod, xm.</p>&#10;<p>CAUTION: To play a sound, the internet browser requires prior user action (browser protection). So you have to keep the AOZ Studio SplashScreen display or replace it with something that similarly requires you to click beforehand.</p>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbNjYxODg2NjQ3LC03NzQ5MzcyMDksMTIyMT&#10;E5NTY2OCw0NDgzNjU4MzEsLTM1NjY3NTYyMCwxMDkyMzQyMzkx&#10;LC0xMTc4OTE3ODY5LDE1MjgyNDI5NzUsLTg3NjI3NTYxNiwtMT&#10;MwNDA1NDkyNSwtNTk4MzE5MTEsMTUyMTcwNzc5Myw4NzAyMzIw&#10;MjYsNzMwOTk4MTE2XX0=&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/020_audio_magic.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/020_audio_magic.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

@@ -289,7 +289,12 @@ function Errors( aoz )
 			"object_name_conflict:Name conflicts with %1 named %2",
 			"bank_element_not_defined:Object not found (%1)",
 			"filesystem_initializing:Filesystem under initialization",
-			"object_variable_not_defined:Object variable must be initialised (%1)"
+			"object_variable_not_defined:Object variable must be initialised (%1)",
+			"application_complete:Application complete.",
+			"sound_not_playing:Sound not playing (%1).",
+			"key_not_defined:Unknown key name (%1).",
+			"syntax_error_reason:Syntax error: %1",
+			"wait_without_param:WAIT without parameter, please specify what to wait for (number of seconds, key, input ...)"
 		],
 		fr:
 		[
@@ -546,7 +551,12 @@ function Errors( aoz )
 			"object_name_conflict:Conflit de nom avec %1 nomme %2",
 			"bank_element_not_defined:Objet non trouve (%1)",
 			"filesystem_initializing:Systeme de fichier en cours d'initialisation",
-			"object_variable_not_defined:Les variables objet doivent etre initialisees (%1)"
+			"object_variable_not_defined:Les variables objet doivent etre initialisees (%1)",
+			"application_complete:Application terminée.",
+			"sound_not_playing:Son inactif (%1).",
+			"key_not_defined:Nom de touche inconnu (%1).",
+			"syntax_error_reason:Erreur de syntaxe: %1",
+			"wait_without_param:WAIT sans paramètre, veuillez spécifier ce qu'il faut attendre (nombre de secondes, key, input ...)"
 		],
 	};
 };
@@ -616,12 +626,12 @@ Errors.prototype.getError = function( error, param )
 				else if ( error.parameters )
 				{
 					for ( var p = 0; p < error.parameters.length; p++ )
-						message = self.aoz.utilities.replaceStringInText( message, '%' + ( p + 1 ), '' + error.parameters[ p ] );
+						message = self.aoz.utilities.replaceStringInText( message, '%P' + ( p + 1 ), '' + error.parameters[ p ] );
 				}
 					
 				// Clean the remaining %
 				for ( var n = 0; n < 5; n++ )
-					message = self.aoz.utilities.replaceStringInText( message, '%' + n, '' );
+					message = self.aoz.utilities.replaceStringInText( message, '%P' + n, '' );
 				return { number: number, index: id.substring( 0, id.length - 1 ), message: message };
 			}
 		}

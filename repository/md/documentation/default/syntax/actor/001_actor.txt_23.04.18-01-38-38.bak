@@ -1,0 +1,167 @@
+
+# Actor
+<!--
+@name: Actor
+@description: Summary of the Actor parameters to display, animate and control images in 2D, 3D, videos, graphical texts. Actor is one of the most powerful graphics instructions in the AOZ language for graphics.
+@tags: behavior,animation,design,graphic,sprite,character,movement,game,picture,image,show,display,moving,control,bob
+@categories:
+\-->
+<div  class="compatibility"><span>Compatibility</span><img  src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png"  valign="center"  alt="AOZ"  title="AOZ"  /></div>
+
+Display, animate and control images in 2D, 3D, videos, as well as graphical texts. You will find many parameters below to do magical tricks.
+
+## Syntax
+<b>Basic syntaxes:</b>
+> **Actor** actor_index, `Image` =  image_index, `X`= 100, `Y`= 50
+
+## Examples
+<b>Some examples:</b>
+```basic
+Actor "my_hero", Image$ = "magic"
+Actor "enemy1", Image = 2
+Actor 255, Image$ = "lucie"
+Actor "my_hero", Image$ = "hero1", X = 200, Y = 300
+Actor "space_ship", Image$ = "ship", Control$ = "keyboard"
+Actor "enemy1", Image$="monster", StartX = 0, EndX = 320, StartY=0, EndY=50, Duration=10000
+```
+
+<b>Little more complex examples:</b>
+```basic
+// Using the default bitmap font for texts using Actor instruction and parameters:
+Actor "text", X=950, Y=500, FontSize=96, Text$="Hello World!", StartScale=0.05, EndScale=1.5, Hotspot$="middle", Duration=3000
+Wait Input
+Actor "text", StartScale=-4, EndScale=1.5 // note that negative values will reverse the image
+Wait Input
+// Using Images:
+Actor "image1", X=500, Y=880, Image$="magic", StartScaleX=0.1, EndScaleX=2, Hotspot$="middle", Duration=6000
+Actor "image2", X=950, Y=880, Image$="magic", StartSkewX=0.1,  EndSkewX=2,  Hotspot$="middle", Duration=6000
+Actor "image3", X=1400,Y=880, Image$="magic", StartScale=0.1,  EndScale=2,  StartAngle=1, EndAngle=270, Hotspot$="middle", Duration=6000
+```
+## Parameters
+( italic ) = Optional
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index|Index of the Actor|
+|_`Visible`_|boolean|Set the Actor visibility. If not set, True by default is used.|
+|_`Enable`_|boolean|If False, the Actor will still be displayed on the screen, but the controls, animations and mouse actions will be disabled.|
+|_`Collision`_|boolean|Enables or disables all collisions with this actor. If False, no collision effects will be applied.|
+|_`Group$`_|string|Assigns the actor to a custom group. A custom group can be assigned to several Actor. By example: "enemy", "bonus", "key"...|
+|_`Behavior$`_|string|Apply one or more availables behaviors to the Actor. By example: "jump", "fly",...|
+|_`UserData$`_|string|Value reserved for the developer. This is a data exclusive to the Actor and will be used specifically for the program.|
+|**Position**|||
+|_`X`_|integer|Actor horizontal position on the screen. If not set, 0 by default|
+|_`Y`_|integer|Actor vertical position on the screen. if not set, 0 by default|
+|_`Z`_|integer|Actor depth position on the screen. if not set, 0 by default|
+|**Image**|||
+|_`Image`_|index|Index of the image of Actor.|
+|_`SpriteSheet$`_|string|Name of the spritesheet loaded with the `Load Asset` instruction to animate the Actor.|
+|_`HotSpot$`_|string|Set the hot spot of the Actor. The supported values are : <ul><li>"top-left" (by default)</li><li>"top-middle"</li><li>"top-right"</li><li>"left"</li><li>"middle"</li><li>"right"</li><li>"bottom-left"</li><li>"bottom-middle"</li><li>"bottom-right"</li></ul>|
+|_`HotSpotX`_|integer|Set the horizontal hot spot position of the Actor. If not set, 0 is used by default ( left ).|
+|_`HotSpotY`_|integer|Set the vertical hot spot position of the Actor. If not set, 0 is used by default ( top ).|
+|_`HRev`_|boolean|Set if the horizontal flipping of the Actor. If True, the Actor is flipped horizontaly. If not set, False by default is used.|
+|_`VRev`_|boolean|Set if the vertical flipping of the Actor. If True, the Actor is flipped verticaly. If not set, False by default is used.|
+|**Text**||(Cannot use Text and Image on the same Actor)|
+|_`Text$`_|string|Text that will be displayed by the Actor as an image|
+|_`FontName$`_|string|Name of the bitmap font that will be used to display the text. If no font is defined, the default font will be used.|
+|_`FontSize`_|integer|Value of the font size. The font size by default will be used if this property is not defined.|
+|_`FontSpacing`_|integer|Horizontal spacing between each character. A negative value is allowed. 0 (by default) is the normal spacing.|
+|**Frontiers**|||
+|_`LeftLimit`_|integer|Set the left limitation for the Actor.|
+|_`TopLimit`_|integer|Set the top limitation for the Actor.|
+|_`UpLimit`_|integer|Alias of `TopLimit`.|
+|_`RightLimit`_|integer|Set the right limitation for the Actor.|
+|_`BottomLimit`_|integer|Set the bottom limitation for the Actor.|
+|_`DownLimit`_|nteger|Alias of `BottomLimit`.|
+|**Video**|||
+|_`Video$`_|string|Name of the video loaded by `Load Asset` used like an image for this Actor|
+|_`VideoPlay`_|boolean|Play the video associated at this actor. True by default|
+|_`VideoLoop`_|boolean|Play the video associated at this actor in loop. True by default|
+|**Inputs**|||
+|_`Control$`_|string|Set one or more controls that will allow the user to interact with the Actor (keyboard, mouse or joystick).|
+|_`LookAt$`_|string|Name of the object the actor has to look at. This can be the position of the mouse, another actor or a point on the screen.|
+|_`Auto$`_|string|Defined an automatic movement of the actor. It uses the same parameters as for the `Control$` property.|
+|**Movement**|||
+|_`StartX`_|integer|Actor horizontal start position on the screen for a moving. If not set, the "X" position is used.|
+|_`StartY`_|integer|Actor vertical start position on the screen for a moving. If not set, the "Y" position is used.|
+|_`StartZ`_|integer|3D Actor depth start position on the 3D scene for a moving. If not set, the "Z" position is used.|
+|_`EndX`_|integer|Actor horizontal end position on the screen for a moving. If not set, the "X" position is used.|
+|_`Endy`_|integer|Actor vertical end position on the screen for a moving. If not set, the "Y" position is used.|
+|_`EndZ`_|integer|3D Actor depth end position on the 3D scene for a moving. If not set, the "Z" position is used.|
+|_`Duration`_|integer|Length in milliseconds of the Actor moving. If not set, 1000 by default (1 second)|
+|_`LoopMove`_|boolean|Set if the moving should play to the infinite, or not. If not set, False by default is used.|
+|_`Transition$`_|string|Name of the transition when the Actor moves. If not set, "linear" is used. Read more here: <a href="https://createjs.com/demos/tweenjs/tween_sparktable" target="_new">https://createjs.com/demos/tweenjs/tween_sparktable</a>
+|_`ActionMove$`_|sting|Action for the moving. May be "play" (by default is not set) or "pause".|
+|**Animation**|||
+|_`Anim$`_|string|Name of the animation set with the Actor Animation instruction, or provided by the `SpriteSheet$` property.|
+|_`LoopAnim`_|boolean|Set if the animation should play to the infinite, or not. If not set, False by default is used.|
+|_`AnimPlay`_|boolean|Enabled or disables the current animation.|
+|**Scaling**|||
+|_`Scale`_|float|Modification of the Actor size in height and width. If not set, the last scaling value is used.|
+|_`ScaleX`_|float|Modification of the Actor size in width. If not set, the last horizontal scaling value is used.|
+|_`ScaleY`_|float|Modification of the Actor size in height. If not set, the last horizontal scaling value is used.|
+|**Rotation**|||
+|_`Angle`_|integer|Modification of the Actor angle of rotation. If not set, the last angle is used.|
+|**Opacity**|||
+|_`Alpha`_|float|Modification of the Actor alpha value. If not set, the last alpha value is used.|
+|**Skewing**|||
+|_`SkewX`_|integer|Modification of the Actor horizontal skewing. If not set, the last skewing value is used.|
+|_`SkewY`_|integer|Modification of the Actor vertical skewing. If not set, the last skewing value is used.|
+|**Transformations**|||
+|_`StartScale`_|float|Modification of the Actor start size in height and width for a Actor moving. If not set, the last scaling value is used.|
+|_`EndScale`_|float|Modification of the Actor end size in height and width for a Actor moving. If not set, the last scaling value is used.|
+|_`StartScaleX`_|float|Modification of the Actor start size in width for a Actor moving. If not set, the last horizontal scaling value is used.|
+|_`EndScaleX`_|float|Modification of the Actor end size in width for a Actor moving. If not set, the last horizontal scaling value is used.|
+|_`StartScaleY`_|float|Modification of the Actor start size in height for a Actor moving. If not set, the last vertical scaling value is used.|
+|_`EndScaleY`_|float|Modification of the Actor end size in height for a Actor moving. If not set, the last vertical scaling value is used.|
+|_`StartAngle`_|integer|Modification of the Actor start angle of rotation for a Actor moving. If not set, the last angle value is used|
+|_`EndAngle`_|integer|Modification of the Actor end angle of rotation for a Actor moving. If not set, the last angle value is used.|
+|_`StartAlpha`_|float|Modification of the Actor start alpha value for a Actor moving. If not set, the last alpha value is used.|
+|_`EndAlpha`_|float|Modification of the Actor end alpha value for a Actor moving. If not set, the last alpha is used.|
+|_`StartSkewX`_|integer|Modification of the Actor start horizontal skewing for a Actor moving. If not set, the last horizontal skewing value is used.|
+|_`EndSkewX`_|integer|Modification of the Actor end horizontal skewing for a Actor moving. If not set, the last horizontal skewing value is used.|
+|_`StartSkewY`_|integer|Modification of the Actor start vertical skewing for a Actor moving. If not set, the last vertical skewing value is used.|
+|_`EndSkewY`_|integer|Modification of the Actor end vetical skewing for a Actor moving. If not set, the last vertical skewing value is used.|
+
+
+## Events
+( italic ) = Optional
+|**Event**|**Description**|
+|---|---|
+|_`OnRefresh$`_|Name of the AOZ procedure to call at each cycle of the Runtime.|
+|_`OnChange$`_|Name of the AOZ procedure to call when the Actor change (position, alpha, scale...)|
+|_`OnAnimChange$`_|Name of the AOZ procedure to call when the Actor animation change ( number of frame, state,...)|
+|_`OnCollision$`_|Name of the AOZ procedure to call when the Actor enter in collision with an other object.|
+|_`OnControl$`_|Name of the AOZ procedure to call when a control is activated for the Actor (keyboard, mouse or joystick).|
+|_`OnLimit$`_|Name of the AOZ procedure to call when the Actor touch a limit.|
+|_`OnScreenEnter$`_|Name of the AOZ procedure to call when the Actor appears on the screen.|
+|_`OnScreenExit$`_|Name of the AOZ procedure to call when the Actor exits on the screen.|
+|_`OnBehavior$`_|Name of the AOZ procedure to call when the Actor behavior changes.|
+|**Mouse**|||
+|_`OnMouse$`_|Name of the AOZ procedure that will be called at each mouse action on the actor.|
+|_`OnMouseClick$`_|Name of the AOZ procedure that will be called at each mouse click on the actor.|
+|_`OnMouseDblClick$`_|Name of the AOZ procedure that will be called at each mouse doubleclick on the actor.|
+|_`OnMouseDown$`_|Name of the AOZ procedure that will be called at each mouse button down on the actor.
+|_`OnMouseUp$`_|Name of the AOZ procedure that will be called at each mouse button up on the actor.|
+|_`OnMouseEnter$`_|Name of the AOZ procedure that will be called when the mouse pointer enters over of the actor.|
+|_`OnMouseExit$`_|Name of the AOZ procedure that will be called when the mouse pointer outs over of the actor.|
+|**Keyboard**|||
+|_`OnKeyPress$`_|Name of the AOZ procedure that will be called at each key pressed.|
+|_`OnKeyDown$`_|Name of the AOZ procedure that will be called at each key down.|
+|_`OnKeyUp$`_|Name of the AOZ procedure that will be called at each key up.|
+|**Controllers**|||
+|_`OnControllerConnect$`_|Name of the AOZ procedure that will be called when a controller is connected (gamepad, joystick...).|
+|_`OnControllerDisconnect$`_|Name of the AOZ procedure that will be called when a controller is disconnected (gamepad, joystick...)|
+|_`OnControllerButton$`_|Name of the AOZ procedure that will be called at each controller button pressed.|
+|_`OnControllerAxis$`_|Name of the AOZ procedure that will be called when an axis value of a controller changes.|
+|_`OnControllerDirection$`_|Name of the AOZ procedure that will be called when a direction value changes.|
+---
+
+<p  align="center"><img  valign="middle"  width="76px"  src="https://doc.aoz.studio/assets/images/en/image001.png"  /></p>
+
+<!--stackedit_data:
+
+eyJoaXN0b3J5IjpbLTEwODA3NjMzNzAsLTExNjE0MTU5NjBdfQ
+
+==
+
+-->

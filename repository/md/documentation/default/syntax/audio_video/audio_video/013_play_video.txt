@@ -11,5 +11,11 @@ Play a video loaded with the "Load Asset" command
 ## Parameters
 
 - **video**: Index of video.
+
+<BR>
+Example with the video in the ressources/assets folder:
+
+Load Asset "yourvideo.mp4","intro" :  Actor "video", X=1020, Y=20, video$="intro"
+
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

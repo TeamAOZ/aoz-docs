@@ -126,6 +126,7 @@ Filesystem_Atom.prototype.bufferToUTF8 = function( data )
 
 Filesystem_Atom.prototype.read = function( path, options, callback, extra )
 {
+	var self = this;
 	function convertData( response, data, extra )
 	{
 		if ( response )
@@ -141,17 +142,18 @@ Filesystem_Atom.prototype.read = function( path, options, callback, extra )
 		}
 		callback( false, data, extra.extra );
 	}
-
 	this.aoz.callAtomDos( 'read', { path: path, options: options }, function( response, result, extra )
 	{
 		if ( response )
-			callback( true, this.bufferToArrayBuffer( result ), extra );
+			self.filterErrors( response, result.data, extra );	//bufferToArrayBuffer( result.data ), extra );
 		else
 			callback( false, 'disc_error', extra );
 	}, { options: options, aoz: this.aoz, callback: convertData, extra: { extra: extra, options: options } } );
 };
 Filesystem_Atom.prototype.write = function( path, data, options, callback, extra )
 {
+	if ( typeof data != 'string' )
+		data = this.aoz.utilities.convertArrayBufferToString( data );
 	this.aoz.callAtomDos( 'write', { path: path, data: data, options: options }, this.filterErrors, { options: options, aoz: this.aoz, callback: callback, extra: extra } );
 };
 Filesystem_Atom.prototype.mkDir = function( path, options, callback, extra )

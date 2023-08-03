@@ -1,21 +1,12 @@
-LANG$ = "en" : CURRENT_PAGE$ = "user_guide/table_of_contents/000_chapter.txt" : CURRENT_CODE$ = ""
-ROOT_URL$ = "https://doc.aoz.studio/" : CUR_ID$ = "" : CUR_TYPE$ = ""
+LANG$ = "en" : CURRENT_PAGE$ = "more_tricks/introduction.txt" : CURRENT_CODE$ = ""
+ROOT_URL$ = "https://doc.aoz.studio" : CUR_ID$ = "" : CUR_TYPE$ = ""
 
-Dim HISTO_PAGE$( 1000 ) : CUR_HISTO = 1 : CHEAT_ACCESS = False
-Global CUR_ID$, CUR_TYPE$, ROOT_URL$, LANG$, CURRENT_PAGE$, HISTO_PAGE$(), CUR_HISTO, CURRENT_CODE$, CHEAT_ACCESS
+Dim HISTO_PAGE$( 1000 ) : CUR_HISTO = 1
+Global CUR_ID$, CUR_TYPE$, ROOT_URL$, LANG$, CURRENT_PAGE$, HISTO_PAGE$(), CUR_HISTO, CURRENT_CODE$
 
 // Point de départ du programme
 Procedure MAIN
-	If PREP = True
-		ROOT_URL$ = "https://doc.aoz.studio/next/"
-	End If
-	If LOCAL = True
-		If LOCAL_WHO$ = "BP"
-			ROOT_URL$ = "http://localhost/aoz/aoz-docs/"
-		Else
-			ROOT_URL$ = "http://localhost/aozdoc/"
-		End If
-	End If
+	If LOCAL = True Then ROOT_URL$ = "http://localhost/aozdoc/"
 	Show HTML "index"
 	JS Execute "initPanels();"
 	RELOAD_LANG
@@ -23,17 +14,12 @@ End Procedure
 
 // Rechargement des rubriques et de la page actuelle avec la langue en cours
 Procedure RELOAD_LANG
-	StackEdit Open URL$ = ROOT_URL$ + "/php/index.php?page=topics.txt", OnSuccess$="_ON_TOPICS_LOADED"
-	If URL_SEARCH$ <> ""
-		KEY_SEARCH[ "Enter", URL_SEARCH$, True ]
-		URL_SEARCH$ = ""
-	Else
-		PAGE_LOAD[ "", CURRENT_PAGE$, False ]
-	End if
+	StackEdit Open URL$ = ROOT_URL$ + "/php/index.php?page=user_guide/table_of_contents/topics.txt", OnSuccess$="_ON_TOPICS_LOADED"
+	PAGE_LOAD[ "", CURRENT_PAGE$, False ]
 End Procedure
 
 Procedure GO_HOME
-	CURRENT_PAGE$ = "user_guide/table_of_contents/000_chapter.txt"
+	CURRENT_PAGE$ = "more_tricks/introduction.txt"
 	PAGE_LOAD[ "", CURRENT_PAGE$, True ]
 End Procedure
 
@@ -56,31 +42,8 @@ Procedure PAGE_LOAD[ ID$, URL$, IS_NEW ]
 	StackEdit Open URL$ = ROOT_URL$ + "/php/index.php?page=" + URL$, OnSuccess$="_ON_PAGE_LOADED"
 End Procedure
 
-Procedure LOGIN
-	JS Execute "document.getElementById( 'log_pwd' ).value = '';"
-	JS Execute "document.getElementById( 'frm_login' ).style.display = 'block';"
-
-End Procedure
-
-Procedure KEY_LOGIN[ CKEY$, VALUE$ ]
-	If CKEY$ = "Enter" And VALUE$ = "abracadabra"
-		JS Execute "document.getElementById( 'md_login' ).style.display = 'none';"
-		JS Execute "document.getElementById( 'md_gator' ).style.display = 'block';"
-		JS Execute "document.getElementById( 'frm_login' ).style.display = 'none';"
-		JS Execute "document.getElementById( 'md_edit' ).style.display = 'block';"
-		LANG$ = "en" : RELOAD_LANG
-	End If
-End Procedure
-
 Procedure PAGE_EDIT
-	StackEdit Edit CODE$ = CURRENT_CODE$, OnChange$ = "_CHANGE_EDIT", OnClose$ = "_CLOSE_EDIT"
-End Procedure
-
-Procedure _CHANGE_EDIT[ CODE$ ]
-	If CODE$ <> CURRENT_CODE$
-		CURRENT_CODE$ = CODE$
-		JS Execute "document.getElementById( 'md_sync' ).style.display = 'block';"
-	End If
+	StackEdit Edit CODE$ = CURRENT_CODE$, OnClose$ = "_CLOSE_EDIT"
 End Procedure
 
 Procedure _CLOSE_EDIT[ CODE$ ]
@@ -128,28 +91,13 @@ End Procedure
 
 Procedure KEY_SEARCH[ CKEY$, VALUE$, ISNEW ]
 	If CKEY$ = "Enter"
-		If Lower$(VALUE$) = "lend me your pen"
-			CHEAT_ACCESS = True
-			JS Execute "document.getElementById( 'md_login' ).style.display = 'block';"
-			JS Execute "document.getElementById( 'md_gator' ).style.display = 'none';"
-		Else
-			If ISNEW
-				If CUR_HISTO < 1000
-					CUR_HISTO = CUR_HISTO + 1
-					For R = CUR_HISTO To 1000 : HISTO_PAGE$( R ) = "" : Next R
-				End If
+		If ISNEW
+			If CUR_HISTO < 1000
+				CUR_HISTO = CUR_HISTO + 1
+				For R = CUR_HISTO To 1000 : HISTO_PAGE$( R ) = "" : Next R
 			End If
-			HISTO_PAGE$( CUR_HISTO ) = "SEARCH:" + VALUE$
-			JS Execute "search( '" + VALUE$ + "' );"
-		End if
+		End If
+		HISTO_PAGE$( CUR_HISTO ) = "SEARCH:" + VALUE$
+		JS Execute "search( '" + VALUE$ + "' );"
 	End If
-End Procedure
-
-Procedure PAGE_SAVE
-	StackEdit Save CURRENT_PAGE$, CURRENT_CODE$, OnSuccess$="_ON_PAGE_SAVED"
-End Procedure
-
-Procedure _ON_PAGE_SAVED[ MESSAGE$ ]
-	JS Execute "document.getElementById( 'md_sync' ).style.display = 'none';"
-	Toast "Page saved!", Type$="success"
 End Procedure

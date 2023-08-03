@@ -5,7 +5,10 @@ function Show_HTML( index, insertImages, _args )
 
 function HTML_Element( properties )
 {
-	aozhtml_htmlElement( properties );
+	setTimeout( function()
+	{
+		aozhtml_htmlElement( properties );
+	}, 500 );
 }
 
 function HTML_Element_Attribute( index, attribute, asType )

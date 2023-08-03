@@ -1,16 +1,24 @@
 # Add
 <!--
 @name: Add
-@description: 
-@tags: 
+@description: Fast Integer Addition
+@tags: add,math
 @categories: 
 \-->
+Fast Integer Addition
+## Usage Options
+**Add** variable,expression
+**Add** variable,expression, base **To** top
 
 ## Parameters
+**variable** The variable to add to
+**expression** The value to add
+**base** Starting Value
+**top** Ending Value
+## Description
+- Using the simple form of of this instruction, **expression** is added to **variable**.
 
-- **variable**: The variable to add to
-- **expression**: The value to add
-- **base**: Optional.
-- **top**: Optional, if specified behavior will be identical to 
+- Using the second form, if **variable**+**expression** exceeds **top**, then variable is set to **base**, otherwise **expression** is added to **variable**. 
+
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

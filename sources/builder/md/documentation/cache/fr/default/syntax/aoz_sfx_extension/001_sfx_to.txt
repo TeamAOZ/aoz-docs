@@ -1,0 +1,16 @@
+# Sfx To
+<!--
+@name: Sfx To
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Assign Sfx to sound voice channel
+## Parameters
+
+- **voice**: The number of the voice to assign to
+- **index**: The index of the Sfx to assign (must be previoulsy created with the Sfx Create instruction)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -23,7 +23,7 @@ function ext_source_editor( aoz, args )
 	this.aoz=aoz;
 	this.parent=this;
 	this.root=this;
-	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25FeHRlbnNpb24iOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIFNvdXJjZSBFZGl0b3IgRXh0ZW5zaW9uIiwiYXV0aG9yIjoiQnkgRnJhbmNvaXMgTGlvbmV0IiwidmVyc2lvbiI6IlZlcnNpb24gMSIsImRhdGUiOiIxNC8wOC8yMDIxIiwiY29weXJpZ2h0IjoiKGMpIEFPWiBTdHVkaW8gMjAyMSAtIE9wZW4gU291cmNlIiwic3RhcnQiOiJzb3VyY2VlZGl0b3IuYW96IiwibmFtZSI6InNvdXJjZWRpdG9yIn0sImNvbXBpbGF0aW9uIjp7Im5vV2FybmluZyI6W10sImVycm9ycyI6eyJlbiI6WyJlZGl0b3JfYWxyZWFkeV9vcGVuZWQ6IEVkaXRvciBhbHJlYWR5IG9wZW5lZCAoaW5kZXg6ICUxKSIsImVkaXRvcl9ub3RfZm91bmQ6IEVkaXRvciBub3QgZm91bmQgKGluZGV4OiAlMSkiLCJjb25zb2xlX25vdF9mb3VuZDogQ29uc29sZSBub3QgZm91bmQgKGluZGV4OiAlMSkiLCJlZGl0b3Jfbm90X2NvbnNvbGU6IEVkaXRvciBpcyBub3QgYSBjb25zb2xlIChpbmRleDogJTEpIl0sImZyIjpbImVkaXRvcl9hbHJlYWR5X29wZW5lZDogTCIsImVkaXRldXIgZXN0IGRlamEgb3V2ZXJ0IChpbmRleDogJTEpJywiLCJlZGl0b3Jfbm90X2ZvdW5kOiBFZGl0ZXVyIG5vbiB0cm91dmUgKGluZGV4OiAlMSkiLCJjb25zb2xlX25vdF9mb3VuZDogQ29uc29sZSBub24gdHJvdXZlZSAoaW5kZXg6ICUxKSIsImVkaXRvcl9ub3RfY29uc29sZTogQ2V0IGVkaXRldXIgbiIsImVzdCBwYXMgdW5lIGNvbnNvbGUgKGluZGV4OiAlMSknLCJdfSwiaW5jbHVkZVBhdGhzIjpbXX0sImJvb3RTY3JlZW4iOnsiYWN0aXZlIjpmYWxzZSwid2FpdFNvdW5kcyI6ZmFsc2UsImNsaWNrU291bmRzIjpmYWxzZX0sImVycm9ycyI6e319'));
+	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25FeHRlbnNpb24iOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIFNvdXJjZSBFZGl0b3IgRXh0ZW5zaW9uIiwiYXV0aG9yIjoiQnkgRnJhbmNvaXMgTGlvbmV0IiwidmVyc2lvbiI6IlZlcnNpb24gMSIsImRhdGUiOiIxNC8wOC8yMDIxIiwiY29weXJpZ2h0IjoiKGMpIEFPWiBTdHVkaW8gMjAyMSAtIE9wZW4gU291cmNlIiwic3RhcnQiOiJzb3VyY2VlZGl0b3IuYW96IiwibmFtZSI6InNvdXJjZWRpdG9yIn0sImNvbXBpbGF0aW9uIjp7Im5vV2FybmluZyI6W10sImVycm9ycyI6eyJlbiI6WyJlZGl0b3JfYWxyZWFkeV9vcGVuZWQ6IEVkaXRvciBhbHJlYWR5IG9wZW5lZCAoaW5kZXg6ICUxKSIsImVkaXRvcl9ub3RfZm91bmQ6IEVkaXRvciBub3QgZm91bmQgKGluZGV4OiAlMSkiLCJjb25zb2xlX25vdF9mb3VuZDogQ29uc29sZSBub3QgZm91bmQgKGluZGV4OiAlMSkiLCJlZGl0b3Jfbm90X2NvbnNvbGU6IEVkaXRvciBpcyBub3QgYSBjb25zb2xlIChpbmRleDogJTEpIl0sImZyIjpbImVkaXRvcl9hbHJlYWR5X29wZW5lZDogTCIsImVkaXRldXIgZXN0IGRlamEgb3V2ZXJ0IChpbmRleDogJTEpJywiLCJlZGl0b3Jfbm90X2ZvdW5kOiBFZGl0ZXVyIG5vbiB0cm91dmUgKGluZGV4OiAlMSkiLCJjb25zb2xlX25vdF9mb3VuZDogQ29uc29sZSBub24gdHJvdXZlZSAoaW5kZXg6ICUxKSIsImVkaXRvcl9ub3RfY29uc29sZTogQ2V0IGVkaXRldXIgbiIsImVzdCBwYXMgdW5lIGNvbnNvbGUgKGluZGV4OiAlMSknLCJdfSwiaW5jbHVkZVBhdGhzIjpbXSwic3ludGF4IjoiYW96In0sImJvb3RTY3JlZW4iOnsiYWN0aXZlIjpmYWxzZSwid2FpdFNvdW5kcyI6ZmFsc2UsImNsaWNrU291bmRzIjpmYWxzZX0sImVycm9ycyI6e319'));
 	this.vars=typeof args=='undefined'?{}:args;
 	this.contextName='ext_source_editor';
 	this.aoz[ "extension" + "Source_editor"]=this;
@@ -33,7 +33,7 @@ function ext_source_editor( aoz, args )
 this.blocks=[];
 	this.blocks[0]=function(aoz,vars)
 	{
-		// From source: D:/Programs/AOZ_Studio_SE/AOZ_Studio/app/aoz/extensions/source_editor/sourceeditor.aoz
+		// From source: C:/AOZ Studio/AOZ_Studio/app/aoz/extensions/source_editor/sourceeditor.aoz
 		aoz.sourcePos="0:40:0";
 		// Javascript
 		this.editors = {};
@@ -268,7 +268,13 @@ this.blocks=[];
 				this.vars.cursorBorderV = 0;
 				this.vars.recenterDX = 1;
 				this.vars.recenterDY = 1;
-				this.insertLine( this.yCursor, { text: this.vars.consolePrompt, modified: true } );
+				this.insertLine( this.yCursor, 
+				{
+					text: this.vars.consolePrompt, 
+					paper: String.fromCharCode( 48 + this.vars.paper ).repeat( this.vars.consolePrompt.length ),
+					pen: String.fromCharCode( 48 + this.vars.pen ).repeat( this.vars.consolePrompt.length ),
+					modified: true 
+				} );
 				this.xCursor = this.vars.consolePrompt.length;
 				this.sliderH.set_visible( false );
 			}
@@ -365,6 +371,8 @@ this.blocks=[];
 				line = 
 				{
 					text: '',
+					paper: '',
+					pen: '',
 					modified: true
 				};
 			}
@@ -524,6 +532,8 @@ this.blocks=[];
 				lines.push( 
 				{
 					text: textSpace,
+					paper: String.fromCharCode( 48 + this.vars.paper ).repeat( textSpace.length ),
+					pen: String.fromCharCode( 48 + this.vars.pen ).repeat( textSpace.length ),
 					modified: false
 				} );
 				start = end + 1;
@@ -532,9 +542,12 @@ this.blocks=[];
 			if ( start < source.length )
 			{
 				lfAtEnd = false;
+				var s = source.substring( start );
 				lines.push( 
 				{
-					text: source.substring( start ),
+					text: s,
+					paper: String.fromCharCode( 48 + this.vars.paper ).repeat( s.length ),
+					pen: String.fromCharCode( 48 + this.vars.pen ).repeat( s.length ),
 					modified: true
 				} );
 			}
@@ -863,7 +876,7 @@ this.blocks=[];
 					default:
 						if ( event.key.length == 1 && !this.vars.readOnly )
 						{
-							this.insertText( event.key );
+							this.insertText( event.key, this.vars.paper, this.vars.pen );
 							this.setCursorPosition( this.xCursor, this.yCursor, { force: true, recenter: true } );
 						}
 						break;
@@ -882,6 +895,8 @@ this.blocks=[];
 			this.insertLine( this.lines.length );
 			this.yConsole = this.lines.length - 1;
 			this.lines[ this.yConsole ].text = this.vars.consolePrompt;
+			this.lines[ this.yConsole ].paper = String.fromCharCode( 48 + this.vars.paper ).repeat( this.vars.consolePrompt.length );
+			this.lines[ this.yConsole ].pen = String.fromCharCode( 48 + this.vars.pen ).repeat( this.vars.consolePrompt.length );
 			this.xCursor = this.vars.consolePrompt.length;
 			this.yCursor = this.yConsole;
 			this.setCursorPosition( this.xCursor, this.yCursor, { force: true, recenter: true } );
@@ -897,10 +912,14 @@ this.blocks=[];
 			else
 			{
 				this.lines[ this.yConsole ].text = '';
+				this.lines[ this.yConsole ].paper = '';
+				this.lines[ this.yConsole ].pen = '';
 			}
+			args.paper = ( typeof args.paper == 'undefined' ? this.vars.paper : args.paper );
+			args.pen = ( typeof args.pen == 'undefined' ? this.vars.pen : args.pen );
 			this.xCursor = 0;
 			this.yCursor = this.yConsole;
-			this.insertText( args.text );
+			this.insertText( args.text, args.paper, args.pen );
 			this.setCursorPosition( this.xCursor, this.yCursor, { force: true, recenter: true } );
 			this.draw( true );
 		};
@@ -916,8 +935,10 @@ this.blocks=[];
 				this.lines.splice( this.yConsole + 1, this.lines.length - this.yConsole - 1 );
 			this.yCursor = this.lines.length - 1;
 			this.lines[ this.yCursor ].text = this.vars.consolePrompt;
+			this.lines[ this.yConsole ].paper = String.fromCharCode( 48 + this.vars.paper ).repeat( this.vars.consolePrompt.length );
+			this.lines[ this.yConsole ].pen = String.fromCharCode( 48 + this.vars.pen ).repeat( this.vars.consolePrompt.length );
 			this.xCursor = this.vars.consolePrompt.length;
-			this.insertText( command );
+			this.insertText( command, this.vars.paper, this.vars.pen );
 			this.yCursor = this.lines.length - 1;
 			this.xCursor = this.lines[ this.yCursor ].text.length;
 			this.setCursorPosition( this.xCursor, this.yCursor, { force: true, recenter: true } );
@@ -1071,6 +1092,8 @@ this.blocks=[];
 				if ( yCursor < this.lines.length - 1 )
 				{
 					this.lines[ yCursor ].text += this.lines[ yCursor + 1 ].text;
+					this.lines[ yCursor ].paper += this.lines[ yCursor + 1 ].paper;
+					this.lines[ yCursor ].pen += this.lines[ yCursor + 1 ].pen;
 					this.deleteLine( yCursor + 1 );
 					this.lines[ yCursor ].modified = true;
 					this.modified = true;
@@ -1079,6 +1102,8 @@ this.blocks=[];
 			else
 			{
 				this.lines[ yCursor ].text = this.lines[ yCursor ].text.substring( 0, xCursor ) + this.lines[ yCursor ].text.substring( xCursor + 1 );
+				this.lines[ yCursor ].paper = this.lines[ yCursor ].paper.substring( 0, xCursor ) + this.lines[ yCursor ].paper.substring( xCursor + 1 );
+				this.lines[ yCursor ].pen = this.lines[ yCursor ].pen.substring( 0, xCursor ) + this.lines[ yCursor ].pen.substring( xCursor + 1 );
 				this.lines[ yCursor ].modified = true;
 				this.modified = true;
 			}
@@ -1103,6 +1128,8 @@ this.blocks=[];
 				{
 					xCursor = this.getTextEnd( 0, this.lines[ yCursor - 1 ].text );
 					this.lines[ yCursor - 1 ].text += this.lines[ yCursor ].text;
+					this.lines[ yCursor - 1 ].paper += this.lines[ yCursor ].paper;
+					this.lines[ yCursor - 1 ].pen += this.lines[ yCursor ].pen;
 					this.deleteLine( yCursor-- );
 					this.lines[ yCursor ].modified = true;				
 				}
@@ -1110,6 +1137,8 @@ this.blocks=[];
 			else
 			{
 				this.lines[ yCursor ].text = this.lines[ yCursor ].text.substring( 0, xCursor - 1 ) + this.lines[ yCursor ].text.substring( xCursor );
+				this.lines[ yCursor ].paper = this.lines[ yCursor ].paper.substring( 0, xCursor - 1 ) + this.lines[ yCursor ].paper.substring( xCursor );
+				this.lines[ yCursor ].pen = this.lines[ yCursor ].pen.substring( 0, xCursor - 1 ) + this.lines[ yCursor ].pen.substring( xCursor );
 				this.lines[ yCursor ].modified = true;
 				xCursor--;
 			}
@@ -1125,16 +1154,22 @@ this.blocks=[];
 				xCursor = this.lines[ yCursor ].text.length;
 			var end = this.lines[ yCursor ].text.substring( xCursor );
 			this.lines[ yCursor ].text = this.lines[ yCursor ].text.substring( 0, xCursor );
+			this.lines[ yCursor ].paper = this.lines[ yCursor ].paper.substring( 0, xCursor );
+			this.lines[ yCursor ].pen = this.lines[ yCursor ].pen.substring( 0, xCursor );
 			this.lines[ yCursor ].modified = true;
 			this.insertLine( ++yCursor );
 			this.lines[ yCursor ].text = end;
+			this.lines[ this.yConsole ].paper = String.fromCharCode( 48 + this.vars.paper ).repeat( end.length );
+			this.lines[ this.yConsole ].pen = String.fromCharCode( 48 + this.vars.pen ).repeat( end.length );
 			xCursor = 0;
 			this.setCursorPosition( xCursor, yCursor, { recenter: true } );
 			this.modified = true;
 			this.draw();
 		};
-		this.SourceEditor.prototype.insertText = function( text )
+		this.SourceEditor.prototype.insertText = function( text, paper, pen )
 		{
+			paper = ( typeof paper == 'undefined' ? this.vars.paper : paper );
+			pen = ( typeof pen == 'undefined' ? this.vars.pen : pen );
 			var x = this.xCursor;
 			var y = this.yCursor;
 			var xCursor = x;
@@ -1151,6 +1186,8 @@ this.blocks=[];
 				if ( info.lines.length == 1 && !info.lfAtEnd )
 				{
 					this.lines[ y ].text = line.text.substring( 0, x ) + info.lines[ 0 ].text + line.text.substring( x );
+					this.lines[ y ].paper = line.paper.substring( 0, x ) + String.fromCharCode( 48 + paper ).repeat( info.lines[ 0 ].text.length ) + line.paper.substring( x );
+					this.lines[ y ].pen = line.pen.substring( 0, x ) + String.fromCharCode( 48 + pen ).repeat( info.lines[ 0 ].text.length ) + line.pen.substring( x );
 					this.lines[ y ].modified = true;
 					xCursor++;
 				}
@@ -1158,6 +1195,8 @@ this.blocks=[];
 				{
 					var right = line.text.substring( x );
 					this.lines[ y ].text = line.text.substring( 0, x ) + info.lines[ 0 ].text;
+					this.lines[ y ].paper = line.text.substring( 0, x ) + String.fromCharCode( 48 + paper ).repeat( info.lines[ 0 ].text.length );
+					this.lines[ y ].pen = line.text.substring( 0, x ) + String.fromCharCode( 48 + pen ).repeat( info.lines[ 0 ].text.length );
 					this.lines[ y ].modified = true;
 					if ( info.lines.length > 1 )
 					{
@@ -1176,6 +1215,8 @@ this.blocks=[];
 						yCursor++;
 					}
 					this.lines[ y ].text = right;
+					this.lines[ y ].paper = String.fromCharCode( 48 + paper ).repeat( right.length );
+					this.lines[ y ].pen = String.fromCharCode( 48 + pen ).repeat( right.length );
 					this.lines[ y ].modified = true;
 				}
 				if ( this.vars.console )
@@ -1188,12 +1229,17 @@ this.blocks=[];
 						while( this.lines[ y ].text.length > this.lineWidth )
 						{
 							carry = this.lines[ y ].text.substring( this.lineWidth );
-							this.lines[ y ].text = this.lines[ y ].text.substring( 0, this.lineWidth );
+							var s = this.lines[ y ].text.substring( 0, this.lineWidth );
+							this.lines[ y ].text = s;
+							this.lines[ y ].paper = String.fromCharCode( 48 + paper ).repeat( s.length );
+							this.lines[ y ].pen = String.fromCharCode( 48 + pen ).repeat( s.length );
 							if ( carry == '' )
 								break;
 							y++;
 							this.insertLine( y );
 							this.lines[ y ].text = carry;
+							this.lines[ y ].paper = String.fromCharCode( 48 + paper ).repeat( carry.length );
+							this.lines[ y ].pen = String.fromCharCode( 48 + pen ).repeat( carry.length );
 							l++;
 						}
 						l++;
@@ -1291,8 +1337,8 @@ this.blocks=[];
 				for ( x = self.xPosition, xx = 0; x < line.text.length && xx < self.lineWidth; x++, xx++ )
 				{
 					var c = self.lines[ y ].text.charAt( x );
-					paper = self.vars.paper;
-					pen = self.vars.pen;
+					var paper = self.lines[ y ].paper.charCodeAt( x ) - 48;
+					var pen = self.lines[ y ].pen.charCodeAt( x ) - 48;
 					for ( var b = 0; b < self.blocks.length; b++ )
 					{
 						var block = self.blocks[ b ];
@@ -1316,7 +1362,7 @@ this.blocks=[];
 							}
 						}
 					}
-					if ( paper == previousPaper && pen == previousPen && writing == previousWriting )
+					if ( paper == previousPaper && pen == previousPen )
 					{
 						text += c;
 					}
@@ -1329,7 +1375,6 @@ this.blocks=[];
 						}
 						previousPaper = paper;
 						previousPen = pen;
-						previousWriting = writing;
 						text = c;
 						xStart = xx;
 					}
@@ -1428,6 +1473,10 @@ this.blocks=[];
 		};
 		// End Javascript
 		return{type:0}
+	};
+	this.blocks[1]=function(aoz,vars)
+	{
+		return{type:0};
 	};
 	this.aoz.run(this,0,null);
 };

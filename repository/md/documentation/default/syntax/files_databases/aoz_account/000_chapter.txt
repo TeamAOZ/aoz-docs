@@ -1,14 +1,16 @@
-# AOZ Account instructions
+# subdossier1222
+<!--
+@name: subdossier1
+@description: Description for the search engines.
+@tags: List of the keywords separated by a comma
+@categories: List of the categories separated by a comma
+\-->
 
-AOZ program users may need an AOZ account to be identified and to secure they hosted data:
-
-- When your program accesses AOZ account information,
-- When your program connects to databases (see `DB` instructions).
-
-`Account` instructions allow your program to control these accesses to the AOZ account login and registration process and data.
+In this chapter you will learn more about the subdossier1...
 
 ---
-<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4ODQ1OTU1OF19
+eyJoaXN0b3J5IjpbNjcxMzM2MTk0XX0=
 -->

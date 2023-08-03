@@ -5,9 +5,18 @@
 @tags: 
 @categories: 
 \-->
-Anticipate a number of characters to input into a string
+
+X\$ **=Input$\(** numChars **)**
+
+This function accepts a specified number of characters as input from the keyboard, and returns the result as a string.  It only accepts printable characters as input.  Special symbols may be entered using the Alt key.  
+
+No visible output is shown.  The input goes directly into the function result.  No editing capabilities are provided.
+
 ## Parameters
 
-- **numChars**: Number of characters to anticipate
+| Parameter | Description |
+|---|---|
+| **numChars** | Number of characters to accept |
+
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

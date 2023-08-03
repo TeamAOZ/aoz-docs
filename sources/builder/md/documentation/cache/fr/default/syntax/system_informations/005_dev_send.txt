@@ -1,0 +1,11 @@
+# Dev Send
+<!--
+@name: Dev Send
+@description: 
+@tags: 
+@categories: 
+\-->
+Call a command using SendIO. May be implemented in AOZ, has no effect in current version
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

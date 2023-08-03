@@ -1,8 +1,68 @@
 # SPEED AND REFRESH
 
-Note: As we optimize every day AOZ Studio, this chapter is becoming little less relevant, and will be updated. See how this tags affect your program, as it depends of your code (fast game, slow app...).
+AOZ Studio has been designed to be fast and efficient, but there are instructions and tags you can use to fine-tune AOZ to your hardware and to your needs.  These instructions include:
 
-<BR>
+**Set Frame Rate** timeStep#, maxFPS
+This instruction controls the frame rate of the application.
+
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><th>timeStep#</th><td>The number of ms between each call to the application code</td></tr>
+<tr><th>maxFPS</th><td>The maximum number of frames per second for the application</td></tr>
+</table>
+<br>
+
+**NOTE:** The **Frame Rate** is how many times a single "frame" (screen) of video can be displayed each second.  **Frame Rate** is measured in **Frames per Second**.
+
+---
+**=FPS()**
+This function returns  the current frame rate for the application.
+
+---
+
+**=maxFPS()**
+This function returns the maximum number of frames per second for the renderer, as set in the **Set Frame Rate** instruction.
+
+**NOTE:**   Negative values indicate a possible maximum FPS calculated from the timeStep# parameter.  The default is -1.
+
+---
+**=timeStep()**
+This function returns the delay between each call of the application|;s code.
+
+---
+
+  For a clearer idea of how some of these work, here are a few terms you|;ll want to understand:
+
+## Refresh Rate
+The refresh rate is how many times per second your display / monitor draws an image.  In part, this is based on the electrical standard in use.  In England, and many European countries, the standard is based on 50 Hz alternating current.  In the United States, and other countries, it is a 60 Hz alternating current.  In order to avoid screen flicker, the video should to be synchronized to the electrical standard.
+
+Due to limitations in the speed of Television circuitry at the time, The Screen actually had to be drawn half at a time.  The screen was drawn top to bottom, every other line, then went back up to the top and drew the intevening lines.  This was referred to as **Interlaced** video.  This resulted in some flicker when updating the screens.
+
+The **Vertical Blank Interval** is how long it took to move an electron beam from the bottom right of the screen back to the upper left of the screen.
+
+## Vertical Blank (Vbl) Interval (Cycle)
+This is the time between when the last line of the display is drawn, and the time the first line of the next frame is drawn.
+
+| Standard | Standard Frame Rate | Interlaced Frame Rate |
+|---|---|---|
+| NTSC | 60 Hz | 30 FPS |
+| PAL | 50 Hz | 25 FPS |
+| Film | | 24 FPS |
+
+| Frame Rate | Usage |
+|---|---|
+| **24fps** | Movies, streaming video content (to account for a discrepancy in connection speed), and video game captures use this speed to achieve that classic cinematic look. |
+| **30fps** | Live TV broadcasts (sports and news) and most TV shows use this speed to increase their quality. |
+| **60fps** | 4K resolution lets a higher frame rate be displayed and gives the footage an amazingly detailed and lifelike view. Perfect if you want to record a video game, this frame rate also increases the smoothness of action.  
+| **120fps** | great for smooth slow motion when things are "fast and furious" | 
+<br>
+
+**NOTE:**  There are monitors which are capable of frame rates faster than 120fps.
+ 
+**Hz** (an abbreviation for **Hertz**) is the number of cycles that take place in one second.
+**FPS** means **Frames Per Second**.  This is the Frame Rate.
+
+
 When developing AOZ Studio, we were faced with a problem: Basic is a language that authorizes loops whereas JavaScript does not.
 
 This means that in JavaScript, it is impossible for an application to “turn” for longer than a reasonable amount of time, which depends on the machine hardware, load, the browser. If a JavaScript application takes too much time, the browser seems to “crash” whereas it is just busy, being mono-task.
@@ -17,22 +77,40 @@ Before giving back the "hand", AOZ stores the position of the program pointer in
 
 The instruction Refresh (or Wait VBL is the same thing) force the refresh, it is important to use it within a loop of graphic movements.
 
+
 ## Display speed
 
-In AOZ Studio's internal main loop control system there is a total disconnection between the application itself and the renderer. The renderer is called "as best as possible", eventually not at every frame to preserve the speed of the core code of your application. To optimize and help you control this (for advanced users), you have:
+In AOZ Studio|;s internal main loop control system there is a total disconnection between the application itself and the renderer. The renderer is called "as best as possible", eventually not at every frame to preserve the speed of the core code of your application. To optimize and help you control this (for advanced users), you have:
+
+**Set Frame Rate** timeStep#, maxFPS
+This instruction controls the frame rate of the application.
+
+|Parameter|Description|
+|---|---|
+| **timeStep#** |The number of ms between each call to the application code |
+| **maxFPS** | The maximum number of frames per second for the application |
+
+**=FPS()**
+This function returns  the current frame rate for the application.
+
+**=maxFPS()**
+This function returns the maximum number of frames per second for the renderer, as set in the **Set Frame Rate** instruction.
+
+**NOTE:**   Negative values indicate a possible maximum FPS calculated from the timeStep# parameter.  The default is -1.
+
+**=timeStep()**
+This function returns the delay between each call of the application|;s code.
 
 **Set Frame Rate** TIMESTEP#, MAXFPS
 Controls the speed of the application.
 **TIMESTEP#** is the number of milliseconds between each call of the application code. A value of 16.66667 (1000/60) is the default and ensures an animation at 60hz. A value of 8.333 will for example accelerate the application by 2, a value of 50 will slow it down etc. Please note that the display will ALWAYS be done at the detriment of the main loop. If TIMESTEP# is too small, most of the time will be spent in the application and not on the display which will seem jerky.
 **MAXFPS** : for the maximum possible number of frame per seconds of the renderer. If this value is negative (default), the main loop of AOZ will adapt with the goal of reaching the FPS that can be calculated out of the TIMESTEP parameter, and never more.
 
-<BR>
-
 **= FPS()** returns the current FPS rate of the application. Warning, if you use a variable called FPS in your application, this new function will make it do an error on transpilation.
 
 **= MaxFPS()** returns the maximum number of frame per second for the renderer, as set in Set Frame Rate. Negative values indicate a possible maximum fps calculated from the timestep# parameter. Default is -1.
 
-**= Timestep()** returns the delay between each call of the application's code.
+**= Timestep()** returns the delay between each call of the application|;s code.
 
   
 

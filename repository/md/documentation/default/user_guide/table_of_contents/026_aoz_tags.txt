@@ -81,7 +81,7 @@ param: True or False to turn the feature on or off.
 
 Eg: **#cleanModules: true**
 
-Modules contain the core syntax of the AOZ language. They are represented in AOZ as simple AOZ source code visible in the aoz/language/v1_0 folder. All modules are pre-transpiled once for all at each new version (that's why the first boot of a new version of AOZ might take more time than the latter) to ensure the maximum speed of translation.
+Modules contain the core syntax of the AOZ language. They are represented in AOZ as simple AOZ source code visible in the aoz/language/v1_0 folder. All modules are pre-transpiled once for all at each new version (that|;s why the first boot of a new version of AOZ might take more time than the latter) to ensure the maximum speed of translation.
 
 This principle works fine as long as all the sources have been synchronized with the same version of the transpiler. if they are not, some problems might occur, syntax errors, mismatch errors, or crashes of both the transpiler or the runtime.
 
@@ -132,7 +132,7 @@ description: Defines the transpilation mode variables, such as case sensitivity 
 
 content:
 
-AMOS Basic, AOZ's grandfather was well known for having a loose syntax. Furthermore, the language was case-insensitive, which is today not recommended.
+AMOS Basic, AOZ|;s grandfather was well known for having a loose syntax. Furthermore, the language was case-insensitive, which is today not recommended.
 
 In order to be compatible and easy to use, the default mode when you create an application is "loose". This means that you can use upper or lower case letters in the names of your variables and procedures and they do not have to correspond to match.
 
@@ -145,7 +145,7 @@ Procedure DISPLAY_SCORE[ SCORE ]
 	Print SCORE
 End Proc
 ```
-Let's not forget that we want to make learning easy and give programming freedom, but nothing prevents you from programming otherwise with these Tags.
+Let|;s not forget that we want to make learning easy and give programming freedom, but nothing prevents you from programming otherwise with these Tags.
 <BR>
 
 **endian**
@@ -202,7 +202,7 @@ Local tags are tags that are only valid on files or extensions.
 
 **basicRemarks**
 
-description: Allow the use, or not, of the character ' (apostrophe) as a remark in your code.
+description: Allow the use, or not, of the character |; (apostrophe) as a remark in your code.
 
 param: Switch the feature on or off.
 
@@ -211,16 +211,16 @@ content:
 The original syntax of the Basic language allowed you to define remarks with the apostrophe character. Like this:
 ```basic
 Print "Hello AOZ" 
-'  This is a remark with an apostrophy
+|;  This is a remark with an apostrophy
 Rem  This is a remark with the Rem instruction**
 //  This is a C-style remark**
 
-**/
+*/
 And this is a long C-Style remark,
 It can include any number of lines.
-/**
+/*
 ```
-We suggest to create your new applications using // and /* */ instead of the old-fashioned duo: ' and Rem...
+We suggest to create your new applications using // and /* */ instead of the old-fashioned duo: |; and Rem...
 <BR>
 
 **noWarning**
@@ -293,7 +293,7 @@ description: Change the folder where the transpiler logs are saved.
 
 param:path$:string: Path to a folder where the logs of the transpiler are saved.
 
-As a default, AOZ does not save any log. You can activate this feature with the tag "#log:true", then AOZ will save it's transpilation logs into the aoz/logs folder. This tag allows you to define your own folder to save the logs.
+As a default, AOZ does not save any log. You can activate this feature with the tag "#log:true", then AOZ will save it|;s transpilation logs into the aoz/logs folder. This tag allows you to define your own folder to save the logs.
 <BR>
 
 **log**
@@ -339,7 +339,7 @@ For the moment (v 1.0 of AOZ), being in developer mode, bring the following adva
 
 - when running your application, AOZ will *not* intercept the system keys of the browser, you will be able to open the Chrome debugger with F12 for example.
 
-- when in developer mode, AOZ scans all the extension and modules folders looking for code that has changed since the last compilation. If you are not developing an extension and have not changed the content of the inside of the aoz system folder, you do not need it. But if you develop a new extension, a simple RUN of your AOZ test application will enforce the compilation of this very extension. Please note that this option will also make the transpilation process (a little) slower as AOZ has to scan all the 50 sub-folders in the extension and module directories. As the number of extensions grows in the future, and reaches hopefully the size of node.js' list of packages (let's dream! :) it might become very handy then to ensure everything is compiled with the latest version.
+- when in developer mode, AOZ scans all the extension and modules folders looking for code that has changed since the last compilation. If you are not developing an extension and have not changed the content of the inside of the aoz system folder, you do not need it. But if you develop a new extension, a simple RUN of your AOZ test application will enforce the compilation of this very extension. Please note that this option will also make the transpilation process (a little) slower as AOZ has to scan all the 50 sub-folders in the extension and module directories. As the number of extensions grows in the future, and reaches hopefully the size of node.js|; list of packages (let|;s dream! :) it might become very handy then to ensure everything is compiled with the latest version.
 
 You can toggle developer mode in the "Settings" panel of the AOZ IDE.
 <BR>
@@ -363,7 +363,7 @@ description: Replaces the entry script by the given string and proceeds to compi
 
 param: code$:string: The code to replace with. This tag is for the developer who uses the AOZ transpiler as a node.js module (later to come). With it, you can call the "transpile" function of the AOZ module replacing the code of the application referred to in the path of the "transpile" command by another code.
 
-This new code will simply replace the original code in the project, the project keeping it's resources folder.
+This new code will simply replace the original code in the project, the project keeping it|;s resources folder.
 
 We use it at AOZ Studio, for example to open the Direct Mode window in the AOZ IDE: the current application is transpiled with empty source code, which makes all the image and sound resources available in direct mode for experimenting.
 <BR>
@@ -446,7 +446,7 @@ Please note that for tags, there is no "type" associated with system variables, 
 #if version <> "1.00"
 Print "Hmmm, it might crash!"
 #else
-Print " YES! It wont crash, that's a promise (finger crossed :)"
+Print " YES! It wont crash, that|;s a promise (finger crossed :)"
 #endif
 ```
 

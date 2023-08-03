@@ -1,0 +1,17 @@
+# Plot
+<!--
+@name: Plot
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Draw a pixel in the current screen
+## Parameters
+
+- **x**: The horizontal coordinate of the point to draw
+- **y**: The vertical coordinate of the point to draw
+- **ink**: The index of the color in the screen palette (optional, will use the latest Ink value if ommited)
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

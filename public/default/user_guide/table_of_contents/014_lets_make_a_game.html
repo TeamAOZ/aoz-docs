@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/let's%20make%20a%20game'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/let's%20make%20a%20game'>
+        <meta name='pagename' content='AOZ Docs - LET's MAKE A GAME'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - LET's MAKE A GAME</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="lets-make-a-game">LET&#8217;s MAKE A GAME</h1>&#10;<p>You already know enough to make a game: Magic Bird it is.<br/>&#10;<img src="https://doc.aoz.studio/assets/images/en/image081.png" alt="my first game"/></p>&#10;<p>The object of the game is to make the Magic bird fly by avoiding the stalactites. To play, click on the mouse button (or press on the smartphone screen) which allows Magic to fly away.</p>&#10;<p>Without wasting any more time let&#8217;s program it. You will find the corresponding code in the Tutorials folder, code that you can copy / paste for the more eager. For others let&#8217;s learn step by step.</p>&#10;<p>So, without straining yourself, type this line of code (it&#8217;s a single line):</p>&#10;<pre><code class="prism language-basic">Actor &#34;decor&#34;, Image$=&#34;bg.png&#34;, X=0, Y=0, EndX=-1920, LoopMove=True, Duration=20000&#10;</code></pre>&#10;<p>If you have followed the previous chapters nothing here should surprise you.</p>&#10;<p>By using the Actor instruction we therefore create an actor which is called &#8220;decor&#8221; a nice name for background, and which uses the image which is called &#8220;bg.png&#8221;. The aforementioned instruction then displays &#8220;decor&#8221; with the parameters that we provided to it:</p>&#10;<p>&#8226; At the start we place &#8220;decor&#8221; at the top left of the screen, ie at coordinates X = 0 and Y = 0 and;<br/>&#10;&#8226; We tell &#8220;decor&#8221; to move its top-left corner:<br/>&#10;. from position X = 0 (top left of the screen)<br/>&#10;. until EndX = -1920 and;<br/>&#10;&#8226; To loop (LoopMove = True)<br/>&#10;&#8226; With the duration of the movement: Duration = 20000. (note: 20000 milliseconds = 20 seconds for 1 loop)<br/>&#10;<img src="https://doc.aoz.studio/assets/images/en/image082.png" alt="scrolling with Actor"/><br/>&#10;But you probably remember that. We saw that at the start of this user guide.</p>&#10;<ol>&#10;<li>So click the RUN button.</li>&#10;<li>See the scenery loop, loop, loop, loop, loop, loop.</li>&#10;</ol>&#10;<p>To continue, now we need a hero. Who better than Magic?</p>&#10;<p>So we add this new line below the 1st line:</p>&#10;<pre><code class="prism language-basic">Actor &#34;decor&#34;, Image$=&#34;bg.png&#34;, X=0, Y=0, EndX=-1920, LoopMove=True, Duration=20000&#10;Actor &#34;magic&#34;, Image$ = &#34;magicfly.png&#34;&#10;</code></pre>&#10;<ol>&#10;<li>Click the RUN button.</li>&#10;<li>See the scenery repeat in a loop and watch Magic appear at the top left, which is X = 0, Y = 0. If you do not tell him anything, he takes the default values.</li>&#10;</ol>&#10;<p>I don&#8217;t know about you but I don&#8217;t like to see Magic stuck at the top, so let&#8217;s modify the code as follows by adding a <strong>Do &#8230; Loop</strong> to move Magic on the vertical Y axis:</p>&#10;<pre><code class="prism language-basic">Actor &#34;decor&#34;, Image$=&#34;bg.png&#34;, X=0, Y=0, EndX=-1920, LoopMove=True, Duration=20000&#10;Do&#10;  If Mouse Key = 0 then PY = PY 7 else PY = PY-15&#10;  Actor &#34;magic&#34;, Y=PY, Image$=&#34;magicfly.png&#34;&#10;  Refresh&#10;Loop&#10;</code></pre>&#10;<p>Don&#8217;t panic, I will explain. And before you say anything, know that to do the same thing in a language like JavaScript or C#, you need at least 5 times more lines of code. Let&#8217;s look at the code:</p>&#10;<ul>&#10;<li>&#10;<p>The Do&#8230; Loop allows you to repeat the code inside without stopping. This code inside modifies the variable PY depending on whether or not the mouse button is pressed.</p>&#10;</li>&#10;<li>&#10;<p>A quick reminder of the <strong>If&#8230; Then</strong>&#8230; Else statement:</p>&#10;</li>&#10;</ul>&#10;<p><strong>If</strong> <em>my test</em> <strong>Then</strong> I do this if it&#8217;s true <strong>Else</strong> I do this if it&#8217;s false</p>&#10;<p>Example: If 2 = 2 Then Print &#8220;true&#8221; Else Print &#8220;false&#8221;</p>&#10;<p>Understood? Let&#8217;s continue with our game:</p>&#10;<ul>&#10;<li>Explanation of: <strong>If Mouse Key = 0 then PY = PY   7 else PY = PY-15</strong></li>&#10;</ul>&#10;<p>If Mouse Key = 0 it means that you have not pressed the Mouse button. In this case PY increases by 7 pixels (PY = PY   7). On the Y axis when it increases it means that we go down the screen (recall Y = 0 is at the top of the screen).</p>&#10;<p>If Mouse Key is not equal to 0 it means that a mouse button is pressed, then we are in the else: PY goes up by 15 pixels (PY = PY-15) on the Y axis. Indeed, when PY decreases it means that we go up (towards the top of the screen).</p>&#10;<p>The overall result of this line is that Magic goes down by itself by 7 pixels (when you do not press on the mouse) and goes up by 15 pixels if you press the mouse on your computer or the screen of the smartphone.</p>&#10;<ul>&#10;<li>Explanation of: <strong>Actor &#8220;magic&#8221;, Y = PY, Image $ = &#34;magicfly.png&#34;</strong></li>&#10;</ul>&#10;<p>Okay there you understand, in each iteration of the loop, Magic moves to the new PY coordinates and therefore goes up or down accordingly.</p>&#10;<ul>&#10;<li>Explanation of: <strong>Refresh</strong></li>&#10;</ul>&#10;<p>Formally Wait Vbl,  this instruction synchronizes the display correctly when it is frequently modified. Strongly recommended in any loop.</p>&#10;<ol>&#10;<li>Click the RUN button.</li>&#10;<li>Watch the scenery revolve around and watch Magic move up and down with the mouse pressed. Cool!</li>&#10;</ol>&#10;<p>Next step, we are going to put obstacles with stalactites which will move from right to left (we speak of horizontal scrolling) and gradually get closer to each other to increase the level of difficulty. Sound good? No? No problem, you can modify all of this, this is just an example.</p>&#10;<pre><code class="prism language-basic">Actor &#34;decor&#34;, Image$=&#34;bg.png&#34;, X=0, Y=0, EndX=-1920, LoopMove=True, Duration=20000&#10;&#10;For I= 1 to 50&#10;  Actor I, X=400 (I*320), Y=-780 rnd(I*20), Auto$=&#34;offsetX=-5&#34;, Image$=&#34;ice.png&#34;&#10;Next I&#10;&#10;Do&#10;  If Mouse Key = 0 then PY = PY 7 else PY = PY-15&#10;  Actor &#34;magic&#34;, Y=PY, Image$=&#34;magicfly.png&#34;&#10;  Refresh&#10;Loop&#10;</code></pre>&#10;<p>I&#8217;ll explain the part I just added.</p>&#10;<ul>&#10;<li>&#10;<p>A quick reminder of the <strong>For&#8230; Next</strong> statement: This is another form of loop but conditional. <strong>For</strong> <em>variable = start value</em> <strong>To</strong> <em>variable = end value</em> <strong>Next</strong> (end of loop)<br/>&#10;Example: For I = 1 to 10 : Print I : Next I</p>&#10;</li>&#10;<li>&#10;<p>Explanation of: <strong>Actor I, X = 400   (I * 320), Y = -780   rnd (I * 20), Auto$ = &#8220;offsetX = -5&#8221;, Image$ = &#34;ice.png&#34;</strong><br/>&#10;In the <strong>For&#8230; Next</strong> loop which counts up to 50, by increasing the value of I by 1 at each iteration, we therefore create 50 actors with the names: Actor 1, Actor 2, Actor 3,&#8230; Actor 50.<br/>&#10;Note that the actors can have names like &#8220;magic&#8221; or &#8220;lucie&#8221; and then we should put <strong>quotes around the names</strong> as they are text, but also can be named by numbers like in this game. It&#8217;s very practical, like in this example where want to handle 50 actors.</p>&#10;</li>&#10;</ul>&#10;<p>Each of these 50 actors uses the same ice image (ice.png) which includes the upper part and the lower part and which is 2000 pixels high, more than the height of the screen which is 1080 pixels high.<br/>&#10;<img src="https://doc.aoz.studio/assets/images/en/image083.png" alt="scrolling with Actor"/></p>&#10;<p>To display the stalactites at different heights, we just move their top left corner vertically, so in Y. This is what we do with the parameter <strong>Y = -780   rnd (I * 20):</strong> We set Y with the value -780 and add a random value which is the product of I * 20.<br/>&#10;The rnd (x) function returns a random value between 0 and x. For example rnd (10) returns a value between 0 and 10.<br/>&#10;Thus for actor 1 (when I = 1) we will have <strong>a Y = -780   rnd (1 * 20</strong>), i.e. a value between Y = -780   1 = -779 and Y = -780   20 = - 760. The more I increases, the stronger the amplitude of Y will be between two stalactites. So the difficulty of the game will increase.</p>&#10;<p>Do the above calculation for I = 50.<br/>&#10;<img src="https://doc.aoz.studio/assets/images/en/image085.png" alt="scrolling with Actor"/><br/>&#10;To display the stalactite&#8217;s in different positions horizontally we also positioned them in X. This is what we do with the parameter: <strong>X = 400   (I * 320)</strong>.<br/>&#10;We set the X value at 400 plus I * 320.<br/>&#10;Thus the more the value of I increases, the more the stalactite is created on the right.<br/>&#10;To finish, it suffices to specify for each Actor that the movement is automatic and toward the left (therefore X decreases, and by 5 pixels) with the parameter Auto $ = &#8220;offsetX = -5&#8221;</p>&#10;<p>And voila, with these parameters which modify the X and the Y in a single line of AOZ we display all our stalactites with randomness and a progression of difficulty.</p>&#10;<p><img src="https://doc.aoz.studio/assets/images/en/image084.png" alt="I'm Lucie"/><br/>&#10;Your turn to play &#128522;:</p>&#10;<p>&#8226; Have fun changing the values &#8203;&#8203;of the parameters, this is the best way to learn.<br/>&#10;&#8226; Understand that there is not only one way to achieve the result, it is the beauty of creation. This is just one suggestion but there are many ways to get there with totally different code.</p>&#10;<br/>&#10;Are you ready, shall we continue?&#10;<p>If not, take your time, read again, modify&#8230; Programming must be fun.</p>&#10;<p>Well, something important is missing: collision management. That is, if Magic hits the stalactites or exits the screen it has to&#8230; disappear! It&#8217;s okay, only temporarily.</p>&#10;<p>A little reminder about labels: anywhere in the code you can place a label, and ask the program to go there. For that, the place to go is noted with a name here START: or DEAD: For a label use a name followed by a colon: to differentiate it from a variable or an instruction. And to ask the program to go to this label you have to call the GOTO instruction: GOTO START or GOTO DEAD (without the colon:)</p>&#10;<p>Let&#8217;s see the completed code of our game and I&#8217;ll explain it to you.</p>&#10;<pre><code class="prism language-basic">START:&#10;Actor &#34;decor&#34;, Image$=&#34;bg.png&#34;, X=0, Y=0, EndX=-1920, LoopMove=True, Duration=20000&#10;For I= 1 to 50&#10;&#9;Actor I, X=400 (I*320), Y=-780 rnd(I*20), Auto$=&#34;offsetX=-5&#34;,  Image$=&#34;ice.png&#34;&#10;Next I&#10;&#10;PY=Screen Height/2 // Magic set at the middle of the screen vertically&#10;&#10;Do  // Loop start&#10;&#9;If Mouse Key = 0 then PY = PY 7 else PY = PY-15&#10;&#9;Actor &#34;magic&#34;,Y=PY, Image$=&#34;magicfly.png&#34;&#10;&#9;Refresh&#10;&#9;if Actor Col(&#34;magic&#34;, image$=&#34;ice&#34;) = True Then Goto DEAD&#10;&#9;If PY&gt;1000 Then Goto DEAD&#10;&#9;Locate 0,7 : Pen 6: Print score: score=score 1&#10;Loop  // loop end&#10;&#10;DEAD:  // If Magic collide that part of code is run&#10;Actor &#34;magic&#34;, Image$=&#34;Magic_Dead-0.png&#34;, Y=PY, ENDY=-20, Auto$=&#34;offsetY=-15&#34;&#10;Actor &#34;gameover&#34;, X=660, Y=400, Image$=&#34;gameover.png&#34;  // display the GameOver banner&#10;Wait click  // Wait for a mouse click (or smartphone touchscreen)&#10;Del Actor &#34;gameover&#34; // delete the GameOver image&#10;Goto START // go at the beginning of the program.&#10;</code></pre>&#10;<p>There are lots of new and interesting things to explain. It&#8217;s going to be fine, we&#8217;re progressing, that&#8217;s good.</p>&#10;<ul>&#10;<li>&#10;<p>First of all I added two labels <strong>START:</strong> and <strong>DEAD:</strong> (note the semicolon :) and the <strong>Goto</strong> which corresponds. The last one is <strong>Goto START</strong> simply says: go to that Label (at very beginning of the program where the <strong>START:</strong> is) and so we will start playing again.</p>&#10;</li>&#10;<li>&#10;<p>Explanation of:<br/>&#10;<strong>if Actor Col (&#8220;magic&#8221;, image$ = &#8220;ice&#8221;) = True Then Goto DEAD</strong><br/>&#10;We have already seen that it is the <strong>Actor Col</strong> function which tests the collisions between the actor &#8220;magic&#8221; and either another actor or (in our case here) an image which is called &#8220;ice&#8221;. Outcome? As soon as magic touches a stalactite, the function returns that it is True and Then we go to the DEAD label.</p>&#10;</li>&#10;</ul>&#10;<p>Note: the <strong>if</strong> and <strong>image$</strong> are all lowercase and not in the next line. It&#8217;s cool, in AOZ, we don&#8217;t have to worry about uppercase or lowercase. Focus on the intelligent part of the coding, not on useless syntax.</p>&#10;<ul>&#10;<li>Explanation of:<br/>&#10;<strong>If PY&gt; 1000 Then Goto DEAD</strong><br/>&#10;We also go to the DEAD label if magic falls on the ground. The ground is at Y = 1080 pixels (the height of the screen), taking into account the height of magic whose hot spot is at the top left, testing a value &gt; 1000 is sufficient.</li>&#10;</ul>&#10;<p>OK now, we still have to review the DEAD code and we&#8217;re done. See it&#8217;s not that complicated!</p>&#10;<ul>&#10;<li>&#10;<p>Explanation of:<br/>&#10;<strong>Actor &#8220;magic&#8221;, Image$ = &#8220;Magic_Dead-0.png&#8221;, Y = PY, ENDY = -20, Auto $ = &#34;offsetY = -15&#34;</strong><br/>&#10;This will display the image of the ghost of magic, starting from PY, which is the last vertical position of magic and ending the animation at Y = -20 ie, just after the top of the screen. The ghost will therefore rise and disappear at the top of the screen.</p>&#10;</li>&#10;<li>&#10;<p>Explanation of: <strong>Wait click</strong><br/>&#10;This instruction, as you might expect, is waiting for a mouse button click.</p>&#10;</li>&#10;<li>&#10;<p>Explanation of: <strong>Del Actor &#34;gameover&#34;</strong><br/>&#10;This instruction stops the display of the actor (it disappears), so here we erase the Game over image, then the game is resumed.</p>&#10;</li>&#10;</ul>&#10;<p>Your turn &#128522;: Modify the code, the values&#8230; but step by step.</p>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbNjQ5MDgyMDI3LDcyNTU1NjYwLC0xMTE0ND&#10;QyMzczLDEwOTIzNDIzOTEsLTExNzg5MTc4NjksMTUyODI0Mjk3&#10;NSwtODc2Mjc1NjE2LC0xMzA0MDU0OTI1LC01OTgzMTkxMSwxNT&#10;IxNzA3NzkzLDg3MDIzMjAyNiw3MzA5OTgxMTZdfQ==&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/014_lets_make_a_game.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/014_lets_make_a_game.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

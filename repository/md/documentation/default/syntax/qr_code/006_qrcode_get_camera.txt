@@ -1,4 +1,4 @@
-# QRCode Get Camera
+# QRCode and Camera
 <!--
 @name: QRCode Get Camera
 @description: 
@@ -7,11 +7,51 @@
 \-->
 <div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
 
-Store the image of the camera into the images banks, at the image number IMAGE.
+Show and store the image of the camera and generate or read a QRCode.
 ## Parameters
 
 - **imageIndex**: Index of the image to use
 - **width**: Width of the image
 - **height**: Height of the image
 ---
+
+```basic
+//________Creating a QR Code
+Input "Please enter a text to generate the QR code with: "; TXT$
+
+// Create the QR Code with the text and store the image generated in the images bank at the index 1.
+// The image size is defined to 320x320 pixels
+QRCode Create TXT$, 1 , 320, 320
+
+// Show the QR Code image (you can to test the result with your smartphone)
+Actor "QRCODE", X=800, Y=200, Image=1
+```
+<BR>
+
+```basic
+//____________Reading a QR Code from the webcam, using the front camera
+QRCode Scan "user"
+
+// Start the QR Code Reader
+QRCode Scan On
+
+Print "Waiting a QR Code..."
+
+// Main Loop
+Do
+// Show the video from the camera
+Actor "ma_camera", Video$="@webcam", X= 800
+// Read the camera. If a QR Code is read, the function returns the QR Code text.
+	CODE$ = QRCode Scan$
+// If a QR Code exists
+    If CODE$ <> ""
+        // Print the code
+        Bell : Print CODE$
+// Each time the camera reads a QR Code, it is stopped. So it must be restarted
+        QRCode Scan On
+    End If
+   Refresh
+Loop
+
+```
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/amos%20users'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/amos%20users'>
+        <meta name='pagename' content='AOZ Docs - AMOS USERS'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - AMOS USERS</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="amos-users">AMOS USERS</h1>&#10;<p>For those who remember, AMOS is the grandfather of AOZ, created in the 1980s. This chapter is for our old friends -so happy to have you here- who are familiar with AMOS, Easy AMOS and AMOS Professional, which are the ancestors of AOZ. (If you want to know more see history on the AOZ.Studio web site).</p>&#10;<p>At the end of this chapter we wrote an How to export to Amiga an AMOS program made in AOZ Studio. Yes it is possible and actually both ways, see: <a href="https://youtu.be/6pXOslYl0gE">https://youtu.be/6pXOslYl0gE</a></p>&#10;<h2 id="compatibility-with-amos">Compatibility with AMOS</h2>&#10;<p>First of all, we are delighted to tell you that most of the code and banks from your old programs can be directly loaded into AOZ. If all is well, then everything will import automatically as soon as you load an .AMOS program.</p>&#10;<p>The whole AMOS Professional manual is available, along with every instruction, command and module from A to Z. And you'll find a great range of brand new instructions, such as how to develop your work for use on mobile phones and how to manipulate HTML code for your websites.</p>&#10;<p>We've even included the classic Amiga Game called CyBall and imported it into AOZ for you, as well as a full tutorial on how this was done. This is available on Youtube by Phill Bell <a href="https://youtu.be/E0Rm4PNil9o">How I Ported My AMOS Game To AOZ Studio Start to Finish</a></p>&#10;<p>Remember, there is a dedicated AMOS folder for you to explore at your leisure, with masses more tutorials, oodles of examples and more accessories than you can wave a magic wand at.</p>&#10;<p>There are more similarities than there are differences between your old AMOS and your new AOZ language, with the main difference being that AOZ runs a lot faster, and is no longer restricted to one sort of computer platform. AOZ also supports object-orientation, for example, and a huge range of controls and effects in use of animations.</p>&#10;<p><strong>AUDIO FILES</strong></p>&#10;<p>The tracker engine used supports not only the Amiga SoundTracker files, but newer formats supporting up to 32 channels, XM audio and more.</p>&#10;<p><strong>VOLUME</strong></p>&#10;<p>The thing to remember on setting the volume is that it's different between the Amiga and AOZ manifests. On the Amiga manifest, it works as it did in AMOS. The volume is an integer from 0 to 63.<br/>&#10;0 = off, 63 is max. In the AOZ manifest, the volume is a floating point number between 0 and 1. Think of it as a percentage 0 = 0%, 1 = 100%. Also, time is counted differently between manifests.</p>&#10;<p>For example, in the Amiga manifest, time is counted in Vbl cycles (1/50th or 1/60th of a second). So with the PAL Amiga mode, Wait 1 = Wait 1/50th of a second. In the AOZ manifest, time is counted in seconds, or fractions thereof, so Wait 1 = Wait 1 second.</p>&#10;<p>Note, that if you want to make code the will run in either manifest, you can. It doesn't hurt to use a float variable for your volume level, so you can do something like this:</p>&#10;<pre><code class="prism language-basic">#manifest: &#34;amiga&#34;&#10;D = 10  '10 Vbl cycles = 1/5 second.&#10;&#10;For V=0 To 63 Step 4&#10;&#9;If Manifest$=&#34;amiga&#34;&#10;&#9;&#9;V#=V : D#=D&#10;&#9;&#9;Else&#10;&#9;&#9;V#=V/63 : D#=D/50&#10;&#9;End If&#10;&#10;&#9;Volume V#&#10;&#9;Locate 0,0&#10;&#9;Print Using &#34;Volume: ###.####&#34;;V&#10;&#9;Print Using &#34;Pitch:  ##&#34;;35&#10;&#9;Print Using &#34;Delay: ####.####&#34;;D#&#10;&#9;Play 35,D#&#10;&#9;Wait D#&#10;Next V&#10;</code></pre>&#10;<p>For this to work in both manifests, you will need to go into the resources folder of your application and delete manifest.hjson. Then you can set the manifest with the manifest tag.</p>&#10;<p>The parameters for the Play instruction can be:</p>&#10;<ul>&#10;<li>Play pitch,delay</li>&#10;<li>Play voice,pitch,delay</li>&#10;<li>Play Off</li>&#10;</ul>&#10;<h2 id="bobs-and-sprites">Bobs and Sprites</h2>&#10;<p>The world famous Bob and Sprite instructions, created with AMOS. You do not necessarily have to use these instructions in these modern times now that we can use Actors, but you will find a load of demos and games that use them, and so many programmers still love them.</p>&#10;<p>There are two types of movable objects: &#8220;Bobs&#8221; and &#8220;Sprites&#8221;. Let's deal with Bobs first.</p>&#10;<p>A Bob can be moved around the screen, and there is no limit to the number of Bobs you can harness (apart from the amount of available memory of course). In other words you can have thousands of them performing on screen at the same time. You can control a Bob, track it and even give it special characteristics if it collides with something else or enters a special screen zone. Best of all, you can animate a Bob to make moving cartoon characters, steampunk machinery, in fact anything that your imagination can dream up.</p>&#10;<p>In the old Amiga days a Bob was stored as part of the current screen, so it can eat up quite a lot of memory. So in AMOS there was an alternative type of object called a Sprite.</p>&#10;<p>A Sprite is also a graphic object that you can manipulate, and it's completely independent from the screen. In the 80s world of computers Sprites were manipulated directly by hardware. Bobs on the other hand were being drawn into a screen, saving, drawing and restoring the background as required, so they could be much slower indeed and not having dedicated graphic hardware to display them as we have today, made it extremely difficult to move around many very large bobs at the same time unlike their Sprite counterparts. Today this difference does not exist, and the size/speed or type limits are not really an issue anymore. The name Sprite is widely used to define any moving graphic object. As you would expect, AOZ offers built-in routines to teach both of them magic tricks for intelligent movements.<br/>&#10;<br/></p>&#10;<p><strong>TO INFINITY AND BEYOND</strong></p>&#10;<p>With all these wonders for creating the movement and animation for your Actor, Sprite and Bob objects, you'll probably want to place them in a suitable electronic universe. Good news, your universes can be two-dimensional, three-dimensional and with effects like parallax scrolling where one layer of background graphics moves at a different speed from another layer to create a sort of 3D effect.</p>&#10;<h3 id="amal">AMAL</h3>&#10;<p><strong>AMAL</strong> is a little language within AMOS that was supporting the Amiga mouse as well. Now it is better to use the <strong>Actor</strong> instruction. But&#8230; you can use AMAL in AOZ!<br/>&#10;Discussing AMAL is beyond the scope of this chapter. Please consult the <strong>AMAL</strong> chapters in the former AMOS Amiga manual for more information.</p>&#10;<p><img src="https://doc.aoz.studio/assets/images/en/image084.png" alt="enter image description here"/></p>&#10;<h2 id="transpiling-your-code-to-amiga-and-running-in-winuae.-windows-version.">Transpiling your code to Amiga and running in Winuae. (Windows version).</h2>&#10;<ol start="0">&#10;<li>Open a New Aoz Project from the aoz toolbar, select the Retro option on the left. By Default, it will setup an Amiga screen at 320x256 in pal on which you will be able to type your code in, just like you were doing it in AMOS Pro long ago. Also in the display settings on the Amiga retro template you can select from ntsc/pal resolutions as well.</li>&#10;</ol>&#10;<p><img src="https://doc.aoz.studio/repository/assets/images/amos1.png" alt=""/></p>&#10;<ol>&#10;<li>&#10;<p>Once you have you code ready to run and complete in the aoz editor,  press the Amiga Transpiler button.<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos2.png" alt=""/></p>&#10;</li>&#10;<li>&#10;<p>Next the Amiga Transpiler wizard will appear.<br/>&#10;Press enter to send it on its way.<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos3.png" alt=""/></p>&#10;</li>&#10;</ol>&#10;<p>Special notes on the transpiler and how it works and its requirements.</p>&#10;<p>a) The WinUAE configuration supplied with the Amiga Transpiler does not contain a distribution of the WB (because the Workbench / Amiga OS is the property of Cloanto and AOZ Studio does not have permission to distribute it). The distribution provides only a complete version of AMOS Pro and its Compiler.</p>&#10;<p>Note: You can buy a copy of Amiga Forever.  <a href="http://www.amigaforever.com">www.amigaforever.com</a><br/>&#10;It contains a complete copy of EVERYTHING for the Amiga including all the system disks, hard disk images, etc., and is the only legal distributor for the Amiga ROM images.  Also, Amiga Forever is extremely inexpensive!  You'll want at least the Plus edition at $29.95.  It's worth the price!<br/>&#10;Also Note: The transpiler will output and be controlled by whatever you specify in your code at this point, eg: screen size etc, and you must stick to strict amiga standards, ocs/ecs/aga as usual.</p>&#10;<p>Also AOZ instructions, such as &#8220;Actor&#8221;, &#8220;Load Asset&#8221;&#8230; are not compatible with the Amiga OS.<br/>&#10;See further info on this:-(<a href="http://www.classicamiga.com/images/stories/jreviews/software/A/manuals/AmosPro.pdf">http://www.classicamiga.com/images/stories/jreviews/software/A/manuals/AmosPro.pdf</a>)</p>&#10;<p>By default, the Amiga Transpiler wizard when complete, launches WinUAE which is pre-configured like this:</p>&#10;<ul>&#10;<li>Using an Amiga 500  configured machine and selecting at least<br/>&#10;Kickstart 2.0.</li>&#10;<li>Also a Hard disk DH0 with AMOS Pro   AMOS compiler (hd folder of the distribution)</li>&#10;</ul>&#10;<p>You can use another Amiga emulator if you want (like FS-UAE or Amiga Forever).</p>&#10;<p>You will just have to create the configuration with the hard disk provided with Amiga Transpiler.</p>&#10;<p>The folder containing the data for the emulator is located in the folder :</p>&#10;<p>&#8220;AOZ_installation_folder/AOZ_Studio/app/Accessories/AOZ Tools/amiga_transpiler/system/hd&#8221;</p>&#10;<p><img src="https://doc.aoz.studio/repository/assets/images/amos4.png" alt=""/></p>&#10;<p>Also everything that is supported by AMOS Compiler can be used. So all AMOS extensions (AMOS 3D, AMCAF&#8230;) and the use of Amiga libraries. The Amiga Transpiler does not check the code, but you will get a message back from AMOS Compiler if your program has errors. (A Red X at the end).</p>&#10;<p>Of course, the code using elements specific to the Amiga system, will not be able to be executed on your machine. Only on the emulator.</p>&#10;<p>Now back to the wizard&#8230;<br/>&#10;If all goes well, you will end up with the wizard complete.<br/>&#10;If something was wrong along the way, or you end up here with a RED X over the screen, then either your Amiga Roms / AMOS Pro were missing or your code was not compatible with standard amiga format. See point above.<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos5.png" alt=""/></p>&#10;<ol start="3">&#10;<li>Configuring the Winaue Amiga Emulator<br/>&#10;Below is the default screen you will see when Winuae starts. (Windows) version shown.<br/>&#10;There is no configuration saved at this time, but you can save one when you have setup a couple of options on the left, (Quickstart, Rom,Ram &amp; CD&amp;Hard drives).<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos6.png" alt=""/></li>&#10;</ol>&#10;<p>a) Firstly click the quickstart on the left and select if not already A500  below.<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos7.png" alt=""/></p>&#10;<p>b) Next we will select our Amiga Rom file to use.<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos8.png" alt=""/></p>&#10;<p>Also note: If you do not specify a rom file when you click start, it will try and run an AROS amiga alternative, which unfortunately will not execute correctly and also is very slow.<br/>&#10;Again, make sure you purchase A complete Amiga forever set or from a genuine dealer etc.</p>&#10;<p>c) Next we will set our ram for use with our Amiga core.<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos9.png" alt=""/></p>&#10;<p>d - 1) Now we will select our harddisk folder so as we can autoboot our amiga.<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos10.png" alt=""/></p>&#10;<p>d - 2) After selecting the folder below, press ok.<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos11.png" alt=""/></p>&#10;<p>d - 3) Now you should have your file as shown below in the Harddisk window.<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos12.png" alt=""/></p>&#10;<p>e) When you compile the program for Amiga, you will have 2 possibilities. Run your program right away, or create a bootable disk with your program.<br/>&#10;Pressing Y below will run your program immediately just like you are in your old AMOS world.<br/>&#10;Pressing N will go onto creating a new floppy disk but this will work assuming you are running on a real amiga with a real df0: floppydrive etc.<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos13.png" alt=""/></p>&#10;<p>You can also do a Ctrl C to take over the CLI. And you can type &#8220;amos:amospro&#8221; to run the AMOS Pro environment.</p>&#10;<p>Your AOZ program (converted in AMOS) is located in the &#8220;app/Accessories/AOZTools/amiga_transpiler/system/hd/AOZTranspiler/tmp&#8221; folder.<br/>&#10;On WinUAE,  it's located in &#8220;DH0:AOZTranspiler/tmp&#8221;.</p>&#10;<p>You can also execute a loadwb etc, now assuming you go onto configuring your Amiga Hdisk folder with all the necessary boot and wb files etc. That is beyond the scope of this document tho.</p>&#10;<p>There is also an amiga cmd called reboot, which can also do just that, if you are running in a manual cli window, and you enter it, it will reboot you amiga that is running and autoboot again your program. Also note as above, the actual output that is created from aoz or your amiga code is in the AOZTranspiler/tmp folder, see above. This is where the .AMOS program is converted and created in the end.<br/>&#10;Below here you can see I have previously created an amiga program opening a standard Amiga screen 320x256 in 32 colours and after pressing Y as described above, it opens as normal.</p>&#10;<p>It can also of course output in 256 colours aga, that all up to you. Enjoy.<br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos14.png" alt=""/></p>&#10;<p>Other notes&#8230;(Winuae &amp; Rom locations).</p>&#10;<p><img src="https://doc.aoz.studio/repository/assets/images/amos15.png" alt=""/><br/>&#10;<img src="https://doc.aoz.studio/repository/assets/images/amos16.png" alt=""/></p>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbLTU1MTg0NzE3LC03MjMxNDI2NDMsMTA5Mj&#10;M0MjM5MSwtMTE3ODkxNzg2OSwxNTI4MjQyOTc1LC04NzYyNzU2&#10;MTYsLTEzMDQwNTQ5MjUsLTU5ODMxOTExLDE1MjE3MDc3OTMsOD&#10;cwMjMyMDI2LDczMDk5ODExNl19&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/030_amos_users.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/030_amos_users.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

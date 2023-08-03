@@ -7,9 +7,83 @@
 \-->
 <div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
 
-Jump to a sub-routine
+**Gosub** Calls a sub-routine at a specified label (or line number).  
+
+## Description
+**Gosub** is always used in conjunction with the **Return** instruction.  
+
+When **Gosub** calls a subroutine identified by the specified **label**,  code execution is transferred to the position of the label, and continues with the instruction immediately following the label.  
+
+When the **Return** instruction is reached, code execution will continue at the instruction immediately following the calling **Gosub** instruction.
+
+## Syntax Options
+
+**Gosub** label
+**Gosub** lineNumber
+
 ## Parameters
 
-- **label**: The sub-routine to call
----
+|Parameter|Description|
+|---|---|
+| **label** | The label that identifies the sub-routine. |
+| **lineNumber** | The lineNumber that identifies a sub-routine. |
+
+## Examples
+```basic
+Gosub DrawCircles
+Gosub Print2File
+Gosub 100
+End 
+
+100 Print "Old fashioned line number."
+Return 
+
+DrawCircles:
+	cx=Rnd(0 To Screen Width-1)
+	cy=Rnd(0 To Screen Height-1)
+	radius=Rnd(5 To 100)
+	Ink Rnd(0 To 31)
+	Circle cx,cy,radius
+	Wait Vbl
+Return
+
+Print2File: Open Out 1,"myfile"
+   Print #1,"This is..."
+   Print #1,"...a test."
+   Close 1
+ Return
+```
+
+## Notes
+
+**Label**
+A label is a name used to identify a position in your program|;s code.  
+
+- It consists of letters, numeric digits, and underscores.
+- Spaces or other special symbols are not allowed in a label.  
+- Both upper and lower case letters may be used, however, AOZ ignores the case used.
+- Labels should not start with a digit.
+- A colon : should immediately follow a label. 
+- If code follows a label on the same line, it is recommended (but not required) that a space immediately follows the colon.
+
+**Examples:**
+MySubroutine:
+Do_Stuff:
+Time4Fun:
+Fifty_Ways2Have_FUN:
+
+**Line Number**
+A line number is a special kind of label.  They have been included in AOZ to improve compatibility with older versions of BASIC such as AMOS.  Different rules apply than to regular labels:
+- It must contain **only** numeric digits.  
+- It is used at the beginning of a line of code
+- It should **not** be followed by a colon like
+- If code follows a line number on the same line, a space must immediately follow the line number.
+
+**Examples:**
+10 rem This is a remark
+100 Print "this is a Print test"
+12345
+1234567890123456789012345678901234567890
+(Unlike older versions of BASIC, line numbers in AOZ are not limited to numbers between 1 and 65535.  They can be as long as you like.)
+
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

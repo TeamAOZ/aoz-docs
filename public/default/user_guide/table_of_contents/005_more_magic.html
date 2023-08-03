@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/more%20magic'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/more%20magic'>
+        <meta name='pagename' content='AOZ Docs - MORE MAGIC'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - MORE MAGIC</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="more-magic">MORE MAGIC</h1>&#10;<p>A little recap before continuing?</p>&#10;<p>You now know how to use:<br/>&#10;&#8226; <strong>Actor</strong> to:</p>&#10;<ul>&#10;<li>display images <strong>Image$</strong></li>&#10;<li>position them precisely with <strong>Hotspot$</strong></li>&#10;<li>move images by their coordinates with: <strong>X, Y, EndX, EndY</strong></li>&#10;<li>animate them automatically with <strong>Auto$</strong></li>&#10;<li>choose how to control them with <strong>Control$</strong></li>&#10;</ul>&#10;<p>and some of the associated commands (there are many more):</p>&#10;<ul>&#10;<li>trigger their movement with <strong>ActionMove$</strong></li>&#10;<li>orient them automatically with <strong>LookAt$</strong></li>&#10;<li>scroll through them with <strong>LoopMove</strong></li>&#10;</ul>&#10;<p>&#8226; <strong>Print</strong> to display a message on the screen.</p>&#10;<p>&#8230; and you have started to use:</p>&#10;<p>&#8226; <strong>If&#8230; Then</strong> to define conditions and act accordingly.</p>&#10;<p>&#8226; <strong>Do&#8230; Loop</strong> to repeat actions.</p>&#10;<p>&#8226; <strong>InKey$</strong> to retrieve a key pressed by the user.</p>&#10;<p>Maybe you are wondering, what are the differences between:</p>&#10;<ul>&#10;<li><strong>Inkey$</strong> is a function that returns the next key as a string or an empty string if the keyboard buffer is empty.</li>&#10;<li><strong>Key State(n)</strong> is a function that checks if the key with the ID of n is currently pressed, and returns true if it is.</li>&#10;</ul>&#10;<br/>&#10;Not bad for a start! Let's continue in this chapter with:&#10;<p>&#8226; <strong>Input</strong> to enter text on the user's keyboard.</p>&#10;<p>&#8226; <strong>Goto</strong> to go to part of your program.</p>&#10;<p>&#8226; <strong>If&#8230; Then&#8230; Else</strong> to master testing conditions&#8230; and to initiate actions accordingly.</p>&#10;<p>Let's go!</p>&#10;<p>Please erase all your previous code and type:</p>&#10;<pre><code class="prism language-basic">Input &#34;Tell me your name&#34;;NAME$&#10;Print &#34;Hello &#34;;NAME$&#10;Input &#34;How old are you?&#34;;age&#10;days=age*365&#10;Print &#34;Wow! In days that's &#34;;days&#10;Print &#34;I think you are old enough to be a Magician!&#34;&#10;Print &#34;Goodbye &#34;;NAME$&#10;Bell 2&#10;</code></pre>&#10;<p>You basically know all the instructions already. What is new is the <strong>Input</strong> instruction and the <strong>calculation</strong>.</p>&#10;<p><strong>Input</strong> is a great instruction to ask for something specific, it can be a number or text, for example: <strong>Input NAME$</strong>. Here we combine Input with a Print (it is possible with this instruction), so:</p>&#10;<p><strong>Input &#8220;Tell me your name&#8221; ; NAME$</strong></p>&#10;<p>Will first display the request <em>Tell me your name</em>, followed by a question, and what you answer by typing on your keyboard will be stored in the variable NAME$</p>&#10;<p><strong>Input &#8220;How old are you?&#8221; ; age</strong></p>&#10;<p>Another question, and we Input the age. Say you typed in your age as 20, in the memory of the variable age the value 20 is then stored</p>&#10;<p><strong>days = age*365</strong></p>&#10;<p>This line will calculate the number of days in our example 20*365, so now in the memory of the variable days we have 7300.</p>&#10;<p>You may have noticed that some variable names finish with a $ , like NAME$, but some variable names don&#8217;t, like age. There's a reason for this, and our tutorials will teach us how to create different types of variables and why. For now just note that when you set a variable with text you should add a $ at the end of its name, but if it is a value then there is no $. It's that simple.</p>&#10;<p>We already know that a computer program is nothing more than a bunch of instructions that tell your machine what to do. If a computer only obeyed your list of instructions one after the other, your programs would be very limited and very boring. So we already know that the magic only begins when you teach your machine to start making decisions. These decisions are all based on simple conditions.</p>&#10;<p><strong>DECISIONS</strong><br/>&#10;The quick way to get a computer to make a decision is to teach it something and offer it a choice of what to do, depending on what it knows. If computers understood plain English we would say something like, &#8220;Hey computer, look out the window. If it's daytime then let's go to the gym. But if it's not daytime then let's go to bed.&#8221; When you ask AOZ to give this sort of choice to your computer, it will look at the choices on offer and decide if the condition is true or false. If it's true then your computer decides to take one course of action, but if it's false then another course of action will be taken.</p>&#10;<p>One course of action could be to jump to a new place somewhere in your list of instructions using, for example, what is called a PROCEDURE. But there are other solutions on offer.</p>&#10;<p>One is to mark the place you want to jump to in the code before telling your computer's brain to jump to it and carry out whatever instruction is waiting there. With AOZ this is dead easy. You simply mark the place in your list of commands by giving it a name or a label, and tack on a colon character so your computer can recognize it and not confuse it with anything else. You can use any letter or number characters you like for this label, including the &#8220;underscore&#8221; _ character. So an example of your label could be <strong>THE_GYM:</strong> or <strong>thegym:</strong> or <strong>THEGYM:</strong></p>&#10;<p>By using labels like this, you can now go to anywhere you like in your program using a special Goto command.  The following example includes THEGYM label,  the new command Goto, and the Wait command with every second you want the computer to wait. Normally you would have to wait 10 seconds to find out what time it is, but you can tell the computer to jump over that wait and go straight to the gym.</p>&#10;<pre><code class="prism language-basic">Print &#34;I wonder what the time is&#34;&#10;Goto THEGYM&#10;Wait 10&#10;Print &#34;bed time?&#34;&#10;THEGYM:&#10;Print &#34;It must be daytime!&#34;&#10;End&#10;</code></pre>&#10;<p><strong>LOGIC</strong><br/>&#10;It's time to let your computer begin to think for itself using simple logic, and make a decision without any help from you. To do this you can use two commands that have the same meaning in the AOZ language as they do in the English language. These commands are If and Then. We told you we were going to see them again &#128522;.</p>&#10;<p>So <strong>If</strong>  something is true <strong>Then</strong>  the computer will decide to take one action, otherwise it will do something <strong>Else</strong>.</p>&#10;<p>Run this little routine and watch the computer decide what time it is:</p>&#10;<pre><code class="prism language-javascript">NIGHT=1&#10;NOW=1&#10;Print &#34;What time is it now?&#34;&#10;Wait 3&#10;If NOW = NIGHT then Goto BED&#10;If NOW &lt;&gt; NIGHT then Goto SOCCER&#10;BED:&#10;Print &#34;I think it is bed time&#34;&#10;End&#10;SOCCER:&#10;Print &#34;Where is the ball?&#34;&#10;</code></pre>&#10;<p>Now change the value of NIGHT to another number, like NIGHT=0, and RUN that routine again.</p>&#10;<p>If you are sure you understand how your computer reaches its decision Then <em>Goto</em>  the next paragraph, or <em>Else</em> try again.</p>&#10;<p>AOZ also uses the word <strong>Else</strong> when telling your computer how to decide if something is true or false, so you could change that last routine to something like this below, then change the values of NIGHT to see what happens:</p>&#10;<pre><code class="prism language-basic">NIGHT=0&#10;NOW=1&#10;Print &#34;What time is it now?&#34;&#10;Wait 3&#10;If NOW = NIGHT then Goto BED else Goto SOCCER&#10;BED:&#10;Print &#34;I think it is bed time&#34;&#10;End&#10;SOCCER:&#10;Print &#34;Where is the ball?&#34;&#10;</code></pre>&#10;<hr/>&#10;<br/> &#10;How about you create some more magic by writing a simple computer game to test out what you've learned so far? It's a genuine game of logic and the computer responds to anything that you throw at it. To do this you will have to use these mathematical symbols.&#10;&#34;=&#34; means &#34;is equal to&#34;&#10;&#34;&lt;&gt;&#34; means &#8220;is different than&#8221;&#10;&#34;&gt;&#34; means &#34;is greater than&#34;&#10;&#34;&lt;&#34; means &#34;is less than&#34;&#10;<p>This is a game of Guess The Secret Number. We are going to use a new command to clear the screen, otherwise the number won't be secret at all. The instruction to clear your screen is <strong>Cls</strong>.</p>&#10;<p>One more thing, you already know <strong>If&#8230;Then&#8230;Else</strong>, but there is a different way of using the <strong>If</strong> without the <strong>Then</strong>.</p>&#10;<p>Here we use <strong>If</strong> several times, and you have to type <strong>End If</strong> the appropriate number of times at the end of your logic tests, otherwise your computer will be left wondering what to do for ever.</p>&#10;<p>OK, when you are ready, type in this game and go and find a victim to inflict it upon.</p>&#10;<pre><code class="prism language-basic">Print &#34;Let's play Guess The Secret Number&#34;&#10;Print &#34; Ask your victim to shut their eyes&#34;&#10;Wait 2&#10;Input &#34;Now type a secret number between 1 and 10 &#34;;A&#10;Cls&#10;Print &#34;Ask your victim to open their eyes&#34;&#10;Wait 2&#10;SECRET:&#10;Input &#34;Victim, find the secret number &#34;;B&#10;If B=A&#10; &#9;Print &#34;YES. CONGRATULATIONS!&#34;&#10;Else&#10;&#9;If B&lt;A&#10;&#9;&#9;&#9;Print &#34;WRONG! Go higher&#34; : Goto SECRET&#10;  &#9;Else&#10;&#9;&#9;&#9;If B&gt;A&#10;  &#9;    &#9;Print &#34;WRONG! Try lower&#34; : Goto SECRET&#10;&#9;       &#9;End If&#10; &#9;End if&#10; End If&#10;</code></pre>&#10;<p>Do you see the : this separates instructions on a line. You can write the same thing like this:</p>&#10;<pre><code class="prism language-basic">If B&lt;A&#10;&#9;&#9;Print &#34;WRONG! Go higher&#34;&#10; &#9;&#9;Goto SECRET&#10;Else&#10; &#9;&#9;If B&gt;A&#10;  &#9;&#9;Print &#34;WRONG! Try lower&#34;&#10;    &#9;Goto SECRET&#10; &#9;&#9;End If&#10;End If&#10;</code></pre>&#10;<p>Optimization is important in programming. Let's change the SECRET: procedure part of the code, and try to understand why it still works. Once you understand then you&#8217;re the Master of the Ifs!</p>&#10;<pre><code class="prism language-basic">SECRET:&#10;Input &#34;Victim, find the secret number &#34;;B&#10;If B=A&#10; &#9;&#9;Print &#34;YES. CONGRATULATIONS!&#34;&#10;Else&#10;&#9;If B&lt;A&#10;&#9;&#9;Print &#34;WRONG! Go higher&#34; : Goto SECRET&#10; &#9;Else&#10; &#9;    Print &#34;WRONG! Try lower&#34; : Goto SECRET&#10; &#9;End if&#10;End If&#10;</code></pre>&#10;<p>Now let&#8217;s try to achieve the same result using the previous more traditional <strong>If&#8230;Then&#8230;Else</strong> :</p>&#10;<pre><code class="prism language-basic">SECRET:&#10;Input &#34;Victim, find the secret number &#34;;B&#10;If B=A then Print &#34;YES. CONGRATULATIONS!&#34; : End&#10;If B&lt;A Then Print &#34;WRONG! Go higher&#34; else Print &#34;WRONG! Try lower&#34;&#10;Goto SECRET&#10;</code></pre>&#10;<p><strong>If</strong> you do not understand <strong>Then</strong> we have failed <strong>Else</strong> you are brilliant.<br/>&#10;<br/></p>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbMzc5OTIyNjEwLC0xMzE5MDg4MzAyLC0xNT&#10;k3NjU0MzEwLC0xMzgzNDI2MzIsLTE5MTE5NjkzODEsLTIzNjg2&#10;OTUwMywtNzY3OTUzMzM4LC01NTI5ODkwMDZdfQ==&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/005_more_magic.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/005_more_magic.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

@@ -209,7 +209,8 @@ function AOSounds( aoz )
 	this.vars =
 	{
 		volume: typeof this.aoz.manifest.sounds.volume == 'undefined' ? ( this.aoz.platform == 'amiga' ? 64 : 1 ) : this.aoz.manifest.sounds.volume,
-		muted: false
+		muted: false,
+		samLoop: false
 	};
 
 	this.filters = [];
@@ -384,7 +385,7 @@ AOSounds.prototype.setEnvelope = function( index, phase, duration, level )
 };
 
 
-AOSounds.prototype.callVoices = function( functionName, number, args )
+AOSounds.prototype.callVoices = function( functionName, index, args, noErrors )
 {
 	function callIt( voice )
 	{
@@ -406,15 +407,56 @@ AOSounds.prototype.callVoices = function( functionName, number, args )
 				return voice[ functionName ]( args[ 0 ], args[ 1 ], args[ 2 ], args[ 3 ], args[ 4 ], args[ 5 ] );
 		}
 	};
+	if ( typeof index == 'string' )
+	{
+		var found = 0;
+		var result;
+		for ( var n = 0; n < this.voices.length; n++ )
+		{
+			var voice = this.voices[ n ];
+			for ( var m = 0; m < voice.aoSounds.length; m++ )
+			{
+				var sound = voice.aoSounds[ m ];
+				if ( sound.name.toLowerCase() == index.toLowerCase() )
+				{
+					found++;
+					switch( args.length )
+					{
+						case 0:                        
+							result = sound[ functionName ]();
+						case 1:                        
+							result = sound[ functionName ]( args[ 0 ] );
+						case 2:                        
+							result = sound[ functionName ]( args[ 0 ], args[ 1 ] );
+						case 3:                        
+							result = sound[ functionName ]( args[ 0 ], args[ 1 ], args[ 2 ] );
+						case 4:                        
+							result = sound[ functionName ]( args[ 0 ], args[ 1 ], args[ 2 ], args[ 3 ] );
+						case 5:                        
+							result = sound[ functionName ]( args[ 0 ], args[ 1 ], args[ 2 ], args[ 3 ], args[ 4 ] );
+						case 6:                        
+							result = sound[ functionName ]( args[ 0 ], args[ 1 ], args[ 2 ], args[ 3 ], args[ 4 ], args[ 5 ] );
+					}				
+				}
+			}
+		}
+		if ( !noErrors && found == 0 )
+		{
+			throw { error: 'sound_not_playing', parameter: index };
+		}
+		return result;
+	}
+	else
+	{
 	if ( this.aoz.platform == 'amiga' )
 	{
-		number = typeof number == 'undefined' ? 0x0000000F : number;
-		if ( number == 0 )
-			number = 0x0000000F;
+			index = typeof index == 'undefined' ? 0x0000000F : index;
+			if ( index == 0 )
+				index = 0x0000000F;
 		for ( var v = 0; v < 4; v++ )
 		{
 			var mask = ( 1 << v );
-			if ( ( number & mask ) != 0 )
+				if ( ( index & mask ) != 0 )
 			{
 				result = callIt( this.voices[ v ] );                    
 			}
@@ -423,17 +465,18 @@ AOSounds.prototype.callVoices = function( functionName, number, args )
 	}
 	else
 	{
-		if ( number == -1 )
+			if ( index == -1 )
 		{
 			for ( var n = 0; n < this.voices.length; n++ )
 				callIt( this.voices[ n ] );
 			return 0;
 		}
-		if ( typeof number == 'undefined' && this.voicesOn[ 1 ] )
+			if ( typeof index == 'undefined' && this.voicesOn[ 1 ] )
 			return callIt( this.voices[ 1 ] );
-		if ( number < 0 || number > this.voices.length )
-			throw { error: 'illegal_function_call', parameter: number };
-		return callIt( this.voices[ number ] );
+			if ( index < 0 || index > this.voices.length )
+				throw { error: 'illegal_function_call', parameter: index };
+			return callIt( this.voices[ index ] );
+		}
 	}
 };
 AOSounds.prototype.getNoteFrequency = function( note )
@@ -575,16 +618,17 @@ AOSounds.prototype.setVolume = function( volume, voices )
 		this.callVoices( 'setVolume', voices, [ volume ] );
 	}
 };
-AOSounds.prototype.samLoop = function( onOff, voices )
+AOSounds.prototype.setLoop = function( onOff, voice )
 {	
-	if ( !voices )
+	if ( !voice )
 	{
+		this.vars.samLoop = onOff;
 		for ( var v = 0; v < this.voices.length; v++ )
-			this.voices[ v ].samLoop( onOff );
+			this.voices[ v ].setLoop( onOff );
 	}
 	else
 	{
-		this.callVoices( 'samLoop', voices, [ onOff ] );
+		this.callVoices( 'setLoop', voice, [ onOff ] );
 	}
 };
 AOSounds.prototype.setVoices = function( onOff, voice )
@@ -596,6 +640,10 @@ AOSounds.prototype.setVoices = function( onOff, voice )
 			var mask = ( 1 << v );
 			this.voices[ v ].mute( ( onOff & mask ) == 0 );
 		}
+	}
+	else if ( typeof voice == 'string' )
+	{
+		this.callVoices( 'mute', voice, [ !onOff ] );
 	}
 	else
 	{		
@@ -632,7 +680,6 @@ function AOVoice( aoz, index, options )
 	this.number = name;
 	this.index = index;
 	this.type = undefined;
-	this.samLoopOn = false;
 
 	options = typeof options == 'undefined' ? {} : options;
 	this.vars = 
@@ -744,7 +791,6 @@ AOVoice.prototype.play = function( index, options )
 {	
 	options = typeof options != 'undefined' ? options : {};
 	options.type = ( typeof options.type == 'undefined' ? this.type : options.type.toLowerCase() );
-	options.loop = ( typeof options.loop == 'undefined' ? ( this.samLoopOn ? -1 : 1 ) : options.loop );
 	index = typeof index == 'undefined' ? this.index : index;
 	this.callback = options.callback;
 	this.extra = options.extra;
@@ -755,28 +801,44 @@ AOVoice.prototype.play = function( index, options )
 		buffer = this.sounds.waves[ 'wave_' + index ];
 		if ( !buffer )
 			throw { error: 'wave_not_defined', parameter: '' + index };
-		sound = new AOSound( this.aoz, this, buffer, { type: options.type, volume: this.vars.volume, pan: this.vars.pan } );
+		options.loop = typeof options.loop == 'undefined' ? 1 : options.loop;
+		sound = new AOSound( this.aoz, this, 'wave_' + this.index, buffer, { type: options.type, volume: this.vars.volume, pan: this.vars.pan } );
 	}
 	else if ( options.type == 'sfx' ) 
 	{
 		buffer = this.sounds.sfx[ 'sfx_' + index ];
 		if ( !buffer )
 			throw { error: 'sfx_not_defined', parameter: '' + index };
-		sound = new AOSound( this.aoz, this, buffer, { type: options.type, volume: this.vars.volume, pan: this.vars.pan } );
+		options.loop = typeof options.loop == 'undefined' ? 1 : options.loop;
+		sound = new AOSound( this.aoz, this, 'sfx_' + index, buffer, { type: options.type, volume: this.vars.volume, pan: this.vars.pan } );
 	}
 	else if ( options.type == 'sound' ) 
 	{
+		var name;
 		if ( this.aoz.utilities.isObject( index ) )
+		{
 			buffer = index;
+			name = index.name;
+		}
 		else
+		{
 		buffer = this.aoz.banks.getSound( index, options.contextName );
-		sound = new AOSound( this.aoz, this, buffer, { type: options.type, volume: this.vars.volume, pan: this.vars.pan } );
+			name = '' + index;
+		}
+		options.loop = ( typeof options.loop == 'undefined' ? ( this.sounds.vars.samLoop ? -1 : 1 ) : options.loop );
+		sound = new AOSound( this.aoz, this, name, buffer, { type: options.type, volume: this.vars.volume, pan: this.vars.pan } );
 		sound.index = index;
 	}
 	else if ( options.type == 'white' || options.type == 'brown' || options.type == 'pink' )
-		sound = new AONoise( this.aoz, this, { type: options.type, volume: this.vars.volume, pan: this.vars.pan } );
+	{
+		options.loop = typeof options.loop == 'undefined' ? 1 : options.loop;
+		sound = new AONoise( this.aoz, this, 'noise_white', { type: options.type, volume: this.vars.volume, pan: this.vars.pan } );
+	}
 	else
-		sound = new AOSynth( this.aoz, this, { type: options.type, volume: this.vars.volume, pan: this.vars.pan } );
+	{
+		options.loop = typeof options.loop == 'undefined' ? 1 : options.loop;
+		sound = new AOSynth( this.aoz, this, 'synth', { type: options.type, volume: this.vars.volume, pan: this.vars.pan } );
+	}
 	sound.play( options );
 };
 AOVoice.prototype.loop = function( index, numberOfTimes, options )
@@ -835,9 +897,10 @@ AOVoice.prototype.setRate = function( rate )
 	for ( var s = 0; s < this.aoSounds.length; s++ )
 		this.aoSounds[ s ].setRate( rate );
 };
-AOVoice.prototype.samLoop = function( onOff )
+AOVoice.prototype.setLoop = function( onOff )
 {
-	this.samLoopOn = onOff;
+	for ( var s = 0; s < this.aoSounds.length; s++ )
+		this.aoSounds[ s ].setLoop( onOff );
 };
 AOVoice.prototype.addFilter = function( type, options )
 {
@@ -862,13 +925,14 @@ AOVoice.prototype.removeFilter = function( type )
 //
 // ONE SOUND
 //
-function AOSound( aoz, voice, audioBuffer, options )
+function AOSound( aoz, voice, name, audioBuffer, options )
 {
 	this.aoz = aoz;
 	this.sounds = aoz.sounds;
 	this.className = 'aosound';
 	this.voice = voice;
 	this.audioBuffer = audioBuffer;
+	this.name = name;
 
 	options = typeof options == 'undefined' ? {} : options;
 	this.vars = 
@@ -897,6 +961,8 @@ function AOSound( aoz, voice, audioBuffer, options )
 };
 AOSound.prototype.play = function( options )
 {
+	this.stop();
+
 	options = typeof options == 'undefined' ? {} : options;
 	if ( options.frequency )
 		options.rate = options.frequency / 440;
@@ -905,7 +971,6 @@ AOSound.prototype.play = function( options )
 	options.volume = typeof options.volume != 'undefined' ? options.volume : this.vars.volume;
 	options.pan = typeof options.pan != 'undefined' ? options.pan : this.vars.pan;
 	options.loop = typeof options.loop != 'undefined' ? options.loop : 1;
-	this.stop();
 	this.setPan( options.pan );
 	this.setVolume( options.volume );
 	this.vars.rate = options.rate;
@@ -925,6 +990,7 @@ AOSound.prototype.start = function( duration )
 };
 AOSound.prototype.stop = function( force )
 {
+	this.loopCounter = 1;
 	this.enveloppe.stop( force );
 };
 AOSound.prototype.onEvent = function( response )
@@ -999,16 +1065,21 @@ AOSound.prototype.isLooping = function()
 {
 	return false;
 };
+AOSound.prototype.setLoop = function( onOff )
+{
+	this.loopCounter = onOff ? -1 : 1;
+};
 
 //
 // ONE SYNTHETIZER
 //
-function AOSynth( aoz, voice, options )
+function AOSynth( aoz, voice, name, options )
 {
 	this.aoz = aoz;
 	this.sounds = this.aoz.sounds;
 	this.voice = voice;
 	this.className = 'aosynth';
+	this.name = name;
 
 	options = typeof options == 'undefined' ? {} : options;
 	options.type = typeof options.type != 'undefined' ? options.type.toLowerCase() : 'square';
@@ -1038,13 +1109,14 @@ function AOSynth( aoz, voice, options )
 };
 AOSynth.prototype.play = function( options )
 {
+	this.stop();
+
 	options = typeof options == 'undefined' ? {} : options;
 	options.frequency = typeof options.frequency != 'undefined' ? options.frequency : this.vars.frequency;
 	options.volume = typeof options.volume != 'undefined' ? options.volume : this.vars.volume;
 	options.pan = typeof options.pan != 'undefined' ? options.pan : this.vars.pan;
 	this.loopCounter = typeof options.loop == 'undefined' ? 1 : ( typeof options.loop <= 0 ? 0 : options.loop );
 
-	this.stop();
 	this.setPan( options.pan );
 	this.setVolume( options.volume );
 	this.oscillatorNode.frequency.value = options.frequency;
@@ -1057,6 +1129,7 @@ AOSynth.prototype.start = function( duration )
 };
 AOSynth.prototype.stop = function( force )
 {
+	this.loopCounter = 1;
 	this.enveloppe.stop( force );
 };
 AOSynth.prototype.onEvent = function( response )
@@ -1122,17 +1195,22 @@ AOSynth.prototype.isLooping = function()
 {
 	return false;
 };
+AOSynth.prototype.setLoop = function( onOff )
+{
+	this.loopCounter = onOff ? -1 : 1;
+};
 
 
 //
 // ONE NOISE GENERATOR
 //
-function AONoise( aoz, voice, options )
+function AONoise( aoz, voice, name, options )
 {
 	this.aoz = aoz;
 	this.sounds = this.aoz.sounds;
 	this.voice = voice;
 	this.className = 'aonoise';
+	this.name = name;
 
 	options = typeof options == 'undefined' ? {} : options;
 	options.type = typeof options.type != 'undefined' ? options.type.toLowerCase() : 'square';
@@ -1162,13 +1240,14 @@ function AONoise( aoz, voice, options )
 };
 AONoise.prototype.play = function( options )
 {
+	this.stop();
+
 	options = typeof options == 'undefined' ? {} : options;
 	options.frequency = typeof options.frequency != 'undefined' ? options.frequency : this.vars.frequency;
 	options.volume = typeof options.volume != 'undefined' ? options.volume : this.vars.volume;
 	options.pan = typeof options.pan != 'undefined' ? options.pan : this.vars.pan;
 	options.duration = typeof options.duration != 'undefined' ? options.duration : 1;
 
-	this.stop();
 	this.setPan( options.pan );
 	this.setVolume( options.volume );
 	this.sourceNode.playbackRate.value = options.frequency / 440;
@@ -1181,6 +1260,7 @@ AONoise.prototype.start = function( duration )
 };
 AONoise.prototype.stop = function( force )
 {
+	this.loopCounter = 1;
 	this.enveloppe.stop( force );
 };
 AONoise.prototype.onEvent = function( response )
@@ -1245,6 +1325,10 @@ AONoise.prototype.isPaused = function()
 AONoise.prototype.isLooping = function()
 {
 	return false;
+};
+AONoise.prototype.setLoop = function( onOff )
+{
+	this.loopCounter = onOff ? -1 : 1;
 };
 
 //

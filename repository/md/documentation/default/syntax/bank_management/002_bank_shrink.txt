@@ -10,7 +10,7 @@
 Change the size of a memory bank
 ## Parameters
 
-- **bannkIndex**: Index of the bank to resize
+- **bankIndex**: Index of the bank to resize
 - **length**: New size in bytes
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

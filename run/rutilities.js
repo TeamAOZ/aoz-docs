@@ -159,8 +159,9 @@ Utilities.prototype.rotatePoint = function( point, center, angle )
 {
 	var cos = Math.cos( angle );
 	var sin = Math.sin( angle );
-	point.x = ( cos * ( point.x - center.x ) ) - ( sin * ( point.y - center.y ) ) + center.x;
-	point.y = ( cos * ( point.y - center.y ) ) + ( sin * ( point.x - center.x ) ) + center.y;
+	var px = ( cos * ( point.x - center.x ) ) - ( sin * ( point.y - center.y ) ) + center.x;
+	var py = ( sin * ( point.x - center.x ) ) + ( cos * ( point.y - center.y ) ) + center.y;
+	return ( { x: px, y: py } );
 };
 Utilities.prototype.rotateCollisionRectangle = function( rectangle, center, angle )
 {
@@ -749,14 +750,14 @@ Utilities.prototype.DrawFilters = function( aoz, that )
 			var valueString;
 			if ( definition[ p ].prefix.substring( 0, 1 ) == '#' )
 			{
-				valueString = this.aoz.utilities.getModernColorString( value );
+				valueString = this.aoz.utilities.getModernColorString( value ) + definition[ p ].unit;
 				definition[ p ].prefix = ' ';
 			}
 			else
 			{
 				value = Math.max( definition[ p ].minimum, Math.min( definition[ p ].maximum, value ) );
 				valueString = definition[ p ].prefix + value + definition[ p ].unit;
-		}
+			}
 			values.push( value );
 			valueStrings.push( valueString );
 	}
@@ -849,12 +850,14 @@ Utilities.prototype.DrawFilters = function( aoz, that )
 	};
 };
 
-Utilities.prototype.adjustColor = function( color, intensity )
+Utilities.prototype.adjustColor = function( color, intensity, func )
 {
 	var rgb = this.getRGBAStringColors(color);
 	rgb.r = ( rgb.r * intensity ) > 255 ? 255 : rgb.r * intensity;
 	rgb.g = ( rgb.g * intensity ) > 255 ? 255 : rgb.g * intensity;
 	rgb.b = ( rgb.b * intensity ) > 255 ? 255 : rgb.b * intensity;
+	if ( func )
+		return this.getAOZRGB( rgb.r, rgb.g, rgb.b );
 	return this.getModernColorString(this.getAOZRGB( rgb.r, rgb.g, rgb.b ));
 };
 Utilities.prototype.getJavascriptColor = function( colorName, short = false )
@@ -1050,6 +1053,118 @@ Utilities.prototype.replaceStringInText = function( text, mark, replacement, num
 	}
 	return text;
 };
+Utilities.prototype.addZeroFrontValue = function( value, size )
+{
+	var format = '' + value
+	for( var r = format.trim().length; r < size; r++ )
+	{
+		format = '0' + format;
+	}
+	return format;
+};
+Utilities.prototype.justifyText = function( text, maxWidth )
+{
+	var words = text.split( ' ' );
+	var len = words.length;
+	var arr = [];
+	var width = 0;
+	var item = null;
+	var addLen = 0;
+	var res = [];
+	function helper(arr, left, isLast) 
+	{
+		var len = arr.length;
+		var num = 0;
+		var rem = 0;
+		var res = '';
+  
+		if ( len === 1 || isLast ) 
+		{
+			return arr.join(' ') + ' '.repeat(left);
+		}
+
+		num = Math.floor( left / (len - 1) );
+		rem = left % ( len - 1 );
+		for (var i = 0; i < len; i++) 
+		{
+			res += arr[i];
+			if (i < len - 1) res += ' '.repeat(num + 1);
+			if (i < rem) res += ' ';
+		}
+		return res;
+	}
+	for (var i = 0; i < len; i++) 
+	{
+	  item = words[i];
+	  addLen = width === 0 ? item.length : (item.length + 1);
+  
+	  if (width + addLen > maxWidth) {
+		res.push(helper(arr, maxWidth - width, false));
+		arr = [];
+		width = 0;
+		addLen = item.length;
+	  }
+  
+	  arr.push(item);
+	  width += addLen;
+	}
+	res.push(helper(arr, maxWidth - width, true));
+	return res.join( '\r\n' );
+};
+  
+Utilities.prototype.formatText = function( text, section )
+{
+	var start = text.indexOf( '${' );
+	while ( start >= 0 )
+	{
+		var end = text.indexOf( '}', start );
+		if ( end > start )
+		{
+			var name = text.substring( start + 2, end ).trim();
+				
+			var dimension;
+			var plus = '';
+			var bracket = name.indexOf( '[' )
+			if ( bracket >= 0 )
+			{
+				plus = '_array';
+				dimension = name.substring( bracket + 1 );
+				name = name.substring( 0, bracket ).trim();
+			}
+			if ( name.charAt( name.length - 1 ) == '#' )
+				name = name.substring( 0, name.length - 1 ) + '_f';			 
+			name += plus;
+			var value = section.vars[ name ];
+			if ( !value && section.type != 'main' )
+				value = section.root.vars[ name ];
+			if ( !value )
+				throw { error: 'variable_not_found', parameters: [ name ] };
+			if ( bracket > 0 )
+			{
+				bracket = 0;
+				var dimensions = [];
+				while ( bracket < dimension.length )
+				{
+					var endBracket = dimension.indexOf( ']', bracket );
+					if ( endBracket < 0 )
+						throw { error: 'syntax_error_in_string', parameters: [ bracket ] };
+					var comma = name.indexOf( ',', bracket );
+					if ( comma < 0 )
+						comma = endBracket;
+					dimensions.push( section.aoz.val( dimension.substring( bracket, comma ) ) );
+					dimension = comma + 1;
+				}
+				value = value.getValue( dimensions );
+			}
+			if ( typeof value != 'string' )
+				value = section.aoz.str$( value ).trim(); 
+			text = text.substring( 0, start ) + value + text.substring( end + 1 );
+		}
+		start = text.indexOf( '${' );
+	}
+	return text;
+};
+
 Utilities.prototype.loadScript = function( scripts, options, callback, extra )
 {
 	options = typeof options != 'undefined' ? options : {};
@@ -2526,24 +2641,20 @@ AOZContext.prototype.getElementInfosFromFilename = function( contextName, filena
 			{
 				name = filename.substring( firstDot + 1, lastDot );
 				index = newIndex;
+				indexMap[index] = true;
 			}
 		}
 		else
 		{
-			newIndex = undefined;
+			index = this.getFreeIndex( contextName, indexMap );
 		}
-	}
+	}	
 	if ( typeof name == 'undefined' )
 	{
 		if ( firstDot >= 0 )
 			name = filename.substring( 0, firstDot );
 		else
 			name = filename;
-	}
-	if ( typeof newIndex == 'undefined' )
-	{
-		if ( typeof index == 'undefined' )
-			index = this.getFreeIndex( contextName, indexMap )
 	}
 	return { name: name, index: index };
 };
@@ -2580,7 +2691,21 @@ AOZContext.prototype.getElement = function( contextName, index, errorString )
 		contextName = contextName ? contextName : this.domain;
 		var contextIndex = contextName + ':' + index;
 		if ( this.listNames[ contextIndex ] )
+		{
 			return this.listNames[ contextIndex ];
+		}
+		
+		contextIndex = contextName + ':' + index.toLowerCase();
+		if ( this.listNames[ contextIndex ] )
+		{
+			return this.listNames[ contextIndex ];
+		}	
+
+		contextIndex = contextName + ':' + index.toUpperCase();
+		if ( this.listNames[ contextIndex ] )
+		{
+			return this.listNames[ contextIndex ];
+		}				
 	}
 	if ( errorString )
 		throw errorString;
@@ -2745,6 +2870,23 @@ AOZContext.prototype.deleteElement = function( contextName, index, errorString )
 
 	if ( this.options.sorted )
 	{
+		/* BAPTISTE - LOOK AT THIS
+		for( var n = 0; n < this.listSorted.length; n++ )
+		{
+			if( this.listSorted[ n ].Index == element.Index )
+			{
+				element.indexSorted = n;
+			}
+		}
+
+		for( var n = 0; n < this.listSortedInContext[ contextName ].length; n++ )
+		{
+			if( this.listSortedInContext[ contextName ][ n ].Index == element.Index )
+			{
+				element.indexSortedInContext = n;
+			}
+		}
+		*/
 		this.listSorted.splice( element.indexSorted, 1 );
 		this.listSortedInContext[ contextName ].splice( element.indexSortedInContext, 1 );
 		for ( var i = 0; i < this.listSortedInContext[ contextName ].length; i++ )

@@ -7,10 +7,28 @@
 \-->
 <div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
 
-Set the end of line characters detected when you input from a random access file
+This instruction sets the character(s) used to indicate the end of line for a sequential text file.
+
+## Syntax
+**Set Input** char1, char2
+*NOTE: Set Input is misleading because it also sets what is used for output.*
+
 ## Parameters
 
-- **char1**: Ascii value of the first character to detect as new line
-- _char2_ (optional): Ascii value of the first character to detect as new line
+<table>
+<tr><th>Parameter</th><th>Description</th></tr>
+<tr><th>char1</th><td>ASCII value of the first character indicating the end of line.</td></tr>
+<tr><th>char2</th><td> ASCII value of the second character indicating the end of line.</td></tr>
+
+*NOTE:  If only 1 character is needed, set char2 to a negative number.*
+
+## Description
+
+Usually the end of line indicator is some combination of 13 and 10.  These ASCII values indicate Chr\$(13) aka carriage return (CR), and Chr\$(10) aka line feed (LF).  These characters were named based on the function they performed on old mechanical printers.  The CR moved the printhead back to the beginning of the line, but still on the same line.  The LF rolled the paper down to the next line (aka newline).
+
+When you|;re reading or writing a text file, each line is terminated by the end of line character(s).
+
+ Which you should use depends on what operating system the files were created in, or are intended to be used in.  For example:  In Windows and DOS based systems, end of line is 13,10 (CR LF), but in Linux, Amiga, and newer macOS systems, it is 10,-1 (just LF).  In older versions of macOS, it was 13,-1 (just CR).
+
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

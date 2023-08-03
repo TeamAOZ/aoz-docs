@@ -1,0 +1,14 @@
+# DB Column Value&dollar;
+<!--
+@name: DB Column Value&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Return the value of the column ColName&dollar;
+## Parameters
+
+- _Id&dollar;_ (optional): ID of the results of the query.
+- **Colname&dollar;**: Name of the column.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

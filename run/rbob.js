@@ -58,7 +58,7 @@ function Bob( aoz, parent, contextName )
 		shadowX: 0,
 		shadowY: 0,
 		shadowBlur: 0,
-		shadowColor: 0,
+		shadowColor: null,
 		hRev: false,
 		vRev: false,
 		actorParams: undefined,
@@ -162,7 +162,7 @@ Bob.prototype.get_this = function( index, mode )
 }
 Bob.prototype.setImage = function(  image, fromInstruction )
 {
-	if ( image != this.vars.image )
+	if ( image != this.vars.image || this.vars.hRev || this.vars.vRev )
 	{
 		if ( typeof image == 'number' )
 		{
@@ -278,16 +278,16 @@ Bob.prototype.update = function( options )
 	}
 	return false;
 };
-Bob.prototype.setClipping = function( rectangle, options )
+Bob.prototype.setClipping = function( args, options )
 {
-	if ( rectangle )
+	if ( args )
 	{
-		rectangle.sides = rectangle.sides >= 3 || rectangle.sides != 'undefined' ? rectangle.sides : 4;
-		rectangle.style = rectangle.style != 'undefined' ? rectangle.style : 'rectangle';
-		rectangle.angle = rectangle.angle != 'undefined' ? rectangle.angle : 0;
-		if ( this.aoz.platform == 'amiga' && typeof rectangle.width != 'undefined' )
-			rectangle.width &= 0xFFFFFFF0;
-		this.clipping = rectangle;
+		args.sides = args.sides >= 3 ? args.sides : 4;
+		args.style = args.style != 'undefined' ? args.style : 'rectangle';
+		args.angle = args.angle != 'undefined' ? args.angle : 0;
+		if ( this.aoz.platform == 'amiga' && typeof args.width != 'undefined' )
+			args.width &= 0xFFFFFFF0;
+		this.clipping = args;
 	}
 	else
 	{

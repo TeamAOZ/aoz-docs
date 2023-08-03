@@ -1,11 +1,11 @@
 # ERRORS, BUGS AND HELP
-Most programmers refer to the mistakes and glitches in their programs as "bugs". These little devils are the errors that are responsible for messing up the magic. They could be a single keystroke that has been typed in by mistake, or an instruction that's been left out, or some impossible task that blows the computer's mind. Sometimes it can take hours or even days to spot where these bugs are lurking and what they are doing before they can be put right, but AOZ is smarter than that and does most of the hard work for you.
+Most programmers refer to the mistakes and glitches in their programs as "bugs". These little devils are the errors that are responsible for messing up the magic. They could be a single keystroke that has been typed in by mistake, or an instruction that|;s been left out, or some impossible task that blows the computer|;s mind. Sometimes it can take hours or even days to spot where these bugs are lurking and what they are doing before they can be put right, but AOZ is smarter than that and does most of the hard work for you.
 
 If a you make a mistake when you write a program in AOZ, or when you ask your computer to do the impossible, AOZ will always do its very best to offer some first aid, and it will offer it automatically. It will not only help you spot the error, but will also try to explain what the problem is, and exactly where it is lurking, no matter how big or complex your program is. 
 
-If this happens while you are programming, then you'll be able to try and cure the bug immediately. If it happens when you test or run your program then AOZ will take you straight to any offending lines of code, one after the other, until they are perfect.
+If this happens while you are programming, then you|;ll be able to try and cure the bug immediately. If it happens when you test or run your program then AOZ will take you straight to any offending lines of code, one after the other, until they are perfect.
 
-Apart from simple typing mistakes, some of the most common mistakes are in the way you type in the variables. A variable is a quantity or a number with an unknown value, where the value can change depending on what is saved in it. It's important to remember that when you name these variables in AOZ they are case sensitive. So a name in all lower-case letters is a different variable, with a different value from the same name with a capital letter. For example:
+Apart from simple typing mistakes, some of the most common mistakes are in the way you type in the variables. A variable is a quantity or a number with an unknown value, where the value can change depending on what is saved in it. It|;s important to remember that when you name these variables in AOZ they are case sensitive. So a name in all lower-case letters is a different variable, with a different value from the same name with a capital letter. For example:
 <table align="center">
 	<tr>
 		<td>stuff$="stuff"</td>
@@ -18,12 +18,12 @@ Apart from simple typing mistakes, some of the most common mistakes are in the w
 </table>
 
 **On help**
-AOZ will try and help you every step of the way. When you started to create your magic by typing in lines of code, you probably noticed your code appeared in different colors. Keywords, comments, variables and twiddly bits all appear in their own distinct color. If something isn't quite right then AOZ will try to highlight the problem by changing color. Similarly, as you type in the first few characters of a command, AOZ will try and help save you time and avoid mistakes by showing you a list of the commands and keywords it reckons you may want to use. All you have to do is use your Up and Down arrow-keys to highlight the item you're interested in, and AOZ will automatically tell you about it, and help you put your commands in the right order and the right format.
+AOZ will try and help you every step of the way. When you started to create your magic by typing in lines of code, you probably noticed your code appeared in different colors. Keywords, comments, variables and twiddly bits all appear in their own distinct color. If something isn|;t quite right then AOZ will try to highlight the problem by changing color. Similarly, as you type in the first few characters of a command, AOZ will try and help save you time and avoid mistakes by showing you a list of the commands and keywords it reckons you may want to use. All you have to do is use your Up and Down arrow-keys to highlight the item you|;re interested in, and AOZ will automatically tell you about it, and help you put your commands in the right order and the right format.
 
 Apart from coming round to your house and programming for you, what more can we do? Well, we can do quite a lot more as it turns out. For example an understandable User Guide. Please read on.
 
 **On error Help**
-If you make a mistake and there are errors that stop your program working properly, then the errors will appear on their own wall of shame in your editor window at the bottom, usually with a helpful message showing the exact line number and specific character where the bug is sitting. If you want to show these errors again, click on this button <img src="https://doc.aoz.studio/assets/images/image050.png" width="32px" valign="middle" /> at the top of the screen or type Ctrl+Shift+c
+If you make a mistake and there are errors that stop your program working properly, then the errors will appear on their own wall of shame in your editor window at the bottom, usually with a helpful message showing the exact line number and specific character where the bug is sitting. If you want to show these errors again, click on this button <img src="https://doc.aoz.studio/assets/images/en/image050.png" width="50px" valign="middle" /> at the top of the screen or type Ctrl+Shift+c
 
 There are even more debugging options! If you are running your program in the built-in AOZ viewer (**F2** key), then you can click the magical hat at the top left of it (see next Chapter). Never be afraid to experiment and try out new ideas and routines. AOZ is always there to help, and never to hinder. The contextual help is great.
 
@@ -31,13 +31,13 @@ There are even more debugging options! If you are running your program in the bu
 As you learn AOZ language you need to know what instructions are available, and there are so many (almost 800). You need to be helped, we all do; here comes the great contextual Help and Manual.
 
 **You may click on the instructions and type the F6 keys:**
-If you select an instruction and press the F6 function key the manual search will run and tell you all what he knows about it. 
+If you select an instruction and press the **F6 function key** the manual search will run and tell you all what he knows about it. 
 
 **Direct Mode help**
 And… you have the Magical Hat DIRECT MODE to check all sorts of things, like the value of your program’s variables. We will see it soon in the next chapter.
 
 ## Speed
-There are a lot of ways to speed up a program. For example you can avoid using large graphics if you don't really need them. Anyway, often small is beautiful. You should also keep your audio and video files as small as possible.
+There are a lot of ways to speed up a program. For example you can avoid using large graphics if you don|;t really need them. Anyway, often small is beautiful. You should also keep your audio and video files as small as possible.
 
 Some instructions go faster than others. Choosing the organization, the sequence and the instructions will have an impact which can be very important. This is called algorithmic.
 

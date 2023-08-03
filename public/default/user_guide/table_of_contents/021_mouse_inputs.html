@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/mouse%20inputs'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/mouse%20inputs'>
+        <meta name='pagename' content='AOZ Docs - MOUSE INPUTS'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - MOUSE INPUTS</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="mouse-inputs">MOUSE INPUTS</h1>&#10;<p>AOZ provides full support for the mouse, trackball, and similar devices. We already discussed it in the Actor instruction chapter. In addition to returning and setting the position of the pointer, and reading the status of the mouse buttons, we can also change the mouse pointer's shape, limit the area of the display in which it is active, and more.</p>&#10;<h3 id="change-mouse-shape">Change Mouse Shape</h3>&#10;<p><strong>Description:</strong> Sets the shape of the mouse pointer to shape number N.<br/>&#10;<strong>Parameter:</strong> The Integer Parameter (N) sets the shape of the pointer as follows:</p>&#10;<p><strong>Nb</strong> &amp; <strong>Pointer Shape</strong></p>&#10;<ul>&#10;<li>Pointer</li>&#10;<li>Crosshair</li>&#10;<li>Busy</li>&#10;<li>Finger</li>&#10;</ul>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">For M=1 To 4  &#10;&#9;Print M : Change Mouse M  &#10;&#9;Wait Key ' new mouse shape when a key is pressed.  &#10;Next M&#10;</code></pre>&#10;<p><strong>NOTE:</strong> On the Amiga, a mouse shape &gt; 3 would pull the shape from the Sprite bank.</p>&#10;<br/>&#10;<h3 id="hide">Hide</h3>&#10;<p><strong>Description:</strong> Makes the mouse pointer invisible. Each time Hide is called, an internal hide counter is incremented. The mouse pointer will remain hidden until the hide counter is 0 again.<br/>&#10;<strong>NOTE:</strong> Although Hide makes the pointer invisible, it is still active, and it's position may be tracked and read.</p>&#10;<p>The purpose of the internal hide counter is to simplify keeping track of who hid the mouse and when. If you have multiple routines hiding or showing the mouse pointer, it can be cumbersome to keep track of whether it should be on or off. The internal counter automatically keeps track.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">hides=0  'simulate the internal counter.  Type H or S keys.&#10;Curs Off 'Hide the cursor&#10;Do&#10;&#9;I$=Upper$ (Inkey$)&#10;&#9;If Mouse Key=1 Or I$=&#34;H&#34; Then Hide : Inc hides : Repeat Until Mouse Key=0&#10;&#9;If Mouse Key=2 Or I$=&#34;S&#34; Then Show : Dec hides : Repeat Until Mouse Key=0&#10;&#9;Locate 0,0 : Print Using &#34;-##&#34;;hides&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10; <br/>&#10;<h3 id="show">Show</h3>&#10;<p><strong><em>Description:</em></strong> Makes the mouse pointer visible. Each time show is called it decrements the <em>hide counter</em>. The mouse pointer become visible when the number of shows equals the number of hides (when the <em>hide counter</em> becomes 0).<br/>&#10;<br/></p>&#10;<h3 id="hide-on">Hide On</h3>&#10;<p><strong><em>Description:</em></strong> Makes the mouse pointer invisible <strong><em>all the time</em></strong>. It <em>ignores</em> the internal <em>hide counter</em> used by the regular <strong>Hide</strong> and <strong>Show</strong> instructions. It is like a <em>show &#8220;override&#8221;</em>.<br/>&#10;<strong>NOTE:</strong> Although <strong>Hide On</strong> makes the pointer invisible all the time, it is still active, and it's position may be tracked and read.<br/>&#10;<br/></p>&#10;<h3 id="show-on">Show On</h3>&#10;<p><strong><em>Description:</em></strong> This instruction will make the mouse pointer visible <strong><em>all the time</em></strong>. It <em>ignores</em> the internal <em>hide counter</em> used by the regular <strong>Show</strong> and <strong>Hide</strong> commands. It is like a <em>&#8220;hide override&#8221;</em>.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">hides=0 ' simulate the internal counter. Type H or space bar.****  &#10;Curs Off  'hide cursor**&#10;Do&#10;&#9;I$=Upper$ (Inkey$)&#10;&#9;If Mouse Key=1 Or I$=&#34;H&#34; Then Hide : Inc hides : Repeat Until Mouse Key=0&#10;&#9;If Mouse Key=2 Or I$=&#34; &#34; Then Show On : Repeat Until Mouse Key=0 ' Force visible ALWAYS&#10;&#9;Locate 0,0 : Print Using &#34;-##&#34;;hides&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10; <br/>&#10;<h3 id="limit-mouse-x1y2-to-x2y2">Limit Mouse X1,Y2 To X2,Y2</h3>&#10;<p><strong><em>Description:</em></strong> Limits the movement of the mouse pointer to a specified rectangular area of the current screen.<br/>&#10;<strong><em>Parameters:</em></strong> The <strong>Integer</strong> parameters represent the upper left and lower right corners of the rectangular area being defined.<br/>&#10;X1 and Y1 are the X and Y coordinates of the upper left corner.<br/>&#10;X2 and Y2 are the X adn Y coordinates of the lower right corner.</p>&#10;<p>The mouse pointer will not be displayed outside of this defined area.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Screen Open 0,800,600,32,Lowres&#10;Limit Mouse 0,0 To 400,300  &#10;Do  &#10;&#9;Refresh  &#10;Loop&#10;</code></pre>&#10;<p>The above example will limit mouse movement to the specified area.<br/>&#10;<strong>NOTES:</strong><br/>&#10;When <strong>Limit Mouse</strong> is called with NO parameters, it restores the normal area of the mouse, allowing it to move around the entire screen.<br/>&#10;Instead of this instruction you also may use actor parameters to limit the mouse pointer movements.</p>&#10;<br/>&#10;<h3 id="mouse-click">= Mouse Click</h3>&#10;<p><strong><em>Description:</em></strong> Returns whether mouse buttons have been clicked (a single click). The result is a bitmap which is returned as follows:</p>&#10;<p><strong>Value</strong> <strong>Description</strong></p>&#10;<ol>&#10;<li>Left Button</li>&#10;<li>Right Button</li>&#10;<li>Left   Right Buttons</li>&#10;<li>Middle Button (if it exists)</li>&#10;</ol>&#10;<p><strong><em>Return Value:</em></strong> The <strong>Integer</strong> result is the mouse button or combination of buttons as described above.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Do&#10;&#9;Btns$=&#34;&#34;&#10;&#9;CLK = Mouse Click&#10;&#9;Locate 0,I &#10;&#9;If (CLK &amp; 1) = 1 Then Btns$ = Btns$ &#34;Left&#34;: I=I 1&#10;&#9;If (CLK &amp; 2) = 2 Then Btns$ = Btns$ &#34;Right&#34;: I=I 1&#10;&#9;If (CLK &amp; 4) = 4 Then Btns$ = Btns$ &#34;Middle&#34;: I=I 1&#10;&#9;Print Bin$(CLK,8);&#34; &#34;;Btns$&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<p><strong>NOTE:</strong> Once a button has been pressed, the &#8220;clicked&#8221; state will not activate again until the mouse button is released and then clicked again.</p>&#10;<br/>&#10;<h3 id="mouse-key-button">= Mouse Key (Button)</h3>&#10;<p><strong><em>Description:</em></strong> Returns the current state of the mouse buttons. This result is a bitmap which is returned as follows:<br/>&#10;<strong><em>Return Value:</em></strong> As defined in Mouse Click as described above.<br/>&#10;<br/></p>&#10;<h3 id="mouse-wheel">= Mouse Wheel</h3>&#10;<p><strong><em>Description:</em></strong> Returns the current state of the mouse wheel. The state is returned as follows:<br/>&#10;<strong>Result  Mouse Wheel State</strong><br/>&#10;<strong>0</strong> Neutral<br/>&#10;<strong>-1</strong> Wheel moved up<br/>&#10;<strong>1</strong> Wheel moved down</p>&#10;<p><strong><em>Return Value:</em></strong> The <strong>Integer</strong> result indicates whether the mouse wheel has been moved up or down, or remains neutral.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">PrevMW=0&#10;Do&#10;&#9;MW = Mouse Wheel&#10;&#9;If MW &lt;&gt; PrevMW Then Print Using &#34;-#&#34;;MW&#10;&#9;PrevMW = MW&#10;Loop&#10;</code></pre>&#10;<p>The example above allows you to see changes in the mouse wheel status.</p>&#10;<br/>&#10;<h3 id="mouse-zone">= Mouse Zone</h3>&#10;<p><strong><em>Description:</em></strong> Returns the number of the Zone currently under the mouse pointer.<br/>&#10;<strong>NOTE:</strong> A zone is simply a defined rectangular area of the screen reserved for collisions or mouse position detection. (See also <em>HZone</em>)<br/>&#10;<strong><em>Returns:</em></strong> The <strong>Integer</strong> return value is the Zone number under the specified coordinates. If there is no Zone under those coordinates, 0 will be returned.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Palette 0,$FFFFFF,$FF0000,$00FF00,$0000FF,$FFFF00,$00FFFF,$FF00FF&#10;Cls 0&#10;Reserve Zone 5&#10;MakeZone[1,20,0,100,100]&#10;MakeZone[2,101,0,200,100]&#10;MakeZone[3,20,101,200,200]&#10;MakeZone[4,201,0,799,599]&#10;MakeZone[5,20,201,200,599]&#10;&#10;Do&#10;&#9;Locate 20,5 : Print Using &#34;-###&#34;;Mouse Zone&#10;&#9;Refresh&#10;Loop&#10;&#10;Procedure MakeZone[zn,x1,y1,x2,y2]&#10;Ink zn 1 : Box x1,y1 To x2,y2&#10;Set Zone zn,x1,y1 TO x2,y2&#10;End Procedure&#10;</code></pre>&#10;<p>This example introduces new concepts, if it sounds very complicated don't panic.</p>&#10;<br/>&#10;<h3 id="mouse-screen">= Mouse Screen</h3>&#10;<p><strong><em>Description:</em></strong> Returns the screen number under the mouse pointer. <em>(See also ScIn(X,Y)</em><br/>&#10;<strong><em>Returns:</em></strong> The <strong>Integer</strong> return value is the screen number under the mouse pointer. If there is no screen under those coordinates, a negative number will be returned.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Global scrWidth,scrHeight&#10;scrWidth=560 : scrHeight=380&#10;&#10;ScreenSample[1,0,0]&#10;ScreenSample[2,scrWidth,scrHeight]&#10;ScreenSample[3,scrWidth*2,scrHeight*2]&#10;ScreenSample[4,0,scrHeight*2]&#10;ScreenSample[5,scrWidth*2,0]&#10;&#10;Do&#10;&#9;Locate 1,1 : Print Using &#34;##&#34;; Mouse Screen&#10;&#9;Locate 1,2 : Print Using &#34;-####&#34;; X Mouse;&#34; , &#34;; : Print Using &#34;-####&#34;;Y Mouse;&#34; &#34;&#10;&#9;Refresh&#10;Loop&#10;&#10;Procedure ScreenSample[n,xPos,yPos]&#10;&#9;Screen Open n,scrWidth,scrHeight,32&#10;&#9;Screen Display n,xPos,yPos&#10;&#9;Palette 0,$FFFFFF,$FF0000,$00FF00,$0000FF,$FFFF00,$00FFFF,$FF00FF&#10;&#9;Curs off : Ink n 1 : Bar 0,0 To scrWidth-1,scrHeight-1&#10;End Procedure&#10;</code></pre>&#10;<p>This example also introduces new concepts, if it sounds very complicated don't panic, go on.<br/>&#10;<br/></p>&#10;<h3 id="sclnxy">= Scln(X,Y)</h3>&#10;<p><strong><em>Description:</em></strong> <strong>SCIN</strong> returns the screen number at the specified coordinates. Typically used with <strong>X Mouse</strong> and <strong>Y Mouse</strong> to determine when the mouse pointer has entered a particular screen.<br/>&#10;<strong><em>Parameters:</em></strong> The <strong>Integer</strong> parameters <strong>X</strong> and <strong>Y</strong> indicate the hardware coordinates we're checking.<br/>&#10;<strong><em>Returns:</em></strong> The <strong>Integer</strong> return value is the screen number under the specified coordinates. If there is no screen under those coordinates, a negative number will be returned.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Screen Open 0,800,600,32,Lowres&#10;&#10;SetPalette : Screen Display 0,0,0 : ClearIt&#10;Ink 4 : BigX&#10;&#10;S=1&#10;Screen Open S,800,600,32,Lowres&#10;SetPalette : Screen Display S,0,0 : ClearIt&#10;Ink 2 : BigX&#10;&#10;S=2&#10;Screen Open S,800,600,32,Lowres&#10;SetPalette : Screen Display S,1920-800,0 : ClearIt&#10;Ink 3 : BigX&#10;&#10;S=3&#10;Screen Open S,1920-1600,1080-600-1,32,Lowres&#10;SetPalette : Screen Display S,800,601 : ClearIt&#10;Ink 5 : BigX&#10;&#10;Screen 1 : Pen 1 ' Screen number display to screen 1&#10;&#10;Do&#10;Locate 1,1 : Print Using &#34;-#&#34;;ScIn(X Mouse,Y Mouse)&#10;Refresh&#10;Loop&#10;&#10;Procedure SetPalette&#10;&#9;' Set palette for current scren.&#10;&#9;Palette 0,$FFFFFF,$FF0000,$00FF00,$0000FF,$FFFF00,$00FFFF,$FF00FF&#10;End Procedure&#10;&#10;Procedure ClearIt&#10;&#9;Pen 1 : Paper 0 : Cls 0&#10;End Procedure&#10;&#10;Procedure BigX&#10;&#9;' Draw box &amp; big X in current color on full area of current screen.&#10;&#9;Box 0,0 To Screen Width-1,Screen Height-1&#10;&#9;Draw 0,0 To Screen Width-1,Screen Height-1&#10;&#9;Draw Screen Width-1,0 To 0,Screen Height-1&#10;End Procedure&#10;</code></pre>&#10;<p>Try moving the mouse around over the various screen areas, and in the overscan area. You'll see the proper screen number appear for each screen, and a negative number when no screen exists under the mouse pointer.</p>&#10;<br/>&#10;<h3 id="x-hardx_screen">= X Hard(X_SCREEN)</h3>&#10;<p><strong><em>Description:</em></strong> Converts a horizontal screen coordinate into a hardware coordinate. <strong>NOTE:</strong> Hardware coordinates are relative to the upper left corner of the current <strong>display area</strong> with respect to the current screen. This is like the overscan areas of a video monitor.<br/>&#10;<strong><em>Parameters:</em></strong> The <strong>Integer</strong> parameter, <strong>X_SCREEN</strong> is the screen coordinate to convert in the current screen.<br/>&#10;<strong><em>Return Value:</em></strong> The <strong>Integer</strong> result is the horizontal hardware coordinate relative to the current <strong>display area</strong>.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">// If you want to set the display size of the default screen.&#10;// you may use the Tags, for example:&#10;//  #displayWidth: 1920&#10;//  #displayHeight: 1080&#10;// Note that Display Width and Display Height (with a blank between the 2 words) are functions&#10;// to return the screen sizes in X and Y&#10;&#10;Palette 0,$FF0000&#10;Ink 1 : Pen 1 : Paper 0 : Cls 0&#10;Box 0,0 To 1919,1079 ' Show the outer bounds of the display (in red)&#10;Locate 1,0 : Print &#34;Display Area&#34;&#10;// Open a smaller screen.&#10;Screen Open 1,800,600&#10;Screen Display 1, 100,70,, ' Move screen 0 down and right a bit...&#10;Palette 0,$FFFFFF&#10;Ink 1 : Pen 1 : Paper 0 : Cls 0&#10;Box 0,0 To 799,599 ' Show bounds of Screen 1 (in white)'&#10;Locate 1,0 : Print &#34;Screen 1&#34;&#10;Locate 1,2 : Print X Hard(0),Y Hard(0)&#10;' Above should display the hardware coordinates of the upper left corner of the current screen.&#10;</code></pre>&#10;<br/>&#10;<h3 id="y-hardy_screen">= Y Hard(Y_SCREEN)</h3>&#10;<p><strong><em>Description:</em></strong> Converts a vertical screen coordinate into a hardware coordinate. Cf X Hard(X_SCREEN)</p>&#10;<br/>&#10;<h3 id="x-mouse-">X Mouse =</h3>&#10;<p><strong><em>Description:</em></strong> This <strong>System Variable</strong> can be used to set the position of the mouse pointer using <em>hardware</em> coordinates.<br/>&#10;<strong>NOTE:</strong> It does not work will all browsers. Your web browser may or may not be able to control the mouse position.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">#displayWidth: 320&#10;#displayHeight: 200&#10;Screen Open 0,320,200,32,Lowres&#10;X Mouse = X Hard(160) ' Middle of screen horizontally&#10;Y Mouse = Y Hard(100) ' Middle of screen vertically&#10;Refresh ' Allow the user to see the mouse position until a key is pressed.&#10;</code></pre>&#10;<p>The above code will open a 320 x 200 screen, and position the mouse pointer in the middle of the screen.</p>&#10;<br/>&#10;<h3 id="x-mouse">= X Mouse</h3>&#10;<p><strong><em>Description:</em></strong> Returns the horizontal position of the mouse for the current screen.<br/>&#10;<strong><em>Return Value:</em></strong> The <strong>Integer</strong> result is the horizontal position of the mouse on the screen. The result is expressed using hardware coordinates.<br/>&#10;<strong>NOTE:</strong> <em>Hardware</em> coordinates take into account the entire display area including the overscan portion around the screen.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">&#10;Screen Open 1,1280,800,32,Lowres&#10;Screen Display 1,200,50&#10;&#10;Locate 1,0 : Print &#34;Coordonn&#233;es &#233;cran  &#34;&#10;Locate 1,2 : Print &#34;Coordonn&#233;es mat&#233;rielles &#34;&#10;&#10;Do&#10;&#9;Locate 25,0 : Print Using &#34;X: -####&#34;;X Screen(X Mouse);&#10;&#9;Print Using &#34;  Y: -####&#34;;Y Screen(Y Mouse)&#10;&#9;Locate 25,2 : Print Using &#34;X: -####&#34;;X Mouse;&#10;&#9;Print Using &#34;  Y: -####&#34;;Y Mouse&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<br/>&#10;<h3 id="y-mouse">= Y Mouse</h3>&#10;<p><strong><em>Description:</em></strong> Returns the vertical position of the mouse for the current screen. See X Mouse.</p>&#10;<br/>&#10;<h3 id="x-screenx_hard">= X Screen(X_HARD)</h3>&#10;<p><strong><em>Description:</em></strong> Converts a horizontal hardware coordinate into a screen coordinate.<br/>&#10;<strong>NOTE:</strong> Screen coordinates are relative to the upper left corner of the current screen.</p>&#10;<p><strong><em>Parameters:</em></strong> The <strong>Integer</strong> parameter, <strong>X_HARD</strong> is the hardware coordinate to convert (Hardware coordinates are relative to the entire display area include the overscan portion).<br/>&#10;<strong><em>Return Value:</em></strong> The <strong>Integer</strong> result is the horizontal screen coordinate equivalent of the hardware coordinate parameter.</p>&#10;<p><em>Example:</em></p>&#10;<pre><code class="prism language-basic">Ink 1 : Pen 1&#10;Box 1,1 To Screen Width-2,Screen Height-2&#10;&#10;Do&#10;&#9;Locate 2,2 : Print Using &#34;X: -####&#34;;X Screen(X Mouse);&#34; &#34;&#10;&#9;Locate 2,4 : Print Using &#34;Y: -####&#34;;Y Screen(Y Mouse);&#34; &#34;&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<br/>&#10;<h3 id="y-screeny_hard">= Y Screen(Y_HARD)</h3>&#10;<p><strong><em>Description:</em></strong> Converts a vertical hardware coordinate into a screen coordinate. See X Screen(X_HARD)</p>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbMTY4MDI2Njc4NywtMTQ3MzQ1NTM1NywtMT&#10;YwOTAzMjI2Miw2MzQyNjkyLDgzNDc5NTcwNCw3MTY1MDQ2Mzgs&#10;NTE3MDA3MDMxLC0xMTAxMTY4MjQ3LDEwOTIzNDIzOTEsLTExNz&#10;g5MTc4NjksMTUyODI0Mjk3NSwtODc2Mjc1NjE2LC0xMzA0MDU0&#10;OTI1LC01OTgzMTkxMSwxNTIxNzA3NzkzLDg3MDIzMjAyNiw3Mz&#10;A5OTgxMTZdfQ==&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/021_mouse_inputs.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/021_mouse_inputs.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

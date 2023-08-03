@@ -16,5 +16,12 @@ Display a Progress user interface component,
 - **height**: The height of the component in pixels. If not set, 20 by default.
 - **class&dollar;**: The CSS (Cascading Style Sheet) class to be used to style the component. A default style is used if not set.
 - **group&dollar;**: A user defined name used to group the components. Multiple components with the same group name can be deleted using UI Cls group&dollar;
+
+<BR>
+Example:
+
+```basic
+UI Progress "scorebar", x=20, y=1040, width=1880, height=30, value=dscore
+```
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

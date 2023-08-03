@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/limit%20bob'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/limit%20bob'>
+        <meta name='pagename' content='AOZ Docs - Limit Bob'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - Limit Bob</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="limit-bob">Limit Bob</h1>&#10;<!--&#10;@name: Limit Bob&#10;@description: &#10;@tags: &#10;@categories: &#10;\-->&#10;<p>Confine one or all bobs to a defined area of the current screen</p>&#10;<h2 id="syntax-options">Syntax Options</h2>&#10;<p><strong>Limit Bob</strong><br/>&#10;<strong>Limit Bob Off</strong><br/>&#10;<strong>Limit Bob Off</strong> <em>index</em><br/>&#10;<strong>Limit Bob</strong> <em>x1, y1,</em> <strong>To</strong> <em>x2, y2</em><br/>&#10;<strong>Limit Bob</strong> <em>index, x1, y1,</em> <strong>To</strong> <em>x2, y2</em><br/>&#10;<strong>Limit Bob</strong> <em>x1, y1, width, height</em><br/>&#10;<strong>Limit Bob</strong> <em>index, x1, y1, width, height</em></p>&#10;<h2 id="parameters">Parameters</h2>&#10;<ul>&#10;<li><em><strong>index</strong></em>: Index number or name of the <strong>Bob</strong> to be limited</li>&#10;<li><em><strong>x1</strong></em>: Horizontal coordinate of the top-left corner of the bounding box</li>&#10;<li><em><strong>y1</strong></em>: Vertical coordinate of the top-left corner of the bounding box</li>&#10;<li><em><strong>x2</strong></em>: Horizontal coordinate of the bottom-right corner of the bounding box</li>&#10;<li><em><strong>y2</strong></em>: Vertical coordinate of the bottom-right corner of the bounding box</li>&#10;<li><em><strong>width</strong></em>: Horizontal coordinate of the bottom-right corner of the bounding box</li>&#10;<li><em><strong>height</strong></em>: Vertical coordinate of the bottom-right corner of the bounding box</li>&#10;</ul>&#10;<h2 id="description">Description</h2>&#10;<p><strong>Limit Bob</strong> restricts the positioning of one or all of the current screen's bobs to a defined rectangular area of the screen so that no part of the <strong>Bob</strong> will be beyond that boundary. The effect is instant, so any bobs that are outside the boundary will immediately jump to the closest part of the bounding box.</p>&#10;<p>When a bob is limited to an area, it's coordinates are changed permanently, so if limits are removed, the bob will remain in the same limited position until it is given new coordinates.</p>&#10;<p>The different syntax options are used as follows:</p>&#10;<p><strong>Limit Bob</strong></p>&#10;<ul>&#10;<li>Turn off <strong>Limit Bob</strong> for all Bobs on the current screen</li>&#10;</ul>&#10;<p><strong>Limit Bob Off</strong></p>&#10;<ul>&#10;<li>Turn off <strong>Limit Bob</strong> for all Bobs on the current screen</li>&#10;</ul>&#10;<p><strong>Limit Bob Off</strong> <em>index</em></p>&#10;<ul>&#10;<li>Turn off <strong>Limit Bob</strong> for Bob <em><strong>index</strong></em> on the current screen</li>&#10;</ul>&#10;<p><strong>Limit Bob</strong>  <em>x1, y1,</em>  <strong>To</strong>  <em>x2, y2</em></p>&#10;<ul>&#10;<li>Limit all bobs to rectangular bounding box defined by <em><strong>x1, y1</strong></em> and <em><strong>x2, y2</strong></em></li>&#10;</ul>&#10;<p><strong>Limit Bob</strong>  <em>index, x1, y1,</em>  <strong>To</strong>  <em>x2, y2</em></p>&#10;<ul>&#10;<li>Limit bob <em><strong>index</strong></em> to rectangular bounding box defined by <em><strong>x1, y1</strong></em> and <em><strong>x2, y2</strong></em></li>&#10;</ul>&#10;<p><strong>Limit Bob</strong>  <em>x1, y1, width, height</em></p>&#10;<ul>&#10;<li>Limit all bobs to rectangular bounding box defined by <em><strong>x1, y1 width, height</strong></em></li>&#10;</ul>&#10;<p><strong>Limit Bob</strong>  <em>index, x1, y1, width, height</em></p>&#10;<ul>&#10;<li>Limit bob <em><strong>index</strong></em> to rectangular bounding box defined by <em><strong>x1, y1 width, height</strong></em></li>&#10;</ul>&#10;<h2 id="example-code">Example Code</h2>&#10;<p>The following program creates 50 randomly coloured circle images, and turns each one into a randomly positioned bob with it's own random x and y movement. The bobs then move around the screen and bounce of the edges.</p>&#10;<p>Press the left mouse button, and half of the bobs will have <strong>Limit Bob</strong> applied, limiting them to a 400 x 400 pixel area around the mouse pointer. Press the right mouse button and all the bobs will have the same limit applied.</p>&#10;<pre><code class="prism language-basic">#speed:&#34;graphics&#34;&#9;&#9;&#9;&#9;// Use Graphics mode for display updates&#10;set transparent 0&#9;&#9;&#9;&#9;// Set colour 0 to transparent &#10;MaxB=50&#9;&#9;&#9;&#9;&#9;&#9;&#9;// Set number of Bobs&#10;Dim X#(MaxB),Y#(MaxB)&#9;&#9;&#9;// Set up coordinate arrays&#10;Dim XM#(MaxB),YM#(MaxB)&#9;&#9;&#9;// Set up movement arrays&#10;sw=Screen Width&#9;&#9;&#9;&#9;&#9;// Define a variable for the Screen Width&#10;sh=Screen Height&#9;&#9;&#9;&#9;// Define a variable for the Screen Height&#10;lim=0&#9;&#9;&#9;&#9;&#9;&#9;&#9;// Define a variable for Limit on/off&#10;Ink 5&#9;&#9;&#9;&#9;&#9;&#9;&#9;// Set the ink colour&#10;&#10;// Create some coloured images for the Bobs&#10;&#10;for f=1 to MaxB&#9;&#9;&#9;&#9;&#9;// Start a loop for the total number of Bobs&#10;&#9;colour 5,rgb(rnd(80 to 240),rnd(80 to 240),rnd(80 to 240)) // Give colour 5 a new random RGB value&#10;&#9;Filled Circle 100,100,30&#9;&#9;// Draw a filled circle in the new colour&#10;&#9;Get Image f,70,70,64,64&#9;&#9;&#9;// Grab the image of the filled circle to the image bank&#10;&#9;Hot Spot f,$11&#9;&#9;&#9;&#9;&#9;// Set the Hot Spot of the image to the centre&#10;&#9;cls&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// Clear the screen ready for drawing the next image&#10;Next f&#9;&#9;&#9;&#9;&#9;&#9;&#9;// Repeat the loop&#10;&#10;&#10;// Set up coordinates and movement variables for Bobs and set up the Bobs&#10;&#10;For f=1 to MaxB&#9;&#9;&#9;&#9;// Start a loop for the total number of Bobs&#10;&#9;X#(f)=rnd(sw-100) 50&#9;&#9;// Define a random x coordinate&#10;&#9;Y#(f)=rnd(sh-100) 50&#9;&#9;// Define a random y coordinate&#10;&#9;XM#(f)=rnd(100)/25-2&#9;&#9;// Define a random x movement&#10;&#9;YM#(f)=rnd(100)/25-2&#9;&#9;// Define a random y movement&#10;&#9;bob f,X#(f),Y#(f),f&#9;&#9;&#9;// Define Bob with the new variables and image we created earlier&#10;Next f&#9;&#9;&#9;&#9;&#9;&#9;// Repeat loop&#10;&#10;// Main Program Loop&#10;&#10;Do&#9;&#9;&#9;&#9;&#9;&#9;// Start an infinite loop&#10;&#9;xm= x mouse&#9;&#9;&#9;&#9;// Get the x position of the mouse pointer&#10;&#9;ym= y mouse&#9;&#9;&#9;&#9;// Get the y position of the mouse pointer&#10;&#9;if mouse key=1&#9;&#9;&#9;// Check if the Left mouse button is pressed&#10;&#9;    for f=1 to maxb&#9;&#9;&#9;// Start a loop for all bobs&#10;&#9;&#9;&#9;lim = 1&#9;&#9;&#9;&#9;&#9;// Set limit variable to 1&#10;&#9;&#9; &#9;if odd(f) then limit Bob f,xm-200, ym-200,400,400 // Check if f is an odd number, and if it is, limit the Bob to a 400 x 400 pixel box around the mouse pointer&#10;&#9;&#9;next f&#9;&#9;&#9;&#9;&#9;// Repeat loop&#10;&#9;else if mouse key=2&#9;&#9;// Check if the Right mouse button is pressed&#10;&#9;&#9;lim = 1&#9;&#9;&#9;&#9;&#9;// Set limit variable to 1&#10;&#9;&#9;limit Bob xm-200, ym-200,400,400 // Limit all bobs to a 400 x 400 pixel box around the mouse pointer&#10;&#9;end if&#10;&#9;For f=1 to MaxB&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// Start a loop for all bobs&#10;&#9;&#9;Add X#(f),XM#(f)&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// add the x movement variable to the x coordinate&#10;&#9;&#9;If X#(f) &lt; 32 then XM#(f)=-XM#(f) : X#(f)=32&#9;&#9;// Check if the left edge of the screen has been reached and reverse direction of movement if it has&#10;&#9;&#9;If X#(f)&gt;sw-32 then XM#(f)=-XM#(f) : X#(f)=sw-32&#9;// Check if the right edge of the screen has been reached and reverse direction of movement if it has&#10;&#9;&#9;Add Y#(f),YM#(f)&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// add the y movement variable to the y coordinate&#10;&#9;&#9;If Y#(f) &lt; 32 then YM#(f)=-YM#(f) : Y#(f)=32&#9;&#9;// Check if the top edge of the screen has been reached and reverse direction of movement if it has&#10;&#9;&#9;If Y#(f)&gt;sh-32 then YM#(f)=-YM#(f) : Y#(f)=sh-32&#9;// Check if the bottom edge of the screen has been reached and reverse direction of movement if it has&#10;&#9;&#9;bob f,X#(f),Y#(f),f&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// Re-position the Bob&#10;&#9;Next f&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// Reapeat the loop&#10;&#9;refresh&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;// Refresh the screen&#10;&#9;if not mouse key and lim=1 then limit bob : lim=0&#9;// Check if the mouse keys are no longer pressed and remove bob limits if true&#10;Loop&#9;&#9;&#9;&#9;&#9;// Repeat infinite loop&#10;</code></pre>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/></p>&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/syntax/xtra_amiga/bob_sprites/animate_bob/007_limit_bob.html';
+        var sourceMD = './repository/md/documentation/default/syntax/xtra_amiga/bob_sprites/animate_bob/007_limit_bob.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

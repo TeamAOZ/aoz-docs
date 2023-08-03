@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/curve'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/curve'>
+        <meta name='pagename' content='AOZ Docs - Curve'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - Curve</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="curve">Curve</h1>&#10;<!--&#10;@name: Curve&#10;@description: &#10;@tags: &#10;@categories: &#10;\-->&#10;<p><strong>Instruction</strong> - Draw a curved line</p>&#10;<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ"/></div>&#10;<h2 id="syntax-options">Syntax Options</h2>&#10;<ul>&#10;<li><strong>Curve</strong> <em>x1, y1, cx, cy, x2, y2</em></li>&#10;<li><strong>Curve</strong> <em>x1, y1, cx1, cy1, cx2, cy2, radius</em></li>&#10;<li><strong>Curve</strong> <em>x1, y1, cx1, cy1, cx2, cy2, x2, y2</em></li>&#10;<li><strong>Curve To</strong> <em>x2, y2, cx, cy</em></li>&#10;<li><strong>Curve To</strong> <em>cx1, cy1, cx2, cy2, radius</em></li>&#10;<li><strong>Curve To</strong> <em>x2, y2, cx1, cy1, cx2, cy2</em></li>&#10;</ul>&#10;<h2 id="parameters">Parameters</h2>&#10;<ul>&#10;<li><strong>x1</strong>: The x coordinate of the start position of the curve.</li>&#10;<li><strong>y1</strong>: The y coordinate of the start position of the curve.</li>&#10;<li><strong>cx1</strong>: The x coordinate of the first control point of the curve.</li>&#10;<li><strong>cy1</strong>: The y coordinate of the first control point of the curve.</li>&#10;<li><strong>cx2</strong>: The x coordinate of the second control point of the curve.</li>&#10;<li><strong>cy2</strong>: The y coordinate of the second control point of the curve.</li>&#10;<li><strong>x2</strong>: The x coordinate of the end position of the curve.</li>&#10;<li><strong>y2</strong>: The y coordinate of the end position of the curve.</li>&#10;<li><strong>radius</strong>: The radius of the curve.</li>&#10;</ul>&#10;<h2 id="description">Description</h2>&#10;<p>Curve is a versatile instruction that can draw several different types of curves. The three basic types are Arc To Line, Quadratic Bezier Curve (with one control point) and Bezier Curve (with two control points).</p>&#10;<p>Each type can use a basic '<strong>Curve</strong>', where start coordinates are specified, or '<strong>Curve To</strong>' syntax, where the curve will be draw from the current graphic cursor position. This gives you six different possible uses of the Curve instruction, which are:</p>&#10;<ul>&#10;<li>&#10;<p>Quadratic Curve from x1,y1 to x2,y2 via control point cx,cy<br/>&#10;<strong>Curve</strong> <em>x1, y1, cx, cy, x2, y2</em></p>&#10;</li>&#10;<li>&#10;<p>Arc from x1, y1 to line cx1,cy1, cx2, cy2<br/>&#10;<strong>Curve</strong> <em>x, y, cx1, cy1, cx2, cy2, radius</em></p>&#10;</li>&#10;<li>&#10;<p>Bezier Curve from x1,y1 to x2,y2 via control points cx1,cy1 and cx2,cy2<br/>&#10;<strong>Curve</strong> <em>x1, y1, cx1, cy1, cx2, cy2, x2, y2</em></p>&#10;</li>&#10;<li>&#10;<p>Quadratic Bezier Curve To x2, y2 via control point cx1, cy1<br/>&#10;<strong>Curve To</strong> <em>x2, y2, cx1, cy1</em></p>&#10;</li>&#10;<li>&#10;<p>Arc To Line cx1,cy1,cx2,cy2 at the desired radius  (the arc will join the line in the direction it is drawn)<br/>&#10;<strong>Curve To</strong>  <em>cx1, cy1, cx2, cy2, radius</em></p>&#10;</li>&#10;<li>&#10;<p>Bezier Curve To x2, y2 via control points cx1, cy1 and cx2, cy2<br/>&#10;<strong>Curve To</strong> <em>x2, y2, cx1, cy1, cx2, cy2</em></p>&#10;</li>&#10;</ul>&#10;<p>If you want to understand the way curves work better, have a look at the <strong>Curve Toy</strong> app in the AOZ Store/Utilites folder. It allows you to draw each of the three types of curve, with various controls and moveable points and even allows you to copy the code for your curve to the clipboard.</p>&#10;<p align="center"><img src="https://doc.aoz.studio/repository/assets/images/curvetoy.png"/></p>&#10;<hr/>&#10;<h2 id="example-code">Example Code</h2>&#10;<p>This small program fills the screen with random, coloured curves. When it stops, press any key to draw some more.</p>&#10;<p align="center"><img valign="middle" width="960px" src="https://doc.aoz.studio/repository/assets/images/curvernd.png"/></p>&#10;<pre><code class="prism language-basic">// Random Curves by Dave Baldwin&#10;// January 2021&#10;&#10;lw=30&#10;line width lw&#10;draw shadow 10,30,30,$00000080&#10;line cap &#34;round&#34;&#10;Colour_Gen:&#10;&#10;// Colour Generator&#10;Dim cc(100)&#10;For f=0 to 100&#10;&#9;R=rnd(80 to 255)&#10;&#9;G=rnd(80 to 255)&#10;&#9;B=rnd(80 to 255)&#10;&#9;CC(f)=rgb(R,G,B)&#10;Next f&#10;ink 4&#10;&#10;// Main&#10;repeat&#10;&#9;for f=0 to 100&#9;// draw 100 curves&#10;&#9;&#9;colour 4, cc(rnd(100))&#10;&#9;&#9;curve to rnd(-200 to 2120),rnd(-200 to 1280),rnd(-200 to 2120),rnd(-200 to 1280)&#10;&#9;&#9;colour 4, cc(rnd(100))&#10;&#9;&#9;curve to rnd(-200 to 2120),rnd(-200 to 1280),rnd(-200 to 2120),rnd(-200 to 1280),rnd(-200 to 2120),rnd(-200 to 1280)&#10;&#9;&#9;Refresh&#10;&#9;next f&#10;&#9;add lw,3&#9;&#9;// increase line width&#10;&#9;line width lw&#10;&#9;wait key&#9;&#9;// wait for response&#10;&#9;draw shadow lw/3,lw,30,$000000aa  // adjust shadow for thicker line width&#10;until&#10;</code></pre>&#10;<hr/>&#10;<p>This program is a bit more interactive, allowing you to create you own unique pieces of digital art. Press any key to change the pattern, use the mouse to point and click to fill with a random colour.</p>&#10;<p align="center"><img valign="middle" width="960px" src="https://doc.aoz.studio/repository/assets/images/curveart.png"/></p>&#10;<pre><code class="prism language-basic">// Curve Art by Dave Baldwin&#10;// September 2022&#10;&#10;line width 5&#10;sw=screen width&#10;sh=screen height&#10;line cap &#34;square&#34;&#10;do&#10;&#9;ink 0&#10;&#9;cls 1&#10;&#9;plot rnd(sw),-rnd(200)&#10;&#9;for f=0 to 4&#10;&#9;&#9;curve to rnd(-200 to sw 200),rnd(-200 to sh 200),rnd(-200 to sw 200),rnd(-200 to sh 200)&#10;&#9;&#9;curve to rnd(-200 to sw 200),rnd(-200 to sh 200),rnd(-200 to sw 200),rnd(-200 to sh 200),rnd(-200 to sw 200),rnd(-200 to sh 200)&#10;&#9;next f&#10;&#9;curve to rnd(-200 to sw 200),rnd(sh to sh 200),rnd(-200 to sw 200),rnd(-200 to sh 200),rnd(-200 to sw 200),rnd(-200 to sh 200)&#10;&#10;&#9;do&#10;&#9;&#9;if mouse click&#10;&#9;&#9;&#9;ink 4,0,1&#10;&#9;&#9;&#9;r=rnd(35 to 255)&#10;&#9;&#9;&#9;g=rnd(35 to 255)&#10;&#9;&#9;&#9;b=rnd(35 to 255)&#10;&#9;&#9;&#9;colour 4,rgb(r,g,b)&#10;&#9;&#9;&#9;x=x mouse : y=y mouse&#10;&#9;&#9;&#9;Paint x,y,4 to 0&#10;&#9;&#9;end if&#10;&#9;&#9;refresh&#10;&#9;&#9;i$=inkey$&#10;&#9;&#9;if i$&lt;&gt;&#34;&#34; then exit&#10;&#9;loop&#10;loop&#10;</code></pre>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/></p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbMTIwNzE0NjAyOSwxNjIyNzY3Nzg5LDI2OD&#10;MzODE2NiwxMDY3MDk2ODc4LDY0NzY5ODg5NiwtMTI4MTE3ODI2&#10;NCwtMTMxNjIzOTk3MiwxNzc5NDcxNjEzLC0xODE4MTQwNDU2LC&#10;0yMzIyNDczOTYsLTEyNjM2NTAxMDUsMTI1NzQxNTMwOCwxNDc0&#10;OTM0MTM3LC0xNDMyNDQ3NzU2LDE3MTM5NjQwMzksLTQyMzUyNT&#10;E1MywtODk5MjEzNzEsMTQxNTk3Mzg4MywxNDY0Njk4NTAzLC0x&#10;MjE3OTI2MjQ4XX0=&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/syntax/graphics/003_Line Drawings/013_curve.html';
+        var sourceMD = './repository/md/documentation/default/syntax/graphics/003_Line Drawings/013_curve.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

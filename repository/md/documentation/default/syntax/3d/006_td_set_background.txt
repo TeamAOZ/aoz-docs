@@ -10,7 +10,7 @@
 
 Apply an image to the 3D screen background. The 3D screen that will be affected is the one used in your code, by the last 3D instruction.
 
-#### Syntax
+#### Example
 ```basic
 Load Asset "my_scene.aoz3d", "my_scene"
 Td Init : Td Start

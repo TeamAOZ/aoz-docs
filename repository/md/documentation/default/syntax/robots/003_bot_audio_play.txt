@@ -7,7 +7,7 @@
 \-->
 <div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
 
-Play a preset audio file
+Play a Robot (MBOT2,...) preset audio file
 ## Parameters
 
 - ** content&dollar;**: The name of the audio file to play

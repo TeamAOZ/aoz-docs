@@ -139,7 +139,7 @@ function TextWindow( aoz, screen, contextName, definition, defaultWindow, tags )
 	this.memoryY = 0;
 	this.activated = true;
 	this.flashOn = true;
-
+	
 	// Cursor
 	this.cursorCanvas = document.createElement( 'canvas' );
 	this.cursorCanvas.width = Math.max( Math.floor( this.fontWidth * this.screen.scale.x ), 1 );
@@ -164,7 +164,7 @@ function TextWindow( aoz, screen, contextName, definition, defaultWindow, tags )
 			self.cursorImageContext = self.cursorImageCanvas.getContext( '2d' );
 		}
 	} );
-
+		
 	// Cursor animation
 	var self = this;
 	this.cursorHandle = setInterval( function()
@@ -1752,11 +1752,10 @@ TextWindow.prototype.printLine = function( line, paper, pen, writing, updatePosi
 			}
 			if ( ( writing & TextWindow.FLAG_SHADOW ) != 0 )
 			{
-
-				context.shadowOffsetX = this.screen.textShadowX;
-				context.shadowOffsetY = this.screen.textShadowY;
-				context.shadowBlur = this.screen.textShadowBlur;
-				context.shadowColor = this.utilities.getModernRGBAString( this.screen.textShadowColor );
+				context.shadowOffsetX = 3;
+				context.shadowOffsetY = 3;
+				context.shadowBlur = 5;
+				context.shadowColor = '#000000b0';
 			}
 			if ( ( writing & TextWindow.FLAG_OUTLINE ) != 0 )
 			{
@@ -1773,6 +1772,7 @@ TextWindow.prototype.printLine = function( line, paper, pen, writing, updatePosi
 			}
 			else
 				fillThisText( line, x + disp, y, width );
+			this.screen.noShadow();
 		}
 	}
 	else if ( this.font.fontInformation.type == 'amiga' )

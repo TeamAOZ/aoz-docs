@@ -1,22 +1,21 @@
 # THE AOZ UI DESIGNER
 
 Follow me step by step:
-To launch the UI DESIGNER click on this button.
+1. To launch the UI DESIGNER click on this button.
 ![AOZ UI DESIGNER](https://doc.aoz.studio/assets/images/en/image099.png)
-2)  Select the hamburger menu to open the right hand DESIGNER MENU.
+2. Select the hamburger menu to open the right hand DESIGNER MENU.
 ![AOZ UI DESIGNER](https://doc.aoz.studio/assets/images/en/image100.png)
 
-3) Click on the SETTING button of the DESIGNER MENU:
-
+3. Click on the SETTING button of the DESIGNER MENU:
 In the Settings section you may create different pages and choose the resolution, background color, default font etc.
 
-4) Then back in the First button: Components, start creating your page(s) design with different components.
+4. Then back in the First button: Components, start creating your page(s) design with different components.
 Note: some specific parameters at the bottom of the Properties page: "**OnClick"** or "**OnChange**", here you can set the name of the procedure that will be called in your AOZ program once the event occurs. 
 Example: A CheckBox is checked:
 ![AOZ UI DESIGNER](https://doc.aoz.studio/assets/images/en/image101.png)
 
 
-5) Finally hit the **Update Code Editor Button** (Green button)
+5. Finally hit the **Update Code Editor Button** (Green button)
 This will automatically generate the corresponding AOZ code in your program source window. Then you can transpile with the RUN buttons.
 ![AOZ UI DESIGNER](https://doc.aoz.studio/assets/images/en/image101.png)
 

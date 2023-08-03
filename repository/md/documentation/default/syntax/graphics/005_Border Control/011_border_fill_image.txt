@@ -1,0 +1,40 @@
+# Border Fill Image																																																																																																																					
+
+<!--
+@name: Border Fill Image
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+**Instruction** - Define a fill image for borders
+
+## Syntax Options
+**Border Fill Image** *image*, *scale*
+**Border Fill Image** *image$*, *scale*
+
+
+## Parameters
+
+
+- **image**: The image index number from the image bank **1.images/**
+- **image$**: The image name from the image bank **1.images/**
+- **scale**: Optional. The scale factor to be applied to the fill image
+
+## Description
+**Border Fill Image** *image*, *scale* creates a continuous fill image from image number *image*, scaled to *scale* times it|;s original size and tiled to fit the full screen.
+
+**Border Fill Image** *image$*, *scale* creates a continuous fill image named in image|;dollar|;, scaled to *scale* times it|;s original size and tiled to fit the full screen.
+
+When a fill image is created in this way, you have to imagine it as a static screen in the background, and whenever you use it to fill an object at a certain position on the current screen, the imagery will be taken from the corresponding position of the fill image.
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTY5NzQ0NTY2NCwtNzQ5NjA0Mzk3LC0xMz
+MxMzg3NTUxLDI5OTc2NjQ3OCwtODI4NDE1Mjk1LDYyODkzNDIx
+MiwzMzIzMjYyNTcsMjc5NTIzNTg3LDIwOTg2NjUzMjksNDAyNj
+E3OTYxLDU5OTE0NzQyNSwtMTY1NDI3NzMwNywtMTMwMzQ3OTg2
+N119
+-->

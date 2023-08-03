@@ -24,12 +24,18 @@
  * @author FL (Francois Lionet)
  * @date first pushed on 03/12/2018
  */
+
 AOZ_Files = {};
 function AOZ( canvasId, options, rendererAlgo )
 {
 	//this.dos = new DOS( this );
 	//this.utilities = new Utilities( this );
 	var self = this;
+	this.waitInputControl = 
+	{
+		click: false,
+		key: false
+	};
 	this.aoz = this;
 	this.atom = undefined;
 	this.currentContextName = 'application';
@@ -38,6 +44,7 @@ function AOZ( canvasId, options, rendererAlgo )
 	this.loadingMax = 0;
 	this.finalWait = 0;
 	this.use = {};
+	this.forceQuit = false;
 
 	// Update manifest
 	var manifest = this.manifest = options.manifest;
@@ -74,6 +81,39 @@ function AOZ( canvasId, options, rendererAlgo )
 	this.localTags = options.localTags;
 	this.globalTags = options.globalTags;
 	this.developerMode = options.developerMode;
+
+	// Load the string table if it exists
+	this.stringTables = { original: options.stringTable };
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function()
+	{
+		if( this.readyState == 4 && this.status == 200 )
+		{
+			try
+			{
+				var tables = JSON.parse( this.responseText );
+				if ( tables )
+				{
+					for ( var t in tables )
+						self.stringTables[ t ] = tables[ t ];
+				}
+			}
+			catch( e )
+			{
+			}
+		}
+	};
+	try
+	{
+	xhttp.open("GET", './resources/stringtables.json' + '?update=' + Date.now(), true );
+	xhttp.send()
+	}
+	catch( e )
+	{
+		console.log( 'No string table found.' );
+	}
+	this.country = typeof this.manifest.infos.country == 'undefined' ? 'original' : this.manifest.infos.country;
+
 	this.commandLine = new URLSearchParams( window.location.search );
 
 	// Get crucial values from manifest
@@ -151,6 +191,7 @@ function AOZ( canvasId, options, rendererAlgo )
 	this.isErrorOn = false;
 	this.isErrorProc = false;
 	this.lastError = 0;
+	this.lastErrorMessage = '';
 	this.debugger = false;
 	this.checkDebuggerRestart = true;
 	this.closeAtEnd = [];
@@ -158,6 +199,8 @@ function AOZ( canvasId, options, rendererAlgo )
 	this.isDebuggerCommand = false;
 	this.isDebuggerOutput = false;
 	this.debuggerCommandNumber = 0;
+	this.endFlashCount = 0;
+	this.endFlash = 0;
 
 	this.displayEndAlert = ( this.aoz.manifest.compilation.displayEndAlert != undefined ) ? this.aoz.manifest.compilation.displayEndAlert : true;
 	this.displayErrorAlert = ( this.aoz.manifest.compilation.displayErrorAlert != undefined ) ? this.aoz.manifest.compilation.displayErrorAlert : true;
@@ -212,6 +255,7 @@ function AOZ( canvasId, options, rendererAlgo )
 	this.playRate = -1;
 
 	this.libsRenderers = undefined;
+	this.alreadyWaitAdded = false;
 
 	// Running on mobile device?
 	this.isMobileDevice = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent ) );
@@ -291,13 +335,13 @@ function AOZ( canvasId, options, rendererAlgo )
 	// Load welcome images
 	var self = this;
 	this.welcomeClick = false;
+
 	if( navigator.userAgent == 'AOZViewer' )
 	{
-		rendererAlgo = 'h8ipl01f35ujdrlzx7h1';
-		this.manifest.bootScreen.active = false;		
+		rendererAlgo = 'iAjOkZ';
 	}
 	
-	if ( rendererAlgo != 'h8ipl01f35ujdrlzx7h1' || this.manifest.bootScreen.active )
+	if ( rendererAlgo != 'iAjOkZ' )
 	{
 		document.getElementById( 'AOZCanvas' ).style.display = 'none';
 
@@ -312,7 +356,7 @@ function AOZ( canvasId, options, rendererAlgo )
 		var wimg1 = document.createElement( 'img' );
 		wimg1.setAttribute( 'id', 'wimg1' );
 		wimg1.setAttribute( 'src', i1a2o3z );
-		wimg1.setAttribute( 'style', 'position: absolute; left: 0px; top: 0px; width: 0px; height: 0px;' );
+		wimg1.setAttribute( 'style', 'pointer-events: none; position: absolute; left: 0px; top: 0px; width: 0px; height: 0px;' );
 		
 		iw.appendChild( wimg1 )
 
@@ -364,12 +408,45 @@ function AOZ( canvasId, options, rendererAlgo )
 				self.sounds.startAudio();
 			window.removeEventListener( 'keypress', self.userGestureHandler );
 			window.removeEventListener( 'click', self.userGestureHandler );
+			if( application.manifest.display.fullScreen )
+			{
+				var el = document.getElementsByTagName( 'body' )[ 0 ];
+				if( el )
+				{				
+					try
+					{
+						if( el.requestFullscreen )
+						{
+							el.requestFullscreen();
+						}
+						else
+						{
+							if( el.mozRequestFullScreen )
+							{
+								el.mozRequestFullScreen();
+							}
+							else
+							{
+								if( el.webkitRequestFullScreen )
+								{
+									el.webkitRequestFullScreen();
+								}				
+							}
+						}
+					}
+					catch( error )
+					{
+						console.warn( 'Fullscreen not supported by your browser.', error );
+					}
+				}
+			}
 			self.splashEnd = true;
 		}
-		if( self.useSounds || self.manifest.bootScreen.waitSounds )
+		if( self.useSounds || self.manifest.bootScreen.waitSounds || self.manifest.display.fullScreen )
 		{
 			window.addEventListener( 'keypress', this.userGestureHandler , false );
 			window.addEventListener( 'click', this.userGestureHandler, false );
+			window.addEventListener( 'touchstart', this.userGestureHandler, false );
 			var div = document.createElement( 'div' );
 			div.textContent = 'Click to continue';
 			div.setAttribute( 'style', 'margin: auto; width: 100%; text-align: center; position: absolute; left: 0px; bottom: 32px' );
@@ -377,13 +454,13 @@ function AOZ( canvasId, options, rendererAlgo )
 		}
 		else
 		{
-		setTimeout( function()
-		{
-			iw.style.display = 'none';
-			document.getElementById( 'AOZCanvas' ).style.display = 'block';
-			self.splashEnd = true;
-		}, 4000 );
-	}
+			setTimeout( function()
+			{
+				iw.style.display = 'none';
+				document.getElementById( 'AOZCanvas' ).style.display = 'block';
+				self.splashEnd = true;
+			}, 4000 );
+		}	
 	}
 	else
 	{
@@ -416,8 +493,8 @@ function AOZ( canvasId, options, rendererAlgo )
 					self.loadingCount = 0;
 					self.loadingMax = 0;
 					self.default( 'application' );
-								self.setLoopState( 'run' );
-							}
+						self.setLoopState( 'run' );
+					}
 			}
 		}
 	};
@@ -427,7 +504,7 @@ function AOZ( canvasId, options, rendererAlgo )
 	}
 	this.loopRun = function( deltaTime )
 	{
-/*		
+		/*		
 		self.runTimeArray[ self.runTimeArrayPos++ ] = deltaTime;
 		if ( self.runTimeArrayPos > 100 )
 		{
@@ -437,7 +514,7 @@ function AOZ( canvasId, options, rendererAlgo )
 				average += self.runTimeArray[ x ];
 			console.log( 'Average run loop deltatime: ' + average / self.runTimeArray.length );
 		}
-*/		
+*/
 		self.updateOnce( deltaTime );
 	}
 	this.loopEnd = function( fps, panic )
@@ -458,6 +535,7 @@ function AOZ( canvasId, options, rendererAlgo )
 			console.log( 'Average draw loop deltatime: ' + average / self.drawTimeArray.length );
 		}
 */
+
 		if ( self.manifest.compilation.speed == 'graphics' )
 		{
 			if ( self.waitVblExit )
@@ -484,6 +562,7 @@ function AOZ( canvasId, options, rendererAlgo )
 		self.time = performance.now();
 		self.deltaTime = deltaTime;
 
+		/*
 		if ( self.ext_debugging )		
 		{
 			if ( !document.onkeydown )
@@ -504,47 +583,8 @@ function AOZ( canvasId, options, rendererAlgo )
 		}
 				}
 		}
+		*/
 	}
-	this.loopExecute = function( deltaTime )
-	{
-		// Deltatime
-		self.previousTime = self.time;
-		self.time = performance.now();
-		self.deltaTime = deltaTime;
-		self.doSynchro( deltaTime );
-
-		var section;
-		if ( typeof self.section.startBlock != 'undefined' )
-		{
-			self.section.position = self.section.startBlock;
-			self.section.startBlock = undefined;
-		}
-		try
-		{
-			section = self.runBlocks( self.section, true );
-		}
-		catch ( error )
-		{
-			self.handleErrors( error );
-			var message = '';
-			if ( self.lastError )
-			{
-				message = self.errorObject.message;
-				message += '.\n';
-				self.break = true;
-			}
-		}
-		self.renderer.setHalted( null );
-
-		if ( section && !self.break )
-		{
-			self.section = section;
-		}
-		else
-		{
-			self.setLoopState( 'wait' );
-		}
-	};
 
 	// Wait for user to click
 	self.setLoopState( 'load' );
@@ -564,8 +604,6 @@ AOZ.prototype.setLoopState = function( newState, options )
 				break;
 			case 'waiting':
 				break;
-			case 'executing':
-				break;
 			case 'debugging':
 				break;
 					}
@@ -583,10 +621,6 @@ AOZ.prototype.setLoopState = function( newState, options )
 			case 'wait':
 				this.loopState = 'waiting';
 				MainLoop.setBegin( NOOP ).setUpdate( this.loopWait ).setDraw( this.loopDraw ).setEnd( NOOP );
-				break;
-			case 'execute':
-				this.loopState = 'executing';
-				MainLoop.setBegin( this.loopBegin ).setUpdate( this.loopExecute ).setEnd( this.loopEnd ).setDraw( this.loopDraw );
 				break;
 			case 'debug':
 				this.loopState = 'debugging';
@@ -609,7 +643,16 @@ AOZ.prototype.setOnlineMethodResult = function( aozObject, result )
 AOZ.prototype.getDebugEvents = function( module )
 {
 	if ( !this.debugEvents )
-		this.debugEvents = new DebugEvents( module );
+	{
+		try
+		{
+			this.debugEvents = new DebugEvents( module );
+		}
+		catch ( e )
+		{
+			return null;
+		}
+	}
 	return this.debugEvents;
 };
 AOZ.prototype.assetLoaded = function( args )
@@ -675,7 +718,21 @@ AOZ.prototype.updateOnce = function( deltaTime )
 		this.options.loadFilesAfter = null;
 	}
 	
+		// Start timeout time
+		this.startTime = performance.now();
+		this.timestep = 0;
+		var timebase = MainLoop.getSimulationTimestep();	
+		var timecalc = this.initialDelta / timebase;
+		if ( timecalc > 1 && timecalc < 3 )
+			this.timestep = timebase - this.initialDelta / timebase;
+		if ( this.timestep == 0 )
+		{
+			MainLoop.resetFrameDelta();
+			this.timestep = timebase - this.initialDelta / timebase;
+		}
+
 	// Run current set of blocks
+		this.waitVblExit = false;
 	var toClean = false;
 			for ( var t = this.tasks.length - 1; t >=0; t-- )
 	{
@@ -690,8 +747,10 @@ AOZ.prototype.updateOnce = function( deltaTime )
 		}
 		catch ( error )
 		{
-			this.section = task.section;
-			this.handleErrors( error );
+					//this.section = task.section;
+					task.section = this.handleErrors( error );
+					if ( !task.section )
+						toClean = true;
 		}
 	}
 		}
@@ -709,7 +768,37 @@ AOZ.prototype.updateOnce = function( deltaTime )
 
 	// Handle interruption...
 	this.section = ( this.tasks.length >= 1 ? this.tasks[ 0 ].section : undefined );
-	if ( !this.section || this.break )
+	if ( !this.section && !this.break )
+	{
+		this.root.position = this.root.blocks.length;
+		this.root.blocks[ this.root.blocks.length++ ] = function( aoz,vars )
+		{
+			// end of program, wait indefinitely
+			return{type:12,waitThis:aoz,callFunction:"wait",waitFunction:"wait_wait",args:[+Infinity]};
+		};
+		this.programEnded = true;
+		this.addTask( this.root )
+	}
+	else if ( this.programEnded )
+	{
+		if ( this.ext_debugging && this.ext_debugging.debugEvents && this.ext_debugging.debugEvents.isConnected() )
+		{
+			this.endFlashCount--;
+			if ( this.endFlashCount < 0 )
+			{
+				this.endFlashCount = 40;
+				this.endFlash = 1 - this.endFlash;
+				if ( this.endFlash )
+				{
+					var message = this.getMessage( 'application_complete', '' );
+					this.ext_debugging.debugEvents.sendMessage( { module: 'debugger', method: 'setAozViewerTitle', options: { title: message } } );
+				}
+				else
+					this.ext_debugging.debugEvents.sendMessage( { module: 'debugger', method: 'setAozViewerTitle', options: { title: '' } } );
+			}
+		}
+	}
+	else if ( !this.section || this.break )
 	{
 		// Call all extensions / modules
 		for ( var m = 0; m < this.closeAtEnd.length; m++ )
@@ -718,8 +807,7 @@ AOZ.prototype.updateOnce = function( deltaTime )
 			toClose.func.call( toClose.self );
 		}
 		window.focus();
-
-		this.break = true;
+		
 		if ( this.section )
 			this.section.waiting = null;
 
@@ -785,27 +873,32 @@ AOZ.prototype.updateOnce = function( deltaTime )
 		}
 
 		// Put program on "HALT"
-		this.renderer.setView( true );
-		this.setLoopState( 'wait' );
+		//this.renderer.setView( true );
 
+		this.setLoopState( 'wait' );
 		if ( display )
 		{
 			var self = this;
 			setTimeout( function()
 			{
-				// Stop all mouse and keyboard events
-				self.killEvents();
-				if( errorMessage == '' )
-				{
-					self.dialog.show( 'info', displayText, path, line, column );
-				}
-				else
-				{
-					self.dialog.show( 'error', displayText, path, line, column );
-				}
+					if( errorMessage == '' )
+					{
+						self.dialog.show( 'info', displayText, path, line, column );
+					}
+					else
+					{
+						self.dialog.show( 'error', displayText, path, line, column );
+					}
 			}, 500 );
 		}
 	}
+}
+AOZ.prototype.getString = function( id )
+{
+	var country = this.country;
+	if ( !this.stringTables[ country ] )
+		country = 'original';
+	return this.stringTables[ country ][ id ];
 }
 AOZ.prototype.getMessage = function( id, parameter )
 {
@@ -888,35 +981,191 @@ AOZ.prototype.callMethod = function( parent, name, args )
 	throw 'method_not_found';
 }
 
-
-AOZ.prototype.runProcedure = function( name, args )
+/**
+ * Run an AOZ Procedure
+ * @param {} name Name of the procedure
+ * @param {*} args Arguments
+ * @param {*} obj Object linked (optional)
+ * @returns 
+ */
+AOZ.prototype.runProcedure = function( name, args, obj )
 {
 	// Intercept calls to direct functions for extensions / modules
-	var column = name.indexOf( ':' );
+	var selfThis, proc;
+
+///////////////////////////////////////////////////
+
+	// On peut fournir des arguments dans les évènements
+	// Ex.:
+	// Actor "lucie", Image$="lucie", OnMouse$="_ON_MOUSE[X=5,Y=8,Z=10]"
+	// Les arguments donnés seront ajoutés à la liste des arguments
+	// pour l'appel de la procédure.
+	var column = name.indexOf( '[' );
+	if( column > 0)
+	{
+		if( name.indexOf( ']' ) != name.length- 1  )
+		{
+			throw 'hook_not_closed';
+		}
+
+		var customArgs = name.substring( column + 1 ); // On extrait la partie args
+		name = name.substring( 0, column ); // On extrait le nom de la procédure
+
+		// Retourne la valeur de l'argument
+		const computeValue = function( value )
+		{
+			if( value && value.trim() != '' )
+			{
+				// Est-ce une propriété de l'objet concerné ?
+				if( value.toLowerCase().substring( 0, 5 ) == 'this.' )
+				{
+					// Pas d'objet passé
+					if( obj == undefined )
+					{
+						throw "object_of_event_not_found";
+					}
+
+					var parts = value.split( '.' );
+					parts[ 0 ] = parts[ 0 ].trim(); // le "this"
+					parts[ 1 ] = parts[ 1 ].trim(); // le nom de propriété
+
+					if( parts )
+					{
+						// Error de syntaxe
+						if( parts.length != 2 )
+						{
+							throw "event_syntax_error";
+						}
+
+						// On récupère le sernier caractère du nom de la propriété
+						var symbol = parts[ 1 ].substring( parts[ 1 ].length - 1 );
+						
+						// Clean
+						if( symbol == '$' || symbol == '#' )
+						{
+							parts[ 1 ] = parts[ 1 ].substring( 0, parts[ 1 ].length - 1 );
+						}
+						
+						// On récupère la valeur de la propriété
+						parts[ 1 ] = parts[ 1 ].toLowerCase();
+						value = obj[ Object.keys( obj ).find( k => k.toLowerCase() === parts[ 1 ] ) ];
+					}
+				}
+				else
+				{
+					var test = value.trim().toLowerCase();
+					var v = obj[ Object.keys( obj ).find( k => k.toLowerCase() === test ) ];
+					if( v )
+					{
+						value = v;
+					}
+					else
+					{
+						if( test.substring( test.length - 1 ) == '#' )
+						{
+							test = test.substring( 0, test.length - 1 ) + '_f';
+						}
+
+						var v = application.vars[ Object.keys( application.vars ).find( k => k.toLowerCase() === test ) ];
+						if( v )
+						{
+							value = v;
+						}
+					}
+				}
+			}
+			return value;
+		}
+
+		if( customArgs.trim() != '' )
+		{
+			var nArgs = customArgs.split( ',' );
+			if( nArgs )
+			{
+				for( var a = 0; a < nArgs.length; a++ )
+				{
+					var cArg = nArgs[ a ].split( '=' );
+					if( cArg )
+					{
+						if( cArg.length != 2 )
+						{
+							throw 'event_argument_error';
+						}
+
+						cArg[ 0 ] = cArg[ 0 ].trim();
+						cArg[ 1 ] = cArg[ 1 ].trim();
+						if( cArg[ 1 ].indexOf( ']' ) > 0 )
+						{
+							cArg[ 1 ] = cArg[ 1 ].substring( 0, cArg[ 1 ].length - 1 );
+						}
+
+						cArg[ 1 ] = computeValue( cArg[ 1 ], obj )
+						var argType = cArg[ 0 ].substring( cArg[ 0 ].length - 1 );
+						switch( argType )
+						{
+							case '$':
+								args[ cArg[ 0 ] ] = cArg[ 1 ];
+								break;
+							case '#':
+								cArg[ 0 ] = cArg[ 0 ].substring( 0, cArg[ 0 ].length - 1 ) + '_f';
+								args[ cArg[ 0 ] ] = parseFloat( cArg[ 1 ] );
+								break;								
+							default:
+								if( cArg[ 1 ].toLowerCase() == 'true' || cArg[ 1 ].toLowerCase() == 'false' )
+								{
+									args[ cArg[ 0 ] ] = ( cArg[ 1 ].toLowerCase() == 'true' ) ? true : false;
+								}
+								else
+								{
+									args[ cArg[ 0 ] ] = parseInt( cArg[ 1 ] );
+								}
+								break;
+						}
+					}
+				}
+			}
+		} 
+	}
+	column = -1;
+
+///////////////////////////////////////////////////////
+
+
+	// pour FL -> la suite reste identique à la version poussée le 24/01
+	column = name.indexOf( ':' );
 	if ( column >= 0 )
 	{
 		var selfName = name.substring( 0, column );
 		var callback = name.substring( column + 1 );
 		if ( callback != '' )
 		{
-			var selfThis;
 			if ( selfName == 'aoz' )
 				selfThis = this;
 			else
 				selfThis = this.aoz[ selfName ];
 			if ( selfThis )
+			{
 				selfThis[ callback ].call( selfThis, args );
+				return true;
+			}
+			else
+			{
+				selfThis = this.getObjectByName( selfName );
+				proc = selfThis[ 'p_' + callback.toLowerCase() ]
+			}
 		}
-		return true;
+		}
+	else
+	{
+		proc = this.root[ 'p_' + name.toLowerCase() ];
+		selfThis = this.root;
 	}
-
-	name = 'p_' + name.toLowerCase();			// TODO: make respect case!
-	if ( this.root[ name ] && this.section )
+	if ( proc && this.section )
 	{
 		if( this.section.root == undefined )
 			this.section.root = this.root;
-
-		var newSection = new this.root[ name ]( this, this.root, args );
+		args = typeof args == 'undefined' ? {} : args;
+		var newSection = new proc( this, selfThis, args );
 		newSection = this.initSection( newSection );
 		this.addTask( newSection );
 		/*
@@ -941,21 +1190,6 @@ AOZ.prototype.runBlocks = function( section, allowWaiting )
 
 	if ( !section.initialized )
 		section = this.initSection( section );
-
-	// Start timeout worker
-	this.loopTimeout = false;
-	this.waitVblExit = false;
-	var startTime = performance.now();
-	var timestep = 0;
-	var timebase = MainLoop.getSimulationTimestep();	
-	var timecalc = this.initialDelta / timebase;
-	if ( timecalc > 1 && timecalc < 3 )
-		timestep = timebase - this.initialDelta / timebase;
-	if ( timestep == 0 )
-	{
-		MainLoop.resetFrameDelta();
-		timestep = timebase - this.initialDelta / timebase;
-	}
 
 	if ( typeof section.startBlock != 'undefined' )
 	{
@@ -1001,7 +1235,7 @@ AOZ.prototype.runBlocks = function( section, allowWaiting )
 		do
 		{
 			//console.log( "Block " + section.position + " - Sourcepos: " + this.sourcePos );
-			ret = section.blocks[ section.position++ ].call( section, this, section.vars );
+			ret = section.blocks[ section.position++ ].call( section.self, this, section.vars );
 		} while( !ret && !this.stepInCode );
 
 		if ( ret )
@@ -1072,9 +1306,11 @@ AOZ.prototype.runBlocks = function( section, allowWaiting )
 					else
 					{
 						if ( section.isErrorProc )
-							section = popSection( section );
+							section = this.popSection( section );
 						section.position = section.resume;
+						section.isErrorProc = false;
 						section.isErrorOn = false;
+						quit = true;
 					}
 					break;
 
@@ -1222,7 +1458,6 @@ AOZ.prototype.runBlocks = function( section, allowWaiting )
 						if ( !section.objects[ ret.instance ] )
 						{
 							section = this.constructObject( section, ret.object, ret.instance, ret );
-					this.addToSynchro( section );
 						}
 						else
 						{
@@ -1284,12 +1519,17 @@ AOZ.prototype.runBlocks = function( section, allowWaiting )
 					section.waitThis = this;
 					break;
 
+				// Quit the loop
+				case 20:
+					quit = true;
+					break;
+
 				default:
 					break;
 			}
 		}
 		ret = null;
-		if ( allowWaiting && ( performance.now() - startTime >= timestep )	)
+		if ( allowWaiting && ( performance.now() - this.startTime >= this.timestep )	)
 				break;
 	} while( section && !quit && !this.break )
 	return section;
@@ -1309,8 +1549,11 @@ AOZ.prototype.setTask = function( task )
 {
 	if ( typeof task == 'number' )
 		task = this.tasks[ task ];
+	if ( task )
+	{
 	this.sections = task.sections;
 	this.section = task.section;
+	}
 	this.currentTask = task;
 	return task;
 }
@@ -1335,11 +1578,14 @@ AOZ.prototype.initSection = function( section, ret )
 	{
 		section.currentResult = ret.result;
 	}
+	if ( !section.self )
+		section.self = section;
 	section.results = [];
 	section.returns = [];
 	section.onError = false;
 	section.isErrorProc = false;
 	section.lastError = 0;
+	section.lastErrorMessage = '';
 	section.position = 0;
 	section.initialized = true;
 	section.nextError = null;
@@ -1411,7 +1657,7 @@ AOZ.prototype.handleErrors = function( error )
 	var section = this.currentSection;
 	if( section == undefined || section == null )
 	{
-		return;
+		return null;
 	}
 	
 	section.waiting = null;
@@ -1440,7 +1686,7 @@ AOZ.prototype.handleErrors = function( error )
 				this.utilities.sendCrashMail();
 				this.break = true;
 			}
-			return;
+			return null;
 		}
 		error = section.nextError;
 		section.nextError = null;
@@ -1448,20 +1694,19 @@ AOZ.prototype.handleErrors = function( error )
 
 	// Trap? No error and branch to the next instruction
 	var errorObject = this.errors.getError( error );
-	if ( section.trapPosition == section.position )
+	if ( section.trapPosition == section.position || section.trapPosition + 1 == section.position )
 	{
-		this.section = this.currentSection;
 		section.trappedErrorNumber = errorObject.number;
 		section.trapPosition = -1;
-		return;
+		return section;
 	}
 	else if ( section.onError )
 	{
-		this.section = this.currentSection;
 		section.lastError = errorObject.number;
+		section.lastErrorMessage = errorObject.message;
+		section.resume = section.position;
 		if ( typeof section.onError == 'number' )
 		{
-			section.resume = section.position;
 			section.position = section.onError;
 			section.isErrorOn = true;
 		}
@@ -1474,8 +1719,19 @@ AOZ.prototype.handleErrors = function( error )
 			var newSection = new section.onError( this, section, {} );
 			newSection = this.initSection( newSection );
 			newSection.isErrorProc = true;
+			newSection.lastError = errorObject.number;
+			newSection.lastErrorMessage = errorObject.message;
+			newSection.resume = section.position;	
+			try
+			{
+				this.runBlocks( newSection, true );
+			}
+			catch( error )
+			{
+				this.handleErrors( error );
+			}
 		}
-		return;
+		return section;
 	}
 
 	// Break application
@@ -1483,6 +1739,7 @@ AOZ.prototype.handleErrors = function( error )
 	this.lastError = this.errorObject.number;
 	this.lastErrorPos = this.sourcePos;
 	this.badEnd = true;
+	this.forceQuit = true;
 	this.break = true;
 };
 AOZ.prototype.constructObject = function( section, className, instance, ret )
@@ -1495,8 +1752,12 @@ AOZ.prototype.constructObject = function( section, className, instance, ret )
 
 		self.sections.push( previousSection );
 		var newSection = new self.root[ 'c_' + name ]( self, previousSection, ret.args );
+		newSection.self = newSection;
 		if ( count > 0 )
+		{
 			previousSection.childOf = newSection;
+			newSection.self = previousSection.self;
+		}
 		if ( !newSection.noDefaults )
 		{
 		for ( var p in newSection.defaults )
@@ -1508,7 +1769,6 @@ AOZ.prototype.constructObject = function( section, className, instance, ret )
 		newSection.vars = ret.args;
 		newSection.name = ret.instance;
 		self.initSection( newSection, ret );		// Will execute block[ 0 ]-> constructor.
-		self.turnIntoObject( newSection, {}, {}, {} );
 		sectionsDone[ name ] = newSection;
 		count++;
 
@@ -1551,7 +1811,6 @@ AOZ.prototype.constructObject = function( section, className, instance, ret )
 			linkSections( parentSection );
 		}
 	};
-	ret.args.IsConstructor = true;
 	var previousSection = section;
 	section = constructSection( previousSection, className, ret );
 	previousSection.objects[ instance ] = sectionsDone[ className ];
@@ -1572,6 +1831,21 @@ AOZ.prototype.getObject = function( name )
 			throw { error: 'object_not_found', parameter: name };			
 	}
 	return aObject;
+};
+AOZ.prototype.getObjectByName = function( name )
+{
+	var found;
+	for ( var o in this.root.objects )
+	{
+		if ( this.root.objects[ o ].vars.Name$ == name )
+		{
+			found = this.root.objects[ o ];
+			break;
+		}
+	}
+	if ( !found )
+		throw { error: 'object_not_found', parameter: name };			
+	return found;
 };
 AOZ.prototype.callPython = function( functionName, args, callback, extra )
 {
@@ -1843,7 +2117,7 @@ AOZ.prototype.updateFriends = function( aozObject, friends, deltaTime, vars, var
 					thisObject.deltaTime = deltaTime;
 					thisObject.varsModified = varsModified;
 					thisObject.friend = aozObject;
-					thisObject[ 'friendupdate_m' ].blocks[ 0 ].call( thisObject, this, vars );
+						thisObject[ 'friendupdate_m' ].blocks[ 0 ].call( thisObject, this, thisObject.vars );
 				}
 				else
 				{
@@ -1864,6 +2138,44 @@ AOZ.prototype.updateFriends = function( aozObject, friends, deltaTime, vars, var
 	}
 	}
 };
+AOZ.prototype.destroyFriend = function( aozObject, friend )
+{
+	index = aozObject.friends.findIndex( function( obj )
+	{
+		return obj == friend;
+	} );
+	if ( index >= 0 )
+		aozObject.friends.splice( index, 1 );
+	this.destroyObject( friend );
+};
+AOZ.prototype.destroyObject = function( thisObject )
+{
+	// Call a "destroy" method
+	var method = thisObject[ 'm_destroy' ];
+	if ( method )
+	{
+		if ( aozObject.hasRan )
+		{
+			if ( thisObject[ 'destroy_m' ].inLine )
+			{
+				thisObject[ 'destroy_m' ].blocks[ 0 ].call( thisObject, this, thisObject.vars );
+			}
+			else
+			{
+				var newSection = new method( this, thisObject, {} );
+				newSection = this.initSection( newSection );
+				newSection.callAtPop = function( cSection, pop )
+				{
+					thisObject.parent.objects[ thisObject.index ] = undefined;
+				};
+				this.addTask( newSection );
+				return;
+			}
+		}
+	}
+	thisObject.parent.objects[ thisObject.name ] = undefined;
+};
+
 AOZ.prototype.openURL = function( url, windowName )
 {
 	try
@@ -2424,15 +2736,6 @@ AOZ.prototype.lprint = function()
 };
 
 
-
-
-
-
-
-
-
-
-
 AOZ.prototype.doError = function( number )
 {
 	throw this.errors.getErrorFromNumber( number ).index;
@@ -2902,6 +3205,7 @@ AOZ.prototype.setKeyboard = function()
 
 	function onKeyDown( event )
 	{
+		application.aoz.waitInputControl.key = true;
 		if ( !( event = self.callExternalEvents( 'keydown', event ) ) )
 			return;
 
@@ -3017,11 +3321,14 @@ AOZ.prototype.setKeyboard = function()
 			{
 				self.break = true;
 				self.badEnd = true;
+				self.forceQuit = true;
 			}
 	};
 
 	function onKeyUp( event )
 	{
+		application.aoz.waitInputControl.key = false;
+
 		if ( !( event = self.callExternalEvents( 'keyup', event ) ) )
 			return;
 
@@ -3321,9 +3628,48 @@ AOZ.prototype.getScanCode = function()
 	return key;
 };
 
+AOZ.prototype.getKeyMap = function( key, callback, extra )
+{
+	if ( !navigator.keyboard.getLayoutMap )
+	{
+		if ( callback )
+			callback( false, "", extra );
+		return false;		
+	}
+	if ( key.length == 1 )
+	{
+		if ( key >= '0' && key <= '9' )
+			key = 'Digit' + key;
+		else 
+			key = 'Key' + key;
+	}
+	navigator.keyboard.getLayoutMap().then( function( map ) 
+	{
+		var result = map.get( key );
+		result = typeof result == 'undefined' ? "" : result;
+		callback( true, result, extra );
+	} );
+	return true;
+}
+
 AOZ.prototype.getKeyState = function( code )
 {
-	var result = this.keymap[code];
+	if ( typeof code == 'string' )
+	{		
+		var saveCode = code;
+		if ( code.length == 1 )
+		{
+			if ( code >= '0' && code <= '9' )
+				code = 'Digit' + code;
+			else 
+				code = 'Key' + code;
+		}
+		var list = AOZ.keyPressed[ this.platformKeymap ];
+		if ( !list[ code ] )
+			throw { error: 'key_not_defined', parameter: saveCode };
+		code = list[ code ].keyCode;
+	}
+	var result = this.keymap[ code ];
 	if ( !result )
 		return 0;
 	else
@@ -3422,7 +3768,7 @@ AOZ.prototype.varPtr = function( variableDefinition )
 	var definition;
 	var index = variableDefinition.variable.index;
 	if ( index )
-		definition = this.variablesContext.getElement( this.currentContext, index * this.aoz.memoryHashMultiplier );	
+		definition = this.variablesContext.getElement( this.currentContext, index );	
 	if ( !definition )
 	{
 		index = variableDefinition.variable.name;
@@ -3559,7 +3905,6 @@ AOZ.prototype.input_wait = function( args )
 		this.currentScreen.currentTextWindow.print( this.inputText, this.inputTextNewline );
 		this.inputXCursor = this.currentScreen.currentTextWindow.xCursor;
 		this.currentScreen.currentTextWindow.anchorYCursor();
-		this.currentScreen.currentTextWindow.forceCursor();
 		this.inputString = '';
 		this.inputCursor = 0;
 		if ( this.isMobileDevice )
@@ -3792,6 +4137,7 @@ AOZ.buttonToMouse =
 };
 AOZ.prototype.killEvents = function()
 {
+	//return;
 	this.renderer.end();
 	document.onclick = undefined;
 	document.onkeydown = undefined;
@@ -3905,6 +4251,53 @@ AOZ.prototype.startEvents = function()
 			}
 		}, false);
 	}
+
+	// For the Wait Input
+	document.addEventListener( 'click', function( event )
+	{
+		if( event.target.getAttribute( 'id' ) != 'iw' && event.target.getAttribute( 'id' ) != 'AOZCanvas' )
+		{
+			event.stopPropagation();
+			return;
+		}
+		event.preventDefault();
+		application.aoz.waitInputControl.click = true ;
+
+	}, false );
+
+	if( ( ( 'ontouchstart' in window ) || ( window.DocumentTouch && document instanceof DocumentTouch ) ) )
+	{
+		document.addEventListener( 'touchstart', function( event )
+		{
+			if( event.target.getAttribute( 'id' ) != 'iw' && event.target.getAttribute( 'id' ) != 'AOZCanvas' )
+			{
+				event.stopPropagation();
+				return;
+			}
+			event.preventDefault();
+			application.aoz.waitInputControl.click = true ;
+		
+		}, false );
+	}
+
+	document.addEventListener( 'keypress', function( event )
+	{
+		if( event.target.getAttribute( 'id' ) != 'iw' && event.target.getAttribute( 'id' ) != 'AOZCanvas' )
+		{
+			event.stopPropagation();
+			return;
+		}
+		/**
+		if( event.target.tagName.toLowerCase() == 'input' || event.target.tagName.toLowerCase() == 'textarea' )
+		{
+			event.stopPropagation();
+			return;
+		}
+		*/
+		event.preventDefault();
+		application.aoz.waitInputControl.key = true ;
+	}, false );	
+
 };
 
 AOZ.prototype.onMouseMove = function( event )
@@ -4516,20 +4909,18 @@ AOZ.prototype.waitClick_wait = function()
 
 AOZ.prototype.waitInput = function()
 {
-	this.clickMouse = 0;
-	this.key = 0;
+	this.waitInputControl.click = false;
+	this.waitInputControl.key = false;
+
 };
 
 AOZ.prototype.waitInput_wait = function()
 {
-	if ( this.clickMouse || this.key )
+	if ( this.waitInputControl.click || this.waitInputControl.key )
 	{
-		if ( this.clickMouse != 0 || this.key != '' || this.fire( 0 ) )
-		{
-			this.clickMouse = 0;
-			this.key = 0;
-			return true;
-		}
+		this.waitInputControl.click = false;
+		this.waitInputControl.key = false;
+		return true;
 	}
 	return false;
 };
@@ -4614,6 +5005,35 @@ AOZ.prototype.setVariableFromDescription = function( section, variable, value )
 
 
 // AOZ Array class
+AOZ.prototype.join = function( aarray )
+{
+	if ( typeof aarray.defaultValue != 'string' )
+		throw { error: 'type_mismatch' }
+	if ( aarray.dimensions.length != 1 )
+		throw { error: 'type_mismatch' }
+	var result = '';
+	var len = this.getArrayLength( aarray );
+	for ( var i = 0; i < len; i++ )
+		result += aarray.getValue( [ i ] );
+	return result;
+}
+AOZ.prototype.createAArrayFromJavascriptArray = function( jsArray, type )
+{
+	var types = { 'integer': 0, 'float': 0, 'string': '', 'object': {} }
+	type = ( typeof type != 'undefined' ? type : '0' );
+	type = types[ type ];
+	if ( typeof type == 'undefined' )
+		throw { error: 'illegal_function_call' };
+	var aarray = new AArray( this, type, 0 );
+	aarray.dim( [ undefined ] );
+	for ( var n = 0; n < jsArray.length; n++ )
+		aarray.setValue( [ n ], jsArray[ n ] )
+	return aarray;
+};
+AOZ.prototype.getDictionaryKeys = function ( aoz_dict )
+{
+	return this.createAArrayFromJavascriptArray( Object.keys(aoz_dict.array), "string" )
+}
 function AArray( aoz, defaultValue, oneBased )
 {
 	this.aoz = aoz;
@@ -4629,19 +5049,27 @@ AArray.prototype.dim = function( dimensions )
 	}
 	var self = this;
 	this.dimensions = dimensions;
-	this.autoExpand = [];
+	this.dimensionTypes = [];
 	for ( var d = 0; d < dimensions.length; d++ )
 	{
 		if ( typeof dimensions[ d ] == 'undefined' )
 		{
-			this.autoExpand[ d ] = true;
+			this.dimensionTypes[ d ] = 1;
 			this.dimensions[ d ] = 0;
 		}
+		else if ( typeof dimensions[ d ] == 'string' )
+			this.dimensionTypes[ d ] = 2;
+		else
+			this.dimensionTypes[ d ] = 0;
 	}
 	this.array = createArray( 0 );
 	function createArray( d )
 	{
 		var arr = [];
+		if ( self.dimensionTypes[ d ] == 2 )
+			arr = {};
+		else if ( self.dimensionTypes[ d ] == 0 )
+		{
 		if ( d == dimensions.length - 1 )
 		{
 			for ( var dd = 0; dd <= dimensions[ d ]; dd++ )
@@ -4651,6 +5079,7 @@ AArray.prototype.dim = function( dimensions )
 		{
 			for ( var dd = 0; dd <= dimensions[ d ]; dd++ )
 				arr[ dd ] = createArray( d + 1 );
+		}
 		}
 		return arr;
 	}
@@ -4709,14 +5138,82 @@ AArray.prototype.read = function( dimensions, value )
 	var obj = this.getVariable( dimensions );
 	obj.array[ obj.pointer ]--;
 };
-AArray.prototype.getLength = function( dimension )
+AArray.prototype.getArray = function( dimensions )
 {
-	dimension = typeof dimension == 'undefined' ? 0 : dimension;
 	if ( typeof this.array == 'undefined' )
 		throw 'non_dimensionned_array';
-	if ( dimension >= this.dimensions.length )
-		throw { error: 'illegal_function_call', parameter: dimension };
-	return this.dimensions[ dimension ];
+	var pArr = this.array;
+	for ( var d = 0; d < dimensions.length - 1; d++ )
+	{
+		var dd = dimensions[ d ];
+		if ( this.dimensionTypes[ d ] == 2 )
+		{
+			if ( typeof dd != 'string' )
+				throw { error: 'type_mismatch', parameters: [ dd ] };			
+			if ( pArr[ dd ] == undefined )
+				pArr[ dd ] = {};
+		}
+		else if ( this.dimensionTypes[ d ] == 1 )
+		{
+			if ( typeof dd != 'number' )
+				throw { error: 'type_mismatch', parameters: [ dd ] };			
+			dd = dimensions[ d ] - this.oneBased;
+			if ( dd < 0 )
+				throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
+			if ( dd > this.dimensions[ d ] )
+				this.dimensions[ d ] = dd;
+			if ( pArr[ dd ] == undefined )
+				pArr[ dd ] = [];
+		}
+		else
+		{
+			if ( typeof dd != 'number' )
+				throw { error: 'type_mismatch', parameters: [ dd ] };			
+			dd = dimensions[ d ] - this.oneBased;
+			if ( dd < 0 )
+				throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
+			if ( dd > this.dimensions[ d ] )
+				throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
+		}
+		pArr = pArr[ dd ];
+	}
+	if ( d < dimensions.length )
+	{
+	var dd = dimensions[ d ];
+	if ( this.dimensionTypes[ d ] == 2 )
+	{
+		if ( typeof dd != 'string' )
+			throw { error: 'type_mismatch', parameters: [ dd ] };
+	}
+	else if ( this.dimensionTypes[ d ] == 1 )
+	{
+		if ( typeof dd != 'number' )
+			throw { error: 'type_mismatch', parameters: [ dd ] };			
+		if ( dd < 0 )
+			throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
+		if ( dd > this.dimensions[ d ] )
+			this.dimensions[ d ] = dd;
+	}
+	else
+	{
+		var dd = dimensions[ d ] - this.oneBased;
+		if ( dd < 0 )
+			throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
+		if ( dd > this.dimensions[ d ] )
+			throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
+	}
+		pArr = pArr[ dd ];
+	}
+	return { array: pArr, oneBased: this.oneBased };
+};
+AOZ.prototype.getArrayLength = function( aarray )
+{
+	if ( this.aoz.utilities.isArray( aarray.array ) )
+		return aarray.array.length;
+	var count = 0;
+	for ( var i in aarray.array )
+		count ++;
+	return count;
 };
 AArray.prototype.getVariable = function( dimensions )
 {
@@ -4725,33 +5222,64 @@ AArray.prototype.getVariable = function( dimensions )
 	var pArr = this.array;
 	for ( var d = 0; d < this.dimensions.length - 1; d++ )
 	{
-		dd = dimensions[ d ] - this.oneBased;
-		if ( dd < 0 || dd > this.dimensions[ d ] )
+		var dd = dimensions[ d ];
+		if ( this.dimensionTypes[ d ] == 2 )
 		{
-			if ( this.autoExpand[ d ] )
-			{
+			if ( typeof dd != 'string' )
+				throw { error: 'type_mismatch', parameters: [ dd ] };			
+			if ( pArr[ dd ] == undefined )
+				pArr[ dd ] = {};
+		}
+		else if ( this.dimensionTypes[ d ] == 1 )
+		{
+			if ( typeof dd != 'number' )
+				throw { error: 'type_mismatch', parameters: [ dd ] };			
+			dd = dimensions[ d ] - this.oneBased;
+			if ( dd < 0 )
+				throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
+			if ( dd > this.dimensions[ d ] )
 				this.dimensions[ d ] = dd;
+			if ( pArr[ dd ] == undefined )
 				pArr[ dd ] = [];
 			}
 			else
 			{
+			if ( typeof dd != 'number' )
+				throw { error: 'type_mismatch', parameters: [ dd ] };			
+			dd = dimensions[ d ] - this.oneBased;
+			if ( dd < 0 )
+				throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
+			if ( dd > this.dimensions[ d ] )
 			throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
 			}
-		}
 		pArr = pArr[ dd ];
 	}
-	var dd = dimensions[ d ] - this.oneBased;
-	if ( dd < 0 || dd > this.dimensions[ d ] )
+	var dd = dimensions[ d ];
+	if ( this.dimensionTypes[ d ] == 2 )
 	{
-		if ( this.autoExpand[ d ] )
+		if ( typeof dd != 'string' )
+			throw { error: 'type_mismatch', parameters: [ dd ] };
+		if ( pArr[ dd ] == undefined )
+			pArr[ dd ] = this.defaultValue;
+	}
+	else if ( this.dimensionTypes[ d ] == 1 )
 		{
+		if ( typeof dd != 'number' )
+			throw { error: 'type_mismatch', parameters: [ dd ] };			
+		if ( dd < 0 )
+			throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
+		if ( dd > this.dimensions[ d ] )
 			this.dimensions[ d ] = dd;
+		if ( pArr[ dd ] == undefined )
 			pArr[ dd ] = this.defaultValue;
 		}
 		else
 		{
+		var dd = dimensions[ d ] - this.oneBased;
+		if ( dd < 0 )
+			throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
+		if ( dd > this.dimensions[ d ] )
 		throw { error: 'array_index_out_of_bounds', parameters: [ d + 1, dd, this.dimensions[ d ] ] };
-	}
 	}
 	return { array: pArr, pointer: dd };
 };
@@ -5080,6 +5608,8 @@ AOZ.prototype.subtractString = function( string1, string2 )
 AOZ.prototype.wait = function( args, section )
 {
 	var delay = args[ 0 ];
+	if ( typeof delay == 'undefined' )
+		throw { error: 'syntax_error_reason', parameter: this.errors.getError( 'wait_without_param' ).message };
 	if ( delay < 0 )
 		throw { error: 'illegal_function_call', parameter: delay };
 	section.waitEnd = new Date().getTime() + ( this.platform != 'aoz' ? delay * 20 : delay * 1000 );
@@ -5560,7 +6090,15 @@ AOZ.prototype.setGamepads = function()
 
 AOZ.prototype.scanGamepads = function() 
 {										
+	try
+	{
 	this.gamepads = navigator.getGamepads(); 
+	}
+	catch ( e )
+	{
+		this.gamepads = null;
+		console.log( 'Warning: gamepads not supported.')
+	}
 	if ( this.browserIsWeird() )	
 	{ 
 		this.gamepad_vertical_axis = 2; 
@@ -5645,18 +6183,26 @@ AOZ.prototype.lockJoystick = function( state, lock, direction )
 // Default "LEFT" is Axis(2) = -1
 // Default "RIGHT" is Axis(2) = 1
 // Digital gamepad Up function, but usually read as analog and converted to digital.
+
 AOZ.prototype.jUp = function( number, lock )
 {
-	var pressed = this.getKeyMapping( 'up' ); 
+	var pressed = this.getKeyMapping( 'up' ); // 0x01 pressed
 	if ( this.gamepads )
 	{
 		if ( number >= 0 && number < this.gamepads.length )
-	{
-		var gamepad = this.gamepads[ number ];
-		if ( gamepad && gamepad.connected )
 		{
-				pressed |= this.gamepadAxis( number, this.gamepad_vertical_axis ) < -this.gamepad_Threshold; 
+			var gamepad = this.gamepads[ number ];
+			if ( gamepad && gamepad.connected )
+			{
+				pressed |= this.gamepadAxis( number, this.gamepad_vertical_axis) < -this.gamepad_Threshold;
 			}
+			/*
+			if ( gamepad && gamepad.connected && gamepad.axes[ this.gamepad_vertical_axis ] < 0 )
+			{
+				pressed = Math.round( gamepad.axes[ this.gamepad_vertical_axis ] );
+				//pressed |= this.gamepadAxis( number, this.gamepad_vertical_axis ) < -this.gamepad_Threshold; 
+			}
+			*/
 		}
 	}
 	return this.lockJoystick( pressed, lock, 'up' );
@@ -5665,16 +6211,23 @@ AOZ.prototype.jUp = function( number, lock )
 // Digital gamepad Down function, but usually read as analog and converted to digital.
 AOZ.prototype.jDown = function( number, lock )
 {
-	var pressed = this.getKeyMapping( 'down' ); 
+	var pressed = this.getKeyMapping( 'down' ); // 0x02 pressed
 	if ( this.gamepads )
 	{
 		if ( number >= 0 && number < this.gamepads.length )
 		{
-		var gamepad = this.gamepads[ number ];
-		if ( gamepad && gamepad.connected )
-		{
+			var gamepad = this.gamepads[ number ];
+			if (gamepad && gamepad.connected )
+			{
 				pressed |= this.gamepadAxis( number, this.gamepad_vertical_axis ) > this.gamepad_Threshold;
 			}
+			/*
+			if ( gamepad && gamepad.connected && gamepad.axes[ this.gamepad_vertical_axis ] > 0 )
+			{
+				pressed = Math.round( gamepad.axes[ this.gamepad_vertical_axis ] );
+				//pressed |= this.gamepadAxis( number, this.gamepad_vertical_axis ) > this.gamepad_Threshold;
+			}
+			*/
 		}
 	}
 	return this.lockJoystick( pressed, lock, 'down' );
@@ -5683,15 +6236,15 @@ AOZ.prototype.jDown = function( number, lock )
 // Digital gamepad Left function, but usually read as analog and converted to digital.
 AOZ.prototype.jLeft = function( number, lock )
 {
-	var pressed = this.getKeyMapping( 'left' ); 
+	var pressed = this.getKeyMapping( 'left' );  // 0x04 pressed
 	if ( this.gamepads )
 	{
 		if ( number >= 0 && number < this.gamepads.length )
 		{
-		var gamepad = this.gamepads[ number ];
-		if ( gamepad && gamepad.connected )
-		{
-				pressed |= this.gamepadAxis( number, this.gamepad_horizontal_axis ) < this.gamepad_Threshold;
+			var gamepad = this.gamepads[ number ];
+			if ( gamepad && gamepad.connected )
+			{
+				pressed |= this.gamepadAxis( number, this.gamepad_horizontal_axis ) < -this.gamepad_Threshold;
 			}
 		}
 	}
@@ -5701,14 +6254,14 @@ AOZ.prototype.jLeft = function( number, lock )
 // Digital gamepad Right function, but usually read as analog and converted to digital.
 AOZ.prototype.jRight = function( number, lock )
 {
-	var pressed = this.getKeyMapping( 'right' ); 
+	var pressed = this.getKeyMapping( 'right' ); // 0x08 pressed
 	if ( this.gamepads )
 	{
 		if ( number >= 0 && number < this.gamepads.length )
 		{
-		var gamepad = this.gamepads[ number ];
-		if ( gamepad && gamepad.connected )
-		{
+			var gamepad = this.gamepads[ number ];
+			if ( gamepad && gamepad.connected )
+			{
 				pressed |= this.gamepadAxis( number, this.gamepad_horizontal_axis ) > this.gamepad_Threshold;
 			}
 		}
@@ -5726,11 +6279,13 @@ AOZ.prototype.jUpLeft = function( number, lock )
 		{
 		var gamepad = this.gamepads[ number ];
 		if ( gamepad && gamepad.connected )
-		{
-				pressed |= ( this.gamepadAxis( number, this.gamepad_vertical_axis ) < -this.gamepad_Threshold )	&& ( this.gamepadAxis( number, this.gamepad_horizontal_axis ) < -this.gamepad_Threshold );
+			{
+				pressed |= ( this.gamepadAxis( number, this.gamepad_vertical_axis )   < -this.gamepad_Threshold )	
+						&& ( this.gamepadAxis( number, this.gamepad_horizontal_axis ) < -this.gamepad_Threshold );
 			}
 		}
 	}
+
 	return this.lockJoystick( pressed, lock, 'upleft' );
 };
 
@@ -5745,10 +6300,12 @@ AOZ.prototype.jUpRight = function( number, lock ) // BJF
 		var gamepad = this.gamepads[ number ];
 		if ( gamepad && gamepad.connected )
 		{
-				pressed |= ( this.gamepadAxis( number, this.gamepad_vertical_axis ) < -this.gamepad_Threshold )	&& ( this.gamepadAxis( number, this.gamepad_horizontal_axis ) > -this.gamepad_Threshold );
+				pressed |= ( this.gamepadAxis( number, this.gamepad_vertical_axis ) 	< -this.gamepad_Threshold )	
+						&& ( this.gamepadAxis( number, this.gamepad_horizontal_axis ) 	>  this.gamepad_Threshold );
 			}
 		}
 	}
+	
 	return this.lockJoystick( pressed, lock, 'upright' );
 };
 
@@ -5763,28 +6320,32 @@ AOZ.prototype.jDownLeft = function( number, lock ) // BJF
 		var gamepad = this.gamepads[ number ];
 		if ( gamepad && gamepad.connected )
 		{
-				pressed |= ( this.gamepadAxis( number, this.gamepad_vertical_axis ) > this.gamepad_Threshold )	&& ( this.gamepadAxis( number, this.gamepad_horizontal_axis ) < -this.gamepad_Threshold );
+				pressed |= ( this.gamepadAxis( number, this.gamepad_vertical_axis   ) >  this.gamepad_Threshold )	
+						&& ( this.gamepadAxis( number, this.gamepad_horizontal_axis ) < -this.gamepad_Threshold );
 			}
 		}
 	}
+
 	return this.lockJoystick( pressed, lock, 'downleft' );
 };
 
 // Digital gamepad Down & Right function, but usually read as analog and converted to digital.
 AOZ.prototype.jDownRight = function( number, lock ) // BJF
 {
-	var pressed = this.getKeyMapping( 'down' ) & this.getKeyMapping( 'right' );
+	var pressed = this.getKeyMapping( 'down' ) & this.getKeyMapping( 'right' ); // 0x02 & 0x08
 	if ( this.gamepads )
 	{
 		if ( number >= 0 && number < this.gamepads.length )
 		{
-		var gamepad = this.gamepads[ number ];
-		if ( gamepad && gamepad.connected )
-		{
-				pressed |= ( this.gamepadAxis( number, this.gamepad_vertical_axis ) > this.gamepad_Threshold )	&& ( this.gamepadAxis( number, this.gamepad_horizontal_axis ) > this.gamepad_Threshold );
+			var gamepad = this.gamepads[ number ];
+			if ( gamepad && gamepad.connected )
+			{
+				pressed |= ( this.gamepadAxis( number, this.gamepad_vertical_axis )   > this.gamepad_Threshold )  // down	
+						&& ( this.gamepadAxis( number, this.gamepad_horizontal_axis ) > this.gamepad_Threshold ); // right
 			}
 		}
 	}
+
 	return this.lockJoystick( pressed, lock, 'downright' );
 }; 
 
@@ -6414,6 +6975,7 @@ AOZ.prototype.onMessage = function( message, callback, extra )
 		case 'end':
 			this.debuggerOn = false;
 			this.break = true;
+			this.forceQuit = true;
 			this.displayEndAlert = false;
 			break;
 		case 'restart':
@@ -6479,6 +7041,11 @@ AOZ.prototype.onMessage = function( message, callback, extra )
 			}
 			break;
 	}
+};
+AOZ.prototype.print = function( text )
+{
+	console.log( text );
+	this.currentScreen.currentTextWindow.print( '' + text, true );
 };
 AOZ.prototype.sendMessage = function( message, options, callback, extra )
 {

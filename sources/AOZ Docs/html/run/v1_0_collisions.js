@@ -33,7 +33,7 @@ function v1_0_collisions( aoz, args )
 this.blocks=[];
 	this.blocks[0]=function(aoz,vars)
 	{
-		// From source: /home/baptiste/AOZ_Studio/AOZ_Studio/app/aoz/languages/v1_0/collisions/collisions.aoz
+		// From source: D:/Programs/AOZ_Studio_SE/AOZ_Studio/app/aoz/languages/v1_0/collisions/collisions.aoz
 		aoz.sourcePos="0:42:0";
 		// Javascript
 		this.aoz.collisions = this;					// TODO: remove

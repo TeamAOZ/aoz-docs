@@ -1,6 +1,8 @@
-# The various possible controls
+# The various controls
 
 **Note: this Instruction and chapter is Work In Progress**
+
+We have already seen this controls in the chapter "First magic programs/ Move the actor with..." but we wanted to tell you more now that you are in control.
 
 We saw that it was quite easy to control an actor with the **Control$** parameter. It is possible to assign multiple controls to an actor (e.g., keyboard and joystick).
 

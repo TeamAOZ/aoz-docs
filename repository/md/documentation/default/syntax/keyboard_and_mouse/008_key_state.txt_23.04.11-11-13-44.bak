@@ -1,0 +1,96 @@
+# Key State
+<!--
+@name: Key State
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+This function returns **True** if the specified key is currently pressed.
+
+## Syntax Options
+
+|Option|Parameter Used|
+|---|---|
+|pressed=**Key State(** char\$ **)** | Pass a single character (char\$) |
+|pressed=**Key State(** name\$ **)** | Pass the JavaScript Key Name (name$) |
+|pressed=**Key State(** index **)** | Pass the JavaScript Key index (or Scan Code for Amiga) |
+
+## Parameters
+
+| Parameter | Description |
+|---|---|
+| keyCode | The (Javascript) code of the key to test as stated below.  In Amiga mode, use the scan code of the key to test. | 
+
+## Notes
+The KeyCode mapping is for QWERTY keyboard, so for non QWERTY please see example below.
+Any capital letter A B C...
+Minus 
+Equal 
+Insert 
+Delete / Del 
+Home 
+End 
+Enter 
+Escape 
+Shift 
+Control
+Tab
+PageUp   PageDown 
+ArrowLeft  ArrowRight 
+ArrowUp   ArrowDown 
+Backspace   Backquote   Backslash 
+ScrollLock    NumLock    CapsLock 
+Pause 
+Comma 		(,)
+Period 		(!)
+Slash 			(/) 
+Quote 		(")
+Semicolon 	(;)
+BracketLeft    BracketRight 
+ShiftLeft    ShiftRight 
+ControlLeft    ControlRight 
+AltLeft    AltRight 
+OSLeft 
+MetaLeft 
+ContextMenu 
+IntlBackslash 
+F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12 F13 
+Numpad0 Numpad1 Numpad2 Numpad3 Numpad4 Numpad5 Numpad6 Numpad7 Numpad8 Numpad9 NumpadDivide NumpadMultiply NumpadSubtract NumpadAdd NumpadEnter NumpadDecimal NumpadEqual
+
+<BR>
+
+## Example
+**Example:**
+
+```basic
+Print Browser Language$+": Press one of the Key defined in the code"
+Do
+    If Key State( "0" ) 		Then Print "0"
+    If Key State( "Numpad0" ) 	Then Print "Numpad0"
+	If Key State( "F1" ) 		Then Print "F1"
+	If Key State( "ArrowUp" ) 	Then Print "ArrowUp"
+	If Key State( "ArrowDown" ) Then Print "ArrowDown"
+	If Key State( "ArrowLeft" ) Then Print "ArrowLeft"
+	If Key State( "ArrowRight" )Then Print "ArrowRight"
+	//Key State doesn|;t make the difference between lowercase and uppercase, so test only the uppercase
+	If Key State( "C" ) 		Then Print "C"	// capital letters only
+	If Key State( "B" ) 		Then Print "B"	// capital letters only
+	/*Key State returns the key from a QWERTY keyboard, if you want to know the equivalent in an other keyboard you mays use
+	Key Map$("code"), it allows you to find which letter a key is associated with thus determining the language of the keyboard.
+	(Note: Only works on Chrome and Edge, Android versions too, not on Apple devices.)
+	So if you want to use say a French keyboard, you may use Key Map$ to check for the "a" letter like below: */
+	If Key Map$("A")="q" Then If Key State( "Q" ) Then Print "A"
+    If Key State( "Escape" ) 	Then End
+Loop
+```
+
+### See also the other related instructions
+inkey$:
+scan code:
+input\$: 
+Line input\$:
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

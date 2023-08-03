@@ -1,0 +1,11 @@
+# IDE End Accessory
+<!--
+@name: IDE End Accessory
+@description: 
+@tags: 
+@categories: 
+\-->
+Terminates the current application if it is running as an accessory, and restore the previous running one
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

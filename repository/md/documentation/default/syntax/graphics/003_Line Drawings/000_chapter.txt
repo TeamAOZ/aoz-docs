@@ -1,0 +1,10 @@
+# Line Drawings
+
+This section contains all the instructions for line drawings.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEyODY5MzkxMTAsMTg0NDQyMjU3NCwtMT
+g1MDI2NzE2NSwyMDI0MTM0MzY5XX0=
+-->

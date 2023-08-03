@@ -10,7 +10,7 @@
 
 Duplicates a 3D object and adds the copy to the current scene under another name.
 
-#### Syntax
+#### Example
 ```basic
 Load Asset "my_scene.aoz3d", "my_scene"
 Td Init : Td Start

@@ -5,11 +5,15 @@
 @tags: 
 @categories: 
 \-->
-Returns the factor X of the scaling
+Returns the X scale of an actor defined by the `Scale`or `ScaleX`properties of the `Actor` command.
+
+## Syntax
+>A =  **Actor ScaleX**( actor_index )
+
 ## Parameters
-
-
-- **index**: Index of the sprite
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index|Index of the Actor.|
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
 <!--stackedit_data:

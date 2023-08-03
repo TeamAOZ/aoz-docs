@@ -1,0 +1,23 @@
+# Graphics
+
+This section covers all instructions and functions associated with drawing permanent graphics on the screen. There are many instructions in this section, so the documentation is split into several categories to make things easier to find. The categories are:-
+
+**Setting Up** - In here is everything you need to define how your drawings will look, including clearing the screen, colour controls, various fill settings like gradients, patterns and images, line settings, shadows and more.
+
+**Graphics Functions** - Functions are available for you to examine the current settings and environment variables.
+
+**Line Drawing** - Here you will find all the instructions that allow you to do line drawings, including line versions of all shapes, and straight line drawing, arcs and curves.
+
+**Filled Shapes** - A set of instructions for drawing solid, filled shapes such as circles and rectangles, and images from the images bank.
+
+**Border Controls** - Here you will find everything you need to take full control of borders around your shapes and texts.
+
+**Text Related** - Everything specifically graphical text related.
+
+### Important : You may find some instructions or functions have ~~strike-through~~ over some of the text. This means that they may not function properly if you try to use them. We hope to have these fixed in the near future.
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEyMzQxMjIyMzEsLTEwMjk2MDE4OTgsMT
+c4NTUxOTY3NiwtNzAxMjgzOTI0LC0xNTMyODkzMjczLDEyNTAy
+NTMyMSw4MzM2ODQ1MTAsLTE1MjY3NDk1OTAsOTExMjM3NTg2XX
+0=
+-->

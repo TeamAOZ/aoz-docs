@@ -1,0 +1,63 @@
+# Line Cap
+<!--
+@name: Line Cap
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Set the line capping style
+
+## Syntax Options
+
+**Line Cap**
+**Line Cap** *cap$*
+
+## Parameters
+
+- _**cap$**_: The capping style. Can be "round", "square" or "butt". Omitting this parameter will restore the setting to the default "square".
+
+## Description
+This instruction sets the capping style of all lines that are subsequently drawn. The different styles only become apparent on thicker lines.
+
+- **butt** - ends the line squarely at the limits
+
+- **round** - ends the line with a semi-circle of radius half of line width
+
+- **square** - ends the line with a square end, extending the line by half the line width (default)
+
+## Example Code
+The following code illustrates how the line caps are drawn in relation to the line itself.
+
+You will see that with "butt", the line is not extended beyond the white limit lines, and with "round" and "square", the line extends beyond the limits by half of the line width. This can be important when angles are drawn, because with thicker line widths, the corners can look untidy, as can be see in the "butt" example.
+```basic
+Palette 0,$ffffff,$39bfaf
+Ink 1
+Locate 40,4 : Print "butt"
+Locate 40,11 : Print "round"
+Locate 40,18 : Print "square"
+// Draw Vertical White lines at limits
+Draw 200,20 to 200,980
+Draw 900,20 to 900,980
+Line Width 50
+Ink 2
+// Draw Line between the limits
+Line Cap "butt"
+Draw 200,200 to 900,200
+Draw 1200,100 to 1500,100
+Draw 1500,100 to 1500,300
+Line Cap "round"
+Draw 200,500 to 900,500
+Draw 1200,400 to 1500,400
+Draw 1500,400 to 1500,600
+Line Cap "square"
+Draw 200,800 to 900,800
+Draw 1200,700 to 1500,700
+Draw 1500,700 to 1500,900
+```
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTE3NDcyNDI5OCwxNzE3NjgwODcsMTk0Mj
+QyNzE1NywxNTI0ODUwNDgwLC0xNTkyMDQ5MzU5XX0=
+-->

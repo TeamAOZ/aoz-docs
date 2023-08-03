@@ -1,0 +1,63 @@
+# Conic Border Gradient
+<!--
+@name: Conic Border Gradient
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Instruction** - Define a conic gradient that will be used as a fill pattern in any borders drawn around shapes or text.
+
+## Syntax
+**Conic Border Gradient** *x*, *y*, *angle*, *color$*
+
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img 
+
+
+## Parameters
+
+
+- **x**: The horizontal coordinate of the centre of the gradient.
+- **y**: The vertical coordinate of the centre of the gradient.
+- **angle:** The start angle of the gradient in degrees. 0 degrees is right-horizontal from the centre position.
+- **color$:** The colour stop definition string. Each of the colour stops consists of a number which represents a point along the gradient given as a percentage and a colour, which can be either a standard Javascript colour name, or an RGB or RGBA number in the in AOZ format or Javascript format (see example below)
+
+## Description
+
+
+Use this instruction to create a colour gradient that can be used as a fill pattern for borders around drawn shapes and texts. The gradient shading will begin at the line radiating out from the centre point at the specified angle, and shade from one colour to the next in a clockwise direction around the centre until the start angle is reached again.
+
+In the example below, you will see that the centre point of the gradient starts at 960,540, which is the centre of the screen, and radiates out at an angle of 0°.  The color string has five stops, starting at red at 0% shading to green to yellow to blue and back to red at 100%. Ending the colour string with the same colour as it started will ensure a transition between the end and start colours once the gradient has gone through a full 360°.
+
+It is important to note that the complete gradient fill pattern is like a hidden screen, and will be the same size as the current screen, the fill on the screen will take place using the colour pattern from the corresponding position on the fill |;screen|;.
+
+Also, if a border gradient is defined, it will over-ride any other border fill settings, such as border fill image.
+
+## Example Code
+```basic
+// A Simple Conic Border Gradient
+ink 8
+Line Width 40
+Conic Border Gradient 960,540,0,"0,red,25,green,50,yellow,75,blue,100,red"
+Filled Star 960,540,540,180,5,54
+```
+Because conic gradients are based around a single point, it|;s very easy to animate them. Try this:
+
+```basic
+a=0  // variable for the start angle
+ink 8
+Line Width 40
+Border On
+do
+	Conic Border Gradient 960,540,a,"0,red,25,green,50,yellow,75,blue,100,red"
+	Filled Star 960,540,450,150,5,18
+	Wait Vbl
+	Add a,1,0 to 360
+loop
+```
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTYzODUzODYyMiwtNTc3NjA2NTM2LDE5NT
+U3Mjg4MjgsLTE2ODI5MTEzMDgsMzI3MzY1MjE3LC0xNzcwNTQw
+OTI3XX0=
+-->

@@ -1,6 +1,69 @@
 # KEYBOARD INPUTS
 
+AOZ provides you with a full range of keyboard input commands for different purposes.  
+Here|;s a summary of these different categories of keyboard commands (detailed descriptions and examples follows).
+
+## General Input
+These instructions are used to read a string (ex John, 100, 10.2) typed on the keyboard and saved directly into a variable, can be a text, a number (String, Integer, or Floating Point numbers).
+
+|Instruction/Function|Description|
+|---|---|
+| **Input** X | Inputs a numerical value into the specified variable (here X) |
+| **Input** X\$ | Inputs a text into the specified variable (here X$)|
+| **Input** "string" ; X\$  | Print "string" and inputs a text into the specified variable|
+| **Input** X\$,Y,Z# | Inputs several values (separated by the Enter key) into the specified variables. |
+| **Line Input** X\$ |  This allows the comma to be part of the input.  |
+| X\$=**Input\$(** N **)** | Returns **N** characters into the specified string variable. |
+
+## Character Input
+There are several functions to read the current state (pressed or not pressed) of *any* physical key on the keyboard. These instructions are used to read a character from the keyboard, one at a time.  It could be letters, digits, or special symbols (A, 1, !, etc.), non-printable (arrows, function keys, etc.), or modifier keys (Ctrl, Alt, Shift, etc.)  These instructions include:
+
+### Inkey$
+| Function | Description |
+|---|---|
+| X\$=**Inkey\$** | Reads a single character into the specified string variable. Note **Scan Key** can be associated to read the special keys.| 
+
+### Key State
+
+ **Key State** is the easier to use to cover all keys. 
+Here are the functions:
+|Function|Description|
+|---|---|
+| KS=**Key State(**N**)** | Returns true if the keyboard key with the Scan code N is pressed. |
+| KS=**Key State(**X\$**)** | Returns true if the keyboard key named X\$ is pressed. Can be a letter like a or Q, or a special key like the arrows keys, space bar, Ctrl, Esc... see the table at the end of this page for the key names) |
+| KS=**Key Shift** | Returns a bit pattern indicating which modifier keys are currently pressed.  Each bit represents a different modifier key. |
+| SC=**ScanCode** | Returns an Integer key ID for the physical key entered with the last input from **Inkey\$** | 
+| SS=**ScanShift** | Returns a bit pattern indicating which modifier keys were pressed with the last input from **Inkey\$**.  Each bit represents a different modifier key. |
+
+**NOTE:** The physical key ID is not altered by the **Shift** key when using the **Key State** function.  For example, there is no distinction between "A" and "a", since they are the same physical key on the keyboard.
+
+**NOTE:** It is possible to read multiple key states at the same time, however, not all key combinations are possible.
+
+## Wait
+These instructions will wait for a keypress. So the program is halted.
+
+| Instruction | Description |
+|---|---|
+| **Wait Key** | Pauses the program until any key on the keyboard is pressed. |
+| **Wait Input** | Pauses the program until any key on the keyboard is pressed, ***or*** a mouse click occurs, ***or*** a joystick button is pressed. |
+
+## The Keyboard Buffer
+
+The **Keyboard Buffer** is a place where keystrokes are stored temporarily before they are processed by the program.  This buffer allows the user to enter commands faster than the input statements would normally read them, and also allows pre-filling the buffer programmatically, which could then be processed by normal **Variable** or **Character** input commands.  This can be useful for automated testing, or implementing keyboard macros.
+
+**Keyboard Macros** These are pre-defined, or user-defined inputs that can be entered with a simple key combination, button press, etc.
+These are special commands that allow you to interact directly with the keyboard buffer, including:
+
+| Instruction | Description |
+|---|---|
+| **Put Key** X$ | Inserts the specified keystrokes directly into the keyboard buffer.
+
+---
+
+## **ALL INPUTS MORE DETAILED**
 AOZ has a full range of keyboard input commands.
+
+In AOZ you have many options to enter a text or value. To go quick if you want to enter a text made of several characters you may use the Input instruction. If you want to read only one key you may use KeyState or Inkey$.
 
 You can read keys one at a time, including modifier keys (Ctrl, Shift, Alt, Meta), and locking keys like Caps lock. Some keycodes are stored in the input buffer (an area of memory reserved for keypresses, but not yet processed). You can even detect multiple keypresses at the same time.
 
@@ -10,9 +73,8 @@ There are four types of keyboard input instructions:
 **Buffer** This type allows you to interact with the keyboard buffer directly.
 **State** This type of input checks the current state of a key to see if it is pressed or not, but does not have to fill a variable with the result.
 
-<![endif]-->
 
-## Keyboard variable inputs
+## Keyboard General inputs
 
 ### Input
 
@@ -27,8 +89,10 @@ We have four forms of the Input instruction.
 Example:
 ```basic
 Do  
-	Input A$  
-	Print A$  
+	Input A  // requesting a number only, entering a letter will make a mismatch error 
+	  Print A  
+	Input A$ // requesting 1 or more characters as a text (or number as a text) 
+	  Print A$  
 Loop
 ```
 
@@ -61,21 +125,19 @@ With the exception of showing "Enter A, B$, and C#:"  just before accepting the 
 **_Description:_**  Functions identically to the Input command, except that it accepts all printable characters including the comma as part of the input. The **Enter** key is used to separate each input. See the description of the **Input** command for more details.
 
 NOTE: If the "Please redo from start" error occurs, input starts again with the first variable.
-<BR>
 
 #### **Line Input TEXT$ ; VARNAME {, VARNAME$ VARNAME#, ...}**
 
 **_Description:_** As with the standard **Input** command, **Line Input** also has the option of displaying a prompt string before accepting inputs. Otherwise, this works identically to the **Line Input** command. See the description of **Line Input** for more details.
-<BR><BR>
 
-
-### Keyboard Buffer
+## Keyboard Buffer
 
 These commands allow you to interact with the keyboard buffer directly.
 
-#### **Put Key K$** Put Key is NOT CURRENTLY IMPLEMENTED, but will be soon, so:
+#### **Put Key K$** 
+Put Key is NOT CURRENTLY IMPLEMENTED, but will be soon, so:
 
-**_Description:_** Inserts the specified string (**K$**) into the input buffer directly, as if it was typed from the keyboard. This is often used to pre-fill values for the **Input** instructions._
+**_Description:_** Inserts the specified string (**K$**) into the input buffer directly, as if it was typed from the keyboard. This is often used to pre-fill values for the **Input** instructions.
 
 _Example:_
 ```basic
@@ -89,7 +151,7 @@ Loop
 
 **Clear Key**
 
-**_Description:_** Clears the contents of the input buffer. This can be called immediately before **Wait Key** or other keyboard commands to ensure that we're waiting for new input.
+**_Description:_** Clears the contents of the input buffer. This can be called immediately before **Wait Key** or other keyboard commands to ensure that we|;re waiting for new input.
 <BR>
 
 **Key Speed**
@@ -130,7 +192,7 @@ Do
 	X$=Inkey$ : If X$ >= "@" And X$ <= "~" Then Print X$; : Result$=Result$+X$
 	If X$=Chr$(8) Then Result$=Left$(Result$,Len(Result$)-1)
 	If X$=Chr$(13) Then Exit
-	Refresh ' give the program time to run
+	Refresh |; give the program time to run
 	Cls : Print Result$
 Loop
 Cls : Print Result$
@@ -147,42 +209,50 @@ The above code will get printable characters one at a time, and append them to *
 
 _Example:_
 
-**Do****  
-X$=Input$(3)  
-Print X$  
-Wait Vbl  
-Loop**
+```basic
+Do  
+	X\$=Input\$(3)  
+	Print X$  
+	Wait Vbl  
+Loop
+```
 
 The above code accepts a 3 character string from the keyboard, and puts it into **X$**.
   
 
 ## Reading the keyboard state
 
+There are several instructions to check what the user is typing on the keyboard, to either resume the program paused by a Wait, or to return the key pressed.
+
 ### Wait Key
-**_Description:_** Waits for any keyboard key to be pressed before acting on the next instruction.
+**_Description:_** Waits for a key on the keyboard to resume the program.
 
 _Example:_
 
-**Print "Please press a key" : Wait key : Print "Thank you!"**
+```basic
+Print "Please press a key" : Wait key
+Print "Thank you!"
+```
 In the example above, "Thank you!" will not be printed until a key is pressed.
-<BR>
 
 ### Wait Input
-**_Description:_** This very useful instruction waits for any key or click on the keyboard, joystick, mouse (not gamepad) to be pressed before acting on the next instruction.
 
-_Exemple :_
-**Wait Input : Print "Moving forward"**
-<BR>
+**_Description:_** This very useful instruction waits for any input, it can be: keyboard key , press or click on the joystick, mouse (not gamepad),  to resume the program.
+
+_Example :_
+```basic
+Wait Input : Print "Moving forward"**
+```
 
 ### Wait Click
 
-**_Description:_** Same but waits for a mouse click to be pressed before acting on the next instruction.
-<BR>
+**_Description:_** Same but waits for a mouse click to  to resume the program.
+
 
 ### Key State
 
-**_Description:_** Returns true when a specific key is pressed.
-**_Parameter:_** The scan code (see next page) of the key to be tested.
+**_Description:_** Returns true when a specific key is pressed. Can be a letter like "a", "Q", or a special Key like "ArrowUp", "Control", "Delete", "Minus", "F1", "Numpad0"...
+**_Parameter:_** The special Key code of the special Keys are described in the Key State page.
 **_Return Value:_** The **_boolean_** result is _true_ if the key specified by the scan code (here $42 in Hexadecimal or 66 in decimal) is pressed.
 
 _Example:_
@@ -195,7 +265,21 @@ Do
 Loop
 ```
 In the example above, the **Print** will not occur until the specified key: "B" is pressed.
-<BR>
+
+_Example:_
+```basic
+Do 
+	If Key State( "0" ) Then Print "0" 
+	If Key State( "Numpad0" ) Then Print "Numpad0" 
+	If Key State( "F1" ) Then Print "F1" 
+	If Key State( "ArrowUp" ) Then Print "ArrowUp" 
+	If Key State( "ArrowRight" )Then Print "ArrowRight" 
+	//Key State doesn|;t make the difference between lowercase and uppercase, so test only the uppercase 
+	If Key State( "C" ) Then Print "C" // capital letters only 
+	// Note: Key State returns the key from a QWERTY keyboard
+Loop
+```
+
 
 
 ### Key Name$
@@ -228,32 +312,32 @@ _Example:_
 Locate 0,0 : Print Manifest$
 Do
 	I$=Inkey$
-	If I$ <> "" ' Do we have a key?
+	If I$ <> "" |; Do we have a key?
 		SC=ScanCode
 		Locate 1,1 : Print I$, Hex$(SC,2) : SC=0
 	End If
 	Refresh
 Loop
 ```
-The example above will display the printable key pressed and it's scan code in Hexadecimal.
-<BR>
+The example above will display the printable key pressed and it|;s scan code in Hexadecimal.
 
 ### Key Shift
 
 **_Description:_** Determines which (if any) modifier keys are currently held down. Modifier keys are those that are usually intended to modify the value and/or function of another key being pressed at the same time.
 **_Return Value:_** The integer result contains a bitmap indicating which modifier keys are currently pressed. The bitmap is filled as follows:
- 
-**Bit Value  Key Tested**  
-0  $0001  Left Shift  
-1  $0002  Right Shift  
-2  $0004  Left Ctrl  (Caps Lock on Amiga)  
-3  $0008  Right Ctrl (either Ctrl on Amiga)  
-4  $0010  Left Alt  
-5  $0020  Right Alt  
-6  $0040  Left Meta  (Amiga/Cmd/Windows)  
-7  $0080  Right Meta (Amiga/Cmd/Windows)  
-8  $0100  Caps Lock (AOZ mode only)  
-15  $8008  Left Ctrl (Amiga mode only - bit 3 also set for compatibility)
+
+| Bit | Value (hex) | Key Tested |
+|---|---|---| 
+| 0 | $0001 | Left Shift |  
+| 1 | $0002 | Right Shift |   
+| 2 | $0004 | Left Ctrl  (Caps Lock on Amiga) |  
+| 3 | $0008 | Right Ctrl (either Ctrl on Amiga) |  
+| 4 | $0010 | Left Alt  |
+| 5 | $0020 | Right Alt  |
+| 6 | $0040 | Left Meta  (Amiga/Cmd/Windows) |  
+| 7 | $0080 | Right Meta (Amiga/Cmd/Windows) |
+| 8 | $0100 | Caps Lock (AOZ mode only) |
+| 15 | $8008 | Left Ctrl (Amiga mode only - bit 3 also set for compatibility) |
 
 **Amiga manifest NOTE:**  More combinations of modifiers are allowed in AOZ than on an actual Amiga computer. For example, you can read both the _left_ and _right_ shift keys at the same time. Also, a new bit position ($8000) has been added to represent the _Left Ctrl_ key. For backward compatibility reasons, in Amiga mode, EITHER Ctrl key will set bit 3. In the future, a tag may be added to only return _Left Ctrl_ when it is pressed, instead of also activating the _Right Ctrl_ bit.
 
@@ -271,8 +355,8 @@ Do
 		If (KS & 32)=32 Then KS$=KS$+"Right Alt| "
 		If (KS & 64)=64 Then KS$=KS$+"Left Meta| "
 		If (KS & 128)=128 Then KS$=KS$+"Right Meta| "
-		If (KS & 256)=256 Then KS$=KS$+"Caps Lock| "  ' Only for AOZ
-		If (KS & $8000)=$8000 Then KS$=KS$+"Left Ctrl| "  ' Only for Amiga
+		If (KS & 256)=256 Then KS$=KS$+"Caps Lock| "  |; Only for AOZ
+		If (KS & $8000)=$8000 Then KS$=KS$+"Left Ctrl| "  |; Only for Amiga
 	End If
 	Locate 1,0 : Print Manifest$
 	Locate 1,1 : Print "KS: ";Right$(Bin$(KS,16),16)
@@ -281,7 +365,6 @@ Do
 Loop
 ```
 **Hardware NOTE:** Due to hardware differences in keyboards, certain combinations of modifier keys with or without other keys pressed may or may not be possible, so try to keep your keyboard interface simple, and test it thoroughly, in order to avoid compatibility issues.
-<BR>
 
 ### ScanShift
 
@@ -293,8 +376,8 @@ Example:
 ```basic
 SS$=""
 Do  
-	I$=Inkey$ ' Get a key from the input buffer.  
-	SS=ScanShift ' Get that key's shift states  
+	I$=Inkey$ |; Get a key from the input buffer.  
+	SS=ScanShift |; Get that key|;s shift states  
 	Locate 0,0 : Print Manifest$
 	
 	If I$<>""  
@@ -309,10 +392,10 @@ Do
 			If (SS & 32)=32 Then SS$=SS$+"Right Alt|"  
 			If (SS & 64)=64 Then SS$=SS$+"Left Meta|"  
 			If (SS & 128)=128 Then SS$=SS$+"Right Meta|"  
-			If (SS & 256)=256 Then SS$=SS$+"Caps Lock|" ' Only for AOZ  
-			If (SS & $8000)=$8000 Then SS$=SS$+"Left Ctrl|" ' Only for Amiga  
+			If (SS & 256)=256 Then SS$=SS$+"Caps Lock|" |; Only for AOZ  
+			If (SS & $8000)=$8000 Then SS$=SS$+"Left Ctrl|" |; Only for Amiga  
 		End If  
-	SS$=SS$+Space$(160) ' more than enough spaces to erase previous states from display.  
+	SS$=SS$+Space$(160) |; more than enough spaces to erase previous states from display.  
 	Locate 0,3 : Print SS$  
 	SS$=""  
 	End If

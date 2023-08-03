@@ -7,9 +7,18 @@
 \-->
 <div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
 
-Play an audio file loaded with the "Load Asset" command.
+Play an audio file loaded with the "Load Asset" instruction or present in the Resources/Audio folder of the Application.
+If the audio is one already in the AOZ Drive folder supplied with AOZ Studio, it will be automatically copied in the Resources/Audio folder of the Application. Ex music1, music2,...
+
 ## Parameters
 
-- **audio**: Index of audio.
+- **name**: Index of audio
+- **audioloop**: True or False to loop the audio
+- **volume**: integer from 0 to 100 (max)
+
+**Example:**
+```basic
+Play Audio "music2", Audioloop=True, Volume=90
+```
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

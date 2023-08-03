@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Summary of the Actor parameters to display, animate and control images in 2D, 3D, videos, graphical texts. Actor is one of the most powerful graphics instructions in the AOZ language for graphics." />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, behavior,animation,design,graphic,sprite,character,movement,game,picture,image,show,display,moving,control,bob" />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/actor'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/actor'>
+        <meta name='pagename' content='AOZ Docs - Actor'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - Actor</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="actor">Actor</h1>&#10;<!--&#10;@name: Actor&#10;@description: Summary of the Actor parameters to display, animate and control images in 2D, 3D, videos, graphical texts. Actor is one of the most powerful graphics instructions in the AOZ language for graphics.&#10;@tags: behavior,animation,design,graphic,sprite,character,movement,game,picture,image,show,display,moving,control,bob&#10;@categories:&#10;\-->&#10;<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ"/></div>&#10;<p>Display, animate and control images in 2D, 3D, videos, as well as graphical texts. You will find many parameters below to do magical tricks.</p>&#10;<h2 id="syntax">Syntax</h2>&#10;<p><b>Basic syntaxes:</b></p>&#10;<blockquote>&#10;<p><strong>Actor</strong> actor_index, <code>Image</code> =  image_index, <code>X</code>= 100, <code>Y</code>= 50</p>&#10;</blockquote>&#10;<h2 id="examples">Examples</h2>&#10;<p>Some examples:</p>&#10;<pre><code class="prism language-basic">Actor &#34;my_hero&#34;, Image$ = &#34;magic&#34;&#10;Actor &#34;enemy1&#34;, Image = 2&#10;Actor 255, Image$ = &#34;lucie&#34;&#10;Actor &#34;my_hero&#34;, Image$ = &#34;hero1&#34;, X = 200, Y = 300&#10;Actor &#34;space_ship&#34;, Image$ = &#34;ship&#34;, Control$ = &#34;keyboard&#34;&#10;Actor &#34;enemy1&#34;, Image$=&#34;monster&#34;, StartX = 0, EndX = 320, StartY=0, EndY=50, Duration=10000&#10;</code></pre>&#10;<p>Little more complex examples:</p>&#10;<pre><code class="prism language-basic">// Using the default bitmap font for texts using Actor instruction and parameters:&#10;Actor &#34;text&#34;, X=950, Y=500, FontSize=96, Text$=&#34;Hello World!&#34;, StartScale=0.05, EndScale=1.5, Hotspot$=&#34;middle&#34;, Duration=3000&#10;Wait Input&#10;Actor &#34;text&#34;, StartScale=-4, EndScale=1.5 // note that negative values will reverse the image&#10;Wait Input&#10;// Using Images:&#10;Actor &#34;image1&#34;, X=500, Y=880, Image$=&#34;magic&#34;, StartScaleX=0.1, EndScaleX=2, Hotspot$=&#34;middle&#34;, Duration=6000&#10;Actor &#34;image2&#34;, X=950, Y=880, Image$=&#34;magic&#34;, StartSkewX=0.1,  EndSkewX=2,  Hotspot$=&#34;middle&#34;, Duration=6000&#10;Actor &#34;image3&#34;, X=1400,Y=880, Image$=&#34;magic&#34;, StartScale=0.1,  EndScale=2,  StartAngle=1, EndAngle=270, Hotspot$=&#34;middle&#34;, Duration=6000&#10;Actor &#34;image4&#34;, Image$=&#34;ship&#34;, StartX=400, EndX=1200, Duration=2000, LoopMove=True, ReverseMove=True, AutoReverse$=&#34;horizontal&#34;&#10;</code></pre>&#10;<h2 id="parameters">Parameters</h2>&#10;<p>( italic ) = Optional</p>&#10;<div class="table-wrapper"><table>&#10;<thead>&#10;<tr>&#10;<th><strong>Parameter</strong></th>&#10;<th><strong>Type</strong></th>&#10;<th><strong>Description</strong></th>&#10;</tr>&#10;</thead>&#10;<tbody>&#10;<tr>&#10;<td><strong><code>Index</code></strong></td>&#10;<td>index</td>&#10;<td>Index of the Actor</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Visible</code></em></td>&#10;<td>boolean</td>&#10;<td>Set the Actor visibility. If not set, True by default is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Enable</code></em></td>&#10;<td>boolean</td>&#10;<td>If False, the Actor will still be displayed on the screen, but the controls, animations and mouse actions will be disabled.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Collision</code></em></td>&#10;<td>boolean</td>&#10;<td>Enables or disables all collisions with this actor. If False, no collision effects will be applied.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Group$</code></em></td>&#10;<td>string</td>&#10;<td>Assigns the actor to a custom group. A custom group can be assigned to several Actor. By example: &#8220;enemy&#8221;, &#8220;bonus&#8221;, &#8220;key&#8221;&#8230;</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Behavior$</code></em></td>&#10;<td>string</td>&#10;<td>Apply one or more availables behaviors to the Actor. By example: &#8220;jump&#8221;, &#8220;fly&#8221;,&#8230;</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>UserData$</code></em></td>&#10;<td>string</td>&#10;<td>Value reserved for the developer. This is a data exclusive to the Actor and will be used specifically for the program.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Position</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>X</code></em></td>&#10;<td>integer</td>&#10;<td>Actor horizontal position on the screen. If not set, 0 by default</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Y</code></em></td>&#10;<td>integer</td>&#10;<td>Actor vertical position on the screen. if not set, 0 by default</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Z</code></em></td>&#10;<td>integer</td>&#10;<td>Actor depth position on the screen. if not set, 0 by default</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Image</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Image</code></em></td>&#10;<td>index</td>&#10;<td>Index of the image of Actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>SpriteSheet$</code></em></td>&#10;<td>string</td>&#10;<td>Name of the spritesheet loaded with the <code>Load Asset</code> instruction to animate the Actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>HotSpot$</code></em></td>&#10;<td>string</td>&#10;<td>Set the hot spot of the Actor. The supported values are : <ul><li>&#8220;top-left&#8221; (by default)</li><li>&#8220;top-middle&#8221;</li><li>&#8220;top-right&#8221;</li><li>&#8220;left&#8221;</li><li>&#8220;middle&#8221;</li><li>&#8220;right&#8221;</li><li>&#8220;bottom-left&#8221;</li><li>&#8220;bottom-middle&#8221;</li><li>&#8220;bottom-right&#8221;</li></ul></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>HotSpotX</code></em></td>&#10;<td>integer</td>&#10;<td>Set the horizontal hot spot position of the Actor. If not set, 0 is used by default ( left ).</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>HotSpotY</code></em></td>&#10;<td>integer</td>&#10;<td>Set the vertical hot spot position of the Actor. If not set, 0 is used by default ( top ).</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>HRev</code></em></td>&#10;<td>boolean</td>&#10;<td>Set if the horizontal flipping of the Actor. If True, the Actor is flipped horizontaly. If not set, False by default is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>VRev</code></em></td>&#10;<td>boolean</td>&#10;<td>Set if the vertical flipping of the Actor. If True, the Actor is flipped verticaly. If not set, False by default is used.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Text</strong></td>&#10;<td></td>&#10;<td>(Cannot use Text and Image on the same Actor)</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Text$</code></em></td>&#10;<td>string</td>&#10;<td>Text that will be displayed by the Actor as an image</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>FontName$</code></em></td>&#10;<td>string</td>&#10;<td>Name of the bitmap font that will be used to display the text. If no font is defined, the default font will be used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>FontSize</code></em></td>&#10;<td>integer</td>&#10;<td>Value of the font size. The font size by default will be used if this property is not defined.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>FontSpacing</code></em></td>&#10;<td>integer</td>&#10;<td>Horizontal spacing between each character. A negative value is allowed. 0 (by default) is the normal spacing.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Frontiers</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>LeftLimit</code></em></td>&#10;<td>integer</td>&#10;<td>Set the left limitation for the Actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>TopLimit</code></em></td>&#10;<td>integer</td>&#10;<td>Set the top limitation for the Actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>UpLimit</code></em></td>&#10;<td>integer</td>&#10;<td>Alias of <code>TopLimit</code>.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>RightLimit</code></em></td>&#10;<td>integer</td>&#10;<td>Set the right limitation for the Actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>BottomLimit</code></em></td>&#10;<td>integer</td>&#10;<td>Set the bottom limitation for the Actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>DownLimit</code></em></td>&#10;<td>nteger</td>&#10;<td>Alias of <code>BottomLimit</code>.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Video</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Video$</code></em></td>&#10;<td>string</td>&#10;<td>Name of the video loaded by <code>Load Asset</code> used like an image for this Actor</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>VideoPlay</code></em></td>&#10;<td>boolean</td>&#10;<td>Play the video associated at this actor. True by default</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>VideoLoop</code></em></td>&#10;<td>boolean</td>&#10;<td>Play the video associated at this actor in loop. True by default</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Inputs</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Control$</code></em></td>&#10;<td>string</td>&#10;<td>Set one or more controls that will allow the user to interact with the Actor (keyboard, mouse or joystick).</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>LookAt$</code></em></td>&#10;<td>string</td>&#10;<td>Name of the object the actor has to look at. This can be the position of the mouse, another actor or a point on the screen.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Auto$</code></em></td>&#10;<td>string</td>&#10;<td>Defined an automatic movement of the actor. It uses the same parameters as for the <code>Control$</code> property.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Movements</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>StartX</code></em></td>&#10;<td>integer</td>&#10;<td>Actor horizontal start position on the screen for a moving. If not set, the &#8220;X&#8221; position is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>StartY</code></em></td>&#10;<td>integer</td>&#10;<td>Actor vertical start position on the screen for a moving. If not set, the &#8220;Y&#8221; position is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>StartZ</code></em></td>&#10;<td>integer</td>&#10;<td>3D Actor depth start position on the 3D scene for a moving. If not set, the &#8220;Z&#8221; position is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>EndX</code></em></td>&#10;<td>integer</td>&#10;<td>Actor horizontal end position on the screen for a moving. If not set, the &#8220;X&#8221; position is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Endy</code></em></td>&#10;<td>integer</td>&#10;<td>Actor vertical end position on the screen for a moving. If not set, the &#8220;Y&#8221; position is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>EndZ</code></em></td>&#10;<td>integer</td>&#10;<td>3D Actor depth end position on the 3D scene for a moving. If not set, the &#8220;Z&#8221; position is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Duration</code></em></td>&#10;<td>integer</td>&#10;<td>Duration (in milliseconds or 1000xseconds) of the automatic movement.  Default value is 1 second or 1000ms. If modified while an automatic movement is running, it will speed up or slow down the ongoing movement.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>LoopMove</code></em></td>&#10;<td>boolean or positive integer</td>&#10;<td>Specifies if the automatic movement should play infinitely (True), only once (False), or for a finite number of times. False by default.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Transition$</code></em></td>&#10;<td>string</td>&#10;<td>Name of the transition when the Actor moves. If not set, &#8220;linear&#8221; is used. Read more here: <a href="https://createjs.com/demos/tweenjs/tween_sparktable" target="_new">https://createjs.com/demos/tweenjs/tween_sparktable</a></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>ActionMove$</code></em></td>&#10;<td>string</td>&#10;<td>Allows to  &#8220;play&#8221;, &#8220;pause&#8221; or &#8220;reverse&#8221; the automatic movement. Default is &#8220;play&#8221;.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>ReverseMove$</code></em></td>&#10;<td>boolean</td>&#10;<td>Indicates if the automatic movement should go back and forth. False by default.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>AutoReverse$</code></em></td>&#10;<td>string</td>&#10;<td>When <strong>ReverseMove</strong> is True, indicates on which axes the actor</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>TimePosition</code></em></td>&#10;<td>Integer</td>&#10;<td>Allows to jump at a specific time during the automatic transformation.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Animation</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Anim$</code></em></td>&#10;<td>string</td>&#10;<td>Name of the animation set with the Actor Animation instruction, or provided by the <code>SpriteSheet$</code> property.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>LoopAnim</code></em></td>&#10;<td>boolean</td>&#10;<td>Set if the animation should play to the infinite, or not. If not set, False by default is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>AnimPlay</code></em></td>&#10;<td>boolean</td>&#10;<td>Enabled or disables the current animation.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Scaling</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Scale</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor size in height and width. If not set, the last scaling value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>ScaleX</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor size in width. If not set, the last horizontal scaling value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>ScaleY</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor size in height. If not set, the last horizontal scaling value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Rotation</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Angle</code></em></td>&#10;<td>integer</td>&#10;<td>Modification of the Actor angle of rotation. If not set, the last angle is used.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Opacity</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>Alpha</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor alpha value. If not set, the last alpha value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Skewing</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>SkewX</code></em></td>&#10;<td>integer</td>&#10;<td>Modification of the Actor horizontal skewing. If not set, the last skewing value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>SkewY</code></em></td>&#10;<td>integer</td>&#10;<td>Modification of the Actor vertical skewing. If not set, the last skewing value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Transformations</strong></td>&#10;<td></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>StartScale</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor start size in height and width for a Actor moving. If not set, the last scaling value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>EndScale</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor end size in height and width for a Actor moving. If not set, the last scaling value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>StartScaleX</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor start size in width for a Actor moving. If not set, the last horizontal scaling value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>EndScaleX</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor end size in width for a Actor moving. If not set, the last horizontal scaling value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>StartScaleY</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor start size in height for a Actor moving. If not set, the last vertical scaling value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>EndScaleY</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor end size in height for a Actor moving. If not set, the last vertical scaling value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>StartAngle</code></em></td>&#10;<td>integer</td>&#10;<td>Modification of the Actor start angle of rotation for a Actor moving. If not set, the last angle value is used</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>EndAngle</code></em></td>&#10;<td>integer</td>&#10;<td>Modification of the Actor end angle of rotation for a Actor moving. If not set, the last angle value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>StartAlpha</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor start alpha value for a Actor moving. If not set, the last alpha value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>EndAlpha</code></em></td>&#10;<td>float</td>&#10;<td>Modification of the Actor end alpha value for a Actor moving. If not set, the last alpha is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>StartSkewX</code></em></td>&#10;<td>integer</td>&#10;<td>Modification of the Actor start horizontal skewing for a Actor moving. If not set, the last horizontal skewing value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>EndSkewX</code></em></td>&#10;<td>integer</td>&#10;<td>Modification of the Actor end horizontal skewing for a Actor moving. If not set, the last horizontal skewing value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>StartSkewY</code></em></td>&#10;<td>integer</td>&#10;<td>Modification of the Actor start vertical skewing for a Actor moving. If not set, the last vertical skewing value is used.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>EndSkewY</code></em></td>&#10;<td>integer</td>&#10;<td>Modification of the Actor end vetical skewing for a Actor moving. If not set, the last vertical skewing value is used.</td>&#10;</tr>&#10;</tbody>&#10;</table>&#10;</div><h2 id="more-on-the-transformations-intro">More on the Transformations: Intro</h2>&#10;<p>Automatic transformations concern the Actor's parameters that may have a Start and an End:</p>&#10;<ul>&#10;<li>The X and Y position: <strong>X, Y</strong></li>&#10;<li>The scale: <strong>Scale, ScaleX, ScaleY</strong></li>&#10;<li>The angle of rotation: <strong>Angle</strong></li>&#10;<li>The skewing: <strong>SkewX, SkewY</strong></li>&#10;<li>The Transparency: <strong>Alpha</strong></li>&#10;</ul>&#10;<p>A transformation have a starting state (Start) up to a final state (end) at the speed defined by a duration in ms. (In reality, it is an interpolation &#8220;tweening&#8221; between the values of the parameters of Start and End). In other words the &#8220;Start&#8221; in the parameter define the starting state, the &#8220;End&#8221; the final state.</p>&#10;<p>Example: the following line automatically moves Lucie from the X=100 position to the X=1000 position in 5 seconds or 5000 milliseconds (Duration).</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX = 100, EndX = 1000, Duration = 5000&#10;</code></pre>&#10;<p>Note: if you specify a single &#8220;End&#8221; parameter the other parameters (like Angle, scale,&#8230;) will be frozen over the duration of the animation <strong><em>using their current</em></strong> value and not an &#8220;End&#8221; value that would have been previously given for another animation. So when you start an animation you have to think about redefining <strong><em>all</em></strong> the parameters that will vary (this is a slightly different philosophy from the other parameters of Actor that keep their previous call values with Actor).<br/>&#10;<br/></p>&#10;<h2 id="position-in-time">Position in time</h2>&#10;<p>Each transformation has a duration (established by the Duration parameter) whose value corresponds to the time it takes to move from the starting state to the final state (&#8220;outbound&#8221; journey) or from the final state to the initial state (&#8220;return&#8221; journey).</p>&#10;<p>Automatic transformations can be modified while they are in progress.</p>&#10;<p>To do this, we simply make a new call to Actor specifying the parameter we want to modify.</p>&#10;<p>The following code starts an animation and after 2 seconds, continues the animation in Y=100:</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX = 100, EndX = 1000, Duration = 5000&#10;Wait 2&#10;Actor &#34;lucie&#34;, Y = 100&#10;</code></pre>&#10;<p>The following code advances Lucie from (100,100) to (800,800) and 2 seconds later we freeze her Y position:</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX = 100, EndX = 800, StartY = 100, EndY = 800, Duration = 5000&#10;Wait 2&#10;Actor &#34;lucie&#34;, Y = Actor Y(&#34;lucie&#34;)&#10;</code></pre>&#10;<p>Notes:</p>&#10;<p>-Modifying a parameter while a transformation is in progress is equivalent to putting the &#8220;Start&#8221; and the &#8220;End&#8221; of this parameter at the same value.</p>&#10;<p>-If you modify one of the parameters that was precisely changing because of the transformation, this parameter then freezes.</p>&#10;<p>-It is not possible to directly modify the &#8220;Start&#8221; and &#8220;End&#8221; of a parameter AND continue the current animation. In reality, defining an &#8220;End&#8221; will create a new transformation, as before.</p>&#10;<p>If you activate the LoopMove parameter, it is easier to understand.</p>&#10;<p>Below is a repeat of the 1st example but with LoopMove = TRUE. We see that after 2 seconds, Lucie starts her movement again in X but remains in Y = 100:</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX = 100, EndX = 1000, Duration = 5000, LoopMove = true&#10;Wait 2&#10;Actor &#34;lucie&#34;, Y = 100&#10;</code></pre>&#10;<p>On the other hand, if we redefine an &#8220;End&#8221; parameter it creates a new animation. In the code above, after 2 seconds of animation in X from 100 to 1000, a new animation is created. It goes from Y = 0 to Y = 500 from the current position in X of Lucie. The X position is fixed since the call to Actor is made without specifying EndX.</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX = 100, EndX = 1000, Duration = 5000, LoopMove = true&#10;Wait 2&#10;Actor &#34;lucie&#34;, EndY = 500&#10;</code></pre>&#10;<p>Apart from the parameters related to the transformation of an actor you can also modify HRev and VRev during animation. The following code modifies HRev (horizontal mirror) at the press of a key during Lucie's infinite movement:</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX = 0, EndX = 1000, Duration = 4000, LoopMove = true&#10;Do&#10;&#9;If Inkey$ Then Actor &#34;lucie&#34;, HRev = !Actor IsHRev(&#34;lucie&#34;)&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<br/>&#10;<h2 id="changing-the-duration">Changing the duration</h2>&#10;<p>It is possible during a transformation to change its duration. The effect obtained is that the transformation is played faster or slower.</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX = 0, EndX = 1000, Duration = 4000, LoopMove = true&#10;Wait 2&#10;Actor &#34;lucie&#34;, Duration = 1000&#10;</code></pre>&#10;<p>In the code below, Lucie does her transformation in 4 seconds but after 2 seconds, she accelerates and we change the duration of the total transformation to 1 second.</p>&#10;<p>As after 2 seconds, it is at the X = 500 position, that is to say half the way, it will cover the last 500 X in half a second. She then completes her other animations in one second.</p>&#10;<p>Changing Duration therefore changes the total duration and not the remaining duration of the animation.<br/>&#10;<br/></p>&#10;<h2 id="loopmove-parameter">LoopMove parameter</h2>&#10;<p>The LoopMove parameter allows you to play the animation in a loop, starting the animation again each time from the starting point.</p>&#10;<p>The LoopMove parameter can be a boolean or an integer: The number of <strong><em>trips</em></strong> can be repeated either infinitely (LoopMove = True) or a n number of times (LoopMove = n).</p>&#10;<p>If LoopMove is modified while the actor is being transformed, the new value of LoopMove is taken into account. For example, a transformation that was to be played only once (LoopMove = false) can be repeated indefinitely if you make a new call to Actor with LoopMove = true.</p>&#10;<p>In the code below, Lucie repeats her movement endlessly until a key is pressed, after which she reaches her final state twice more before stopping permanently:</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX = 400, EndX = 600, Duration = 1000, LoopMove = true&#10;Wait Key&#10;Actor &#34;lucie&#34;, LoopMove = 2&#10;</code></pre>&#10;<p>Note: If we reset LoopMove to 0, or false, it has the same effect as setting it to 1: the animation continues one last time.<br/>&#10;<br/></p>&#10;<h2 id="reversemove-parameter">ReverseMove parameter</h2>&#10;<p>So far changing a parameter of an animation has little interest. But if we use the new ReverseMove parameter we will begin to understand the possibilities offered by this feature.</p>&#10;<p>The ReverseMove parameter (also used in Actor Animation to create an animation), is a boolean and defines whether the transformation plays backwards once it reaches the final state, so it returns to the starting state.</p>&#10;<p>The combined use of ReverseMove with LoopMove can give interesting effects.</p>&#10;<p>In the case where LoopMove is not defined (so it is False), or if it is zero, the round trip takes place once:</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX=0, EndX=500, Duration=2000, ReverseMove=True&#10;</code></pre>&#10;<p>If both LoopMove and ReverseMove are True, the round trip takes place indefinitely:</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX=0, EndX=500, Duration=2000, ReverseMove=True, LoopMove=True&#10;</code></pre>&#10;<p>If LoopMove is worth an odd number, there will be one more go than returns:</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX=0, EndX=500, Duration=2000, ReverseMove=True, LoopMove=3  &#10;</code></pre>&#10;<p>If LoopMove is worth an even number, there will be as many trips as returns:</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, StartX=0, EndX=500, Duration=2000, ReverseMove=True, LoopMove=4  &#10;</code></pre>&#10;<p>(If LoopMove is 2, it is equivalent to a round trip, and so it is the same as if LoopMove was false.)</p>&#10;<p>Here's a code snippet for typical ReverseMove use: a Space Invaders style enemy move:</p>&#10;<pre><code class="prism language-basic">Actor &#34;bee&#34;, Image$=&#34;bee-0&#34;, HotSpot$=&#34;top-middle&#34;, StartX=Actor Width(&#34;bee&#34;) / 2, EndX=Display Width - Actor Width(&#34;bee&#34;) / 2, Duration=4000, ReverseMove=True, LoopMove=True&#10;Actor &#34;ship&#34;, Image$=&#34;ship&#34;, HotSpot$=&#34;middle&#34;, Angle=-90, X=Display Width/2, Y=Display Height - Actor Width(&#34;ship&#34;) / 2, LeftLimit=0, RightLimit=Display Width, Control$=&#34;ArrowLeft: OffsetX=-10; ArrowRight: OffsetX=10&#34;&#10;</code></pre>&#10;<br/>&#10;<h2 id="autoreverse-parameter">AutoReverse$ parameter</h2>&#10;<p>The AutoReverse$ parameter is to be used when ReverseMove is set to True. It allows the image to be automatically reversed, horizontally and/or vertically, when the actor reaches the final state of the transformation or if he returns to the starting state.</p>&#10;<p>(Internally, the actor's HRev and VRev values are changed.)</p>&#10;<p>AutoReverse$ can take 4 different values. Each of the values has a few aliases:</p>&#10;<div class="table-wrapper"><table>&#10;<thead>&#10;<tr>&#10;<th><strong>Value</strong></th>&#10;<th><strong>Alias</strong></th>&#10;<th><strong>Meaning</strong></th>&#10;</tr>&#10;</thead>&#10;<tbody>&#10;<tr>&#10;<td><strong>&#34;none&#34;</strong></td>&#10;<td>&#8220;&#8221; (empty string)</td>&#10;<td>No image inversion. Default.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>&#34;horizontal&#34;</strong></td>&#10;<td>&#8220;h&#8221;</td>&#10;<td>Horizontal inversion</td>&#10;</tr>&#10;<tr>&#10;<td><strong>&#34;horizontal&#34;</strong></td>&#10;<td>&#8220;x&#8221;</td>&#10;<td>Horizontal inversion</td>&#10;</tr>&#10;<tr>&#10;<td><strong>&#34;vertical&#34;</strong></td>&#10;<td>&#8220;v&#8221;</td>&#10;<td>Vertical inversion</td>&#10;</tr>&#10;<tr>&#10;<td><strong>&#34;vertical&#34;</strong></td>&#10;<td>&#8220;y&#8221;</td>&#10;<td>Vertical inversion</td>&#10;</tr>&#10;<tr>&#10;<td><strong>&#34;both&#34;</strong></td>&#10;<td>&#8220;hv&#8221;</td>&#10;<td>Horizontal and Vertical inversion</td>&#10;</tr>&#10;<tr>&#10;<td><strong>&#34;both&#34;</strong></td>&#10;<td>&#8220;xy&#8221;</td>&#10;<td>Horizontal and Vertical inversion</td>&#10;</tr>&#10;<tr>&#10;<td><strong>&#34;both&#34;</strong></td>&#10;<td>&#8220;*&#8221;</td>&#10;<td>Horizontal and Vertical inversion</td>&#10;</tr>&#10;<tr>&#10;<td><strong>&#34;both&#34;</strong></td>&#10;<td>&#8220;all&#8221;</td>&#10;<td>Horizontal and Vertical inversion</td>&#10;</tr>&#10;</tbody>&#10;</table>&#10;</div><br/>&#10;In this first example below, the plane goes back and forth ad infinitum. His image is reversed horizontally with each return and then restored with each trip:&#10;<pre><code class="prism language-basic">Actor &#34;ship&#34;, Image$=&#34;ship&#34;, StartX=100, EndX=600, Duration=1000, ReverseMove=True, LoopMove=True, AutoReverse$=&#34;horizontal&#34;&#10;</code></pre>&#10;<p>In this second example, the plane goes back and forth diagonally. So we reverse its image in both directions:</p>&#10;<pre><code class="prism language-basic">Actor &#34;ship&#34;, Image$=&#34;ship&#34;, StartX=100, EndX=700, StartY=100, EndY=700, Angle=45, Duration=2000, ReverseMove=True, LoopMove=True, AutoReverse$=&#34;both&#34;&#10;</code></pre>&#10;<p>AutoReverse$ will typically be used when an enemy has an automatic movement from left to right. In this example, a &#8220;Tagada&#8221; goes back and forth. Its animation itself is reversed:</p>&#10;<pre><code class="prism language-basic">Actor Animation &#34;walk-tagada&#34;, Sequence$ = &#34;tagada-0, tagada-1, tagada-2, L&#34;&#10;Actor &#34;tagada&#34;, Anim$=&#34;walk-tagada&#34;, StartX=150, EndX=500, Y=400, LoopMove=True, ReverseMove=True, Duration=1500, HRev=True, AutoReverse$=&#34;horizontal&#34;&#10;</code></pre>&#10;<p>Note that the image of the &#8220;Tagada&#8221; is oriented to the left by we therefore set HRev to True when  defining the animation, which is not a problem when &#8220;Tagada&#8221; reaches its  &#8220;End&#8221;  or &#8220;Start&#8221; point.<br/>&#10;<br/></p>&#10;<h2 id="actionmove-parameter">ActionMove$ parameter</h2>&#10;<p>The ActionMove$ parameter is normally used to pause the transformation and resume it, with the values  &#8220;pause&#8221;  and &#8220;play&#8221;.</p>&#10;<p>A third value &#8220;reverse&#8221; reverses the direction of its current <strong><em>journey</em></strong> ( &#8220;retracing its steps&#8221;). If the animation was paused, it resumes.</p>&#10;<p>ActionMove$=&#8220;reverse&#8221; works independently of ReverseMove.</p>&#10;<p>In this example, the &#8220;Tagada&#8221; goes back and forth. Pressing a key forces him to change direction immediately:</p>&#10;<pre><code class="prism language-basic">Actor Animation &#34;walk-tagada&#34;, Sequence$ = &#34;tagada-0, tagada-1, tagada-2, L&#34;&#10;Actor &#34;tagada&#34;, Anim$=&#34;walk-tagada&#34;, EndX=500, StartX=150, Y=400, LoopMove=True, ReverseMove=True, Duration=2000, HRev=True, AutoReverse$=&#34;horizontal&#34;&#10;Do&#10;&#9;If Inkey$ Then Actor &#34;tagada&#34;, ActionMove$=&#34;reverse&#34;&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<br/>&#10;<h2 id="timeposition-parameter">TimePosition parameter</h2>&#10;<p>The TimePosition parameter  allows you to jump in time over the duration of the transformation.<br/>&#10;Thus, for a transformation whose Duration = 1000, activating a TimePosition at 500 will &#8220;jump&#8221; the actor halfway through his transformation.</p>&#10;<p>In the case where LoopMove is different from false (or zero), the actor repeats its transformation several times, and the total duration of it is LoopMove * Duration (or is infinite if LoopMove = True). A TimePosition after Duration will skip <strong><em>trips</em></strong>, and possibly place the Actor on a return <strong><em>trip</em></strong>.</p>&#10;<p>The following example returns the animation to the beginning if you press a key:</p>&#10;<pre><code class="prism language-basic">Actor &#34;lucie&#34;, Image$=&#34;lucie&#34;, Y=400, EndX=500, Duration=2000, LoopMove= True&#10;Do&#10;&#9;If Inkey$ Then Actor &#34;lucie&#34;, TimePosition = 1000&#10;&#9;Refresh&#10;Loop&#10;</code></pre>&#10;<p>This parameter is useful especially when you want to start the transformation at a specific point.</p>&#10;<p>In the previous example of type &#8220;Space Invaders&#8221;, the insect began its race at the point &#8220;Start&#8221;, on the left of the screen. If we want to start it in the middle of the screen we use TimePosition:</p>&#10;<pre><code class="prism language-basic">Actor &#34;bee&#34;, Image$=&#34;bee-0&#34;, HotSpot$=&#34;top-middle&#34;, Scale=1&#10;Actor &#34;bee&#34;, StartX=Actor Width(&#34;bee&#34;) / 2, EndX=Display Width - Actor Width(&#34;bee&#34;) / 2, Duration=5000, ReverseMove=True, LoopMove = True, TimePosition = 2500&#10;</code></pre>&#10;<br/>&#10;<h2 id="actor-iscomingback-function">Actor IsComingBack function</h2>&#10;<p>The Actor IsComingBack() function lets you know if the actor is heading to its &#8220;False&#8221; point or to its  &#8220;Start&#8221; point (True). Since the actor's movement is automatic, it can be useful to know if the actor is in a &#8220;going&#8221; movement or a &#8220;return&#8221; movement.</p>&#10;<p>In the following example, the &#8220;Tagada&#8221; changes direction automatically if Magic is placed at its height. We therefore use ActionMove$=&#8220;reverse&#8221; to reverse its displacement but also Actor IsComingBack() to know whether or not to reverse this displacement:</p>&#10;<pre><code class="prism language-basic">Actor Animation &#34;walk-tagada&#34;, Sequence$ = &#34;tagada-0, tagada-1, tagada-2, L&#34;&#10;Actor &#34;tagada&#34;, Anim$=&#34;walk-tagada&#34;, EndX = 1800, StartX = 150, Y = Display Height - 200, HotSpot$ = &#34;top-middle&#34;, LoopMove = True, ReverseMove = True, Duration = 5000, HRev = True, AutoReverse$ = &#34;horizontal&#34;&#10;&#10;Actor Animation &#34;fly&#34;, Sequence$ = &#34;magicfly-0, magicfly-1, magicfly-2, L&#34;&#10;Actor &#34;magic&#34;, Anim$ = &#34;fly&#34;, Control$ = &#34;mouse&#34;, OnChange$ = &#34;MagicMove&#34;, HotSpot$ = &#34;bottom-middle&#34;&#10;&#10;Procedure MagicMove [X, Y]&#10;&#9;If Y &gt; Actor Y (&#34;tagada&#34;) Then TX = Actor X (&#34;tagada&#34;) : TCMB = Actor isComingBack(&#34;tagada&#34;)&#10;&#9;If ( X &gt; TX And TCMB = True ) Or ( X &lt; TX And TCMB = False ) Then Actor &#34;tagada&#34;, ActionMove$=&#34;reverse&#34;&#10;End Proc&#10;</code></pre>&#10;<br/>&#10;<h2 id="listeners-for-transformations">Listeners for transformations</h2>&#10;<p>All listeners linked to Actor such as OnChange$, OnCollision$, OnLimit$, OnMouse$ and OnControl$ return two additional parameters related to transformations:</p>&#10;<p><strong>ISCOMINGBACK</strong>: (boolean) if the actor has an automatic movement/transformation, indicates if the actor is going back to its starting point</p>&#10;<p><strong>TIMEPOSITION</strong>: (integer) If the actor has an automatic movement/transformation, indicates the current time position within the transformation<br/>&#10;<br/></p>&#10;<h2 id="non-rectilinear-paths-and-sequence-of-transformations">Non-rectilinear paths and sequence of transformations</h2>&#10;<p>Using the <strong>OnChange$</strong> listener, you can vary the parameters while continuing the current transformation.<br/>&#10;This allows, for example, displacement on a sinusoidal trajectory:</p>&#10;<pre><code class="prism language-basic">Function Equation, x&#10;End Function (500   400 * sin(x/2))&#10;&#10;Actor &#34;aoz&#34;, text$=&#34;AOZ&#34;, StartX=0,  EndX=Display Width, Y=500, LoopMove=True, ReverseMove=True, Duration=5000, OnChange$=&#34;change&#34;, HotSpot$=&#34;middle&#34;&#10;Line Width 3 : Plot 0,500&#10;For i = 0 To Display Width&#10;&#9;Draw To i, Equation(i)&#10;Next&#10;&#10;Procedure change[X, Y]&#10;&#9;Actor &#34;aoz&#34;, y = Equation(X)&#10;End Procedure&#10;</code></pre>&#10;<p>If we use the &#8220;complete&#8221; event, we can also chain transformations to, for example, follow a circle:</p>&#10;<pre><code class="prism language-basic">Function Equation, x&#10;&#9;angle=ACos ((x - 800) / 400)&#10;End Function (400 * sin(angle))&#10;&#10;Actor &#34;magic&#34;, image$=&#34;magic&#34;, StartX=400, EndX=1200, Y=500, Duration=2500, Transition$=&#34;sineInOut&#34;, OnChange$=&#34;change&#34;, HotSpot$=&#34;middle&#34;&#10;&#10;Line Width 3 : Circle 800,500, 400&#10;Global HalfDone : HalfDone = false&#10;&#10;Procedure change[EVENT$, X, Y]&#10;If EVENT$=&#34;complete&#34;&#10;&#9;If Not HalfDone&#10;&#9;&#9;Actor &#34;magic&#34;, StartX=1200, EndX=400&#10;&#9;&#9;Else Actor &#34;magic&#34;, StartX=400, EndX=1200&#10;&#9;End If&#10;HalfDone= Not HalfDone Else&#10;&#9;If Not HalfDone&#10;&#9;&#9;Actor &#34;magic&#34;,  y =  500   Equation( X )&#10;&#9;&#9;Else Actor &#34;magic&#34;, y = 500 - Equation( X )&#10;&#9;End If&#10;End If&#10;End Procedure&#10;</code></pre>&#10;<br/>&#10;<p><em>Note: if you want to continue a line of code to the next line just add:  ,\ as per the examples below.</em></p>&#10;<p>Now we can push this further with the firing of a projectile that undergoes gravity:</p>&#10;<pre><code class="prism language-basic">Line Width 3&#10;Global RESET, SHOT&#10;Global SHOT_ANGLE#, SHOT_X, SHOT_Y, FAR_X&#10;InitShip&#10;&#10;Do&#10;&#9;If Inkey$ = &#34; &#34; And Not SHOT&#10;&#9;&#9;SHOT = True&#10;&#9;&#9;SHOT_ANGLE# = -Actor Angle(&#34;ship&#34;)&#10;&#9;&#9;SHOT_X = Actor X(&#34;ship&#34;)&#10;&#9;&#9;SHOT_Y = Actor Y(&#34;ship&#34;)&#10;&#9;&#9;Shoot&#10;&#9;&#9;Actor &#34;ship&#34;, StartX = Actor X(&#34;ship&#34;), EndX = FAR_X, Duration = 5000&#10;&#9;End If&#10;&#10;&#9;If RESET Then InitShip&#10;&#9;Refresh&#10;Loop&#10;&#10;Procedure InitShip&#10;&#9;RESET = False&#10;&#9;SHOT = False&#10;&#9;Actor &#34;ship&#34;, Image$=&#34;ship&#34;, X = 100, Y = Display Height - 100,\&#10;&#9;Control$ = &#34;arrowLeft:angle=-0.25;arrowRight:angle= 0.25&#34;,\&#10;&#9;OnChange$=&#34;change&#34;, Angle=-45, Hotspot$=&#34;middle&#34;&#10;End Procedure&#10;&#10;Procedure change[ANGLE, X, Y, EVENT$, USERDATA$]&#10;V = 130&#10;&#9;If Not SHOT&#10;&#9;&#9;If ANGLE &gt; 0 Then Actor &#34;ship&#34;, Angle = 0&#10;&#9;&#9;If ANGLE &lt; -89 Then Actor &#34;ship&#34;, Angle = -89&#10;&#9;&#9;PX = X&#10;&#9;&#9;PY = Y&#10;&#9;&#9;T# = 0&#10;&#9;&#9;Cls&#10;&#9;&#9;Draw 0, Display Height - 10 To Display Width, Display Height &#8211; 10&#10;&#10;&#9;&#9;Repeat&#10;&#9;&#9;&#9;Filled Circle PX, PY, 3&#10;&#9;&#9;&#9;PX = X    V * T# * Cos(-ANGLE)&#10;&#9;&#9;&#9;PY = Y - (V * T# * Sin(-ANGLE) - 0.5 * 10 * T# * T#)&#10;&#9;&#9;&#9;T# = T#   0.1&#10;&#9;&#9;Until PX &lt; 0 Or PY &lt; 0 Or PX &gt; Display Width Or PY &gt; Display Height&#10;&#10;&#9;&#9;FAR_X = PX&#10;&#9;Else If EVENT$=&#34;onchange&#34;&#10;&#9;&#9;T# = ( X - SHOT_X ) / ( V * Cos(SHOT_ANGLE#) )&#10;&#9;&#9;PY = SHOT_Y - (V * T# * Sin(SHOT_ANGLE#) - 0.5 * 10 * T# * T#)&#10;&#9;&#9;VY# = V * Sin(SHOT_ANGLE#) - 10 * T#&#10;&#9;&#9;VX# = V * Cos(SHOT_ANGLE#)&#10;&#9;&#9;A# = -ATan( VY# / VX# )&#10;&#9;&#9;Actor &#34;ship&#34;, Y=PY, Angle = A#&#10;&#9;&#9;Else&#10;&#9;&#9;Boom&#10;&#9;&#9;RESET = True&#10;&#9;End If&#10;End Procedure&#10;&#10;</code></pre>&#10;<br/>&#10;<h2 id="automatic-transformations-and-other-automatisms-of-actor">Automatic transformations and other automatisms of Actor</h2>&#10;<p>Because now automatic transformations accept that their parameters are changed during animation (HRev and VRev), new possibilities are opening up for the use of other Actor automatisms.</p>&#10;<p>The main principle is that automatic transformation is never a priority: changing one of the parameters takes precedence over transformation and is always allowed.<br/>&#10;<br/></p>&#10;<h2 id="automatic-transformations-and-lookat">Automatic transformations and LookAt$</h2>&#10;<p>In the example below, the player controls Magic with a mouse and an enemy moves from left to right and shoots him. Magic and the enemy look at each other with LookAt$. The enemy undergoes an infinite transformation on the X-axis and each of its missiles is itself in transformation in the direction of fire. Magic has energy that decreases every time a shot hits him. Invigorating stars appear from time to time:</p>&#10;<pre><code class="prism language-basic">Global N, NRJ, GAME_OVER, DIFFICULTY#, START_DIFFICULTY#, STAR_INTERVAL&#10;START_DIFFICULTY# = 0.05&#10;InitGame&#10;&#10;Do&#10;&#9;Cls&#10;&#9;Print &#34;Score:&#34;; N&#10;&#9;Print &#34;Energy:&#34;; NRJ&#10;&#9;Print &#34;Level:&#34;; Int ( (DIFFICULTY# - START_DIFFICULTY#) / 0.01 )&#10;&#9;If Rnd &lt; DIFFICULTY#&#10;&#9;&#9;ang = Actor Angle(&#34;ship&#34;)&#10;&#9;&#9;Actor &#34;beam_&#34;   trim$(str$(N)), Image$=&#34;beam2&#34;, HotSpot$=&#34;middle&#34;, \&#10;&#9;&#9;Angle = ang 90, \&#10;&#9;&#9;StartX = Actor X(&#34;ship&#34;)   Cos(ang) * 64, \&#10;&#9;&#9;StartY = Actor Y(&#34;ship&#34;)   Sin(ang) * 64, \&#10;&#9;&#9;EndX = Actor X(&#34;ship&#34;)   Cos(ang) * 2000, \&#10;&#9;&#9;EndY = Actor Y(&#34;ship&#34;)   Sin(ang) * 2000, \&#10;&#9;&#9;OnChange$ = &#34;DelBeam&#34;, Duration = Rnd(2000 To 4000)&#10;&#9;&#9;N = N   1&#10;&#9;&#9;If DIFFICULTY# &lt; 0.3 Then DIFFICULTY# = DIFFICULTY#   0.0001&#10;&#9;End If&#10;&#10;&#9;If GAME_OVER&#10;&#9;&#9;Boom&#10;&#9;&#9;Actor Del &#34;magic&#34;&#10;&#9;&#9;Clear Interval STAR_INTERVAL&#10;&#9;&#9;Locate 0,12&#10;&#9;&#9;Centre &#34;GAME OVER - PRESS A KEY TO RESTART&#34;&#10;&#9;&#9;Wait Key&#10;&#9;&#9;InitGame&#10;&#9;End If&#10;&#9;Refresh&#10;Loop&#10;&#10;Procedure DelBeam[INDEX$, EVENT$]&#10;&#9;If EVENT$=&#34;complete&#34;&#10;&#9;&#9;Actor Del INDEX$&#10;&#9;End If&#10;End Procedure&#10;&#10;Procedure kaboom[INDEX2$]&#10;If INDEX2$ &lt;&gt; &#34;star&#34;&#10;&#9;NRJ = NRJ &#8211; 1&#10;&#9;Bell 90&#10;&#9;If NRJ &lt;= 0 Then NRJ=0: GAME_OVER = true&#10;Else&#10;&#9;Bell 50&#10;&#9;NRJ = NRJ   Rnd (10 to 50)&#10;&#9;ShowHideStar&#10;End If&#10;End Procedure&#10;&#10;Procedure InitGame&#10;&#9;NRJ = 100&#10;&#9;GAME_OVER = False&#10;&#9;Actor &#34;ship&#34;, Image$=&#34;ship&#34;, LookAt$=&#34;mouse&#34;, Y = Display Height - 100, \&#10;&#9;StartX=0, EndX= Display Width, \&#10;&#9;HotSpot$=&#34;middle&#34;, Duration = 5000, \&#10;&#9;LoopMove = True, ReverseMove = True&#10;&#9;Actor &#34;magic&#34;, Image$=&#34;magic&#34;, Control$=&#34;mouse&#34;, HotSpot$=&#34;middle&#34;, \&#10;&#9;onCollision$=&#34;kaboom&#34;, LookAt$=&#34;ship&#34;&#10;&#9;DIFFICULTY# = START_DIFFICULTY#&#10;&#9;ShowHideStar&#10;End Procedure&#10;&#10;Procedure ShowHideStar&#10;&#9;If Not Actor Exists(&#34;star&#34;) Or Actor IsVisible(&#34;star&#34;)&#10;&#9;&#9;Actor &#34;star&#34;, Image$=&#34;star-0&#34;, Visible = False&#10;&#9;Else&#10;&#9;&#9;Actor &#34;star&#34;, Visible = True, \&#10;&#9;&#9;X = Rnd(100 To Display Width - 100), \&#10;&#9;&#9;Y = Rnd(100 To Display Width - 200)&#10;&#9;End If&#10;&#9;w = Rnd( 5000 To 30000 )&#10;&#9;Clear Interval STAR_INTERVAL&#10;&#9;STAR_INTERVAL = Set Interval (w, &#34;ShowHideStar&#34; )&#10;End Procedure&#10;&#10;</code></pre>&#10;<br/>&#10;<h2 id="automatic-transformations-and-auto">Automatic transformations and Auto$</h2>&#10;<p>In this example, the enemy when shot down makes a cabriole whose direction is given by <strong>Actor IsComingBack()</strong> but whose movement is managed by <strong>Auto$</strong>. During its fall, its transparency varies in loop to add a little dramatic and visual intensity.</p>&#10;<pre><code class="prism language-basic">// this gets &#34;beam2&#34;, rotates it and create a new image in memory&#10;// so it can be used with Actor and Auto$ with &#34;forward&#34;&#10;// instead of playing with cos/sin&#10;&#10;Paste Image 50,0,&#34;beam2&#34;, Angle=90&#10;Set Transparent 0&#10;Get Image &#34;beam2rot&#34;,0,0,50,45&#10;Cls&#10;Actor &#34;ennemi&#34;, Image$=&#34;skyvenger_plane1&#34;, \&#10;StartX = 0, EndX = Display Width, Duration = 5000, \&#10;LoopMove = True, ReverseMove = True, AutoReverse$=&#34;horizontal&#34;, \&#10;Scale = 0.5, Hotspot$=&#34;middle&#34;, Y=100&#10;Actor &#34;ship&#34;, Image$=&#34;ship&#34;, HotSpot$ = &#34;middle&#34;, \&#10;X = Display Width/2, Y = Display Height - 100, \&#10;Control$ = &#34;arrowLeft:offsetX=-10;arrowRight:offsetX= 10&#34;, \&#10;Angle = -90&#10;&#10;Do&#10;&#9;If Inkey$=&#34; &#34;&#10;&#9;&#9;Shoot&#10;&#9;&#9;Actor &#34;missile&#34;   trim$(str$(N)), Image$=&#34;beam2rot&#34;, \&#10;&#9;&#9;X = Actor X(&#34;ship&#34;), Y=Actor Y(&#34;ship&#34;) - 64, \&#10;&#9;&#9;Auto$ = &#34;forward=30&#34;, Angle=-90, \&#10;&#9;&#9;OnScreenExit$=&#34;DelBoom&#34;, \&#10;&#9;&#9;OnCollision$=&#34;kaboom&#34;, HotSpot$=&#34;middle&#34;&#10;&#9;&#9;N = N   1&#10;&#9;End If&#10;&#9;Refresh&#10;Loop&#10;&#10;Procedure DelBoom[Snd=False, INDEX$]&#10;&#9;If Snd Then Boom&#10;&#9;Actor Del INDEX$&#10;End Procedure&#10;&#10;Procedure kaboom[INDEX1$, INDEX2$]&#10;&#9;If INDEX2$ &lt;&gt; &#34;ennemi&#34; Then Pop Proc&#10;&#9;Actor Del INDEX1$&#10;&#9;v$ = &#34;4&#34;&#10;&#9;If Actor isComingBack(&#34;ennemi&#34;) Then v$=&#34;-&#34;   v$&#10;&#9;Actor &#34;ennemi&#34;, Auto$=&#34;offsetX=&#34;   v$   &#34;,offsetY=&#34;   v$   &#34;,angle=4&#34;, \&#10;&#9;StartAlpha = 1, EndAlpha = 0.25, Duration = 500, \&#10;&#9;OnScreenExit$ = &#34;DelBoom[Snd=True]&#34; , \&#10;&#9;OnCollision$ = &#34;DelBoom[Snd=True]&#34; , \&#10;&#9;LoopMove = True, ReverseMove = True, AutoReverse$ = &#34;none&#34;&#10;End Procedure&#10;&#10;</code></pre>&#10;<br/>&#10;<h2 id="automatic-transformations-and-behavior">Automatic transformations and Behavior$</h2>&#10;<p>It is possible to use <strong>Behavior$</strong> while using automatic transformations. Of course, if  the Behavior$ modifies one of the parameters that was animated, this parameter is no longer part of the transformation.<br/>&#10;In this example, Lucie goes from left to right but jumps if you press &#8220;space&#8221;:</p>&#10;<pre><code class="prism language-basic">Palette $202020 // slightly change black color&#10;Cls&#10;Actor Animation &#34;walk&#34;, \&#10;sequence$=&#34;lucie-0, lucie-1, lucie-2, lucie-3, lucie-4, lucie-5, L&#34;&#10;Actor &#34;lucie&#34;, Anim$=&#34;walk&#34;, \&#10;Behavior$=&#34;jump&#34;, Y = 500, \&#10;StartX = 0, EndX = Display Width - 200, \&#10;LoopMove = True, ReverseMove = True, AutoReverse$ = &#34;horizontal&#34;, \&#10;Duration = 5000&#10;Line Width 10&#10;Draw 0, Actor Height(&#34;lucie&#34;)   500 To Display Width, Actor Height(&#34;lucie&#34;)   500&#10;</code></pre>&#10;<p>In the following example, Magic has a Behavior$ of &#8220;tank&#8221;. When it &#8220;eats&#8221; a star it grows for half a second.<br/>&#10;Note that if he eats another star while he had not finished his previous transformation, a new animation is generated starting from the last known position (time).</p>&#10;<pre><code class="prism language-basic">Actor &#34;magic&#34;, Image$=&#34;magic&#34;, Behavior$=&#34;tank&#34;, HotSpot$=&#34;middle&#34;, Scale=0.5, \&#10;onCollision$ = &#34;miam&#34;, X = 100, Y = 100&#10;For i = 1 To 20&#10;&#9;Actor &#34;star&#34;   Trim$(Str$(i)), Image$=&#34;star-0&#34; , \&#10;&#9;X = Rnd(100 To Display Width - 100), \&#10;&#9;Y = Rnd(100 To Display Height - 100)&#10;Next&#10;&#10;Procedure miam[INDEX2$, TIMEPOSITION]&#10;&#9;Actor Del INDEX2$&#10;&#9;If TIMEPOSITION &lt; 0 THEN TIMEPOSITION = 0&#10;&#9;Actor &#34;magic&#34;, StartScale = 0.5, EndScale = 1, \&#10;&#9;LoopMove = false, ReverseMove = true, \&#10;&#9;Duration = 500, TimePosition = TIMEPOSITION&#10;End Procedure&#10;</code></pre>&#10;<br/>&#10;<h2 id="automatic-transformations-and-limits">Automatic transformations and limits</h2>&#10;<p>When an actor crosses a boundary, his transformation pauses and can always be restarted whenever you want.<br/>&#10;Using the  <strong>OnLimit$ listener</strong>, it is possible to decide what happens to the current transformation.</p>&#10;<p>In the example below, 4 &#8220;Magic&#8221; wander from left to right. Those on the left always have a left/right limit enabled. The limit of those on the right is enabled/disabled with the spacebar.<br/>&#10;The top &#8220;Magic&#8221; get stuck if they reach a limit. Those at the bottom, on the other hand, change direction.</p>&#10;<p>So that the &#8220;Magic&#8221; at the bottom do not get stuck in the limits, it is necessary to slightly change their <strong>TimePosition</strong> before making them <strong>ActionMove$=&#8220;reverse&#8221;</strong>.</p>&#10;<p>In addition, when you remove the limits, the Magic at the top right must be able to resume its movement with <strong>ActionMove$=&#8220;play&#8221;</strong>.</p>&#10;<pre><code class="prism language-basic">Palette $202020, $ffffff, $ff0000, $00ff00&#10;Cls: Line Width 2&#10;Actor &#34;magic0&#34;, Image$=&#34;magic&#34;, HotSpot$=&#34;middle&#34;, \&#10;Y = 300, StartX = 100, EndX = 900, Duration = 5000, \&#10;LoopMove = true, ReverseMove = true, AutoReverse$=&#34;horizontal&#34;, \&#10;TimePosition = 2500, \&#10;RightLimit=800, OnLimit$=&#34;lim&#34;, LeftLimit = 200&#10;Actor &#34;magic1&#34;, Image$=&#34;magic&#34;, HotSpot$=&#34;middle&#34;, \&#10;Y = 800, StartX = 100, EndX = 900, Duration = 5000, \&#10;LoopMove = true, ReverseMove = true, AutoReverse$=&#34;horizontal&#34;, \&#10;OnChange$=&#34;change&#34; , TimePosition = 2500, \&#10;RightLimit=800, OnLimit$=&#34;lim&#34;, LeftLimit = 200&#10;Actor &#34;magic2&#34;, Image$=&#34;magic&#34;, HotSpot$=&#34;middle&#34;, \&#10;Y = 300, StartX = 1100 62, EndX = 1900-62, Duration = 5000, \&#10;LoopMove = true, ReverseMove = true, AutoReverse$=&#34;horizontal&#34;, \&#10;TimePosition = 2500, \&#10;RightLimit=9999, OnLimit$=&#34;lim&#34;, LeftLimit =-9999&#10;Actor &#34;magic3&#34;, Image$=&#34;magic&#34;, HotSpot$=&#34;middle&#34;, \&#10;Y = 800, StartX = 1100 62, EndX = 1900-62, Duration = 5000, \&#10;LoopMove = true, ReverseMove = true, AutoReverse$=&#34;horizontal&#34;, \&#10;TimePosition = 2500, \&#10;RightLimit=9999, OnLimit$=&#34;lim&#34;, LeftLimit =-9999&#10;Limit = False&#10;&#10;Do&#10;&#9;Cls&#10;&#9;Ink 2&#10;&#9;Box 200,100 To 800, 500&#10;&#9;Box 200,600 To 800, 1000&#10;&#9;If Limit Then Line Dash 10,0 Else Line Dash 10,10&#10;&#9;Box 1200,100 To 1800, 500&#10;&#9;Box 1200,600 To 1800, 1000&#10;&#9;Line Dash 10,0&#10;&#9;Ink 3&#10;&#9;Box 100,100 To 900,500&#10;&#9;Box 100,600 To 900,1000&#10;&#9;Box 1100,100 To 1900,500&#10;&#9;Box 1100,600 To 1900,1000&#10;&#9;If Inkey$=&#34; &#34;&#10;&#9;&#9;Limit = Not Limit&#10;&#9;&#9;If Limit&#10;&#9;&#9;&#9;Actor &#34;magic2&#34;, RightLimit=1800, LeftLimit=1200&#10;&#9;&#9;&#9;Actor &#34;magic3&#34;, RightLimit=1800, LeftLimit=1200&#10;&#9;&#9;Else&#10;&#9;&#9;&#9;Actor &#34;magic2&#34;, RightLimit=9999, LeftLimit=-9999, \&#10;&#9;&#9;&#9;ActionMove$ = &#34;play&#34;&#10;&#9;&#9;&#9;Actor &#34;magic3&#34;, RightLimit=9999, LeftLimit=-9999&#10;&#9;&#9;End if&#10;&#9;End If&#10;&#9;Refresh&#10;Loop&#10;&#10;Procedure lim[INDEX$, TIMEPOSITION, ISCOMINGBACK]&#10;&#9;If INDEX$ = &#34;magic1&#34; Or INDEX$ = &#34;magic3&#34;&#10;&#9;&#9;Actor INDEX$, TimePosition = TIMEPOSITION - 100, \&#10;&#9;&#9;ActionMove$=&#34;reverse&#34;&#10;&#9;End If&#10;End Procedure&#10;</code></pre>&#10;<br/>&#10;<h3 id="bonus-example">Bonus example</h3>&#10;<p>Here is for fun a small &#8220;beginning of a game&#8221; that uses transformations.</p>&#10;<pre><code class="prism language-basic">Palette $202020, $ffffff, $ff0000&#10;Cls&#10;&#10;Actor Animation &#34;walk-tagada&#34;, Sequence$ = &#34;tagada-0, tagada-1, tagada-2, L&#34;&#10;Actor Animation &#34;magic-fly&#34;, Sequence$ = &#34;magicfly-0, magicfly-1, magicfly-2, L&#34;&#10;Actor &#34;ground&#34;, Image$=&#34;ground&#34;, X=0, Y= 945, ScaleX = 1650 / 3840, ScaleY=0.5&#10;Actor &#34;ceiling&#34;, Image$=&#34;ground&#34;, X=0, Y= 655, ScaleX = 955 / 3840, ScaleY=0.5, VRev = True&#10;Actor &#34;LWall&#34;, Image$=&#34;ground&#34;, X=1055, Y= 0, ScaleX=750/3840, Scaley=0.5, Angle=90&#10;Actor &#34;RWall&#34;, Image$=&#34;ground&#34;, X=1550, Y= 0, ScaleX=750/3840, ScaleY=0.5, Angle=90, VRev=True&#10;Actor &#34;tagada1&#34;, Anim$=&#34;walk-tagada&#34;, EndX = 250, StartX = 1500, Y= 800, \&#10;LoopMove = True, Reversemove = True, Duration = 5000&#10;Actor &#34;tagada2&#34;, Anim$=&#34;walk-tagada&#34;, EndY = 150, StartY = 600, X= 1200, \&#10;Angle=90, LoopMove = True, ReverseMove = True, Duration = 2500&#10;Actor &#34;tagada3&#34;, Anim$=&#34;walk-tagada&#34;, EndY = 750, StartY = 300, X= 1300, \&#10;Angle=270, LoopMove = True, ReverseMove = True, AutoReverse$=&#34;vertical&#34;, Duration = 2500&#10;Actor &#34;magic&#34;, Anim$=&#34;magic-fly&#34;, Control$=&#34;keyboard&#34;, Y = 800, OnCollision$=&#34;bang&#34;&#10;Actor &#34;goal&#34;, Image$=&#34;goal-0&#34;, X = 1250, Y = 51, HotSpot$ = &#34;middle&#34;, Scale = 0.2&#10;&#10;Do&#10;&#9;Refresh&#10;Loop&#10;&#10;Procedure bang[INDEX2$]&#10;&#9;If INDEX2$ = &#34;goal&#34;&#10;&#9;&#9;Cls&#10;&#9;&#9;Actor Del &#34;*&#34;&#10;&#9;&#9;Actor &#34;goal&#34;, Image$=&#34;goal-0&#34;, StartX=1250, StartY =51, \&#10;&#9;&#9;HotSpot$ = &#34;middle&#34;, StartScale = 0.2, \&#10;&#9;&#9;EndScale = 1.5, EndY = Display Height /2, EndX = Display Width / 2&#10;&#9;End&#10;&#9;Else&#10;&#9;&#9;Boom : Cls 2&#10;&#9;&#9;Actor &#34;magic&#34;, X=0, Y= 800&#10;&#9;&#9;Wait 1 : Cls&#10;&#9;End if&#10;End Procedure&#10;&#10;</code></pre>&#10;<hr/>&#10;<h2 id="events">Events</h2>&#10;<p>( italic ) = Optional</p>&#10;<div class="table-wrapper"><table>&#10;<thead>&#10;<tr>&#10;<th><strong>Event</strong></th>&#10;<th><strong>Description</strong></th>&#10;</tr>&#10;</thead>&#10;<tbody>&#10;<tr>&#10;<td><em><code>OnRefresh$</code></em></td>&#10;<td>Name of the AOZ procedure to call at each cycle of the Runtime.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnChange$</code></em></td>&#10;<td>Name of the AOZ procedure to call when the Actor change (position, alpha, scale&#8230;)</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnAnimChange$</code></em></td>&#10;<td>Name of the AOZ procedure to call when the Actor animation change ( number of frame, state,&#8230;)</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnCollision$</code></em></td>&#10;<td>Name of the AOZ procedure to call when the Actor enter in collision with an other object.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnControl$</code></em></td>&#10;<td>Name of the AOZ procedure to call when a control is activated for the Actor (keyboard, mouse or joystick).</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnLimit$</code></em></td>&#10;<td>Name of the AOZ procedure to call when the Actor touch a limit.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnScreenEnter$</code></em></td>&#10;<td>Name of the AOZ procedure to call when the Actor appears on the screen.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnScreenExit$</code></em></td>&#10;<td>Name of the AOZ procedure to call when the Actor exits on the screen.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnBehavior$</code></em></td>&#10;<td>Name of the AOZ procedure to call when the Actor behavior changes.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Mouse</strong></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnMouse$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called at each mouse action on the actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnMouseClick$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called at each mouse click on the actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnMouseDblClick$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called at each mouse doubleclick on the actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnMouseDown$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called at each mouse button down on the actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnMouseUp$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called at each mouse button up on the actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnMouseEnter$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called when the mouse pointer enters over of the actor.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnMouseExit$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called when the mouse pointer outs over of the actor.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Keyboard</strong></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnKeyPress$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called at each key pressed.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnKeyDown$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called at each key down.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnKeyUp$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called at each key up.</td>&#10;</tr>&#10;<tr>&#10;<td><strong>Controllers</strong></td>&#10;<td></td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnControllerConnect$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called when a controller is connected (gamepad, joystick&#8230;).</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnControllerDisconnect$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called when a controller is disconnected (gamepad, joystick&#8230;)</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnControllerButton$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called at each controller button pressed.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnControllerAxis$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called when an axis value of a controller changes.</td>&#10;</tr>&#10;<tr>&#10;<td><em><code>OnControllerDirection$</code></em></td>&#10;<td>Name of the AOZ procedure that will be called when a direction value changes.</td>&#10;</tr>&#10;</tbody>&#10;</table>&#10;</div><hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/></p>&#10;<!--stackedit_data:&#10;&#10;eyJoaXN0b3J5IjpbLTEwODA3NjMzNzAsLTExNjE0MTU5NjBdfQ&#10;&#10;==&#10;&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/syntax/actor/001_actor.html';
+        var sourceMD = './repository/md/documentation/default/syntax/actor/001_actor.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

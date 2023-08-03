@@ -7,11 +7,55 @@
 \-->
 <div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
 
+**Dim** Sets the dimensions of an array.
+## Syntax
+**Dim** intVar(dimension1,dimension2,...,dimensionX)
+**Dim** floatVar#(dimension1,dimension2,...,dimensionX)
+**Dim** stringVar$(dimension1,dimension2,...,dimensionX)
 
 ## Parameters
-
+- **intVar**: Integer array name
+- **floatVar#**: Floating point array name
+- **stringVar$**: String array name
 - **dimension1**: First dimension
 - **dimension2**: Second dimension
-- **dimensionX**: Any number of dimensions, only limited by memory.
+- **dimensionX**: Any number of dimensions may be used, limited only by memory.
+
+## Description
+The Dim instruction allow you to create arrays or dictionaries.
+
+An Array is a list of value in a specific order. A dictionary is a list of values with a name for each one, in no specific order.
+
+Arrays can have fixed dimensions (accessing an element out of the bounds fixed in the Dim instruction will generate an error) or be automatic. Automatic arrays adapt their size to the demand of the user.
+
+Dictionaries are another way of large amount of informations. Each value is associated with a name, like an icon on the desktop of your computer.
+
+Use the =Len function to recover the length of an array. Len will return the number of elements in a dictonary.
+
+## Example
+```basic
+Dim score(10)  ‘ Create a one dimension fixed-size array.  
+For X = 0 To 10  
+score( 10 ) = X  
+Next  
+Print score( 11 ) ‘ Generates an error
+
+Dim Y#(10,20)  ‘ Create a two dimensions fixed-size array for floating point numbers
+
+Dim MyData( )  ‘ Create a one dimension automatic array  
+MyData( 100 ) = 10  ‘ Array adapts its size  
+Print Len( MyData )  ‘ Will print 100
+
+Dim A$( "" )  ‘ Create a one dimension dictionary  
+A$( "hello" ) = "Aoz"  
+A$( "world" ) = "Studio"  
+Print A$( "hello" ); " "; A$( "world" )  ‘ Will print "Aoz Studio"
+
+Dim Coordinates( “”, “” )  ‘ Create a two dimension dictionary  
+Coordinates( “mario”, “x” ) = 100  
+Coordinates( “mario”, “y” ) = 200  
+Coordinates( “luigi”, “x” ) = 300  
+Coordinates( “luigi”, “y” ) = 400  
+```
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

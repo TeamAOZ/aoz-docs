@@ -1,0 +1,51 @@
+# Gr Locate
+<!--
+@name: Gr Locate
+@description: 
+@tags: 
+@categories: 
+\-->
+
+Position the graphic cursor in the currect screen
+
+## Syntax
+
+**Gr Locate** _x, y_
+
+## Parameters
+
+- _**x**_: The horizontal coordinate in pixels
+- _**y**_: The horizontal coordinate in pixels
+
+## Description
+
+**Gr Locate** is used to set the position of the graphics cursor to a point on the current screen in a non-destructive way, so nothing will be drawn. It can then be used as a reference point for most drawing instructions when the primary x, y or x1, y1 coordinates can be omitted, or by instructions that draw **To** primary coordinates, such as **Draw To**, **Curve To** etc.
+
+The default graphics cursor position is 0, 0.
+
+If either of the parameters are omitted, that coordinate will remain unchanged.
+
+## Example Code
+
+The following example uses **Gr Locate** to position the graphics cursor at points along a decreasing spiral shape, then draws random shapes at those coordinates.
+
+```basic
+ink 2
+lw=7
+radius#=1000
+for n=12 to 5 step -1
+	line width lw-(12-n)
+	for f=0 to 359 step 12
+		x=960+sin(f)*radius#
+		y=540+cos(f)*radius#
+		colour 2, rgb(rnd(50 to 220),rnd(50 to 220),rnd(50 to 220))
+		gr locate x,y
+		Shape ,,radius#/10,radius#/10,rnd(3 to 8), rnd(360)
+		refresh
+		add radius#,-n/2.1
+	next f
+next n
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

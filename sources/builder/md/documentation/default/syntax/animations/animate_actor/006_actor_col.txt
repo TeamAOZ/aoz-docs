@@ -1,0 +1,14 @@
+# Actor Col
+<!--
+@name: Actor Col
+@description: 
+@tags: 
+@categories: 
+\-->
+Tests the collision between 2 actors
+## Parameters
+
+- **index**: Index of the actor 1
+- **index2**: Index of the actor 2
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -9,7 +9,7 @@
 
 Updates the rendering of a 3D Screen.
 
-#### Syntax
+#### Example
 ```basic
 Load Asset "my_scene.aoz3d", "my_scene"
 Td Init : Td Start

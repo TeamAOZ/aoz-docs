@@ -2,7 +2,7 @@
 
 Here is an example of how to use the Listener for scrolling an actor attached to the keyboard right-left keys:
 ```basic
-Actor 1, Image$="bg.png", Y=0, Control$="ArrowLeft: offsetX=5; ArrowRight: offsetX=-5", OnChange$="ON_CHANGE"**
+Actor 1, Image$="bg.png", Y=0, Control$="ArrowLeft: offsetX=5; ArrowRight: offsetX=-5", OnChange$="ON_CHANGE"
 Do
   Refresh
 Loop

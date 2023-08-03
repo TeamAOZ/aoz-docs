@@ -10,7 +10,11 @@
 		<span class="mif-accessible mif-3x" onclick="javascript:toggleAccessible();" style="cursor: pointer;" alt="Enable/disable version for dyslexic" title="Enable/disable version for dyslexic"></span>
 		<span class="mif-zoom-out mif-3x" onclick="javascript:fontMoins();" style="cursor: pointer;" alt="Zoom out" title="Zoom out"></span>
 		<span class="mif-zoom-in mif-3x" onclick="javascript:fontPlus();" style="cursor: pointer;" alt="Zoom in" title="Zoom in"></span>
-		<div id="md_gator" alt="Files Explorer" title="Files Explorer" onclick="javascript:document.getElementById( 'gator_mask' ).style.display = 'block';"></div>
+		<div id="md_gator" class="icon_edit" alt="Files Explorer" title="Files Explorer" onclick="javascript:window.open( './vendor/filegator/dist/index.php', 'gator_frame' );document.getElementById( 'gator_mask' ).style.display = 'block';"></div>
+		<div id="md_new_chapter" class="icon_edit" alt="New Chapter" title="New Chapter" onclick="javascript:newChapter();"></div>
+		<div id="md_new_page" class="icon_edit" alt="New Page" title="New Page" onclick="javascript:newPage();"></div>
+		<div id="md_rename" class="icon_edit" alt="Rename" title="Rename" onclick=""></div>
+		<div id="md_delete" class="icon_edit" alt="Delete" title="Delete" onclick="javascript:deleteElement();"></div>
 		<div id="md_login" alt="Login" title="Login" onclick="javascript:application.aoz.runProcedure( 'LOGIN', {});"></div>
 		<div id="frm_login">
 			<div class="log_tit">PASSWORD</div>
@@ -18,26 +22,69 @@
 			<div class="fld_input"><input type="password" name="log_pwd" id="log_pwd" value="" onkeypress="javascript:application.aoz.runProcedure( 'KEY_LOGIN', { CKEY$: event.key, VALUE$: this.value } );"/></div>
 		</div>
 
-		<div id="md_edit" alt="Edit this page" title="Edit this page" onclick="javascript:application.aoz.runProcedure( 'PAGE_EDIT', {});"></div>
-		<div id="md_sync" alt="Save the changes" title="Save the changes" onclick="javascript:application.aoz.runProcedure( 'PAGE_SAVE', {});"></div>
+		<div id="md_edit" alt="Edit this page" title="Edit this page" onclick="javascript:application.aoz.runProcedure( 'LOAD_CODE', {});"></div>
 		<div class="search">
 			<input id="search" type="text" value="" onkeypress="javascript:application.aoz.runProcedure( 'KEY_SEARCH', { CKEY$: event.key, VALUE$: this.value, ISNEW: true } );" />
 		</div>
 	</div>
 	<div id="doc" data-role="splitter" data-split-mode="horizontal" class="h-100" data-split-sizes="30, 70">
 		<div id="left_panel" class="d-flex">
-			<div class="scrollpane">
-				<div id="topics"></div>
-			</div>
+			<iframe id="page_topics" name="page_topics" src="./topics.php"></iframe>
 		</div>
     	<div id="center_panel" class="d-flex">
-			<div class="scrollpane">
-				<div id ="page"></div>
-			</div>
+			<iframe id="page_frame" name="page_frame" src="./public/default/user_guide/table_of_contents/000_chapter.html"></iframe>
 		</div>
 	</div>
 	<div id="gator_mask">
 		<button onclick="javascript:document.getElementById( 'gator_mask' ).style.display = 'none';">X</button>
-		<iframe id="gator_frame" src="http://localhost/aozdoc/vendor/filegator/dist/index.php"></iframe>
+		<iframe id="gator_frame" name="gator_frame"></iframe>
 	</div>
+
+	<div class="dialog secondary" data-role="dialog" id="winNewChapter" data-width="500">
+		<div class="dialog-title">Create a new Chapter</div>
+	    <div class="dialog-content">
+			<label for="chapSelect">Select the parent folder:&nbsp;</label>
+			<select id="chapSelect">
+				<option value="current" id="curChap">Current Chapter</option>
+				<option value="user-guide">User Guide</option>
+				<option value="glossary">Glossary</option>
+				<option value="more-tricks">More Tricks</option>
+			</select><br /><br />
+
+			<label for="chapName">Name:&nbsp;</label>
+			<input id="chapName" type="text" value=""></input>
+	    </div>
+	    <div class="dialog-actions">
+	        <button class="button js-dialog-close">Cancel</button>
+	        <button class="button primary js-dialog-close" onclick="createNewChapter()">Create</button>
+	    </div>
+	</div>
+
+	<div class="dialog secondary" data-role="dialog" id="winNewPage" data-width="500">
+		<div class="dialog-title">Create a new Chapter</div>
+	    <div class="dialog-content">
+			<label for="chapSelect2">Select the parent folder:&nbsp;</label>
+			<select id="chapSelect2">
+				<option value="current" id="curChap2">Current Chapter</option>
+				<option value="user-guide">User Guide</option>
+				<option value="glossary">Glossary</option>
+				<option value="more-tricks">More Tricks</option>
+			</select><br />
+
+			<label for="tempSelect">Select the page style:&nbsp;</label>
+			<select id="tempSelect">
+				<option value="guide">Guide</option>
+				<option value="instruction">AOZ Command</option>
+				<option value="academy">Academy</option>
+			</select><br /><br />
+
+			<label for="chapName2">Name:&nbsp;</label>
+			<input id="chapName2" type="text" value=""></input>
+	    </div>
+	    <div class="dialog-actions">
+	        <button class="button js-dialog-close">Cancel</button>
+	        <button class="button primary js-dialog-close" onclick="createNewPage()">Create</button>
+	    </div>
+	</div>
+	<div id="loader" class="loader"></div>
 </div>

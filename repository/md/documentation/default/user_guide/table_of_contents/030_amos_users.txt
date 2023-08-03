@@ -1,14 +1,16 @@
 # AMOS USERS
 
-For those who remember, AMOS is the grandfather of AOZ created in the 1980s. This chapter is for our old friends -so happy to have you here- who are familiar with AMOS, Easy AMOS and AMOS Professional, which are the ancestors of AOZ. (If you want to know more see history on the AOZ.Studio web site.)
+For those who remember, AMOS is the grandfather of AOZ, created in the 1980s. This chapter is for our old friends -so happy to have you here- who are familiar with AMOS, Easy AMOS and AMOS Professional, which are the ancestors of AOZ. (If you want to know more see history on the AOZ.Studio web site).
+
+At the end of this chapter we wrote an How to export to Amiga an AMOS program made in AOZ Studio. Yes it is possible and actually both ways, see: https://youtu.be/6pXOslYl0gE
 
 ## Compatibility with AMOS
 
 First of all, we are delighted to tell you that most of the code and banks from your old programs can be directly loaded into AOZ. If all is well, then everything will import automatically as soon as you load an .AMOS program.
 
-The whole AMOS Professional manual is available, along with every instruction, command and module from A to Z. And you'll find a great range of brand new instructions, such as how to develop your work for use on mobile phones and how to manipulate HTML code for your websites.
+The whole AMOS Professional manual is available, along with every instruction, command and module from A to Z. And you|;ll find a great range of brand new instructions, such as how to develop your work for use on mobile phones and how to manipulate HTML code for your websites.
 
-We've even included the classic Amiga Game called CyBall and imported it into AOZ for you, as well as a full tutorial on how this was done. This is available on Youtube by Phill Bell [How I Ported My AMOS Game To AOZ Studio Start to Finish](https://youtu.be/E0Rm4PNil9o)
+We|;ve even included the classic Amiga Game called CyBall and imported it into AOZ for you, as well as a full tutorial on how this was done. This is available on Youtube by Phill Bell [How I Ported My AMOS Game To AOZ Studio Start to Finish](https://youtu.be/E0Rm4PNil9o)
 
 Remember, there is a dedicated AMOS folder for you to explore at your leisure, with masses more tutorials, oodles of examples and more accessories than you can wave a magic wand at.
 
@@ -20,16 +22,16 @@ The tracker engine used supports not only the Amiga SoundTracker files, but newe
 
 **VOLUME**
 
-The thing to remember on setting the volume is that it's different between the Amiga and AOZ manifests. On the Amiga manifest, it works as it did in AMOS. The volume is an integer from 0 to 63.
+The thing to remember on setting the volume is that it|;s different between the Amiga and AOZ manifests. On the Amiga manifest, it works as it did in AMOS. The volume is an integer from 0 to 63.
 0 = off, 63 is max. In the AOZ manifest, the volume is a floating point number between 0 and 1. Think of it as a percentage 0 = 0%, 1 = 100%. Also, time is counted differently between manifests.
 
 For example, in the Amiga manifest, time is counted in Vbl cycles (1/50th or 1/60th of a second). So with the PAL Amiga mode, Wait 1 = Wait 1/50th of a second. In the AOZ manifest, time is counted in seconds, or fractions thereof, so Wait 1 = Wait 1 second.
   
-Note, that if you want to make code the will run in either manifest, you can. It doesn't hurt to use a float variable for your volume level, so you can do something like this:
+Note, that if you want to make code the will run in either manifest, you can. It doesn|;t hurt to use a float variable for your volume level, so you can do something like this:
 
 ```basic
 #manifest: "amiga"
-D = 10  '10 Vbl cycles = 1/5 second.
+D = 10  |;10 Vbl cycles = 1/5 second.
 
 For V=0 To 63 Step 4
 	If Manifest$="amiga"
@@ -58,18 +60,18 @@ The parameters for the Play instruction can be:
 
 The world famous Bob and Sprite instructions, created with AMOS. You do not necessarily have to use these instructions in these modern times now that we can use Actors, but you will find a load of demos and games that use them, and so many programmers still love them.
 
-There are two types of movable objects: "Bobs" and "Sprites". Let's deal with Bobs first.
+There are two types of movable objects: "Bobs" and "Sprites". Let|;s deal with Bobs first.
 
 A Bob can be moved around the screen, and there is no limit to the number of Bobs you can harness (apart from the amount of available memory of course). In other words you can have thousands of them performing on screen at the same time. You can control a Bob, track it and even give it special characteristics if it collides with something else or enters a special screen zone. Best of all, you can animate a Bob to make moving cartoon characters, steampunk machinery, in fact anything that your imagination can dream up.
 
 In the old Amiga days a Bob was stored as part of the current screen, so it can eat up quite a lot of memory. So in AMOS there was an alternative type of object called a Sprite.
 
-A Sprite is also a graphic object that you can manipulate, and it's completely independent from the screen. In the 80s world of computers Sprites were manipulated directly by hardware. Bobs on the other hand were being drawn into a screen, saving, drawing and restoring the background as required, so they could be much slower indeed and not having dedicated graphic hardware to display them as we have today, made it extremely difficult to move around many very large bobs at the same time unlike their Sprite counterparts. Today this difference does not exist, and the size/speed or type limits are not really an issue anymore. The name Sprite is widely used to define any moving graphic object. As you would expect, AOZ offers built-in routines to teach both of them magic tricks for intelligent movements.
+A Sprite is also a graphic object that you can manipulate, and it|;s completely independent from the screen. In the 80s world of computers Sprites were manipulated directly by hardware. Bobs on the other hand were being drawn into a screen, saving, drawing and restoring the background as required, so they could be much slower indeed and not having dedicated graphic hardware to display them as we have today, made it extremely difficult to move around many very large bobs at the same time unlike their Sprite counterparts. Today this difference does not exist, and the size/speed or type limits are not really an issue anymore. The name Sprite is widely used to define any moving graphic object. As you would expect, AOZ offers built-in routines to teach both of them magic tricks for intelligent movements.
 <BR>
 
 **TO INFINITY AND BEYOND**
 
-With all these wonders for creating the movement and animation for your Actor, Sprite and Bob objects, you'll probably want to place them in a suitable electronic universe. Good news, your universes can be two-dimensional, three-dimensional and with effects like parallax scrolling where one layer of background graphics moves at a different speed from another layer to create a sort of 3D effect.
+With all these wonders for creating the movement and animation for your Actor, Sprite and Bob objects, you|;ll probably want to place them in a suitable electronic universe. Good news, your universes can be two-dimensional, three-dimensional and with effects like parallax scrolling where one layer of background graphics moves at a different speed from another layer to create a sort of 3D effect.
 
   
 
@@ -82,6 +84,104 @@ Discussing AMAL is beyond the scope of this chapter. Please consult the **AMAL**
 
 ![enter image description here](https://doc.aoz.studio/assets/images/en/image084.png)
 
+## Transpiling your code to Amiga and running in Winuae. (Windows version).
+
+0) Open a New Aoz Project from the aoz toolbar, select the Retro option on the left. By Default, it will setup an Amiga screen at 320x256 in pal on which you will be able to type your code in, just like you were doing it in AMOS Pro long ago. Also in the display settings on the Amiga retro template you can select from ntsc/pal resolutions as well.
+
+![](https://doc.aoz.studio/repository/assets/images/amos1.png)
+
+1) Once you have you code ready to run and complete in the aoz editor,  press the Amiga Transpiler button.
+![](https://doc.aoz.studio/repository/assets/images/amos2.png)
+
+2) Next the Amiga Transpiler wizard will appear.
+Press enter to send it on its way.
+![](https://doc.aoz.studio/repository/assets/images/amos3.png)
+
+Special notes on the transpiler and how it works and its requirements.  
+
+a) The WinUAE configuration supplied with the Amiga Transpiler does not contain a distribution of the WB (because the Workbench / Amiga OS is the property of Cloanto and AOZ Studio does not have permission to distribute it). The distribution provides only a complete version of AMOS Pro and its Compiler.
+
+Note: You can buy a copy of Amiga Forever.  www.amigaforever.com  
+It contains a complete copy of EVERYTHING for the Amiga including all the system disks, hard disk images, etc., and is the only legal distributor for the Amiga ROM images.  Also, Amiga Forever is extremely inexpensive!  You|;ll want at least the Plus edition at $29.95.  It|;s worth the price!
+Also Note: The transpiler will output and be controlled by whatever you specify in your code at this point, eg: screen size etc, and you must stick to strict amiga standards, ocs/ecs/aga as usual.
+
+Also AOZ instructions, such as "Actor", "Load Asset"... are not compatible with the Amiga OS.  
+See further info on this:-([http://www.classicamiga.com/images/stories/jreviews/software/A/manuals/AmosPro.pdf](http://www.classicamiga.com/images/stories/jreviews/software/A/manuals/AmosPro.pdf))  
+
+By default, the Amiga Transpiler wizard when complete, launches WinUAE which is pre-configured like this:
+
+- Using an Amiga 500+ configured machine and selecting at least
+   Kickstart 2.0.
+- Also a Hard disk DH0 with AMOS Pro + AMOS compiler (hd folder of the distribution)
+
+  
+You can use another Amiga emulator if you want (like FS-UAE or Amiga Forever).
+
+You will just have to create the configuration with the hard disk provided with Amiga Transpiler.
+
+The folder containing the data for the emulator is located in the folder :
+
+"AOZ_installation_folder/AOZ_Studio/app/Accessories/AOZ Tools/amiga_transpiler/system/hd"
+
+![](https://doc.aoz.studio/repository/assets/images/amos4.png)
+
+Also everything that is supported by AMOS Compiler can be used. So all AMOS extensions (AMOS 3D, AMCAF...) and the use of Amiga libraries. The Amiga Transpiler does not check the code, but you will get a message back from AMOS Compiler if your program has errors. (A Red X at the end).
+
+Of course, the code using elements specific to the Amiga system, will not be able to be executed on your machine. Only on the emulator.
+
+Now back to the wizard..  
+If all goes well, you will end up with the wizard complete.  
+If something was wrong along the way, or you end up here with a RED X over the screen, then either your Amiga Roms / AMOS Pro were missing or your code was not compatible with standard amiga format. See point above.
+![](https://doc.aoz.studio/repository/assets/images/amos5.png)
+
+3) Configuring the Winaue Amiga Emulator  
+Below is the default screen you will see when Winuae starts. (Windows) version shown.  
+There is no configuration saved at this time, but you can save one when you have setup a couple of options on the left, (Quickstart, Rom,Ram & CD&Hard drives).
+![](https://doc.aoz.studio/repository/assets/images/amos6.png)
+
+a) Firstly click the quickstart on the left and select if not already A500+ below.
+![](https://doc.aoz.studio/repository/assets/images/amos7.png)
+
+b) Next we will select our Amiga Rom file to use.
+![](https://doc.aoz.studio/repository/assets/images/amos8.png)
+
+Also note: If you do not specify a rom file when you click start, it will try and run an AROS amiga alternative, which unfortunately will not execute correctly and also is very slow.  
+Again, make sure you purchase A complete Amiga forever set or from a genuine dealer etc.
+
+c) Next we will set our ram for use with our Amiga core.
+![](https://doc.aoz.studio/repository/assets/images/amos9.png)
+
+d - 1) Now we will select our harddisk folder so as we can autoboot our amiga.
+![](https://doc.aoz.studio/repository/assets/images/amos10.png)
+
+d - 2) After selecting the folder below, press ok.
+![](https://doc.aoz.studio/repository/assets/images/amos11.png)
+
+d - 3) Now you should have your file as shown below in the Harddisk window.
+![](https://doc.aoz.studio/repository/assets/images/amos12.png)
+
+e) When you compile the program for Amiga, you will have 2 possibilities. Run your program right away, or create a bootable disk with your program.  
+Pressing Y below will run your program immediately just like you are in your old AMOS world.  
+Pressing N will go onto creating a new floppy disk but this will work assuming you are running on a real amiga with a real df0: floppydrive etc.  
+![](https://doc.aoz.studio/repository/assets/images/amos13.png)
+
+You can also do a Ctrl+C to take over the CLI. And you can type "amos:amospro" to run the AMOS Pro environment.
+
+Your AOZ program (converted in AMOS) is located in the "app/Accessories/AOZTools/amiga_transpiler/system/hd/AOZTranspiler/tmp" folder.
+On WinUAE,  it|;s located in "DH0:AOZTranspiler/tmp".
+
+You can also execute a loadwb etc, now assuming you go onto configuring your Amiga Hdisk folder with all the necessary boot and wb files etc. That is beyond the scope of this document tho.
+
+There is also an amiga cmd called reboot, which can also do just that, if you are running in a manual cli window, and you enter it, it will reboot you amiga that is running and autoboot again your program. Also note as above, the actual output that is created from aoz or your amiga code is in the AOZTranspiler/tmp folder, see above. This is where the .AMOS program is converted and created in the end.  
+Below here you can see I have previously created an amiga program opening a standard Amiga screen 320x256 in 32 colours and after pressing Y as described above, it opens as normal.
+
+It can also of course output in 256 colours aga, that all up to you. Enjoy.
+![](https://doc.aoz.studio/repository/assets/images/amos14.png)
+
+Other notes..(Winuae & Rom locations). 
+
+![](https://doc.aoz.studio/repository/assets/images/amos15.png)
+![](https://doc.aoz.studio/repository/assets/images/amos16.png)
 
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />

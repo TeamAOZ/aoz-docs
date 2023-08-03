@@ -1,0 +1,13 @@
+# Actor Reset
+<!--
+@name: Actor Reset
+@description: 
+@tags: 
+@categories: 
+\-->
+Reset all properties of one or all the actor
+## Parameters
+
+- **index**: Index of the Actor. If "*" is used, all the actors will been reseted.
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

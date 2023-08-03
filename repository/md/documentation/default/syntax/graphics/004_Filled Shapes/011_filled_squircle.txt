@@ -1,0 +1,65 @@
+# Filled Squircle
+<!--
+@
+name: Filled Squircle
+@description: 
+@tags: 
+@categories: 
+\-->
+**Instruction** - Draw a filled rectangular box with rounded corners
+
+<div class="compatibility"><span>Compatibility  </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Syntax Options 
+**Filled Squircle** *x1, y1* **to** *x2, y2, radius, corners*
+**Filled Squircle** *x1, y1, width, height, radius, corners*
+
+## Parameters
+
+
+
+- **x1**: The horizontal coordinate of the top-left corner of the rectangle (before radius is applied)
+- **y1**: The vertical coordinate of the top-left corner of the rectangle (before radius is applied)
+- **x2**: The horizontal coordinate of the bottom-right corner of the rectangle (before radius is applied)
+- **y2**: The vertical coordinate of the bottom-right corner of the rectangle (before radius is applied)
+- **width**: The width of the shape in pixels
+- **height**: The height of the shape in pixels
+- **radius**: The radius of rounded corners.
+- **corners**: A number between 0 and 15 controlling which corners will be rounded. If omitted, all four corners will be rounded.
+
+## Description
+
+Draws a filled rectangle with rounded corners using the current Ink, fill Pattern and Border settings (if applicable) on the current screen.
+
+The **corners** parameter is a 4 bit number that defines which corners are to be rounded. It|;s easiest to understand representing it as a binary number like this: %1111, where each |;1|; is a rounded corner, starting at top left moving clockwise. For example %0011 would make the bottom right and bottom left corners rounded, %1010 would make the top left and bottom right corners rounded.
+
+## Example Code
+
+This example draws three different Squircles:
+```basic
+Ink 12
+Line width 3
+Filled Squircle 100,100 to 1900,400,20
+Ink 6
+Line Width  20
+Filled Squircle 100,500,500,500,50,%1010
+Ink 27
+Line Width 10
+Filled Squircle 650,500,1250,500,250
+```
+Here|;s another example using squircles to design  a display with tabs.
+```basic
+
+Filled Squircle 0,30 To 146,84,15,%1100
+Filled Squircle 0,84 To 1496,800,15,%0011
+Shade 60
+For f=1 To 9
+  Filled Squircle F*150,30 To F*150+146,80,15,%1100
+Next f
+```
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTI3NTcxMTI0MSw2NjkwMDE3MzcsLTExNj
+EyMjEzNzIsMzU4NjMxNjMzLC0xMjg3NTg2MTgyLDM5ODU2ODQ2
+Nl19
+-->

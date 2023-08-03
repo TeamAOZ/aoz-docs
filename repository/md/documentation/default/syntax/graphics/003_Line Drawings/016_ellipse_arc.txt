@@ -1,0 +1,113 @@
+# Ellipse Arc
+
+**Instruction** - Draw an arc of an ellipse
+
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+## Syntax Options
+
+**Ellipse Arc** *x, y, xRadius, yRadius, angle1, angle2*
+**Ellipse Arc** *x, y, xRadius, yRadius, angle1, angle2, rotation*
+**Ellipse Arc** *x, y, xRadius, yRadius, angle1, angle2, rotation, fill*
+**Ellipse Arc** *x, y, xRadius, yRadius, angle1, angle2, rotation, fill, counterclockwise*
+
+## Parameters
+
+
+- **x**: The horizontal coordinate of the centre of the arc
+- **y**: The vertical coordinate of the centre of the arc
+- **xRadius**: The horizontal radius of the arc
+- **yRadius**: The vertical radius of the arc
+- **angle1**: The angle from which the arc is drawn from
+- **angle2**: The angle to which the arc will be drawn to
+- **rotation**: Optional. Angle of rotation of the arc
+- **fill**: Optional. Set to true or 1 to fill the arc
+- **counterclockwise**: Optional. Direction the arc will be drawn from angle1. Set to true or 1 to draw the arc in a counter-clockwise direction.
+
+## Description
+
+Draws an arc of an ellipse between 2 angles, joins the ends with a straight line and fills the shape using the current ink, border and fill settings in the current screen.
+
+- **Ellipse Arc** *x, y, xRadius, yRadius, angle1, angle2*
+Draws an ellipse arc centred at *x, y*, dimensions as defined by *xRadius* and *yRadius*, in a clockwise direction between *angle1* and *angle2*
+
+- **Ellipse Arc** *x, y, xRadius, yRadius, angle1, angle2, rotation*
+Draws an ellipse arc centred at *x, y*, dimensions as defined by *xRadius* and *yRadius*, in a clockwise direction between *angle1* and *angle2* rotated by *rotation* degrees
+
+- **Ellipse Arc** *x, y, xRadius, yRadius, angle1, angle2, rotation, fill*
+Draws a filled ellipse arc centred at *x, y*, dimensions as defined by *xRadius* and *yRadius*, in a clockwise direction between *angle1* and *angle2* rotated by *rotation* degrees
+
+- **Ellipse Arc** *x, y, xRadius, yRadius, angle1, angle2, rotation, fill, counterclockwise*
+Draws a filled ellipse arc centred at *x, y*, dimensions as defined by *xRadius* and *yRadius*, in a counter-clockwise direction between *angle1* and *angle2*, rotated by *rotation* degrees in a clockwise direction.
+
+
+## Example Code
+
+This example draws 100 random Filled Ellipse Arcs in various random colours.
+
+```basic
+ink 2
+line cap "round"
+draw shadow 5,5,10,$000000a0
+for f=1 to 100
+	r=rnd(100 to 200)
+	line width rnd(10 to 50)
+	colour 2,rgb(rnd(80 to 255), rnd(80 to 255), rnd(80 to 255))
+	r=rnd(100 to 200)
+	ellipse arc rnd(200 to 1720),rnd(200 to 880),r,r/1.5,rnd(0 to 160),rnd(200 to 360),rnd(360)
+	wait 0.5
+next f
+```
+---
+
+The next example is a small program that demonstrates some effects that can be achieved with a little imagination using **Ellipse Arc**, **Filled Arc** and **Arc**.
+
+```basic
+// Arc Demo by Dave Baldwin
+// August 2021
+
+ink 5
+line Cap "round"
+dim cr#(20),ca1(20),ca2(20),crs#(20),cc(20)
+ink 5
+for f=1 to 20
+	crs#(f)=(rnd(600)-300)/100
+	cr#(f)=rnd(359)
+	ca1(f)=rnd(90)
+	ca2(f)=rnd(120)+120
+	cc(f)=rgb(rnd(75 to 180),rnd(75 to 180),rnd(75 to 180))
+next f
+er=0 : ea1=0 : ea2=210
+
+do
+	Cls
+	for f=20 to 1 step -1
+		colour 5,cc(f)
+		if f<11 then filled arc 960,700,10+f*20,ca1(f),ca2(f),cr#(f)
+		line Width f/2
+		arc 480,360,20+f*14,ca1(f),ca2(f),cr#(f)
+		add cr#(f),crs#(f)
+	next f
+	line Width 8
+	colour 5,$00ff00
+	ellipse Arc 1440,360,350,200,ea1,ea2,er
+	colour 5,$00ffff
+	ellipse Arc 1440,360,350,200,ea1,ea2,er1
+	colour 5,$ff00ff
+	ellipse Arc 1440,360,350,200,ea1,ea2,er2
+	add er,-1,0 to 359
+	add ea1,-1,0 to 359
+	add ea2,2,0 to 359
+	er1=er+120 : if er1>359 then add er1,-360
+	er2=er-120 : if er2<0 then add er2,360
+	refresh
+loop
+```
+<p align="center"><img valign="middle" width="960px" src="https://doc.aoz.studio/repository/assets/images/arcs.png" /></p>
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEyODY5MzkxMTAsMTg0NDQyMjU3NCwtMT
+g1MDI2NzE2NSwyMDI0MTM0MzY5XX0=
+-->

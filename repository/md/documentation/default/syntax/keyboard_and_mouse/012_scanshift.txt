@@ -7,7 +7,44 @@
 \-->
 <div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
 
-Return shift status of key entered with INKEY&dollar;
+Returns modifier key states for last input from **Inkey\$**
+
+## Example
+```basic
+Function "IsPrintable",X$
+	a=Asc(X$)
+End Function (a > 31 And a < 128)
+
+Do
+	K$=Inkey$
+	If K$<>""
+		SS=ScanShift
+		Locate 0,1
+		If IsPrintable(K$) Then P$=K$ Else P$=" "
+		Print P$,Bin$(SS,10), Key Name$
+	End If
+Loop
+
+```
+
+## Description
+The result is returned as an integer bit map, with each bit representing a specific modifier key:
+
+| Bit | Value (binary) | Modifier Key | Amiga Key |
+|---|---|---|---|
+| 0 | 000000001 | Left Shift | Left Shift |
+| 1 | 000000010 | Right Shift |Right Shift |
+| 2 | 000000100 | Left Ctrl | Caps Lock |
+| 3 | 000001000 | Right Ctrl | Ctrl (either) |
+| 4 | 000010000 | Left Alt | Left Alt |
+| 5 | 000100000 | Right Alt | Right Alt |
+| 6 | 001000000 | Left Meta | Left Meta (Amiga) |
+| 7 | 010000000 | Right Meta | Right Meta (Amiga) |
+| 8 | 100000000 | Caps Lock | n/a |
+
+**NOTE:** The "Meta" keys are known by different names on different platforms.  For example:  Apple keys, Windows Start & Menu keys, etc.   
+
+**NOTE2:** On the Amiga, there is no distinction between the left and right **Ctrl** key.  The **Caps Lock** takes the place of the **Left Ctrl** key.
 
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

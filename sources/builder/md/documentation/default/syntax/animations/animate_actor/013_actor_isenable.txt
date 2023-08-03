@@ -1,0 +1,13 @@
+# Actor IsEnable
+<!--
+@name: Actor IsEnable
+@description: 
+@tags: 
+@categories: 
+\-->
+Tests if an actor is enabled
+## Parameters
+
+- **index**: Index of the actor
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

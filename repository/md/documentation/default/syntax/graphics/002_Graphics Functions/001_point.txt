@@ -1,0 +1,58 @@
+# Point
+<!--
+@name: Point
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Function** - Returns the colour index of a point on the screen
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+## Syntax Options
+**= Point**
+**= Point (** *x, y* **)**
+
+## Parameters
+- ***x***: The horizontal coordinate of the point to test
+- ***y***: The vertical coordinate of the point to test
+
+## Description
+- **Point** returns the palette index value of the colour at the point of the current graphics coordinates.
+
+- **Point (** *x, y* **)** returns the palette index value of the colour at the point of the coordinates *x, y.*
+
+If the coordinates are outside of the screen boundary, or the colour at the coordinates doesn|;t match a palette colour, the function will return -1.
+
+**Warning:**  Because AOZ uses true colour screens, if you have a palette with multiple instances of the same colour, only the index value of the first matching colour will be returned. Once a colour is on the screen, AOZ does not know which Ink colour was used to draw it.
+
+This can be seen in the following example program which draws 64 coloured squares using the first 64 palette colours. You will notice that the first colour (0) and the last colour (63) are both black, yet when you click the last one, it tells you that the colour is 0.
+
+
+## Example Code
+```basic
+border on
+border ink 1
+line width 2
+Locate 40,9 : Print "Click In Any Square"
+// Draw 64 coloured squares
+for x=0 to 7
+	for  y=0 to 7
+		ink y*8+x
+		bar x*100,y*100,95,95
+	next y
+next x
+// Main Loop
+do
+	repeat until mouse click
+	c=point(x mouse, y mouse)
+	locate 40,11 : print using "You Clicked Colour ##";c
+loop
+```
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMjUyODA4NjgzLDU4NzkyNTY2MCwtMTA0ND
+Q1NjgyMyw0NTQ5NDU0NjIsMTUxOTE3OTY3MCw5ODMzOTIwODks
+NzQ0MjUxODg5LDE5ODIzNjEwNDIsLTcyNDU5ODYxXX0=
+-->

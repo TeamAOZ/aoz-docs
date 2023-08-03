@@ -1,0 +1,61 @@
+# %name%
+<!--
+@name: %name%
+@description: Description of %name% for the search engines.
+@tags: List of the keywords separated by a comma
+@categories: List of the categories separated by a comma
+\-->
+<div class="compatibility">
+    <span>Compatibility</span>
+    <img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ"  />
+    <img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro"  />
+    <img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic"  />
+</div>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce facilisis feugiat felis lobortis luctus. Sed blandit quam vel nisl gravida, quis mattis mauris euismod. Sed accumsan velit et egestas dapibus. Sed eu diam id ipsum gravida consequat. Nunc iaculis erat eget massa molestie, eget luctus massa varius. Duis eu dolor sodales, hendrerit tortor dictum, gravida sem. Sed blandit elit id faucibus mollis. Proin sollicitudin rhoncus est sit amet blandit. Duis et ligula urna. Nulla nec rutrum orci, ac ullamcorper purus. Donec sollicitudin rutrum leo dictum vehicula. Fusce eget sem quis turpis suscipit facilisis. Nulla facilisi. Curabitur dui enim, pretium ac erat in, pulvinar varius libero. Sed et enim risus. Vestibulum id libero commodo, tempor eros nec, semper nibh.
+
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec ac interdum dolor. Nam mauris sem, blandit vulputate porta quis, interdum id urna. Curabitur porta egestas libero, id luctus nunc rhoncus sed. Donec porttitor lacus a felis pulvinar, eu sollicitudin nisl feugiat. Maecenas lacus eros, imperdiet non ex a, sodales iaculis eros. Nam id tellus maximus, pharetra odio a, pulvinar eros. Nulla vehicula augue et diam laoreet, ut efficitur risus auctor. Suspendisse id arcu tellus. Aenean nec mi eu nisl finibus condimentum eu id nulla. 
+
+## Syntax
+<b>Basic syntaxes:</b>
+> **%name** param1, param2, param3, param4, ...
+
+## Examples
+<b>Some examples:</b>
+```basic
+%name% "my_hero", Image$ = "magic"
+```
+<b>Little more complex examples:</b>
+```basic
+```
+## Parameters
+( italic ) = Optional
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Param1`**|index|Description of a mandatory index parameter.|
+|_`Param2`_|boolean|Description of an optional boolean parameter.|
+|_`Param3$`_|string|Description of an optional string parameter.|
+|_`Param4`_|integer|Description of an optional integer parameter.|
+|**Others parameters sorted by categorie**|||
+|_`Param1`_|integer|Other parameter.|
+|_`Param2`_|integer|Other parameter.|
+|_`Param3`_|integer|Other parameter.|
+|**Categorie 2**|||
+|_`Param1`_|integer|Other parameter.|
+|_`Param2`_|integer|Other parameter.|
+|_`Param3`_|integer|Other parameter.|
+
+## Events
+( italic ) = Optional
+|**Event**|**Description**|
+|---|---|
+|_`OnEvent1$`_|Name of the AOZ procedure to call for this event.|
+|_`OnEvent2$`_|Name of the AOZ procedure to call for this event.|
+|_`OnEvent3$`_|Name of the AOZ procedure to call for this event.|
+
+---
+<p  align="center"><img  valign="middle"  width="76px"  src="https://doc.aoz.studio/assets/images/en/image001.png"  /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEwODA3NjMzNzAsLTExNjE0MTU5NjBdfQ
+==
+-->

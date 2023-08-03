@@ -7,10 +7,47 @@
 \-->
 <div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
 
-Return the position of one of the axes of a gamepad
+Function that returns the position of one of the axes of a gamepad or joystick controller as a positive or negative percentagle.
+
+## Syntax
+
+position# = **Gamepad Axis(** controller,axis **)**
+
 ## Parameters
 
-- **GAMEPAD**: The number of the gamepad
-- **AXIS**: The number of the axis
+| Parameter | Description |
+|---|---|
+| **controller** | The gamepad controller ID |
+| **axis** | The axis ID on the controller |
+
+## Example
+
+```basic
+
+```
+
+## Description
+
+How exactly the axes work is dependent on the web browser, and the specific controller used, however, ***most*** controllers and browsers follow this standard, with a few exceptions:**\***  
+
+| Axis ID | Value | Action |
+|---|---|---|
+| 0 | -1.0 (-100%) | Move Left |
+| 0 | +1.0 (+100%) | Move Right |
+| 0 | 0 (0%) | No horizontal movement |
+| 1 | -1.0 (-100%) | Move Up |
+| 1 | +1.0 (+100%) | Move Down |
+| 1 | 0 (0%) | No vertical movement |
+
+On the primary joystick, Axis 0 is used for left and right, and axis 1 is used for up and down.
+
+**\*** At the time of this writing, Firefox and Mozilla-based browsers such as Seamonkey incorrectly offset the axes by one, skipping axis 0.  AOZ compensates for this.
+
+**Digital Controls vs. Analog**
+
+**NOTE:**  AOZ|;s simplified movement functions are designed for digital controls.  This means that they return a boolean result (**true** or **false**... meaning **on** or **off**).  If the primary axes are analog (variable), AOZ will map these analog values to these digital functions.  As such, we need a sensitivity control, that will determine how much movement is required to trigger the digital functions.  This sensitivity is set using **Gamepad Threshold**.
+
+See also:  **Gamepad Threshold**, **Gamepad Axes**
+
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

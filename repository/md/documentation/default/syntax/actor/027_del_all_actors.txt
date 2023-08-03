@@ -5,10 +5,14 @@
 @tags: 
 @categories: 
 \-->
-Delete all the actors
 
+**NOTE! This command is deprecated** and it will be removed in a future version. It is recommended to use the `Actor Del` command.
+ 
+---
+Delete All the actor
 
-***Better use Actor Del "\*"***
+## Syntax
+>**Del All Actors**
 
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

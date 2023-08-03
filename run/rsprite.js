@@ -55,7 +55,7 @@ function Sprite( aoz, parent, tags )
 		shadowX: 0,
 		shadowY: 0,
 		shadowBlur: 0,
-		shadowColor: 0,
+		shadowColor: null,
 		hRev: false,
 		vRev: false,
 		filters: new this.aoz.utilities.DrawFilters( this.aoz, this )
@@ -127,6 +127,8 @@ Sprite.prototype.get_this = function( index, mode )
 					get_y: self.get_shadowY,
 					set_x: self.set_shadowX,
 					set_y: self.set_shadowY,
+					set_blur: self.set_shadowBlur,
+					set_color: self.set_shadowColor,
 					get_image: self.get_image,
 					set_image: self.set_image
 				};

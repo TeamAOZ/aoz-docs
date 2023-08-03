@@ -89,8 +89,7 @@ Filesystem_HTTP.prototype.close = function( file, options, callback, extra )
 };
 Filesystem_HTTP.prototype.exist = function( path, options, callback, extra )
 {
-	if ( !options.noErrors )
-		throw 'disc_error';
+	this.read( path, options, callback, extra );
 	return undefined;
 };
 Filesystem_HTTP.prototype.bufferToArrayBuffer = function( data )
@@ -144,16 +143,23 @@ Filesystem_HTTP.prototype.read = function( path, options, callback, extra )
 		xhr.open( 'GET', path, true );
 		xhr.responseType = 'arraybuffer';
 
-		xhr.onload = function( event )
+		xhr.onreadystatechange = function()
+		{
+			if( this.readyState == 4 )
+			{
+				if( this.status == 200 )
 		{
 			var data = xhr.response;
-			if( data && xhr.status < 400 )
-			{
 				if ( options.responseType == 'text' )
 					data = self.bufferToString( data )
 				else if ( options.responseType == 'utf-8' )
 					data = self.bufferToUTF8( data )
 				callback( true, data, extra );
+				}
+				else
+				{ 
+					callback( false, 'file_not_found', extra );
+				}
 			}
 		}
 		xhr.send();

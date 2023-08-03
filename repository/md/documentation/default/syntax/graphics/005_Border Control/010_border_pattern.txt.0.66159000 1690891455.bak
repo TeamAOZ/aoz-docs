@@ -1,0 +1,45 @@
+# Border Pattern
+<!--
+@name: Border Pattern
+@description: 
+@tags: 
+@categories: 
+\-->
+
+**Instruction** - Define a fill pattern for borders
+
+## Syntax Options
+**Border Pattern** *index*, *scale*
+**Border Pattern**  *-index*, *scale*
+
+## Parameters
+
+- **index** : The index number of the fill pattern for the border.
+- **-index**: If the index number is preceded by a minus sign, then the corresponding image from the image bank will be used as a fill image for the border. For example -1 will use image 1.png
+This syntax is deprecated, you can use **Border Fill Image** instead, which will accept image numbers or names.
+- **scale**: Optional. The scale factor to be applied to the pattern or image.
+
+## Description
+There are 34 pre-defined, 2 colour patterns in total which originated in AMOS. They are all based on an 8 x 8 pixel image which which is repeated over and over to create a larger fill image.  In AOZ screens, they have been scaled to 4x their original size by default if no scale parameter is used. If the index is 0, no pattern will be drawn. See **Set Pattern** for more information.
+
+## Example Code
+```basic
+Palette 0,$3a3ad1,$ffff00	// Define colours
+Ink 1,2						// Set the drawing ink and fill ink colours
+Border On					// Turn on border drawing
+Line Width 30				// Set line thickness
+
+Border Pattern 3			// Select pattern 3
+Disc 400,540,360			// Draw a filled circle with a border
+Border Pattern 8,1			// Select pattern 8 with scale 1x
+Disc 960,540,360			// Draw a second filled circle with a border
+Border Pattern 14,8			// Select pattern 14 with scale 8x
+Disc 1520,540,360			// Draw a third filled circle with a border
+```
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbOTg5MTU3Mjg4LC0yMjIxMDk1OTksMTY2MD
+c2OTk1MywtMTI0NDYxMzE1NiwxMjExMTA2ODcwLDE0NDIxNDc3
+NzAsMjIwMTA3Nzc5LC0xNTMwNTY2NDcsMTI3OTY4NjU0NCwtNT
+I5NzkyNjk3XX0=
+-->

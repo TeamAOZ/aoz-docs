@@ -132,7 +132,7 @@ RenderingContext2D.prototype.end = function()
 	{
 		for ( var e in this.eventList )
 			this.canvas.removeEventListener( e, this.eventList[ e ] );
-		window.removeEventListener( 'resize', this.doResize )
+		//window.removeEventListener( 'resize', this.doResize )
 	}
 };
 RenderingContext2D.prototype.resize = function( force, width, height )
@@ -197,15 +197,18 @@ RenderingContext2D.prototype.setDisplayArea = function()
 	}
 	this.xLeftDraw = ( this.width - this.widthDraw ) / 2;
 	this.yTopDraw = ( this.height - this.heightDraw ) / 2;
-
 	switch( this.platform )
 	{
 		case 'amiga':
 			this.hardLeftX = 110;
 			this.hardWidth = 342;
-			switch( this.tvStandard )
+			switch( this.display.tvStandard )
 			{
 				default:
+				case 'modern':
+					this.hardTopY = 30;
+					this.hardHeight = 286 - this.hardTopY;
+					break;
 				case 'pal':
 					this.hardTopY = 30;
 					this.hardHeight = 311 - this.hardTopY;
@@ -215,6 +218,12 @@ RenderingContext2D.prototype.setDisplayArea = function()
 					this.hardHeight = 261 - this.hardTopY;
 					break;
 			}
+			break;
+		case 'atari':
+			this.hardLeftX = 0;
+			this.hardTopY = 0;
+			this.hardWidth = this.display.width;
+			this.hardHeight = this.display.height;
 			break;
 		default:
 			this.hardLeftX = 0;
@@ -680,7 +689,8 @@ RenderingContext2D.prototype.render = function( force, isDebugger )
 						self.context.save();
 						self.context.globalAlpha = sprite.vars.alpha;
 						self.context.filter = sprite.vars.filters.getFilterString( sprite.vars.filters, self.filters );
-						if ( !sprite.vars.shadowX == 0 || !sprite.vars.shadowY == 0 )
+						//if ( !sprite.vars.shadowX == 0 || !sprite.vars.shadowY == 0 )
+						if ( sprite.vars.shadowColor != null )
 						{
 							self.context.shadowOffsetX = sprite.vars.shadowX;
 							self.context.shadowOffsetY = sprite.vars.shadowY;
@@ -758,23 +768,21 @@ RenderingContext2D.prototype.render = function( force, isDebugger )
 		}
 
 		// Display Full Screen Icons?
-		/* TODO!
-		if ( this.manifest.display.fullScreenIcon && this.fullScreenIcons )
+		if ( this.aoz.manifest.display.fullScreenIcon && this.fullScreenIcons )
 		{
-			if ( this.isFullScreen() )
+			if ( this.renderer.isFullScreen() )
 				this.fullScreenIconOn = 'small_screen';
 			else
 				this.fullScreenIconOn = 'full_screen';
 			var image = this.fullScreenIcons[ this.fullScreenIconOn ];
-			this.fullScreenIconX = this.manifest.display.fullScreenIconX >= 0 ? this.manifest.display.fullScreenIconX * this.fullScreenIconRatio : this.width + this.manifest.display.fullScreenIconX  * this.fullScreenIconRatio;
-			this.fullScreenIconY = this.manifest.display.fullScreenIconY >= 0 ? this.manifest.display.fullScreenIconY * this.fullScreenIconRatio : this.height + this.manifest.display.fullScreenIconY * this.fullScreenIconRatio;
+			this.fullScreenIconX = this.aoz.manifest.display.fullScreenIconX >= 0 ? this.aoz.manifest.display.fullScreenIconX * this.fullScreenIconRatio : this.width + this.aoz.manifest.display.fullScreenIconX  * this.fullScreenIconRatio;
+			this.fullScreenIconY = this.aoz.manifest.display.fullScreenIconY >= 0 ? this.aoz.manifest.display.fullScreenIconY * this.fullScreenIconRatio : this.height + this.aoz.manifest.display.fullScreenIconY * this.fullScreenIconRatio;
 			this.fullScreenIconWidth = image.width * this.fullScreenIconRatio;
 			this.fullScreenIconHeight = image.height * this.fullScreenIconRatio;
-			this.context.fillStyle = this.manifest.display.backgroundColor;
+			this.context.fillStyle = this.aoz.manifest.display.backgroundColor;
 			this.context.fillRect( this.fullScreenIconX, this.fullScreenIconY, this.fullScreenIconWidth, this.fullScreenIconHeight );
 			this.context.drawImage( image, this.fullScreenIconX, this.fullScreenIconY, this.fullScreenIconWidth, this.fullScreenIconHeight );
 		}
-		*/
 	}
 
 	// The end!
@@ -812,10 +820,11 @@ RenderingContext2D.prototype.drawScreen = function( screen )
 		this.context.filter = 'none';	// This line is 100% necessary, filters aren't cleared if there are no filters in current screen.
 		this.context.filter = screen.vars.filters.getFilterString( this.filters );
 		this.context.globalCompositeOperation = screen.screenBlend;
-		if ( screen.vars.angle == 0 && screen.vars.skewX == 0 && screen.vars.skewY == 0 && screen.vars.offsetX == 0 && screen.vars.offsetY == 0)
+		if ( screen.vars.angle == 0 && screen.vars.skewX == 0 && screen.vars.skewY == 0 && screen.vars.offsetX == 0 && screen.vars.offsetY == 0 && screen.vars.scaleX >= 0 && screen.vars.scaleY >= 0 )
 		{
 			deltaX = screen.vars.hotspotX * xScaleScreen;
 			deltaY = screen.vars.hotspotY * yScaleScreen;
+
 			if ( screen.screen3D )
 			{
 				var info1 = this.getDocumentCoordPercentages( 0, 0, screen );
@@ -880,7 +889,7 @@ RenderingContext2D.prototype.drawScreen = function( screen )
 										posX = bob.clipping.width / 2 * xScaleScreen * Math.cos( c ) + cx;
 		 								posY = bob.clipping.height / 2 * yScaleScreen * Math.sin( c ) + cy;
 										x = (Math.cos(bob.clipping.angle ) * (posX - cx )) - (Math.sin(bob.clipping.angle ) * (posY - cy)) + cx;
-										y = (Math.sin(bob.clipping.angle  ) * (posX - cx )) + (Math.cos(bob.clipping.angle ) * (posY - cy)) + cy;									
+										y = (Math.sin(bob.clipping.angle ) * (posX - cx )) + (Math.cos(bob.clipping.angle ) * (posY - cy)) + cy;									
 										path.lineTo( x, y );
 									}
 									path.closePath();
@@ -892,7 +901,7 @@ RenderingContext2D.prototype.drawScreen = function( screen )
 						self.context.globalAlpha = bob.vars.alpha * screen.vars.alpha;
 						self.context.shadowOffsetX = bob.vars.shadowX;
 						self.context.shadowOffsetY = bob.vars.shadowY;
-						if ( !bob.vars.shadowX == 0 || !bob.vars.shadowY == 0 )
+						if ( bob.vars.shadowColor != null )
 						{
 							self.context.shadowBlur = bob.vars.shadowBlur;
 							self.context.shadowColor = bob.aoz.utilities.getModernRGBAString( bob.vars.shadowColor );
@@ -905,7 +914,8 @@ RenderingContext2D.prototype.drawScreen = function( screen )
 						{
 							self.context.translate( xBob, yBob );
 							self.context.rotate( bob.angleDisplay.z );
-							self.context.transform( xScale, bob.skewDisplay.y * yScale, bob.skewDisplay.x * xScale, yScale, 0, 0);
+							self.context.transform( xScale, 0, 0, yScale, 0, 0);
+							self.context.transform( 1, bob.skewDisplay.y * yScale, bob.skewDisplay.x * xScale, 1, 0, 0);
 							self.context.translate( -bob.hotSpot.x, -bob.hotSpot.y );
 							self.context.drawImage( canvas, 0, 0 );
 						}	
@@ -946,7 +956,8 @@ RenderingContext2D.prototype.drawScreen = function( screen )
 			this.context.save();
 			this.context.translate( xDrawScreen, yDrawScreen );
 			this.context.rotate( screen.vars.angle );
-			this.context.transform( xScaleScreen / screen.scale.x, screen.vars.skewY, screen.vars.skewX, yScaleScreen / screen.scale.y, 0, 0 );
+			this.context.transform( xScaleScreen / screen.scale.x, 0, 0, yScaleScreen / screen.scale.y, 0, 0 );
+			this.context.transform( 1, screen.vars.skewY, screen.vars.skewX, 1, 0, 0 );
 			this.context.translate( -screen.vars.hotspotX * screen.scale.x, -screen.vars.hotspotY * screen.scale.y );
 			this.context.drawImage( screen.canvas, offsetX, offsetY, width, height, 0, 0, width, height );
 
@@ -956,7 +967,7 @@ RenderingContext2D.prototype.drawScreen = function( screen )
 				// Clip the canvas
 				
 				path = new Path2D();
-				path.rect( Math.max(-offsetX, 0),Math.max( -offsetY,0), screen.vars.width * screen.scale.x - Math.abs( offsetX ), screen.vars.height * screen.scale.y - Math.abs( offsetY ) );
+				path.rect( Math.max(-offsetX, 0),Math.max( -offsetY,0), screen.dimension.width * screen.scale.x - Math.abs( offsetX ), screen.dimension.height * screen.scale.y - Math.abs( offsetY ) );
 				this.context.clip( path );
 
 				// Go through all the bobs...
@@ -1009,7 +1020,7 @@ RenderingContext2D.prototype.drawScreen = function( screen )
 						self.context.globalAlpha = bob.vars.alpha * screen.vars.alpha;
 						self.context.shadowOffsetX = bob.vars.shadowX;
 						self.context.shadowOffsetY = bob.vars.shadowY;
-						if ( !bob.vars.shadowX == 0 || !bob.vars.shadowY == 0 )
+						if ( bob.vars.shadowColor != null )
 						{
 							self.context.shadowBlur = bob.vars.shadowBlur;
 							self.context.shadowColor = bob.aoz.utilities.getModernRGBAString( bob.vars.shadowColor );
@@ -1022,7 +1033,8 @@ RenderingContext2D.prototype.drawScreen = function( screen )
 						{
 							self.context.translate( xBob, yBob );
 							self.context.rotate( bob.angleDisplay.z );
-							self.context.transform( bob.scaleDisplay.x * screen.scale.x, bob.skewDisplay.y * bob.scaleDisplay.y * screen.scale.y , bob.skewDisplay.x * bob.scaleDisplay.x * screen.scale.x, bob.scaleDisplay.y * screen.scale.y, 0, 0 );
+							self.context.transform( bob.scaleDisplay.x * screen.scale.x, 0 , 0, bob.scaleDisplay.y * screen.scale.y, 0, 0 );
+							self.context.transform( 1, bob.skewDisplay.y * bob.scaleDisplay.y * screen.scale.y , bob.skewDisplay.x * bob.scaleDisplay.x * screen.scale.x, 1, 0, 0 );
 							self.context.translate( -bob.hotSpot.x * screen.scale.x, -bob.hotSpot.y * screen.scale.y );
 							self.context.drawImage( canvas, 0, 0 );
 						}

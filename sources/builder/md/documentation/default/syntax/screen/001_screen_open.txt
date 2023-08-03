@@ -1,0 +1,22 @@
+# Screen Open
+<!--
+@name: Screen Open
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /></div>
+
+Open a new screen
+## Parameters
+
+- **index**: The index of the screen to open. Any existing screen will be replaced by the new one
+- **width**: The width of the screen in pixels
+- **height**: The height of the screen in pixels
+- _numberOfColor_ (optional): The number of colors of the palette (optional)
+- _pixelMode_ (optional): Lowres, Hires, Laced or any combination
+- _lines_ (optional): Number of lines in the text window associated with the screen
+- _border_ (optional): 0 for a borderless window, number of the border if a border is desired
+- _tags&dollar;_ (optional): List of eventual tags
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,11 @@
+# Lib Close
+<!--
+@name: Lib Close
+@description: 
+@tags: 
+@categories: 
+\-->
+Close a library. May be implemented in AOZ (for example for Windows DLLs), has no effect in current version
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

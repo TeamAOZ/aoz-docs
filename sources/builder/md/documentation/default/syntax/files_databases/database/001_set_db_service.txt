@@ -1,0 +1,14 @@
+# Set DB Service
+<!--
+@name: Set DB Service
+@description: 
+@tags: 
+@categories: 
+\-->
+Set the Database Service configuration
+## Parameters
+
+- _URL&dollar;_ (optional): URL of the service for the request calling. "localhost" by default
+- _Security_ (optional): If True, the system will use the HTTPS protocol. False by default( HTTP protocol ).
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

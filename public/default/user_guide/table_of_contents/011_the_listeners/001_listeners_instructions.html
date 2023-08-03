@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/the%20listener%20instructions'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/the%20listener%20instructions'>
+        <meta name='pagename' content='AOZ Docs - The Listener Instructions'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - The Listener Instructions</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="the-listener-instructions">The Listener Instructions</h1>&#10;<h2 id="oncollision">OnCollision$</h2>&#10;<p>If the actor collides with another actor, then this Listener calls the defined AOZ procedure by passing it the following properties if required:</p>&#10;<ul>&#10;<li><strong>EVENT$:</strong> Event name (always &#8220;<strong>on_collision</strong>&#8221;).</li>&#10;<li><strong>INDEX1:</strong> Value of the monitored actor index.</li>&#10;<li><strong>INDEX1$:</strong> The name of the supervised actor.</li>&#10;<li><strong>GROUP1$</strong> : Name of the group of actors supervised.</li>&#10;<li><strong>ANIM1$:</strong> The name of the supervised actor.</li>&#10;<li><strong>INDEX2:</strong> Value of the collided actor index.</li>&#10;<li><strong>INDEX2$:</strong> The name of the actor we collided with.</li>&#10;<li><strong>GROUP2$</strong> : Name of the group that was collided with.</li>&#10;<li><strong>IMAGE:</strong> Value of the image's index of the collided actor.</li>&#10;<li><strong>IMAGE$:</strong> The name of image of the collided actor.<br/>&#10;<br/></li>&#10;</ul>&#10;<h2 id="oncontrol">OnControl$</h2>&#10;<p>Returns the values of the **Control$ ** activated for the actor. Example: if <strong>Control$=&#8220;keyboard&#8221;</strong> this will give the values related to the keyboard. &#8220;mouse&#8221; for the mouse, &#8230;</p>&#10;<ul>&#10;<li><strong>EVENT$:</strong> Event name (always &#8220;<strong>on_control</strong>&#8221;).</li>&#10;<li><strong>CONTROL$:</strong> Name of the instruction of this event.</li>&#10;<li><strong>INDEX:</strong> Value of the monitored actor index.</li>&#10;<li><strong>INDEX$:</strong> Name corresponding to the monitored actor.</li>&#10;<li><strong>BUTTON:</strong> Index of the mouse button that was activated.&#10;<ul>&#10;<li>0: No button pressed</li>&#10;<li>1: The left button</li>&#10;<li>2: The right button</li>&#10;<li>4: The central button or wheel (if there is one)</li>&#10;</ul>&#10;</li>&#10;<li><strong>ALTKEY:</strong> Returns True or False if the Alt key has been pressed or not.</li>&#10;<li><strong>CTRLKEY:</strong> Returns True or False if the Ctrl key has been pressed or not.</li>&#10;<li><strong>SHIFTKEY:</strong> Returns True or False if the Shift key has been pressed or not.</li>&#10;<li><strong>METAKEY:</strong> Returns True or False if the &#8220;Windows&#8221; or &#8220;CMD&#8221; (Mac) button has been pressed or not.</li>&#10;<li><strong>MOUSEX:</strong> Numerical value corresponding to the horizontal position of the mouse.</li>&#10;<li><strong>MOUSEY:</strong> Numerical value corresponding to the vertical position of the mouse.</li>&#10;</ul>&#10;<br/>&#10;<h2 id="onlimit">OnLimit$</h2>&#10;<p>Moving an actor can be limited to a rectangular area of the screen, for example to prevent it from falling off the screen.<br/>&#10;When this area is delineated, the procedure defined is called when the actor hits one of the edges of the area, passing it the following properties:</p>&#10;<ul>&#10;<li><strong>EVENT$:</strong> Event name (always &#8220;<strong>on_limit</strong>&#8221;).</li>&#10;<li><strong>INDEX:</strong> Value of the monitored actor index.</li>&#10;<li><strong>INDEX$:</strong> Name corresponding to the monitored actor.</li>&#10;<li><strong>LIMIT$:</strong> The name of the edge reached (&#8220;left&#8221;, &#8220;right&#8221;, &#8220;top&#34;, &#8220;bottom&#8221;).  <strong>leftlimit:</strong>  X coordinate**.**</li>&#10;<li><strong>rightlimit:</strong> X coordinate**.**</li>&#10;<li><strong>toplimit:</strong>  Y coordinate**.**</li>&#10;<li><strong>bottomlimit:</strong> Y coordinate**.**<br/>&#10;<br/></li>&#10;</ul>&#10;<h2 id="onanimchange">OnAnimChange$</h2>&#10;<p>When the actor is animated (when the <strong>Spritesheet<span class="katex--inline">** setting has been entered), **OnAnimChange</span></strong> calls the defined AOZ procedure by passing it the following properties:</p>&#10;<ul>&#10;<li><strong>EVENT$:</strong> Event name, &#8220;change&#8221; or  &#8220;complete.&#8221; If the name is  &#8220;complete,&#8221; it's because the animation is over.</li>&#10;<li><strong>INDEX:</strong> Value of the monitored actor index.</li>&#10;<li><strong>INDEX$:</strong> Name corresponding to the monitored actor.</li>&#10;<li><strong>ANIM$:</strong> The name of the current animation.</li>&#10;<li><strong>FRAME:</strong> The image number currently being played for the current animation.</li>&#10;<li><strong>TOTALFRAMES:</strong> The total number of images for the current animation.</li>&#10;</ul>&#10;<p>Let's see an example with <strong>OnAnimChange$</strong>:</p>&#10;<pre><code class="prism language-basic">Actor Animation &#34;monsteranim&#34;, Sequence$=&#34;magic-0, magic-1, magic-2, magic-3, magic-4, magic-5&#34;, LoopMove=true&#10;Actor &#34;monster&#34;, Anim$=&#34;monsteranim&#34;, StartX=1100, EndX=500, Y=400, Duration=3000, LoopMove=True, OnAnimChange$=&#34;ANIMPROC&#34;&#10;&#10;Procedure ANIMPROC [EVENT$, INDEX$, ANIM$, FRAME]&#10;&#9;Locate 1,4 : Print &#34;  Actor:&#34;   INDEX$   &#34;  EVENT$:&#34;   EVENT$   &#34;  FRAME&#34; ; FRAME ; &#34;  ANIM$:&#34;   ANIM$&#10;&#9;If EVENT$ = &#34;onanimcomplete&#34; Then Bell&#10;&#9;If FRAME = 2 Then Shoot&#10;End Procedure&#10;</code></pre>&#10;<p>Our first line sets an Actor animation under the name &#8220;monsteranim&#8221; and with the sequences of images &#8220;magie-0&#8230;magic5&#8221; so we have here 6 frames.<br/>&#10;LoopMove=True defines that this animation will loop so after frame 6 the frame 1 will be played again and again.<br/>&#10;The procedure will be called for each change of animation frame, here we print some relevant information such as <strong>EVENT$</strong> which contains the type of event : &#8220;<strong>onanimchange</strong>&#8221; or &#8220;<strong>onanicomplete</strong>&#8221;.</p>&#10;<br/>&#10;<h2 id="onchange">OnChange$</h2>&#10;<p>This listener calls the AOZ procedure defined each time the actor undergoes a change in position, transparency, size or rotation, passing the following properties:</p>&#10;<ul>&#10;<li><strong>EVENT$:</strong> Event name: &#8220;change&#8221; or  &#8220;complete&#8221;.  If the name is  &#8220;complete&#8221;,  it's because the actor's move is complete.</li>&#10;<li><strong>INDEX:</strong> Value of the monitored actor index.</li>&#10;<li><strong>INDEX$:</strong> Name corresponding to the monitored actor.</li>&#10;<li><strong>X:</strong> Position X of the actor.</li>&#10;<li><strong>Y:</strong> Position Y of the actor.</li>&#10;<li><strong>ALPHA:</strong> Actor's opacity.</li>&#10;<li><strong>SCALEX:</strong> Horizontal expansion/reduction rate.</li>&#10;<li><strong>SCALEY:</strong> Vertical expansion/reduction rate.</li>&#10;<li><strong>ANGLE:</strong> Actor rotation angle.</li>&#10;<li><strong>HREV:</strong> True if the actor is flipped horizontally, False if not.</li>&#10;<li><strong>VREV:</strong> True if the actor is flipped vertically, False if not.</li>&#10;<li><strong>SKEWX:</strong> Horizontal distortion of the actor.</li>&#10;<li><strong>SKEWY:</strong> Vertical distortion of the actor.</li>&#10;</ul>&#10;<p>Of course you don't have to listen out for every actor. You are free to monitor only those you reckon are important to watch.</p>&#10;<h2 id="onmouse">OnMouse$</h2>&#10;<p>This listener calls the AOZ procedure defined each time the mouse is used with an actor click, mouse over&#8230;, passing the following values to:</p>&#10;<ul>&#10;<li><strong>EVENT$</strong> properties:<br/>&#10;&#8211; <strong>mouseclick</strong>&#34;: when the user clicks on the Actor<br/>&#10;&#8211; <strong>mousedown</strong>&#34;: when the user keeps a mouse button pressed<br/>&#10;&#8211; <strong>mouseup</strong>&#34;: when the user releases a mouse button<br/>&#10;&#8211; <strong>mousemove</strong>&#34;: when the user hovers the mouse pointer over the Actor<br/>&#10;&#8211; <strong>dragdrop</strong>&#34;: when the user moves the Actor using the mouse</li>&#10;<li><strong>BUTTON:</strong> Index of the mouse button that was activated.</li>&#10;<li><strong>INDEX:</strong> Value of the monitored actor index.</li>&#10;<li><strong>INDEX$:</strong> Name corresponding to the monitored actor.</li>&#10;<li><strong>X:</strong> Position X of the actor.</li>&#10;<li><strong>Y:</strong> Position Y of the actor.</li>&#10;</ul>&#10;<br/>&#10;Let's see a simple example with **OnMouse$**:&#10;<pre><code class="prism language-basic">Actor &#34;magic&#34;, X=100, Y=100, Image$=&#34;magic.png&#34;, OnMouse$=&#34;CLICK&#34;&#10;&#10;Procedure CLICK [EVENT$, BUTTON, INDEX$, X, Y]&#10;  Locate 1,10: Print &#34;  Actor:&#34; INDEX$   &#34;  EVENT$:&#34; EVENT$   &#34;  BUTTON:&#34; Str$(BUTTON)   &#34;  X:&#34; ; Int(X) ; &#34;  Y:&#34; ; Int(Y)&#10;End Proc&#10;</code></pre>&#10;<p>Our first line shows the Actor &#8220;magic&#8221; at the coordinates 100,100. The <strong>OnMouse$</strong> parameter indicates the name of the AOZ procedure to be called for each mouse action on this Actor. The AOZ procedure that will be called here is <strong>CLICK</strong>.</p>&#10;<p>This procedure, as we will see, can retrieve a certain amount of information. In this example the <strong>CLICK</strong> procedure retrieves the <strong>EVENT$</strong> information, which contains the type of action produced by the mouse on the Actor.</p>&#10;<ul>&#10;<li><strong>EVENT$</strong>: is &#8220;mouseclick&#8221; here.</li>&#10;<li><strong>BUTTON</strong>: is an integer corresponding to the mouse button that is pressed:&#10;<ul>&#10;<li>0: No button pressed</li>&#10;<li>1: The left button</li>&#10;<li>2: The right button</li>&#10;<li>4: The central button or wheel (if there is one)</li>&#10;</ul>&#10;</li>&#10;<li><strong>INDEX$</strong>: returns the name of the Actor concerned by the mouse action. If you also want to capture Actors identified by a number, you can use <strong>INDEX</strong>.</li>&#10;<li><strong>X</strong> and <strong>Y</strong>: return the position of the mouse relative to the screen.<br/>&#10;<br/></li>&#10;</ul>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbNTQ2NDI1Mjk4LC04MTMyMDIzMjMsMTUyOD&#10;I0Mjk3NSwtODc2Mjc1NjE2LC0xMzA0MDU0OTI1LC01OTgzMTkx&#10;MSwxNTIxNzA3NzkzLDg3MDIzMjAyNiw3MzA5OTgxMTZdfQ==&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/011_the_listeners/001_listeners_instructions.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/011_the_listeners/001_listeners_instructions.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

@@ -178,15 +178,13 @@
 	 this.shadowX = 0;
 	 this.shadowY = 0;
 	 this.shadowBlur = 0;
-	 this.shadowColor = 0;
+	 this.shadowColor = null;
 	 this.textShadowX = 0;
 	 this.textShadowY = 0;
 	 this.textShadowBlur = 0;
-	 this.textShadowColor = 0;
-	 this.pattern = 0;
-	 this.patternScale = 1;
-	 this.borderPattern = 0;
-	 this.borderPatternScale = 1;
+	 this.textShadowColor = null;
+	 this.fillPattern = { index: 0, offsetX: 0, offsetY: 0, scaleX: 1, scaleY: 1, repeat: 0 };
+	 this.borderPattern = { index: 0, offsetX: 0, offsetY: 0, scaleX: 1, scaleY: 1, repeat: 0 };
 	 this.gradient = null;
 	 this.borderGradient = null;
 	 this.paintBorder = false;
@@ -227,6 +225,7 @@ this.bobsContext.addContext("v1_0_collisions");
 this.bobsContext.addContext("v1_0_sprites");
 this.bobsContext.addContext("v1_0_strings");
 this.bobsContext.addContext("v1_0_td");
+this.bobsContext.addContext("v1_0_textwindows");
 this.bobsContext.addContext("v1_0_time");
 
 	 this.bobsToUpdate = false;
@@ -269,7 +268,6 @@ this.bobsContext.addContext("v1_0_time");
 	 this.setAlpha( typeof args.alpha != 'undefined' ? args.alpha : 1,  '#update' );
 	 this.setAngle( { z: typeof args.angle != 'undefined' ? args.angle : 0 },  '#update' );
 	 this.setVisible( typeof args.visible != 'undefined' ? args.visible : true, '#update' );
-
 	return this;
 };
 Screen.prototype.completeCreation = function( args, callback, extra )
@@ -291,7 +289,7 @@ Screen.prototype.completeCreation = function( args, callback, extra )
 			}
 	 }
 	}
-	callback( true, this, extra );
+	callback( false, this, extra );
 	return true;
 }
  Screen.prototype.close = function()
@@ -726,8 +724,17 @@ Screen.prototype.completeCreation = function( args, callback, extra )
  };
  Screen.prototype.hZone2 = function( position )
  {
-	 position.x = ( position.x - this.vars.x ) / this.renderScale.x;
-	 position.y = ( position.y - this.vars.y ) / this.renderScale.y;
+	
+	 position.x = ( position.x - this.vars.x ) / this.vars.scaleX / this.renderScale.x + this.vars.offsetX + this.vars.hotspotX;
+	 position.y = ( position.y - this.vars.y ) / this.vars.scaleY / this.renderScale.y + this.vars.offsetY + this.vars.hotspotY;
+	 if ( this.vars.angle != 0 )	 
+	 	position = this.utilities.rotate( position.x, position.y, this.vars.hotspotX + this.vars.offsetX, this.vars.hotspotY + this.vars.offsetY, - this.vars.angle );
+	 if ( this.vars.skewX != 0 || this.vars.skewY != 0 )
+	 {
+ 		var pos = position;
+		position.x = pos.x - ( ( pos.y - ( pos.x - this.vars.hotspotX - this.vars.offsetX) * this.vars.skewY ) - this.vars.hotspotY - this.vars.offsetY) * this.vars.skewX;
+	 	position.y = pos.y - ( position.x - this.vars.hotspotX - this.vars.offsetX) * this.vars.skewY;
+	 }
 	 return this.zone( undefined, position );
  };
 
@@ -1028,6 +1035,7 @@ Screen.prototype.completeCreation = function( args, callback, extra )
 	 }
 	 else
 	 {
+		 this.context.globalCompositeOperation = this.getCompositeOperation();
 		 this.context.globalAlpha = this.getColorAlpha( color );
 		 this.context.fillStyle = this.getColorString( color );
 		 this.context.fillRect( zone.x, zone.y, zone.width, zone.height );
@@ -1113,7 +1121,7 @@ Screen.prototype.completeCreation = function( args, callback, extra )
 			 this.context.rotate( angle );
 			 this.context.transform( scaleX, skew.y * scaleY, skew.x * scaleX, scaleY, 0, 0 )
 			 this.context.translate( -image.hotSpotX, -image.hotSpotY );
-			 this.context.drawImage( canvas, 0, 0, image.width, image.height, 0, 0, image.width * scaleX * this.scale.x, image.height * scaleY * this.scale.y );
+			 this.context.drawImage( canvas, 0, 0, image.width, image.height, 0, 0, image.width * this.scale.x, image.height * this.scale.y );
 		 }
 		 this.context.restore();
 		 this.endDrawing();
@@ -1266,12 +1274,12 @@ Screen.prototype.completeCreation = function( args, callback, extra )
 
 	 function clear( ct )
 	 {
-		 ct.globalAlpha = self.getColorAlpha( 0 );
+		 ct.globalAlpha = 1;
 		 ct.fillStyle = self.getColorString( 0 );
 		 if ( scroll.dx < 0 )
-			 ct.fillRect( scroll.zone.x + scroll.zone.width + scroll.dx, scroll.zone.y, -scroll.zone.dx, scroll.zone.height );
+			 ct.fillRect( scroll.zone.x + scroll.zone.width + scroll.dx, scroll.zone.y, -scroll.dx, scroll.zone.height );
 		 else if ( scroll.dx > 0 )
-			 ct.fillRect( scroll.zone.x, scroll.zone.y, scroll.zone.dx, scroll.zone.height );
+			 ct.fillRect( scroll.zone.x, scroll.zone.y, scroll.dx, scroll.zone.height );
 		 if ( scroll.dy < 0 )
 			 ct.fillRect( scroll.zone.x, scroll.zone.y + scroll.zone.height + scroll.dy, scroll.zone.width, -scroll.dy );
 		 else if ( scroll.dy > 0 )
@@ -1429,7 +1437,7 @@ Screen.prototype.lineDashOffset = function( number )
 	 this.context.shadowOffsetX = 0;
 	 this.context.shadowOffsetY = 0;
 	 this.context.shadowBlur = 0;
-	 this.context.shadowColor = 0;
+	 this.context.shadowColor = null;
  };
  Screen.prototype.setLineWidth = function( width )
  {
@@ -1467,30 +1475,73 @@ Screen.prototype.lineDashOffset = function( number )
 	 if ( typeof borderInk != 'undefined' )
 		 this.borderInk = borderInk;
  };
- Screen.prototype.setPattern = function( pattern, scale, control )
+  Screen.prototype.setPattern = function( pattern, scale, offset, repeat, control, type )
  {
 	 control = typeof control == 'undefined' ? 1 : control;
-	 scale = typeof scale != 'undefined' ? Math.max( scale, 0.01 ) : 1.0001;
+	 scale.x = typeof scale.x != 'undefined' ? Math.max( scale.x, 0.01 ) : 1.0001;
+	 scale.y = typeof scale.y != 'undefined' ? scale.y : scale.x;
+	 offset.x = typeof offset.x != 'undefined' ? offset.x : 0;
+	 offset.y = typeof offset.y != 'undefined' ? offset.y : 0;
+	 repeat = typeof repeat != 'undefined' ? repeat : 0;
+	 if ( repeat < 0 || repeat > 3 )
+	 	 throw { error: 'illegal_function_call', parameters: 'Repeat out of range 0-3 :', repeat };
+	 repeat = typeof repeat != 'undefined' ? repeat : 0;
 	 if ( pattern > 34 && control == 1 )
 		 throw { error: 'illegal_function_call', parameter: pattern };
-	 if ( typeof pattern == 'string')
-	 	 this.pattern = control * this.banks.getImage( 'images', pattern, this.aoz.currentContextName ).index;
+	 if ( type == 0 )
+	 {
+		if ( typeof pattern == 'string')
+			this.fillPattern.index = control * this.banks.getImage( 'images', pattern, this.aoz.currentContextName ).index;
+		else
+			this.fillPattern.index = control * pattern;
+		this.fillPattern.scaleX = scale.x;
+		this.fillPattern.scaleY = scale.y;
+		this.fillPattern.offsetX = offset.x;
+		this.fillPattern.offsetY = offset.y;
+		switch ( repeat )
+		{
+			case 0:
+				this.fillPattern.repeat = 'repeat';
+				break;
+			case 1:
+				this.fillPattern.repeat = 'repeat-x';
+				break;
+			case 2:
+				this.fillPattern.repeat = 'repeat-y';
+				break;
+			case 3:
+				this.fillPattern.repeat = 'no-repeat';
+				break;
+		}
+	 }
 	 else
-	 	 this.pattern = control * pattern;
-	 this.patternScale = scale;
+	 {
+		if ( typeof pattern == 'string')
+			this.borderPattern.index = control * this.banks.getImage( 'images', pattern, this.aoz.currentContextName ).index;
+		else
+			this.borderPattern.index = control * pattern;
+		this.borderPattern.scaleX = scale.x;
+		this.borderPattern.scaleY = scale.y;
+		this.borderPattern.offsetX = offset.x;
+		this.borderPattern.offsetY = offset.y;
+		switch ( repeat )
+		{
+			case 0:
+				this.borderPattern.repeat = 'repeat';
+				break;
+			case 1:
+				this.borderPattern.repeat = 'repeat-x';
+				break;
+			case 2:
+				this.borderPattern.repeat = 'repeat-y';
+				break;
+			case 3:
+				this.borderPattern.repeat = 'no-repeat';
+				break;
+		}
+	 }
  };
- Screen.prototype.setBorderPattern = function( pattern, scale, control )
- {
-	 control = typeof control == 'undefined' ? 1 : control;
-	 scale = typeof scale != 'undefined' ? Math.max( scale, 0.01 ) : 1.0001;
-	 if ( pattern > 34 && control == 1 )
-		 throw { error: 'illegal_function_call', parameter: pattern };
-	 if ( typeof pattern == 'string')
-	 	 this.borderPattern = control * this.banks.getImage( 'images', pattern, this.aoz.currentContextName ).index;
-	 else
-	 	 this.borderPattern = control * pattern;
-	 this.borderPatternScale = scale;
- };
+
  Screen.prototype.setPaint = function( onOff )
  {
 	 this.paintBorder = onOff;
@@ -1521,7 +1572,7 @@ Screen.prototype.lineDashOffset = function( number )
  {
 	 blend = typeof blend == 'undefined' ? 0 : blend;
 	 if ( blend < 0 || blend > 25 )
-		 throw { error: 'illegal_function_call', parameter: 'blend value out of range 0 - 25' };
+		 throw { error: 'illegal_function_call', parameters:[ 'blend value out of range 0 - 25 (',blend,')' ]};
 	 this.screenBlend = Blends[ blend ];
  };
  Blends = 
@@ -1557,7 +1608,7 @@ Screen.prototype.lineDashOffset = function( number )
  {
 	 intensity = typeof intensity == 'undefined' ? 1 : intensity / 100;
 	 if ( intensity < 0 || intensity > 255 )
-		 throw { error: 'illegal_function_call', parameter : 'intensity value out of range 0 - 25500' };
+		 throw { error: 'illegal_function_call', parameters:['intensity value out of range 0 - 25500 (',intensity * 100,')'] };
 	 this.shade = intensity;
  };
  Screen.prototype.getPixelBlock = function( x, y, width, height )
@@ -1592,14 +1643,16 @@ Screen.prototype.lineDashOffset = function( number )
  {
 	 coords.x1 = typeof coords.x1 != 'undefined' ? coords.x1 : this.grPosition.x;
 	 coords.y1 = typeof coords.y1 != 'undefined' ? coords.y1 : this.grPosition.y;
-	 if ( typeof coords.x2 == 'undefined' || typeof coords.y2 == 'undefined' )
-		 throw 'syntax_error';
+	 coords.x2 = typeof coords.x2 != 'undefined' ? coords.x2 : coords.x1;
+	 coords.y2 = typeof coords.y2 != 'undefined' ? coords.y2 : coords.y1;
+	 coords.x2 = typeof coords.width != 'undefined' ? coords.x1 + coords.width : coords.x2;
+	 coords.y2 = typeof coords.height != 'undefined' ? coords.y1 + coords.height : coords.y2;
 	 var fixedCoords = this.utilities.fixCoords( coords, this.scale );
 	 this.beginDrawing();
-	 if (this.pattern == 0)
+	 if (this.fillPattern.index == 0)
 		 this.context.strokeStyle = this.getColorString(this.getInk());
 	 else
-		 this.context.strokeStyle = this.createPattern(this.pattern,this.patternScale);
+		 this.context.strokeStyle = this.createPattern( this.fillPattern );
 	 this.context.setLineDash(this.linePattern);
 	 this.context.beginPath();
 	 this.context.moveTo( fixedCoords.x1, fixedCoords.y1 );
@@ -1651,10 +1704,10 @@ Screen.prototype.lineDashOffset = function( number )
 	 if ( typeof points.px1 == 'undefined' || typeof points.py1 == 'undefined' )
 		 throw 'syntax_error';
 	 this.beginDrawing();
-	 if (this.pattern == 0)
+	 if (this.fillPattern.index == 0)
 		 this.context.strokeStyle = this.getColorString(this.getInk());
 	 else
-		 this.context.strokeStyle = this.createPattern(this.pattern,this.patternScale);
+		 this.context.strokeStyle = this.createPattern( this.fillPattern );
 	 this.context.setLineDash(this.linePattern);
 	 this.context.beginPath();
 	 this.context.moveTo( fixedCoords.x1, fixedCoords.y1 );
@@ -1665,16 +1718,19 @@ Screen.prototype.lineDashOffset = function( number )
 		 if ( typeof points.px2 == 'undefined' || typeof points.py2 == 'undefined' )
 			 throw 'syntax_error';
 		 if ( radius )
+		 {
 			 this.context.arcTo( points.px1,  points.py1,  points.px2,  points.py2, radius );
+			 this.context.lineTo( points.px2,  points.py2 );
+		 }
 		 else
 			 this.context.bezierCurveTo( points.px1,  points.py1,  points.px2,  points.py2, fixedCoords.x2, fixedCoords.y2 );
 	 }
 	 if ( this.shadowColor )
 		 this.drawShadowOn();
-	 if ( this.pattern == 0 )
+	 if ( this.fillPattern.index == 0 )
 		 this.context.strokeStyle = this.getColorString( this.getInk() );
 	 else
-		this.context.strokeStyle = this.createPattern( this.pattern, this.patternScale );
+		this.context.strokeStyle = this.createPattern( this.fillPattern );
 	 this.context.stroke();
 	 if ( this.shadowColor )
 		 this.noShadow();
@@ -1760,10 +1816,10 @@ Screen.prototype.lineDashOffset = function( number )
 	var rgt = 0;
 	var scanVars = {x:x,y:y,nextScan:0,count:0,abort:0,done:0,pixel:pixel,startColor:startColor,mode:mode,border:borderColor};
 	this.beginDrawing();
-	if ( this.pattern == 0 )
+	if ( this.fillPattern.index == 0 )
    		this.context.fillStyle = this.getColorString( color );
     else
-   		this.context.fillStyle = this.createPattern( this.pattern, this.patternScale );
+   		this.context.fillStyle = this.createPattern( this.fillPattern );
 	this.context.beginPath();
 	this.context.moveTo( startX + 0.5, startY + 0.5 );
 	do
@@ -1852,6 +1908,16 @@ Screen.prototype.lineDashOffset = function( number )
 		}
     };
  };
+ Screen.prototype.particle = function( particle )
+ {
+	if ( particle.x === undefined || particle.y === undefined || particle.size === undefined )
+		throw 'syntax_error';
+	particle.color = typeof particle.color !='undefined' ? particle.color : this.getInk();
+	particle.alpha = typeof particle.alpha !='undefined' ? particle.alpha : this.getColorAlpha(particle.color);
+	this.context.globalAlpha = particle.alpha;
+	this.context.fillStyle = this.getColorString(particle.color);
+	this.context.fillRect( particle.x + 0.5, particle.y + 0.5, particle.size, particle.size );
+ };
  Screen.prototype.bar = function( rectangle )
  {
 	 this.box( rectangle, true );
@@ -1863,9 +1929,14 @@ Screen.prototype.lineDashOffset = function( number )
 	 if ( coords )
 	 {
 		 if ( typeof coords.x2 == 'undefined' || typeof coords.y2 == 'undefined' )
-			 throw 'syntax_error';
+		 	throw 'syntax_error';
 		 rectangle.width = coords.x2 - rectangle.x;
 		 rectangle.height = coords.y2 - rectangle.y;
+	 }
+	 else
+	 {
+		 rectangle.width = typeof rectangle.width != 'undefined' ? rectangle.width : 100;
+		 rectangle.height = typeof rectangle.height != 'undefined' ? rectangle.height : rectangle.width;
 	 }
 	 if ( fill )
 	 {
@@ -1889,7 +1960,7 @@ Screen.prototype.lineDashOffset = function( number )
 		 else if ( rectangle.height > 0 )
 			 rectangle.height --;
 	 }
-	 if ( rectangle.width == 0 && rectangle.height == 0 )
+	 if ( rectangle.width == 0 && rectangle.height == 0 && this.lineWidth == 1 )
 	 {
 		 this.plot( { x:rectangle.x, y:rectangle.y } );
 		 return;
@@ -1927,7 +1998,9 @@ Screen.prototype.lineDashOffset = function( number )
  {
 	 rectangle.x = typeof rectangle.x != 'undefined' ? rectangle.x : this.grPosition.x;
 	 rectangle.y = typeof rectangle.y != 'undefined' ? rectangle.y : this.grPosition.y;
-	 var zone = this.utilities.getZone( rectangle, { width:100, height: rectangle.width  / 1.5 }, this.scale, true );
+	 rectangle.width = typeof rectangle.width == 'undefined' ? 100 : rectangle.width;
+	 rectangle.height = typeof rectangle.height == 'undefined' ? rectangle.width / 1.5 : rectangle.height;
+	 var zone = this.utilities.getZone( rectangle, { width:rectangle.width, height:rectangle.height }, this.scale, true );
 	 angle1 = isNaN( angle1 ) ? 0 : angle1;
 	 angle2 = isNaN( angle2 ) ? 2 * Math.PI : angle2;
 	 rotation = isNaN( rotation ) ? 0 : rotation;
@@ -1974,9 +2047,11 @@ Screen.prototype.lineDashOffset = function( number )
  {
 	 rectangle.x = typeof rectangle.x != 'undefined' ? rectangle.x : this.grPosition.x;
 	 rectangle.y = typeof rectangle.y != 'undefined' ? rectangle.y : this.grPosition.y;
+	 rectangle.width = typeof rectangle.width == 'undefined' ? 100 : rectangle.width;
+	 rectangle.height = typeof rectangle.height == 'undefined' ? rectangle.width : rectangle.height;
 	 sides = typeof sides != 'undefined' ? sides : 3;
 	 rotation = isNaN( rotation ) ? 0 : rotation;
-	 var zone = this.utilities.getZone( rectangle, { width:100, height:100 }, this.scale, true );
+	 var zone = this.utilities.getZone( rectangle, { width:rectangle.width, height:rectangle.height }, this.scale, true );
 	 var a = 2 * Math.PI / sides;
 	 var x, y;
 	 this.beginDrawing();
@@ -2087,6 +2162,34 @@ Screen.prototype.lineDashOffset = function( number )
 	 this.grPosition.x = rectangle.x;
 	 this.grPosition.y = rectangle.y;
  };
+ Screen.prototype.triangle = function ( vertices, angle, fill )
+ {
+	 vertices.x1 = typeof vertices.x1 != 'undefined' ? vertices.x1 : this.grPosition.x;
+	 vertices.y1 = typeof vertices.y1 != 'undefined' ? vertices.y1 : this.grPosition.y;
+	 if ( typeof vertices.x2 == 'undefined' || typeof vertices.y2 == 'undefined' || typeof vertices.x3 == 'undefined' || typeof vertices.y3 == 'undefined' )
+	 	 throw 'syntax_error';
+	 angle = isNaN( angle ) ? 0 : angle;
+	 var cx = ( vertices.x1 + vertices.x2 + vertices.x3 ) / 3;
+	 var cy = ( vertices.y1 + vertices.y2 + vertices.y3 ) / 3;
+	 var vertex1 = angle == 0 ? { x:vertices.x1, y:vertices.y1 } : this.utilities.rotatePoint( {x:vertices.x1, y:vertices.y1 }, { x:cx, y:cy }, angle );
+	 var vertex2 = angle == 0 ? { x:vertices.x2, y:vertices.y2 } : this.utilities.rotatePoint( {x:vertices.x2, y:vertices.y2 }, { x:cx, y:cy }, angle );
+	 var vertex3 = angle == 0 ? { x:vertices.x3, y:vertices.y3 } : this.utilities.rotatePoint( {x:vertices.x3, y:vertices.y3 }, { x:cx, y:cy }, angle );
+	 this.beginDrawing();
+	 this.context.beginPath();
+	 this.context.moveTo( vertex1.x * this.scale.x, vertex1.y * this.scale.y );
+	 this.context.lineTo( vertex2.x * this.scale.x, vertex2.y * this.scale.y );
+	 this.context.lineTo( vertex3.x * this.scale.x, vertex3.y * this.scale.y );
+	 this.context.closePath();
+	 if ( fill )
+		 this.fillIt();
+	 else
+		 this.lineIt();
+	 if ( this.shadowColor )
+		 this.noShadow();
+	 this.endDrawing();	
+	 this.grPosition.x = cx;
+	 this.grPosition.y = cy;
+ };
  Screen.prototype.star = function( rectangle, points, rotation, fill )
  {
 	 rectangle.x = typeof rectangle.x != 'undefined' ? rectangle.x : this.grPosition.x;
@@ -2099,7 +2202,7 @@ Screen.prototype.lineDashOffset = function( number )
 	 var x, y;
 	 this.beginDrawing();
 	 this.context.beginPath();
-	 for ( var c = 0; c < 2 * Math.PI + 0.0001; c += a * 2 )
+	 for ( var c = 0; c < 2 * Math.PI-0.0001; c += a * 2 )
 	 {
 		 x = zone.x + zone.height * Math.cos( c + rotation );
 		 y = zone.y + zone.height * Math.sin( c + rotation );
@@ -2131,10 +2234,10 @@ Screen.prototype.lineDashOffset = function( number )
 	  	 drawBorder();
 		 this.context.globalAlpha = this.getColorAlpha(this.getInk());
 	 }
-	 if ( this.pattern == 0 )
+	 if ( this.fillPattern.index == 0 )
 		 this.context.fillStyle = this.getColorString(this.getInk());
 	 else
-		 this.context.fillStyle = this.createPattern(this.pattern, this.patternScale );
+		 this.context.fillStyle = this.createPattern( this.fillPattern );
 	 this.context.fill();
 	 if ( this.borderFirst == false )
 		 drawBorder();
@@ -2144,16 +2247,16 @@ Screen.prototype.lineDashOffset = function( number )
 		{
 			self.context.filter = self.borderFilters.getFilterString();
 			self.noShadow();
-			self.context.setLineDash(self.linePattern);
-			if (self.borderGradient)
+			self.context.setLineDash( self.linePattern );
+			if ( self.borderGradient )
 				self.context.strokeStyle = self.borderGradient;
-			else if (self.borderPattern)
+			else if ( self.borderPattern.index )
 			{
-				self.context.strokeStyle = self.createPattern(self.borderPattern, self.borderPatternScale );
+				self.context.strokeStyle = self.createPattern( self.borderPattern );
 			}
 			else
 			{
-				self.context.strokeStyle = self.getColorString(self.getBorderInk());			
+				self.context.strokeStyle = self.getColorString(self.getBorderInk());
 				self.context.globalAlpha = self.getColorAlpha(self.getBorderInk());
 			}
 			self.context.stroke();
@@ -2163,36 +2266,66 @@ Screen.prototype.lineDashOffset = function( number )
  };
  Screen.prototype.lineIt = function()
  {
-	 if (this.pattern == 0)
+	 if (this.fillPattern.index == 0)
 		 this.context.strokeStyle = this.getColorString(this.getInk());
 	 else
-		 this.context.strokeStyle = this.createPattern( this.pattern, this.patternScale );
+		 this.context.strokeStyle = this.createPattern( this.fillPattern );
 	 this.context.setLineDash(this.linePattern);
 	 this.context.stroke();
  };
- Screen.prototype.createPattern = function( pattern, scale )
+ Screen.prototype.createPattern = function( pattern )
  {
 	 // Create a little canvas
-	 if (pattern == 1000)
+	 if (pattern.index == 1000)
 		 return this.gradient;
-	 if ( pattern < 0 )
+	 if ( pattern.index < 0 )
 	 {
-		var image = this.banks.getImage( 'images', - pattern, this.aoz.currentContextName );
+		var image = this.banks.getImage( 'images', - pattern.index, this.aoz.currentContextName );
 		var canvas = image.getCanvas( 0, 0 );
 		var patternCanvas = document.createElement( 'canvas' );
-	 	patternCanvas.width = Math.min( image.width * scale * this.scale.x, this.vars.width * this.vars.scaleX ) ;
-		patternCanvas.height = Math.min( image.height * scale * this.scale.y, this.vars.height * this.vars.scaleY );
+		var sizeX = image.width * pattern.scaleX * this.scale.x;
+		var sizeY = image.height * pattern.scaleY * this.scale.y;
+	 	patternCanvas.width = Math.min( sizeX, this.vars.width * this.vars.scaleX ) ;
+		patternCanvas.height = Math.min( sizeY, this.vars.height * this.vars.scaleY );
 		var context = canvas.getContext( '2d' );
 		var patternContext = patternCanvas.getContext( '2d' );
 		if ( image )
 		{
 			patternContext.imageSmoothingEnabled = false;
-			patternContext.drawImage( canvas, 0, 0, image.width, image.height, 0, 0, image.width * scale * this.scale.x, image.height * scale * this.scale.y );
+			if ( pattern.offsetX == 0 && pattern.offsetY == 0 )
+				patternContext.drawImage( canvas, 0, 0, image.width, image.height, 0, 0, sizeX, sizeY );
+			if ( pattern.offsetX != 0 || pattern.offsetY !=0 )
+			{
+				patternContext.clearRect( 0, 0, patternContext.width, patternContext.height );
+				var sx = 0, sy = 0;
+				if ( pattern.offsetX > 0 )
+					sx = pattern.offsetX % image.width;
+				if ( pattern.offsetX < 0 )
+					sx = image.width + pattern.offsetX % image.width;
+				if ( pattern.offsetY > 0 )
+					sy = pattern.offsetY % image.height;
+				if ( pattern.offsetY < 0 )
+					sy = image.height + pattern.offsetY % image.height;
+				patternContext.drawImage( canvas, 0, 0, image.width, image.height, -sx * pattern.scaleX * this.scale.x, -sy * pattern.scaleY * this.scale.y, sizeX, sizeY );
+				if ( sx > 0 )
+					patternContext.drawImage( canvas, 0, 0, image.width, image.height, -sx * pattern.scaleX * this.scale.x + sizeX, -sy * pattern.scaleY * this.scale.y, sizeX, sizeY );
+				if ( sy > 0 )
+					patternContext.drawImage( canvas, 0, 0, image.width, image.height, -sx * pattern.scaleX * this.scale.x, -sy * pattern.scaleY * this.scale.y + sizeY, sizeX, sizeY );
+				if (sx > 0 && sy > 0 )
+					patternContext.drawImage( canvas, 0, 0, image.width, image.height, -sx * pattern.scaleX * this.scale.x + sizeX, -sy * pattern.scaleY * this.scale.y + sizeY, sizeX, sizeY );	
+			}
+			else
+			{
+				patternContext.drawImage( canvas, 0, 0, image.width, image.height, 0, 0, sizeX, sizeY );
+			}
 		}
-		return this.context.createPattern( patternCanvas, 'repeat' );
+		return this.context.createPattern( patternCanvas, pattern.repeat );
 	 }
-	 if ( scale == 1.0001 )
-	 	scale = this.platform != 'amiga' ? 4 : 1;
+	 if ( pattern.scaleX == 1.0001 && pattern.scaleY == 1.0001 )
+	 {
+	 	 pattern.scaleX = this.aoz.platform != 'amiga' ? 4 : 1;
+		 pattern.scaleY = this.aoz.platform != 'amiga' ? 4 : 1;
+	 }
 	 var canvas = document.createElement( 'canvas' );
 	 canvas.width = 8 * this.scale.x;
 	 canvas.height = 8 * this.scale.y;
@@ -2202,7 +2335,8 @@ Screen.prototype.lineDashOffset = function( number )
 	 var colorInk = this.utilities.getRGBAStringColors( this.getColorString( this.getInk() ) );
 	 var alphaBack = this.getColorAlpha( this.getFillInk() );
 	 var alphaInk = this.getColorAlpha( this.getInk() );
-	 var source = Patterns[ pattern ];
+	 var source = Patterns[ pattern.index ];
+	 
 	 for ( var y = 0; y < 8; y++ )
 	 {
 		 for ( yy = 0; yy < this.scale.y; yy++ )
@@ -2233,14 +2367,15 @@ Screen.prototype.lineDashOffset = function( number )
 	 }
 	 context.putImageData( imageData, 0, 0 );
 	 var patternCanvas = document.createElement( 'canvas' );
-	 patternCanvas.width = Math.min( canvas.width * scale * this.scale.x, this.vars.width * this.vars.scaleX ) ;
-	 patternCanvas.height = Math.min( canvas.height * scale * this.scale.y, this.vars.height * this.vars.scaleY );
+	 patternCanvas.width = Math.min( canvas.width * pattern.scaleX , this.vars.width * this.vars.scaleX ) ;
+	 patternCanvas.height = Math.min( canvas.height * pattern.scaleY , this.vars.height * this.vars.scaleY );
 	 var patternContext = patternCanvas.getContext( '2d' );
 	 patternContext.imageSmoothingEnabled = false;
-	 patternContext.drawImage( canvas, 0, 0, canvas.width, canvas.height, 0, 0, canvas.width * scale * this.scale.x, canvas.height * scale * this.scale.y );
+	 patternContext.drawImage( canvas, 0, 0, canvas.width, canvas.height, 0, 0, canvas.width * pattern.scaleX , canvas.height * pattern.scaleY  );
 	 // Create the pattern
-	 return this.context.createPattern( patternCanvas, 'repeat' );
+	 return this.context.createPattern( patternCanvas, pattern.repeat );
  };
+
  Patterns =
  [
 	 [ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ],         //  0
@@ -2279,6 +2414,7 @@ Screen.prototype.lineDashOffset = function( number )
 	 [ 0x55, 0x00, 0x55, 0x00, 0x55, 0x00, 0x55, 0x00 ],         //  33
 	 [ 0x11, 0x00, 0x44, 0x00, 0x11, 0x00, 0x44, 0x00 ]          //  34
  ]
+ 
 Screen.prototype.setGradient = function( args, color, type )
 {	
 	var colorArray = color.split(',');
@@ -2286,7 +2422,7 @@ Screen.prototype.setGradient = function( args, color, type )
 	var stopPoint = 0;
 	var stopColor = '';
 	if (colorArray.length % 2 != 0)
-		throw { error: 'illegal_function_call', parameter: 'Invalid Color String' };
+		throw { error: 'illegal_function_call', parameters:[ 'Invalid Color String' ]};
 	if (typeof args.r1 != 'undefined' && typeof args.r2 != 'undefined')
 	{
 		if ( type == 0 )
@@ -2313,7 +2449,7 @@ Screen.prototype.setGradient = function( args, color, type )
 		stopPoint = parseFloat( colorArray[ c * 2 ] ) / 100;
 		stopColor = colorArray[ c * 2 + 1 ];
 		if ( stopPoint < 0 || stopPoint > 1 )
-			throw {error:'illegal_function_call',parameter:'Stop Point out of range 0 to 100'};
+			throw {error:'illegal_function_call',parameters:['Stop Point out of range 0 to 100']};
 		if ( stopColor.substring(0,1) == '$' )
 			stopColor = '#' + stopColor.substring(1);
 		if ( type == 0 )
@@ -2322,7 +2458,7 @@ Screen.prototype.setGradient = function( args, color, type )
 			this.borderGradient.addColorStop( stopPoint, stopColor );
 	}
 	if ( type == 0 )
- 		this.pattern = 1000;
+ 		this.fillPattern.index = 1000;
 };
 //////////////////////////////////////////////////////////////////////
 // Filters
@@ -2497,7 +2633,7 @@ Screen.prototype.getBobFilterString = function()
  };
  Screen.prototype.bob = function( index, position, image, contextName )
  {
-	contextName = typeof contextName == 'undefined' ? this.aoz.currentContextName : contextName;
+	 contextName = typeof contextName == 'undefined' ? this.aoz.currentContextName : contextName;
 	 var bob = this.bobsContext.getElement( contextName, index );
 	 if ( !bob )
 	 {
@@ -2545,12 +2681,14 @@ Screen.prototype.getBobFilterString = function()
 	 {
 		 this.bobsContext.parseAll( undefined, function( bob )
 		 {
-			 bob.setShadow({x:0,y:0});
+			// bob.setShadow({x:0,y:0});
+			bob.setShadow({color:null});
 		 } );
 	 }
 	 else
 	 {
-		 this.aoz.currentScreen.bobShadow(index,{x:0,y:0});
+		 // this.aoz.currentScreen.bobShadow(index,{x:0,y:0});
+		 this.aoz.currentScreen.bobShadow(index,{color:null});
 		 this.bobsToUpdate = true;
 		 this.setModified();
 	 }
@@ -2650,39 +2788,39 @@ Screen.prototype.getBobFilterString = function()
 	 this.setModified();
 	 this.bobsToUpdate = true;
  };
- Screen.prototype.clipBob = function( index, rectangle, fromInstruction )
+ Screen.prototype.clipBob = function( index, args, fromInstruction )
  {
-	 if ( rectangle )
+	 if ( args )
 	 {
-		 rectangle.height = typeof rectangle.height != 'undefined' ? rectangle.height : rectangle.width;
-		 if ( typeof rectangle.x1 != 'undefined' && typeof rectangle.x2 != 'undefined' )
+		 args.height = typeof args.height != 'undefined' ? args.height : args.width;
+		 if ( typeof args.x1 != 'undefined' && typeof args.x2 != 'undefined' )
 		 	{
-	 		 rectangle.width = rectangle.x2 - rectangle.x1 + 1;
-			 rectangle.x = rectangle.x1;
+	 		 args.width = args.x2 - args.x1 + 1;
+			 args.x = args.x1;
 			}
 		 else
-			 rectangle.x1 = rectangle.x;
-		 if ( typeof rectangle.y1 != 'undefined' && typeof rectangle.y2 != 'undefined' )
+			 args.x1 = args.x;
+		 if ( typeof args.y1 != 'undefined' && typeof args.y2 != 'undefined' )
 			{
-			 rectangle.height = rectangle.y2 - rectangle.y1 + 1;
-			 rectangle.y = rectangle.y1;
+			 args.height = args.y2 - args.y1 + 1;
+			 args.y = args.y1;
 			}
 		 else
-			 rectangle.y1 = rectangle.y;
+			 args.y1 = args.y;
 	 }
 	 if ( typeof index != 'undefined' )
 	 {
 		 var bob = this.bobsContext.getElement( this.aoz.currentContextName, index, 'bob_not_defined' );
-		 bob.setClipping( rectangle, fromInstruction );
+		 bob.setClipping( args, fromInstruction );
 		 bob.set( bob.positionDisplay, bob.imageObject.index, '#update' );
 	 }
 	 else
 	 {
 		 this.bobsContext.parseAll( this.aoz.currentContextName, function( bob )
 		 {
-			 if ( rectangle )
+			 if ( args )
 			 {
-				 bob.setClipping( rectangle, fromInstruction );
+				 bob.setClipping( args, fromInstruction );
 				 bob.set( bob.positionDisplay, bob.imageObject.index, '#update' );
 			 }
 			 else
@@ -3141,7 +3279,7 @@ Screen.prototype.getBobFilterString = function()
  Screen.prototype.text = function( position, text, align, maxwidth )
  {
 
-	 if ( text===undefined ) // Handle Text with no parameters (like Print) BJF
+	 if ( text === undefined && position === undefined ) // Handle Text with no parameters (like Print) BJF
 	 {
 		 this.aoz.currentScreen.grPosition.y = this.aoz.currentScreen.grPosition.y + this.aoz.currentScreen.fontHeight;
 		 this.aoz.currentScreen.grPosition.x = 0;
@@ -3153,6 +3291,7 @@ Screen.prototype.getBobFilterString = function()
 
 	 position.x = typeof position.x != 'undefined' ? position.x : this.grPosition.x;
 	 position.y = typeof position.y != 'undefined' ? position.y : this.grPosition.y;
+	 text = typeof text != 'undefined' ? text : '';
 	 maxwidth = typeof maxwidth != 'undefined' ? maxwidth : this.textLength( text );
 	 var textAlign = "left";
 	 var textBaseLine = "alphabetic";
@@ -3210,10 +3349,7 @@ Screen.prototype.getBobFilterString = function()
 	 if ( !this.onlyInk )
 	 {
 		 var zone = this.utilities.getZone( { x: x, y: y, width: width, height: height }, this.dimension, this.scale );
-		// if ( this.pattern == 0 )
-			 this.context.fillStyle = this.getColorString( this.getFillInk() );
-		// else
-		//	 this.context.fillStyle = this.createPattern( this.pattern );
+		 this.context.fillStyle = this.getColorString( this.getFillInk() );
 		 this.context.globalAlpha = this.getColorAlpha( this.getFillInk() );
 		 this.context.fillRect( zone.x, zone.y, zone.width, zone.height );
 	 }
@@ -3231,30 +3367,37 @@ Screen.prototype.getBobFilterString = function()
 		 this.context.textAlign = 'left';
 		 this.context.textBaseline = 'top';
 		 this.context.direction = direction;
-		 if ( this.pattern == 1000 )
+		 if ( this.fillPattern.index == 1000 )
 		 	this.context.fillStyle = this.gradient;
-		 else if ( this.pattern != 0 )
-		 	this.context.fillStyle = this.createPattern(this.pattern, this.patternScale);
+		 else if ( this.fillPattern.index != 0 )
+		 	this.context.fillStyle = this.createPattern( this.fillPattern );
 		 else
 		 	this.context.fillStyle = color;
 		 this.context.globalAlpha = alpha;
-		 this.context.font = this.utilities.getFontString( this.font.fontInformation.name, this.fontHeight * this.scale.x, this.fontWeight, this.fontItalic );
-		 if ( this.textShadowColor )
-			 this.textShadowOn();
-		 if ( this.borderFirst == true )
-		 {
-		 drawBorder();
 		 this.context.filter = this.drawFilters.getFilterString();
+		 this.context.font = this.utilities.getFontString( this.font.fontInformation.name, this.fontHeight * this.scale.x, this.fontWeight, this.fontItalic );
+		 if( this.textMode == 'border' && this.textShadowColor )
+		 {
+			 this.textShadowOn();
+		 	 drawBorder();
+			 this.context.fillText( text, x * this.scale.x, y * this.scale.y, drawWidth );
+			 this.noShadow();
 		 }
+		 else if ( this.textMode != 'border' && this.textShadowColor )
+		 	 this.textShadowOn();
+		 if ( this.borderFirst == true )
+			 drawBorder();
 		 if ( this.textMode == 'fill' || this.textMode == 'border' )
 			 this.context.fillText( text, x * this.scale.x, y * this.scale.y, drawWidth );
-		 if ( this.borderFirst == false )
+		 if ( this.borderFirst == false && this.textMode == 'border')
+		 {
 			drawBorder();
+		 }
 		 else if ( this.textMode == 'outline' )
 		 {
 			 this.context.setLineDash(this.linePattern);
 			 this.context.strokeStyle = color;
-			 this.context.strokeText( text, x * this.scale.x, y * this.scale.y, drawWwidth );
+			 this.context.strokeText( text, x * this.scale.x, y * this.scale.y, drawWidth );
 		 }
 		 this.noShadow();
 	 }
@@ -3263,15 +3406,15 @@ Screen.prototype.getBobFilterString = function()
 	 this.grPosition.y = position.y;
 	 function drawBorder()
 	 {
-		 if ( self.textMode == 'border')
+		 if ( self.textMode == 'border' )
 		 {
+			self.context.filter = 'none';
 			self.context.filter = self.borderFilters.getFilterString();
-			self.noShadow();
 			self.context.setLineDash(self.linePattern);
 			if (self.borderGradient)
 				self.context.strokeStyle = self.borderGradient;
-			else if (self.borderPattern)
-				self.context.strokeStyle = self.createPattern(self.borderPattern, self.borderPatternScale );
+			else if ( self.borderPattern.index )
+				self.context.strokeStyle = self.createPattern( self.borderPattern );
 			else
 			{
 				self.context.strokeStyle = self.getColorString(self.getBorderInk());
@@ -3279,6 +3422,7 @@ Screen.prototype.getBobFilterString = function()
 			}
 			self.context.strokeText( text, x * self.scale.x, y * self.scale.y, drawWidth );
 			self.context.filter = 'none';
+			self.context.filter = self.drawFilters.getFilterString();
 		}
 	 };
  };

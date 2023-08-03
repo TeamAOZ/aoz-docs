@@ -42,7 +42,7 @@ function Banks( aoz )
 	this.banks[ 7 ] = {};
 	this.banks[ 8 ] = {};
 	this.quickBanks[ "application" ] = {};
-	this.banks[ 1 ][ 'application' ] = new ImageBank( this.aoz, [], [], [ "#000000","#FFFFFF","#D1D1D1","#A2A2A2","#737373","#444444","#FF0000","#D10000","#A20000","#730000","#440000","#00FF00","#00D100","#00A200","#007300","#004400","#FFFF00","#D1D100","#A2A200","#737300","#444400","#FF7F00","#E27100","#C46200","#A65300","#884400","#0000FF","#0000D1","#0000A2","#000073","#000044","#00FFFF","#00D1D1","#00A2A2","#007373","#004444","#FF00FF","#D100D1","#A200A2","#730073","#440044","#FFA100","#FFB312","#FFC625","#FFD837","#FFEB4A","#FFFE5D","#002965","#123975","#244985","#365995","#4869A5","#5A79B5","#BF717F","#B26773","#A45D66","#975359","#89494C","#7B3F3F","#8252B4","#623E87","#41295A","#21152D","#000000" ], { hotSpots: [], masks: '""', alpha: false, domain: 'images', type: 'images', path: '1.images' } );
+	this.banks[ 1 ][ 'application' ] = new ImageBank( this.aoz, ["fnt_default.js"], ["image/png"], [ "#000000","#FFFFFF","#D1D1D1","#A2A2A2","#737373","#444444","#FF0000","#D10000","#A20000","#730000","#440000","#00FF00","#00D100","#00A200","#007300","#004400","#FFFF00","#D1D100","#A2A200","#737300","#444400","#FF7F00","#E27100","#C46200","#A65300","#884400","#0000FF","#0000D1","#0000A2","#000073","#000044","#00FFFF","#00D1D1","#00A2A2","#007373","#004444","#FF00FF","#D100D1","#A200A2","#730073","#440044","#FFA100","#FFB312","#FFC625","#FFD837","#FFEB4A","#FFFE5D","#002965","#123975","#244985","#365995","#4869A5","#5A79B5","#BF717F","#B26773","#A45D66","#975359","#89494C","#7B3F3F","#8252B4","#623E87","#41295A","#21152D","#000000" ], { hotSpots: [{ x: 0, y: 0 },], masks: '""', alpha: false, domain: 'images', type: 'images', path: '1.images' } );
 	this.banks[ 3 ][ 'application' ] = new DataBank( this.aoz, [], 0, { domain: 'musics', type: 'musics', path: '3.musics' } );
 	this.banks[ 6 ][ 'application' ] = new ImageBank( this.aoz, [], [], [ "#000000","#FFFFFF","#D1D1D1","#A2A2A2","#737373","#444444","#FF0000","#D10000","#A20000","#730000","#440000","#00FF00","#00D100","#00A200","#007300","#004400","#FFFF00","#D1D100","#A2A200","#737300","#444400","#FF7F00","#E27100","#C46200","#A65300","#884400","#0000FF","#0000D1","#0000A2","#000073","#000044","#00FFFF","#00D1D1","#00A2A2","#007373","#004444","#FF00FF","#D100D1","#A200A2","#730073","#440044","#FFA100","#FFB312","#FFC625","#FFD837","#FFEB4A","#FFFE5D","#002965","#123975","#244985","#365995","#4869A5","#5A79B5","#BF717F","#B26773","#A45D66","#975359","#89494C","#7B3F3F","#8252B4","#623E87","#41295A","#21152D","#000000" ], { hotSpots: [], masks: '""', alpha: false, domain: 'icons', type: 'icons', path: '6.icons' } );
 	this.banks[ 2 ][ "application" ] = new TDBank( this.aoz, [], [], { domain: "3D", type: "3D" } );
@@ -517,7 +517,8 @@ function ImageBank( aoz, imageList, imageTypesList, palette, options )
 	this.aoz = aoz;
 	this.utilities = aoz.utilities;
 	this.palette = palette;
-	options.masks = options.masks.length > 0 ? JSON.parse( options.masks ) :[];
+	options.masks = ( typeof options.masks == 'undefined' ? [] : options.masks );
+	options.masks = options.masks.length > 0 ? JSON.parse( options.masks ) : [];
 	this.options = options;
 	this.domain = options.domain;
 	this.type = options.type;
@@ -548,6 +549,8 @@ ImageBank.prototype.loadList = function( imageList, imageTypesList, options )
 		var infos = this.context.getElementInfosFromFilename( this.domain, imageList[ i ], 'image', i + 1, indexMap );
 		infos.path = './resources/' + this.path + '/' + imageList[ i ];
 		infos.number = i;
+		if ( typeof infos.index == 'undefined' )
+			infos.index = 10000000 + i;
 		this.utilities.loadUnlockedImage( infos.path, { type: imageTypesList[ i ] }, function( response, imageLoaded, extra )
 		{
 			if ( response )
@@ -557,6 +560,7 @@ ImageBank.prototype.loadList = function( imageList, imageTypesList, options )
 					imageLoaded = self.utilities.makeTransparentImage( imageLoaded );
 					
 				// Set color 0 transparent
+				
 				var image =
 				{
 					aoz: self.aoz,
@@ -793,7 +797,7 @@ ImageBank.prototype.setElement = function( index, canvas, hotSpot, tags )
 };
 ImageBank.prototype.getElement = function( index )
 {
-	var image = this.context.getElement( this.domain, index, 'image_not_defined' );
+	var image = this.context.getElement( this.domain, index, '' );
 	if ( image && image.canvas )
 		return image;
 	throw { error: 'image_not_defined', parameter: index };
@@ -986,6 +990,8 @@ function SampleBank( aoz, soundList, soundListTypes, options )
 	this.context = new AOZContext( this.aoz, this.domain, {} );
 	this.soundList = soundList;
 	this.soundListTypes = soundListTypes;
+	if ( soundList )
+		this.loadList( soundList, soundListTypes, options );
 };
 SampleBank.prototype.isType = function( types )
 {

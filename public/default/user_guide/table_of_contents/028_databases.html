@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/databases'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/databases'>
+        <meta name='pagename' content='AOZ Docs - DATABASES'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - DATABASES</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="databases">DATABASES</h1>&#10;<h2 id="save-our-souls">Save, our Souls</h2>&#10;<p>Preamble: We believe that AOZ Studio should simplify all aspects of programming. The creation and management of databases is an area which we also offer you brand new solutions.</p>&#10;<p>If you need to save and load data, there are different solutions ; in this chapter we will see how to save data in local memory and in a local or remote real database.</p>&#10;<h2 id="save-in-the-local-memory.">Save in the local memory.</h2>&#10;<p>The local memory of browsers (e.g. Chrome) can store data in the form of Cookies, but be careful only as long as the browser cache memory is not deleted.</p>&#10;<p>For security reasons, browsers prohibit writing directly to the hard drive of your computer (to prevent any website or web application from installing some codes).</p>&#10;<p>In AOZ we have sophisticated databases instruction sets to save data, that we will see in the next chapter, but if you want to save a file or data simply it is possible to do it in this cache memory with the Open In / Open Out / Close  statements.</p>&#10;<p>Note: Three code examples can be found in the program of the AOZ Store / utilities / save_load</p>&#10;<p>Example:</p>&#10;<pre><code class="prism language-basic">Filename$=&#34;MyFile.txt&#34;&#10;Input SA$  // text to be kept&#10;&#10;Open Out 1, Filename$&#10;&#9;Print #1,SA$&#10;Close 1&#10;&#10;Open In 1, Filename$&#10;&#9;Input #1, RD$&#10;Print &#34;READ&#34;; RD$&#10;Close 1&#10;</code></pre>&#10;<p>A little explanation:<br/>&#10;Open to save with:  Open Out Channel N&#176;, File Name<br/>&#10;Save with: Print channel#N&#176;, data to save<br/>&#10;Always close an open channel with a Close Channel N&#176;</p>&#10;<br/>&#10;<h2 id="databases-1">Databases</h2>&#10;<p>AOZ Studio allows you to store information in the form of structured databases, hosted on the AOZ Cloud or elsewhere, and especially:</p>&#10;<p>1&#176;) Without you having to be an expert in databases or SQL language,</p>&#10;<p>2&#176;) Without you having to manage your data structures: AOZ will do the work for you.</p>&#10;<h3 id="small-glossary">Small glossary</h3>&#10;<p>To use these instructions wisely, understand the basic principles of database organization:</p>&#10;<ul>&#10;<li>A <strong>field</strong> works like a variable in AOZ: it is used to store data and is identified by its <strong>name</strong>. As with AOZ variables, a field name ending with $ is used to store characters, with # float numbers. Without these special characters, it will be an integer.</li>&#10;<li>A <strong>record</strong> is used to group several <strong>fields</strong>.<br/>&#10;. The fields are stored in a record. For example a record made of the fields name, address, date of birth, telephone number.<br/>&#10;. A record is identified by a single pointer, often called <strong>id</strong>.</li>&#10;<li>A <strong>table</strong> is used to store several <strong>records</strong> of  identical structure, i.e. grouping the same list of <strong>fields</strong>. A table is identified by its <strong>name</strong>. We can see a table as a&#8230; table with one column per field, and one row per record, in which we will store values.</li>&#10;<li>A <strong>database</strong> allows you to organize several <strong>tables</strong> together. Related tables will be grouped together in the same database. Most often an application will need a single database where all the data concerning it will be stored.</li>&#10;</ul>&#10;<p align="center"><img valign="middle" width="700px" src="https://doc.aoz.studio/assets/images/en/image200.png"/>&#10;</p>&#10;<br/>&#10;We speak **of relational database** when we link the tables together. For example, instead of saving several copies the same city name in several databases, we will save the unique **identifier** corresponding to the name of this city in another table  (above the &#34;villes&#34; table), to save storage space and avoid risking errors when typing the same word several times.&#10;<p>The databases are hosted on AOZ's cloud. To access it, the programmer and its user must both have an AOZ account that will allow them to identify themselves and find their data from anywhere. Your program will automatically propose the connection to this account, or its creation the first time, as soon as it is necessary to identify the user.</p>&#10;<h3 id="summary-of-aoz-db-instructions">Summary of AOZ DB instructions</h3>&#10;<p><strong>DB Database</strong>: Select a database<br/>&#10;<strong>DB Table</strong>: Select a table</p>&#10;<p><strong>DB Search</strong>: Search for records according to a simple search criterion and select the first one<br/>&#10;<strong>DB Search All</strong>: Search all records and select the first one<br/>&#10;<strong>DB Search Sql</strong>: Search for records based on search criteria written in SQL and select the first<br/>&#10;<strong>DB Sql</strong>: Search for records based on any criteria written in SQL and select the first (Full SQL)</p>&#10;<p><strong>DB First</strong>: Select the first record from search result<br/>&#10;<strong>DB Last</strong>: Select the last record from search result<br/>&#10;<strong>DB Next</strong>: Select the next record from search result<br/>&#10;<strong>DB Previous</strong>: Select the previous record from search result</p>&#10;<p><strong>DB Pointer</strong>: Retrieve the ID of the selected record<br/>&#10;<strong>DB Point On</strong>: Select a record for which the identifier is known<br/>&#10;<strong>DB New</strong>: Select  a new empty record</p>&#10;<p>As long as your program has not specified anything with the instructions above, you will be by default in a database called &#34;default  &#34;, a table called &#8220;default&#8221;, in a record identified by a pointer 1. If you only need one database, with a single table or even a single record, you don't need to use unnecessary instructions.</p>&#10;<h3 id="&#176;-creation-and-selection">1&#176;) Creation and selection</h3>&#10;<p><strong>DB Database</strong>: Select a database<br/>&#10;<strong>DB Table</strong>: Select a table<br/>&#10;<br/></p>&#10;<h3 id="&#176;-reading-and-writing">2&#176;) Reading and Writing</h3>&#10;<p>We have instructions to act on the selection made with the instructions above:<br/>&#10;<strong>DB Read</strong>: copy the values of the record into your AOZ variable(s)<br/>&#10;<strong>DB Write</strong>: copy the contents of your AOZ variables to the selected record<br/>&#10;<br/></p>&#10;<h3 id="&#176;-search-in-your-base">3&#176;) Search in your base</h3>&#10;<p>There are three instructions for doing research that you can choose from depending on how difficult the design of the code is and how readable it is:</p>&#10;<ul>&#10;<li><em><strong>DB Search</strong></em> is the easiest to write a search, and the most readable.</li>&#10;<li><em><strong>DB Search Sql</strong></em> allows you to enter only the search criteria in SQL, it remains simpler than doing the SQL query entirely by hand. This statement introduces a little more SQL, and lowers the readability of the code.</li>&#10;<li><em><strong>DB Sql</strong></em> is pure SQL, it allows you to do more than the other 2, we are full-Sql here, so it's even less easy to write and possibly to read.</li>&#10;</ul>&#10;<p>Example:</p>&#10;<pre><code class="prism language-basic">DB Sql &#34;SHOW DATABASES&#34;&#10;   While DB Pointer()&#10;   DB Read &#34;Database$&#34;&#10;   Print &#34;-&#34;, Database$&#10;   DBNext&#10;Wend&#10;</code></pre>&#10;<br/>&#10;<h3 id="&#176;-manage-your-base">4&#176;) Manage your base</h3>&#10;<p>Se also have instructions to &#8220;clean up&#8221; your databases:<br/>&#10;<strong>DB Rename Database</strong>: Change the name of a database<br/>&#10;<strong>DB Rename Table</strong>: Change the name of a table<br/>&#10;<strong>DB Rename Column</strong>:  Change the name of a field<br/>&#10;<strong>DB Delete Database</strong>:  Delete a database, and all its data<br/>&#10;<strong>DB Delete Table</strong>:  Delete a table, and all its data<br/>&#10;<strong>DB Delete Record</strong>:  Delete the selected record<br/>&#10;<strong>DB Delete Column</strong>:  Delete a field</p>&#10;<p>You will find many examples using the DB instructions in the built-in help of AOZ Studio (search bar). Search for the instruction you want to use to discover it.</p>&#10;<p>To start here are three small programs to jump in:</p>&#10;<h3 id="example-to-save-and-read">Example to save and read</h3>&#10;<pre><code class="prism language-basic">name$=&#34;laura&#34; : score=987654&#10;DB Database &#34;hall-of-fame&#34;&#10;DB Write &#34;name$, score&#34;&#10;&#10;name$=&#34;&#34; : score=0  //erase to be sure that it comes back from DB Read &#10;&#10;DB Read &#34;name$, score&#34;&#10;Print name$, score&#10;</code></pre>&#10;<br/>&#10;<h3 id="example-of-an-address-book-program">Example of an address book program</h3>&#10;<p>written in AOZ which allows you to store your friends' details in a private database and find them by searching on their name and ID.</p>&#10;<pre><code class="prism language-basic">Print &#34;ADDRESS BOOK&#34;&#10;While item$ &lt;&gt; &#34;q&#34;&#10;&#9;Print &#34;s &gt; Search - n &gt; New - q &gt; Quit&#34;&#10;&#9;Input item$&#10;&#9;If item$ = &#34;s&#34;&#10;&#9;&#9;Print &#34;Search name:&#34;: Input name$&#10;&#9;&#9;If Len(name$)&#10;&#9;&#9;&#9;DB Search &#34;name$=&#34;   name$&#10;&#9;&#9;&#9;Else&#10;&#9;&#9;&#9;DB Search All&#10;&#9;&#9;End If&#10;&#9;&#9;While DB Pointer()&#10;&#9;&#9;&#9;DB Read &#34;name$, phone$, address$&#34;&#10;&#9;&#9;&#9;Print DB Pointer(), &#34;&gt;&#34;, name$, phone$, address$&#10;&#9;&#9;&#9;DB Next&#10;&#9;&#9;Wend&#10;&#9;&#9;Print &#34;Enter a record number to edit it, or:&#34;&#10;&#9;End If&#10;&#9;&#10;&#9;If item$ = &#34;n&#34; Or Val(item$) &gt; 0&#10;&#9;&#9;DB New&#10;&#9;&#9;If Val(item$) &gt; 0&#10;&#9;&#9;&#9;DB Point On Val(item$)&#10;&#9;&#9;&#9;DB Read &#34;name$, phone$, address$&#34;&#10;&#9;&#9;&#9;Print &#34;name:&#34;, name$ : Print &#34;phone:&#34;, phone$ : Print &#34;address:&#34;, address$&#10;&#9;&#9;End If&#10;&#9;&#9;Print &#34;new name:&#34; : Input name$ : If Len(name$) Then DB Write &#34;name$&#34;&#10;&#9;&#9;Print &#34;new phone:&#34; : Input phone$ : If Len(phone$) Then DB Write &#34;phone$&#34;&#10;&#9;&#9;Print &#34;new address:&#34; : Input address$ : If Len(address$) Then DB Write &#34;address$&#34;&#10;&#9;End If&#10;Wend&#10;</code></pre>&#10;<p>This small program has some small subtleties when it is used:</p>&#10;<ul>&#10;<li>If you don't type anything for the search, all addresses are displayed.</li>&#10;<li>If you leave blank a &#8220;new&#8221; entry the original data will be preserved.</li>&#10;</ul>&#10;<br/>&#10;<h3 id="example-of-a-high-score-leaderboard">Example of a high-score leaderboard</h3>&#10;<p>This small program written in AOZ is a game of searching for a random number.</p>&#10;<p>It stores in a database a table of the 10 best scores, all players combined. You are invited to enter your name when you enter this &#8220;hall of fame&#8221;.</p>&#10;<pre><code class="prism language-basic">// The game&#10;myScore = 0 : target = Rnd(100) : proposal = 101&#10;Print &#34;Guess my secret number, between 0 and 100:&#34;&#10;&#10;While proposal &lt;&gt; target&#10;&#9;myScore = myScore   1&#10;&#9;Input proposal&#10;&#9;If proposal &gt; target Then Print &#34;My number is lower than this ! Try again:&#34;&#10;&#9;If proposal &lt; target Then Print &#34;My number is higher than that ! Try again:&#34;&#10;Wend&#10;Print &#34;You have found my secret number ! Your score is&#34;, myScore&#10;&#10;// Enter the hall of fame ?&#10;DB Database &#34;hall-of-fame&#34;, &#34;application&#34;&#10;DB Search All&#10;badestScore = 0 : scores = 0&#10;While DB Pointer()&#10;&#9;scores = scores   1&#10;&#9;DB Read &#34;score&#34;&#10;&#9;If score &gt; badestScore&#10;&#9;&#9;badestScore = score&#10;&#9;&#9;badestPointer = DB Pointer()&#10;&#9;End If&#10;&#9;If myScore &lt; score Then enterHallOfFame = TRUE&#10;&#9;DB Next&#10;Wend&#10;&#10;If enterHallOfFame And scores &gt;= 5&#10;&#9;DB Point On badestPointer&#10;&#9;DB Delete Record&#10;End If&#10;&#10;If scores &lt; 5 Then enterHallOfFame = TRUE&#10;If enterHallOfFame&#10;&#9;Print &#34;You entered the hall of fame ! What is your name ?&#34;&#10;&#9;Input name$ : score = myScore&#10;&#9;DB New : DB Write &#34;name$, score&#34;&#10;End If&#10;&#10;// Display the hall of fame&#10;Print &#34;Here are the best players ever:&#34;&#10;DB Search All&#10;While DB Pointer()&#10;&#9;DB Read &#34;name$, score&#34;&#10;&#9;Print name$, score&#10;&#9;DB Next&#10;Wend&#10;</code></pre>&#10;<br/>&#10;<h3 id="database-access">Database access</h3>&#10;<p>Each database is identified by it's name and a sharing mode. They are stored in the cloud, accessible to author's apps, and will be shared with your users and other apps under strict restrictions that you set by choosing the sharing mode.</p>&#10;<p><strong>DB</strong> <strong>Database</strong> selects the database that will be used with the following parameters:<br/>&#10;DB$  (string)  The database name will be unique in each sharing mode<br/>&#10;Share$ (string)  The database sharing mode, there are four: 'author', 'application', 'user-author' and 'user-application' (default).<br/>&#10;The available sharing modes in privacy increasing order:</p>&#10;<p>-<strong>author</strong>: for a database common to all  applications developed by the author of the software, and common to all users. Here you can store general information that you want to update once and for all your apps, such as author information, global table of players of all your games, etc.</p>&#10;<p>-<strong>application</strong>: for a database common to all users who will use the application. You can use this sharing mode to store, for example, a table of  high scores for a game, or a table of country codes common to all your management software; data that you will manage only in one place.</p>&#10;<p>-<strong>user-author</strong>:  for a private database,  common to all applications developed by the author of the software, but will be different for each user of your software.</p>&#10;<p>-<strong>user-application</strong>: for a database private to the user and limited to the current application. This is the most private storage and the <strong>default sharing mode</strong> when you don't specify another one.</p>&#10;<p>Examples:</p>&#10;<pre><code class="prism language-basic">// Read the player's personal recording for this game (private by default and will never be visible to any other player)&#10;DB Database &#34;scores&#34;&#10;DB Read &#34;Best_Score&#34;&#10;Print &#34;Your best score:&#34;, Best_Score&#10;//Read the highest score and player name for this game in the common laderboard&#10;DB Database &#34;scores&#34;, &#34;application&#34;&#10;DB Read &#34;Best_Score, Best_Player_Name$&#34;&#10;Print &#34;The best score ever:&#34;, Best_Score, &#34;owned by&#34;, Best_Player_Name$&#10;</code></pre>&#10;<br/>&#10;<h3 id="storage-of-databases-accounts-and-certificates">Storage of databases, accounts, and certificates</h3>&#10;<p>The databases associated with your applications are stored in the AOZ Studio Cloud: they are redundant, an archive  is made every day. It is a free service, offered with the basic license, you do not have to worry about  anything.<br/>&#10;Please <strong>note</strong>, as indicated in our terms and conditions, that we do not guarantee the integrity, quality of service or possible loss of data.  We will offer a more expensive license with this type of service. You can also back up your database on other servers with this type of service if it is critical for your application. We also invite you to make backup copies.</p>&#10;<p>Depending on the data sharing mode you chose with the <strong>DB Database</strong> instruction, your application will identify different elements to establish this sharing mode and privatize your data at the level you wanted.</p>&#10;<p>As soon as you use DB statements, a certificate identifying the author of the application (you) will be embedded when it is published. This certificate is linked to your AOZ developer account, which you will need to create and log in to from your AOZ development environment.</p>&#10;<p align="center"><img valign="middle" width="700px" src="https://doc.aoz.studio/assets/images/en/image201.png"/>&#10;</p>&#10;<br/>&#10;<p>To summarize the 3 modes:</p>&#10;<ul>&#10;<li>&#10;<p><strong>user-application</strong> and <strong>user-author</strong>:<br/>&#10;If the sharing mode concerns one (or more) user, he will have to connect to his AOZ account the first time he launches the application from each PC or internet browser. The login dialog box will appear as soon as it is necessary to access the personal and private database for your user-application,  or common to all your applications, if <strong>user-author</strong>.</p>&#10;</li>&#10;<li>&#10;<p><strong>user-application</strong> and <strong>application</strong>:<br/>&#10;If the sharing mode concerns the application, it will be saved on the cloud associated with your AOZ author account, and a certificate identifying  the application will be embedded when it is published. This certificate linked to your application is downloaded to the <strong>settings\cert.hjson</strong> file.</p>&#10;</li>&#10;<li>&#10;<p><strong>Author and User-Author:</strong><br/>&#10;If the sharing mode concerns the author,  the data associated with an author is common to all applications of the same author (in the first case, equally common to all users, and in the second case common to the author but private to the user).</p>&#10;</li>&#10;</ul>&#10;<p><strong>CAUTION:</strong> You must not use the same certificate for several applications:  if you copy your project to take it as a template for  another application, or if you publish the sources or share it with a third party, it is imperative to <strong>delete this file which must remain strictly private</strong> to your application on your development environment,  The security of this data depends on it.</p>&#10;<h2 id="account-authenticate">Account Authenticate</h2>&#10;<p>By default when your program uses a DB instruction, say DB Read, in one of sharing mode that is not public, a LOGIN/REGISTER popup is displayed as the user needs to Authenticate by giving an email and Password, or by creating an account.<br/>&#10;The look and feel and behavior of that popup can be created and managed by you. This chapter tells you how, with below instructions:<br/>&#10;<br/></p>&#10;<p><strong>Account Authenticate</strong> Mandatory, Synchronous, Left, Top, UseToken, OnDone$, OnSuccess$, OnError$, OnClose$, VisualAspect$</p>&#10;<p>Opens the AOZ account authentication window, which allows you to log in to an account, but also to create a new account and reset its password.<br/>&#10;If the user has successfully logged in by checking &#8220;Remember me&#8221;, the window does not appear, by default, and the account logs in automatically, without the user needing to enter their password again email and password. For this, a user connection identifier, called &#8220;TOKEN&#8221;, is stored on the user's computer.<br/>&#10;By default, the application pauses until the user successfully logs in or closes the authentication window. We say that the execution of the authentication window is &#8220;synchronous&#8221;.</p>&#10;<ul>&#10;<li>Mandatory = true: indicates that the user's connection is mandatory, and that the user will not be able to close the connection window before having successfully connected to his AOZ account. If you do not place this option, the user can always close his window without logging in, you will then have to check in your AOZ program if he has logged in with the Account Authenticated function to act accordingly.</li>&#10;<li>Synchronous = false: (or &#8220;asynchronous&#8221; mode if false) allows the AOZ program to continue its execution after displaying the connection window. You will then need to check the login progress of your AOZ program user with the Account Authenticating and Account Authenticated functions.</li>&#10;<li>Left: allows you to define a horizontal coordinate where to display the connection popup window. If not specified, it will be displayed furthest to the left.</li>&#10;<li>Top: allows you to define a vertical coordinate where to display the connection popup window. If not specified, it will be displayed at the top.</li>&#10;<li>UseToken = false: forces the display of the authentication window, even if the user had checked &#8220;Remember me&#8221;, ignoring the identification token that would have been saved.</li>&#10;<li>OnDone$: the name of a procedure that will be executed when the authentication process ends (when the user is logged in or the window has been closed)</li>&#10;<li>OnSuccess$: the name of a procedure that will be executed in the event of a successful connection</li>&#10;<li>OnError$: the name of a procedure that will be executed in the event of an error. All error messages displayed to the user, or connection errors, are thus sent.</li>&#10;<li>OnClose$: the name of a procedure that will be executed if the user closes the identification popup window without logging in.</li>&#10;<li>VisualAspect$: you can choose the visual aspect covered by the identification popup window. At the time of writing we have: &#8220;aoz&#8221;, &#8220;flat&#8221;, &#8220;modern&#8221;, &#8220;pictos&#8221;, &#8220;yellow&#8221;.</li>&#10;</ul>&#10;<p><em>Example of the simplest synchronous connection:</em></p>&#10;<pre><code class="prism language-basic">Account Authenticate&#10;</code></pre>&#10;<p><em>Example of asynchronous connection (with waiting loop):</em></p>&#10;<pre><code class="prism language-basic">Account Authentication Asynchronous&#10;Account Authenticate&#10;While Account Authenticating()&#10;     Print &#34;Waiting...&#34;&#10;     Wait 1&#10;Wend&#10;Print &#34;Authentication status: &#34;; Account Authenticated()&#10;</code></pre>&#10;<br/>&#10;<p><strong>Account Authenticated()</strong><br/>&#10;This function returns true if the user is currently logged into their AOZ account.<br/>&#10;<br/></p>&#10;<p><strong>Account Authenticating()</strong><br/>&#10;This function returns true if the user authentication is in progress, ie if an identification form is currently displayed in asynchronous mode waiting for the user.</p>&#10;<p>Here are few tricks that can be used to avoid filling in the corresponding parameter for each call to Account Authenticate (note that they are redundant and therefore not necessarily very useful):</p>&#10;<ul>&#10;<li><strong>Account Authentication Asynchronous</strong>: unless the Synchronous = true parameter is specified, the next calls to Account Authenticate will be made asynchronously.</li>&#10;<li><strong>Account Authentication Synchronous False</strong>: equivalent of Account Authentication Asynchronous</li>&#10;<li><strong>Account Authentication Synchronous</strong>: unless the parameter Synchronous = false is specified, the next calls to Account Authenticate will be made synchronously.</li>&#10;<li><strong>UI Visual Aspect Design$</strong>: allows to choose among the predefined visual aspects &#8220;aoz&#8221;, &#8220;flat&#8221;, &#8220;modern&#8221;, &#8220;pictos&#8221;, &#8220;yellow&#8221;, for all the next calls to UI instructions. If VisualAspect$ is not specified, future calls to Account Authenticate will rely on the visual aspect chosen here.</li>&#10;</ul>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbLTExMjQ2MTI2MiwtMTMyNzM3MTc4NiwtMT&#10;U3NDY1OTk3OCw5NTA1NjMzNDcsMTYyNTgzODYsODk3OTYxNTM3&#10;LC0yMDM5MDg3ODEzLC0xODYxMTUxMjc1LC0xNzYxNDA4MTg0LC&#10;01NzI5NDE3MTQsLTE3MzQ0ODU0MjYsLTcyMzE0MjY0MywxMDky&#10;MzQyMzkxLC0xMTc4OTE3ODY5LDE1MjgyNDI5NzUsLTg3NjI3NT&#10;YxNiwtMTMwNDA1NDkyNSwtNTk4MzE5MTEsMTUyMTcwNzc5Myw4&#10;NzAyMzIwMjZdfQ==&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/028_databases.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/028_databases.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

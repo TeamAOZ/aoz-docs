@@ -1,0 +1,17 @@
+# Disc
+<!--
+@name: Disc
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Draw a filled circle with the current Ink and Pattern definitions in the current screen
+## Parameters
+
+- **x**: The horizontal coordinate of the centre of the circle
+- **y**: The vertical coordinate of the centre of the circle
+- **radius**: The radius of the circle in pixels
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

@@ -1,0 +1,88 @@
+# PROCEDURES AND FUNCTIONS
+
+## Procedures 1
+**Procedures** are blocks of code that define a series of instructions that will be performed on the parameters passed to them.  They facilitate dividing programs into independent, reusable parts, thus better organizing your code, and allowing you to easily perform the same operations using different parameters.
+
+They also allow you to define variables inside the **Procedures** which are independent of the main program.  These are called **local** variables.  
+
+A procedure may be called by using the procedure name as you would an AOZ instruction.  You may also call a procedure by using the word **Proc** before the procedure name.  Procedures can optionally return a result like a **Function**.
+
+## Functions
+
+There are two kinds of functions in AOZ.  Simple AOZ functions can defined using the **Def FN** instruction.  It is a single line instruction used to perform simple calculations and operations on the parameters passed to them, and to return a simple variable result.
+
+For example:
+```basic
+Def FN RemoveSpace$(X$)=X$-" "
+Print FN RemoveSpace$("This is a test.")
+Z$ = FN RemoveSpace$("Once upon a time, there were 3 bears.")
+Print Z$
+```
+Functions defined using **Def FN** can be useful, but are limited in capability.  This instruction is provided primarily for compatibility with earlier verisons of **BASIC**, such as **AMOS**.
+
+If you need to create more complex functions, and to be able to use them more conveniently, you|;ll want to use a **Function**.  Like Procedures, Functions are blocks of code that define a series of instructions that will be performed on the parameters passed to them.  
+
+*Unlike* procedures, Functions should ***always*** return a value via the Function name.  This result value may be used to set a variable, or it may be used directly, similarly to built-in functions like **Sin(** x **)** or **Upper\$(** x\$ **)**.  
+
+*Like* Procedures, they can also contain **local** variables.  
+(more on that later)
+
+## Extending AOZ with Function and Instruction
+
+**Function** and **Instruction** have been provided to give you the ability to add to the AOZ language by creating your own new Instructions and Functions in an Extension.  Once the extension has been properly created, you can use these Functions and Instructions in any of your AOZ programs.  If you don|;t want to create an extension, you can also use INCLUDE files to add them to your programs.
+
+**Procedure** and simple functions via **Def FN** are provided for use in your programs, and can be used in INCLUDE files, but they are not designed to extend the langage.
+
+## Examples
+- A Procedure which has no return value can be invoked simply by its name, or by Proc followed by the name.
+
+Example : 
+```basic
+ShowSize[2,3]
+Proc ShowSize[2,3]
+End
+ 
+Procedure ProcOnly[a,b]
+	Print "The size is ";a;" x ";b;"."
+	Print "Total: ";a*b
+End Procedure
+```
+- If there is a return value, you would invoke it similarly to a function.
+
+Example:
+```basic
+Print MyProc[2,3]
+result = MyProc[2,3]
+Print Result
+End 
+
+Procedure MyProc[a,b]
+End Procedure[a*b]
+```
+You can also make your own functions the same way. Here|;s a working example:
+```basic
+Print Mult(2,3)
+totalSize = Mult(2,3)
+Print Triple$("MyStr "),Triple$("<<<")
+z$=Triple$("xyz ")
+Print z$
+End
+ 
+Function "MyFunc",a,b
+End Function(a*b)
+
+Function "Triple$",p2$
+ myResult$ = Repeat$(p2$,3)
+End Function (myResult$)
+```
+The examples shown here are trivial, but you can have very complex code inside your **Function**.
+
+Note: another way to divide your program in different parts is to use **INCLUDE**, which we will discuss later.
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTExOTc2MzcwNjksLTExNTk0OTMyNDYsOD
+cwMjMyMDI2LDczMDk5ODExNl19
+-->

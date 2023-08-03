@@ -173,53 +173,12 @@ td
 
 #topics h1
 {
-    background-image: url(svg/magic-hat.svg);
+	background-image: url(svg/magic-hat.svg);
     background-repeat: no-repeat;
     background-position: left center;
-    background-size: 48px;
-    padding-left: 64px;
+    background-size: 24px;
+    padding-left: 34px;
     color: var(--second-dark-bg-grey);
-}
-
-#topics #user-guide
-{
-    background-image: url(svg/user-guide.svg);
-}
-
-#topics #glossary
-{
-    background-image: url(svg/infos.svg);
-}
-
-#topics #more-tricks
-{
-    background-image: url(svg/magic-wand.svg);
-}
-
-p.bloc-search {
-    background-repeat: no-repeat;
-    background-position: left 8px;
-    background-size: 36px;
-    margin-left: calc(1.2em - 34px);
-    padding-left: calc(8px + 34px);
-}
-
-p.bloc-search.user-guide,
-#topics #user-guide
-{
-    background-image: url(svg/user-guide.svg);
-}
-
-p.bloc-search.glossary,
-#topics #glossary
-{
-    background-image: url(svg/infos.svg);
-}
-
-p.bloc-search.more-tricks,
-#topics #more-tricks
-{
-    background-image: url(svg/magic-wand.svg);
 }
 
 #topics ul
@@ -327,7 +286,7 @@ a:not([class]):hover {
 	font-size: 16px;
 	font-family: "Avenir Next LT pro";
 	color: #444444;
-	display: none;
+	display: inline-block;
 	border-radius: 16px;
 	width: 64px;
 	height: 24px;
@@ -378,12 +337,6 @@ a:not([class]):hover {
   cursor: pointer;
 }
 
-.highlight
-{
-	background-color: var(--primary-dark-bg-blue);
-	color: white;
-}
-
 .search_results
 {
 	position: absolute;
@@ -416,188 +369,6 @@ a:not([class]):hover {
 	height: 100%;
 	margin-left: auto;
 	margin-right: auto;
-}
-
-#md_login
-{
-	display: none;
-	position: fixed;
-    left: 16px;
-    top: 56px;
-    width: 40px;
-    height: 40px;
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: contain;
-    background-image: url(svg/login.svg);
-    z-index: 100;
-    cursor: pointer;
-}
-
-#md_gator
-{
-	display: none;
-	position: fixed;
-    left: 16px;
-    top: 56px;
-    width: 40px;
-    height: 40px;
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: contain;
-    background-image: url(svg/aligator.svg);
-    z-index: 100;
-    cursor: pointer;
-}
-
-#md_sync
-{
-	display: none;
-    position: fixed;
-    right: 64px;
-    top: 56px;
-    width: 40px;
-    height: 40px;
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: contain;
-    background-image: url(svg/sync.svg);
-    z-index: 100;
-    cursor: pointer;
-}
-
-#md_edit
-{
-	display: none;
-    position: fixed;
-    right: 16px;
-    top: 56px;
-    width: 40px;
-    height: 40px;
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: contain;
-    background-image: url(svg/edit.svg);
-    z-index: 100;
-    cursor: pointer;
-}
-
-#frm_login
-{
-	display: none;
-	position: fixed;
-	border-radius: 8px;
-	width: 320px;
-	height: 100px;
-	background-color: var(--primary-dark-bg-blue);
-	top: 64px;
-	left: 80px;
-	z-index: 100;
-	padding: 12px;
-}
-
-#frm_login .log_tit
-{
-	width: 100%;
-	height: 40px;
-	padding: 4px;
-	text-align: center;
-	color: #FFFFFF;
-	font-weight:bold;
-	font-size: 18px;
-}
-
-#frm_login button
-{
-	position: absolute;
-	right: 8px;
-	top: 8px;
-	border-radius: 4px;
-	font-size: 17px;
-	font-weight: bold;
-	color: #c0c0c0;
-	background-color:var(--primary-dark-bg-blue);
-	border: 1px #c0c0c0 solid;
-	width: 24px;
-	height: 24px;
-	cursor:pointer;
-}
-
-#frm_login input
-{
-	width: 100%;
-	height: 40px;
-	padding: 4px;
-	color: #404040;
-	font-size: 18px;
-}
-
-#gator_mask
-{
-	position: absolute;
-	display: none;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 100;
-	text-align: center;
-}
-
-#gator_mask button
-{
-	position: absolute;
-    right: 8px;
-    top: 8px;
-    border-radius: 4px;
-    font-size: 37px;
-    color: #ffffff;
-    border: 1px #ffffff solid;
-    width: 56px;
-    height: 56px;
-    cursor: pointer;
-    background: none;
-}
-
-#gator_frame
-{
-	position: relative;
-	margin-top: 7%;
-	margin-bottom: 7%;
-	width: 70%;
-	height: 70%;
-	border: none;
-}
-
-blockquote
-{
-		color: inherit !important;
-}
-
-code
-{
-		line-height: 1.5em !important;
-		padding: 4px !important;
-		vertical-align: top !important;
-}
-
-button.copy-btn
-{
-	position: relative;
-	cursor: pointer;
-	background-color: var(--second-dark-bg-grey);
-	border-radius: 4px;
-	border: none;
-	height: 24px;
-	width: 60px;
-	font-size: 12px;
-	font-family: 'Roboto Mono';
-}
-
-button.copy-btn:hover
-{
-	background-color: var(--primary-dark-bg-cyan);
 }
 
 // Smartphone

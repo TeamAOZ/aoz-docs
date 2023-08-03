@@ -23,7 +23,7 @@ function ext_debugging( aoz, args )
 	this.aoz=aoz;
 	this.parent=this;
 	this.root=this;
-	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25FeHRlbnNpb24iOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIERlYnVnZ2luZyBFeHRlbnNpb24iLCJhdXRob3IiOiJCeSBGcmFuY29pcyBMaW9uZXQiLCJ2ZXJzaW9uIjoiVmVyc2lvbiAxIiwiZGF0ZSI6IjMwLzEyLzIwMjAiLCJjb3B5cmlnaHQiOiIoYykgQU9aIFN0dWRpbyAyMDIwIC0gT3BlbiBTb3VyY2UiLCJzdGFydCI6ImRlYnVnZ2luZy5hb3oiLCJuYW1lIjoiZGVidWdnaW5nIn0sImZvbnRzIjp7Imxpc3RGb250cyI6IlBDIiwiYW1pZ2EiOltdLCJnb29nbGUiOlsiSUJNIFBsZXggTW9ubyIsIlJvYm90byJdfSwiY29tcGlsYXRpb24iOnsibm9XYXJuaW5nIjpbXSwiZXJyb3JzIjp7ImVuIjpbImVuZF9hcHA6IEVuZCBhcHBsaWNhdGlvbiIsInJlc3RhcnRfYXBwOiBSZXN0YXJ0IHRoZSBhcHBsaWNhdGlvbiIsInBhdXNlX2FwcDogRW50ZXIgZGVidWdnZXIgc3RlcC1ieS1zdGVwIG1vZGUiLCJzdGVwX2FwcDogUGVyZm9ybSBvbmUgbG9vcCBvZiBhcHBsaWNhdGlvbiIsInNsb3dfYXBwOiBQbGF5IGFwcGxpY2F0aW9uIGluIHNsb3ctbW90aW9uIiwicGxheV9hcHA6IFBsYXkgYXBwbGljYXRpb24gYXQgZnVsbCBzcGVlZCIsInN0ZXBfaW50bzogU3RlcCBpbnRvIChGOSkiLCJzdGVwX292ZXI6IFN0ZXAgb3ZlciAoRjEwKSIsInF1aXRfbWFzazogUXVpdCBtYXNrIGVkaXRpb24iLCJkYl9hcHBsaWNhdGlvbjogQXBwbGljYXRpb24iLCJkYl93YXRjaDogV2F0Y2giLCJkYl9jb25zb2xlOiBDb25zb2xlIiwiZGJfc291cmNlOiBTb3VyY2UgQ29kZSIsImRiX3ZhcmlhYmxlczogVmFyaWFibGVzIiwiZGJfc3RhY2s6IFN0YWNrIiwiZGJfc2V0dGluZ3M6IFNldHRpbmdzIiwiZGJfZW50ZXJ2YWx1ZTogQ2hhbmdlIHRoZSB2YWx1ZSBvZiAiLCJkYl92YWx1ZWJldHdlZW46IEVudGVyIGEgdmFsdWUgYmV0d2VlbiAwIGFuZCAlMSIsImRiX3Byb2NlZHVyZTogUHJvY2VkdXJlICIsImRiX2luc3RydWN0aW9uOiBJbnN0cnVjdGlvbiAiLCJkYl9mdW5jdGlvbjogRnVuY3Rpb24gIiwiZGJfbWV0aG9kOiBNZXRob2QgIiwiZGJfb2JqZWN0OiBPYmplY3QgIiwiZGJfdW5rbm93bjogVW5rbm93biAiLCJkYl9lbnRlcm51bWJlcjogRW50ZXIgYSBudW1iZXI6ICAiLCJkYl9lbnRlcnRleHQ6IEVudGVyIGEgc3RyaW5nOiAgIiwiZGJfcHJlZmVyZW5jZXM6IEFPWiBEZWJ1Z2dlciBQcmVmZXJlbmNlcyIsImRiX2ludGVyZmFjZXR5cGU6IEFwcGxpY2F0aW9uIHdpbmRvdzoiLCJkYl93ZGVmcG9zOiBXaW5kb3cgZGVmYXVsdCBwb3NpdGlvbjoiLCJkYl9jbG9zZTogT0siLCJkYl9jYW5jZWw6IENhbmNlbCIsImRiX3Jlc2V0V2luZG93czogUmVzZXQgd2luZG93cyIsImRiX3Jlc3RvcmVXaW5kb3dzOiBSZXN0b3JlIHdpbmRvd3MgYXQgc3RhcnR1cDoiLCJkYl90aXRsZXZpZXdlcjogQU9aIFZpZXdlciIsImRiX3RpdGxlZGVidWdnZXI6IEFveiBEZWJ1Z2dlciIsImRiX3RpdGxlcGF1c2U6IEFwcGxpY2F0aW9uIHBhdXNlZCIsImRiX3RpdGxlc3RlcHNsb3c6IFN0ZXBwaW5nIHNsb3ciLCJkYl90aXRsZXNsb3c6IFJ1bm5pbmcgc2xvdy1tb3Rpb24iLCJkYl90aXRsZXBsYXk6IEFwcGxpY2F0aW9uIHJ1bm5pbmciLCJkYl90aXRsZWVkaXRpbmdtYXNrOiBFZGl0aW5nIGNvbGxpc2lvbiBtYXNrIiwiZGJfZGlzcGxheU1hc2tzOiBEaXNwbGF5IGNvbGxpc2lvbiBtYXNrczoiLCJkYl9kaXNwbGF5TGFiZWxzOiBEaXNwbGF5IG9iamVjdCBpbmZvcm1hdGlvbjoiLCJkYl9kaXNwbGF5UnVsZXI6IERpc3BsYXkgcnVsZXI6IiwiZGJfZGlzcGxheUdyaWQ6IERpc3BsYXkgZ3JpZDoiLCJkYl9ncmlkV2lkdGg6IEdyaWQgd2lkdGg6IiwiZGJfZ3JpZEhlaWdodDogR3JpZCBoZWlnaHQ6IiwiZGJfZGlzcGxheUNyb3NzaGFpcjogRGlzcGxheSBjcm9zc2hhaXI6IiwiZGJfc2V0dGluZ3NsZWZ0cmlnaHQ6IDE6TGVmdCwyOlJpZ2h0IiwiZGJfYXBwbGljYXRpb25zbWFsbGJpZzogMTpTbWFsbCwyOkxhcmdlIiwiZGJfZm9udFdpZHRoOiBGb250IGhlaWdodCIsImRiX3Jlc2V0TWFzazogUmVzZXQgbWFzayIsImRiX2hlbHA6IEFPWiBEZWJ1Z2dlciBIZWxwIiwiZGJfZGlzcGxheURvYzogT3BlbiBtYWluIGRvY3VtZW50YXRpb24iXSwiZnIiOlsiZW5kX2FwcDogUXVpdHRlciBsJ2FwcGxpY2F0aW9uIiwicmVzdGFydF9hcHA6IFJlbGFuY2VyIGwnYXBwbGljYXRpb24iLCJwYXVzZV9hcHA6IEVudHJlciBkYW5zIGxlIG1vZGUgcGFzLWEtcGFzIiwic3RlcF9hcHA6IEV4ZWN1dGVyIHVuZSBib3VjbGUgZGUgbCdhcHBsaWNhdGlvbiIsInNsb3dfYXBwOiBMYW5jZXIgbCdhcHBsaWNhdGlvbiBhdSByYWxlbnRpIiwicGxheV9hcHA6IFJlbGFuY2VyIGwnYXBwbGljYXRpb24gYSBwbGVpbiB2aXRlc3NlIiwic3RlcF9pbnRvOiBQYXMgZW50cmFudCAoRjgpIiwic3RlcF9vdmVyOiBQYXMgcGFyIGF1IGRlc3N1cyAoRjkpIiwicXVpdF9tYXNrOiBRdWl0dGVyIGwnZWRpdGlvbiBkZSBtYXNxdWUiLCJkYl9hcHBsaWNhdGlvbjogQXBwbGljYXRpb24iLCJkYl93YXRjaDogV2F0Y2giLCJkYl9jb25zb2xlOiBDb25zb2xlIiwiZGJfc291cmNlOiBTb3VyY2UgQ29kZSIsImRiX3ZhcmlhYmxlczogVmFyaWFibGVzIiwiZGJfc3RhY2s6IFBpbGUiLCJkYl9zZXR0aW5nczogUHJlZmVyZW5jZXMiLCJkYl9lbnRlcnZhbHVlOiBDaGFuZ2VyIGxhIHZhbGV1ciBkZSAiLCJkYl92YWx1ZWJldHdlZW46IEVudHJleiB1bmUgdmFsZXVyIGNvbXByaXNlIGVudHJlIDAgZXQgJTEiLCJkYl9wcm9jZWR1cmU6IFByb2NlZHVyZSAiLCJkYl9pbnN0cnVjdGlvbjogSW5zdHJ1Y3Rpb24gIiwiZGJfZnVuY3Rpb246IEZ1bmN0aW9uICIsImRiX21ldGhvZDogTWV0aG9kZSAiLCJkYl9vYmplY3Q6IE9iamV0ICIsImRiX3Vua25vd246IEluY29ubnUgIiwiZGJfZW50ZXJudW1iZXI6IEVudHJleiB1biBjaGlmZnJlOiAgIiwiZGJfZW50ZXJ0ZXh0OiBFbnRyZXogdW5lIGxldHRyZTogICIsImRiX3ByZWZlcmVuY2VzOiBQcmVmZXJlbmNlcyBBb3ogRGVidWdnZXIiLCJkYl9pbnRlcmZhY2V0eXBlOiBGZW5ldHJlIEFwcGxpY2F0aW9uOiIsImRiX3NldHRpbmdzbGVmdHJpZ2h0OiAxOkdhdWNoZSwyOkRyb2l0ZSIsImRiX3dkZWZwb3M6IFBvc2l0aW9uIHBhciBkZWZhdXQgZGVzIGZlbmV0cmVzOiIsImRiX3Jlc2V0V2luZG93czogUmUtaW5pdGlhbGlzZXIgbGVzIGZlbmV0cmVzIiwiZGJfcmVzdG9yZVdpbmRvd3M6IFJlc3RvcmVyIGxlcyBmZW5ldHJlcyBhdSBsYW5jZW1lbnQ6IiwiZGJfY2xvc2U6IE9LIiwiZGJfY2FuY2VsOiBBbm51bGVyIiwiZGJfdGl0bGV2aWV3ZXI6IEFPWiBWaWV3ZXIiLCJkYl90aXRsZWRlYnVnZ2VyOiBBT1ogVmlld2VyIC0gRGVib2dnZXVyIEFjdGlmIiwiZGJfdGl0bGVwYXVzZTogQXBwbGljYXRpb24gZW4gcGF1c2UiLCJkYl90aXRsZXN0ZXBzbG93OiBQYXMgYSBwYXMgbGVudCIsImRiX3RpdGxlc2xvdzogQXBwbGljYXRpb24gYXUgcmFsZW50aSIsImRiX3RpdGxlcGxheTogQXBwbGljYXRpb24gZW4gZm9uY3Rpb25uZW1lbnQiLCJkYl90aXRsZWVkaXRpbmdtYXNrOiBFZGl0aW9uIGR1IG1hc3F1ZSBkZSBjb2xsaXNpb24iLCJkYl9kaXNwbGF5TWFza3M6IEFmZmljaGVyIG1hc3F1ZXMgZGUgY29sbGlzaW9uOiIsImRiX2Rpc3BsYXlMYWJlbHM6IEFmZmljaGVyIGluZm9ybWF0aW9uIG9iamV0czoiLCJkYl9kaXNwbGF5UnVsZXI6IEFmZmljaGVyIGxhIHJlZ2xlOiIsImRiX2Rpc3BsYXlHcmlkOiBBZmZpY2hlciBsYSBncmlsbGU6IiwiZGJfZ3JpZFdpZHRoOiBMYXJnZXVyIGdyaWxsZToiLCJkYl9ncmlkSGVpZ2h0OiBIYXV0ZXVyIGdyaWxsZToiLCJkYl9kaXNwbGF5Q3Jvc3NoYWlyOiBBZmZpY2hlciBsZSB2aXNldXI6IiwiZGJfZm9udFdpZHRoOiBIYXV0ZXVyIGRlIGxhIHBvbGljZSIsImRiX2FwcGxpY2F0aW9uc21hbGxiaWc6IDE6UGV0aXRlLDI6R3JhbmRlIiwiZGJfcmVzZXRNYXNrOiBSLkEuWi4gbWFzayIsImRiX2hlbHA6IEFpZGUgQU9aIERlYnVnZ2VyIiwiZGJfZGlzcGxheURvYzogQWZmaWNoZXIgbGEgZG9jdW1lbnRhdGlvbiJdfSwiaW5jbHVkZVBhdGhzIjpbXX0sImJvb3RTY3JlZW4iOnsiYWN0aXZlIjpmYWxzZSwid2FpdFNvdW5kcyI6ZmFsc2UsImNsaWNrU291bmRzIjpmYWxzZX0sImVycm9ycyI6e319'));
+	this.manifest=JSON.parse(atob('eyJ2ZXJzaW9uIjoiOSIsInZlcnNpb25FeHRlbnNpb24iOiIxIiwiaW5mb3MiOnsiYXBwbGljYXRpb25OYW1lIjoiVGhlIERlYnVnZ2luZyBFeHRlbnNpb24iLCJhdXRob3IiOiJCeSBGcmFuY29pcyBMaW9uZXQiLCJ2ZXJzaW9uIjoiVmVyc2lvbiAxIiwiZGF0ZSI6IjMwLzEyLzIwMjAiLCJjb3B5cmlnaHQiOiIoYykgQU9aIFN0dWRpbyAyMDIwIC0gT3BlbiBTb3VyY2UiLCJzdGFydCI6ImRlYnVnZ2luZy5hb3oiLCJuYW1lIjoiZGVidWdnaW5nIn0sImZvbnRzIjp7Imxpc3RGb250cyI6IlBDIiwiYW1pZ2EiOltdLCJnb29nbGUiOlsiSUJNIFBsZXggTW9ubyIsIlJvYm90byJdfSwiY29tcGlsYXRpb24iOnsibm9XYXJuaW5nIjpbXSwiZXJyb3JzIjp7ImVuIjpbImVuZF9hcHA6IEVuZCBhcHBsaWNhdGlvbiIsInJlc3RhcnRfYXBwOiBSZXN0YXJ0IHRoZSBhcHBsaWNhdGlvbiIsInBhdXNlX2FwcDogRW50ZXIgZGVidWdnZXIgc3RlcC1ieS1zdGVwIG1vZGUiLCJzdGVwX2FwcDogUGVyZm9ybSBvbmUgbG9vcCBvZiBhcHBsaWNhdGlvbiIsInNsb3dfYXBwOiBQbGF5IGFwcGxpY2F0aW9uIGluIHNsb3ctbW90aW9uIiwicGxheV9hcHA6IFBsYXkgYXBwbGljYXRpb24gYXQgZnVsbCBzcGVlZCIsInN0ZXBfaW50bzogU3RlcCBpbnRvIChGOSkiLCJzdGVwX292ZXI6IFN0ZXAgb3ZlciAoRjEwKSIsInF1aXRfbWFzazogUXVpdCBtYXNrIGVkaXRpb24iLCJkYl9hcHBsaWNhdGlvbjogQXBwbGljYXRpb24iLCJkYl93YXRjaDogV2F0Y2giLCJkYl9jb25zb2xlOiBDb25zb2xlIiwiZGJfc291cmNlOiBTb3VyY2UgQ29kZSIsImRiX3ZhcmlhYmxlczogVmFyaWFibGVzIiwiZGJfc3RhY2s6IFN0YWNrIiwiZGJfc2V0dGluZ3M6IFNldHRpbmdzIiwiZGJfZW50ZXJ2YWx1ZTogQ2hhbmdlIHRoZSB2YWx1ZSBvZiAiLCJkYl92YWx1ZWJldHdlZW46IEVudGVyIGEgdmFsdWUgYmV0d2VlbiAwIGFuZCAlMSIsImRiX3Byb2NlZHVyZTogUHJvY2VkdXJlICIsImRiX2luc3RydWN0aW9uOiBJbnN0cnVjdGlvbiAiLCJkYl9mdW5jdGlvbjogRnVuY3Rpb24gIiwiZGJfbWV0aG9kOiBNZXRob2QgIiwiZGJfb2JqZWN0OiBPYmplY3QgIiwiZGJfdW5rbm93bjogVW5rbm93biAiLCJkYl9lbnRlcm51bWJlcjogRW50ZXIgYSBudW1iZXI6ICAiLCJkYl9lbnRlcnRleHQ6IEVudGVyIGEgc3RyaW5nOiAgIiwiZGJfcHJlZmVyZW5jZXM6IEFPWiBEZWJ1Z2dlciBQcmVmZXJlbmNlcyIsImRiX2ludGVyZmFjZXR5cGU6IEFwcGxpY2F0aW9uIHdpbmRvdzoiLCJkYl93ZGVmcG9zOiBXaW5kb3cgZGVmYXVsdCBwb3NpdGlvbjoiLCJkYl9jbG9zZTogT0siLCJkYl9jYW5jZWw6IENhbmNlbCIsImRiX3Jlc2V0V2luZG93czogUmVzZXQgd2luZG93cyIsImRiX3Jlc3RvcmVXaW5kb3dzOiBSZXN0b3JlIHdpbmRvd3MgYXQgc3RhcnR1cDoiLCJkYl90aXRsZXZpZXdlcjogQU9aIFZpZXdlciIsImRiX3RpdGxlZGVidWdnZXI6IEFveiBEZWJ1Z2dlciIsImRiX3RpdGxlcGF1c2U6IEFwcGxpY2F0aW9uIHBhdXNlZCIsImRiX3RpdGxlc3RlcHNsb3c6IFN0ZXBwaW5nIHNsb3ciLCJkYl90aXRsZXNsb3c6IFJ1bm5pbmcgc2xvdy1tb3Rpb24iLCJkYl90aXRsZXBsYXk6IEFwcGxpY2F0aW9uIHJ1bm5pbmciLCJkYl90aXRsZWVkaXRpbmdtYXNrOiBFZGl0aW5nIGNvbGxpc2lvbiBtYXNrIiwiZGJfZGlzcGxheU1hc2tzOiBEaXNwbGF5IGNvbGxpc2lvbiBtYXNrczoiLCJkYl9kaXNwbGF5TGFiZWxzOiBEaXNwbGF5IG9iamVjdCBpbmZvcm1hdGlvbjoiLCJkYl9kaXNwbGF5UnVsZXI6IERpc3BsYXkgcnVsZXI6IiwiZGJfZGlzcGxheUdyaWQ6IERpc3BsYXkgZ3JpZDoiLCJkYl9ncmlkV2lkdGg6IEdyaWQgd2lkdGg6IiwiZGJfZ3JpZEhlaWdodDogR3JpZCBoZWlnaHQ6IiwiZGJfZGlzcGxheUNyb3NzaGFpcjogRGlzcGxheSBjcm9zc2hhaXI6IiwiZGJfc2V0dGluZ3NsZWZ0cmlnaHQ6IDE6TGVmdCwyOlJpZ2h0IiwiZGJfYXBwbGljYXRpb25zbWFsbGJpZzogMTpTbWFsbCwyOkxhcmdlIiwiZGJfZm9udFdpZHRoOiBGb250IGhlaWdodCIsImRiX3Jlc2V0TWFzazogUmVzZXQgbWFzayIsImRiX2hlbHA6IEFPWiBEZWJ1Z2dlciBIZWxwIiwiZGJfZGlzcGxheURvYzogT3BlbiBtYWluIGRvY3VtZW50YXRpb24iXSwiZnIiOlsiZW5kX2FwcDogUXVpdHRlciBsJ2FwcGxpY2F0aW9uIiwicmVzdGFydF9hcHA6IFJlbGFuY2VyIGwnYXBwbGljYXRpb24iLCJwYXVzZV9hcHA6IEVudHJlciBkYW5zIGxlIG1vZGUgcGFzLWEtcGFzIiwic3RlcF9hcHA6IEV4ZWN1dGVyIHVuZSBib3VjbGUgZGUgbCdhcHBsaWNhdGlvbiIsInNsb3dfYXBwOiBMYW5jZXIgbCdhcHBsaWNhdGlvbiBhdSByYWxlbnRpIiwicGxheV9hcHA6IFJlbGFuY2VyIGwnYXBwbGljYXRpb24gYSBwbGVpbiB2aXRlc3NlIiwic3RlcF9pbnRvOiBQYXMgZW50cmFudCAoRjgpIiwic3RlcF9vdmVyOiBQYXMgcGFyIGF1IGRlc3N1cyAoRjkpIiwicXVpdF9tYXNrOiBRdWl0dGVyIGwnZWRpdGlvbiBkZSBtYXNxdWUiLCJkYl9hcHBsaWNhdGlvbjogQXBwbGljYXRpb24iLCJkYl93YXRjaDogV2F0Y2giLCJkYl9jb25zb2xlOiBDb25zb2xlIiwiZGJfc291cmNlOiBTb3VyY2UgQ29kZSIsImRiX3ZhcmlhYmxlczogVmFyaWFibGVzIiwiZGJfc3RhY2s6IFBpbGUiLCJkYl9zZXR0aW5nczogUHJlZmVyZW5jZXMiLCJkYl9lbnRlcnZhbHVlOiBDaGFuZ2VyIGxhIHZhbGV1ciBkZSAiLCJkYl92YWx1ZWJldHdlZW46IEVudHJleiB1bmUgdmFsZXVyIGNvbXByaXNlIGVudHJlIDAgZXQgJTEiLCJkYl9wcm9jZWR1cmU6IFByb2NlZHVyZSAiLCJkYl9pbnN0cnVjdGlvbjogSW5zdHJ1Y3Rpb24gIiwiZGJfZnVuY3Rpb246IEZ1bmN0aW9uICIsImRiX21ldGhvZDogTWV0aG9kZSAiLCJkYl9vYmplY3Q6IE9iamV0ICIsImRiX3Vua25vd246IEluY29ubnUgIiwiZGJfZW50ZXJudW1iZXI6IEVudHJleiB1biBjaGlmZnJlOiAgIiwiZGJfZW50ZXJ0ZXh0OiBFbnRyZXogdW5lIGxldHRyZTogICIsImRiX3ByZWZlcmVuY2VzOiBQcmVmZXJlbmNlcyBBb3ogRGVidWdnZXIiLCJkYl9pbnRlcmZhY2V0eXBlOiBGZW5ldHJlIEFwcGxpY2F0aW9uOiIsImRiX3NldHRpbmdzbGVmdHJpZ2h0OiAxOkdhdWNoZSwyOkRyb2l0ZSIsImRiX3dkZWZwb3M6IFBvc2l0aW9uIHBhciBkZWZhdXQgZGVzIGZlbmV0cmVzOiIsImRiX3Jlc2V0V2luZG93czogUmUtaW5pdGlhbGlzZXIgbGVzIGZlbmV0cmVzIiwiZGJfcmVzdG9yZVdpbmRvd3M6IFJlc3RvcmVyIGxlcyBmZW5ldHJlcyBhdSBsYW5jZW1lbnQ6IiwiZGJfY2xvc2U6IE9LIiwiZGJfY2FuY2VsOiBBbm51bGVyIiwiZGJfdGl0bGV2aWV3ZXI6IEFPWiBWaWV3ZXIiLCJkYl90aXRsZWRlYnVnZ2VyOiBBT1ogVmlld2VyIC0gRGVib2dnZXVyIEFjdGlmIiwiZGJfdGl0bGVwYXVzZTogQXBwbGljYXRpb24gZW4gcGF1c2UiLCJkYl90aXRsZXN0ZXBzbG93OiBQYXMgYSBwYXMgbGVudCIsImRiX3RpdGxlc2xvdzogQXBwbGljYXRpb24gYXUgcmFsZW50aSIsImRiX3RpdGxlcGxheTogQXBwbGljYXRpb24gZW4gZm9uY3Rpb25uZW1lbnQiLCJkYl90aXRsZWVkaXRpbmdtYXNrOiBFZGl0aW9uIGR1IG1hc3F1ZSBkZSBjb2xsaXNpb24iLCJkYl9kaXNwbGF5TWFza3M6IEFmZmljaGVyIG1hc3F1ZXMgZGUgY29sbGlzaW9uOiIsImRiX2Rpc3BsYXlMYWJlbHM6IEFmZmljaGVyIGluZm9ybWF0aW9uIG9iamV0czoiLCJkYl9kaXNwbGF5UnVsZXI6IEFmZmljaGVyIGxhIHJlZ2xlOiIsImRiX2Rpc3BsYXlHcmlkOiBBZmZpY2hlciBsYSBncmlsbGU6IiwiZGJfZ3JpZFdpZHRoOiBMYXJnZXVyIGdyaWxsZToiLCJkYl9ncmlkSGVpZ2h0OiBIYXV0ZXVyIGdyaWxsZToiLCJkYl9kaXNwbGF5Q3Jvc3NoYWlyOiBBZmZpY2hlciBsZSB2aXNldXI6IiwiZGJfZm9udFdpZHRoOiBIYXV0ZXVyIGRlIGxhIHBvbGljZSIsImRiX2FwcGxpY2F0aW9uc21hbGxiaWc6IDE6UGV0aXRlLDI6R3JhbmRlIiwiZGJfcmVzZXRNYXNrOiBSLkEuWi4gbWFzayIsImRiX2hlbHA6IEFpZGUgQU9aIERlYnVnZ2VyIiwiZGJfZGlzcGxheURvYzogQWZmaWNoZXIgbGEgZG9jdW1lbnRhdGlvbiJdfSwiaW5jbHVkZVBhdGhzIjpbXSwic3ludGF4IjoiYW96In0sImJvb3RTY3JlZW4iOnsiYWN0aXZlIjpmYWxzZSwid2FpdFNvdW5kcyI6ZmFsc2UsImNsaWNrU291bmRzIjpmYWxzZX0sImVycm9ycyI6e319'));
 	this.vars=typeof args=='undefined'?{}:args;
 	this.contextName='ext_debugging';
 	this.aoz[ "extension" + "Debugging"]=this;
@@ -33,7 +33,7 @@ function ext_debugging( aoz, args )
 this.blocks=[];
 	this.blocks[0]=function(aoz,vars)
 	{
-		// From source: D:/Programs/AOZ_Studio_SE/AOZ_Studio/app/aoz/extensions/debugging/debugging.aoz
+		// From source: C:/AOZ Studio/AOZ_Studio/app/aoz/extensions/debugging/debugging.aoz
 		aoz.sourcePos="0:49:0";
 		// Javascript
 		console.log( "AOZ Debugging extension activated..." );
@@ -94,7 +94,7 @@ this.blocks=[];
 		this.imgArrowDown.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIPSURBVHhe7Zo9TsNAEEbta3AWjoKAUyAhUXAURIdEwSFooaBLkx9HoUgKnCiEMsyzPZEgSvC/d808Kdr1end23pfWgWEYhmEYhmEY/5IwG3dst9sTGU7Tp+A5DMP3bO4luX3YOBgMbler1ZfME0aj0ZMMFPASeheHx0RGiOP4UxxvZPrTiYVMdo/xePwmg3ch0PNwOHxJJH4hrg8ypE5MDskrvoVAr4fklV0Ik8nkPl06ji8h0ONf8koURXccyI3rIdBbXnmlUADgagj0VFQeCgcAroVAL2XkIZjP5x/ZvBCuhEAPZeUXi0UcrNfri+y5MF2HwN1l5WG5XF4mRTabzVW6VJyuQuDOKvLyx1/LkPbNxKcQuKs2eYUFH0LgjtrlFV64HAK1G5NX2OBiCNRsXF5ho0shUKs1eYUDLoRAjdblFQ52GQJnO5NXKNBFCJzpXF6hUJshsNcZeYWCbYTAHufkFQo3GQLvZM9rsrkEjcorXNBECKw5L69wUZ0hMPdGXuHCOkLg5528wsVVQ/BWXqGBKiGUxQl5hUbaDMEpeYWG2gjBSXmFxpoMwWl5hQabCMELeYVG6wzBK3mFhusIwUt5hcarhOC1vIJAmRB6Ia8gUiSEXskrCOUJoZfyCmLHQui1vIKghHA2nU7HibUwm80iWTuXaevye5/JtUUm25vP8QzDMAzDMAzD8Ikg+Aa1v+fCqnk/ngAAAABJRU5ErkJggg==';
 		var handle = setInterval( function()
 		{
-			if ( self.debugEvents.isConnected() )
+			if ( self.debugEvents && self.debugEvents.isConnected() )
 			{
 				clearInterval( handle );
 				var message = 
@@ -157,10 +157,10 @@ this.blocks=[];
 			0xFFFFFF,	// 25- dragOutRectangle activated
 			0xFF0000,	// 26- dragOutRectangle deactivated
 			0xFFFFFF,	// 27- dragOutRectangle
-			0x869296,	// 28- consoleFont normal
-			0xC5C8C6,	// 29- consoleFont activated
-			0x869296,	// 30- consoleFont deactivated
-			0xFFFFFF,	// 31- consoleFont
+			0x000000,	// 28- consoleFont paper
+			0xFFFFFF,	// 29- consoleFont pen
+			0xFFFF00,	// 30- consoleFont block paper
+			0x000000,	// 31- consoleFont block pen
 			0x17CA65,	// 32- sourceFont normal
 			0x1EFF7F,	// 33- sourceFont activated
 			0x0F7F3E,	// 34- sourceFont deactivated
@@ -204,7 +204,11 @@ this.blocks=[];
 			0x1EFF7F,	// 72- hint normal= outRectangle
 			0x1EFF7F,	// 73- hint activated= inRectangle
 			0x112D3C,	// 74- hint deactivated= text
-			0x000000,	// 75- 
+			0x000000,	// 75- hint deactivated
+			0x000000,	// 76- consoleHilight
+			0x5cff33,	// 77- consoleHilight
+			0x000000,	// 78- consoleHilight
+			0xfa2d2d,	// 79- consoleHilight
 		];
 		this.inks = 
 		{
@@ -226,6 +230,7 @@ this.blocks=[];
 			label: 64,
 			wordUnderMouse: 68,
 			hint: 72,
+			consoleHilight: 76
 		}
 		this.getInk = function( name, activated )
 		{
@@ -584,7 +589,7 @@ this.blocks=[];
 			if ( !this.initialized )
 			{
 				args.openConsole = true;
-				args.visible = false;
+				args.visible = true;
 				args.mode = 'play';
 				this.initialize( args, function( response, data, extra )
 				{
@@ -694,8 +699,10 @@ this.blocks=[];
 		this.addWatch = function( args )
 		{
 			var self = this;
+			this.aoz.loadingMax++;
 			this.initialize( { visible: true, mode: 'play', isWatch: false }, function( response, data, extra )
 			{
+				self.aoz.loadingCount++;
 				if ( response )
 				{
 					self.winWatch.addWatch( args );
@@ -748,10 +755,10 @@ this.blocks=[];
 				windowFont: 
 				{
 					name: this.fontName, 
-					height: this.vars.fontHeight,
+					height: this.vars.fontHeight * 4 / 3,
 					context: 'ext_debugging',
-					widthChar: this.vars.fontHeight * 0.6,
-					heightChar: this.vars.fontHeight + this.vars.fontHeight * 0.5,
+					widthChar: this.vars.fontHeight * 0.9,
+					heightChar: this.vars.fontHeight + this.vars.fontHeight * 0.6,
 				}
 			}, "" );
 			this.screenFontWidth = this.screen.currentTextWindow.fontWidth;
@@ -938,7 +945,7 @@ this.blocks=[];
 					callback( true, {}, extra );
 				return false;
 			};
-			if ( typeof args.visible != 'undefined' )
+			if ( this.initialized && typeof args.visible != 'undefined' )
 				this.setVisible( args.visible );
 			if ( callback )
 				callback( true, {}, extra );
@@ -2512,28 +2519,28 @@ this.blocks=[];
 				height: Math.floor( this.workRectangle.height / this.debugger.screenFontHeight )
 			},
 			{
-				paper: this.debugger.getInk( 'inRectangle', this.debugger.INK_NORMAL ),
-				pen: this.debugger.getInk( 'consoleFont', this.debugger.INK_NORMAL ),
+				paper: this.debugger.getInk( 'consoleFont', 0 ),
+				pen: this.debugger.getInk( 'consoleFont', 1 ),
 				noAndX: true,
 			}, '' );
 			var argsEditor =
 			{
 				index: 'console',
 				console: true,
-				paper: this.debugger.getInk( 'inRectangle', this.debugger.INK_NORMAL ),
-				pen: this.debugger.getInk( 'consoleFont', this.debugger.INK_NORMAL ),
-				blockPaper: this.debugger.getInk( 'consoleFont', this.debugger.INK_EXTRA ),
-				blockPen: this.debugger.getInk( 'consoleFont', this.debugger.INK_ACTIVATED ),
+				paper: this.debugger.getInk( 'consoleFont', 0 ),
+				pen: this.debugger.getInk( 'consoleFont', 1 ),
+				blockPaper: this.debugger.getInk( 'consoleFont', 2 ),
+				blockPen: this.debugger.getInk( 'consoleFont', 3 ),
 				screen: this.screen,
 				window: this.window,
 				readOnly: false,
-				paper1: this.debugger.getInk( 'inRectangle', this.debugger.INK_NORMAL ),
-				pen1: this.debugger.getInk( 'consoleFont', this.debugger.INK_NORMAL ),
-				outline1: this.debugger.getInk( 'consoleFont', this.debugger.INK_NORMAL ),
+				paper1: this.debugger.getInk( 'consoleFont', 0 ),
+				pen1: this.debugger.getInk( 'consoleFont', 1 ),
+				outline1: this.debugger.getInk( 'consoleFont', 1 ),
 				pattern1: 0,
-				paper2: this.debugger.getInk( 'inRectangle', this.debugger.INK_ACTIVATED ),
-				pen2: this.debugger.getInk( 'consoleFont', this.debugger.INK_ACTIVATED ),
-				outline2: this.debugger.getInk( 'consoleFont', this.debugger.INK_ACTIVATED ),
+				paper2: this.debugger.getInk( 'consoleFont', 0 ),
+				pen2: this.debugger.getInk( 'consoleFont', 1 ),
+				outline2: this.debugger.getInk( 'consoleFont', 1 ),
 				pattern2: 0,
 				prompt: this.debugger.vars.consolePrompt,
 				noEvents: true
@@ -2550,10 +2557,29 @@ this.blocks=[];
 		};
 		this.ConsoleWindow.prototype.log = function( args )
 		{
-			this.aoz.ext_source_editor.printConsole( { index: 'console', text: args.text, sameLine: typeof args.sameLine != 'undefined' ? args.sameLine : true } );
+			var paper = this.debugger.getInk( 'consoleFont', 0 );
+			var pen = this.debugger.getInk( 'consoleFont', 1 );
+			if ( args.type == 'warning' )
+			{
+				paper = this.debugger.getInk( 'consoleHilight', 0 );
+				pen = this.debugger.getInk( 'consoleHilight', 1 );
+			}
+			else if ( args.type == 'error' )
+			{
+				paper = this.debugger.getInk( 'consoleHilight', 2 );
+				pen = this.debugger.getInk( 'consoleHilight', 3 );
+			}
+			this.aoz.ext_source_editor.printConsole( 
+			{
+				index: 'console', 
+				text: args.text, 
+				paper: paper,
+				pen: pen,
+				sameLine: typeof args.sameLine != 'undefined' ? args.sameLine : false
+			} );
 			if ( !args.wait )
 			{
-				if ( !args.sameLine )
+				if ( args.sameLine )
 				this.aoz.ext_source_editor.nextConsoleLine( { index: 'console' } );
 			}
 			else
@@ -3657,7 +3683,7 @@ this.blocks=[];
 			this.context = this.canvas.getContext( '2d' );
 			this.canvas.width = this.workRectangle.width;
 			this.canvas.height = this.workRectangle.height;
-			this.renderingContext = new RenderingContext2D( this.aoz, this.canvas, this.aoz.platform, this.debugger.renderingDisplay );
+			this.renderingContext = new RenderingContext2D( this.aoz.renderer, this.canvas, this.aoz.platform, this.debugger.renderingDisplay );
 			this.renderingContext.filters = this.debugger.renderingFilters;
 			this.renderingContext.resize( true, this.workRectangle.width, this.workRectangle.height );
 			this.xMouseApplication = -10000;
@@ -4193,9 +4219,14 @@ this.blocks=[];
 				}
 			}
 			if ( !found )
-				this.lines.push( { section: args.section, source: source, expression: args.expression, type: 'watch', alert: false, hilighted: false, alertCount: 0 } );
+			{
+				var section = args.section;
+				if ( section.className == 'directCommand' )
+					section = this.aoz.root;
+				this.lines.push( { section: section, source: source, expression: args.expression, type: 'watch', alert: false, hilighted: false, alertCount: 0 } );
 			this.currentLine = -1;
 			this.aoz.watchCode = this.lines.length > 0;
+			}
 		};
 		this.WatchWindow.prototype.addParameter = function( args )
 		{
@@ -5869,6 +5900,10 @@ this.blocks=[];
 		};
 		// End Javascript
 		return{type:0}
+	};
+	this.blocks[1]=function(aoz,vars)
+	{
+		return{type:0};
 	};
 	this.aoz.run(this,0,null);
 };

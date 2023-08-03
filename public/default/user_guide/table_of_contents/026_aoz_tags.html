@@ -1,0 +1,704 @@
+<?DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, " />
+        <meta name="google-site-verification" content="">
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio/aoz%20tags'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio/aoz%20tags'>
+        <meta name='pagename' content='AOZ Docs - AOZ TAGS'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='Sun Apr 30 2023'>
+
+        <title>AOZ Docs - AOZ TAGS</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://stackedit.io/style.css" />
+        <link rel="stylesheet" href="https://doc.aoz.studio/public/styles/prism.css" />
+
+        <style type="text/css">
+            /* PrismJS 1.29.0
+            https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup css clike javascript */
+            code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpb.woff') format('woff');
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpi.woff') format('woff');
+                font-weight: normal;
+                font-style: italic;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'Avenir Next LT Pro';
+                src: url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/avenir-nlpr.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: 'opendyslexicmonoregular';
+                src: url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff2') format('woff2'),
+                    url('https://doc.aoz.studio/public/styles/fonts/dyslexia/opendyslexicmono-regular-webfont.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+
+            }
+
+            /**
+                COLORS
+            */
+            :root{
+                --primary-dark-bg-grey: #1C1C1C;
+                --primary-dark-bg-white: #FFFFFF;
+                --primary-dark-bg-orange: #FEAC00;
+                --primary-dark-bg-blue: #355470;
+                --primary-dark-bg-cyan: #048FAF;
+                --primary-dark-bg-red: #CC0000;
+
+                --second-dark-bg-grey: #A1A1A1;
+                --second-dark-bg-blue: #2E475D;
+                --second-dark-bg-cyan: #112D3C;
+                --second-dark-bg-black: #000000;
+
+                --primary-light-bg-white: #FFFFFF;
+                --primary-light-bg-orange: #FFAB00;
+                --primary-light-bg-blue: #17455E;
+                --primary-light-bg-cyan: #048FAF;
+
+                --second-light-bg-black: #000000;
+                --second-light-bg-blue1: #102D3D;
+                --second-light-bg-blue2: #153648;
+                --second-light-bg-cyan1: #082E41;
+                --second-light-bg-cyan2: #286074;
+                --second-light-bg-orange1: #E29000;
+                --second-light-bg-orange2: #FFAB00;
+            }
+
+            input:focus
+            {
+                outline: none;
+            }
+
+            /* width */
+            ::-webkit-scrollbar {
+            width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+            background: var(--primary-dark-bg-blue);
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+            background: var(--second-dark-bg-grey);
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark-bg-orange);
+            }
+
+            .splitter
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .splitter>.gutter
+            {
+                border: none;
+                background-color: var( --primary-dark-bg-blue );
+            }
+
+            .panel
+            {
+                border: none;
+                width: 100%;
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-content
+            {
+                background-color: var( --primary-dark-bg-grey );
+            }
+
+            .panel .panel-title
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .caption
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            .panel .panel-title .icon
+            {
+                background-color:var( --primary-dark-bg-blue );
+                color: var( --second-dark-bg-grey );
+                border: none;
+            }
+
+            html, body
+            {
+                color: rgba(255,255,255,.75);
+                background-color: #202020;
+                font-family: 'Avenir Next LT Pro';
+                font-size: 18px;
+            }
+
+            h1
+            {
+                font-size: 24px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+            }
+
+            h2
+            {
+                font-size: 18px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:1;
+            }
+
+            h3
+            {
+                font-size: 14px;
+                color: var(--primary-dark-bg-cyan);
+                font-weight: bold;
+                margin-block-end:0;
+            }
+
+            h4
+            {
+                font-size: 16px;
+                color: var(--primary-dark-bg-cyan);
+                margin-block-end:0;
+            }
+
+            pre
+            {
+                margin-block-start:0;
+            }
+
+            p
+            {
+                margin-block-start: 0;
+            }
+
+            td
+            {
+                border: none;
+                vertical-align: middle;
+            }
+
+            .compatibility
+            {
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                height: 32px;
+                text-align: right;
+                padding: 4px;
+                font-size: 14px;
+            }
+            .compatibility span
+            {
+                position:relative;
+                top: 3px;
+            }
+            .compatibility img
+            {
+                padding-left: 4px;
+            }
+
+            #topics h1
+            {
+                background-image: url(svg/magic-hat.svg);
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 24px;
+                padding-left: 34px;
+                color: var(--second-dark-bg-grey);
+            }
+
+            #topics ul
+            {
+                list-style-type: caret;
+            }
+
+            #topics .item_hide
+            {
+                display: none;
+            }
+
+            #topics .item_show
+            {
+                display: block;
+            }
+
+            #topics li
+            {
+                list-style-type: none;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: 10px;
+                padding-left: 22px;
+                color: var(--primary-dark-bg-cyan);
+                cursor: pointer;
+            }
+
+            #topics li.chapter
+            {
+                background-image: url( svg/tick-ul.svg );
+                font-weight: bold;
+            }
+
+            #topics li.page
+            {
+                background-image: url( svg/tick-li.svg );
+            }
+
+            #topics .select-topic
+            {
+                font-weight: bold;
+                color: var( --primary-dark-bg-white );
+            }
+
+            a:not([class]) {
+                color: var(--primary-dark-bg-orange);
+            }
+
+            a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+
+            #topics a:not([class]) {
+                color: var(--primary-light-bg-cyan);
+            }
+
+            #topics a:not([class]):hover {
+                color: var(--primary-light-bg-white);
+                text-decoration: none;
+            }
+            .version
+            {
+                font-family: 'courier new';
+                font-size: 12px;
+                color: #00C0DD;
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                z-index: 1000;
+            }
+            #toolbar
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+            }
+
+            #toolbarBottom
+            {
+                width: 100%;
+                height: 48px;
+                border-bottom: 2px #303030 solid;
+                padding: 8px;
+                display: none;
+            }
+
+            #toolbar .mif-3x
+            {
+                margin-left: 8px;
+                font-size: 32px;
+            }
+
+            #toolbar .mif-3x:hover
+            {
+                color: var( --primary-dark-bg-white );
+                text-shadow: 0px 0px 8px var( --primary-dark-bg-orange );
+            }
+
+            #toolbar select
+            {
+                position: relative;
+                font-size: 16px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+                display: none;
+                border-radius: 16px;
+                width: 64px;
+                height: 24px;
+                top: -10px;
+                padding-left: 8px;
+            }
+
+            .search
+            {
+                position: absolute;
+                display: inline-block;
+                height: 48px;
+                margin-left: 16px;
+                margin-right: 16px;
+                right: 0px;
+                width: 50%;
+            }
+
+            .search input
+            {
+                position: absolute;
+                width: 100%;
+                height: 40px;
+                border-radius: 33px;
+                margin-left: 8px;
+                padding-left: 40px;
+                padding-right: 8px;
+                top: -5px;
+                background-image: url(svg/search.svg);
+                background-repeat: no-repeat;
+                background-position: 8px center;
+                background-size: 28px;
+                font-size: 24px;
+                font-family: "Avenir Next LT pro";
+                color: #444444;
+            }
+
+            .bloc-search
+            {
+                margin-block-end: 8px;
+                padding: 8px;
+                border-top: 1px solid #444444;
+            }
+
+            .bloc-search b
+            {
+            color: var(--primary-light-bg-orange);
+            cursor: pointer;
+            }
+
+            .search_results
+            {
+                position: absolute;
+                top: 0px;
+                left:0px;
+                width: 100%;
+                text-align: right;
+            }
+
+            .scrollpane
+            {
+                position:relative;
+                overflow:auto;
+                width:100%;
+                height:100%
+            }
+
+            #topics
+            {
+                width: 100%;
+                height: 100%;
+                height: auto;
+                padding: 16px;
+            }
+
+            #page
+            {
+                margin-top:16px;
+                width: 90%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #md_login
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/login.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_gator
+            {
+                display: none;
+                position: fixed;
+                left: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/aligator.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_sync
+            {
+                display: none;
+                position: fixed;
+                right: 64px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/sync.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #md_edit
+            {
+                display: none;
+                position: fixed;
+                right: 16px;
+                top: 56px;
+                width: 40px;
+                height: 40px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: contain;
+                background-image: url(svg/edit.svg);
+                z-index: 100;
+                cursor: pointer;
+            }
+
+            #frm_login
+            {
+                display: none;
+                position: fixed;
+                border-radius: 8px;
+                width: 320px;
+                height: 100px;
+                background-color: var(--primary-dark-bg-blue);
+                top: 64px;
+                left: 80px;
+                z-index: 100;
+                padding: 12px;
+            }
+
+            #frm_login .log_tit
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                text-align: center;
+                color: #FFFFFF;
+                font-weight:bold;
+                font-size: 18px;
+            }
+
+            #frm_login button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 17px;
+                font-weight: bold;
+                color: #c0c0c0;
+                background-color:var(--primary-dark-bg-blue);
+                border: 1px #c0c0c0 solid;
+                width: 24px;
+                height: 24px;
+                cursor:pointer;
+            }
+
+            #frm_login input
+            {
+                width: 100%;
+                height: 40px;
+                padding: 4px;
+                color: #404040;
+                font-size: 18px;
+            }
+
+            #gator_mask
+            {
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 100;
+                text-align: center;
+            }
+
+            #gator_mask button
+            {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+                border-radius: 4px;
+                font-size: 37px;
+                color: #ffffff;
+                border: 1px #ffffff solid;
+                width: 56px;
+                height: 56px;
+                cursor: pointer;
+                background: none;
+            }
+
+            #gator_frame
+            {
+                position: relative;
+                margin-top: 7%;
+                margin-bottom: 7%;
+                width: 70%;
+                height: 70%;
+                border: none;
+            }
+
+            blockquote
+            {
+                    color: inherit !important;
+            }
+
+            code
+            {
+                    line-height: 1.5em !important;
+                    padding: 4px !important;
+                    vertical-align: top !important;
+            }
+
+            button.copy-btn
+            {
+                position: relative;
+                cursor: pointer;
+                background-color: var(--second-dark-bg-grey);
+                border-radius: 4px;
+                border: none;
+                height: 24px;
+                width: 60px;
+                font-size: 12px;
+                font-family: 'Roboto Mono';
+            }
+
+            button.copy-btn:hover
+            {
+                background-color: var(--primary-dark-bg-cyan);
+            }
+
+            @media screen and (max-width:767px)
+            {
+            }
+
+            @media screen and (min-width: 768px) and (max-width:1023px)
+            {
+            }
+
+        </style>
+
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="https://unpkg.com/stackedit-js@1.0.7/docs/lib/stackedit.min.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/string-utils.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/md-parser.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/prism.js"></script>
+        <script type="text/javascript" src="https://doc.aoz.studio/public/js/libs/languages/aoz.min.js"></script>
+
+    </head>
+    <body>
+        <h1 id="aoz-tags">AOZ TAGS</h1>&#10;<p>The AOZ transpiler (which converts your AOZ code in Javascript and HTML) offers a complete system of tags to control all aspects of the transpilation of your application. They are not instructions of the AOZ language per say, but commands for AOZ Studio and that puts a lot of power into your hands.</p>&#10;<p>We do not recommend to read this advanced topic first, and maybe not second&#8230;</p>&#10;<h2 id="what-is-a-tag">What is a tag?</h2>&#10;<p>A tag is a string that begins with the &#8220;hash&#8221; character, (# as on Facebook or Twitter).</p>&#10;<p>Tags are often followed by a parameter. If the tag needs a parameter, then you must separate it from the tag itself with a colon &#8220;:&#8221;.</p>&#10;<p>This parameter can be:</p>&#10;<ul>&#10;<li><strong>a boolean:</strong> True or False. A syntax error will be generated if the value is different from those two.</li>&#10;<li><strong>a string:</strong> the string must be enclosed within quotes.</li>&#10;<li><strong>a number:</strong> integer or floating point</li>&#10;<li><strong>a system variable</strong> that was declared with the #define tag, in which you can put either booleans, strings or numbers, and that can also be defined in the transpiler command line (future AOZ Studio versions), the Application Manifest or in the application setup panel.</li>&#10;</ul>&#10;<p><strong>Note:</strong> The Manifest.json file is located in the resources folder within your application folder, very interesting reading. It is about all the settings of the application.</p>&#10;<h2 id="examples-of-aoz-tags">Examples of AOZ tags:</h2>&#10;<p><strong>#splashScreen:False</strong><br/>&#10;<strong>#forceCompile</strong><br/>&#10;<strong>#displayWidth:3000</strong><br/>&#10;<strong>#include &#34;./utilities/my_super_utility_procedure.aoz&#34;</strong><br/>&#10;<strong>#ifdef LINUX_VERSION</strong><br/>&#10;** &#8230; some code just for Linux**<br/>&#10;<strong>#endif</strong></p>&#10;<h2 id="how-to-use-the-tags">How to use the tags</h2>&#10;<p>Simply insert the tag in your source code at the appropriate location. Most of the tags have a &#8220;global&#8221; effect, and are detected during the preprocessing phase of the transpiler (usually the tags that define HOW to transpile).</p>&#10;<p>Some other tags have only an effect on the function or method or procedure they are included in.</p>&#10;<p>And other tags will have an immediate effect, like <strong>&#8220;#include&#8221;</strong>, that allows you to cut your program into pieces, that you may want to reuse. Include loads and inserts the code referred to in the path of the tag, at the position of insertion, before transpiling. To explain&#8230;</p>&#10;<p>Say this below little program file is saved as &#8220;AOZUtils/procedure.aoz&#8221;</p>&#10;<pre><code class="prism language-basic">Procedure TAG_DEMO&#10;Print &#34;This file will be included!&#34;&#10;End Proc&#10;</code></pre>&#10;<p>Then in another AOZ application, you can do:</p>&#10;<pre><code class="prism language-basic">#include &#34;AOZUtils/procedure.aoz&#34;&#10;TAG_DEMO&#10;End&#10;</code></pre>&#10;<br/>&#10;<h2 id="list-of-available-tags">List of available tags</h2>&#10;<h3 id="transpilation-tags">Transpilation tags</h3>&#10;<p>This paragraph groups the tags used by the transpiler itself to transpile your application.<br/>&#10;<br/><br/>&#10;<strong>cleanExtensions</strong></p>&#10;<p>description: Deletes the object folder of all extensions before transpiling the application, forcing a complete re-transpilation.</p>&#10;<p>param: True or False to turn the feature on or off.</p>&#10;<p>Eg: <strong>#cleanExtensions: true</strong></p>&#10;<p>You might need to use this tag if you have copied a new extension in your extension folder.</p>&#10;<p>Also, keep in mind (at least for the first versions of AOZ) that this tag may solve some complex problems due to a de-synchronisation between the transpiler used to pre-transpile a certain extension and the current version of your transpiler.</p>&#10;<p>If this happens, do one transpilation of your application with this tag set to true, all the extensions will be re-transpiled (this might take some time) and will be ready to use.<br/>&#10;<br/><br/>&#10;<strong>cleanModules</strong></p>&#10;<p>description: Deletes the object folder of all languages modules before transpiling the application, forcing a complete re-transpilation.</p>&#10;<p>param: True or False to turn the feature on or off.</p>&#10;<p>Eg: <strong>#cleanModules: true</strong></p>&#10;<p>Modules contain the core syntax of the AOZ language. They are represented in AOZ as simple AOZ source code visible in the aoz/language/v1_0 folder. All modules are pre-transpiled once for all at each new version (that's why the first boot of a new version of AOZ might take more time than the latter) to ensure the maximum speed of translation.</p>&#10;<p>This principle works fine as long as all the sources have been synchronized with the same version of the transpiler. if they are not, some problems might occur, syntax errors, mismatch errors, or crashes of both the transpiler or the runtime.</p>&#10;<p>The AOZ Studio transpiler is modular: by changing the path to the folders that contain the definition of the syntax, you change the syntax (more to come! :) ). Normally you should not have to touch the code in it.</p>&#10;<p>You might need to use this tag if you have manually copied a new module in your module folder.</p>&#10;<p>Also, keep in mind (at least for the first versions of AOZ) that this tag may solve some incomprehensible problems due to a de-synchronisation between the transpiler used to pre-transpile a certain module and the current version of your transpiler.</p>&#10;<p>If this happens, do one transpilation of your application with this tag set to true, all the moudules will be re-transpiled (this might take some time) and will be ready to use.<br/>&#10;<br/></p>&#10;<p><strong>clean</strong></p>&#10;<p>description: Deletes the HTML folder of the application before transpiling it, forcing a complete re-transpilation of all files.</p>&#10;<p>param: True or False to turn the feature on or off.</p>&#10;<p>When you work on an application, during development you often add files that you remove later (like images, fonts, etc.). As a default, and to avoid transpiling files that have already been transpiled, the AOZ Transpiler does not erase the destination folder where your application is built.</p>&#10;<p>After some time, this folder can contain old files and stuff you do not use anymore and you may want to remove all the garbage: use this tag!</p>&#10;<p>Please note that the transpilation will take a little longer as the transpiler will have to scan and re-transpile every file.<br/>&#10;<br/></p>&#10;<p><strong>caseSensitive</strong></p>&#10;<p>description: Set the transpiler to case sensitive or insensitive mode</p>&#10;<p>param: True or False to turn the feature on or off.</p>&#10;<p>The default behavior of the AOZ transpiler is case-insensitive. This allows you to type any combination of upper/lower case letters in the names of your variables, procedures, methods or objects.</p>&#10;<p>But really, we suggest that after a while if you are a beginner you switch to case sensitive, as that is how all professional tools work. You would never see a C transpiler being case insensitive, as for large programs it only brings confusion.</p>&#10;<p>When in case sensitive mode, you need to know a few things:</p>&#10;<ul>&#10;<li>&#10;<p>AOZ will reject names of instructions with improper casing. ALL instructions of AOZ begin with an upper case letter at the beginning of each word. Example &#8220;Print&#8221;, &#8220;True&#8221;, &#8220;Screen Open&#8221; will be accepted, but &#8220;screen Open&#8221; will not as &#8220;false&#8221; will be also rejected.</p>&#10;</li>&#10;<li>&#10;<p>Case Sensitivity also works for variables, for example if you define a variable like &#8220;MyVariable = 2&#8221;, and later do &#8220;Print myvariable&#8221;, your application will display &#8220;0&#8221; instead of &#8220;2&#8221; as the variable contained in the Print expression is recognized as a new variable, which are by default set to zero. This might be real dangerous and generate a lot of possible bugs with non-initialized variables. This is the reason why you should remove ALL warnings about &#8220;Non declared variable&#8221; when transpiling as this will surely generate a bug or crash your application.<br/>&#10;<br/></p>&#10;</li>&#10;</ul>&#10;<p><strong>syntax</strong></p>&#10;<p>param:nameOfSyntax$:string:&#8220;loose&#8221; or &#8220;strict&#8221;.</p>&#10;<p>description: Defines the transpilation mode variables, such as case sensitivity and respect of &#8220;proper Basic syntax&#8221;.</p>&#10;<p>content:</p>&#10;<p>AMOS Basic, AOZ's grandfather was well known for having a loose syntax. Furthermore, the language was case-insensitive, which is today not recommended.</p>&#10;<p>In order to be compatible and easy to use, the default mode when you create an application is &#8220;loose&#8221;. This means that you can use upper or lower case letters in the names of your variables and procedures and they do not have to correspond to match.</p>&#10;<p>For example: in &#8220;loose&#8221; mode, this would work:</p>&#10;<pre><code class="prism language-basic">score = 10 : Print SCORE&#10;Display_Score[ score ]&#10;&#10;Procedure DISPLAY_SCORE[ SCORE ]&#10;&#9;Print SCORE&#10;End Proc&#10;</code></pre>&#10;<p>Let's not forget that we want to make learning easy and give programming freedom, but nothing prevents you from programming otherwise with these Tags.<br/>&#10;<br/></p>&#10;<p><strong>endian</strong></p>&#10;<p>description: Sets the order of bytes in files and memory</p>&#10;<p>param:type#:string: Either &#8220;little&#8221; (for pc) or &#8220;big&#8221; (for Amiga and Atari).</p>&#10;<p>In the early days of computers, some computers preferred to store the lowest binary digital values first, and the highest last. This made the format of application and files on disc incomprehensible between computers of different brands. If your application is going to save fields that will be used on the Amiga or Atari, then set this flag to &#8220;big&#8221;&#8230; If not, then &#8220;little&#8221; is the right choice.<br/>&#10;<br/></p>&#10;<p><strong>manifest</strong></p>&#10;<p>param:string: The name of the manifest to use.</p>&#10;<p>description: Indicates the manifest to use to transpile your application.</p>&#10;<p>content: We already discussed this important Tag. The manifest is where all the information about the transpilation of your application is defined. Values such as the width of the application (display width and height) are stored, but you will find much more there.</p>&#10;<p>The data is stored in the form of an HJSON object. HJSON is a readable version of JSON, with the same information, but presented in a very readable manner with comments.</p>&#10;<p>The most important values are available in the project setup wizard (when you create a new program with the NEW button).</p>&#10;<p>The V1.0 of AOZ supports the following manifest tags:</p>&#10;<ul>&#10;<li>&#10;<p>&#8220;aoz&#8221;: the application will be compiled for modern machines using the most recent version of the instruction set.</p>&#10;</li>&#10;<li>&#10;<p>&#8220;amos&#8221;: if your application is designed from the Amiga computer. When set, the AOZ renderer emulates the display of a CRT TV, including the dead zones on top, left, right and bottom. In AMOS, those areas were called &#8220;Hardware coordinate&#8221; and were usually not seen on the TV. Please refer to the original AMOS manual, included in this package in the &#8220;manuals&#8221; folder.</p>&#10;</li>&#10;<li>&#10;<p>&#8220;stos&#8221;: (not available yet) To run applications from STOS on the Atari ST. It will emulate the display of the machine.<br/>&#10;<br/></p>&#10;</li>&#10;</ul>&#10;<p><strong>platform</strong></p>&#10;<p>decription: Indicate the machine emulated by the renderer.</p>&#10;<p>param:nameOfThePlatform$:string: &#8220;aoz&#8221;, &#8220;amiga&#8221; or &#8220;atari&#8221;</p>&#10;<p>This is used by the renderer. In &#8220;normal&#8221; mode (understand &#8220;aoz&#8221;), the renderer accesses a modern machine, allowing high resolution graphics and multitudes of sprites and bobs. There is no such thing as &#8220;Hardware coordinates&#8221;, and sprites and bobs are displayed at their exact coordinates.</p>&#10;<p>Note: If this flag is set to &#8220;amiga&#8221;, the renderer emulates the display of a CRT TV, with a limited number of pixels and blank areas on left, top, right and bottom.</p>&#10;<p>Please note that for the moment, the copper is not emulated and that any application using the copper commands will simply have no effect on the screen.</p>&#10;<p>If this flag is set to &#8220;atari&#8221;, the displays of the machine will also be  emulated, with a maximum resolution of 640x400 in two colors.<br/>&#10;<br/></p>&#10;<p><strong>useLocalTags</strong></p>&#10;<p>description: Allow local tags in extensions or modules to work.</p>&#10;<p>Local tags are tags that are only valid on files or extensions.<br/>&#10;<br/></p>&#10;<p><strong>basicRemarks</strong></p>&#10;<p>description: Allow the use, or not, of the character ' (apostrophe) as a remark in your code.</p>&#10;<p>param: Switch the feature on or off.</p>&#10;<p>content:</p>&#10;<p>The original syntax of the Basic language allowed you to define remarks with the apostrophe character. Like this:</p>&#10;<pre><code class="prism language-basic">Print &#34;Hello AOZ&#34; &#10;'  This is a remark with an apostrophy&#10;Rem  This is a remark with the Rem instruction**&#10;//  This is a C-style remark**&#10;&#10;*/&#10;And this is a long C-Style remark,&#10;It can include any number of lines.&#10;/*&#10;</code></pre>&#10;<p>We suggest to create your new applications using // and /* */ instead of the old-fashioned duo: ' and Rem&#8230;<br/>&#10;<br/></p>&#10;<p><strong>noWarning</strong></p>&#10;<p>description: Removes a specific warning from the transpiler syntax checking.</p>&#10;<p>param:warningId:string: The identifier string of the warning.</p>&#10;<p>comment:</p>&#10;<p>The most frequent use of this instruction is to remove the &#8220;Variable not reserved&#8221; warning.</p>&#10;<p>Although we highly suggest NOT to remove this warning, and if you are coding a new application to define all variables before using them, this tag may prove useful when running STOS and AMOS applications which were using the old syntax of remarks.</p>&#10;<p>List of warning identifiers:</p>&#10;<ul>&#10;<li>font_not_found</li>&#10;<li>garbage_found_in_folder</li>&#10;<li>font_not_supported</li>&#10;<li>file_at_root_of_filesystem</li>&#10;<li>screen_not_multiple_of_font_size</li>&#10;<li>missing_folder</li>&#10;<li>missing_resources_folder</li>&#10;<li>creating_directory</li>&#10;<li>cannot_set_permissions</li>&#10;<li>illegal_bank_element_filename</li>&#10;<li>file_to_include</li>&#10;<li>copying_file_to_filesystem</li>&#10;<li>variable_not_declared</li>&#10;<li>duplicate_error_message</li>&#10;<li>instruction_not_implemented</li>&#10;<li>should_wait</li>&#10;<li>out_of_unique_identifiers</li>&#10;</ul>&#10;<p>Example:</p>&#10;<pre><code class="prism language-basic">#noWarning: &#34;font_not_found&#34;&#10;#noWarning: &#34;variable_not_declared&#34;&#10;&#10;&#10;</code></pre>&#10;<br/>&#10;<p><strong>tvStandard</strong><br/>&#10;description: Indicate emulation of an NTSC display for the Amiga. Amiga emulation is in PAL mode by default.</p>&#10;<p>param: Turn the feature on or off.<br/>&#10;<br/></p>&#10;<p><strong>export</strong></p>&#10;<p>description: Defines the output language of transpilation.</p>&#10;<p>param:exportType$:string: The name of the platform to export to.</p>&#10;<p>Today, this tag only supports &#8220;html&#8221;. In a near future version, it will also allow you to export direct to, for example, Facebook (with the value &#8220;htmlFb&#8221;), create executables for Windows, macOS, and Linux (&#8220;windowsExe&#8221;, &#8220;macOS&#8221;, &#8220;linuxExe&#8221;) and later for specific 3D engines like Unreal or Unity.<br/>&#10;<br/></p>&#10;<p><strong>saveTo</strong></p>&#10;<p>description: Indicates where to save the transpiled application.</p>&#10;<p>param:path$:string: Path to a folder where the transpiled application is saved.</p>&#10;<p>As a default, AOZ saves the HTML folder with the transpiled application at the same level as the .aoz source code.<br/>&#10;<br/></p>&#10;<p><strong>logTo</strong></p>&#10;<p>description: Change the folder where the transpiler logs are saved.</p>&#10;<p>param:path$:string: Path to a folder where the logs of the transpiler are saved.</p>&#10;<p>As a default, AOZ does not save any log. You can activate this feature with the tag &#8220;#log:true&#8221;, then AOZ will save it's transpilation logs into the aoz/logs folder. This tag allows you to define your own folder to save the logs.<br/>&#10;<br/></p>&#10;<p><strong>log</strong></p>&#10;<p>description: Force the transpiler to save a log at each transpilation.</p>&#10;<p>param: True to save the transpilation log, false not to. Default is false.</p>&#10;<p>Logs can be useful in case of complex problems with the transpiler. It does not &#8220;compile&#8221; but why? It should! If this happens to you, activate the log feature to inspect the files and identify any issues.<br/>&#10;<br/></p>&#10;<p><strong>verbose: number</strong></p>&#10;<p>Set the verbosity of the transpiler, &#8220;how many messages it will output&#8221;.</p>&#10;<p>0= no messages at all.<br/>&#10;1= no messages except the errors.<br/>&#10;2= no messages except errors and warnings.<br/>&#10;3= errors, warnings, and indication of what the transpiler is doing.<br/>&#10;4= for development, transpiler indicates everything, all the above plus files loaded and saved etc.<br/>&#10;<br/></p>&#10;<p><strong>forceTranspile</strong></p>&#10;<p>description: Force the transpilation of this module or extension.</p>&#10;<p>This tag is the contrary of #excludeFromBuild. It forces the transpilation of the module or extension each time you transpile your application.</p>&#10;<p>Developers will appreciate the mental security to know that the code of your new extension is always compiled, especially in front of big debugging problems  to relieve doubts of the cause of the bug.<br/>&#10;<br/></p>&#10;<p><strong>developerMode</strong></p>&#10;<p>description: Turn AOZ into developer mode.</p>&#10;<p>param: True or False to turn the feature on or off.</p>&#10;<p>AOZ contains a developer mode that can be useful when you are writing an extension or if you want deeper features in AOZ.</p>&#10;<p>It does not do much for the moment, but new options will be added for sure in the next month.</p>&#10;<p>For the moment (v 1.0 of AOZ), being in developer mode, bring the following advantages:</p>&#10;<ul>&#10;<li>&#10;<p>when running your application, AOZ will <em>not</em> intercept the system keys of the browser, you will be able to open the Chrome debugger with F12 for example.</p>&#10;</li>&#10;<li>&#10;<p>when in developer mode, AOZ scans all the extension and modules folders looking for code that has changed since the last compilation. If you are not developing an extension and have not changed the content of the inside of the aoz system folder, you do not need it. But if you develop a new extension, a simple RUN of your AOZ test application will enforce the compilation of this very extension. Please note that this option will also make the transpilation process (a little) slower as AOZ has to scan all the 50 sub-folders in the extension and module directories. As the number of extensions grows in the future, and reaches hopefully the size of node.js' list of packages (let's dream! :) it might become very handy then to ensure everything is compiled with the latest version.</p>&#10;</li>&#10;</ul>&#10;<p>You can toggle developer mode in the &#8220;Settings&#8221; panel of the AOZ IDE.<br/>&#10;<br/></p>&#10;<p><strong>includeSource</strong></p>&#10;<p>description: Copy the source code of the application as remarks in the transpiled code.</p>&#10;<p>param: True or False to turn the feature on or off.</p>&#10;<p>This option is true by default, and forces the transpiler to include line numbers into the AOZ basic code being transpiled.</p>&#10;<p>Great care has been taken so that the source code of your transpiled application is as readable as possible.</p>&#10;<p>The code of your transpiled application can be found in the my_application/html/run/application.js source code after a successful transpilation.<br/>&#10;<br/></p>&#10;<p><strong>useSource</strong></p>&#10;<p>description: Replaces the entry script by the given string and proceeds to compilation.</p>&#10;<p>param: code$:string: The code to replace with. This tag is for the developer who uses the AOZ transpiler as a node.js module (later to come). With it, you can call the &#8220;transpile&#8221; function of the AOZ module replacing the code of the application referred to in the path of the &#8220;transpile&#8221; command by another code.</p>&#10;<p>This new code will simply replace the original code in the project, the project keeping it's resources folder.</p>&#10;<p>We use it at AOZ Studio, for example to open the Direct Mode window in the AOZ IDE: the current application is transpiled with empty source code, which makes all the image and sound resources available in direct mode for experimenting.<br/>&#10;<br/></p>&#10;<p><strong>define</strong></p>&#10;<p>description: Defines a variable to be used during transpilation.</p>&#10;<p>param:variable: The name of the variable to create, without quotes.</p>&#10;<p>AOZ allows conditional transpiling as C   or C# transpiler. You define transpilation variables with the #define tag, and then use #if, #else or #endif, or #ifdef and #endif to define the zones in your application that will be transpiled.</p>&#10;<p>This option, found in professional C or C# compilers is available in AOZ. This example demonstrates the use of this tag:</p>&#10;<pre><code class="prism language-basic">#splashScreen:false&#10;#define MACVERSION&#10;#ifdef MACVERSION&#10;&#9;Print &#34;This application has been transpiled for macOS&#34;&#10;#else&#10;Print &#34;This application has been transpiled for another platform.&#34;&#10;#endif&#10;</code></pre>&#10;<p>If you replace the tag with:<br/>&#10;<br/></p>&#10;<p><strong>#define WINDOWS</strong></p>&#10;<p>It will change the output. If you inspect the code of the transpiled application, you will see that only the selected code has been transpiled.</p>&#10;<p>This feature also allows you to physically remove code, which may be important for demo applications until the user buys a license.</p>&#10;<p>AOZ contains a preprocessor, called &#8220;Pass Zero&#8221; (say Hi to Pass Zero). It scans the source code taking the transpiler variables into account, and skips the parts of the code that are not active.</p>&#10;<p>This VERY powerful option allows you to make multiple versions of the same application, with only minor changes from platform to platform, or different versions such as a free and commercial within the SAME application.<br/>&#10;<br/></p>&#10;<p><strong>let</strong></p>&#10;<p>description: Assign a value to a system variable.</p>&#10;<p>param:variable: The name of the variable.</p>&#10;<p>param:value:any: The value to put in the variable. It can be a string, a number or a boolean value.</p>&#10;<p>Please note that this tag does not need a colon character after the name of the tag but instead the equal character, &#8220;=&#8221;</p>&#10;<p>Use this tag for conditional transpilation of specific parts of the source code.</p>&#10;<pre><code class="prism language-basic">#let:VERSION=&#34;0.99&#34;&#10;#if VERSION=&#34;0.99&#34;&#10;Print &#34;This version might crash!&#34;&#10;#else&#10;Print &#34;All is debugged! :)&#34;&#10;#endif&#10;</code></pre>&#10;<br/>&#10;<p><strong>if</strong></p>&#10;<p>description: Compares the value of a system variable to another value or system variable.</p>&#10;<p>param:variable: The name of the variable to test.</p>&#10;<p>param:expression:any: The expression to compare to.</p>&#10;<p>System variables can carry values, and the #let tag allows you to define them. Please note that it is different from the #define tag in the sense that a real value is affected to the system variable, whereas with #define the variable is created and initialized with a value of zero always.</p>&#10;<p>The expression can include:</p>&#10;<ul>&#10;<li>number</li>&#10;<li>string</li>&#10;<li>boolean values</li>&#10;<li>other system variable containing values</li>&#10;</ul>&#10;<p>Please note that for tags, there is no &#8220;type&#8221; associated with system variables, and that you do not need to add a $ character after the name of a string system variable or a # after a floating point number.</p>&#10;<pre><code class="prism language-basic">#let VERSION = &#34;0.99&#34;&#10;#if version &lt;&gt; &#34;1.00&#34;&#10;Print &#34;Hmmm, it might crash!&#34;&#10;#else&#10;Print &#34; YES! It wont crash, that's a promise (finger crossed :)&#34;&#10;#endif&#10;</code></pre>&#10;<br/>&#10;<p><strong>ifdef</strong></p>&#10;<p>description: Check if a transpilation variable is defined or not.</p>&#10;<p>param:variable: The name of the variable to test.</p>&#10;<p>Use this tag for conditional transpilation of specific parts of the source code.</p>&#10;<pre><code class="prism language-basic">#define:IWILLNOTCOMPILE&#10;#ifdef IWILLNOTCOMPILE&#10;A = &#34;hello&#34;  // This line will generate a syntax error&#10;#endif&#10;</code></pre>&#10;<br/>&#10;<p><strong>else</strong></p>&#10;<p>description: Indicates the code to transpile if the condition of an #if or #ifdef tag is NOT verified.</p>&#10;<p>Use this tag for conditional transpilation of specific parts of the source code&#8230;</p>&#10;<pre><code class="prism language-basic">#define IWILLNOTCOMPILE&#10;#ifdef IWILLNOTCOMPILE&#10;A = &#34;hello&#34;  // This line will generate a syntax error&#10;#else&#10;Print &#34;All is fine! :)&#34;&#10;#endif&#10;</code></pre>&#10;<br/>&#10;<p><strong>endif</strong></p>&#10;<p>description: Closes a section of a test started with #if or #ifdef</p>&#10;<p>Use this tag for conditional transpilation of specific parts of the source code.<br/>&#10;<br/></p>&#10;<p><strong>excludeFromBuild</strong></p>&#10;<p>description: Exclude the extension or module from the general build (use it for development).</p>&#10;<p>This tag was created for developers of modules or extensions for AOZ. Once the code of the extension you are working on is open, it may prevent the chain of compilation of the other modules by generating errors.</p>&#10;<p>Use this tag to remove the module or extension from the transpilation list, so you can use AOZ without that extension.</p>&#10;  <br/>&#10;<h3 id="tags-on-applications">Tags on applications</h3>&#10;<p><strong>splashScreen</strong></p>&#10;<p>description: Activate or deactivate the splash screen at the beginning of your AOZ application. This is only possible for the paid license version of AOZ Studio. With the free version that splash will stay. Please support us and the future versions of AOZ Studio by buying a license.</p>&#10;<p>param: Turn on (True) or off (False) the splash screen.</p>&#10;<p>Example: <strong>#SplashScreen : False</strong></p>&#10;<p>Once again to try to motivate you to buy a license, as a default, when you run your AOZ application it displays an initial splash-screen. If you use the free version of AOZ the splash-screen and/or some advertising of some sort will be displayed (check the license agreement if needed). The duration of the splash screen may increase in the future.</p>&#10;<p>If you have a valid Paid version/license you will be able to disactivate the splash-screen with <strong>#SplashScreen : False</strong></p>&#10;<p>For applications that use sounds, a splash screen has a real important role though: it allows the sounds to be heard in your web browser. Modern browsers include protection to prevent any page from playing sounds (imagine opening a popup  page with a video Ad yelling at you to buy a product).</p>&#10;<p><strong>Before ANY sound is played on a browser (being Chrome, Firefox, Safari&#8230; or their mobile equivalent), there MUST be a &#8220;real user&#8221; interaction</strong>, like a simple click or touch. This is a behavior they implemented to limit access from websites, popups&#8230; like advertising auto playing a music . This is the reason why if you use sounds in your application, the default splash screen asks for such a confirmation. In this case the splash screen has a real role.<br/>&#10;<strong>If you remove the splash screen (you need to have a paid license of AOZ Studio), you will have to wait for the user to click somewhere BEFORE playing the first sound</strong>, otherwise the whole sound API will be de-activated.<br/>&#10;<br/></p>&#10;<p><strong>displayWidth</strong></p>&#10;<p>description: Set the maximum width of the display in pixels.</p>&#10;<p>param:width:integer: The width of the display in pixels.</p>&#10;<p>This tag is equivalent to changing the display width value in the manifest of your application.</p>&#10;<p>Eg: <strong>#displayWidth:640</strong><br/>&#10;<br/></p>&#10;<p><strong>displayHeight</strong></p>&#10;<p>description: Set the maximum height of the display in pixels.</p>&#10;<p>param:height:integer: The height of the display in pixels.</p>&#10;<p>This tag is equivalent to changing the display. height value in the manifest of your application.</p>&#10;<p>Eg: <strong>#displayHeight:480</strong><br/>&#10;<br/></p>&#10;<p><strong>forceFullScreen</strong></p>&#10;<p>description: Force the application to full screen.</p>&#10;<p>param: True or False to turn the feature on or off.</p>&#10;<p>This tag will force your application to full-screen, as best as possible depending on the exportation mode.</p>&#10;<p>If you run your application in the browser, the application will be full PAGE first (not full screen, a protection from Browsers), and you will have to interact first with the application in order to turn it into real full screen. (user click).</p>&#10;<p>If you run your application as a stand alone executable, then it will be full-screen from the start.</p>&#10;<p>Eg: <strong>#forceFullScreen:true</strong><br/>&#10;<br/></p>&#10;<p><strong>keepProportions</strong></p>&#10;<p>description: In full-page or full-screen modes, indicate if the dimension ratio of the application must be preserved.</p>&#10;<p>param: True or False to turn the feature on or off.</p>&#10;<p>If set to true, empty bars will be added on the left-right or on the top-bottom of the application, if set to false, the application will be resized to the entire browser area and graphics will be distorted.</p>&#10;<p>Eg: <strong>#keepPropotions:true</strong><br/>&#10;<br/></p>&#10;<p><strong>fps</strong></p>&#10;<p>description: Displays a FPS indicator on the top of the application&#8217;s display.</p>&#10;<p>param: True or False to turn the feature on or off.</p>&#10;<p>You can set the width and height of the FPS indicator by editing the manifest used by your application.<br/>&#10;<br/></p>&#10;<p><strong>appTitle</strong></p>&#10;<p>param:string: The new title to set.</p>&#10;<p>description: Allows you to change the title of the window where the application is running.</p>&#10;<p>content: This instruction will have no effect if the application is running in the AOZ IDE.<br/>&#10;<br/></p>&#10;<p><strong>googleFont</strong></p>&#10;<p>description: Integrates a Google Font in your AOZ application.</p>&#10;<p>param:fontName$:string: The name of the font to integrate.</p>&#10;<p>comment:</p>&#10;<p>AOZ Studio supports Google Fonts as best as possible, and allows you to make applications that use Google Fonts that are preloaded in your app resources.</p>&#10;<p>To achieve this magic, the AOZ transpiler needs to know the name of the font to copy. The fonts are simple files downloaded from Google, and can be found in the aoz/fonts/google folder of your installation of AOZ.</p>&#10;<p>To add a new Google Font please use the &#8220;Add Font&#8221; accessory, or do it manually. You will find the necessary template in aoz/templates/google font.</p>&#10;<p>We have a paragraph TEXT in this User Guide to help you out.</p>&#10;<p>Be warned that some very precise Google Fonts need many files to work in all size and shapes and adding one font only can significantly increase the size of your application.<br/>&#10;<br/></p>&#10;<p><strong>amigaFont</strong></p>&#10;<p>description: Integrates an Amiga Font in your AOZ Application.</p>&#10;<p>param:font string: The name of the font to add.</p>&#10;<p>Amiga lovers will be happy to know that AOZ supports black and white Amiga fonts. It is a joy to see those fonts again on a modern screen, some of them were really great.</p>&#10;<p>The system works the same as for the #googleFont tag; indicate the name of the font and the files that define it, and it will be copied into your application.</p>&#10;<p>To add a new Amiga Font please use the &#8220;Add Font&#8221; accessory, or do it manually. You will find the necessary template in aoz/templates/google font.</p>&#10;<p>Amiga font will work whatever the configuration of the transpiler (aoz or amiga or atari), but they might appear blocky in Full HD or higher resolutions.</p>&#10;<p>We all remember Amiga fonts with style and precision, but on modern machines, as Amiga fonts are simple bitmap fonts (each character is in fact defined as a single image, where Google Fonts are vectorial) explaining why they appear blocky.</p>&#10;<p>Amiga fonts contain one file for one size of the font. If AOZ cannot find the exact match for the height, it will take the biggest one and zoom it down. The &#8220;Text&#8221; and &#8220;Format Text&#8221; instruction will work even if you ask for a height that is not present in your application.<br/>&#10;<br/></p>&#10;<p><strong>keymap</strong></p>&#10;<p>description: Set the keymap to use with the application.</p>&#10;<p>param:keymap$:string: &#8220;aoz&#8221;, &#8220;amiga&#8221; or &#8220;atari&#8221;.</p>&#10;<p>A value of &#8220;aoz&#8221; will use the default Javascript keyboard. A value of &#8220;amiga&#8221; or &#8220;atari&#8221; will use the keyboard mapping of the specific machines.<br/>&#10;<br/></p>&#10;<p><strong>tabWidth</strong></p>&#10;<p>description: Set the width of the tab character.</p>&#10;<p>param:numberOfSpaces:integer: The number of spaces to use for each tab. Default is 4.<br/>&#10;<br/></p>&#10;<p><strong>displayEndAlert</strong></p>&#10;<p>description: Allow the display of an alert box at the end of your application if an error occurs.</p>&#10;<p>param: Switch the feature on or off.</p>&#10;<p>AOZ displays an alert box indicating the end of your application. If you inactivate this option with this tag, it will quit immediately (the program will halt in the browser).</p>&#10;<p>Applications saved will return to the system with an error code of 0 (no error).<br/>&#10;<br/></p>&#10;<p><strong>displayErrorAlert</strong></p>&#10;<p>description: Allow the display of an alert box at the end of your application if an error occurs.</p>&#10;<p>param: Switch the feature on or off.</p>&#10;<p>When an error occurs in your application, AOZ displays by default an alert box before quitting. If you inactivate this option with this tag, it will quit immediately after the fault (the program will halt in the browser).</p>&#10;<p>Applications saved as stand-alone commands will report the number of the error as a result value.<br/>&#10;<br/></p>&#10;<p><strong>sendCrashReport</strong></p>&#10;<p>description: Automatically sends a report after a crash of the application or the transpiler to AOZ Studio, with information about the crash.</p>&#10;<p>param: True or False to turn the feature on or off.</p>&#10;<p>The information transmitted is totally anonymous and only contains technical data about AOZ, your application, and your machine.</p>&#10;<p>It helps us improve the product and remove as many bugs as possible, we appreciate that you share this information. but it is really up to you. ;)<br/>&#10;<br/></p>&#10;<p><strong>useSounds</strong><br/>&#10;<br/><br/>&#10;<br/></p>&#10;<p><img src="https://doc.aoz.studio/assets/images/en/image084.png" alt="AOZ tags"/></p>&#10;<hr/>&#10;<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png"/>&#10;</p>&#10;<!--stackedit_data:&#10;eyJoaXN0b3J5IjpbLTE1MzQ1NjU4OTEsLTE4Nzg1ODk2MDcsLT&#10;cyMzE0MjY0MywxMDkyMzQyMzkxLC0xMTc4OTE3ODY5LDE1Mjgy&#10;NDI5NzUsLTg3NjI3NTYxNiwtMTMwNDA1NDkyNSwtNTk4MzE5MT&#10;EsMTUyMTcwNzc5Myw4NzAyMzIwMjYsNzMwOTk4MTE2XX0=&#10;-->&#10;
+    </body>
+
+    <script type="text/javascript">
+        var current_zoom = 1.0;
+        var destHTML = './public/default/user_guide/table_of_contents/026_aoz_tags.html';
+        var sourceMD = './repository/md/documentation/default/user_guide/table_of_contents/026_aoz_tags.txt';
+
+        if( window.parent && window.parent.current_zoom )
+        {
+            current_zoom = window.parent.current_zoom;
+            if( window.parent.application )
+            {
+                window.parent.application.vars.CURRENT_HTML$ = destHTML;
+                window.parent.application.vars.CURRENT_MD$ = sourceMD;
+            }
+        }
+
+        setTimeout( function()
+        {
+            document.querySelectorAll( 'code' ).forEach( el => {
+                el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
+            } );
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+            for (i = 0; i < toggler.length; i  ) {
+                toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+                });
+            }
+
+            setTimeout( function()
+            {
+                var elms = document.querySelectorAll( '.prism' );
+                if( elms )
+                {
+                    for( var e = 0; e < elms.length; e++ )
+                    {
+                        var copyBtn = document.createElement( 'button' );
+                        copyBtn.setAttribute( 'class', 'copy-btn' );
+                        copyBtn.setAttribute( 'alt', 'Copy code' );
+                        copyBtn.setAttribute( 'title', 'Copy code' );
+                        copyBtn.innerHTML = 'Copy';
+                        copyBtn.codeNode = elms[ e ];
+
+                        copyBtn.addEventListener( 'click', function( event )
+                        {
+                            event.preventDefault();
+                            if( navigator.clipboard )
+                            {
+                                var txt = this.codeNode.textContent;
+                                navigator.clipboard.writeText( txt );
+                            }
+                        }, false );
+                        elms[ e ].parentNode.appendChild( copyBtn );
+                    }
+                }
+            }, 2000 )
+        }, 1000 );
+    </script>
+</html>

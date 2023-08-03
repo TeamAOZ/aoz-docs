@@ -1,0 +1,43 @@
+# Text
+<!--
+@name: Text
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility</span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+Draw a graphical text on the current screen using the current font and font size
+
+## Usage
+- **Text**
+- **Text** x,y,text\$,tags\$, maxWidth
+## Parameters
+
+- **x**: The horizontal position of the text in pixels
+- **y**: The vertical position of the text in pixels
+- **text\$**: The text to draw
+- **tags\$**: A string containing tags facilitating the display of the text.  (optional)
+- **maxWidth** - The maximum width of the text string in pixels. If the text length exceeds the **maxWidth**, it will be reduced in length accordingly. If the text length is less than the **maxWidth**, it will be displayed at it|;s normal size.
+
+**Tags$** can be any logical combination of up to 3 tags separated by spaces, 1 from each of the following lists and have the same meaning as their Javascript equivalents:
+
+- |;#left|;, |;#center|;, |;#right|;,  |;#start|; or |;#end|; to position the text horizontally
+-  |;#top|;, |;#hanging|;, |;#middle|;, |;#alphabetic|;, |;#ideographic|; or |;#bottom|; for vertical alignement
+- |;#ltr|;, |;#rtl|; or |;#inherit|; for drawing direction
+
+Note that by default the IBM Plex Mono font is used but you can change the font with:
+1°) Load Asset "name of the font in the Resources/Assets folder", "name you give to the font"
+2°) Set font "name you give to the font", font size
+3°) optionnaly change the color with: Ink textcolor, papercolor
+
+
+
+## Example
+```basic
+Set font ,40  // set the font size of the default font
+TEXT 100,100, "print this TEXT"
+```
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

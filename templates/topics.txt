@@ -1,0 +1,55 @@
+<?DOCTYPE html>
+<html lang="%lang%">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="aoz studio" />
+        <meta name="keywords" content="aoz, studio, basic, amos, stos, amiga, atari, code, coding, program, development, html, javascript, game, application, %keywords%" />
+        <meta name='copyright' content='AOZ Studio'>
+        <meta name='Classification' content='Development'>
+        <meta name='url' content='https://doc.aoz.studio'>
+        <meta name='identifier-URL' content='https://doc.aoz.studio'>
+        <meta name='pagename' content='AOZ Docs Topics'>
+        <meta name='rating' content='General'>
+        <meta name='revisit-after' content='7 days'>
+        <meta name='target' content='all'>
+        <meta name='date' content='04.16.2023'>
+
+        <title>AOZ Docs - Topics</title>
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="./public/styles/fonts/font.css" />
+        <link rel="stylesheet" href="./public/styles/fonts/dyslexia/stylesheet.css" />
+        <link rel="stylesheet" href="./public/styles/global.css" />
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="./public/js/libs/string-utils.js"></script>
+
+    </head>
+    <body>
+        <div id="topics" src="" style="zoom: 1;"><br>
+            <p align="center">
+                <img src="https://doc.aoz.studio/assets/images/common/AOZ Logo.png" width="110vw"><br>
+                <img src="https://doc.aoz.studio/assets/images/common/aoz_mark.png" width="310vw">
+            </p>
+
+            <span class="version">ver. 1.0-%date%</span>
+
+            <h1 id="user-guide">User Guide</h1>
+            %USERGUIDE%
+            <h1 id="glossary">Glossary</h1>
+            %GLOSSARY%
+            <h1 id="more-tricks">MoreTricks</h1>
+            %MORETRICKS%
+            <h1 id="tutorials" style="height: 64px; background-position: initial; background-size: 36px; margin-bottom: 0px;">Tutorials</h1>
+            %TUTORIALS%            
+        </div>
+    </body>
+    <script type="text/javascript">
+        if( window.parent && window.parent.toggleChapter )
+        {
+            var toggleChapter = window.parent.toggleChapter;
+        }
+    </script>
+</html>

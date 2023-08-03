@@ -2,16 +2,8 @@ var MDParser =
 {
     open: function( url, onSuccess, onError )
     {
-		if( document.getElementById( 'md_sync' ).style.display == 'block' )
-		{
-			var r = confirm( 'Changes have been made to this page and have not been saved. Forget these changes?' );
-			if( !r )
-			{
-				return;
-			}
-		}
+		document.getElementById( 'md_edit' ).style.display = 'none';
 
-		document.getElementById( 'md_sync').style.display = 'none';
         var xhr = new XMLHttpRequest();
         xhr.responseType = "text";
         xhr.open( 'GET', url + "&lang=" + application.root.vars.LANG$ );
@@ -23,9 +15,11 @@ var MDParser =
 				if( onSuccess )
 				{
 					var code = xhr.responseText;
+
 					code = code.strReplace( '<keep>', '' );
 					code = code.strReplace( '</keep>', '' );
 					code = code.strReplace( "|;", "'" );
+					code = code.strReplace( "height: 2000px;", "height: 20000px;" );
 					application.aoz.runProcedure( onSuccess, { CODE$: code } );
 				}
 			}
@@ -61,6 +55,10 @@ var MDParser =
 				} );
 				var toggler = document.getElementsByClassName("caret");
 				var i;
+				if( document.getElementById( 'md_gator').style.display == 'block' )
+				{
+					document.getElementById( 'md_edit').style.display = 'block';
+				}
 
 				for (i = 0; i < toggler.length; i++) {
 				  toggler[i].addEventListener("click", function() {
@@ -69,6 +67,34 @@ var MDParser =
 				  });
 				}
 				fontResize( current_zoom, false );
+
+				setTimeout( function()
+				{
+					var elms = document.querySelectorAll( '.prism' );
+					if( elms )
+					{
+						for( var e = 0; e < elms.length; e++ )
+						{
+							var copyBtn = document.createElement( 'button' );
+							copyBtn.setAttribute( 'class', 'copy-btn' );
+							copyBtn.setAttribute( 'alt', 'Copy code' );
+							copyBtn.setAttribute( 'title', 'Copy code' );
+							copyBtn.innerHTML = 'Copy';
+							copyBtn.codeNode = elms[ e ];
+
+							copyBtn.addEventListener( 'click', function( event )
+							{
+								event.preventDefault();
+								if( navigator.clipboard )
+								{
+									var txt = this.codeNode.textContent;
+									navigator.clipboard.writeText( txt );
+								}
+							}, false );
+							elms[ e ].parentNode.appendChild( copyBtn );
+						}
+					}
+				}, 2000 )
 			}, 1000 );
 		} );
 	},
@@ -76,13 +102,14 @@ var MDParser =
 	edit: function( code, onChangeProc, onCloseProc )
     {
 		var stackEdit = new Stackedit();
-		document.getElementById( 'md_sync').style.display = 'block';
 		stackEdit.onCloseProc = onCloseProc;
 		stackEdit.onChangeProc = onChangeProc;
 		stackEdit.on('fileChange', function onFileChange( file )
 		{
 			stackEdit.storeText = file.content.text;
 			application.root.vars.CURRENT_CODE$ = file.content.text;
+			application.root.vars.CURRENT_HTML_CODE$ = file.content.html;
+
 			if( stackEdit.onChangeProc && stackEdit.onChangeProc != ''  )
 			{
 				application.aoz.runProcedure( stackEdit.onChangeProc, { CODE$: file.content.text } );
@@ -96,7 +123,16 @@ var MDParser =
 					}
 					el.innerHTML = Prism.highlight(el.textContent, Prism.languages.aoz, 'aoz' );
 				} );
-			}, 1000 );
+
+				var elm = document.querySelector( '.stackedit-iframe-container' );
+				if( elm )
+				{
+					elm.style.width = '98%';
+					elm.style.height = '98%';
+					elm.style.maxWidth = '98%';
+				}
+
+			}, 500 );
 		} );
 
 		stackEdit.openFile(
@@ -111,25 +147,34 @@ var MDParser =
 		stackEdit.on( 'close', () => {
 			if( stackEdit.onCloseProc && stackEdit.onCloseProc != '' )
 			{
-				application.aoz.runProcedure( stackEdit.onCloseProc, { CODE$: stackEdit.storeText } )
+				application.aoz.runProcedure( stackEdit.onCloseProc, { CODE$: stackEdit.storeText, HTML$: application.root.vars.CURRENT_HTML_CODE$ } )
 			}
 		} );
 	},
 
-	save: function( page, code, onSuccess, onError )
+	save: function( onSuccess, onError )
 	{
-		if( application.root.vars.CHEAT_ACCESS && document.getElementById( 'md_edit' ).style.display == 'block' )
+		var mdFile = application.root.vars.CURRENT_MD$;
+		var mdCode = application.root.vars.CURRENT_CODE$;
+		var htmlFile = application.root.vars.CURRENT_HTML$;
+		var htmlCode = application.root.vars.CURRENT_HTML_CODE$;
+
+		console.log( htmlCode );
+
+		if( application.root.vars.CHEAT_ACCESS )
 		{
 			var xhr = new XMLHttpRequest();
 	        xhr.responseType = "text";
-			code = code.strReplace( "'", "|;" );
-	        xhr.open( 'GET', application.root.vars.ROOT_URL$ + '/php/save.php?page=' + page + '&lang=' + application.root.vars.LANG$ + '&code=' + code );
+			mdCode = mdCode.strReplace( "'", "|;" );
+	        xhr.open( 'POST', application.root.vars.ROOT_URL$ + '/php/save.php' );
+			xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
 	        var self = this;
 	        xhr.onload = function()
 	        {
 	            if( xhr.status == 200 )
 	            {
-					document.getElementById( 'md_sync' ).style.display == 'none';
+					document.getElementById( 'md_edit' ).style.display == 'block';
 					if( onSuccess )
 					{
 						application.aoz.runProcedure( onSuccess, { MESSAGE$: xhr.responseText } );
@@ -144,7 +189,7 @@ var MDParser =
 					application.aoz.runProcedure( onError, { MESSAGE$: xhr.responseText } );
 				}
 	        }
-	        xhr.send( 'code=' + code );
+	        xhr.send( 'mdFile=' + mdFile + '&lang=' + application.root.vars.LANG$ + '&mdCode=' + encodeURIComponent( mdCode ) + '&htmlFile=' + htmlFile + '&htmlCode=' + encodeURIComponent( htmlCode ) );
 		}
 		else
 		{

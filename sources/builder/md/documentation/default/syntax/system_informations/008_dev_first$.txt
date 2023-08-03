@@ -1,0 +1,11 @@
+# Dev First&dollar;
+<!--
+@name: Dev First&dollar;
+@description: 
+@tags: 
+@categories: 
+\-->
+Get the first device from the current device list. May be implemented in AOZ, has no effect in current version
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

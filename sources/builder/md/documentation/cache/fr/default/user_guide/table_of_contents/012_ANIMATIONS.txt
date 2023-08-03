@@ -1,0 +1,48 @@
+# Animations
+It's very nice to display images but it's almost certain that you'll want to animate them. In a game, heroes and enemies are rarely immobile, same for icons in an App. So let's see how to animate using two techniques: 
+- with Animation instruction and 
+- with a sprite sheet.
+
+## Animation instruction
+
+**Actor Animation** : Is an instruction to define an animation without a Spritesheet and to play it with Actor.
+- Sequence$ is a string with each image name or number separated by a comma.
+- The images can be located in the resources/image folder or loaded from elsewhere with the Load Asset instruction.
+- The last value can be "L" to loop, "E" to end, "R" to reverse and loop.
+- You can to set a delay in milli secs between 2 images like this: "1:1000, 2,..." to pause 1 sec. between image 1 and 2.
+
+Example:
+```basic
+Actor Animation "gorun", Sequence$="1,2,3,4,L"
+Actor "magic", Anim$="gorun"
+```
+The parameter AnimPlay=False will Stop (or True to Play Again) the animation is:
+
+```basic
+Actor "Magic", AnimPlay=False //or True by default
+```
+## What's a sprite sheet?
+
+A sprite sheet is a large image containing a sequence of images that deceive the eye when they are displayed one after the other, to give the illusion of animated movement.
+
+Here's an example:
+![Sprite Sheet](https://doc.aoz.studio/assets/images/en/image079.png)
+
+
+The Actor instruction offers several parameters for using a sprite sheet:
+
+- **Spritesheet$:** Is the name of the sprite sheet to use.
+
+- **Anim$:** Is the name of the animation to play.
+
+Check the Game example in this manuel: "Shoot-em-up game Kit" or in the folder Tutorials/2nd Game/shoot_em_up
+
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />
+</p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE5ODIxNjIzNzEsMTUyODI0Mjk3NSwtOD
+c2Mjc1NjE2LC0xMzA0MDU0OTI1LC01OTgzMTkxMSwxNTIxNzA3
+NzkzLDg3MDIzMjAyNiw3MzA5OTgxMTZdfQ==
+-->

@@ -1,19 +1,63 @@
-# Actor Del<!--
+# Actor Del
+<!--
 @name: Actor Del
 @description: 
 @tags: 
 @categories: 
 \-->
+Delete an Actor. When an actor is deleted, it no longer appears on the screen and all its events, animations and controls are deleted.
 
+## Syntaxes
+> **Actor Del** \<string\>   ->Ex: Actor Del "magic"
+> **Actor Del** index   ->Ex: Actor Del 10
+> **Actor Del**  "*" 
+> **Actor Del** "group$_name"  (using the name of the Group\$ Actor parameter, used to regroup several actors together)
+
+Note: The use of () is also accepted 
+> **Actor Del** (\<string\>)  ->Ex: Actor Del ("magic")
+> **Actor Del** ( index )  ->Ex: Actor Del (10)
+> **Actor Del** ( "*" )
+> **Actor Del** ( "group$_name" )
 
 ## Parameters
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index or string|Index or string of the Actor.If "*" is used, all the actors will been removed. |
+<BR>
 
+## Example
+**Example:**
+```basic
+Actor 1, Image$="magic"
+Actor 2, Image$="lucie", X=200
+Actor "magic", Image$="magicfly", X=400
+wait input
+Actor del 1
+Actor del (2)
+Actor del "magic"
+```
 
-- **index**: Index of the Actor (can be a number or a text name). If "*" is used, all the actors will been removed.
--- Actor Del "1"
--- Actor Del "magic"
--- Actor Del "\*"
----
+```basic
+Actor "background", Image$="forest"
+Actor "ground", Image$="ground", Group$="g2", Y=900
+Actor 1, Image$="magic", Group$="g1", X=100, Y=300
+Actor 2, Image$="magicfly", Group$="g2", X=500, Y=300
+Actor "front", Image$="magic", Group$="g2", X=1000, Y=300
+
+// now let|;s delete the Actors or the groups of Actors
+wait input
+Actor Del "background" : Print "-deleting the background Actor"
+
+wait input  //wait for a key or a mouse press
+Actor Del "ground" : Print "-deleting the ground Actor (that belongs to the g2 group)"
+
+wait input
+Actor Del "g1"  : Print "-deleting the g1 group (made only of the 1 Actor)"
+
+wait input
+Actor Del "g2"  : Print "-deleting the g2 group (with ground already deleted)"
+```
+
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTExNjM0ODI5OTldfQ==

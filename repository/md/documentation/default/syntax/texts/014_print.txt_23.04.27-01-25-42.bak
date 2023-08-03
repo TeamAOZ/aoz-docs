@@ -1,0 +1,55 @@
+# Print
+<!--
+@name: Print
+@description: 
+@tags: 
+@categories: 
+\-->
+**Print** displays numeric or textual content in the current **Text Window** of the current screen.
+
+## Background
+In AOZ, the **Screen** is used to display graphical content.  This includes ***String*** expressions which are converted to graphical text using the **Text** instruction.  This text is displayed at a specific pixel position on the graphical screen using the coordinates provided by the **Text** instruction.  Only ***String*** results can be displayed with the **Text** instruction.  (***Numeric*** expressions ***may*** be used oly if they|;re converted to strings.)
+
+Unlike **Text**, the **Print** instruction does ***not*** print directly to the graphical screen.  Instead, it prints to a **Text Window** which is associated with the current graphical screen.  Every Screen opened in AOZ has its own unique text window.  The default text window for a screen is automatically created and initialized when the screen is opened.
+
+The **Text Window** is used to display alphanumeric content in pre-defined columns and rows using special fonts with a fixed width and height.  (These are usually called "monospaced" or "fixed-width", and are the same kind of fonts used by the AOZ editor.)  
+
+## Description:
+
+The **Print** instruction displays strings or numbers on the **Text Window** associated with the current screen.  Any number of string or numeric expressions may be printed in the **Text Window** using the **Print** instruction.  Expressions should be separated by  a semicolon **;** or a comma **,** .  
+
+When expressions are separated by semicolons, the results are printed on the same line with no space between them.
+
+### Semicolon Example:
+```basic
+A$="A" : O$="O" : Z$="Z"
+Print "01234567890"
+Print A$;O$;Z$
+```
+Result:
+<pre>01234567890
+AOZ</pre>
+...printed in the upper left corner of the text window.
+
+When expressions are separated by commas, they will aligned in pre-defined columns (AKA tab stops).  By default, these tab stops are defined every 4 characters horizontally (column 0, 4, 8, 12, etc.).
+
+### Comma Example:
+```basic
+A$="A" : O$="O" : Z$="Z"
+Print "01234567890"
+Print A$,O$,Z$
+```
+Result:
+<pre>01234567890
+A   O   Z</pre>
+
+## Parameters
+Paramters may be simple string or numeric variables or constants, or they may be string or numeric expressions.
+
+| Type | Description | 
+|---|---|
+| String | Any string constant, variable, or expression may be displayed using Print. |
+| Numeric | Any numeric constant, variable or expression may be displayed using Print. |
+
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

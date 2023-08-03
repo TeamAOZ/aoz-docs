@@ -1,0 +1,122 @@
+# Cls
+<!--
+@name: Cls
+@description: 
+@tags: 
+@categories: 
+\-->
+Clear all or part of the screen
+
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/amos_logo.png" valign="center" alt="AMOS Pro" title="AMOS Pro" /><img src="https://doc.aoz.studio/assets/images/common/compatibility/stos_logo.png" valign="center" alt="STOS Basic" title="STOS Basic" /></div>
+
+## Syntax Options 
+
+**Cls**
+**Cls** *ink*
+**Cls** *ink, x1, y1, width, height*
+**Cls** *ink, x1, y1* **to** *x2, y2*
+
+## Parameters
+
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+ |**ink**|index|The index of the color in the palette to clear with
+ |**x1**|float|The horizontal coordinate of the top-left pixel of the rectangle to clear
+ |**y2**|float|The vertical coordinate of the top-left pixel of the rectangle to clear
+ |**x2**|float|The horizontal coordinate of the bottom-right pixel of the rectangle to clear
+ |**y2**|float|The vertical coordinate of the bottom-right pixel of the rectangle to clear
+ |**width**|float|The width of the rectangle to clear
+ |**height**|float|The height of the rectangle to clear
+
+## Description
+
+The **Cls** instruction, abbreviated from |;**Cl**ear **s**creen|;, is used to clear all or an area of the current screen. There are four different syntax options for **Cls**, which are as follows:
+
+|**Syntax**|**Description**
+|---|---|
+ |**Cls**|Clears the entire screen with colour 0.
+| **Cls** *ink* | Clears the entire screen with the specified *ink* colour.
+|**Cls** *ink, x1, y1, width, height* | Clears the rectangle are of the screen defined by *x1, y1* and *width, height* with the specified *ink* colour
+|**Cls** *ink, x1, y1* **to** *x2, y2*|Clears a rectangular area of the screen as defined by the two pairs of coordinates with the specified *ink* colour.
+
+---
+When **Cls** is used with a **Transparent** colour ( set by using **Set Transparent** ), it will always erase the background and replace it with the new colour, but if used with a non-transparent colour, the **Cls** colour will be drawn on top of the background. If your **Cls** colour has a reduced Alpha level ( achieved by using **Set Alpha** ), the colour will be blended with the background. This can be used to create some interesting effects, such as shown in the examples below.
+
+
+## Example Code
+
+**Cls** isn|;t the most interesting of instructions, so I had to get creative on this one.
+```basic
+// The |;How do you make Cls exciting? Demo|;
+// by Dave Baldwin 16/01/2023
+
+#googleFont:"mountains of christmas"
+
+AOZ_Studio
+Wait 3
+
+for f=0 to 15
+	cls 0,f*120,0,120,1080
+	wait 0.2
+next f
+ink 1
+Set font ,180
+Text 960,600,"Not Exciting Enough?","#centre"
+wait 3 : cls
+AOZ_Studio
+ink 2 : colour 2,$0
+set alpha 2,0.2
+for f=0 to 60
+	cls 2,960-f*30,540-f*18,f*60,f*36
+	wait 0.1
+next f
+cls 0
+ink 1
+Set font ,180
+Text 960,600,"The End","#centre"
+end
+
+Procedure AOZ_Studio
+	Set Font "mountains of christmas",400
+	Radial Gradient 923, 1230, 422, 297, 588, 1687,"0,$FF0000,14,$FF8800,28,$FFFF00,42,$00FF00,56,$00FFFF,70,$0000FF,84,$880088,100,$FF00FF"
+	Box 0,0,1920,1080,1
+	Gradient Off
+	Set Transparent 0
+	Text Mode "Border"
+	Border Ink 2
+	Border First
+	Colour 2,$0
+	Line Width 10
+	Text Shadow 5,15,20,$30303090
+	Linear Gradient 7, 3, 7, 1076,"31,$000000,32,$00004B,46,$00A2FF,47,$FFFFFF,49,$FFFF00,53,$FF5D00,67,$4E1200,68,$000000"
+	Text 960,700,"AOZ Studio!","#centre"
+	Gradient off
+	Text Mode "fill"
+end proc
+```
+---
+
+**Cls** using a colour with reduced alpha level can also be used to leave trails behind moving objects, like this large, rotating star. Imagine this effect on a moving star-field!
+
+```basic
+Linear Gradient 80, 541, 1963, 545,"0,$FF0000,14,$FF8800,28,$FFFF00,42,$00FF00,56,$00FFFF,70,$0000FF,84,$880088,100,$FF00FF"
+r=0
+set alpha 0,0.2
+for x=-100 to 2500 step 14
+	star x,540,200,70,5,r,1
+	add r,4,0 to 360
+	refresh
+	cls 0
+next x
+```
+
+---
+
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTQyODUwODQzLDg5ODY5ODg1MiwxNDU1MD
+I1OTgsLTE4MDc0MTEwNTcsLTE5NTA3MDEzNDAsLTI1MTExNjQ2
+NCwxMjEyNzkyMjAxLDE3NDM5NjE4MTIsMTAwMTMxMDg2OSwxND
+gyMDAzMzQyLC04NzYxNDAzNzksLTIyNzEwNzU3NCwtODgwNTg0
+MzYwLC0yMDA2MDAyODkyLC0xMDc5MzQzOTUxXX0=
+-->

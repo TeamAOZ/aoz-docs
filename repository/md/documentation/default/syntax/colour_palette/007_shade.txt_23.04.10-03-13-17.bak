@@ -1,0 +1,39 @@
+# Shade
+<!--
+@name: Shade
+@description: 
+@tags: 
+@categories: 
+\-->
+<div class="compatibility"><span>Compatibility </span><img src="https://doc.aoz.studio/assets/images/common/compatibility/aoz_logo.png" valign="center" alt="AOZ" title="AOZ" /></div>
+
+Changes the current ink colour value of any colour from the palette of the current screen . 
+
+## Parameters
+
+**intensity**: Colour intensity value to be applied to the current ink colour as a percentage of it|;s current value.
+
+## Description
+
+The **Shade** instruction sets a multiplier value that is applied to any Ink colour that is subsequently used in drawings or text. The instruction will affect all Ink, Border Ink, Pen and Paper settings.
+
+Values of less than 100 will darken the colour, whereas values of over 100 will brighten it. 
+
+To turn **Shade** off, simply use the instruction with no parameter, or set the intensity value to 100.
+
+## Example Code
+
+This example draw 4 rows of filled circles in Red, Green, Blue and White, shaded from 10% to 100% in increments of 10%.
+ 
+```basic
+Palette $0,$ff0000,$00ff00,$0000ff,$ffffff	// Define colours
+For f=1 to 10								// Start a loop from 1 to 10
+	shade f*10								// Apply the shade value
+	for i=0 to 3								// Start another loop from 0 to 3
+		ink i+1										// Set Ink value
+		filled circle 50+i*300+f*80,50+f*80,90		// Draw a filled circle at the position calculated using values from both loop variables
+	next i										// Repeat the loop until i=3
+next f										// Repeat the loop until f=10
+```
+---
+<p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>

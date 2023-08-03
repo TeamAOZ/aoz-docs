@@ -5,11 +5,15 @@
 @tags: 
 @categories: 
 \-->
-Returns the width of an actor
+Returns the width of an actor.
+
+## Syntax
+>A =  **Actor Width**( actor_index )
+
 ## Parameters
-
-
-- **index**: Index of the actor
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index|Index of the Actor.|
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
 <!--stackedit_data:

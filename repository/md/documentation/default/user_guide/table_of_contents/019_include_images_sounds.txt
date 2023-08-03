@@ -50,7 +50,7 @@ AOZ Studio banks support the most common file formats:
 
 ## Loading On Demand
 
-You get the idea, memory banks are very handy because you don't have to worry about taking care of uploading files.
+You get the idea, memory banks are very handy because you don|;t have to worry about taking care of uploading files.
 
 AOZ Studio offers another method which load the files on demand "on the fly", at a certain point in your program. In this case the image, the sound are not preloaded with your program **(therefore its size is reduced accordingly)**.
 
@@ -64,7 +64,7 @@ Files used as assets should be placed in the “resources/assets” folder **or 
 
 You can organize this folder as you wish, by arranging the files by categories (images, audio,…).
 
-"It's the same as a database then?"
+"It|;s the same as a database then?"
 
 Sort of (see database in AOZ), like databases, assets are not loaded automatically (included in your app such as above with Memory Banks) when your program runs, but only when you choose to do so in your program. The example below loads the image "image1.png" from the resources / assets folder and displays it on the screen:
 ```basic
@@ -111,52 +111,34 @@ Loop
 ```
 This example loads two assets: a sound and an image. Both are number 1. But AOZ differentiates between the two and does not point out errors.
 
-NOTE: If the tag #useAssetsResources is set to True, then Load Asset is automatically plugged to the resources/assets folder, you don't need to add "resources/assets/" in the file path of the Load Asset. By default it is already set at TRUE, we recommend working with the resources /assets folder and the tag by default.
+NOTE: If the tag #useAssetsResources is set to True, then Load Asset is automatically plugged to the resources/assets folder, you don|;t need to add "resources/assets/" in the file path of the Load Asset. By default it is already set at TRUE, we recommend working with the resources /assets folder and the tag by default.
 
-### Compatible file formats
+## Compatible file formats
 
 **Load Asset** can load several file formats (some of which are not supported by the memory banks system seen previously).
-
-- Music modules
-.mod: Pro-Tracker format
-.xm: FastTracker format
-
-- Styles
-.css
-
-- Javascript
-.js
-
-- Data models
-json
-
-- Images
-.gif
-.png
-.jpg
-.bmp
-.svg: Vector format
-.iff / .ilbm: Deluxe Paint Format
-
-- Audio
-.mp3
-.wav
-.ogg
-.wma
-
-- Video
-.mp4
-.mpeg4
-.avi
-.wmv
-.ogv
-.webm
+|**Image formats**|
+|---|
+|<ul><li><a href="https://en.wikipedia.org/wiki/PNG" target="_new">.png</a></li><li><a href="https://en.wikipedia.org/wiki/JPEG" target="_new">.jpg/.jpeg</a></li><li><a href="https://en.wikipedia.org/wiki/GIF" target="_new">.gif (animation not supported)</a></li><li><a href="https://en.wikipedia.org/wiki/SVG" target="_new">.svg (Scalable Vector Graphic)</a></li><li><a href="v" target="_new">.bmp</a></li><li><a href="https://en.wikipedia.org/wiki/ILBM" target="_new">.iff/.ilbm (Amiga Image File Format)</a></li></ul>|
+|**Spritesheet format**|
+|<ul><li>.sprite</li></ul>|
+|**Audio formats**|
+|<ul><li><a href="https://en.wikipedia.org/wiki/Waveform_Audio_File_Format" target="_new">.wav</a></li><li><a href="https://en.wikipedia.org/wiki/MP3" target="_new">.mp3</a></li><li><a href="https://en.wikipedia.org/wiki/Ogg" target="_new">.ogg</a></li><li><a href="https://en.wikipedia.org/wiki/Windows_Media_Audio" target="_new">.wma</a></li><li><a href="https://en.wikipedia.org/wiki/Apple_Lossless_Audio_Codec" target="_new">.m4a</a></li></ul>|
+|**Video formats**|
+|<ul><li><a href="https://en.wikipedia.org/wiki/MPEG-4" target="_new">.mp4/.mpeg4</a></li><li><a href="https://en.wikipedia.org/wiki/Audio_Video_Interleave" target="_new">.avi</a></li><li><a href="https://en.wikipedia.org/wiki/Theora" target="_new">.ogv</a></li><li><a href="https://en.wikipedia.org/wiki/Windows_Media_Video" target="_new">.wmv</a></li><li><a href="https://en.wikipedia.org/wiki/QuickTime_File_Format" target="_new">.mov (Apple Quicktime)</a></li><li><a href="https://en.wikipedia.org/wiki/M4V" target="_new">.m4v</a></li></ul>|
+|**Music module formats**|
+|<ul><li><a href="https://en.wikipedia.org/wiki/MOD_(file_format)" target="_new">.mod (Pro-Tracker)</a></li><li><a href="https://en.wikipedia.org/wiki/XM_(file_format)" target="_new">.xm (FastTracker 2)</a></li></ul>|
+|**Web formats**|
+|<ul><li><a href="https://en.wikipedia.org/wiki/HTML" target="_new">.htm/.html</a></li><li><a href="https://en.wikipedia.org/wiki/XHTML" target="_new">.xhtml</a></li><li><a href="https://en.wikipedia.org/wiki/Dynamic_HTML" target="_new">.dhtml</a></li><li><a href="https://en.wikipedia.org/wiki/JavaScript" target="_new">.js (Javascript)</a></li><li><a href="https://en.wikipedia.org/wiki/CSS" target="_new">.css (Stylesheet)</a></li></ul>|
+|**Data models**|
+|<ul><li><a href="https://en.wikipedia.org/wiki/JSON" target="_new">.json</a></li></ul>|
+|**3D formats**|
+|<ul><li><a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file" target="_new">.obj (Wavefront)</a></li><li><a href="https://en.wikipedia.org/wiki/FBX" target="_new">.fbx (Autodesk)</a></li><li><a href="https://en.wikipedia.org/wiki/COLLADA" target="_new">....dae (Collada)</a></li><li><a href="https://en.wikipedia.org/wiki/GlTF" target="_new">.gltf (1.0 & 2.0)</a></li><li>.aoz3d (AOZ 3D Scene Editor)</li></ul>|
 
 Each format can be manipulated using dedicated AOZ commands.
 
 "But how does AOZ know that I am loading a sound, an image or a video…? "
 
-The Load Asset instruction automatically detects the type of the file thanks to its extension. So it's important to make sure your file extension is in the list above.
+The Load Asset instruction automatically detects the type of the file thanks to its extension. So it|;s important to make sure your file extension is in the list above.
 
 When you no longer need an asset, you can delete it with the Del Asset statement.
 
@@ -195,7 +177,7 @@ If you want to use assets, for example an image1.png that sits in another direct
 **#useAssetsResources: False**
 **Load Asset c: /image/"image1.png", "img1"**
 
-Well, we did a good job, didn't we? If in doubt, try it out some more. Once this part is mastered, you are the boss.
+Well, we did a good job, didn|;t we? If in doubt, try it out some more. Once this part is mastered, you are the boss.
 
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" />

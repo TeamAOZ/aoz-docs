@@ -5,14 +5,16 @@
 @tags: 
 @categories: 
 \-->
-Reset all properties of one or all the actor
+Reset all properties of one or all the actor. **Not to be confused** with the `Actor Del` command which should be used to remove not actors.
+
+## Syntax
+> **Actor Reset** ( actor_index )
+> **Actor Reset** ( "*" )
+
 ## Parameters
-
-
-- **index**: Index of the Actor. If "*" is used, all the actors will been reseted.
---Actor Reset (1)
---Actor Reset ("magic")
---Actor Reset ("\*")
+|**Parameter**|**Type**|**Description**|
+|---|---|---|
+|**`Index`**|index|Index of the Actor. If "*" is used, all the actors will be resetted.|
 ---
 <p align="center"><img valign="middle" width="76px" src="https://doc.aoz.studio/assets/images/en/image001.png" /></p>
 <!--stackedit_data:
