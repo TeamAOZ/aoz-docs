@@ -14,7 +14,7 @@ $parsedown = new Parsedown();
 $tell_how_many = false;
 if( !$_GET )
 {
-    $_GET = [ 'search' => '"Get Bob"', 'lang' => 'en' ];
+    $_GET = [ 'search' => '"DB Search"', 'lang' => 'en' ];
     $tell_how_many = true;
 }
 
@@ -100,8 +100,7 @@ function main( string $search, string $lang) : void
 function articleToResponse( Article $article, array $words ) : string
 {
     global $parsedown;
-    $link = "javascript:application.aoz.runProcedure( 'PAGE_LOAD', { ID$: '', URL$: '"
-        . $article->url() . "', IS_NEW: true } );";
+    $link        = $article->url();
     $name        = highlightWords( $article->title, $words );
     $description = highlightWords( $article->description, $words );
     try
@@ -320,22 +319,22 @@ class Article
         }
     }
 
-		public function sectionId() : string
-		{
-			$i = strpos( $this->identifier, 'default/' ) + 8;
-			$j = strpos( $this->identifier, '/', $i );
-			return match( substr( $this->identifier, $i, $j - $i ) )
-			{
-				'user_guide'  => 'user-guide',
-				'syntax'      => 'glossary',
-				'more_tricks' => 'more-tricks',
-				default       => ''
-			};
-		}
+    public function sectionId() : string
+    {
+      $i = strpos( $this->identifier, 'default/' ) + 8;
+      $j = strpos( $this->identifier, '/', $i );
+      return match( substr( $this->identifier, $i, $j - $i ) )
+      {
+        'user_guide'  => 'user-guide',
+        'syntax'      => 'glossary',
+        'more_tricks' => 'more-tricks',
+        default       => ''
+      };
+    }
 
     protected function setBuffer( string $buffer ) : void
     {
-            $buffer = str_replace( [ "\r", "\t" ], [ '', ' ' ], html_entity_decode( $buffer, ENT_HTML5 ) );
+        $buffer = str_replace( [ "\r", "\t" ], [ '', ' ' ], html_entity_decode( $buffer, ENT_HTML5 ) );
         removeDoubleSpaces( $buffer );
         $this->buffer = "\n" . $buffer . "\n";
     }
@@ -361,7 +360,7 @@ class Article
 
     public function url() : string
     {
-        return $this->identifier;
+        return 'public/' . str_replace( '.txt', '.html', $this->identifier );
     }
 
 }
