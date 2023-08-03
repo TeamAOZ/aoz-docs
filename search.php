@@ -5,7 +5,7 @@ use Erusev\Parsedown\Parsedown;
 header( 'Access-Control-Allow-Origin: *' );
 header( 'Cache-Control: no-store, no-cache, must-revalidate, max-age=0' );
 header( 'Cache-Control: post-check=0, pre-check=0', false );
-header( 'Content-Type: text/plain' );
+header( 'Content-Type: text/html' );
 header( 'Pragma: no-cache' );
 
 include_once 'vendor/autoload.php';
@@ -72,29 +72,32 @@ function main( string $search, string $lang) : void
         }
     }
 
-    $s = ( count( $responses ) > 1 ) ? 's' : '';
+		$body = '';
+    $s    = ( count( $responses ) > 1 ) ? 's' : '';
     switch( $lang )
     {
         case 'fr':
-            echo "<h1>Résultats de la recherche</h1>\r\n";
-            echo "<div class=\"search_results\">"
+            $body .= "<h1>Résultats de la recherche</h1>\r\n";
+	          $body .= "<div class=\"search_results\">"
                 . "<b>" . count( $responses ) . "</b> résultat$s pour \"<i>" . $original_search . "</i>\""
                 . "</div>\r\n";
             break;
         default:
-            echo "<h1>Search result</h1>\r\n";
-            echo "<div class=\"search_results\">"
+	          $body .= "<h1>Search result</h1>\r\n";
+	          $body .= "<div class=\"search_results\">"
                 . "<b>" . count( $responses ) . "</b> result$s for \"<i>" . $original_search . "</i>\""
                 . "</div>\r\n";
     }
     foreach( $responses as $response )
     {
-        echo $response . "\r\n";
+        $body .= $response . "\r\n";
     }
     if( $tell_how_many )
     {
-        echo count( $responses ) . " responses\r\n";
+        $body .= count( $responses ) . " responses\r\n";
     }
+		$buffer = file_get_contents( __DIR__ . '/templates/search.template.html' );
+		echo str_replace( '%body%', $body, $buffer );
 }
 
 function articleToResponse( Article $article, array $words ) : string
@@ -111,7 +114,7 @@ function articleToResponse( Article $article, array $words ) : string
     catch( Exception )
     {
     }
-    return "<p class=\"bloc-search {$article->sectionId()}\" onclick=\"$link\" style=\"cursor: pointer;\">"
+    return "<p class=\"bloc-search {$article->sectionId()}\" onclick=\"location='$link'\" style=\"cursor: pointer;\">"
         . "<b>$name</b><br />"
         . $description
         . "</p>";
